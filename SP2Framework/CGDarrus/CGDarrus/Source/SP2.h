@@ -8,6 +8,11 @@
 #include "MatrixStack.h"
 #include "Light.h"
 #include "Object.h"
+#include <queue>
+#include <vector>
+
+using std::vector;
+using std::queue;
 
 class SP2 : public Scene
 {
