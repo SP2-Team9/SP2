@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Assignment3.h"
 #include "SP2.h"
 
 GLFWwindow* m_window;
