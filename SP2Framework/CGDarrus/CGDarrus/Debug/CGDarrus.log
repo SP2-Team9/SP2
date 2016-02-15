@@ -1,0 +1,119 @@
+﻿Build started 2/14/2016 10:30:11 PM.
+     1>Project "C:\Users\Darrus\Desktop\CGDarrus\CGDarrus\CGDarrus.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Darrus\Desktop\CGDarrus\\glew\include /IC:\Users\Darrus\Desktop\CGDarrus\\glfw\include /IC:\Users\Darrus\Desktop\CGDarrus\\Common\Source /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\Assignment3.cpp Source\Camera.cpp Source\Controls.cpp Source\SP2.cpp
+         SP2.cpp
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\object.h(11): warning C4800: 'float' : forcing value to bool 'true' or 'false' (performance warning)
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\sp2.cpp(170): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+         Controls.cpp
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\object.h(11): warning C4800: 'float' : forcing value to bool 'true' or 'false' (performance warning)
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(45): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(47): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(51): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(59): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(60): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(64): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(65): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(74): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(87): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(88): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(92): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(93): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(102): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(116): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(117): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(121): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(122): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(131): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(145): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(146): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(150): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(151): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(158): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(160): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(167): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(168): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(175): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(178): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(183): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(190): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(192): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(196): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(200): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(207): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(208): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(209): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(213): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(214): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(215): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(219): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(220): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(221): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(255): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(256): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(265): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(266): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(275): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(276): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(285): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(286): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(295): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(348): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(349): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(350): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(351): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(357): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(358): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(359): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(360): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(366): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(367): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(368): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(369): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(375): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(376): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(377): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\controls.cpp(378): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+         Generating Code...
+         Compiling...
+         Camera.cpp
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\camera.cpp(73): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\camera.cpp(74): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+         Assignment3.cpp
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\object.h(11): warning C4800: 'float' : forcing value to bool 'true' or 'false' (performance warning)
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(287): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(288): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(305): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(325): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(327): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(365): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(367): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(417): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(422): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(427): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(439): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(442): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\assignment3.cpp(447): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+         Application.cpp
+     1>c:\users\darrus\desktop\cgdarrus\cgdarrus\source\object.h(11): warning C4800: 'float' : forcing value to bool 'true' or 'false' (performance warning)
+         Generating Code...
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Darrus\Desktop\CGDarrus\Debug\CGDarrus.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Darrus\Desktop\CGDarrus\\glew\lib /LIBPATH:"C:\Users\Darrus\Desktop\CGDarrus\\glfw\lib-msvc120" /LIBPATH:C:\Users\Darrus\Desktop\CGDarrus\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Darrus\Desktop\CGDarrus\Debug\CGDarrus.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Darrus\Desktop\CGDarrus\Debug\CGDarrus.lib" /MACHINE:X86 Debug\AABB.obj
+         Debug\Application.obj
+         Debug\Assignment3.obj
+         Debug\Camera.obj
+         Debug\Controls.obj
+         Debug\LoadOBJ.obj
+         Debug\LoadTGA.obj
+         Debug\main.obj
+         Debug\Mesh.obj
+         Debug\MeshBuilder.obj
+         Debug\shader.obj
+         Debug\SP2.obj
+         Debug\Utility.obj
+         CGDarrus.vcxproj -> C:\Users\Darrus\Desktop\CGDarrus\Debug\CGDarrus.exe
+     1>Done Building Project "C:\Users\Darrus\Desktop\CGDarrus\CGDarrus\CGDarrus.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.91
