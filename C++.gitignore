@@ -3,8 +3,7 @@
 *.lo
 *.o
 *.obj
-*.suo
-*.sdf
+
 
 # Precompiled Headers
 *.gch
@@ -28,3 +27,5 @@
 *.exe
 *.out
 *.app
+*.suo
+*.sdf

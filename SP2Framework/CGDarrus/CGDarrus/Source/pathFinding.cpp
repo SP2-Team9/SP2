@@ -1,6 +1,37 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \file: pathFinding.cpp
+
+* \author: Wong Keng Han Ashley
+
+* \date: 15 feb 2016
+
+* \description: This cpp file contains all the methods for setting way points
+
+*/
+/////////////////////////////////////////////////////////////////
+
+
+
+
 #include "pathFinding.h"
 
+/////////////////////////////////////////////////////////////////
 
+/*!
+
+* \method pathFinding:
+
+* \author Wong Keng Han Ashley:
+
+* \date 15 feb 2016:
+
+* \description: Default constructor
+
+*/
+
+/////////////////////////////////////////////////////////////////
 pathFinding::pathFinding() :
 initialLocation(Vector3(0, 0, 0))
 {
@@ -10,6 +41,22 @@ initialLocation(Vector3(0, 0, 0))
 
 }
 
+
+/////////////////////////////////////////////////////////////////
+
+/*!
+
+* \method pathFinding:
+
+* \author Wong Keng Han Ashley:
+
+* \date 15 feb 2016:
+
+* \description: overloaded constructor that takes in and sets initial location and final location
+
+*/
+
+/////////////////////////////////////////////////////////////////
 pathFinding::pathFinding(Vector3 location, Vector3 endlocation) :
 initialLocation(location)
 {
@@ -17,6 +64,22 @@ initialLocation(location)
 
 }
 
+
+/////////////////////////////////////////////////////////////////
+
+/*!
+
+* \method pathFinding:
+
+* \author Wong Keng Han Ashley:
+
+* \date 15 feb 2016:
+
+* \description: default constructor
+
+*/
+
+/////////////////////////////////////////////////////////////////
 pathFinding::~pathFinding(){
 
 
@@ -25,7 +88,21 @@ pathFinding::~pathFinding(){
 
 }
 
+/////////////////////////////////////////////////////////////////
 
+/*!
+
+* \method pathFinding:
+
+* \author Wong Keng Han Ashley:
+
+* \date 15 feb 2016:
+
+* \description: moves the object towards the waypoint
+
+*/
+
+/////////////////////////////////////////////////////////////////
 void pathFinding::pathRoute(double dt){
 
 
@@ -41,10 +118,25 @@ void pathFinding::pathRoute(double dt){
 		wayPoints.pop();
 		std::cout << wayPoints.size() << std::endl;
 	}
+
 	
 }
 
+/////////////////////////////////////////////////////////////////
 
+/*!
+
+* \method pathFinding:
+
+* \author Wong Keng Han Ashley:
+
+* \date 15 feb 2016:
+
+* \description: checks the distance between 2 vectors
+
+*/
+
+/////////////////////////////////////////////////////////////////
 float pathFinding::distanceBetween2points(Vector3 Point1, Vector3 Point2){
 
 	
@@ -54,6 +146,22 @@ float pathFinding::distanceBetween2points(Vector3 Point1, Vector3 Point2){
 
 }
 
+
+/////////////////////////////////////////////////////////////////
+
+/*!
+
+* \method pathFinding:
+
+* \author Wong Keng Han Ashley:
+
+* \date 15 feb 2016:
+
+* \description: setting initial waypoints for the object
+
+*/
+
+/////////////////////////////////////////////////////////////////
 void pathFinding::setInitialWayPoints(Vector3 endLocation){
 
 	Vector3 view = (endLocation - initialLocation).Normalized();

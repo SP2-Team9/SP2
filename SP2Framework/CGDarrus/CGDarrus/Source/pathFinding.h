@@ -1,7 +1,22 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \file pathFinding.h
+
+* \author Wong Keng Han Ashley
+
+* \date 15 feb 2016
+
+* This cpp file contains all the declarations for use in pathFinding.cpp
+
+*/
+/////////////////////////////////////////////////////////////////
+
 #include <vector>
 #include <queue>
 #include "Vector3.h"
 #include "MyMath.h"
+
 
 
 using std::vector;
