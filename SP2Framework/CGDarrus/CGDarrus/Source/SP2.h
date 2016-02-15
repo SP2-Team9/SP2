@@ -99,6 +99,8 @@ private:
 	Mesh *meshList[NUM_GEOMETRY];
 
 	std::string FPSText;
+	std::string Ammo;
+	int a;
 	MS modelStack, viewStack, projectionStack;
 
 	pathFinding spaceCraft;
