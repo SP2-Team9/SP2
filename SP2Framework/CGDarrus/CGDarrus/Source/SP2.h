@@ -23,6 +23,7 @@ class SP2 : public Scene
 		GEO_TOP,
 		GEO_BOTTOM,
 		GEO_TEXT,
+		GEO_OBJECT,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE

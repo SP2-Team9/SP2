@@ -1,10 +1,90 @@
-﻿Build started 2/15/2016 10:09:52 AM.
+﻿Build started 2/15/2016 10:42:48 AM.
      1>Project "C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\CGDarrus\CGDarrus.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glew\include /IC:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glfw\include /IC:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\Common\Source /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glew\include /IC:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glfw\include /IC:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\Common\Source /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\Controls.cpp Source\SP2.cpp
+         Application.cpp
+         Generating Code...
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+         Compiling...
+         Controls.cpp
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(45): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(47): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(51): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(59): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(60): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(64): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(65): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(74): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(87): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(88): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(92): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(93): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(102): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(116): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(117): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(121): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(122): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(131): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(145): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(146): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(150): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(151): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(158): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(160): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(167): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(168): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(175): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(178): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(183): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(190): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(192): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(196): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(200): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(207): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(208): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(209): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(213): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(214): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(215): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(219): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(220): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(221): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(255): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(256): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(265): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(266): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(275): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(276): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(285): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(286): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(295): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(348): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(349): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(350): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(351): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(352): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(353): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(359): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(360): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(361): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(362): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(363): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(364): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(370): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(371): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(372): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(373): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(374): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(375): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(381): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(382): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(383): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(384): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(385): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\controls.cpp(386): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
          SP2.cpp
-     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\object.h(11): warning C4800: 'float' : forcing value to bool 'true' or 'false' (performance warning)
-     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\sp2.cpp(170): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\sp2.cpp(173): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+         Generating Code...
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glew\lib /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.lib" /MACHINE:X86 Debug\AABB.obj
          Debug\Application.obj
@@ -23,4 +103,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.94
+Time Elapsed 00:00:02.22

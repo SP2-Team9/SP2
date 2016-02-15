@@ -8,7 +8,7 @@ struct Object
 {
 	Object()
 	{
-		Warp = isDead = space= Thrust = board = false;
+		Warp = isDead = space = board = false;
 		Thrust = Yaw = Pitch = Time = Cooldown = 0.f;
 		Pos = View = Up = Right = Vector3(0, 0, 0);
 	}

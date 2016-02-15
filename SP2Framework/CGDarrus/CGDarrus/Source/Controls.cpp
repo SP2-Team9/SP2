@@ -345,19 +345,23 @@ void Controls::NoClip(double dt, Camera& camera)
 	// Walking forward and checking with hitboxes
 	if (Application::IsKeyPressed('W'))
 	{
-		camera.target.z += camera.view.z * dt * camera.cameraSpeed;
-		camera.position.z += camera.view.z * dt * camera.cameraSpeed;
+		camera.target.y += camera.view.y * dt * camera.cameraSpeed;
+		camera.position.y += camera.view.y * dt * camera.cameraSpeed;
 		camera.target.x += camera.view.x * dt * camera.cameraSpeed;
 		camera.position.x += camera.view.x * dt * camera.cameraSpeed;
+		camera.target.z += camera.view.z * dt * camera.cameraSpeed;
+		camera.position.z += camera.view.z * dt * camera.cameraSpeed;
 	}
 
 	// Walking backward and checking with hitboxes
 	if (Application::IsKeyPressed('S'))
 	{
-		camera.target.z -= camera.view.z * dt * camera.cameraSpeed;
-		camera.position.z -= camera.view.z * dt * camera.cameraSpeed;
 		camera.target.x -= camera.view.x * dt * camera.cameraSpeed;
 		camera.position.x -= camera.view.x * dt * camera.cameraSpeed;
+		camera.target.y -= camera.view.y * dt * camera.cameraSpeed;
+		camera.position.y -= camera.view.y * dt * camera.cameraSpeed;
+		camera.target.z -= camera.view.z * dt * camera.cameraSpeed;
+		camera.position.z -= camera.view.z * dt * camera.cameraSpeed;
 	}
 
 	// Walking left and checking with hitboxes
@@ -365,6 +369,8 @@ void Controls::NoClip(double dt, Camera& camera)
 	{
 		camera.target.z -= camera.right.z * dt * camera.cameraSpeed;
 		camera.position.z -= camera.right.z * dt * camera.cameraSpeed;
+		camera.target.y -= camera.right.y * dt * camera.cameraSpeed;
+		camera.position.y -= camera.right.y * dt * camera.cameraSpeed;
 		camera.target.x -= camera.right.x * dt * camera.cameraSpeed;
 		camera.position.x -= camera.right.x * dt * camera.cameraSpeed;
 	}
@@ -374,6 +380,8 @@ void Controls::NoClip(double dt, Camera& camera)
 	{
 		camera.target.z += camera.right.z * dt * camera.cameraSpeed;
 		camera.position.z += camera.right.z * dt * camera.cameraSpeed;
+		camera.target.y += camera.right.y * dt * camera.cameraSpeed;
+		camera.position.y += camera.right.y * dt * camera.cameraSpeed;
 		camera.target.x += camera.right.x * dt * camera.cameraSpeed;
 		camera.position.x += camera.right.x * dt * camera.cameraSpeed;
 	}

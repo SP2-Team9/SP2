@@ -26,7 +26,7 @@ void SP2::Init()
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	// Camera Init
-	camera.Init(Vector3(0, 220, -180.f), Vector3(0, 220, -150.f), Vector3(0, 1, 0));
+	camera.Init(Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(0, 1, 0));
 
 	// Matrix Stack Init
 	Mtx44 projection;
@@ -125,6 +125,9 @@ void SP2::Init()
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//OCRA.tga");
+
+	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("Object", "OBJ//Flying.obj");
+	meshList[GEO_OBJECT]->textureID = LoadTGA("Image//flyingUV.tga");
 }
 
 static float LSPEED = 10.f;
@@ -187,6 +190,9 @@ void SP2::Render()
 
 	RenderSkybox();
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
+	modelStack.PushMatrix();
+	RenderMesh(meshList[GEO_OBJECT], false);
+	modelStack.PopMatrix();
 }
 
 void SP2::Exit()
@@ -327,7 +333,7 @@ void SP2::RenderSkybox()
 	modelStack.Translate(0, 0, skyboxSize / 2);
 	modelStack.Rotate(180, 0, 1, 0);
 	modelStack.Rotate(90, 1, 0, 0);
-	modelStack.Scale(skyboxSize + 1, skyboxSize + 1, skyboxSize + 1);
+	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
 	RenderMesh(meshList[GEO_BACK], false);
 	modelStack.PopMatrix();
 
