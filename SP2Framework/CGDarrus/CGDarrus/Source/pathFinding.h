@@ -11,18 +11,22 @@ using std::queue;
 class pathFinding{
 public:
 	pathFinding();
-	pathFinding(Vector3 location);
+	pathFinding(Vector3 location, Vector3 endlocation);
 	virtual ~pathFinding();
 
 
-	void pathFinding::pathRoute(queue<Vector3>& wayPoints, float dt);
+	void pathRoute(double dt);
+	void setInitialWayPoints(Vector3 endLocation);
+	void updateWayPoints(Vector3 endLocation);
 	float distanceBetween2points(Vector3 Point1, Vector3 Point2);
 
 
-private:
 
 
+
+	queue<Vector3> wayPoints;
 	Vector3 initialLocation;
+	
 
 
 };

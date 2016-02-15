@@ -8,7 +8,8 @@
 #include "Application.h"
 #include "LoadTGA.h"
 
-SP2::SP2()
+SP2::SP2():
+spaceCraft(Vector3(0, 0, 0), Vector3(1, 1, 1))
 {
 }
 
@@ -128,6 +129,16 @@ void SP2::Init()
 
 	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("Object", "OBJ//Flying.obj");
 	meshList[GEO_OBJECT]->textureID = LoadTGA("Image//flyingUV.tga");
+
+
+
+
+	//Path Checks
+	spaceCraft.setInitialWayPoints(Vector3(10, 0, 10));
+
+
+
+
 }
 
 static float LSPEED = 10.f;
@@ -171,6 +182,11 @@ void SP2::Update(double dt)
 		readyToUse += (float)(1 * dt);
 
 	FPSText = std::to_string(toupper(1 / dt)) + " FPS";
+
+
+	//Path finding test
+	spaceCraft.pathRoute(dt);
+
 }
 
 void SP2::Render()
@@ -193,6 +209,10 @@ void SP2::Render()
 	modelStack.PushMatrix();
 	RenderMesh(meshList[GEO_OBJECT], false);
 	modelStack.PopMatrix();
+
+	pathCheck();
+
+
 }
 
 void SP2::Exit()
@@ -370,4 +390,30 @@ void SP2::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PopMatrix();
+}
+
+void SP2::pathCheck(){
+
+	
+
+	modelStack.PushMatrix();
+	modelStack.Translate(spaceCraft.initialLocation.x, spaceCraft.initialLocation.y, spaceCraft.initialLocation.z);
+	RenderMesh(meshList[GEO_OBJECT], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+
+
+	modelStack.PushMatrix();
+	if (!spaceCraft.wayPoints.empty()){
+		modelStack.Translate(spaceCraft.wayPoints.front().x, spaceCraft.wayPoints.front().y, spaceCraft.wayPoints.front().z);
+	}
+
+	RenderMesh(meshList[GEO_LIGHTBALL], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+
+
+
 }

@@ -8,6 +8,7 @@
 #include "MatrixStack.h"
 #include "Light.h"
 #include "Object.h"
+#include "pathFinding.h"
 #include <queue>
 #include <vector>
 
@@ -70,8 +71,15 @@ public:
 	virtual void Update(double dt);
 	virtual void Render();
 	virtual void Exit();
+	void RenderMesh(Mesh* mesh, bool enableLight);
+	void RenderText(Mesh* mesh, std::string text, Color color);
+	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	void RenderSkybox();
+	void pathCheck();
+
 
 private:
+
 	unsigned m_vertexArrayID;
 	unsigned m_vertexBuffer[NUM_GEOMETRY];
 	unsigned m_colorBuffer[NUM_GEOMETRY];
@@ -89,13 +97,13 @@ private:
 	Light light[1];
 
 	Mesh *meshList[NUM_GEOMETRY];
-	void RenderMesh(Mesh* mesh, bool enableLight);
-	void RenderText(Mesh* mesh, std::string text, Color color);
-	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	void RenderSkybox();
 
 	std::string FPSText;
 	MS modelStack, viewStack, projectionStack;
+
+	pathFinding spaceCraft;
+
+
 };
 
 
