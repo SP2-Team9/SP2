@@ -23,8 +23,7 @@ void SP2::Init()
 	enableLight = true;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
-	worldHitbox.push_back(AABB(Vector3(0, 0, 0), Vector3(10, 10, 0)));
-		a = 50;
+	a = 50;
 
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
@@ -218,9 +217,6 @@ void SP2::Render()
 	RenderSkybox();
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
-	modelStack.PushMatrix();
-	RenderMesh(meshList[GEO_OBJECT], false);
-	modelStack.PopMatrix();
 
 	
 	pathCheck();

@@ -8,8 +8,6 @@
 #include "MatrixStack.h"
 #include "Light.h"
 #include "Object.h"
-#include "Vector4.h"
-#include "MousePicker.h"
 #include "pathFinding.h"
 #include <queue>
 #include <vector>
@@ -98,19 +96,12 @@ private:
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize;
 	Vector3 LightView;
 	std::vector<AABB> Interactions;
-	std::vector<AABB> worldHitbox;
-	Vector3 ray;
 
 	Camera camera;
 	Controls control;
-	MousePicker picker;
 	Light light[1];
 
 	Mesh *meshList[NUM_GEOMETRY];
-	void RenderMesh(Mesh* mesh, bool enableLight);
-	void RenderText(Mesh* mesh, std::string text, Color color);
-	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	void RenderSkybox();
 
 	std::string FPSText;
 	std::string Ammo;
