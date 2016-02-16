@@ -78,7 +78,6 @@
     <ClCompile Include="Source\Mtx44.cpp" />
     <ClCompile Include="Source\timer.cpp" />
     <ClCompile Include="Source\Vector3.cpp" />
-    <ClCompile Include="Source\Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\MatrixStack.h" />

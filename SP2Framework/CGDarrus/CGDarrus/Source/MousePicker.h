@@ -3,7 +3,6 @@
 
 #include "Vector3.h"
 #include "Mtx44.h"
-#include "Vector4.h"
 #include "Camera.h"
 #include "Application.h"
 
