@@ -44,7 +44,7 @@ void Camera::Init(const Vector3& pos, const Vector3& target, const Vector3& up)
 	right.y = 0;
 	right.Normalized();
 
-	cameraSpeed = 20.f;
+	cameraSpeed = 5.f;
 	mouseSpeed = 7.f;
 }
 
@@ -101,5 +101,5 @@ void Camera::Update(double dt)
 	if (Application::IsKeyPressed(VK_LSHIFT))
 		cameraSpeed = 80.f;
 	else
-		cameraSpeed = 50.f;
+		cameraSpeed = 5.f;
 }
