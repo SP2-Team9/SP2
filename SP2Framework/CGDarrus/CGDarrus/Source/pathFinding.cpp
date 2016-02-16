@@ -176,6 +176,31 @@ void pathFinding::setInitialWayPoints(Vector3 endLocation){
 
 	}
 
-	std::cout << wayPoints.size() << std::endl;
+
+
+}
+
+/////////////////////////////////////////////////////////////////
+
+/*!
+
+* \method pathFinding:
+
+* \author Wong Keng Han Ashley:
+
+* \date 15 feb 2016:
+
+* \description: Adds One new Way point
+
+*/
+
+/////////////////////////////////////////////////////////////////
+
+void pathFinding::updateWayPoints(Vector3 newLocation){
+
+
+	wayPoints.push(newLocation);
+
+
 
 }
