@@ -10,6 +10,12 @@
 #include "Object.h"
 #include "Vector4.h"
 #include "MousePicker.h"
+#include "pathFinding.h"
+#include <queue>
+#include <vector>
+
+using std::vector;
+using std::queue;
 
 class SP2 : public Scene
 {
@@ -67,8 +73,20 @@ public:
 	virtual void Update(double dt);
 	virtual void Render();
 	virtual void Exit();
+	void RenderMesh(Mesh* mesh, bool enableLight);
+	void RenderText(Mesh* mesh, std::string text, Color color);
+	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	void RenderSkybox();
+	void pathCheck();
+	void renderTitleScreen();
+	void renderFightingUI();
+
+
+
+
 
 private:
+
 	unsigned m_vertexArrayID;
 	unsigned m_vertexBuffer[NUM_GEOMETRY];
 	unsigned m_colorBuffer[NUM_GEOMETRY];
@@ -95,7 +113,13 @@ private:
 	void RenderSkybox();
 
 	std::string FPSText;
+	std::string Ammo;
+	int a;
 	MS modelStack, viewStack, projectionStack;
+
+	pathFinding spaceCraft;
+
+
 };
 
 
