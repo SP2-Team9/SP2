@@ -9,9 +9,7 @@
 #include "LoadTGA.h"
 
 SP2::SP2():
-spaceCraft(Vector3(0, 0, 0), 
-Vector3(1, 1, 1)),
-wayPointSetCoolDown(0)
+spaceCraft(Vector3(0, 0, 0), Vector3(1, 1, 1))
 {
 }
 
@@ -24,6 +22,7 @@ void SP2::Init()
 	enableLight = true;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
+	a = 50;
 
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
@@ -132,11 +131,12 @@ void SP2::Init()
 	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("Object", "OBJ//Flying.obj");
 	meshList[GEO_OBJECT]->textureID = LoadTGA("Image//flyingUV.tga");
 
-
+	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
+	meshList[GEO_QUAD]->textureID = LoadTGA("Image//SpaceFront.tga");
 
 
 	//Path Checks
-	spaceCraft.setInitialWayPoints(Vector3(100, 0, 100));
+	spaceCraft.setInitialWayPoints(Vector3(10, 0, 10));
 
 
 
@@ -185,17 +185,17 @@ void SP2::Update(double dt)
 
 	FPSText = std::to_string(toupper(1 / dt)) + " FPS";
 
+	//ammo use
+	Ammo = std::to_string(a);
+	if (Application::IsKeyPressed(' ') && a != 0 && readyToUse >= 0.8f)
+	{
+		readyToUse = 0.f;
+		a--;
+
+	}
 
 	//Path finding test
 	spaceCraft.pathRoute(dt);
-
-	wayPointSetCoolDown += dt;
-	if (Application::IsKeyPressed('G') && wayPointSetCoolDown > 3){
-
-		spaceCraft.updateWayPoints(camera.position);
-		wayPointSetCoolDown = 0;
-
-	}
 
 }
 
@@ -219,6 +219,26 @@ void SP2::Render()
 	modelStack.PushMatrix();
 	RenderMesh(meshList[GEO_OBJECT], false);
 	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0, 0);
+	modelStack.Rotate(270, 1, 0, 0);
+	modelStack.Scale(1000, 1000, 1000);
+	RenderMesh(meshList[GEO_QUAD], false);
+	modelStack.PopMatrix();
+
+	//start menu
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Start", Color(0, 1, 0), 3, 11.5, 7);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Options", Color(0, 1, 0), 3, 11, 6);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Exit", Color(0, 1, 0), 3, 11.8, 5);
+
+
+	//Asteroid fighting
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Ammo:", Color(0, 1, 0), 3, 0, 19);
+	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 3, 19);
+
 
 	pathCheck();
 
