@@ -95,6 +95,7 @@
     <ClCompile Include="Source\MeshBuilder.cpp" />
     <ClCompile Include="Source\pathFinding.cpp" />
     <ClCompile Include="Source\shader.cpp" />
+    <ClCompile Include="source\sharedData.cpp" />
     <ClCompile Include="Source\SP2.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
   </ItemGroup>
@@ -113,6 +114,7 @@
     <ClInclude Include="Source\pathFinding.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\shader.hpp" />
+    <ClInclude Include="source\sharedData.h" />
     <ClInclude Include="Source\SP2.h" />
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vertex.h" />
