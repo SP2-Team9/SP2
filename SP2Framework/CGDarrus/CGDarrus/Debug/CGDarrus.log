@@ -1,21 +1,11 @@
-﻿Build started 2/16/2016 10:59:39 AM.
-     1>Project "C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\CGDarrus\CGDarrus.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2/16/2016 11:36:57 AM.
+     1>Project "C:\Users\n1507\Desktop\CGDarrus\CGDarrus\CGDarrus.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glew\include /IC:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glfw\include /IC:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\Common\Source /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Application.cpp Source\SP2.cpp Source\pathFinding.cpp source\sharedData.cpp
-         sharedData.cpp
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\n1507\Desktop\CGDarrus\\glew\include /IC:\Users\n1507\Desktop\CGDarrus\\glfw\include /IC:\Users\n1507\Desktop\CGDarrus\\Common\Source /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
          SP2.cpp
-     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\sp2.cpp(185): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\sp2.cpp(450): warning C4305: 'argument' : truncation from 'double' to 'float'
-         Generating Code...
-         Compiling...
-         pathFinding.cpp
-     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\pathfinding.cpp(111): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp2framework\cgdarrus\cgdarrus\source\pathfinding.cpp(123): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         Application.cpp
-         Generating Code...
-     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+     1>c:\users\n1507\desktop\cgdarrus\cgdarrus\source\sp2.cpp(183): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glew\lib /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug glew32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.lib" /MACHINE:X86 Debug\AABB.obj
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\CGDarrus\Debug\CGDarrus.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\n1507\Desktop\CGDarrus\\glew\lib /LIBPATH:"C:\Users\n1507\Desktop\CGDarrus\\glfw\lib-msvc120" /LIBPATH:C:\Users\n1507\Desktop\CGDarrus\Debug glew32.lib glu32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\CGDarrus\Debug\CGDarrus.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\CGDarrus\Debug\CGDarrus.lib" /MACHINE:X86 Debug\AABB.obj
          Debug\Application.obj
          Debug\Camera.obj
          Debug\Controls.obj
@@ -24,14 +14,13 @@
          Debug\main.obj
          Debug\Mesh.obj
          Debug\MeshBuilder.obj
-         Debug\pathFinding.obj
+         Debug\MousePicker.obj
          Debug\shader.obj
-         Debug\sharedData.obj
          Debug\SP2.obj
          Debug\Utility.obj
-         CGDarrus.vcxproj -> C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.exe
-     1>Done Building Project "C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\CGDarrus\CGDarrus.vcxproj" (Build target(s)).
+         CGDarrus.vcxproj -> C:\Users\n1507\Desktop\CGDarrus\Debug\CGDarrus.exe
+     1>Done Building Project "C:\Users\n1507\Desktop\CGDarrus\CGDarrus\CGDarrus.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.05
+Time Elapsed 00:00:01.08

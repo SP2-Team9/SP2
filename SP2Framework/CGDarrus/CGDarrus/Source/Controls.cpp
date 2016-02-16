@@ -323,13 +323,10 @@ void Controls::NoClip(double dt, Camera& camera)
 		Mtx44 rotation;
 		rotation.SetToRotation(camera.pitch, camera.right.x, camera.right.y, camera.right.z);
 		Vector3 check = rotation * camera.view;
-		if (check.y < 0.9396 && check.y > -0.9396)
-		{
-			camera.view = rotation * camera.view;
-			camera.target.y = camera.position.y + camera.view.y;
-			camera.up = rotation * camera.up;
-			camera.right = rotation * camera.right;
-		}
+		camera.view = rotation * camera.view;
+		camera.target.y = camera.position.y + camera.view.y;
+		camera.up = rotation * camera.up;
+		camera.right = rotation * camera.right;
 	}
 	if (camera.yaw != 0)
 	{
@@ -367,22 +364,22 @@ void Controls::NoClip(double dt, Camera& camera)
 	// Walking left and checking with hitboxes
 	if (Application::IsKeyPressed('A'))
 	{
-		camera.target.z -= camera.right.z * dt * camera.cameraSpeed;
-		camera.position.z -= camera.right.z * dt * camera.cameraSpeed;
-		camera.target.y -= camera.right.y * dt * camera.cameraSpeed;
-		camera.position.y -= camera.right.y * dt * camera.cameraSpeed;
-		camera.target.x -= camera.right.x * dt * camera.cameraSpeed;
-		camera.position.x -= camera.right.x * dt * camera.cameraSpeed;
+		camera.target.z -= (float)camera.right.z * dt * camera.cameraSpeed;
+		camera.position.z -= (float)camera.right.z * dt * camera.cameraSpeed;
+		camera.target.y -= (float)camera.right.y * dt * camera.cameraSpeed;
+		camera.position.y -= (float)camera.right.y * dt * camera.cameraSpeed;
+		camera.target.x -= (float)camera.right.x * dt * camera.cameraSpeed;
+		camera.position.x -= (float)camera.right.x * dt * camera.cameraSpeed;
 	}
 
 	// Walking Right and checking with hitboxes
 	if (Application::IsKeyPressed('D'))
 	{
-		camera.target.z += camera.right.z * dt * camera.cameraSpeed;
-		camera.position.z += camera.right.z * dt * camera.cameraSpeed;
-		camera.target.y += camera.right.y * dt * camera.cameraSpeed;
-		camera.position.y += camera.right.y * dt * camera.cameraSpeed;
-		camera.target.x += camera.right.x * dt * camera.cameraSpeed;
-		camera.position.x += camera.right.x * dt * camera.cameraSpeed;
+		camera.target.z += (float)camera.right.z * dt * camera.cameraSpeed;
+		camera.position.z += (float)camera.right.z * dt * camera.cameraSpeed;
+		camera.target.y += (float)camera.right.y * dt * camera.cameraSpeed;
+		camera.position.y += (float)camera.right.y * dt * camera.cameraSpeed;
+		camera.target.x += (float)camera.right.x * dt * camera.cameraSpeed;
+		camera.position.x += (float)camera.right.x * dt * camera.cameraSpeed;
 	}
 }

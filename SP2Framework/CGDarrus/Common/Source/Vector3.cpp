@@ -210,6 +210,114 @@ Vector3& Vector3::operator*=( float scalar )
 	return *this;
 }
 
+
+/******************************************************************************/
+/*!
+\brief
+operator* overload for Vector3 multiplication
+
+\param scalar
+Vector3 to multiply with
+\return
+Resulting vector
+*/
+/******************************************************************************/
+Vector3 Vector3::operator*(const Vector3& rhs) const
+{
+	return Vector3(x * rhs.x, y * rhs.y, z * rhs.z);
+}
+
+/******************************************************************************/
+/*!
+\brief
+operator*= overload for Vector3 multiplication and assignment
+
+\param scalar
+Vector3 to multiply with
+\return
+Resulting vector
+*/
+/******************************************************************************/
+Vector3& Vector3::operator*=(const Vector3& rhs)
+{
+	x *= rhs.x;
+	y *= rhs.y;
+	z *= rhs.z;
+	return *this;
+}
+
+/******************************************************************************/
+/*!
+\brief
+operator* overload for scalar multiplication
+
+\param scalar - float to multiply with
+
+\exception None
+\return Resulting vector
+*/
+Vector3 Vector3::operator/(float scalar) const
+{
+	return Vector3(x / scalar, y / scalar, z / scalar);
+}
+
+/******************************************************************************/
+/*!
+\brief
+operator*= overload for scalar multiplication and assignment
+
+\param scalar
+float to multiply with
+\return
+Resulting vector
+*/
+/******************************************************************************/
+Vector3& Vector3::operator/=(float scalar)
+{
+	x /= scalar;
+	y /= scalar;
+	z /= scalar;
+	return *this;
+}
+
+/******************************************************************************/
+/*!
+\brief
+Check if vector is bigger then other
+
+\param rhs
+vector to compare with
+
+\exception None
+\return Resulting vector
+*/
+/******************************************************************************/
+bool Vector3::operator>(const Vector3 rhs) const
+{
+	if (x > rhs.x && y > rhs.y > y && z > rhs.z)
+		return true;
+	return false;
+}
+
+/******************************************************************************/
+/*!
+\brief
+Check if vector is smaller then other
+
+\param rhs
+vector to compare with
+
+\exception None
+\return Resulting vector
+*/
+/******************************************************************************/
+bool Vector3::operator<(const Vector3 rhs) const
+{
+	if (x < rhs.x && y < rhs.y > y && z < rhs.z)
+		return true;
+	return false;
+}
+
 /******************************************************************************/
 /*!
 \brief

@@ -46,6 +46,15 @@ struct Vector3
 	Vector3 operator*( float scalar ) const; //Scalar multiplication
 	Vector3& operator*=( float scalar );
 
+	Vector3 operator*(const Vector3& rhs) const; //Vector3 multiplication
+	Vector3& operator*=(const Vector3& rhs);
+
+	Vector3 operator/(float scalar) const; //Scalar Division
+	Vector3& operator/=(float scalar);
+
+	bool operator>(const Vector3 rhs ) const; // More then Comparison
+	bool operator<(const Vector3 rhs) const; // Less then Comparison
+
 	bool operator==( const Vector3& rhs ) const; //Equality check
 	bool operator!= ( const Vector3& rhs ) const; //Inequality check
 

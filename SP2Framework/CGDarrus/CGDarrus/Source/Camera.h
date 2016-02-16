@@ -8,7 +8,8 @@ class Camera
 {
 public:
 	Vector3 position, target, up, view, right;
-	float cameraSpeed, mouseSpeed, pitch, yaw;
+	float cameraSpeed, mouseSpeed, pitch, yaw, delay;
+	static bool cursor;
 	double mouseX, mouseY;
 	
 	Camera();

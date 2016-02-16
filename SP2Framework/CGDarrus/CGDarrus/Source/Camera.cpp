@@ -2,8 +2,7 @@
 #include "Vector3.h"
 #include "Application.h"
 
-//double Camera::mouseX = 0;
-//double Camera::mouseY = 0;
+bool Camera::cursor = false;
 
 /******************************************************************************/
 /*!
@@ -69,9 +68,30 @@ To be called every frame. Camera will get user inputs and update its position an
 /******************************************************************************/
 void Camera::Update(double dt)
 {
-	Application::getMouse(mouseX, mouseY);
-	yaw = mouseSpeed * dt * static_cast<float>(800 / 2 - mouseX);
-	pitch = mouseSpeed * dt * static_cast<float>(600 / 2 - mouseY);
+	if (Application::IsKeyPressed(VK_END) && delay >= 1.f)
+	{
+		delay = 0;
+		if (cursor == true)
+			cursor = false;
+		else
+			cursor = true;
+	}
+
+	delay += dt;
+
+	if (cursor == false)
+	{
+		Application::getMouse(mouseX, mouseY);
+		Application::centerMouse();
+		Application::hideMouse();
+		yaw = mouseSpeed * dt * static_cast<float>(800 / 2 - mouseX);
+		pitch = mouseSpeed * dt * static_cast<float>(600 / 2 - mouseY);
+	}
+	else
+	{
+		Application::showMouse();
+	}
+	
 
 	if (Application::IsKeyPressed(VK_ADD))
 		mouseSpeed += 0.1f;

@@ -38,6 +38,7 @@ bool Application::IsKeyPressed(unsigned short key)
 
 Application::Application()
 {
+	//mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 }
 
 Application::~Application()
@@ -69,10 +70,9 @@ void Application::Init()
 
 
 	//Create a window and create its OpenGL context
-	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
 	//m_window = glfwCreateWindow(width, height, "SP2", glfwGetPrimaryMonitor(), NULL);
-	m_window = glfwCreateWindow(mode->width, mode->height, "SP2", NULL, NULL);
+	m_window = glfwCreateWindow(800, 600, "SP2", NULL, NULL);
 
 	//Set window Size
 	glfwSetWindowSizeCallback(m_window, resize_callback);
@@ -135,7 +135,20 @@ void Application::Exit()
 
 void Application::getMouse(double & x, double & y)
 {
-	glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 	glfwGetCursorPos(m_window, &x, &y);
+}
+
+void Application::centerMouse()
+{
 	glfwSetCursorPos(m_window, 800 / 2, 600 / 2);
+}
+
+void Application::hideMouse()
+{
+	glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+}
+
+void Application::showMouse()
+{
+	glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 }
