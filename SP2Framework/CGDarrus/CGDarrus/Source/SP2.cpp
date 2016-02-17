@@ -24,6 +24,7 @@ void SP2::Init()
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
 	a = 50;
+	hp = 100;
 
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
@@ -129,26 +130,42 @@ void SP2::Init()
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//OCRA.tga");
 
+	meshList[GEO_TEXT1] = MeshBuilder::GenerateText("text", 16, 16);
+	meshList[GEO_TEXT1]->textureID = LoadTGA("Image//startfont.tga");
+
 	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("Object", "OBJ//Flying.obj");
 	meshList[GEO_OBJECT]->textureID = LoadTGA("Image//flyingUV.tga");
 
 	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
-	meshList[GEO_QUAD]->textureID = LoadTGA("Image//SpaceFront.tga");
+	meshList[GEO_QUAD]->textureID = LoadTGA("Image//menu.tga");
 
 
 	//Path Checks
 	spaceCraft.setInitialWayPoints(Vector3(10, 0, 10));
-
-
-
-
+	blinking = true;
+	renderStart = true;
+	renderNext = false;
+	start = false;
+	sstart = false;
 }
 
 void SP2::Update(double dt)
 {
-	camera.Update(dt);
-	control.NoClip(dt, camera);
+	if (sstart == false)
+	{
+		
+		if (Application::IsKeyPressed(VK_LBUTTON))
+		{
 
+			sstart = true;
+			
+		}
+	}
+	if (sstart == true)
+	{
+		camera.Update(dt);
+		control.NoClip(dt, camera);
+	}
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
 	if (Application::IsKeyPressed('2')) //disable back face culling
@@ -186,7 +203,7 @@ void SP2::Update(double dt)
 
 	//ammo use
 	Ammo = std::to_string(a);
-	if (Application::IsKeyPressed(' ') && a != 0 && readyToUse >= 0.8f)
+	if (Application::IsKeyPressed('Z') && a != 0 && readyToUse >= 0.8f)
 	{
 		readyToUse = 0.f;
 		a--;
@@ -194,8 +211,14 @@ void SP2::Update(double dt)
 	}
 
 
+	//health
+	Health = std::to_string(hp);
+
+
+
 	//Path finding test
 	spaceCraft.pathRoute(dt);
+	blinkDuration += dt;
 
 }
 
@@ -216,11 +239,62 @@ void SP2::Render()
 
 	RenderSkybox();
 
+
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 
+
+	/*modelStack.PushMatrix();
+	RenderMesh(meshList[GEO_OBJECT], false);
+	modelStack.PopMatrix();*/
 	
-	pathCheck();
-	//renderTitleScreen();
+
+	if (start == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(0, 0, 420);
+		modelStack.Rotate(270, 1, 0, 0);
+		modelStack.Scale(500, 500, 500);
+		RenderMesh(meshList[GEO_QUAD], false);
+		modelStack.PopMatrix();
+
+		RenderTextOnScreen(meshList[GEO_TEXT1], "SPACE CONTROL", Color(0, 1, 0), 10, 0.1, 5);
+		
+
+		if (Application::IsKeyPressed(VK_LBUTTON))
+		{
+			renderStart = false;
+			renderNext = true;
+			start = true;
+			camera.Init(Vector3(1, 0, 0), Vector3(0, 0, 1), Vector3(0, 1, 0)); //next stage camera pos idk where though
+		}
+	}
+
+	if (renderStart == true)
+	{
+		if (blinking == true){
+
+			renderTitleScreen();
+
+		}
+		if (blinkDuration > 0.5){
+
+			if (blinking == true){
+				blinking = false;
+			}
+			else{
+				blinking = true;
+			}
+
+			blinkDuration = 0;
+		}
+	}
+
+	if (renderNext == true)
+	{
+
+		renderFightingUI();
+		renderHealth();
+	}
 
 }
 
@@ -428,23 +502,12 @@ void SP2::pathCheck(){
 }
 
 void SP2::renderTitleScreen(){
-
-
-	/*modelStack.PushMatrix();
-	modelStack.Translate(0, 0, 0);
-	modelStack.Rotate(270, 1, 0, 0);
-	modelStack.Scale(1000, 1000, 1000);
-	RenderMesh(meshList[GEO_QUAD], false);
-	modelStack.PopMatrix();*/
-
+	
+	
 	//start menu
-
-	RenderTextOnScreen(meshList[GEO_TEXT], "Start", Color(0, 1, 0), 3, 11.5, 7);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Options", Color(0, 1, 0), 3, 11, 6);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Exit", Color(0, 1, 0), 3, 11.8, 5);
-
-
-
+	
+	RenderTextOnScreen(meshList[GEO_TEXT], "Click to Start", Color(0, 1, 0), 3, 9.5, 3);
+	
 
 }
 
@@ -459,7 +522,12 @@ void SP2::renderFightingUI(){
 	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 3, 19);
 
 
+}
 
+void SP2::renderHealth()
+{
+	//Health 
 
-
+	RenderTextOnScreen(meshList[GEO_TEXT], "Health:", Color(0, 1, 0), 3, 0, 18);
+	RenderTextOnScreen(meshList[GEO_TEXT], Health, Color(0, 1, 0), 3, 4, 18);
 }
