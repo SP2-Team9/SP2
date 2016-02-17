@@ -208,7 +208,7 @@ void SP2::Render()
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 	modelStack.PushMatrix();
-	modelStack.Translate(0, 0, 40);
+	modelStack.Translate(ship.Pos.x, ship.Pos.y, ship.Pos.z);
 	RenderMesh(meshList[GEO_OBJECT], false);
 	modelStack.PopMatrix();
 
