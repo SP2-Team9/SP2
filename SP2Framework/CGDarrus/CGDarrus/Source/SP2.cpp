@@ -21,7 +21,14 @@ void SP2::Init()
 	enableLight = true;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
-	worldHitbox.push_back(AABB(Vector3(-50, -10, -50), Vector3(50, 0, 50)));
+	selection = nullptr;
+	worldHitbox.push_back(AABB(Vector3(-500, 0, -500), Vector3(500, 0, 500)));
+
+	//Vehicles Init
+	ship.SetPos(0, 0, 0);
+	ship.SetView(0, 0, 1);
+	ship.SetUp(0, 1, 0);
+	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
 
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
@@ -142,7 +149,9 @@ void SP2::Update(double dt)
 
 	picker.set(camera, projectionStack.Top());
 	picker.update();
-	std::cout << picker.WorldCoord() << std::endl;
+	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+
+	MouseSelection();
 
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
@@ -203,9 +212,11 @@ void SP2::Render()
 	RenderMesh(meshList[GEO_OBJECT], false);
 	modelStack.PopMatrix();
 
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	modelStack.PushMatrix();
 	RenderMesh(meshList[GEO_HITBOX], false);
 	modelStack.PopMatrix();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void SP2::Exit()
@@ -213,6 +224,29 @@ void SP2::Exit()
 	// Cleanup VBO here
 	glDeleteVertexArrays(1, &m_vertexArrayID);
 	glDeleteProgram(m_programID);
+}
+
+void SP2::MouseSelection()
+{
+	if (Application::IsKeyPressed(VK_LBUTTON))
+	{
+		std::cout << picker.WorldCoord() << std::endl;
+		if (ship.hitbox.PointToAABB(picker.WorldCoord()))
+		{
+			std::cout << "SELECTED!" << std::endl;
+			selection = &ship;
+		}
+		else
+		{
+			selection = nullptr;
+		}
+	}
+
+	if (Application::IsKeyPressed(VK_RBUTTON) && selection != nullptr)
+	{
+		std::cout << "MOVED!" << std::endl;
+		ship.SetPos(picker.WorldCoord().x, picker.WorldCoord().y, picker.WorldCoord().z);
+	}
 }
 
 void SP2::RenderMesh(Mesh* mesh, bool enableLight)
@@ -329,9 +363,6 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 void SP2::RenderSkybox()
 {
 	modelStack.PushMatrix();
-
-	modelStack.Translate(camera.position.x, camera.position.y, camera.position.z);
-
 	float skyboxSize = 1005;
 
 

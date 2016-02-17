@@ -81,6 +81,8 @@ private:
 	Vector3 LightView;
 	std::vector<AABB> Interactions;
 	std::vector<AABB> worldHitbox;
+	Vehicles ship;
+	Vehicles* selection;
 
 	Camera camera;
 	Controls control;
@@ -88,10 +90,13 @@ private:
 	Light light[1];
 
 	Mesh *meshList[NUM_GEOMETRY];
+	void MouseSelection();
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 	void RenderSkybox();
+
+
 
 	std::string FPSText;
 	MS modelStack, viewStack, projectionStack;
