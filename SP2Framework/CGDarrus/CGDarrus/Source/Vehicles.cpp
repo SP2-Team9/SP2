@@ -9,3 +9,8 @@ Vehicles::~Vehicles()
 {
 
 }
+
+void Vehicles::update()
+{
+
+}
