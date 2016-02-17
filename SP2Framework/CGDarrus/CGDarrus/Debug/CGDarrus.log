@@ -1,31 +1,9 @@
-﻿Build started 2/17/2016 2:14:16 AM.
-     1>Project "G:\Assignments\SP2\SP2Framework\CGDarrus\CGDarrus\CGDarrus.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IG:\Assignments\SP2\SP2Framework\CGDarrus\\glew\include /IG:\Assignments\SP2\SP2Framework\CGDarrus\\glfw\include /IG:\Assignments\SP2\SP2Framework\CGDarrus\\Common\Source /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\MousePicker.cpp
-         MousePicker.cpp
-     1>g:\assignments\sp2\sp2framework\cgdarrus\cgdarrus\source\mousepicker.cpp(48): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>g:\assignments\sp2\sp2framework\cgdarrus\cgdarrus\source\mousepicker.cpp(49): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>g:\assignments\sp2\sp2framework\cgdarrus\cgdarrus\source\mousepicker.cpp(75): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-       Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\Assignments\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.exe" /INCREMENTAL /NOLOGO /LIBPATH:G:\Assignments\SP2\SP2Framework\CGDarrus\\glew\lib /LIBPATH:"G:\Assignments\SP2\SP2Framework\CGDarrus\\glfw\lib-msvc120" /LIBPATH:G:\Assignments\SP2\SP2Framework\CGDarrus\Debug glew32.lib glu32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\Assignments\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\Assignments\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.lib" /MACHINE:X86 Debug\AABB.obj
-         Debug\Application.obj
-         Debug\Camera.obj
-         Debug\Controls.obj
-         Debug\LoadOBJ.obj
-         Debug\LoadTGA.obj
-         Debug\main.obj
-         Debug\Mesh.obj
-         Debug\MeshBuilder.obj
-         Debug\MousePicker.obj
-         Debug\Object.obj
-         Debug\pathFinding.obj
-         Debug\shader.obj
-         Debug\SP2.obj
-         Debug\Utility.obj
-         Debug\Vehicles.obj
-         CGDarrus.vcxproj -> G:\Assignments\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.exe
-     1>Done Building Project "G:\Assignments\SP2\SP2Framework\CGDarrus\CGDarrus\CGDarrus.vcxproj" (Build target(s)).
+﻿Build started 2/17/2016 10:09:14 AM.
+     1>Project "C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\CGDarrus\CGDarrus.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         CGDarrus.vcxproj -> C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\Debug\CGDarrus.exe
+     1>Done Building Project "C:\Users\n1507\Desktop\SP2\SP2Framework\CGDarrus\CGDarrus\CGDarrus.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.96
+Time Elapsed 00:00:00.05

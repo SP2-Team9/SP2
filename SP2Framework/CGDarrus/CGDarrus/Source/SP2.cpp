@@ -211,7 +211,6 @@ void SP2::Update(double dt)
 
 	//Path finding test
 	spaceCraft.pathRoute(dt);
-	pathCheck();
 
 
 }

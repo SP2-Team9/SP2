@@ -9,6 +9,14 @@
 #include "Light.h"
 #include "Vehicles.h"
 #include "MousePicker.h"
+#include "Object.h"
+#include "pathFinding.h"
+#include <queue>
+#include <vector>
+
+using std::vector;
+using std::queue;
+
 
 class SP2 : public Scene
 {
@@ -25,6 +33,8 @@ class SP2 : public Scene
 		GEO_BOTTOM,
 		GEO_TEXT,
 		GEO_OBJECT,
+		GEO_CONTROL_PANEL,
+		GEO_SPACE_STATION,
 		GEO_HITBOX,
 		NUM_GEOMETRY,
 	};
@@ -88,13 +98,19 @@ private:
 	Light light[1];
 
 	Mesh *meshList[NUM_GEOMETRY];
+
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 	void RenderSkybox();
 
 	std::string FPSText;
+	std::string Ammo;
+	int a;
 	MS modelStack, viewStack, projectionStack;
+
+
+	pathFinding spaceCraft;
 };
 
 
