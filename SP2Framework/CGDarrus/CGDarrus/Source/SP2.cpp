@@ -143,7 +143,7 @@ void SP2::Init()
 	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("spaceShip", "OBJ//Flying.obj");
 	meshList[GEO_OBJECT]->textureID = LoadTGA("Image//flyingUV.tga");
 
-	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(1, 1, 1), worldHitbox[0].GetMin(), worldHitbox[0].GetMax());
+	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(1, 1, 1), ship.hitbox.GetMin(), ship.hitbox.GetMax());
 
 	meshList[GEO_CONTROL_PANEL] = MeshBuilder::GenerateOBJ("Control Panel", "OBJ//Control Panel.obj");
 	meshList[GEO_CONTROL_PANEL]->textureID = LoadTGA("Image//Control Panel.tga");
@@ -157,9 +157,11 @@ void SP2::Init()
 
 	//Path Checks
 	spaceCraft.setInitialWayPoints(Vector3(100, 50, 100));
-}
+	xWing.setInitialWayPoints(Vector3(-10, 0, -10));
 
-static float LSPEED = 10.f;
+
+
+}
 
 void SP2::Update(double dt)
 {
@@ -168,9 +170,8 @@ void SP2::Update(double dt)
 
 	picker.set(camera, projectionStack.Top());
 	picker.update();
-	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
 
-	MouseSelection();
+	MouseSelection(dt);
 
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
@@ -219,7 +220,7 @@ void SP2::Update(double dt)
 
 
 	//Path finding test
-	//spaceCraft.pathRoute(dt);
+	spaceCraft.pathRoute(dt);
 
 
 }
@@ -243,12 +244,13 @@ void SP2::Render()
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 	modelStack.PushMatrix();
-	modelStack.Translate(ship.Pos.x, ship.Pos.y, ship.Pos.z);
+	modelStack.Translate(xWing.getCurrentLocation().x, xWing.getCurrentLocation().y, xWing.getCurrentLocation().z);
 	RenderMesh(meshList[GEO_OBJECT], false);
 	modelStack.PopMatrix();
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	modelStack.PushMatrix();
+	modelStack.Translate(ship.Pos.x, ship.Pos.y, ship.Pos.z);
 	RenderMesh(meshList[GEO_HITBOX], false);
 	modelStack.PopMatrix();
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -256,7 +258,7 @@ void SP2::Render()
 
 
 	pathCheck();
-
+	
 
 }
 
@@ -267,9 +269,9 @@ void SP2::Exit()
 	glDeleteProgram(m_programID);
 }
 
-void SP2::MouseSelection()
+void SP2::MouseSelection(double dt)
 {
-	if (Application::IsKeyPressed(VK_LBUTTON))
+	if (Application::IsKeyPressed(VK_LBUTTON) && wayPointSetCoolDown > 0.5f)
 	{
 		std::cout << picker.WorldCoord() << std::endl;
 		if (ship.hitbox.PointToAABB(picker.WorldCoord()))
@@ -281,13 +283,29 @@ void SP2::MouseSelection()
 		{
 			selection = nullptr;
 		}
+
+		wayPointSetCoolDown = 0;
 	}
 
-	if (Application::IsKeyPressed(VK_RBUTTON) && selection != nullptr)
+	if (Application::IsKeyPressed(VK_RBUTTON) && wayPointSetCoolDown > 0.5f && selection != nullptr)
 	{
+
 		std::cout << "MOVED!" << std::endl;
-		ship.SetPos(picker.WorldCoord().x, picker.WorldCoord().y, picker.WorldCoord().z);
+
+
+		xWing.updateWayPoints(Vector3(picker.WorldCoord().x, 1, picker.WorldCoord().z));
+		
+		
+		wayPointSetCoolDown = 0;
+
+
 	}
+
+	wayPointSetCoolDown += dt;
+	xWing.pathRoute(dt);
+	ship.SetPos(xWing.getCurrentLocation().x, xWing.getCurrentLocation().y, xWing.getCurrentLocation().z);
+	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+
 }
 
 void SP2::RenderMesh(Mesh* mesh, bool enableLight)

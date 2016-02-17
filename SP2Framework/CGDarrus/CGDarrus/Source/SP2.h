@@ -84,7 +84,7 @@ public:
 	void pathCheck();
 	void renderTitleScreen();
 	void renderFightingUI();
-	void MouseSelection();
+	void MouseSelection(double dt);
 
 private:
 
@@ -117,6 +117,9 @@ private:
 
 
 	pathFinding spaceCraft;
+	pathFinding xWing;
+
+	double wayPointSetCoolDown = 0;
 };
 
 

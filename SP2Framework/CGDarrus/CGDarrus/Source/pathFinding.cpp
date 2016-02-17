@@ -108,7 +108,7 @@ void pathFinding::pathRoute(double dt){
 	if (!wayPoints.empty()){
 
 		Vector3 view = (wayPoints.front() - currentLocation).Normalized();
-		currentLocation += view * 5 * dt;
+		currentLocation += view * 30 * dt;
 		lastWayPointDirection = view;
 
 	}
@@ -118,9 +118,10 @@ void pathFinding::pathRoute(double dt){
 		std::cout << wayPoints.size() << std::endl;
 
 	}
+
 	if (wayPoints.empty()){
 
-		currentLocation += lastWayPointDirection * 5 * dt;
+		currentLocation += lastWayPointDirection * 30 * dt;
 
 
 	}
@@ -209,15 +210,16 @@ void pathFinding::updateWayPoints(Vector3 endLocation){
 	Vector3 view = (endLocation - currentLocation).Normalized();
 	Vector3 wayPointPosition = currentLocation;
 
+	resetWayPoints();
+
 	float length = distanceBetween2points(endLocation, wayPointPosition);
 	length /= 10;
 
 	for (int i = 0; i < 10; i++){
 
-		wayPoints.push(wayPointPosition);
 		wayPointPosition += (view * length);
-
-
+		wayPoints.push(wayPointPosition);
+		
 
 	}
 
@@ -242,7 +244,7 @@ void pathFinding::updateWayPoints(Vector3 endLocation){
 /////////////////////////////////////////////////////////////////
 void pathFinding::resetWayPoints(){
 
-	if (!wayPoints.empty()){
+	while (!wayPoints.empty()){
 
 		wayPoints.pop();
 
@@ -293,6 +295,32 @@ queue<Vector3>  pathFinding::getwayPoints(){
 
 
 	return wayPoints;
+
+
+}
+
+
+/////////////////////////////////////////////////////////////////
+
+/*!
+
+* \method: getwayPoints
+
+* \author: Wong Keng Han Ashley
+
+* \date: 16 feb 2016
+
+* \description: setting initial waypoints for the object
+
+*/
+
+/////////////////////////////////////////////////////////////////
+Vector3 pathFinding::getLastWayPointDirection(){
+
+
+
+	return lastWayPointDirection;
+
 
 
 }
