@@ -30,6 +30,7 @@ class SP2 : public Scene
 		GEO_TOP,
 		GEO_BOTTOM,
 		GEO_TEXT,
+		GEO_TEXT1,
 		GEO_OBJECT,
 		GEO_CONTROL_PANEL,
 		GEO_SPACE_STATION,
@@ -82,6 +83,7 @@ public:
 	void pathCheck();
 	void renderTitleScreen();
 	void renderFightingUI();
+	void renderHealth();
 	void MouseSelection(double dt);
 	void objectsInit();
 
@@ -112,9 +114,17 @@ private:
 	std::string FPSText;
 	std::string Ammo;
 	int a;
+	std::string Health;
+	int hp;
+	bool blinking;
+	bool renderStart;
+	bool renderNext;
+	bool start;
+	bool sstart;
+
 	MS modelStack, viewStack, projectionStack;
 
-
+	double blinkDuration = 0;
 	pathFinding spaceCraft;
 	pathFinding xWing;
 
