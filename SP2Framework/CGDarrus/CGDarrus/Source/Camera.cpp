@@ -101,5 +101,5 @@ void Camera::Update(double dt)
 	if (Application::IsKeyPressed(VK_LSHIFT))
 		cameraSpeed = 80.f;
 	else
-		cameraSpeed = 50.f;
+		cameraSpeed = 5.f;
 }

@@ -38,11 +38,11 @@ void SP2::Init()
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	// Camera Init
-	camera.Init(Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(0, 1, 0));
+	camera.Init(Vector3(99.5f, 199.5f, 0), Vector3(0, 30, 0), Vector3(0, 1, 0));
 
 	// Matrix Stack Init
 	Mtx44 projection;
-	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 1000.f);
+	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 10000.f);
 	projectionStack.LoadMatrix(projection);
 
 	//Enable depth buffer and depth testing
@@ -220,7 +220,7 @@ void SP2::Update(double dt)
 
 
 	//Path finding test
-	spaceCraft.pathRoute(dt);
+	//spaceCraft.pathRoute(dt);
 
 
 }
@@ -507,13 +507,10 @@ void SP2::renderTitleScreen(){
 void SP2::renderFightingUI(){
 
 
-
-
 	//Asteroid fighting
 
 	RenderTextOnScreen(meshList[GEO_TEXT], "Ammo:", Color(0, 1, 0), 3, 0, 19);
 	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 3, 19);
-
 
 
 
