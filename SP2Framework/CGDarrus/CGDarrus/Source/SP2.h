@@ -7,9 +7,8 @@
 #include "Mesh.h"
 #include "MatrixStack.h"
 #include "Light.h"
-#include "Vehicles.h"
 #include "MousePicker.h"
-#include "Object.h"
+#include "Vehicles.h"
 #include "pathFinding.h"
 #include <queue>
 #include <vector>
@@ -85,6 +84,7 @@ public:
 	void renderTitleScreen();
 	void renderFightingUI();
 	void MouseSelection(double dt);
+	void objectsInit();
 
 private:
 
@@ -100,6 +100,7 @@ private:
 	Vector3 LightView;
 	std::vector<AABB> Interactions;
 	std::vector<AABB> worldHitbox;
+	Object station;
 	Vehicles ship;
 	Vehicles* selection;
 

@@ -33,11 +33,6 @@ void Object::SetInteraction(AABB interaction)
 	this->interaction = interaction;
 }
 
-void SetInteraction(Vector3 distance)
-{
-	
-}
-
 void Object::SetPos(Vector3 position)
 {
 	Pos = position;

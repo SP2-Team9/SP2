@@ -1,7 +1,6 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "Vector3.h"
 #include "AABB.h"
 
 class Object
@@ -17,7 +16,6 @@ public:
 	void SetHitbox(AABB hitbox);
 	void SetHitbox(float size);
 	void SetInteraction(AABB interaction);
-	void SetInteraction(Vector3 distance);
 	void SetPos(Vector3 position);
 	void SetPos(float x, float y, float z);
 	void SetView(Vector3 view);

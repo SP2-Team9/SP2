@@ -8,7 +8,6 @@
 class Vehicles : public Object
 {
 public:
-
 	Vehicles();
 	~Vehicles();
 
@@ -16,7 +15,6 @@ public:
 
 	float Thrust, Yaw, Pitch, delay;
 	bool board, isDead;
-
 };
 
 #endif

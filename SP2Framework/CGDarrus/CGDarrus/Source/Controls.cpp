@@ -397,3 +397,15 @@ void Controls::NoClip(double dt, Camera& camera)
 		camera.position.x += (float)camera.right.x * dt * camera.cameraSpeed;
 	}
 }
+
+void Controls::YawRotation(double dt, Camera& camera)
+{
+	camera.yaw;
+	Mtx44 rotation;
+	rotation.SetToRotation(camera.yaw, 0, 1, 0);
+	camera.view = rotation * camera.view;
+	camera.position.x = camera.target.x - camera.view.x * 200.f;
+	camera.position.z = camera.target.z - camera.view.z * 200.f;
+	camera.up = rotation * camera.up;
+	camera.right = rotation * camera.right;
+}

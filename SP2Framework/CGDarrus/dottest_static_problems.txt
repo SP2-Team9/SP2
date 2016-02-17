@@ -1,2 +1,0 @@
-CGDarrus/CGDarrus
-    1. Cannot test native C++ project.

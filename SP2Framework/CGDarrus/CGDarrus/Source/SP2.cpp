@@ -26,21 +26,17 @@ void SP2::Init()
 
 	selection = nullptr;
 	worldHitbox.push_back(AABB(Vector3(-500, 0, -500), Vector3(500, 0, 500)));
-
-	//Vehicles Init
-	ship.SetPos(0, 0, 0);
-	ship.SetView(0, 0, 1);
-	ship.SetUp(0, 1, 0);
-	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
 	a = 50;
+
+	objectsInit();
 
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	// Camera Init
-	camera.Init(Vector3(99.5f, 199.5f, 0), Vector3(0, 30, 0), Vector3(0, 1, 0));
-	camera.right = Vector3(0, 0, -1);
-	camera.up = camera.right.Cross(camera.target - camera.position);
+	camera.Init(Vector3(400.f, 150.f, 0), Vector3(0, 0, 0));
+	camera.PointAt(station, 150.f, 400.f);
+
 
 	// Matrix Stack Init
 	Mtx44 projection;
@@ -166,7 +162,7 @@ void SP2::Init()
 void SP2::Update(double dt)
 {
 	camera.Update(dt);
-	control.NoClip(dt, camera);
+	control.YawRotation(dt, camera);
 
 	picker.set(camera, projectionStack.Top());
 	picker.update();
@@ -215,7 +211,6 @@ void SP2::Update(double dt)
 	{
 		readyToUse = 0.f;
 		a--;
-
 	}
 
 
@@ -248,16 +243,17 @@ void SP2::Render()
 	RenderMesh(meshList[GEO_OBJECT], false);
 	modelStack.PopMatrix();
 
+	modelStack.PushMatrix();
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_SPACE_STATION], false);
+	modelStack.PopMatrix();
+
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	modelStack.PushMatrix();
 	modelStack.Translate(ship.Pos.x, ship.Pos.y, ship.Pos.z);
 	RenderMesh(meshList[GEO_HITBOX], false);
 	modelStack.PopMatrix();
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-
-
-	pathCheck();
 	
 
 }
@@ -532,4 +528,16 @@ void SP2::renderFightingUI(){
 
 
 
+}
+
+void SP2::objectsInit()
+{
+	//Object Init
+	station.SetPos(0, 0, 0);
+
+	//Vehicles Init
+	ship.SetPos(0, 0, 0);
+	ship.SetView(0, 0, 1);
+	ship.SetUp(0, 1, 0);
+	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
 }

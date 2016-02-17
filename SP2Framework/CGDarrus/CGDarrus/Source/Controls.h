@@ -2,7 +2,6 @@
 #define CONTROLS_H
 
 #include "Camera.h"
-#include "AABB.h"
 #include "Application.h"
 #include "Vehicles.h"
 #include <vector>
@@ -32,6 +31,7 @@ public:
 	void FPSMovement(double dt, Camera& camera, vector <AABB> hitbox);
 	void NoClip(double dt, Camera& camera);
 	void TPSMovement(double dt, Camera& camera, Vehicles& veh, vector <AABB> hitbox);
+	void YawRotation(double dt, Camera& camera);
 };
 
 #endif

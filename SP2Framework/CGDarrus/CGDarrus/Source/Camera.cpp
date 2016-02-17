@@ -51,6 +51,46 @@ void Camera::Init(const Vector3& pos, const Vector3& target, const Vector3& up)
 /******************************************************************************/
 /*!
 \brief
+Initialize camera
+
+\param pos - position of camera
+\param target - where the camera is looking at
+*/
+/******************************************************************************/
+void Camera::Init(const Vector3& pos, const Vector3& target)
+{
+	this->position = pos;
+	this->target = target;
+	view = (target - position).Normalized();
+	right = view.Cross(Vector3(0, 1, 0));
+	up = right.Cross(view);
+
+	cameraSpeed = 20.f;
+	mouseSpeed = 7.f;
+}
+
+/******************************************************************************/
+/*!
+\brief
+Points at object
+
+\param pos - position of camera
+\param target - where the camera is looking at
+*/
+/******************************************************************************/
+void Camera::PointAt(Object& obj, float height, float offset)
+{
+	target = obj.Pos;
+	position = obj.Pos - offset;
+	position.y = position.y + height;
+	view = (target - position).Normalized();
+	right = view.Cross(Vector3(0, 1, 0));
+	up = right.Cross(view);
+}
+
+/******************************************************************************/
+/*!
+\brief
 Reset the camera settings
 */
 /******************************************************************************/

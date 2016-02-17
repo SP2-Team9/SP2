@@ -2,7 +2,6 @@
 #define AABB_H
 
 #include "Vector3.h"
-#include "Camera.h"
 #include <vector>
 
 using std::vector;
