@@ -1,5 +1,18 @@
 #include "MousePicker.h"
 
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \file MousePicker.cpp
+
+* \author Goh Zheng Yuen
+
+* \date 16 feb 2016
+
+* This cpp file contains Mouse Picker class which converts the coordinates of the mouse to world coordinates.
+
+*/
+/////////////////////////////////////////////////////////////////
 MousePicker::MousePicker()
 {
 
@@ -41,7 +54,28 @@ Vector3 MousePicker::calculateMouseRay()
 	eyeCoords.Set(eyeCoords.x, eyeCoords.y, -1.f);
 	Vector3 worldCoord = view.GetInverse() * eyeCoords;
 
-	return Vector3(worldCoord.x, worldCoord.y, worldCoord.z);
+	return Vector3(worldCoord.x, worldCoord.y, worldCoord.z).Normalized();
+}
+
+Vector3 MousePicker::WorldCoord()
+{
+	Vector3 up(0, 1, 0);
+	Vector3 RayOrigin = camera.position;
+	Vector3 RayFinal = currentRay * 10000.f;
+	Vector3 RayDir = RayFinal - RayOrigin;
+	RayDir = RayDir.Normalized();
+	Vector3 PointOnPlane(1, 0, 1);
+
+	// Get D Value
+	double d = PointOnPlane.Dot(up);
+
+	// Get T Value
+	double t = -(RayOrigin.Dot(up) - d) / RayDir.Dot(up);
+
+	Vector3 ret = RayOrigin + (RayDir * t);
+	ret.y = 0;
+
+	return ret;
 }
 
 void MousePicker::set(Camera camera, Mtx44 projection)

@@ -1,3 +1,15 @@
+#ifndef PATHFINDING_H
+#define PATHFINDING_H
+
+#include <vector>
+#include <queue>
+#include "Vector3.h"
+#include "MyMath.h"
+
+using std::vector;
+using std::queue;
+
+
 /////////////////////////////////////////////////////////////////
 /*!
 
@@ -11,18 +23,6 @@
 
 */
 /////////////////////////////////////////////////////////////////
-
-#include <vector>
-#include <queue>
-#include "Vector3.h"
-#include "MyMath.h"
-
-
-
-using std::vector;
-using std::queue;
-
-
 class pathFinding{
 public:
 	pathFinding();
@@ -41,6 +41,8 @@ public:
 	Vector3 getCurrentLocation();
 	queue<Vector3> getwayPoints();
 
+	Vector3 getLastWayPointDirection();
+
 
 private:
 
@@ -52,4 +54,6 @@ private:
 
 
 };
+
+#endif
 

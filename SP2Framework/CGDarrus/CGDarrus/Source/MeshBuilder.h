@@ -17,6 +17,7 @@ public:
 	static Mesh* GenerateAxes(const std::string &meshName, float lengthX, float lengthY, float lengthZ);
 	static Mesh* GenerateQuad(const std::string &meshName, Color color, float lengthX, float lengthY);
 	static Mesh* GenerateCube(const std::string &meshName, Color color, float lengthX, float lengthY, float lengthZ);
+	static Mesh* GenerateCube(const std::string &meshName, Color color, Vector3 min, Vector3 max);
 	static Mesh* GenerateCircle(const std::string &meshName, Color color, unsigned numSlices);
 	static Mesh* GenerateCone(const std::string &meshName, Color color, unsigned numSlices, float height);
 	static Mesh* GenerateCone2(const std::string &meshName, Color color, unsigned numSlices, float height, float degree);

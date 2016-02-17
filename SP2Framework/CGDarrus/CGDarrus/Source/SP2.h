@@ -7,13 +7,15 @@
 #include "Mesh.h"
 #include "MatrixStack.h"
 #include "Light.h"
-#include "Object.h"
+#include "MousePicker.h"
+#include "Vehicles.h"
 #include "pathFinding.h"
 #include <queue>
 #include <vector>
 
 using std::vector;
 using std::queue;
+
 
 class SP2 : public Scene
 {
@@ -31,6 +33,9 @@ class SP2 : public Scene
 		GEO_TEXT,
 		GEO_TEXT1,
 		GEO_OBJECT,
+		GEO_CONTROL_PANEL,
+		GEO_SPACE_STATION,
+		GEO_HITBOX,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
@@ -80,10 +85,8 @@ public:
 	void renderTitleScreen();
 	void renderFightingUI();
 	void renderHealth();
-
-
-
-
+	void MouseSelection(double dt);
+	void objectsInit();
 
 private:
 
@@ -98,9 +101,14 @@ private:
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize;
 	Vector3 LightView;
 	std::vector<AABB> Interactions;
+	std::vector<AABB> worldHitbox;
+	Object station;
+	Vehicles ship;
+	Vehicles* selection;
 
 	Camera camera;
 	Controls control;
+	MousePicker picker;
 	Light light[1];
 
 	Mesh *meshList[NUM_GEOMETRY];
@@ -118,11 +126,11 @@ private:
 
 	MS modelStack, viewStack, projectionStack;
 
-	pathFinding spaceCraft;
-
 	double blinkDuration = 0;
+	pathFinding spaceCraft;
+	pathFinding xWing;
 
-
+	double wayPointSetCoolDown = 0;
 };
 
 

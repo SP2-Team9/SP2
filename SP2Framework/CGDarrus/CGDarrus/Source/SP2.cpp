@@ -23,14 +23,21 @@ void SP2::Init()
 	enableLight = true;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
+
+	selection = nullptr;
+	worldHitbox.push_back(AABB(Vector3(-500, 0, -500), Vector3(500, 0, 500)));
 	a = 50;
 	hp = 100;
+
+	objectsInit();
 
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	// Camera Init
-	camera.Init(Vector3(0, 0, 0), Vector3(0, 0, 1), Vector3(0, 1, 0));
+	camera.Init(Vector3(400.f, 150.f, 0), Vector3(0, 0, 0));
+	camera.PointAt(station, 150.f, 400.f);
+
 
 	// Matrix Stack Init
 	Mtx44 projection;
@@ -134,38 +141,52 @@ void SP2::Init()
 	meshList[GEO_TEXT1]->textureID = LoadTGA("Image//startfont.tga");
 
 	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("Object", "OBJ//Flying.obj");
+
+	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("spaceShip", "OBJ//Flying.obj");
 	meshList[GEO_OBJECT]->textureID = LoadTGA("Image//flyingUV.tga");
+
+	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(1, 1, 1), ship.hitbox.GetMin(), ship.hitbox.GetMax());
+
+	meshList[GEO_CONTROL_PANEL] = MeshBuilder::GenerateOBJ("Control Panel", "OBJ//Control Panel.obj");
+	meshList[GEO_CONTROL_PANEL]->textureID = LoadTGA("Image//Control Panel.tga");
+
+	meshList[GEO_SPACE_STATION] = MeshBuilder::GenerateOBJ("Space Station", "OBJ//Space Station.obj");
+	meshList[GEO_SPACE_STATION]->textureID = LoadTGA("Image//Space Station.tga");
 
 	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_QUAD]->textureID = LoadTGA("Image//menu.tga");
 
 
 	//Path Checks
-	spaceCraft.setInitialWayPoints(Vector3(10, 0, 10));
 	blinking = true;
 	renderStart = true;
 	renderNext = false;
 	start = false;
 	sstart = false;
+	spaceCraft.setInitialWayPoints(Vector3(100, 50, 100));
+	xWing.setInitialWayPoints(Vector3(-10, 0, -10));
 }
 
 void SP2::Update(double dt)
 {
 	if (sstart == false)
 	{
-		
 		if (Application::IsKeyPressed(VK_LBUTTON))
 		{
-
 			sstart = true;
-			
 		}
 	}
 	if (sstart == true)
 	{
 		camera.Update(dt);
-		control.NoClip(dt, camera);
+		control.YawRotation(dt, camera);
 	}
+
+	picker.set(camera, projectionStack.Top());
+	picker.update();
+
+	MouseSelection(dt);
+	
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
 	if (Application::IsKeyPressed('2')) //disable back face culling
@@ -207,19 +228,14 @@ void SP2::Update(double dt)
 	{
 		readyToUse = 0.f;
 		a--;
-
 	}
-
 
 	//health
 	Health = std::to_string(hp);
 
-
-
 	//Path finding test
 	spaceCraft.pathRoute(dt);
 	blinkDuration += dt;
-
 }
 
 void SP2::Render()
@@ -241,12 +257,15 @@ void SP2::Render()
 
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
-
-
-	/*modelStack.PushMatrix();
+	modelStack.PushMatrix();
+	modelStack.Translate(xWing.getCurrentLocation().x, xWing.getCurrentLocation().y, xWing.getCurrentLocation().z);
 	RenderMesh(meshList[GEO_OBJECT], false);
-	modelStack.PopMatrix();*/
-	
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_SPACE_STATION], false);
+	modelStack.PopMatrix();
 
 	if (start == false)
 	{
@@ -296,6 +315,12 @@ void SP2::Render()
 		renderHealth();
 	}
 
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	modelStack.PushMatrix();
+	modelStack.Translate(ship.Pos.x, ship.Pos.y, ship.Pos.z);
+	RenderMesh(meshList[GEO_HITBOX], false);
+	modelStack.PopMatrix();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void SP2::Exit()
@@ -303,6 +328,45 @@ void SP2::Exit()
 	// Cleanup VBO here
 	glDeleteVertexArrays(1, &m_vertexArrayID);
 	glDeleteProgram(m_programID);
+}
+
+void SP2::MouseSelection(double dt)
+{
+	if (Application::IsKeyPressed(VK_LBUTTON) && wayPointSetCoolDown > 0.5f)
+	{
+		std::cout << picker.WorldCoord() << std::endl;
+		if (ship.hitbox.PointToAABB(picker.WorldCoord()))
+		{
+			std::cout << "SELECTED!" << std::endl;
+			selection = &ship;
+		}
+		else
+		{
+			selection = nullptr;
+		}
+
+		wayPointSetCoolDown = 0;
+	}
+
+	if (Application::IsKeyPressed(VK_RBUTTON) && wayPointSetCoolDown > 0.5f && selection != nullptr)
+	{
+
+		std::cout << "MOVED!" << std::endl;
+
+
+		xWing.updateWayPoints(Vector3(picker.WorldCoord().x, 1, picker.WorldCoord().z));
+		
+		
+		wayPointSetCoolDown = 0;
+
+
+	}
+
+	wayPointSetCoolDown += dt;
+	xWing.pathRoute(dt);
+	ship.SetPos(xWing.getCurrentLocation().x, xWing.getCurrentLocation().y, xWing.getCurrentLocation().z);
+	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+
 }
 
 void SP2::RenderMesh(Mesh* mesh, bool enableLight)
@@ -420,9 +484,6 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 void SP2::RenderSkybox()
 {
 	modelStack.PushMatrix();
-
-	modelStack.Translate(camera.position.x, camera.position.y, camera.position.z);
-
 	float skyboxSize = 1005;
 
 
@@ -478,11 +539,10 @@ void SP2::RenderSkybox()
 
 void SP2::pathCheck(){
 
-	
-
 	modelStack.PushMatrix();
 	modelStack.Translate(spaceCraft.getCurrentLocation().x, spaceCraft.getCurrentLocation().y, spaceCraft.getCurrentLocation().z);
-	RenderMesh(meshList[GEO_OBJECT], false);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_SPACE_STATION], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
@@ -493,7 +553,6 @@ void SP2::pathCheck(){
 		modelStack.Translate(spaceCraft.getwayPoints().front().x, spaceCraft.getwayPoints().front().y, spaceCraft.getwayPoints().front().z);
 		RenderMesh(meshList[GEO_LIGHTBALL], false);
 		modelStack.PopMatrix();
-	
 		modelStack.PushMatrix();
 
 	}
@@ -502,18 +561,11 @@ void SP2::pathCheck(){
 }
 
 void SP2::renderTitleScreen(){
-	
-	
 	//start menu
-	
 	RenderTextOnScreen(meshList[GEO_TEXT], "Click to Start", Color(0, 1, 0), 3, 9.5, 3);
-	
-
 }
 
 void SP2::renderFightingUI(){
-
-
 
 
 	//Asteroid fighting
@@ -526,8 +578,19 @@ void SP2::renderFightingUI(){
 
 void SP2::renderHealth()
 {
-	//Health 
-
+	//Health
 	RenderTextOnScreen(meshList[GEO_TEXT], "Health:", Color(0, 1, 0), 3, 0, 18);
 	RenderTextOnScreen(meshList[GEO_TEXT], Health, Color(0, 1, 0), 3, 4, 18);
+}
+
+void SP2::objectsInit()
+{
+	//Object Init
+	station.SetPos(0, 0, 0);
+
+	//Vehicles Init
+	ship.SetPos(0, 0, 0);
+	ship.SetView(0, 0, 1);
+	ship.SetUp(0, 1, 0);
+	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
 }
