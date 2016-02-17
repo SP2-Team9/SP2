@@ -52,9 +52,7 @@ void SP2::Init()
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	// Camera Init
-	camera.Init(Vector3(99.5f, 199.5f, 0), Vector3(0, 30, 0), Vector3(0, 1, 0));
-	camera.right = Vector3(0, 0, -1);
-	camera.up = camera.right.Cross(camera.target - camera.position);
+	camera.Init(Vector3(0, 100, 0), Vector3(0, 100, 1));
 
 	// Matrix Stack Init
 	Mtx44 projection;
@@ -192,6 +190,10 @@ void SP2::Update(double dt)
 		if (Application::IsKeyPressed(VK_LBUTTON))
 		{
 			sstart = true;
+			renderStart = false;
+			renderNext = true;
+			start = true;
+			camera.PointAt(station, 100, 200);
 		}
 	}
 	if (sstart == true)
@@ -201,7 +203,6 @@ void SP2::Update(double dt)
 	}
 
 	camera.Update(dt);
-	control.NoClip(dt, camera);
 
 
 	picker.set(camera, projectionStack.Top());
@@ -298,22 +299,13 @@ void SP2::Render()
 	if (start == false)
 	{
 		modelStack.PushMatrix();
-		modelStack.Translate(0, 0, 420);
+		modelStack.Translate(0, 100, 420);
 		modelStack.Rotate(270, 1, 0, 0);
 		modelStack.Scale(500, 500, 500);
 		RenderMesh(meshList[GEO_QUAD], false);
 		modelStack.PopMatrix();
 
 		RenderTextOnScreen(meshList[GEO_TEXT1], "SPACE CONTROL", Color(0, 1, 0), 10, 0.1, 5);
-		
-
-		if (Application::IsKeyPressed(VK_LBUTTON))
-		{
-			renderStart = false;
-			renderNext = true;
-			start = true;
-			camera.Init(Vector3(1, 0, 0), Vector3(0, 0, 1), Vector3(0, 1, 0)); //next stage camera pos idk where though
-		}
 	}
 
 
@@ -584,36 +576,11 @@ void SP2::RenderSkybox()
 }
 
 
-void SP2::pathCheck(){
-
-	modelStack.PushMatrix();
-	modelStack.Translate(spaceCraft.getCurrentLocation().x, spaceCraft.getCurrentLocation().y, spaceCraft.getCurrentLocation().z);
-	modelStack.Scale(10, 10, 10);
-	RenderMesh(meshList[GEO_SPACE_STATION], false);
-	modelStack.PopMatrix();
-
-	if (!spaceCraft.getwayPoints().empty()){
-
-		modelStack.PushMatrix();
-		modelStack.Translate(spaceCraft.getwayPoints().front().x, spaceCraft.getwayPoints().front().y, spaceCraft.getwayPoints().front().z);
-		RenderMesh(meshList[GEO_LIGHTBALL], false);
-		modelStack.PopMatrix();
-	}
-
-
-}
-
 
 void SP2::renderTitleScreen(){
 	//start menu
 
-	RenderTextOnScreen(meshList[GEO_TEXT], "Start", Color(0, 1, 0), 3, 11.5, 7);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Options", Color(0, 1, 0), 3, 11, 6);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Exit", Color(0, 1, 0), 3, 11.8, 5);
-
-
-
-
+	RenderTextOnScreen(meshList[GEO_TEXT], "Click to Start", Color(0, 1, 0), 3, 9.5, 7);
 }
 
 void SP2::renderFightingUI(){

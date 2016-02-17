@@ -11,6 +11,7 @@
 #include "pathFinding.h"
 #include "Object.h"
 
+
 #include <queue>
 #include <vector>
 
@@ -107,8 +108,6 @@ private:
 	std::vector<AABB> worldHitbox;
 
 	Object station;
-
-
 	Vehicles ship;
 	Vehicles boat;
 	Vehicles* selection;
