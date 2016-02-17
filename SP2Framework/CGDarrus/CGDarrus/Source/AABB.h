@@ -2,6 +2,7 @@
 #define AABB_H
 
 #include "Vector3.h"
+#include "Camera.h"
 
 class AABB
 {
@@ -17,7 +18,6 @@ public:
 	void Set(const Vector3 min, const Vector3 max);
 	bool AABBtoAABB(const AABB& box, Vector3& view);
 	bool PointToAABB(const Vector3& position);
-	bool RayToAABB(Vector3& ray);
 
 	Vector3 GetMax();
 	Vector3 GetMin();

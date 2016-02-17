@@ -94,11 +94,12 @@
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshBuilder.cpp" />
     <ClCompile Include="Source\MousePicker.cpp" />
+    <ClCompile Include="Source\Object.cpp" />
     <ClCompile Include="Source\pathFinding.cpp" />
     <ClCompile Include="Source\shader.cpp" />
-    <ClCompile Include="Source\sharedData.cpp" />
     <ClCompile Include="Source\SP2.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
+    <ClCompile Include="Source\Vehicles.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AABB.h" />
@@ -116,9 +117,9 @@
     <ClInclude Include="Source\pathFinding.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\shader.hpp" />
-    <ClInclude Include="Source\sharedData.h" />
     <ClInclude Include="Source\SP2.h" />
     <ClInclude Include="Source\Utility.h" />
+    <ClInclude Include="Source\Vehicles.h" />
     <ClInclude Include="Source\Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

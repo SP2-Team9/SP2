@@ -4,19 +4,26 @@
 #include "Vector3.h"
 #include "AABB.h"
 
-struct Object
+class Object
 {
-	Object()
-	{
-		Warp = isDead = space = board = false;
-		Thrust = Yaw = Pitch = Time = Cooldown = 0.f;
-		Pos = View = Up = Right = Vector3(0, 0, 0);
-	}
+public:
+	Object();
+	Object(Vector3 pos, Vector3 view, Vector3 up);
+	~Object();
 	AABB interaction;
 	AABB hitbox;
 	Vector3 Pos, View, Up, Right;
-	float Thrust, Yaw, Pitch, Time, Cooldown, delay;
-	bool Warp, board, isDead, space;
+
+	void SetHitbox(AABB hitbox);
+	void SetHitbox(float size);
+	void SetInteraction(AABB interaction);
+	void SetInteraction(Vector3 distance);
+	void SetPos(Vector3 position);
+	void SetView(Vector3 view);
+	void SetUp(Vector3 up);
+	void SetUp(Vector3 right, Vector3 view);
+	void SetRight(Vector3 right);
+	void SetRight(Vector3 view, Vector3 up);
 };
 
 #endif

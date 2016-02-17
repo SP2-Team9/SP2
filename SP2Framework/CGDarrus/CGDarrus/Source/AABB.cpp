@@ -41,22 +41,6 @@ bool AABB::PointToAABB(const Vector3& position)
 	return false;
 }
 
-bool AABB::RayToAABB(Vector3& ray)
-{
-	while (ray < Min || ray > Max)
-	{
-		if (ray > Max)
-		{
-			ray = ray / 2;
-		}
-		else if (ray > Min)
-		{
-			ray *= 0.2;
-		}
-	}
-	return false;
-}
-
 Vector3 AABB::GetMax()
 {
 	return Max;

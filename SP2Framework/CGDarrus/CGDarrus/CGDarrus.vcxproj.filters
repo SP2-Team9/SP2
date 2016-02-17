@@ -9,9 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{61224ccb-2c5f-4dd7-9cf8-a7d603113ba0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Application.cpp">
@@ -56,7 +53,10 @@
     <ClCompile Include="Source\pathFinding.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\sharedData.cpp">
+    <ClCompile Include="Source\Vehicles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -112,10 +112,10 @@
     <ClInclude Include="Source\MousePicker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\sharedData.h">
+    <ClInclude Include="Source\pathFinding.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\pathFinding.h">
+    <ClInclude Include="Source\Vehicles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

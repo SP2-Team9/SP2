@@ -8,9 +8,7 @@
 #include "Application.h"
 #include "LoadTGA.h"
 
-
-SP2::SP2():
-spaceCraft(Vector3(0, 0, 0), Vector3(1, 1, 1))
+SP2::SP2()
 {
 }
 
@@ -23,7 +21,7 @@ void SP2::Init()
 	enableLight = true;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
-	a = 50;
+	worldHitbox.push_back(AABB(Vector3(-50, -10, -50), Vector3(50, 0, 50)));
 
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
@@ -33,7 +31,7 @@ void SP2::Init()
 
 	// Matrix Stack Init
 	Mtx44 projection;
-	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 10000.f);
+	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 1000.f);
 	projectionStack.LoadMatrix(projection);
 
 	//Enable depth buffer and depth testing
@@ -129,30 +127,22 @@ void SP2::Init()
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//OCRA.tga");
 
-	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("spaceShip", "OBJ//Flying.obj");
+	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("Object", "OBJ//Flying.obj");
 	meshList[GEO_OBJECT]->textureID = LoadTGA("Image//flyingUV.tga");
 
-	meshList[GEO_CONTROL_PANEL] = MeshBuilder::GenerateOBJ("Control Panel", "OBJ//Control Panel.obj");
-	meshList[GEO_CONTROL_PANEL]->textureID = LoadTGA("Image//Control Panel.tga");
-
-	meshList[GEO_SPACE_STATION] = MeshBuilder::GenerateOBJ("Space Station", "OBJ//Space Station.obj");
-	meshList[GEO_SPACE_STATION]->textureID = LoadTGA("Image//Space Station.tga");
-
-	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
-	meshList[GEO_QUAD]->textureID = LoadTGA("Image//SpaceFront.tga");
-
-
-	//Path Checks
-	spaceCraft.setInitialWayPoints(Vector3(10, 0, 10));
-
-	
-
+	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(1, 1, 1), worldHitbox[0].GetMin(), worldHitbox[0].GetMax());
 }
+
+static float LSPEED = 10.f;
 
 void SP2::Update(double dt)
 {
 	camera.Update(dt);
 	control.NoClip(dt, camera);
+
+	picker.set(camera, projectionStack.Top());
+	picker.update();
+	std::cout << picker.WorldCoord() << std::endl;
 
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
@@ -188,20 +178,6 @@ void SP2::Update(double dt)
 		readyToUse += (float)(1 * dt);
 
 	FPSText = std::to_string(toupper(1 / dt)) + " FPS";
-
-	//ammo use
-	Ammo = std::to_string(a);
-	if (Application::IsKeyPressed(' ') && a != 0 && readyToUse >= 0.8f)
-	{
-		readyToUse = 0.f;
-		a--;
-
-	}
-
-
-	//Path finding test
-	//spaceCraft.pathRoute(dt);
-
 }
 
 void SP2::Render()
@@ -222,11 +198,14 @@ void SP2::Render()
 	RenderSkybox();
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0, 40);
+	RenderMesh(meshList[GEO_OBJECT], false);
+	modelStack.PopMatrix();
 
-	
-	pathCheck();
-	//renderTitleScreen();
-
+	modelStack.PushMatrix();
+	RenderMesh(meshList[GEO_HITBOX], false);
+	modelStack.PopMatrix();
 }
 
 void SP2::Exit()
@@ -274,7 +253,6 @@ void SP2::RenderMesh(Mesh* mesh, bool enableLight)
 
 	if (mesh->textureID > 0)
 		glBindTexture(GL_TEXTURE_2D, 0);
-
 }
 
 void SP2::RenderText(Mesh* mesh, std::string text, Color color)
@@ -405,65 +383,4 @@ void SP2::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PopMatrix();
-}
-
-void SP2::pathCheck(){
-
-	modelStack.PushMatrix();
-	modelStack.Translate(spaceCraft.getCurrentLocation().x, spaceCraft.getCurrentLocation().y, spaceCraft.getCurrentLocation().z);
-	modelStack.Scale(10, 10, 10);
-	RenderMesh(meshList[GEO_SPACE_STATION], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-
-	if (!spaceCraft.getwayPoints().empty()){
-
-		modelStack.PushMatrix();
-		modelStack.Translate(spaceCraft.getwayPoints().front().x, spaceCraft.getwayPoints().front().y, spaceCraft.getwayPoints().front().z);
-		RenderMesh(meshList[GEO_LIGHTBALL], false);
-		modelStack.PopMatrix();
-	
-		modelStack.PushMatrix();
-
-	}
-
-
-}
-
-void SP2::renderTitleScreen(){
-
-
-	/*modelStack.PushMatrix();
-	modelStack.Translate(0, 0, 0);
-	modelStack.Rotate(270, 1, 0, 0);
-	modelStack.Scale(1000, 1000, 1000);
-	RenderMesh(meshList[GEO_QUAD], false);
-	modelStack.PopMatrix();*/
-
-	//start menu
-
-	RenderTextOnScreen(meshList[GEO_TEXT], "Start", Color(0, 1, 0), 3, 11.5, 7);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Options", Color(0, 1, 0), 3, 11, 6);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Exit", Color(0, 1, 0), 3, 11.8, 5);
-
-
-
-
-}
-
-void SP2::renderFightingUI(){
-
-
-
-
-	//Asteroid fighting
-
-	RenderTextOnScreen(meshList[GEO_TEXT], "Ammo:", Color(0, 1, 0), 3, 0, 19);
-	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 3, 19);
-
-
-
-
-
 }
