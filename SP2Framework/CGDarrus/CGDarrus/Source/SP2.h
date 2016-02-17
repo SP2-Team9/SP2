@@ -84,8 +84,10 @@ public:
 	void pathCheck();
 	void renderTitleScreen();
 	void renderFightingUI();
+	void MouseSelection();
 
 private:
+
 	unsigned m_vertexArrayID;
 	unsigned m_vertexBuffer[NUM_GEOMETRY];
 	unsigned m_colorBuffer[NUM_GEOMETRY];
@@ -107,12 +109,6 @@ private:
 	Light light[1];
 
 	Mesh *meshList[NUM_GEOMETRY];
-
-	void MouseSelection();
-	void RenderMesh(Mesh* mesh, bool enableLight);
-	void RenderText(Mesh* mesh, std::string text, Color color);
-	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	void RenderSkybox();
 
 	std::string FPSText;
 	std::string Ammo;
