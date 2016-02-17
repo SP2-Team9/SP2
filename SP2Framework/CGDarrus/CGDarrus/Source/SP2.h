@@ -9,6 +9,8 @@
 #include "MousePicker.h"
 #include "Vehicles.h"
 #include "pathFinding.h"
+#include "Object.h"
+
 #include <queue>
 #include <vector>
 
@@ -80,12 +82,14 @@ public:
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 	void RenderSkybox();
-	void pathCheck();
 	void renderTitleScreen();
 	void renderFightingUI();
 	void renderHealth();
 	void MouseSelection(double dt);
+
 	void objectsInit();
+	void vehicleUpdates(double dt);
+
 
 private:
 
@@ -101,8 +105,12 @@ private:
 	Vector3 LightView;
 	std::vector<AABB> Interactions;
 	std::vector<AABB> worldHitbox;
+
 	Object station;
+
+
 	Vehicles ship;
+	Vehicles boat;
 	Vehicles* selection;
 
 	Camera camera;
@@ -122,13 +130,18 @@ private:
 	bool start;
 	bool sstart;
 
+
 	MS modelStack, viewStack, projectionStack;
 
 	double blinkDuration = 0;
 	pathFinding spaceCraft;
 	pathFinding xWing;
 
+
 	double wayPointSetCoolDown = 0;
+	
+	vector<Vehicles*> allVehicles;
+
 };
 
 

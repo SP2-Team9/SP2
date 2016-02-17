@@ -9,8 +9,7 @@
 #include "LoadTGA.h"
 
 
-SP2::SP2():
-spaceCraft(Vector3(0, 0, 0), Vector3(1, 1, 1))
+SP2::SP2()
 {
 }
 
@@ -26,18 +25,36 @@ void SP2::Init()
 
 	selection = nullptr;
 	worldHitbox.push_back(AABB(Vector3(-500, 0, -500), Vector3(500, 0, 500)));
+
+
+	//Vehicles Init
+	ship.initialMoveDirection(1, 0);
+	ship.SetPos(0, 0, 0);
+	ship.SetView(0, 0, 1);
+	ship.SetUp(0, 1, 0);
+	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+
 	a = 50;
 	hp = 100;
 
 	objectsInit();
 
+	boat.initialMoveDirection(-5, -5);
+	boat.SetPos(0, 0, 0);
+	boat.SetView(0, 0, 1);
+	boat.SetUp(0, 1, 0);
+	boat.SetHitbox(AABB(Vector3(boat.Pos.x - 5, boat.Pos.y - 5, boat.Pos.z - 5), Vector3(boat.Pos.x + 5, boat.Pos.y + 5, boat.Pos.z + 5)));
+
+	allVehicles.push_back(&ship);
+	allVehicles.push_back(&boat);
+
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
 
 	// Camera Init
-	camera.Init(Vector3(400.f, 150.f, 0), Vector3(0, 0, 0));
-	camera.PointAt(station, 150.f, 400.f);
-
+	camera.Init(Vector3(99.5f, 199.5f, 0), Vector3(0, 30, 0), Vector3(0, 1, 0));
+	camera.right = Vector3(0, 0, -1);
+	camera.up = camera.right.Cross(camera.target - camera.position);
 
 	// Matrix Stack Init
 	Mtx44 projection;
@@ -169,6 +186,7 @@ void SP2::Init()
 
 void SP2::Update(double dt)
 {
+
 	if (sstart == false)
 	{
 		if (Application::IsKeyPressed(VK_LBUTTON))
@@ -182,11 +200,15 @@ void SP2::Update(double dt)
 		camera.YawRotation(dt);
 	}
 
+	camera.Update(dt);
+	control.NoClip(dt, camera);
+
+
 	picker.set(camera, projectionStack.Top());
 	picker.update();
 
 	MouseSelection(dt);
-	
+
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
 	if (Application::IsKeyPressed('2')) //disable back face culling
@@ -230,12 +252,17 @@ void SP2::Update(double dt)
 		a--;
 	}
 
+
 	//health
 	Health = std::to_string(hp);
 
 	//Path finding test
 	spaceCraft.pathRoute(dt);
 	blinkDuration += dt;
+
+	vehicleUpdates(dt);
+
+
 }
 
 void SP2::Render()
@@ -257,8 +284,9 @@ void SP2::Render()
 
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
+
 	modelStack.PushMatrix();
-	modelStack.Translate(xWing.getCurrentLocation().x, xWing.getCurrentLocation().y, xWing.getCurrentLocation().z);
+	modelStack.Translate(ship.Pos.x, ship.Pos.y, ship.Pos.z);
 	RenderMesh(meshList[GEO_OBJECT], false);
 	modelStack.PopMatrix();
 
@@ -287,6 +315,7 @@ void SP2::Render()
 			camera.Init(Vector3(1, 0, 0), Vector3(0, 0, 1), Vector3(0, 1, 0)); //next stage camera pos idk where though
 		}
 	}
+
 
 	if (renderStart == true)
 	{
@@ -321,6 +350,9 @@ void SP2::Render()
 	RenderMesh(meshList[GEO_HITBOX], false);
 	modelStack.PopMatrix();
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+
+
 }
 
 void SP2::Exit()
@@ -334,30 +366,52 @@ void SP2::MouseSelection(double dt)
 {
 	if (Application::IsKeyPressed(VK_LBUTTON) && wayPointSetCoolDown > 0.5f)
 	{
+		Vector3 pressPosition = picker.WorldCoord();
+
 		std::cout << picker.WorldCoord() << std::endl;
-		if (ship.hitbox.PointToAABB(picker.WorldCoord()))
-		{
-			std::cout << "SELECTED!" << std::endl;
-			selection = &ship;
-		}
-		else
-		{
-			selection = nullptr;
+
+		for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); ++it){
+			Vehicles* temp = *it;
+			if (temp->hitbox.PointToAABB(pressPosition))
+			{
+
+				/*std::cout << "all vehicles i" << &allVehicles[i] << std::endl;
+				std::cout << "Ship address" << &boat << std::endl;
+				std::cout << "SELECTED!" << std::endl;
+				selection = &allVehicles[i];*/
+				selection = temp;
+				break;
+				
+
+			}
+			else
+			{
+				std::cout << "Deselected!" << std::endl;
+				selection = nullptr;
+			}
+
 		}
 		wayPointSetCoolDown = 0;
+
 	}
 
 	if (Application::IsKeyPressed(VK_RBUTTON) && wayPointSetCoolDown > 0.5f && selection != nullptr)
 	{
+
 		std::cout << "MOVED!" << std::endl;
 		xWing.updateWayPoints(Vector3(picker.WorldCoord().x, 1, picker.WorldCoord().z));
+
+
+		std::cout << "New Position!" << std::endl;
+
+		ship.setNewWayPoint(picker.WorldCoord().x, picker.WorldCoord().z);
+
 		wayPointSetCoolDown = 0;
 	}
 
 	wayPointSetCoolDown += dt;
-	xWing.pathRoute(dt);
-	ship.SetPos(xWing.getCurrentLocation().x, xWing.getCurrentLocation().y, xWing.getCurrentLocation().z);
-	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+
+
 
 }
 
@@ -529,6 +583,7 @@ void SP2::RenderSkybox()
 	modelStack.PopMatrix();
 }
 
+
 void SP2::pathCheck(){
 
 	modelStack.PushMatrix();
@@ -548,9 +603,17 @@ void SP2::pathCheck(){
 
 }
 
+
 void SP2::renderTitleScreen(){
 	//start menu
-	RenderTextOnScreen(meshList[GEO_TEXT], "Click to Start", Color(0, 1, 0), 3, 9.5, 3);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Start", Color(0, 1, 0), 3, 11.5, 7);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Options", Color(0, 1, 0), 3, 11, 6);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Exit", Color(0, 1, 0), 3, 11.8, 5);
+
+
+
+
 }
 
 void SP2::renderFightingUI(){
@@ -576,9 +639,25 @@ void SP2::objectsInit()
 	//Object Init
 	station.SetPos(0, 0, 0);
 
+
 	//Vehicles Init
 	ship.SetPos(0, 0, 0);
 	ship.SetView(0, 0, 1);
 	ship.SetUp(0, 1, 0);
 	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+
+}
+
+
+void SP2::vehicleUpdates(double dt){
+
+	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+		Vehicles* temp = *vitV;
+		temp->update(dt);
+
+	}
+
+	//ship.update(dt);
+
+
 }

@@ -46,6 +46,7 @@ void Camera::Init(const Vector3& pos, const Vector3& target, const Vector3& up)
 
 	cameraSpeed = 20.f;
 	mouseSpeed = 7.f;
+
 }
 
 /******************************************************************************/
@@ -94,8 +95,11 @@ void Camera::PointAt(Object& obj, float height, float offset)
 Reset the camera settings
 */
 /******************************************************************************/
-void Camera::Reset()
-{
+void Camera::Reset(){
+
+
+
+
 }
 
 /******************************************************************************/

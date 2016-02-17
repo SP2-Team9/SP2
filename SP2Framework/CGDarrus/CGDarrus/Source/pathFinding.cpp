@@ -108,20 +108,21 @@ void pathFinding::pathRoute(double dt){
 	if (!wayPoints.empty()){
 
 		Vector3 view = (wayPoints.front() - currentLocation).Normalized();
-		currentLocation += view * 30 * dt;
+		currentLocation += view * 5 * dt;
 		lastWayPointDirection = view;
+		
 
 	}
 	if (!wayPoints.empty() && distanceBetween2points(currentLocation, wayPoints.front()) < 1){
 
 		wayPoints.pop();
-		std::cout << wayPoints.size() << std::endl;
+		
 
 	}
 
 	if (wayPoints.empty()){
 
-		currentLocation += lastWayPointDirection * 30 * dt;
+		currentLocation += lastWayPointDirection * 5 * dt;
 
 
 	}
