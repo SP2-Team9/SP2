@@ -8,7 +8,9 @@
 #include "Application.h"
 #include "LoadTGA.h"
 
-SP2::SP2()
+
+SP2::SP2():
+spaceCraft(Vector3(0, 0, 0), Vector3(1, 1, 1))
 {
 }
 
@@ -21,6 +23,7 @@ void SP2::Init()
 	enableLight = true;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
+
 	selection = nullptr;
 	worldHitbox.push_back(AABB(Vector3(-500, 0, -500), Vector3(500, 0, 500)));
 
@@ -29,6 +32,7 @@ void SP2::Init()
 	ship.SetView(0, 0, 1);
 	ship.SetUp(0, 1, 0);
 	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+	a = 50;
 
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
@@ -134,10 +138,26 @@ void SP2::Init()
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//OCRA.tga");
 
-	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("Object", "OBJ//Flying.obj");
+	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("spaceShip", "OBJ//Flying.obj");
 	meshList[GEO_OBJECT]->textureID = LoadTGA("Image//flyingUV.tga");
 
 	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(1, 1, 1), worldHitbox[0].GetMin(), worldHitbox[0].GetMax());
+
+	meshList[GEO_CONTROL_PANEL] = MeshBuilder::GenerateOBJ("Control Panel", "OBJ//Control Panel.obj");
+	meshList[GEO_CONTROL_PANEL]->textureID = LoadTGA("Image//Control Panel.tga");
+
+	meshList[GEO_SPACE_STATION] = MeshBuilder::GenerateOBJ("Space Station", "OBJ//Space Station.obj");
+	meshList[GEO_SPACE_STATION]->textureID = LoadTGA("Image//Space Station.tga");
+
+	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
+	meshList[GEO_QUAD]->textureID = LoadTGA("Image//SpaceFront.tga");
+
+
+	//Path Checks
+	spaceCraft.setInitialWayPoints(Vector3(100, 50, 100));
+
+
+
 }
 
 static float LSPEED = 10.f;
@@ -187,6 +207,22 @@ void SP2::Update(double dt)
 		readyToUse += (float)(1 * dt);
 
 	FPSText = std::to_string(toupper(1 / dt)) + " FPS";
+
+
+	//ammo use
+	Ammo = std::to_string(a);
+	if (Application::IsKeyPressed(' ') && a != 0 && readyToUse >= 0.8f)
+	{
+		readyToUse = 0.f;
+		a--;
+
+	}
+
+
+	//Path finding test
+	spaceCraft.pathRoute(dt);
+
+
 }
 
 void SP2::Render()
@@ -217,6 +253,12 @@ void SP2::Render()
 	RenderMesh(meshList[GEO_HITBOX], false);
 	modelStack.PopMatrix();
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+
+
+	pathCheck();
+
+
 }
 
 void SP2::Exit()
@@ -287,6 +329,7 @@ void SP2::RenderMesh(Mesh* mesh, bool enableLight)
 
 	if (mesh->textureID > 0)
 		glBindTexture(GL_TEXTURE_2D, 0);
+
 }
 
 void SP2::RenderText(Mesh* mesh, std::string text, Color color)
@@ -414,4 +457,65 @@ void SP2::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PopMatrix();
+}
+
+void SP2::pathCheck(){
+
+	modelStack.PushMatrix();
+	modelStack.Translate(spaceCraft.getCurrentLocation().x, spaceCraft.getCurrentLocation().y, spaceCraft.getCurrentLocation().z);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_SPACE_STATION], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+
+	if (!spaceCraft.getwayPoints().empty()){
+
+		modelStack.PushMatrix();
+		modelStack.Translate(spaceCraft.getwayPoints().front().x, spaceCraft.getwayPoints().front().y, spaceCraft.getwayPoints().front().z);
+		RenderMesh(meshList[GEO_LIGHTBALL], false);
+		modelStack.PopMatrix();
+
+		modelStack.PushMatrix();
+
+	}
+
+
+}
+
+void SP2::renderTitleScreen(){
+
+
+	/*modelStack.PushMatrix();
+	modelStack.Translate(0, 0, 0);
+	modelStack.Rotate(270, 1, 0, 0);
+	modelStack.Scale(1000, 1000, 1000);
+	RenderMesh(meshList[GEO_QUAD], false);
+	modelStack.PopMatrix();*/
+
+	//start menu
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Start", Color(0, 1, 0), 3, 11.5, 7);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Options", Color(0, 1, 0), 3, 11, 6);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Exit", Color(0, 1, 0), 3, 11.8, 5);
+
+
+
+
+}
+
+void SP2::renderFightingUI(){
+
+
+
+
+	//Asteroid fighting
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Ammo:", Color(0, 1, 0), 3, 0, 19);
+	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 3, 19);
+
+
+
+
+
 }

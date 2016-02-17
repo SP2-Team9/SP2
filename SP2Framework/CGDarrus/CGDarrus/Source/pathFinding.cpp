@@ -108,7 +108,7 @@ void pathFinding::pathRoute(double dt){
 	if (!wayPoints.empty()){
 
 		Vector3 view = (wayPoints.front() - currentLocation).Normalized();
-		currentLocation += view * 10 * dt;
+		currentLocation += view * 5 * dt;
 		lastWayPointDirection = view;
 
 	}
@@ -120,7 +120,7 @@ void pathFinding::pathRoute(double dt){
 	}
 	if (wayPoints.empty()){
 
-		currentLocation += lastWayPointDirection * 10 * dt;
+		currentLocation += lastWayPointDirection * 5 * dt;
 
 
 	}
