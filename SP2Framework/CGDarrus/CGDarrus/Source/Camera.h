@@ -17,9 +17,15 @@ public:
 	~Camera();
 	void Init(const Vector3& pos, const Vector3& target, const Vector3& up);
 	void Init(const Vector3& pos, const Vector3& target);
-	void PointAt(Object& obj, float height = 0.f, float offset = 0.f);
 	void Reset();
 	void Update(double dt);
+
+	void PointAt(Object& obj, float height = 0.f, float offset = 0.f);
+
+	void FPSMovement(double dt, vector <AABB> hitbox);
+	void NoClip(double dt);
+	void TPSMovement(double dt, Vehicles& veh, vector <AABB> hitbox);
+	void YawRotation(double dt);
 };
 
 #endif

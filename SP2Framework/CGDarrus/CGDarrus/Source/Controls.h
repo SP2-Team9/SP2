@@ -24,6 +24,11 @@ using std::vector;
 /////////////////////////////////////////////////////////////////
 class Controls
 {
+private:
+	double mouseX, mouseY;
+	float  mouseSpeed, pitch, yaw;
+	static bool cursor;
+
 public:
 	Controls();
 	~Controls();

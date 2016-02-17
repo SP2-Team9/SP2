@@ -3,7 +3,6 @@
 
 #include "Scene.h"
 #include "Camera.h"
-#include "Controls.h"
 #include "Mesh.h"
 #include "MatrixStack.h"
 #include "Light.h"
@@ -105,7 +104,6 @@ private:
 	Vehicles* selection;
 
 	Camera camera;
-	Controls control;
 	MousePicker picker;
 	Light light[1];
 

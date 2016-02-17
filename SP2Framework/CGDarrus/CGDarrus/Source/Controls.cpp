@@ -14,6 +14,8 @@
 */
 /////////////////////////////////////////////////////////////////
 
+bool Controls::cursor = false;
+
 Controls::Controls()
 {
 
@@ -409,3 +411,4 @@ void Controls::YawRotation(double dt, Camera& camera)
 	camera.up = rotation * camera.up;
 	camera.right = rotation * camera.right;
 }
+

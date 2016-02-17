@@ -162,7 +162,7 @@ void SP2::Init()
 void SP2::Update(double dt)
 {
 	camera.Update(dt);
-	control.YawRotation(dt, camera);
+	camera.YawRotation(dt);
 
 	picker.set(camera, projectionStack.Top());
 	picker.update();
@@ -279,22 +279,14 @@ void SP2::MouseSelection(double dt)
 		{
 			selection = nullptr;
 		}
-
 		wayPointSetCoolDown = 0;
 	}
 
 	if (Application::IsKeyPressed(VK_RBUTTON) && wayPointSetCoolDown > 0.5f && selection != nullptr)
 	{
-
 		std::cout << "MOVED!" << std::endl;
-
-
 		xWing.updateWayPoints(Vector3(picker.WorldCoord().x, 1, picker.WorldCoord().z));
-		
-		
 		wayPointSetCoolDown = 0;
-
-
 	}
 
 	wayPointSetCoolDown += dt;
@@ -480,17 +472,12 @@ void SP2::pathCheck(){
 	RenderMesh(meshList[GEO_SPACE_STATION], false);
 	modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-
 	if (!spaceCraft.getwayPoints().empty()){
 
 		modelStack.PushMatrix();
 		modelStack.Translate(spaceCraft.getwayPoints().front().x, spaceCraft.getwayPoints().front().y, spaceCraft.getwayPoints().front().z);
 		RenderMesh(meshList[GEO_LIGHTBALL], false);
 		modelStack.PopMatrix();
-
-		modelStack.PushMatrix();
-
 	}
 
 

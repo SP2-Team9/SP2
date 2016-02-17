@@ -143,3 +143,13 @@ void Camera::Update(double dt)
 	else
 		cameraSpeed = 5.f;
 }
+
+void Camera::YawRotation(double dt)
+{
+	Mtx44 rotation;
+	rotation.SetToRotation(yaw, 0, 1, 0);
+	view = rotation * view;
+	position = rotation * position;
+	up = rotation * up;
+	right = rotation * right;
+}
