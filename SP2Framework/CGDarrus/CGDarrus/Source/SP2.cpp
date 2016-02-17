@@ -160,13 +160,11 @@ void SP2::Init()
 	meshList[GEO_OBJECT] = MeshBuilder::GenerateOBJ("spaceShip", "OBJ//Flying.obj");
 	meshList[GEO_OBJECT]->textureID = LoadTGA("Image//flyingUV.tga");
 
-	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(1, 1, 1), ship.hitbox.GetMin(), ship.hitbox.GetMax());
+	//meshList[GEO_CONTROL_PANEL] = MeshBuilder::GenerateOBJ("Control Panel", "OBJ//Control Panel.obj");
+	//meshList[GEO_CONTROL_PANEL]->textureID = LoadTGA("Image//Control Panel.tga");
 
-	meshList[GEO_CONTROL_PANEL] = MeshBuilder::GenerateOBJ("Control Panel", "OBJ//Control Panel.obj");
-	meshList[GEO_CONTROL_PANEL]->textureID = LoadTGA("Image//Control Panel.tga");
-
-	meshList[GEO_SPACE_STATION] = MeshBuilder::GenerateOBJ("Space Station", "OBJ//Space Station.obj");
-	meshList[GEO_SPACE_STATION]->textureID = LoadTGA("Image//Space Station.tga");
+	//meshList[GEO_SPACE_STATION] = MeshBuilder::GenerateOBJ("Space Station", "OBJ//Space Station.obj");
+	//meshList[GEO_SPACE_STATION]->textureID = LoadTGA("Image//Space Station.tga");
 
 	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_QUAD]->textureID = LoadTGA("Image//menu.tga");
@@ -291,10 +289,10 @@ void SP2::Render()
 	RenderMesh(meshList[GEO_OBJECT], false);
 	modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
+	/*modelStack.PushMatrix();
 	modelStack.Scale(10, 10, 10);
 	RenderMesh(meshList[GEO_SPACE_STATION], false);
-	modelStack.PopMatrix();
+	modelStack.PopMatrix();*/
 
 	if (start == false)
 	{
@@ -336,15 +334,15 @@ void SP2::Render()
 		renderHealth();
 	}
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	modelStack.PushMatrix();
-	modelStack.Translate(ship.Pos.x, ship.Pos.y, ship.Pos.z);
-	RenderMesh(meshList[GEO_HITBOX], false);
-	modelStack.PopMatrix();
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-
-
+	if (selection)
+	{
+		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), selection->hitbox.GetMin(), selection->hitbox.GetMax());
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		modelStack.PushMatrix();
+		RenderMesh(meshList[GEO_HITBOX], false);
+		modelStack.PopMatrix();
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 }
 
 void SP2::Exit()
@@ -378,7 +376,7 @@ void SP2::MouseSelection(double dt)
 			}
 			else
 			{
-				std::cout << "Deselected!" << std::endl;
+				//std::cout << "Deselected!" << std::endl;
 				selection = nullptr;
 			}
 
@@ -387,7 +385,7 @@ void SP2::MouseSelection(double dt)
 
 	}
 
-	if (Application::IsKeyPressed(VK_RBUTTON) && wayPointSetCoolDown > 0.5f && selection != nullptr)
+	if (Application::IsKeyPressed(VK_RBUTTON) && selection != nullptr)
 	{
 
 		std::cout << "MOVED!" << std::endl;
@@ -574,8 +572,6 @@ void SP2::RenderSkybox()
 
 	modelStack.PopMatrix();
 }
-
-
 
 void SP2::renderTitleScreen(){
 	//start menu
