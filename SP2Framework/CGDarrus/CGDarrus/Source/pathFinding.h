@@ -41,6 +41,8 @@ public:
 	Vector3 getCurrentLocation();
 	queue<Vector3> getwayPoints();
 
+	Vector3 getLastWayPointDirection();
+
 
 private:
 

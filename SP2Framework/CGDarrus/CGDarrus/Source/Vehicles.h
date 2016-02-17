@@ -4,9 +4,11 @@
 #include "Object.h"
 #include "pathFinding.h"
 
+
 class Vehicles : public Object
 {
 public:
+
 	Vehicles();
 	~Vehicles();
 
@@ -14,6 +16,7 @@ public:
 
 	float Thrust, Yaw, Pitch, delay;
 	bool board, isDead;
+
 };
 
 #endif
