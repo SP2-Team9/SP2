@@ -77,6 +77,13 @@ public:
 	virtual void Update(double dt);
 	virtual void Render();
 	virtual void Exit();
+	void RenderMesh(Mesh* mesh, bool enableLight);
+	void RenderText(Mesh* mesh, std::string text, Color color);
+	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	void RenderSkybox();
+	void pathCheck();
+	void renderTitleScreen();
+	void renderFightingUI();
 
 private:
 	unsigned m_vertexArrayID;
@@ -99,10 +106,7 @@ private:
 
 	Mesh *meshList[NUM_GEOMETRY];
 
-	void RenderMesh(Mesh* mesh, bool enableLight);
-	void RenderText(Mesh* mesh, std::string text, Color color);
-	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	void RenderSkybox();
+	
 
 	std::string FPSText;
 	std::string Ammo;

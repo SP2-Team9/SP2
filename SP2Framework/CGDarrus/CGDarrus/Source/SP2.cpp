@@ -241,6 +241,10 @@ void SP2::Render()
 	modelStack.PushMatrix();
 	RenderMesh(meshList[GEO_HITBOX], false);
 	modelStack.PopMatrix();
+
+
+	pathCheck();
+
 }
 
 void SP2::Exit()
@@ -419,4 +423,65 @@ void SP2::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PopMatrix();
+}
+
+void SP2::pathCheck(){
+
+	modelStack.PushMatrix();
+	modelStack.Translate(spaceCraft.getCurrentLocation().x, spaceCraft.getCurrentLocation().y, spaceCraft.getCurrentLocation().z);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_SPACE_STATION], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+
+	if (!spaceCraft.getwayPoints().empty()){
+
+		modelStack.PushMatrix();
+		modelStack.Translate(spaceCraft.getwayPoints().front().x, spaceCraft.getwayPoints().front().y, spaceCraft.getwayPoints().front().z);
+		RenderMesh(meshList[GEO_LIGHTBALL], false);
+		modelStack.PopMatrix();
+
+		modelStack.PushMatrix();
+
+	}
+
+
+}
+
+void SP2::renderTitleScreen(){
+
+
+	/*modelStack.PushMatrix();
+	modelStack.Translate(0, 0, 0);
+	modelStack.Rotate(270, 1, 0, 0);
+	modelStack.Scale(1000, 1000, 1000);
+	RenderMesh(meshList[GEO_QUAD], false);
+	modelStack.PopMatrix();*/
+
+	//start menu
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Start", Color(0, 1, 0), 3, 11.5, 7);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Options", Color(0, 1, 0), 3, 11, 6);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Exit", Color(0, 1, 0), 3, 11.8, 5);
+
+
+
+
+}
+
+void SP2::renderFightingUI(){
+
+
+
+
+	//Asteroid fighting
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Ammo:", Color(0, 1, 0), 3, 0, 19);
+	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 3, 19);
+
+
+
+
+
 }
