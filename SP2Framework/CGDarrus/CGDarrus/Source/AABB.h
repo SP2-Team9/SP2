@@ -21,6 +21,7 @@ public:
 	void Set(float minX, float minY, float minZ, float maxX, float maxY, float maxZ);
 	bool AABBtoAABB(const AABB& box, Vector3& view);
 	bool AABBtoAABB(const vector<AABB>& box, Vector3& view);
+	bool RayToAABB(Vector3 rayOrigin, Vector3 ray);
 	bool PointToAABB(const Vector3& position);
 
 	Vector3 GetMax();

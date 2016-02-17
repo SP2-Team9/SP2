@@ -362,7 +362,7 @@ void SP2::MouseSelection(double dt)
 
 		for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); ++it){
 			Vehicles* temp = *it;
-			if (temp->hitbox.PointToAABB(pressPosition))
+			if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay()))
 			{
 
 				/*std::cout << "all vehicles i" << &allVehicles[i] << std::endl;
@@ -371,8 +371,6 @@ void SP2::MouseSelection(double dt)
 				selection = &allVehicles[i];*/
 				selection = temp;
 				break;
-				
-
 			}
 			else
 			{
@@ -610,7 +608,6 @@ void SP2::objectsInit()
 	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
 
 }
-
 
 void SP2::vehicleUpdates(double dt){
 

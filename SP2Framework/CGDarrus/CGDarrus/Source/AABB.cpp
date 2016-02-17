@@ -60,6 +60,67 @@ bool AABB::PointToAABB(const Vector3& position)
 	return false;
 }
 
+bool AABB::RayToAABB(Vector3 rayOrigin, Vector3 ray)
+{
+	float T1, T2, Tnear, Tfar;
+	T1 = T2 = Tnear = Tfar = 0.f;
+	Vector3 rayFinal = ray * 1000.f;
+	Vector3 rayDir = (rayFinal - rayOrigin).Normalized();
+
+	// For X Axis
+	Tnear = (Min.x - rayOrigin.x) / rayDir.x;
+	Tfar = (Max.x - rayOrigin.x) / rayDir.x;
+
+	// Swap
+	if (Tnear > Tfar)
+	{
+		float temp = Tnear;
+		Tnear = Tfar;
+		Tfar = temp;
+	}
+
+	// For Y Axis
+	T1 = (Min.y - rayOrigin.y) / rayDir.y;
+	T2 = (Max.y - rayOrigin.y) / rayDir.y;
+
+	if (T1 > T2)
+	{
+		float temp = T1;
+		T1 = T2;
+		T2 = temp;
+	}
+
+	if (Tnear > T2 || T1 > Tfar)
+		return false;
+
+	if (T1 > Tnear)
+		Tnear = T1;
+	if (T2 < Tfar)
+		Tfar = T2;
+
+	// For Z Axis
+	T1 = (Min.z - rayOrigin.z) / rayDir.z;
+	T2 = (Max.z - rayOrigin.z) / rayDir.z;
+
+	if (T1 > T2)
+	{
+		float temp = T1;
+		T1 = T2;
+		T2 = temp;
+	}
+
+	if (Tnear > T2 || T1 > Tfar)
+		return false;
+
+	if (T1 > Tnear)
+		Tnear = T1;
+	if (T2 < Tfar)
+		Tfar = T2;
+
+	std::cout << "TRUE" << std::endl;
+	return true;
+}
+
 Vector3 AABB::GetMax()
 {
 	return Max;
