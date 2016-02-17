@@ -18,6 +18,12 @@ void AABB::Set(const Vector3 min, const Vector3 max)
 	this->Min = min;
 }
 
+void AABB::Set(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
+{
+	this->Min = Vector3(minX, minY, minZ);
+	this->Max = Vector3(maxX, maxY, maxZ);
+}
+
 bool AABB::AABBtoAABB(const AABB& box, Vector3& view)
 {
 	if (Max.x + view.x >= box.Min.x && Min.x + view.x <= box.Max.x &&
@@ -29,6 +35,19 @@ bool AABB::AABBtoAABB(const AABB& box, Vector3& view)
 	return false;
 }
 
+bool AABB::AABBtoAABB(const vector<AABB>& box, Vector3& view)
+{
+	for (vector<AABB>::const_iterator cVit = box.begin(); cVit != box.end(); ++cVit)
+	{
+		if (Max.x + view.x >= cVit->Min.x && Min.x + view.x <= cVit->Max.x &&
+			Max.y + view.y >= cVit->Min.y && Min.y + view.y <= cVit->Max.y &&
+			Max.z + view.z >= cVit->Min.z && Min.z + view.z <= cVit->Max.z)
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 bool AABB::PointToAABB(const Vector3& position)
 {

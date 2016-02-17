@@ -39,6 +39,8 @@ void SP2::Init()
 
 	// Camera Init
 	camera.Init(Vector3(99.5f, 199.5f, 0), Vector3(0, 30, 0), Vector3(0, 1, 0));
+	camera.right = Vector3(0, 0, -1);
+	camera.up = camera.right.Cross(camera.target - camera.position);
 
 	// Matrix Stack Init
 	Mtx44 projection;
@@ -155,9 +157,6 @@ void SP2::Init()
 
 	//Path Checks
 	spaceCraft.setInitialWayPoints(Vector3(100, 50, 100));
-
-
-
 }
 
 static float LSPEED = 10.f;
