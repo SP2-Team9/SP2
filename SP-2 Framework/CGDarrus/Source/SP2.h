@@ -92,6 +92,7 @@ public:
 	void WorldHitboxInit();
 	void renderShips();
 	void RenderSkybox();
+	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
 	void MouseSelection(double dt);

@@ -112,7 +112,7 @@ void SP2::Init()
 	glUniform1f(m_parameters[U_LIGHT0_EXPONENT], light[0].exponent);
 
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("reference", 1000, 1000, 1000);
-	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("Lightball", Color(1, 1, 1), 18, 36);
+	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("Lightball", Color(0, 1, 0), 18, 36);
 
 	meshList[GEO_FRONT] = MeshBuilder::GenerateQuad("Front", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_FRONT]->textureID = LoadTGA("Image//front.tga");
@@ -315,6 +315,7 @@ void SP2::MouseSelection(double dt)
 			if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay()))
 			{
 				selection = temp;
+
 				break;
 			}
 			else
@@ -538,6 +539,10 @@ void SP2::objectsInit()
 	ship.SetUp(0, 1, 0);
 	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
 
+}
+
+void SP2::vehicleUpdates(double dt){
+
 
 	boat.initialMoveDirection(-5, -5);
 	boat.SetPos(0, 0, 0);
@@ -585,10 +590,49 @@ void SP2::renderShips(){
 	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
 
 		Vehicles* currVehicle = *vitV;
+
+
+		std::cout << currVehicle->getRotationAngle() << std::endl;
+
+
 		modelStack.PushMatrix();
 		modelStack.Translate(currVehicle->Pos.x, currVehicle->Pos.y, currVehicle->Pos.z);
+		modelStack.Rotate(currVehicle->getRotationAngle(), 0, 1, 0);
 		RenderMesh(meshList[GEO_XWING], false);
 		modelStack.PopMatrix();
+
 	}
+
 }
 
+
+	renderWayPoints();
+
+}  
+
+void SP2::renderWayPoints(){
+
+
+	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+
+		Vehicles* currVehicle = *vitV;
+		queue<Vector3> currVehicleQueue = currVehicle->newVehicle.getwayPoints();
+
+
+		while (!currVehicleQueue.empty()){
+
+
+			modelStack.PushMatrix();
+
+			modelStack.Translate(currVehicleQueue.front().x, currVehicleQueue.front().y, currVehicleQueue.front().z);
+			RenderMesh(meshList[GEO_LIGHTBALL], false);
+
+			modelStack.PopMatrix();
+
+			currVehicleQueue.pop();
+
+		}
+
+	}
+
+}

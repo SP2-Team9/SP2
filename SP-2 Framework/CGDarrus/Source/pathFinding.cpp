@@ -108,7 +108,7 @@ void pathFinding::pathRoute(double dt){
 	if (!wayPoints.empty()){
 
 		Vector3 view = (wayPoints.front() - currentLocation).Normalized();
-		currentLocation += view * 5 * dt;
+		currentLocation += view * 10 * dt;
 		lastWayPointDirection = view;
 		
 
@@ -122,7 +122,7 @@ void pathFinding::pathRoute(double dt){
 
 	if (wayPoints.empty()){
 
-		currentLocation += lastWayPointDirection * 5 * dt;
+		currentLocation += lastWayPointDirection * 10 * dt;
 
 
 	}
@@ -213,10 +213,12 @@ void pathFinding::updateWayPoints(Vector3 endLocation){
 
 	resetWayPoints();
 
-	float length = distanceBetween2points(endLocation, wayPointPosition);
-	length /= 10;
 
-	for (int i = 0; i < 10; i++){
+	float length = distanceBetween2points(endLocation, wayPointPosition);
+	length /= 15;
+
+	for (int i = 0; i < 15; i++){
+
 
 		wayPointPosition += (view * length);
 		wayPoints.push(wayPointPosition);
@@ -225,31 +227,35 @@ void pathFinding::updateWayPoints(Vector3 endLocation){
 	}
 
 
-
 }
 
 /////////////////////////////////////////////////////////////////
 
 /*!
 
-* \method: updateWayPoints
+* \method: resetWayPoints
 
 * \author: Wong Keng Han Ashley
 
 * \date: 16 feb 2016
 
-* \description: setting initial waypoints for the object
+* \description: remove all current waypoints
 
 */
 
 /////////////////////////////////////////////////////////////////
 void pathFinding::resetWayPoints(){
 
+	
+
 	while (!wayPoints.empty()){
 
+        lastWayPointDirection = wayPoints.front();
 		wayPoints.pop();
 
 	}
+
+	
 
 }
 
@@ -263,7 +269,7 @@ void pathFinding::resetWayPoints(){
 
 * \date: 16 feb 2016
 
-* \description: setting initial waypoints for the object
+* \description: return current location
 
 */
 
@@ -285,9 +291,9 @@ Vector3 pathFinding::getCurrentLocation(){
 
 * \author: Wong Keng Han Ashley
 
-* \date: 16 feb 2016
+* \date: 17 feb 2016
 
-* \description: setting initial waypoints for the object
+* \description: returns the vector of way points
 
 */
 
@@ -305,23 +311,23 @@ queue<Vector3>  pathFinding::getwayPoints(){
 
 /*!
 
-* \method: getwayPoints
+* \method: getLastWayPointDirection
 
 * \author: Wong Keng Han Ashley
 
-* \date: 16 feb 2016
+* \date: 17 feb 2016
 
-* \description: setting initial waypoints for the object
+* \description: return the direction of the previous waypoint
 
 */
 
 /////////////////////////////////////////////////////////////////
 Vector3 pathFinding::getLastWayPointDirection(){
 
-
-
 	return lastWayPointDirection;
 
-
-
 }
+
+
+
+
