@@ -69,9 +69,14 @@ class SP2 : public Scene
 		U_TEXT_ENABLED,
 		U_TEXT_COLOR,
 		U_TOTAL,
-
 	};
 
+	enum GAMESTATE
+	{
+		MainMenu = 0,
+		Station,
+		RTS,
+	};
 
 public:
 
@@ -128,10 +133,10 @@ private:
 	bool renderStart;
 	bool enableLight, enableAxis;
 	
-	Object station;
-
-	MousePicker picker;
+	GAMESTATE state;
 	
+	MousePicker picker;
+	Object station;
 	Vehicles ship;
 	Vehicles boat;
 	Vehicles* selection;
