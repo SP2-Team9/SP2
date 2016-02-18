@@ -242,6 +242,7 @@ void SP2::Update(double dt)
 	//Path finding test
 	blinkDuration += dt;
 	vehicleUpdates(dt);
+
 }
 
 void SP2::Render()
@@ -268,28 +269,23 @@ void SP2::Render()
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 
-	/*for (vector<AABB>::iterator it = worldHitbox.begin(); it != worldHitbox.end(); ++it)
-	{
-		AABB temp = *it;
-		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(1, 1, 1), temp.GetMin(), temp.GetMax());
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		modelStack.PushMatrix();
-		RenderMesh(meshList[GEO_HITBOX], false);
-		modelStack.PopMatrix();
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}*/
-
 	switch (state)
 	{
 	case MainMenu:
+
 		renderTitleScreen();
 		break;
+
 	case RTS:
-		renderShips();
+
+        renderShips();
 		renderFightingUI();
 		break;
+
 	case FPS:
+
 		renderShips();
+
 		break;
 	}
 
@@ -541,21 +537,6 @@ void SP2::objectsInit()
 
 }
 
-void SP2::vehicleUpdates(double dt){
-
-
-	boat.initialMoveDirection(-5, -5);
-	boat.SetPos(0, 0, 0);
-	boat.SetView(0, 0, 1);
-	boat.SetUp(0, 1, 0);
-	boat.SetHitbox(AABB(Vector3(boat.Pos.x - 5, boat.Pos.y - 5, boat.Pos.z - 5), Vector3(boat.Pos.x + 5, boat.Pos.y + 5, boat.Pos.z + 5)));
-
-
-	allVehicles.push_back(&ship);
-	allVehicles.push_back(&boat);
-
-}
-
 void SP2::WorldHitboxInit()
 {
 	worldHitbox.push_back(AABB(Vector3(-500, -10, -500), Vector3(500, 0, 500)));
@@ -591,10 +572,6 @@ void SP2::renderShips(){
 
 		Vehicles* currVehicle = *vitV;
 
-
-		std::cout << currVehicle->getRotationAngle() << std::endl;
-
-
 		modelStack.PushMatrix();
 		modelStack.Translate(currVehicle->Pos.x, currVehicle->Pos.y, currVehicle->Pos.z);
 		modelStack.Rotate(currVehicle->getRotationAngle(), 0, 1, 0);
@@ -603,12 +580,9 @@ void SP2::renderShips(){
 
 	}
 
+    renderWayPoints();
+
 }
-
-
-	renderWayPoints();
-
-}  
 
 void SP2::renderWayPoints(){
 
