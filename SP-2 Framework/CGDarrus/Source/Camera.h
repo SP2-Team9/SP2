@@ -10,7 +10,6 @@ class Camera
 public:
 	Vector3 position, target, up, view, right;
 	float cameraSpeed, mouseSpeed, pitch, yaw, delay;
-	static bool cursor;
 	double mouseX, mouseY;
 
 	Camera();
@@ -26,6 +25,8 @@ public:
 	void NoClip(double dt);
 	void TPSMovement(double dt, Vehicles& veh, vector <AABB> hitbox);
 	void YawRotation(double dt);
+	void EnableCursor();
+	void DisableCursor(double dt);
 };
 
 #endif

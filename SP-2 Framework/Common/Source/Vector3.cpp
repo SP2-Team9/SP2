@@ -497,3 +497,27 @@ Vector3 operator*( float scalar, const Vector3& rhs )
 {
 	return rhs * scalar;
 }
+
+/////////////////////////////////////////////////////////////////
+
+/*!
+
+* \method: getMagnitude
+
+* \author: Wong Keng Han Ashley
+
+* \date: 18 feb 2016
+
+* \description: return the magnitude of the vector
+*/
+
+/////////////////////////////////////////////////////////////////
+float Vector3::getMagnitude(){
+
+    return sqrt(
+        (x) * (x) +
+        (y) * (y) +
+        (z) * (z)
+        );
+
+}

@@ -2,8 +2,6 @@
 #include "Vector3.h"
 #include "Application.h"
 
-bool Camera::cursor = false;
-
 /******************************************************************************/
 /*!
 \brief
@@ -112,31 +110,6 @@ To be called every frame. Camera will get user inputs and update its position an
 /******************************************************************************/
 void Camera::Update(double dt)
 {
-	if (Application::IsKeyPressed(VK_END) && delay >= 1.f)
-	{
-		delay = 0;
-		if (cursor == true)
-			cursor = false;
-		else
-			cursor = true;
-	}
-
-	delay += dt;
-
-	if (cursor == false)
-	{
-		Application::getMouse(mouseX, mouseY);
-		Application::centerMouse();
-		Application::hideMouse();
-		yaw = mouseSpeed * dt * static_cast<float>(800 / 2 - mouseX);
-		pitch = mouseSpeed * dt * static_cast<float>(600 / 2 - mouseY);
-	}
-	else
-	{
-		Application::showMouse();
-	}
-
-
 	if (Application::IsKeyPressed(VK_ADD))
 		mouseSpeed += 0.1f;
 	else if (Application::IsKeyPressed(VK_SUBTRACT))
@@ -295,9 +268,10 @@ void Camera::FPSMovement(double dt, vector<AABB> hitbox)
 	checkY = false;
 	for (int i = 0; i < hitbox.size(); ++i)
 	{
-		if (hitbox[i].PointToAABB(Vector3(position.x, (position.y - 20.f) - 1.f * dt, position.z)) && checkY == false)
+		if (hitbox[i].PointToAABB(Vector3(position.x, position.y - 1.f - 250.f * dt, position.z)) && checkY == false)
 		{
 			checkY = true;
+			break;
 		}
 	}
 	if (checkY == false)
@@ -524,10 +498,33 @@ void Camera::NoClip(double dt)
 
 void Camera::YawRotation(double dt)
 {
+	float yaw = 0.f;
+	if (Application::IsKeyPressed('A'))
+	{
+		yaw = -1 * 30.f * dt;
+	}
+	else if (Application::IsKeyPressed('D'))
+	{
+		yaw = 30.f * dt;
+	}
 	Mtx44 rotation;
 	rotation.SetToRotation(yaw, 0, 1, 0);
 	view = rotation * view;
 	position = rotation * position;
 	up = rotation * up;
 	right = rotation * right;
+}
+
+void Camera::EnableCursor()
+{
+	Application::showMouse();
+}
+
+void Camera::DisableCursor(double dt)
+{
+	Application::getMouse(mouseX, mouseY);
+	Application::centerMouse();
+	Application::hideMouse();
+	yaw = mouseSpeed * dt * static_cast<float>(800 / 2 - mouseX);
+	pitch = mouseSpeed * dt * static_cast<float>(600 / 2 - mouseY);
 }

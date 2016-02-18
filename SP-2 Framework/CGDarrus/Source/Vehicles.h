@@ -10,13 +10,18 @@
 class Vehicles : public Object{
 
 public:
+
 	Vehicles();
 	Vehicles(Vector3 endLocation);
 	~Vehicles();
 
+    float getRotationAngle();
+
 	void update(double dt);
 	void setNewWayPoint(float x, float z);
 	void initialMoveDirection(float x, float z);
+    
+
 
 	float Thrust, Yaw, Pitch, delay;
 	double interactionCooldown;
@@ -24,7 +29,7 @@ public:
 
 	pathFinding newVehicle;
 
-
+   
 
 };
 

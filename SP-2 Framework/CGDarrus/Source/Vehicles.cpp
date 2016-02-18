@@ -71,3 +71,31 @@ void Vehicles::initialMoveDirection(float x, float z){
 
 
 }
+
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: getwayPoints
+
+* \author: Wong Keng Han Ashley
+
+* \date: 18 feb 2016
+
+* \description: setting initial waypoints for the object
+
+*/
+/////////////////////////////////////////////////////////////////
+float Vehicles::getRotationAngle(){
+
+    float degree = Math::RadianToDegree(acos(View.Dot(newVehicle.getLastWayPointDirection())));
+
+    if (newVehicle.getLastWayPointDirection().x < 0){
+
+        degree *= -1;
+
+    }
+
+    return degree;
+
+}
+
