@@ -22,7 +22,7 @@ void SP2::Init()
 	enableLight = true;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
-
+	state = MainMenu;
 	selection = nullptr;
 	worldHitbox.push_back(AABB(Vector3(-500, 0, -500), Vector3(500, 0, 500)));
 
@@ -34,8 +34,8 @@ void SP2::Init()
 	ship.SetUp(0, 1, 0);
 	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
 
-	a = 50;
-	hp = 100;
+	AmmoCount = 50;
+	HealthPoints = 100;
 
 	objectsInit();
 
@@ -166,35 +166,26 @@ void SP2::Init()
 
 	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_QUAD]->textureID = LoadTGA("Image//menu.tga");
-
-
-	//Path Checks
-	blinking = true;
-	renderStart = true;
-	renderNext = false;
-	start = false;
-	sstart = false;
 }
 
 void SP2::Update(double dt)
 {
 
-	if (sstart == false)
+	switch (state)
 	{
+	case MainMenu:
 		if (Application::IsKeyPressed(VK_LBUTTON))
 		{
-			sstart = true;
-			renderStart = false;
-			renderNext = true;
-			start = true;
+			state = RTS;
 			camera.PointAt(station, 100, 200);
 		}
-	}
-	if (sstart == true)
-	{
+		break;
+	case RTS:
 		camera.Update(dt);
 		camera.YawRotation(dt);
+		break;
 	}
+		
 
 	camera.Update(dt);
 
@@ -240,16 +231,16 @@ void SP2::Update(double dt)
 	FPSText = std::to_string(toupper(1 / dt)) + " FPS";
 
 	//ammo use
-	Ammo = std::to_string(a);
-	if (Application::IsKeyPressed('Z') && a != 0 && readyToUse >= 0.8f)
+	Ammo = "Ammo: " + std::to_string(AmmoCount);
+	if (Application::IsKeyPressed('Z') && AmmoCount != 0 && readyToUse >= 0.8f)
 	{
 		readyToUse = 0.f;
-		a--;
+		AmmoCount--;
 	}
 
 
 	//health
-	Health = std::to_string(hp);
+	Health = "Health: " + std::to_string(HealthPoints);
 
 	//Path finding test
 	blinkDuration += dt;
@@ -274,6 +265,7 @@ void SP2::Render()
 	if (enableAxis == true)
 		RenderMesh(meshList[GEO_AXES], false);
 
+	RenderSkybox();
 	//SpaceStation
 	modelStack.PushMatrix();
 	modelStack.Scale(10, 10, 10);
@@ -282,12 +274,18 @@ void SP2::Render()
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 
+	switch (state)
+	{
+	case MainMenu:
+		renderTitleScreen();
+		break;
+	case RTS:
+		renderShips();
+		renderFightingUI();
+		break;
+	}
 
-	renderShips();
-	RenderSkybox();
-	renderGameOverlays();
-
-
+	
 }
 
 void SP2::Exit()
@@ -515,27 +513,20 @@ void SP2::RenderSkybox()
 
 void SP2::renderTitleScreen(){
 	//start menu
-
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 100, 420);
+	modelStack.Rotate(270, 1, 0, 0);
+	modelStack.Scale(500, 500, 500);
+	RenderMesh(meshList[GEO_QUAD], false);
+	modelStack.PopMatrix();
+	RenderTextOnScreen(meshList[GEO_TEXT1], "SPACE CONTROL", Color(0, 1, 0), 10, 0.1, 5);
 	RenderTextOnScreen(meshList[GEO_TEXT], "Click to Start", Color(0, 1, 0), 3, 9.5, 7);
 }
 
 void SP2::renderFightingUI(){
-
-
 	//Asteroid fighting
-
-	RenderTextOnScreen(meshList[GEO_TEXT], "Ammo:", Color(0, 1, 0), 3, 0, 19);
-	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 3, 19);
-
-
-}
-
-void SP2::renderHealth()
-{
-	//Health
-	RenderTextOnScreen(meshList[GEO_TEXT], "Health:", Color(0, 1, 0), 3, 0, 18);
-	
-	RenderTextOnScreen(meshList[GEO_TEXT], Health, Color(0, 1, 0), 3, 4, 18);
+	RenderTextOnScreen(meshList[GEO_TEXT], Health, Color(0, 1, 0), 3, 0, 19);
+	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 0, 18);
 }
 
 void SP2::objectsInit()
@@ -560,50 +551,6 @@ void SP2::vehicleUpdates(double dt){
 		temp->update(dt);
 
 	}
-
-}
-
-void SP2::renderGameOverlays(){
-
-	if (start == false)
-	{
-		modelStack.PushMatrix();
-		modelStack.Translate(0, 100, 420);
-		modelStack.Rotate(270, 1, 0, 0);
-		modelStack.Scale(500, 500, 500);
-		RenderMesh(meshList[GEO_QUAD], false);
-		modelStack.PopMatrix();
-
-		RenderTextOnScreen(meshList[GEO_TEXT1], "SPACE CONTROL", Color(0, 1, 0), 10, 0.1, 5);
-	}
-
-	if (renderStart == true)
-	{
-		if (blinking == true){
-
-			renderTitleScreen();
-
-		}
-		if (blinkDuration > 0.5){
-
-			if (blinking == true){
-				blinking = false;
-			}
-			else{
-				blinking = true;
-			}
-
-			blinkDuration = 0;
-		}
-	}
-
-	if (renderNext == true)
-	{
-
-		renderFightingUI();
-		renderHealth();
-	}
-
 
 }
 

@@ -74,7 +74,7 @@ class SP2 : public Scene
 	enum GAMESTATE
 	{
 		MainMenu = 0,
-		Station,
+		FPS,
 		RTS,
 	};
 
@@ -90,11 +90,9 @@ public:
 	
 	void objectsInit();
 	void renderShips();
-	void renderHealth();
 	void RenderSkybox();
 	void renderFightingUI();
 	void renderTitleScreen();
-	void renderGameOverlays();
 	void MouseSelection(double dt);
 	void vehicleUpdates(double dt);
 	void RenderMesh(Mesh* mesh, bool enableLight);
@@ -104,8 +102,8 @@ public:
 private:
 
 	
-	int a;
-	int hp;
+	int AmmoCount;
+	int HealthPoints;
 	
 	Camera camera;
 	Light light[1];
@@ -124,13 +122,6 @@ private:
 
 
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize;
-
-
-	bool start;
-	bool sstart;
-	bool blinking;
-	bool renderNext;
-	bool renderStart;
 	bool enableLight, enableAxis;
 	
 	GAMESTATE state;
