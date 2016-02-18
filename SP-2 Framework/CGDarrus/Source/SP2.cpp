@@ -279,14 +279,15 @@ void SP2::Render()
 	case RTS:
 
         renderShips();
-		renderFightingUI();
+        renderWayPoints();
+        renderFightingUI();
 		break;
 
 	case FPS:
 
 		renderShips();
-
 		break;
+
 	}
 
 	
@@ -535,6 +536,16 @@ void SP2::objectsInit()
 	ship.SetUp(0, 1, 0);
 	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
 
+    boat.initialMoveDirection(-1, 0);
+    boat.SetPos(0, 0, 0);
+    boat.SetView(0, 0, 1);
+    boat.SetUp(0, 1, 0);
+    boat.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+
+    allVehicles.push_back(&ship);
+    allVehicles.push_back(&boat);
+
+
 }
 
 void SP2::WorldHitboxInit()
@@ -580,7 +591,8 @@ void SP2::renderShips(){
 
 	}
 
-    renderWayPoints();
+
+ 
 
 }
 
