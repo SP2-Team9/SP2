@@ -303,8 +303,6 @@ void SP2::MouseSelection(double dt)
 	{
 		Vector3 pressPosition = picker.WorldCoord();
 
-		std::cout << picker.WorldCoord() << std::endl;
-
 		for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); ++it){
 
 			Vehicles* temp = *it;
@@ -328,6 +326,7 @@ void SP2::MouseSelection(double dt)
 			}
 
 		}
+
 		wayPointSetCoolDown = 0;
 
 	}
@@ -335,12 +334,7 @@ void SP2::MouseSelection(double dt)
 	if (Application::IsKeyPressed(VK_RBUTTON) && selection != nullptr)
 	{
 
-		std::cout << "MOVED!" << std::endl;
-
-
-		std::cout << "New Position!" << std::endl;
-
-		ship.setNewWayPoint(picker.WorldCoord().x, picker.WorldCoord().z);
+		selection->setNewWayPoint(picker.WorldCoord().x, picker.WorldCoord().z);
 
 		wayPointSetCoolDown = 0;
 	}
