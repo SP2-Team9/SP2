@@ -164,6 +164,21 @@ void SP2::Init()
 	meshList[GEO_SPACE_STATION] = MeshBuilder::GenerateOBJ("Space Station", "OBJ//Space Station.obj");
 	meshList[GEO_SPACE_STATION]->textureID = LoadTGA("Image//Space Station.tga");
 
+    meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
+    meshList[GEO_NPC]->textureID = LoadTGA("Image//headnbody_uv.tga");
+
+    meshList[GEO_LEFTHAND] = MeshBuilder::GenerateOBJ("left hand", "OBJ//lefthand.obj");
+    meshList[GEO_LEFTHAND]->textureID = LoadTGA("Image//arms_uv.tga");
+
+   meshList[GEO_RIGHTHAND] = MeshBuilder::GenerateOBJ("right hand", "OBJ//righthand.obj");
+    meshList[GEO_RIGHTHAND]->textureID = LoadTGA("Image//arms_uv.tga");
+
+    meshList[GEO_LEFTLEG] = MeshBuilder::GenerateOBJ("left leg", "OBJ//leftleg.obj");
+    meshList[GEO_LEFTLEG]->textureID = LoadTGA("Image//legs_uv.tga");
+
+    meshList[GEO_RIGHTLEG] = MeshBuilder::GenerateOBJ("right leg", "OBJ//rightleg.obj");
+    meshList[GEO_RIGHTLEG]->textureID = LoadTGA("Image//legs_uv.tga");
+
 	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_QUAD]->textureID = LoadTGA("Image//menu.tga");
 }
@@ -271,6 +286,32 @@ void SP2::Render()
 	modelStack.Scale(10, 10, 10);
 	RenderMesh(meshList[GEO_SPACE_STATION], false);
 	modelStack.PopMatrix();
+
+    //npc
+    modelStack.PushMatrix();
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_NPC], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_LEFTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_RIGHTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_RIGHTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_LEFTLEG], false);
+    modelStack.PopMatrix();
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 

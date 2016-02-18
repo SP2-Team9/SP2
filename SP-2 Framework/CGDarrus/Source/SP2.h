@@ -38,6 +38,11 @@ class SP2 : public Scene
 		GEO_CONTROL_PANEL,
 		GEO_SPACE_STATION,
 		GEO_HITBOX,
+        GEO_NPC,
+        GEO_LEFTHAND,
+        GEO_RIGHTHAND,
+        GEO_LEFTLEG,
+        GEO_RIGHTLEG,
 		NUM_GEOMETRY,
 	};
 	enum UNIFORM_TYPE
