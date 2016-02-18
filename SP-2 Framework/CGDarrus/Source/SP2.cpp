@@ -174,8 +174,6 @@ void SP2::Init()
 	renderNext = false;
 	start = false;
 	sstart = false;
-	spaceCraft.setInitialWayPoints(Vector3(100, 50, 100));
-	xWing.setInitialWayPoints(Vector3(-10, 0, -10));
 }
 
 void SP2::Update(double dt)
@@ -254,7 +252,6 @@ void SP2::Update(double dt)
 	Health = std::to_string(hp);
 
 	//Path finding test
-	spaceCraft.pathRoute(dt);
 	blinkDuration += dt;
 
 	vehicleUpdates(dt);
@@ -339,7 +336,6 @@ void SP2::MouseSelection(double dt)
 	{
 
 		std::cout << "MOVED!" << std::endl;
-		xWing.updateWayPoints(Vector3(picker.WorldCoord().x, 1, picker.WorldCoord().z));
 
 
 		std::cout << "New Position!" << std::endl;
