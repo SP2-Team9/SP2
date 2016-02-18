@@ -221,7 +221,7 @@ void pathFinding::updateWayPoints(Vector3 endLocation){
 
 
 		wayPointPosition += (view * length);
-		wayPoints.push(wayPointPosition);
+		wayPoints.push(Vector3(wayPointPosition.x, 0, wayPointPosition.z));
 		
 
 	}

@@ -100,6 +100,7 @@ public:
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
+	void renderNPC();
 	void MouseSelection(double dt);
 	void vehicleUpdates(double dt);
 	void RenderMesh(Mesh* mesh, bool enableLight);

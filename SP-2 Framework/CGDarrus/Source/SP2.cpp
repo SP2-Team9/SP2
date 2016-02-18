@@ -88,9 +88,9 @@ void SP2::Init()
 	m_parameters[U_TEXT_COLOR] = glGetUniformLocation(m_programID, "textColor");
 	glUseProgram(m_programID);
 
-	light[0].position.Set(0, 20, -2);
+	light[0].position.Set(-10, 20, 20);
 	light[0].color.Set(1, 1, 1);
-	light[0].power = 0.5f;
+	light[0].power = 1.f;
 	light[0].kC = 1.f;
 	light[0].kL = 0.01f;
 	light[0].kQ = 0.001f;
@@ -153,7 +153,7 @@ void SP2::Init()
     meshList[GEO_LEFTHAND] = MeshBuilder::GenerateOBJ("left hand", "OBJ//lefthand.obj");
     meshList[GEO_LEFTHAND]->textureID = LoadTGA("Image//arms_uv.tga");
 
-   meshList[GEO_RIGHTHAND] = MeshBuilder::GenerateOBJ("right hand", "OBJ//righthand.obj");
+    meshList[GEO_RIGHTHAND] = MeshBuilder::GenerateOBJ("right hand", "OBJ//righthand.obj");
     meshList[GEO_RIGHTHAND]->textureID = LoadTGA("Image//arms_uv.tga");
 
     meshList[GEO_LEFTLEG] = MeshBuilder::GenerateOBJ("left leg", "OBJ//leftleg.obj");
@@ -276,37 +276,14 @@ void SP2::Render()
 		RenderMesh(meshList[GEO_AXES], false);
 
 	RenderSkybox();
+
 	//SpaceStation
 	modelStack.PushMatrix();
 	modelStack.Scale(10, 10, 10);
-	RenderMesh(meshList[GEO_SPACE_STATION], false);
+	RenderMesh(meshList[GEO_SPACE_STATION], enableLight);
 	modelStack.PopMatrix();
 
-    //npc
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_NPC], false);
-    modelStack.PopMatrix();
 
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_LEFTHAND], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_RIGHTHAND], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_RIGHTLEG], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_LEFTLEG], false);
-    modelStack.PopMatrix();
 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 
@@ -325,7 +302,7 @@ void SP2::Render()
 		break;
 
 	case FPS:
-
+		renderNPC();
 		renderShips();
 		break;
 
@@ -627,7 +604,7 @@ void SP2::renderShips(){
 		modelStack.PushMatrix();
 		modelStack.Translate(currVehicle->Pos.x, currVehicle->Pos.y, currVehicle->Pos.z);
 		modelStack.Rotate(currVehicle->getRotationAngle(), 0, 1, 0);
-		RenderMesh(meshList[GEO_XWING], false);
+		RenderMesh(meshList[GEO_XWING], enableLight);
 		modelStack.PopMatrix();
 
 	}
@@ -662,4 +639,33 @@ void SP2::renderWayPoints(){
 
 	}
 
+}
+
+void SP2::renderNPC()
+{
+	//NPC
+	modelStack.PushMatrix();
+	//modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_NPC], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	//modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_LEFTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	//modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_RIGHTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	//modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_RIGHTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	//modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_LEFTLEG], false);
+	modelStack.PopMatrix();
 }
