@@ -89,6 +89,7 @@ public:
 	virtual void Update(double dt);
 	
 	void objectsInit();
+	void WorldHitboxInit();
 	void renderShips();
 	void RenderSkybox();
 	void renderFightingUI();
@@ -100,8 +101,6 @@ public:
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 
 private:
-
-	
 	int AmmoCount;
 	int HealthPoints;
 	
@@ -121,13 +120,14 @@ private:
 	double wayPointSetCoolDown = 0;
 
 
-	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize;
+	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay;
 	bool enableLight, enableAxis;
 	
 	GAMESTATE state;
 	
 	MousePicker picker;
 	Object station;
+	Object LastLocation;
 	Vehicles ship;
 	Vehicles boat;
 	Vehicles* selection;
@@ -141,10 +141,6 @@ private:
 	vector<Vehicles*> allVehicles;
 	
 	MS modelStack, viewStack, projectionStack;
-
-	
-	
-
 };
 
 
