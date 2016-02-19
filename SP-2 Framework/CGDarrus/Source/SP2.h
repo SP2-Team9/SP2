@@ -106,20 +106,23 @@ public:
 	void WorldHitboxInit();
 	
 	// Renders
+
+    void renderNPC();
 	void renderShips();
-
 	void renderSkybox();
-
+    void renderExplosion();
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
-	void renderNPC();
-	void renderExplosion();
+	
+	
 
 	// Others
+    void checkHitboxes();
+    void NPCUpdates(double dt);
 	void vehicleUpdates(double dt);
 	void MouseSelection(double dt);
-	void checkHitboxes();
+	
 
 	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);
@@ -127,9 +130,11 @@ public:
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 
 private:
+
+    int money;
 	int AmmoCount;
 	int HealthPoints;
-    int money;
+    
 	
 	Camera camera;
 	Light light[1];
@@ -149,17 +154,21 @@ private:
     float move;
     float rotate;
     float moveleg;
-    bool restart = 0;
-    bool restart2 = 0;
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay;
+
+
+    bool restart = false;
+    bool restart2 = false;
 	bool enableLight, enableAxis;
 	
 	GAMESTATE state;
 	HITBOXCHECK HBcheck;
 	
 	MousePicker picker;
+
 	Object station;
 	Object LastLocation;
+
 	Vehicles ship;
 	Vehicles boat;
 

@@ -214,6 +214,7 @@ void SP2::Update(double dt)
 		}
 		vehicleUpdates(dt);
 		checkHitboxes();
+        NPCUpdates(dt);
 		break;
 	}
 
@@ -280,57 +281,6 @@ void SP2::Update(double dt)
         HealthPoints += 5;
     }
     
-
-    //npc move
-    move += (float)(8 * dt);    
-    if (rotate < 5 && restart == 0)
-    {
-        rotate += (float)(20 * dt);
-
-
-        if (rotate >= 5)
-        {
-            restart = 1;
-
-        }
-
-    }
-    if (rotate >= -5 && restart == 1)
-    {
-        rotate -= (float)(20 * dt);
-        if (rotate <= -5)
-        {
-            restart = 0;
-
-
-        }
-    }
-    if (moveleg < 5 && restart2 == 0)
-    {
-        moveleg += (float)(20 * dt);
-
-
-        if (moveleg >= 5)
-        {
-            restart2 = 1;
-
-        }
-
-    }
-    if (moveleg >= -5 && restart2 == 1)
-    {
-        moveleg -= (float)(20 * dt);
-        if (moveleg <= -5)
-        {
-            restart2 = 0;
-
-
-        }
-    }
-
-
-	HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
-
 }
 
 void SP2::Render()
@@ -364,12 +314,11 @@ void SP2::Render()
 	switch (state)
 	{
 	case MainMenu:
+
 		renderTitleScreen();
 		break;
 
 	case RTS:
-
-        renderNPC();
 
 		if (Application::IsKeyPressed(VK_LBUTTON))
 		{
@@ -385,6 +334,7 @@ void SP2::Render()
 		break;
 
 	case FPS:
+
 		renderNPC();
 		renderShips();
 		break;
@@ -650,6 +600,65 @@ void SP2::vehicleUpdates(double dt){
 
 }
 
+void SP2::NPCUpdates(double dt){
+
+    //npc move
+    move += (float)(8 * dt);
+    if (rotate < 5 && restart == false)
+    {
+        rotate += (float)(20 * dt);
+
+
+        if (rotate >= 5)
+        {
+            restart = true;
+
+        }
+
+    }
+    if (rotate >= -5 && restart == true)
+    {
+        rotate -= (float)(20 * dt);
+        if (rotate <= -5)
+        {
+            restart = false;
+
+
+        }
+    }
+    if (moveleg < 5 && restart2 == false)
+    {
+        moveleg += (float)(20 * dt);
+
+
+        if (moveleg >= 5)
+        {
+            restart2 = true;
+
+        }
+
+    }
+    if (moveleg >= -5 && restart2 == true)
+    {
+        moveleg -= (float)(20 * dt);
+        if (moveleg <= -5)
+        {
+            restart2 = false;
+
+
+        }
+    }
+
+
+    HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
+
+
+
+
+
+
+}
+
 void SP2::MouseSelection(double dt)
 {
 	if (Application::IsKeyPressed(VK_LBUTTON) && wayPointSetCoolDown > 0.5f)
@@ -817,7 +826,7 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glUniform1i(m_parameters[U_TEXT_ENABLED], 0);
 
-	projectionStack.PopMatrix();
+    projectionStack.PopMatrix();
 	viewStack.PopMatrix();
 	modelStack.PopMatrix();
 
