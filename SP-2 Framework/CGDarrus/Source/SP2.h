@@ -108,9 +108,6 @@ public:
 	// Renders
 	void renderShips();
 
-	void RenderSkybox();
-    void renderNPC();
-
 	void renderSkybox();
 
 	void renderWayPoints();
