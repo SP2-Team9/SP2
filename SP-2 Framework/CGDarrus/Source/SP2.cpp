@@ -27,6 +27,7 @@ void SP2::Init()
 
 	AmmoCount = 50;
 	HealthPoints = 100;
+    money = 1000;
 
 	WorldHitboxInit();
 	objectsInit();
@@ -147,7 +148,7 @@ void SP2::Init()
 	meshList[GEO_SPACE_STATION] = MeshBuilder::GenerateOBJ("Space Station", "OBJ//Space Station.obj");
 	meshList[GEO_SPACE_STATION]->textureID = LoadTGA("Image//Space Station.tga");
 
-    meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
+   meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
     meshList[GEO_NPC]->textureID = LoadTGA("Image//headnbody_uv.tga");
 
     meshList[GEO_LEFTHAND] = MeshBuilder::GenerateOBJ("left hand", "OBJ//lefthand.obj");
@@ -164,6 +165,11 @@ void SP2::Init()
 
 	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_QUAD]->textureID = LoadTGA("Image//menu.tga");
+
+    move = 0.f;
+    rotate = 0.f;
+    moveleg = 0.f;
+
 }
 
 void SP2::Update(double dt)
@@ -254,9 +260,68 @@ void SP2::Update(double dt)
 	//health
 	Health = "Health: " + std::to_string(HealthPoints);
 
+    //money
+    Money = "Money: $" + std::to_string(money);
+
 	//Path finding test
 	blinkDuration += dt;
 	vehicleUpdates(dt);
+
+    //buy health
+    if (Application::IsKeyPressed(' ') && money != 0 && readyToUse >= 0.8f)
+    {
+        readyToUse = 0.f;
+        money -= 100;
+        HealthPoints += 5;
+    }
+    
+
+    //npc move
+    move += (float)(8 * dt);    
+    if (rotate < 5 && restart == 0)
+    {
+        rotate += (float)(20 * dt);
+
+
+        if (rotate >= 5)
+        {
+            restart = 1;
+
+        }
+
+    }
+    if (rotate >= -5 && restart == 1)
+    {
+        rotate -= (float)(20 * dt);
+        if (rotate <= -5)
+        {
+            restart = 0;
+
+
+        }
+    }
+    if (moveleg < 5 && restart2 == 0)
+    {
+        moveleg += (float)(20 * dt);
+
+
+        if (moveleg >= 5)
+        {
+            restart2 = 1;
+
+        }
+
+    }
+    if (moveleg >= -5 && restart2 == 1)
+    {
+        moveleg -= (float)(20 * dt);
+        if (moveleg <= -5)
+        {
+            restart2 = 0;
+
+
+        }
+    }
 
 }
 
@@ -276,38 +341,13 @@ void SP2::Render()
 		RenderMesh(meshList[GEO_AXES], false);
 
 	RenderSkybox();
-	//SpaceStation
+   // SpaceStation
 	modelStack.PushMatrix();
 	modelStack.Scale(10, 10, 10);
 	RenderMesh(meshList[GEO_SPACE_STATION], false);
 	modelStack.PopMatrix();
 
-    //npc
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_NPC], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_LEFTHAND], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_RIGHTHAND], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_RIGHTLEG], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_LEFTLEG], false);
-    modelStack.PopMatrix();
-
+ 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 
 	switch (state)
@@ -319,6 +359,7 @@ void SP2::Render()
 
 	case RTS:
 
+        renderNPC();
         renderShips();
         renderWayPoints();
         renderFightingUI();
@@ -558,6 +599,7 @@ void SP2::renderFightingUI(){
 	//Asteroid fighting
 	RenderTextOnScreen(meshList[GEO_TEXT], Health, Color(0, 1, 0), 3, 0, 19);
 	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 0, 18);
+    RenderTextOnScreen(meshList[GEO_TEXT], Money, Color(0, 1, 0), 3, 0, 17);
 }
 
 void SP2::objectsInit()
@@ -662,4 +704,50 @@ void SP2::renderWayPoints(){
 
 	}
 
+}
+
+void SP2::renderNPC()
+{
+    //npc
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0, -move);
+
+    modelStack.PushMatrix();
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_NPC], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 45, 0);
+    modelStack.Rotate(rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_LEFTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 45, 0);
+    modelStack.Rotate(-rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_RIGHTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 10, 0);
+    modelStack.Rotate(moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_RIGHTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 10, 0);
+    modelStack.Rotate(-moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_LEFTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PopMatrix();
 }

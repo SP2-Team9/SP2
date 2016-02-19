@@ -97,6 +97,7 @@ public:
 	void WorldHitboxInit();
 	void renderShips();
 	void RenderSkybox();
+    void renderNPC();
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
@@ -109,6 +110,7 @@ public:
 private:
 	int AmmoCount;
 	int HealthPoints;
+    int money;
 	
 	Camera camera;
 	Light light[1];
@@ -125,7 +127,11 @@ private:
 	double blinkDuration = 0;
 	double wayPointSetCoolDown = 0;
 
-
+    float move;
+    float rotate;
+    float moveleg;
+    bool restart = 0;
+    bool restart2 = 0;
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay;
 	bool enableLight, enableAxis;
 	
@@ -141,6 +147,7 @@ private:
 	string Ammo;
 	string Health;
 	string FPSText;
+    string Money;
 
 	vector<AABB> worldHitbox;
 	vector<AABB> Interactions;
