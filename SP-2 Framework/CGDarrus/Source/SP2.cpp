@@ -442,6 +442,59 @@ void SP2::renderFightingUI(){
 	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 0, 18);
 }
 
+
+void SP2::objectsInit()
+{
+	//Object Init
+	station.SetPos(0, 0, 0);
+	LastLocation.SetPos(0, 1, 0);
+	LastLocation.SetView(0, 0, 1);
+	LastLocation.SetUp(0, 1, 0);
+	LastLocation.SetRight(-1, 0, 0);
+
+	//Vehicles Init
+	ship.SetPos(100, 0, 0);
+	ship.SetView(0, 0, -1);
+	ship.SetHitboxSize(5);
+	ship.SetInteractionSize(10, 10, 10, 10, 10, 10);
+	ship.initialMoveDirection();
+
+    boat.SetPos(0, 0, 0);
+    boat.SetView(0, 0, 1);
+	boat.SetHitboxSize(5);
+	boat.SetInteractionSize(10, 10, 10, 10, 10, 10);
+	boat.initialMoveDirection();
+
+    testShip = new Vehicles(Vector3(-100, 0, 0), Vector3(1, 0, -1), 50);
+    testShip->SetHitboxSize(5);
+    testShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
+
+
+    allVehicles.push_back(&ship);
+    allVehicles.push_back(&boat);
+    allVehicles.push_back(testShip);
+
+}
+
+void SP2::WorldHitboxInit()
+{
+	worldHitbox.push_back(AABB(Vector3(-500, -10, -500), Vector3(500, 0, 500)));
+	worldHitbox.push_back(AABB(Vector3(-10, 0, 10), Vector3(10, 10, 15)));
+	worldHitbox.push_back(AABB(Vector3(-10, 0, -15), Vector3(10, 10, -10)));
+	worldHitbox.push_back(AABB(Vector3(8, 0, -10), Vector3(15, 10, 10)));
+	worldHitbox.push_back(AABB(Vector3(-15, 0, -10), Vector3(-8, 10, 10)));
+}
+
+void SP2::vehicleUpdates(double dt){
+
+	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+		Vehicles* temp = *vitV;
+		temp->update(dt);
+	}
+
+}
+
+
 void SP2::renderShips(){
 
 	if (selection)

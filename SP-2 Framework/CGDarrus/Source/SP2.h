@@ -154,6 +154,8 @@ private:
 	Object LastLocation;
 	Vehicles ship;
 	Vehicles boat;
+
+    Vehicles* testShip;
 	Vehicles* selection;
 
 	string Ammo;
