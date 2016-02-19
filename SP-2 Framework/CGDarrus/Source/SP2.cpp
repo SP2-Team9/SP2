@@ -192,6 +192,7 @@ void SP2::Update(double dt)
 			selection = nullptr;
 			camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
 		}
+		vehicleUpdates(dt);
 		break;
 	case FPS:
 		camera.DisableCursor(dt);
@@ -204,6 +205,7 @@ void SP2::Update(double dt)
 			LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
 			camera.PointAt(station, 100, 200);
 		}
+		vehicleUpdates(dt);
 	}
 	delay += dt;
 
@@ -256,8 +258,6 @@ void SP2::Update(double dt)
 
 	//Path finding test
 	blinkDuration += dt;
-	vehicleUpdates(dt);
-
 }
 
 void SP2::Render()
@@ -283,14 +283,13 @@ void SP2::Render()
 	RenderMesh(meshList[GEO_SPACE_STATION], enableLight);
 	modelStack.PopMatrix();
 
-
-
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
+
+	renderExplosion();
 
 	switch (state)
 	{
 	case MainMenu:
-
 		renderTitleScreen();
 		break;
 
@@ -305,7 +304,6 @@ void SP2::Render()
 		renderNPC();
 		renderShips();
 		break;
-
 	}
 
 	
@@ -327,7 +325,7 @@ void SP2::MouseSelection(double dt)
 		for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); ++it){
 
 			Vehicles* temp = *it;
-			if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay()))
+			if (temp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
 			{
 				selection = temp;
 
@@ -546,24 +544,21 @@ void SP2::objectsInit()
 	LastLocation.SetUp(0, 1, 0);
 	LastLocation.SetRight(-1, 0, 0);
 
-
 	//Vehicles Init
-	ship.initialMoveDirection(1, 0);
-	ship.SetPos(0, 0, 0);
+	ship.SetPos(100, 0, 0);
 	ship.SetView(0, 0, 1);
-	ship.SetUp(0, 1, 0);
-	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+	ship.SetHitboxSize(5);
+	ship.SetInteractionSize(10, 10, 10, 10, 10, 10);
+	ship.initialMoveDirection();
 
-    boat.initialMoveDirection(-1, 0);
     boat.SetPos(0, 0, 0);
     boat.SetView(0, 0, 1);
-    boat.SetUp(0, 1, 0);
-    boat.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
+	boat.SetHitboxSize(5);
+	boat.SetInteractionSize(10, 10, 10, 10, 10, 10);
+	boat.initialMoveDirection();
 
     allVehicles.push_back(&ship);
     allVehicles.push_back(&boat);
-
-
 }
 
 void SP2::WorldHitboxInit()
@@ -578,7 +573,6 @@ void SP2::WorldHitboxInit()
 void SP2::vehicleUpdates(double dt){
 
 	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
-
 		Vehicles* temp = *vitV;
 		temp->update(dt);
 	}
@@ -589,7 +583,7 @@ void SP2::renderShips(){
 
 	if (selection)
 	{
-		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), selection->hitbox.GetMin(), selection->hitbox.GetMax());
+		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), selection->interaction.GetMin(), selection->interaction.GetMax());
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		modelStack.PushMatrix();
 		RenderMesh(meshList[GEO_HITBOX], false);
@@ -603,7 +597,7 @@ void SP2::renderShips(){
 
 		modelStack.PushMatrix();
 		modelStack.Translate(currVehicle->Pos.x, currVehicle->Pos.y, currVehicle->Pos.z);
-		modelStack.Rotate(currVehicle->getRotationAngle(), 0, 1, 0);
+		modelStack.Rotate(currVehicle->Yaw, 0, 1, 0);
 		RenderMesh(meshList[GEO_XWING], enableLight);
 		modelStack.PopMatrix();
 
@@ -668,4 +662,17 @@ void SP2::renderNPC()
 	//modelStack.Scale(10, 10, 10);
 	RenderMesh(meshList[GEO_LEFTLEG], false);
 	modelStack.PopMatrix();
+}
+
+void SP2::renderExplosion()
+{
+	for (vector<Vector3>::iterator it = explosionPos.begin(); it != explosionPos.end(); ++it)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(it->x, it->y, it->z);
+		modelStack.Rotate(ExplosionYaw, 0, 1, 0);
+		modelStack.Rotate(ExplosionPitch, -1, 0, 0);
+		modelStack.Scale(ExplosionSize, ExplosionSize, ExplosionSize);
+		modelStack.PopMatrix();
+	}
 }

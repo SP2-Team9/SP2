@@ -101,6 +101,7 @@ public:
 	void renderFightingUI();
 	void renderTitleScreen();
 	void renderNPC();
+	void renderExplosion();
 	void MouseSelection(double dt);
 	void vehicleUpdates(double dt);
 	void RenderMesh(Mesh* mesh, bool enableLight);
@@ -146,6 +147,7 @@ private:
 	vector<AABB> worldHitbox;
 	vector<AABB> Interactions;
 	vector<Vehicles*> allVehicles;
+	vector<Vector3> explosionPos;
 	
 	MS modelStack, viewStack, projectionStack;
 };

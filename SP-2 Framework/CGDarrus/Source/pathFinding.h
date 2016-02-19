@@ -26,7 +26,6 @@ using std::queue;
 class pathFinding{
 
 public:
-
 	pathFinding();
 	pathFinding(Vector3 location, Vector3 endlocation);
 	virtual ~pathFinding();
@@ -36,6 +35,7 @@ public:
 	void pathRoute(double dt);
 	void updateWayPoints(Vector3 endLocation);
 	void setInitialWayPoints(Vector3 endLocation);
+	void setInitialWayPoints(Vector3 location, Vector3 view);
 
 	float distanceBetween2points(Vector3 Point1, Vector3 Point2);
 	

@@ -26,12 +26,9 @@ interactionCooldown(0),
 board(false),
 isDead(false)
 {
-
 	initialMoveDirection(moveDirection.x, moveDirection.z);
 
-
 }
-
 
 Vehicles::~Vehicles(){
 
@@ -44,14 +41,11 @@ Vehicles::~Vehicles(){
 
 void Vehicles::update(double dt){
 
-
+	Yaw = getRotationAngle();
 	newVehicle.pathRoute(dt);
-
 	SetPos(newVehicle.getCurrentLocation().x, 0, newVehicle.getCurrentLocation().z);
-	
-	SetHitbox(AABB(Vector3(Pos.x - 5, Pos.y - 5, Pos.z - 5), Vector3(Pos.x + 5, Pos.y + 5, Pos.z + 5)));
-
-
+	SetHitbox(AABB(Vector3(Pos.x - HitboxSize, Pos.y - HitboxSize, Pos.z - HitboxSize), Vector3(Pos.x + HitboxSize, Pos.y + HitboxSize, Pos.z + HitboxSize)));
+	SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
 }
 
 
@@ -69,6 +63,12 @@ void Vehicles::initialMoveDirection(float x, float z){
 
 	newVehicle.setInitialWayPoints(Vector3(x, 0, z));
 
+
+}
+
+void Vehicles::initialMoveDirection(){
+
+	newVehicle.setInitialWayPoints(Pos, View);
 
 }
 

@@ -20,8 +20,7 @@ public:
 	void update(double dt);
 	void setNewWayPoint(float x, float z);
 	void initialMoveDirection(float x, float z);
-    
-
+	void initialMoveDirection();
 
 	float Thrust, Yaw, Pitch, delay;
 	double interactionCooldown;

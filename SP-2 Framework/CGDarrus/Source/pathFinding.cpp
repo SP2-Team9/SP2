@@ -35,9 +35,6 @@ currentLocation(Vector3(0, 0, 0)),
 lastWayPointDirection(Vector3(0, 0, 0))
 {
 
-	wayPoints.push(Vector3(1, 1, 1));
-
-
 }
 
 
@@ -189,6 +186,12 @@ void pathFinding::setInitialWayPoints(Vector3 endLocation){
 
 }
 
+void pathFinding::setInitialWayPoints(Vector3 location, Vector3 view){
+
+	currentLocation = location;
+	wayPoints.push(currentLocation + view);
+
+}
 
 
 /////////////////////////////////////////////////////////////////
@@ -275,11 +278,7 @@ void pathFinding::resetWayPoints(){
 
 /////////////////////////////////////////////////////////////////
 Vector3 pathFinding::getCurrentLocation(){
-
-
 	return currentLocation;
-
-
 }
 
 
