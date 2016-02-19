@@ -23,14 +23,21 @@ void Object::SetHitbox(AABB hitbox)
 	this->hitbox = hitbox;
 }
 
-void Object::SetHitbox(float size)
+void Object::SetHitboxSize(float size)
 {
-	this->hitbox = AABB(Vector3(Pos * -size), Vector3(Pos * size));
+	HitboxSize = size;
+	SetHitbox(AABB(Pos.x - size, Pos.y - size, Pos.z - size, Pos.x + size, Pos.y + size, Pos.z + size));
 }
 
 void Object::SetInteraction(AABB interaction)
 {
 	this->interaction = interaction;
+}
+
+void Object::SetInteractionSize(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
+{
+	InteractionMin = Vector3(minX, minY, minZ);
+	InteractionMax = Vector3(maxX, maxY, maxZ);
 }
 
 void Object::SetPos(Vector3 position)

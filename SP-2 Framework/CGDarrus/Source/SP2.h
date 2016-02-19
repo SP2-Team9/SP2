@@ -24,6 +24,7 @@ class SP2 : public Scene
 	enum GEOMETRY_TYPE
 	{
 		GEO_AXES,
+		GEO_RAY,
 		GEO_QUAD,
 		GEO_LIGHTBALL,
 		GEO_FRONT,
@@ -83,6 +84,13 @@ class SP2 : public Scene
 		RTS,
 	};
 
+	enum HITBOXCHECK
+	{
+		CheckStation = 0,
+		CheckShips,
+		CheckAsteroids,
+	};
+
 public:
 
 	SP2();
@@ -93,16 +101,30 @@ public:
 	virtual void Render();
 	virtual void Update(double dt);
 	
+	// Initializers
 	void objectsInit();
 	void WorldHitboxInit();
+	
+	// Renders
 	void renderShips();
+
 	void RenderSkybox();
     void renderNPC();
+
+	void renderSkybox();
+
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
-	void MouseSelection(double dt);
+	void renderNPC();
+	void renderExplosion();
+
+	// Others
 	void vehicleUpdates(double dt);
+	void MouseSelection(double dt);
+	void checkHitboxes();
+
+	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
@@ -136,12 +158,15 @@ private:
 	bool enableLight, enableAxis;
 	
 	GAMESTATE state;
+	HITBOXCHECK HBcheck;
 	
 	MousePicker picker;
 	Object station;
 	Object LastLocation;
 	Vehicles ship;
 	Vehicles boat;
+
+    Vehicles* testShip;
 	Vehicles* selection;
 
 	string Ammo;
@@ -152,6 +177,7 @@ private:
 	vector<AABB> worldHitbox;
 	vector<AABB> Interactions;
 	vector<Vehicles*> allVehicles;
+	vector<Vector3> explosionPos;
 	
 	MS modelStack, viewStack, projectionStack;
 };

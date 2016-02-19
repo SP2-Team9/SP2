@@ -8,6 +8,11 @@ AABB::AABB(const Vector3 min, const Vector3 max) : Min(min), Max(max)
 {
 }
 
+AABB::AABB(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
+{
+	Set(minX, minY, minZ, maxX, maxY, maxZ);
+}
+
 AABB::~AABB()
 {
 }
@@ -65,7 +70,8 @@ bool AABB::RayToAABB(Vector3 rayOrigin, Vector3 ray)
 	float T1, T2, Tnear, Tfar;
 	T1 = T2 = Tnear = Tfar = 0.f;
 	Vector3 rayFinal = ray * 10000.f;
-	Vector3 rayDir = (rayFinal - rayOrigin).Normalized();
+	Vector3 rayDir = rayFinal - rayOrigin;
+	rayDir.Normalize();
 
 	// For X Axis
 	Tnear = (Min.x - rayOrigin.x) / rayDir.x;

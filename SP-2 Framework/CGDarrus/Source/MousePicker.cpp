@@ -63,7 +63,6 @@ Vector3 MousePicker::WorldCoord()
 	Vector3 RayOrigin = camera.position;
 	Vector3 RayFinal = currentRay * 10000.f;
 	Vector3 RayDir = RayFinal - RayOrigin;
-	RayDir = RayDir.Normalized();
 	Vector3 PointOnPlane(1, 0, 1);
 
 	// Get D Value
@@ -74,7 +73,6 @@ Vector3 MousePicker::WorldCoord()
 
 	Vector3 ret = RayOrigin + (RayDir * t);
 	ret.y = 0;
-
 	return ret;
 }
 

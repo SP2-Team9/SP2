@@ -89,9 +89,9 @@ void SP2::Init()
 	m_parameters[U_TEXT_COLOR] = glGetUniformLocation(m_programID, "textColor");
 	glUseProgram(m_programID);
 
-	light[0].position.Set(0, 20, -2);
+	light[0].position.Set(-10, 20, 20);
 	light[0].color.Set(1, 1, 1);
-	light[0].power = 0.5f;
+	light[0].power = 1.f;
 	light[0].kC = 1.f;
 	light[0].kL = 0.01f;
 	light[0].kQ = 0.001f;
@@ -154,7 +154,7 @@ void SP2::Init()
     meshList[GEO_LEFTHAND] = MeshBuilder::GenerateOBJ("left hand", "OBJ//lefthand.obj");
     meshList[GEO_LEFTHAND]->textureID = LoadTGA("Image//arms_uv.tga");
 
-   meshList[GEO_RIGHTHAND] = MeshBuilder::GenerateOBJ("right hand", "OBJ//righthand.obj");
+    meshList[GEO_RIGHTHAND] = MeshBuilder::GenerateOBJ("right hand", "OBJ//righthand.obj");
     meshList[GEO_RIGHTHAND]->textureID = LoadTGA("Image//arms_uv.tga");
 
     meshList[GEO_LEFTLEG] = MeshBuilder::GenerateOBJ("left leg", "OBJ//leftleg.obj");
@@ -198,6 +198,8 @@ void SP2::Update(double dt)
 			selection = nullptr;
 			camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
 		}
+		vehicleUpdates(dt);
+		checkHitboxes();
 		break;
 	case FPS:
 		camera.DisableCursor(dt);
@@ -210,9 +212,12 @@ void SP2::Update(double dt)
 			LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
 			camera.PointAt(station, 100, 200);
 		}
+		vehicleUpdates(dt);
+		checkHitboxes();
+		break;
 	}
-	delay += dt;
 
+	delay += dt;
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
 	if (Application::IsKeyPressed('2')) //disable back face culling
@@ -265,7 +270,7 @@ void SP2::Update(double dt)
 
 	//Path finding test
 	blinkDuration += dt;
-	vehicleUpdates(dt);
+
 
     //buy health
     if (Application::IsKeyPressed(' ') && money != 0 && readyToUse >= 0.8f)
@@ -323,6 +328,9 @@ void SP2::Update(double dt)
         }
     }
 
+
+	HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
+
 }
 
 void SP2::Render()
@@ -340,38 +348,54 @@ void SP2::Render()
 	if (enableAxis == true)
 		RenderMesh(meshList[GEO_AXES], false);
 
-	RenderSkybox();
-   // SpaceStation
+	renderSkybox();
+
+	//SpaceStation
+
 	modelStack.PushMatrix();
 	modelStack.Scale(10, 10, 10);
-	RenderMesh(meshList[GEO_SPACE_STATION], false);
+	RenderMesh(meshList[GEO_SPACE_STATION], enableLight);
 	modelStack.PopMatrix();
 
- 
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
+
+	renderExplosion();
 
 	switch (state)
 	{
 	case MainMenu:
-
 		renderTitleScreen();
 		break;
 
 	case RTS:
 
         renderNPC();
+
+		if (Application::IsKeyPressed(VK_LBUTTON))
+		{
+			meshList[GEO_RAY] = MeshBuilder::GenerateLine("Ray", Vector3(0, 200, 0), picker.WorldCoord());
+			modelStack.PushMatrix();
+			RenderMesh(meshList[GEO_RAY], false);
+			modelStack.PopMatrix();
+		}
+
         renderShips();
         renderWayPoints();
         renderFightingUI();
 		break;
 
 	case FPS:
-
+		renderNPC();
 		renderShips();
 		break;
-
 	}
 
+	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), station.hitbox.GetMin(), station.hitbox.GetMax());
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	modelStack.PushMatrix();
+	RenderMesh(meshList[GEO_HITBOX], false);
+	modelStack.PopMatrix();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	
 }
 
@@ -380,6 +404,302 @@ void SP2::Exit()
 	// Cleanup VBO here
 	glDeleteVertexArrays(1, &m_vertexArrayID);
 	glDeleteProgram(m_programID);
+}
+
+// Initializers
+
+void SP2::objectsInit()
+{
+	//Object Init
+	station.SetPos(0, 0, 0);
+	station.SetHitbox(AABB(-15, -25, -15, 15, 10, 15));
+
+	LastLocation.SetPos(0, 1, 0);
+	LastLocation.SetView(0, 0, 1);
+	LastLocation.SetUp(0, 1, 0);
+	LastLocation.SetRight(-1, 0, 0);
+
+	//Vehicles Init
+	ship.SetPos(100, 0, 0);
+	ship.SetView(0, 0, 1);
+	ship.SetHitboxSize(5);
+	ship.SetInteractionSize(10, 10, 10, 10, 10, 10);
+	ship.initialMoveDirection();
+
+	boat.SetPos(100, 0, 0);
+	boat.SetView(0, 0, 1);
+	boat.SetHitboxSize(5);
+	boat.SetInteractionSize(10, 10, 10, 10, 10, 10);
+	boat.initialMoveDirection();
+
+	allVehicles.push_back(&ship);
+	allVehicles.push_back(&boat);
+}
+
+void SP2::WorldHitboxInit()
+{
+	worldHitbox.push_back(AABB(Vector3(-500, -10, -500), Vector3(500, 0, 500)));
+	worldHitbox.push_back(AABB(Vector3(-10, 0, 10), Vector3(10, 10, 15)));
+	worldHitbox.push_back(AABB(Vector3(-10, 0, -15), Vector3(10, 10, -10)));
+	worldHitbox.push_back(AABB(Vector3(8, 0, -10), Vector3(15, 10, 10)));
+	worldHitbox.push_back(AABB(Vector3(-15, 0, -10), Vector3(-8, 10, 10)));
+}
+
+// Renders
+
+void SP2::renderSkybox()
+{
+	modelStack.PushMatrix();
+	float skyboxSize = 1005;
+
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0, -skyboxSize / 2);
+	modelStack.Rotate(90, 1, 0, 0);
+	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
+	RenderMesh(meshList[GEO_FRONT], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0, skyboxSize / 2);
+	modelStack.Rotate(180, 0, 1, 0);
+	modelStack.Rotate(90, 1, 0, 0);
+	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
+	RenderMesh(meshList[GEO_BACK], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-skyboxSize / 2, 0, 0);
+	modelStack.Rotate(90, 0, 1, 0);
+	modelStack.Rotate(90, 1, 0, 0);
+	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
+	RenderMesh(meshList[GEO_LEFT], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(skyboxSize / 2, 0, 0);
+	modelStack.Rotate(-90, 0, 1, 0);
+	modelStack.Rotate(90, 1, 0, 0);
+	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
+	RenderMesh(meshList[GEO_RIGHT], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, skyboxSize / 2, 0);
+	modelStack.Rotate(-90, 0, 1, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Rotate(180, 0, 1, 0);
+	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
+	RenderMesh(meshList[GEO_TOP], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, -skyboxSize / 2, 0);
+	modelStack.Rotate(90, 0, 1, 0);
+	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
+	RenderMesh(meshList[GEO_BOTTOM], false);
+	modelStack.PopMatrix();
+
+	modelStack.PopMatrix();
+}
+
+void SP2::renderTitleScreen(){
+	//start menu
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 100, 420);
+	modelStack.Rotate(270, 1, 0, 0);
+	modelStack.Scale(500, 500, 500);
+	RenderMesh(meshList[GEO_QUAD], false);
+	modelStack.PopMatrix();
+	RenderTextOnScreen(meshList[GEO_TEXT1], "SPACE CONTROL", Color(0, 1, 0), 10, 0.1, 5);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Click to Start", Color(0, 1, 0), 3, 9.5, 7);
+}
+
+void SP2::renderFightingUI(){
+	//Asteroid fighting
+	RenderTextOnScreen(meshList[GEO_TEXT], Health, Color(0, 1, 0), 3, 0, 19);
+	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 0, 18);
+    RenderTextOnScreen(meshList[GEO_TEXT], Money, Color(0, 1, 0), 3, 0, 17);
+}
+
+
+void SP2::objectsInit()
+{
+	//Object Init
+	station.SetPos(0, 0, 0);
+	LastLocation.SetPos(0, 1, 0);
+	LastLocation.SetView(0, 0, 1);
+	LastLocation.SetUp(0, 1, 0);
+	LastLocation.SetRight(-1, 0, 0);
+
+	//Vehicles Init
+	ship.SetPos(100, 0, 0);
+	ship.SetView(0, 0, -1);
+	ship.SetHitboxSize(5);
+	ship.SetInteractionSize(10, 10, 10, 10, 10, 10);
+	ship.initialMoveDirection();
+
+    boat.SetPos(0, 0, 0);
+    boat.SetView(0, 0, 1);
+	boat.SetHitboxSize(5);
+	boat.SetInteractionSize(10, 10, 10, 10, 10, 10);
+	boat.initialMoveDirection();
+
+    testShip = new Vehicles(Vector3(-100, 0, 0), Vector3(1, 0, -1), 50);
+    testShip->SetHitboxSize(5);
+    testShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
+
+
+    allVehicles.push_back(&ship);
+    allVehicles.push_back(&boat);
+    allVehicles.push_back(testShip);
+
+}
+
+void SP2::WorldHitboxInit()
+{
+	worldHitbox.push_back(AABB(Vector3(-500, -10, -500), Vector3(500, 0, 500)));
+	worldHitbox.push_back(AABB(Vector3(-10, 0, 10), Vector3(10, 10, 15)));
+	worldHitbox.push_back(AABB(Vector3(-10, 0, -15), Vector3(10, 10, -10)));
+	worldHitbox.push_back(AABB(Vector3(8, 0, -10), Vector3(15, 10, 10)));
+	worldHitbox.push_back(AABB(Vector3(-15, 0, -10), Vector3(-8, 10, 10)));
+}
+
+void SP2::vehicleUpdates(double dt){
+
+	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+		Vehicles* temp = *vitV;
+		temp->update(dt);
+	}
+
+}
+
+void SP2::renderShips(){
+
+	if (selection)
+	{
+		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), selection->interaction.GetMin(), selection->interaction.GetMax());
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		modelStack.PushMatrix();
+		RenderMesh(meshList[GEO_HITBOX], false);
+		modelStack.PopMatrix();
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+
+	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+
+		Vehicles* currVehicle = *vitV;
+
+		modelStack.PushMatrix();
+		modelStack.Translate(currVehicle->Pos.x, currVehicle->Pos.y, currVehicle->Pos.z);
+		modelStack.Rotate(currVehicle->Yaw, 0, 1, 0);
+		RenderMesh(meshList[GEO_XWING], enableLight);
+		modelStack.PopMatrix();
+
+	}
+
+
+ 
+
+}
+
+void SP2::renderWayPoints(){
+
+
+	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+
+		Vehicles* currVehicle = *vitV;
+		queue<Vector3> currVehicleQueue = currVehicle->newVehicle.getwayPoints();
+
+
+		while (!currVehicleQueue.empty()){
+
+
+			modelStack.PushMatrix();
+
+			modelStack.Translate(currVehicleQueue.front().x, currVehicleQueue.front().y, currVehicleQueue.front().z);
+			RenderMesh(meshList[GEO_LIGHTBALL], false);
+
+			modelStack.PopMatrix();
+
+			currVehicleQueue.pop();
+
+		}
+
+	}
+
+}
+
+void SP2::renderNPC()
+{
+
+    //npc
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0, -move);
+
+    modelStack.PushMatrix();
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_NPC], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 45, 0);
+    modelStack.Rotate(rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_LEFTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 45, 0);
+    modelStack.Rotate(-rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_RIGHTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 10, 0);
+    modelStack.Rotate(moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_RIGHTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 10, 0);
+    modelStack.Rotate(-moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(10, 10, 10);
+    RenderMesh(meshList[GEO_LEFTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PopMatrix();
+}
+
+void SP2::renderExplosion()
+{
+	for (vector<Vector3>::iterator it = explosionPos.begin(); it != explosionPos.end(); ++it)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(it->x, it->y, it->z);
+		modelStack.Rotate(ExplosionYaw, 0, 1, 0);
+		modelStack.Rotate(ExplosionPitch, -1, 0, 0);
+		modelStack.Scale(ExplosionSize, ExplosionSize, ExplosionSize);
+		modelStack.PopMatrix();
+	}
+}
+
+// Others
+
+void SP2::vehicleUpdates(double dt){
+
+	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+		Vehicles* temp = *vitV;
+		temp->update(dt);
+	}
+
 }
 
 void SP2::MouseSelection(double dt)
@@ -391,7 +711,7 @@ void SP2::MouseSelection(double dt)
 		for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); ++it){
 
 			Vehicles* temp = *it;
-			if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay()))
+			if (temp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
 			{
 				selection = temp;
 
@@ -413,6 +733,36 @@ void SP2::MouseSelection(double dt)
 
 	wayPointSetCoolDown += dt;
 }
+
+void SP2::checkHitboxes()
+{
+	switch (HBcheck)
+	{
+	case CheckStation:
+		for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end();)
+		{
+			Vehicles* temp = *it;
+			if (temp->hitbox.AABBtoAABB(station.hitbox, temp->View) == true)
+			{
+				it = allVehicles.erase(it);
+				if (selection == temp)
+				{
+					selection = nullptr;
+				}
+			}
+			else
+				++it;
+		}
+		break;
+	case CheckShips:
+
+		break;
+	case CheckAsteroids:
+		break;
+	}
+}
+
+// Tools
 
 void SP2::RenderMesh(Mesh* mesh, bool enableLight)
 {
@@ -526,228 +876,4 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 	glEnable(GL_DEPTH_TEST);
 }
 
-void SP2::RenderSkybox()
-{
-	modelStack.PushMatrix();
-	float skyboxSize = 1005;
-
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0, -skyboxSize / 2);
-	modelStack.Rotate(90, 1, 0, 0);
-	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
-	RenderMesh(meshList[GEO_FRONT], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0, skyboxSize / 2);
-	modelStack.Rotate(180, 0, 1, 0);
-	modelStack.Rotate(90, 1, 0, 0);
-	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
-	RenderMesh(meshList[GEO_BACK], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-skyboxSize / 2, 0, 0);
-	modelStack.Rotate(90, 0, 1, 0);
-	modelStack.Rotate(90, 1, 0, 0);
-	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
-	RenderMesh(meshList[GEO_LEFT], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(skyboxSize / 2, 0, 0);
-	modelStack.Rotate(-90, 0, 1, 0);
-	modelStack.Rotate(90, 1, 0, 0);
-	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
-	RenderMesh(meshList[GEO_RIGHT], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, skyboxSize / 2, 0);
-	modelStack.Rotate(-90, 0, 1, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Rotate(180, 0, 1, 0);
-	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
-	RenderMesh(meshList[GEO_TOP], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, -skyboxSize / 2, 0);
-	modelStack.Rotate(90, 0, 1, 0);
-	modelStack.Scale(skyboxSize + 5, skyboxSize + 5, skyboxSize + 5);
-	RenderMesh(meshList[GEO_BOTTOM], false);
-	modelStack.PopMatrix();
-
-	modelStack.PopMatrix();
-}
-
-void SP2::renderTitleScreen(){
-	//start menu
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 100, 420);
-	modelStack.Rotate(270, 1, 0, 0);
-	modelStack.Scale(500, 500, 500);
-	RenderMesh(meshList[GEO_QUAD], false);
-	modelStack.PopMatrix();
-	RenderTextOnScreen(meshList[GEO_TEXT1], "SPACE CONTROL", Color(0, 1, 0), 10, 0.1, 5);
-
-	RenderTextOnScreen(meshList[GEO_TEXT], "Click to Start", Color(0, 1, 0), 3, 9.5, 7);
-}
-
-void SP2::renderFightingUI(){
-	//Asteroid fighting
-	RenderTextOnScreen(meshList[GEO_TEXT], Health, Color(0, 1, 0), 3, 0, 19);
-	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 0, 18);
-    RenderTextOnScreen(meshList[GEO_TEXT], Money, Color(0, 1, 0), 3, 0, 17);
-}
-
-void SP2::objectsInit()
-{
-	//Object Init
-	station.SetPos(0, 0, 0);
-	LastLocation.SetPos(0, 1, 0);
-	LastLocation.SetView(0, 0, 1);
-	LastLocation.SetUp(0, 1, 0);
-	LastLocation.SetRight(-1, 0, 0);
-
-
-	//Vehicles Init
-	ship.initialMoveDirection(1, 0);
-	ship.SetPos(0, 0, 0);
-	ship.SetView(0, 0, 1);
-	ship.SetUp(0, 1, 0);
-	ship.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
-
-    boat.initialMoveDirection(-1, 0);
-    boat.SetPos(0, 0, 0);
-    boat.SetView(0, 0, 1);
-    boat.SetUp(0, 1, 0);
-    boat.SetHitbox(AABB(Vector3(ship.Pos.x - 5, ship.Pos.y - 5, ship.Pos.z - 5), Vector3(ship.Pos.x + 5, ship.Pos.y + 5, ship.Pos.z + 5)));
-
-    allVehicles.push_back(&ship);
-    allVehicles.push_back(&boat);
-
-
-}
-
-void SP2::WorldHitboxInit()
-{
-	worldHitbox.push_back(AABB(Vector3(-500, -10, -500), Vector3(500, 0, 500)));
-	worldHitbox.push_back(AABB(Vector3(-10, 0, 10), Vector3(10, 10, 15)));
-	worldHitbox.push_back(AABB(Vector3(-10, 0, -15), Vector3(10, 10, -10)));
-	worldHitbox.push_back(AABB(Vector3(8, 0, -10), Vector3(15, 10, 10)));
-	worldHitbox.push_back(AABB(Vector3(-15, 0, -10), Vector3(-8, 10, 10)));
-}
-
-void SP2::vehicleUpdates(double dt){
-
-	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
-
-		Vehicles* temp = *vitV;
-		temp->update(dt);
-	}
-
-}
-
-void SP2::renderShips(){
-
-	if (selection)
-	{
-		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), selection->hitbox.GetMin(), selection->hitbox.GetMax());
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		modelStack.PushMatrix();
-		RenderMesh(meshList[GEO_HITBOX], false);
-		modelStack.PopMatrix();
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
-
-	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
-
-		Vehicles* currVehicle = *vitV;
-
-		modelStack.PushMatrix();
-		modelStack.Translate(currVehicle->Pos.x, currVehicle->Pos.y, currVehicle->Pos.z);
-		modelStack.Rotate(currVehicle->getRotationAngle(), 0, 1, 0);
-		RenderMesh(meshList[GEO_XWING], false);
-		modelStack.PopMatrix();
-
-	}
-
-
- 
-
-}
-
-void SP2::renderWayPoints(){
-
-
-	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
-
-		Vehicles* currVehicle = *vitV;
-		queue<Vector3> currVehicleQueue = currVehicle->newVehicle.getwayPoints();
-
-
-		while (!currVehicleQueue.empty()){
-
-
-			modelStack.PushMatrix();
-
-			modelStack.Translate(currVehicleQueue.front().x, currVehicleQueue.front().y, currVehicleQueue.front().z);
-			RenderMesh(meshList[GEO_LIGHTBALL], false);
-
-			modelStack.PopMatrix();
-
-			currVehicleQueue.pop();
-
-		}
-
-	}
-
-}
-
-void SP2::renderNPC()
-{
-    //npc
-    modelStack.PushMatrix();
-    modelStack.Translate(0, 0, -move);
-
-    modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_NPC], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Translate(0, 45, 0);
-    modelStack.Rotate(rotate, 1, 0, 0);
-    modelStack.Rotate(180, 1, 0, 0);
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_LEFTHAND], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Translate(0, 45, 0);
-    modelStack.Rotate(-rotate, 1, 0, 0);
-    modelStack.Rotate(180, 1, 0, 0);
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_RIGHTHAND], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Translate(0, 10, 0);
-    modelStack.Rotate(moveleg, 1, 0, 0);
-    modelStack.Rotate(180, 1, 0, 0);
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_RIGHTLEG], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Translate(0, 10, 0);
-    modelStack.Rotate(-moveleg, 1, 0, 0);
-    modelStack.Rotate(180, 1, 0, 0);
-    modelStack.Scale(10, 10, 10);
-    RenderMesh(meshList[GEO_LEFTLEG], false);
-    modelStack.PopMatrix();
-
-    modelStack.PopMatrix();
-}
+>>>>>>> origin/master

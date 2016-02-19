@@ -69,6 +69,50 @@ Mesh* MeshBuilder::GenerateAxes(const std::string &meshName, float lengthX, floa
 /******************************************************************************/
 /*!
 \brief
+Generate the vertices of a reference Axes; Use red for x-axis, green for y-axis, blue for z-axis
+Then generate the VBO/IBO and store them in Mesh object
+
+\param meshName - name of mesh
+\param lengthX - x-axis should start at -lengthX / 2 and end at lengthX / 2
+\param lengthY - y-axis should start at -lengthY / 2 and end at lengthY / 2
+\param lengthZ - z-axis should start at -lengthZ / 2 and end at lengthZ / 2
+
+\return Pointer to mesh storing VBO/IBO of reference axes
+*/
+/******************************************************************************/
+Mesh* MeshBuilder::GenerateLine(const std::string &meshName, Vector3 init, Vector3 end)
+{
+	std::vector<Vertex> vertex_buffer_data;
+	std::vector<GLuint> index_buffer_data;
+	Vertex v;
+
+	v.pos.Set(init.x, init.y, init.z);
+	v.color.Set(0, 1, 0);
+	vertex_buffer_data.push_back(v);
+	v.pos.Set(end.x, end.y, end.z);
+	v.color.Set(0, 1, 0);
+	vertex_buffer_data.push_back(v);
+
+
+	index_buffer_data.push_back(0);
+	index_buffer_data.push_back(1);
+
+	Mesh *mesh = new Mesh(meshName);
+
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, mesh->indexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, index_buffer_data.size() * sizeof(GLuint), &index_buffer_data[0], GL_STATIC_DRAW);
+
+	mesh->indexSize = 6;
+	mesh->mode = Mesh::DRAW_LINES;
+
+	return mesh;
+}
+
+/******************************************************************************/
+/*!
+\brief
 Generate the vertices of a quad; Use random color for each vertex
 Then generate the VBO/IBO and store them in Mesh object
 
