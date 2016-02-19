@@ -83,6 +83,13 @@ class SP2 : public Scene
 		RTS,
 	};
 
+	enum HITBOXCHECK
+	{
+		CheckStation = 0,
+		CheckShips,
+		CheckAsteroids,
+	};
+
 public:
 
 	SP2();
@@ -93,17 +100,25 @@ public:
 	virtual void Render();
 	virtual void Update(double dt);
 	
+	// Initializers
 	void objectsInit();
 	void WorldHitboxInit();
+	
+	// Renders
 	void renderShips();
-	void RenderSkybox();
+	void renderSkybox();
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
 	void renderNPC();
 	void renderExplosion();
-	void MouseSelection(double dt);
+
+	// Others
 	void vehicleUpdates(double dt);
+	void MouseSelection(double dt);
+	void checkHitboxes();
+
+	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
@@ -132,6 +147,7 @@ private:
 	bool enableLight, enableAxis;
 	
 	GAMESTATE state;
+	HITBOXCHECK HBcheck;
 	
 	MousePicker picker;
 	Object station;

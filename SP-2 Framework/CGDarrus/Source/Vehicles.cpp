@@ -40,12 +40,11 @@ Vehicles::~Vehicles(){
 }
 
 void Vehicles::update(double dt){
-
-	Yaw = getRotationAngle();
 	newVehicle.pathRoute(dt);
 	SetPos(newVehicle.getCurrentLocation().x, 0, newVehicle.getCurrentLocation().z);
 	SetHitbox(AABB(Vector3(Pos.x - HitboxSize, Pos.y - HitboxSize, Pos.z - HitboxSize), Vector3(Pos.x + HitboxSize, Pos.y + HitboxSize, Pos.z + HitboxSize)));
 	SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
+	Yaw = getRotationAngle();
 }
 
 

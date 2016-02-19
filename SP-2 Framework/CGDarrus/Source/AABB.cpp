@@ -8,6 +8,11 @@ AABB::AABB(const Vector3 min, const Vector3 max) : Min(min), Max(max)
 {
 }
 
+AABB::AABB(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
+{
+	Set(minX, minY, minZ, maxX, maxY, maxZ);
+}
+
 AABB::~AABB()
 {
 }

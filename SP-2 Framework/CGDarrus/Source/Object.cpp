@@ -26,6 +26,7 @@ void Object::SetHitbox(AABB hitbox)
 void Object::SetHitboxSize(float size)
 {
 	HitboxSize = size;
+	SetHitbox(AABB(Pos.x - size, Pos.y - size, Pos.z - size, Pos.x + size, Pos.y + size, Pos.z + size));
 }
 
 void Object::SetInteraction(AABB interaction)

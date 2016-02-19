@@ -15,6 +15,7 @@ private:
 public:
 	AABB();
 	AABB(const Vector3 min, const Vector3 max);
+	AABB(float minX, float minY, float minZ, float maxX, float maxY, float maxZ);
 	~AABB();
 
 	void Set(const Vector3 min, const Vector3 max);
