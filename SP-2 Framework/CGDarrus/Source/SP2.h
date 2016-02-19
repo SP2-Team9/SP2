@@ -24,6 +24,7 @@ class SP2 : public Scene
 	enum GEOMETRY_TYPE
 	{
 		GEO_AXES,
+		GEO_RAY,
 		GEO_QUAD,
 		GEO_LIGHTBALL,
 		GEO_FRONT,

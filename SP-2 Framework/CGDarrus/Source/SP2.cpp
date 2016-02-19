@@ -299,6 +299,13 @@ void SP2::Render()
 		break;
 
 	case RTS:
+		if (Application::IsKeyPressed(VK_LBUTTON))
+		{
+			meshList[GEO_RAY] = MeshBuilder::GenerateLine("Ray", Vector3(0, 200, 0), picker.WorldCoord());
+			modelStack.PushMatrix();
+			RenderMesh(meshList[GEO_RAY], false);
+			modelStack.PopMatrix();
+		}
         renderShips();
         renderWayPoints();
         renderFightingUI();
@@ -604,20 +611,7 @@ void SP2::checkHitboxes()
 		}
 		break;
 	case CheckShips:
-		for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end();)
-		{
-			Vehicles* temp = *it;
-			if (temp->hitbox.AABBtoAABB(station.hitbox, temp->View) == true)
-			{
-				it = allVehicles.erase(it);
-				if (selection == temp)
-				{
-					selection = nullptr;
-				}
-			}
-			else
-				++it;
-		}
+
 		break;
 	case CheckAsteroids:
 		break;
