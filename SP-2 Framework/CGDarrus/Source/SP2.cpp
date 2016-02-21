@@ -202,19 +202,46 @@ void SP2::Update(double dt)
 		checkHitboxes();
 		break;
 	case FPS:
-		camera.DisableCursor(dt);
+		camera.DisableCursor();
 		camera.FPSMovement(dt, worldHitbox);
 		if (Application::IsKeyPressed('E') && delay >= 1.f)
 		{
-			delay = 0;
-			state = RTS;
-			LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
-			LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
-			camera.PointAt(station, 100, 200);
+			if (Interactions[0].PointToAABB(camera.position))
+			{
+				delay = 0;
+				state = TPS;
+				LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
+				LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
+				camera.PointAt(playerShip, 20, 30);
+			}
+			else
+			{
+				delay = 0;
+				state = RTS;
+				LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
+				LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
+				camera.PointAt(station, 100, 200);
+			}
 		}
 		vehicleUpdates(dt);
 		checkHitboxes();
         NPCUpdates(dt);
+		break;
+	case TPS:
+		camera.DisableCursor();
+		camera.TPSMovement(dt, playerShip, worldHitbox);
+		vehicleUpdates(dt);
+		checkHitboxes();
+		NPCUpdates(dt);
+		if (Application::IsKeyPressed('E') && delay >= 1.f)
+		{
+			if (playerShip.hitbox.AABBtoAABB(Interactions[1], playerShip.View))
+			{
+				delay = 0;
+				state = FPS;
+				camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
+			}
+		}
 		break;
 	}
 
@@ -271,7 +298,6 @@ void SP2::Update(double dt)
 
 	//Path finding test
 	blinkDuration += dt;
-
 
     //buy health
     if (Application::IsKeyPressed(' ') && money != 0 && readyToUse >= 0.8f)
@@ -330,23 +356,20 @@ void SP2::Render()
 
         renderShips();
         renderWayPoints();
-        renderFightingUI();
 		break;
 
 	case FPS:
-
 		renderNPC();
 		renderShips();
 		break;
+
+	case TPS:
+		renderShips();
+		renderFightingUI();
+		break;
 	}
 
-	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), station.hitbox.GetMin(), station.hitbox.GetMax());
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	modelStack.PushMatrix();
-	RenderMesh(meshList[GEO_HITBOX], false);
-	modelStack.PopMatrix();
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	
+	renderAllHitbox();
 }
 
 void SP2::Exit()
@@ -369,6 +392,13 @@ void SP2::objectsInit()
 	LastLocation.SetUp(0, 1, 0);
 	LastLocation.SetRight(-1, 0, 0);
 
+	//Player Vehicle
+	playerShip.SetPos(0, 50, 0);
+	playerShip.SetView(0, 0, 1);
+	playerShip.SetRight(-1, 0, 0);
+	playerShip.SetHitboxSize(5);
+	
+
 	//Vehicles Init
 	ship.SetPos(100, 0, 0);
 	ship.SetView(0, 0, 1);
@@ -388,11 +418,15 @@ void SP2::objectsInit()
 
 void SP2::WorldHitboxInit()
 {
-	worldHitbox.push_back(AABB(Vector3(-500, -10, -500), Vector3(500, 0, 500)));
+	worldHitbox.push_back(AABB(Vector3(-10, -10, -10), Vector3(10, 0, 10)));
+	worldHitbox.push_back(AABB(Vector3(-10, 8, -10), Vector3(10, 10, 10)));
 	worldHitbox.push_back(AABB(Vector3(-10, 0, 10), Vector3(10, 10, 15)));
 	worldHitbox.push_back(AABB(Vector3(-10, 0, -15), Vector3(10, 10, -10)));
 	worldHitbox.push_back(AABB(Vector3(8, 0, -10), Vector3(15, 10, 10)));
 	worldHitbox.push_back(AABB(Vector3(-15, 0, -10), Vector3(-8, 10, 10)));
+
+	Interactions.push_back(AABB(-1, 0, -1, 1, 2, 1));
+	Interactions.push_back(AABB(-20, 0, -20, 20, 20, 20));
 }
 
 // Renders
@@ -497,9 +531,12 @@ void SP2::renderShips(){
 
 	}
 
-
- 
-
+	modelStack.PushMatrix();
+	modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
+	modelStack.Rotate(playerShip.pitch, playerShip.Right.x, 0, playerShip.Right.z);
+	modelStack.Rotate(playerShip.yaw, 0, 1, 0);
+	RenderMesh(meshList[GEO_XWING], enableLight);
+	modelStack.PopMatrix();
 }
 
 void SP2::renderWayPoints(){
@@ -587,6 +624,39 @@ void SP2::renderExplosion()
 		modelStack.Scale(ExplosionSize, ExplosionSize, ExplosionSize);
 		modelStack.PopMatrix();
 	}
+}
+
+void SP2::renderAllHitbox()
+{
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+	for (vector<AABB>::iterator it = Interactions.begin(); it != Interactions.end(); ++it)
+	{
+		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), it->GetMin(), it->GetMax());
+		modelStack.PushMatrix();
+		RenderMesh(meshList[GEO_HITBOX], false);
+		modelStack.PopMatrix();
+	}
+	
+	for (vector<AABB>::iterator it = worldHitbox.begin(); it != worldHitbox.end(); ++it)
+	{
+		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), it->GetMin(), it->GetMax());
+		modelStack.PushMatrix();
+		RenderMesh(meshList[GEO_HITBOX], false);
+		modelStack.PopMatrix();
+	}
+
+	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), station.hitbox.GetMin(), station.hitbox.GetMax());
+	modelStack.PushMatrix();
+	RenderMesh(meshList[GEO_HITBOX], false);
+	modelStack.PopMatrix();
+
+	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), playerShip.hitbox.GetMin(), playerShip.hitbox.GetMax());
+	modelStack.PushMatrix();
+	RenderMesh(meshList[GEO_HITBOX], false);
+	modelStack.PopMatrix();
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 // Others

@@ -9,6 +9,7 @@
 #include "MousePicker.h"
 #include "Vehicles.h"
 #include "pathFinding.h"
+#include "PlayerVehicle.h"
 #include "Object.h"
 
 #include <queue>
@@ -82,6 +83,7 @@ class SP2 : public Scene
 		MainMenu = 0,
 		FPS,
 		RTS,
+		TPS,
 	};
 
 	enum HITBOXCHECK
@@ -114,6 +116,7 @@ public:
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
+	void renderAllHitbox();
 	
 	
 
@@ -174,6 +177,7 @@ private:
 
     Vehicles* testShip;
 	Vehicles* selection;
+	PlayerVehicle playerShip;
 
 	string Ammo;
 	string Health;
