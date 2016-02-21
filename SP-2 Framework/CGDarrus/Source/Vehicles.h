@@ -29,14 +29,13 @@ public:
 	
 
 
-	float Yaw, delay, initialYaw;
+	float Yaw, Pitch, delay, initialYaw;
 
 	bool board, isDead;
 
 	pathFinding newVehicle;
 
    
-
 };
 
 

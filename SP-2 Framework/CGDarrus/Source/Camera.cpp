@@ -281,151 +281,151 @@ void Camera::FPSMovement(double dt, vector<AABB> hitbox)
 	}
 }
 
-//void Camera::TPSMovement(double dt, Vehicles& veh, vector <AABB> hitbox)
-//{
-//	if (veh.delay > 0)
-//		veh.delay -= dt;
-//	if (Application::IsKeyPressed(VK_LSHIFT) && veh.Thrust < 1000)
-//	{
-//		veh.Thrust += 50.f * dt;
-//	}
-//
-//	if (Application::IsKeyPressed(VK_LCONTROL))
-//	{
-//		veh.Thrust -= 50.f * dt;
-//	}
-//
-//	if (veh.Thrust != 0)
-//	{
-//		bool checkX, checkY, checkZ;
-//		checkX = checkY = checkZ = false;
-//		for (int i = 0; i < hitbox.size(); ++i)
-//		{
-//			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(veh.View.x * dt * veh.Thrust, 0, 0)) && checkX == false)
-//			{
-//				checkX = true;
-//			}
-//			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(0, veh.View.y * dt * veh.Thrust, 0)) && checkY == false)
-//			{
-//				checkY = true;
-//			}
-//			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(0, 0, veh.View.z * dt * veh.Thrust)) && checkZ == false)
-//			{
-//				checkZ = true;
-//			}
-//		}
-//		if (!checkX)
-//		{
-//			veh.Pos.x += veh.View.x * dt * veh.Thrust;
-//			target.x += veh.View.x * dt * veh.Thrust;
-//			position.x += veh.View.x * dt * veh.Thrust;
-//		}
-//		if (!checkY)
-//		{
-//			veh.Pos.y += veh.View.y * dt * veh.Thrust;
-//			target.y += veh.View.y * dt * veh.Thrust;
-//			position.y += veh.View.y * dt * veh.Thrust;
-//		}
-//		if (!checkZ)
-//		{
-//			veh.Pos.z += veh.View.z * dt * veh.Thrust;
-//			target.z += veh.View.z * dt * veh.Thrust;
-//			position.z += veh.View.z * dt * veh.Thrust;
-//		}
-//
-//		if (checkX == true && veh.Thrust >= 500 || checkY == true && veh.Thrust >= 500 || checkZ == true && veh.Thrust >= 500)
-//		{
-//			veh.isDead = true;
-//		}
-//
-//		veh.hitbox = AABB(Vector3(veh.Pos.x - 100, veh.Pos.y - 25, veh.Pos.z - 60), Vector3(veh.Pos.x + 100, veh.Pos.y + 80, veh.Pos.z + 60));
-//	}
-//
-//	if (pitch != 0)
-//	{
-//		Mtx44 rotation;
-//		rotation.SetToRotation(pitch, right.x, right.y, right.z);
-//		view = rotation * view;
-//		position = target - view * 200.f;
-//		up = rotation * up;
-//		right = rotation * right;
-//	}
-//	if (yaw != 0)
-//	{
-//		Mtx44 rotation;
-//		rotation.SetToRotation(yaw, 0, 1, 0);
-//		view = rotation *view;
-//		position.x = target.x - view.x * 200.f;
-//		position.z = target.z - view.z * 200.f;
-//		up = rotation * up;
-//		right = rotation * right;
-//	}
-//
-//	if (Application::IsKeyPressed('W'))
-//	{
-//		Mtx44 rotation;
-//		veh.Pitch -= dt * 50.f;
-//		rotation.SetToRotation(-(dt * 50.f), veh.Right.x, veh.Right.y, veh.Right.z);
-//		veh.View = rotation * veh.View;
-//		veh.Up = rotation * veh.Up;
-//		veh.Right = rotation * veh.Right;
-//	}
-//
-//	if (Application::IsKeyPressed('S'))
-//	{
-//		Mtx44 rotation;
-//		veh.Pitch += dt * 50.f;
-//		rotation.SetToRotation(dt * 50.f, veh.Right.x, veh.Right.y, veh.Right.z);
-//		veh.View = rotation * veh.View;
-//		veh.Up = rotation * veh.Up;
-//		veh.Right = rotation * veh.Right;
-//	}
-//
-//	if (Application::IsKeyPressed('A'))
-//	{
-//		Mtx44 rotation;
-//		veh.Yaw += dt * 50.f;
-//		rotation.SetToRotation(dt * 50.f, 0, 1, 0);
-//		veh.View = rotation * veh.View;
-//		veh.Up = rotation * veh.Up;
-//		veh.Right = rotation * veh.Right;
-//	}
-//
-//	if (Application::IsKeyPressed('D'))
-//	{
-//		Mtx44 rotation;
-//		veh.Yaw -= dt * 50.f;
-//		rotation.SetToRotation(-(dt * 50.f), 0, 1, 0);
-//		veh.View = rotation * veh.View;
-//		veh.Up = rotation * veh.Up;
-//		veh.Right = rotation * veh.Right;
-//	}
-//
-//	if (Application::IsKeyPressed('E') && veh.Thrust < 50.f && veh.delay <= 0)
-//	{
-//		bool checkY = false;
-//		for (int i = 0; i < hitbox.size(); ++i)
-//		{
-//			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(0, -2, 0)) && checkY == false)
-//			{
-//				checkY = true;
-//			}
-//		}
-//		if (checkY == true)
-//		{
-//			veh.Pitch = 0;
-//			veh.Thrust = 0;
-//			veh.View.y = 0;
-//			position = veh.Pos - Vector3(0, 10, -30);
-//			target = position + Vector3(veh.View.x, 0, veh.View.z);
-//			view = veh.View;
-//			right = veh.Right;
-//			up = right.Cross(view);
-//			veh.interaction = AABB(Vector3(veh.Pos.x - 20, veh.Pos.y - 30, veh.Pos.z - 20), Vector3(veh.Pos.x + 20, veh.Pos.y, veh.Pos.z + 20));
-//			veh.board = false;
-//		}
-//	}
-//}
+void Camera::TPSMovement(double dt, Vehicles& veh, vector <AABB> hitbox)
+{
+	if (veh.delay > 0)
+		veh.delay -= dt;
+	if (Application::IsKeyPressed(VK_LSHIFT) && veh.newVehicle.getSpeed() < 1000)
+	{
+		veh.newVehicle.setSpeed(veh.newVehicle.getSpeed() + 50.f * dt);
+	}
+
+	if (Application::IsKeyPressed(VK_LCONTROL))
+	{
+		veh.newVehicle.setSpeed(veh.newVehicle.getSpeed() + 50.f * dt);
+	}
+
+	if (veh.newVehicle.getSpeed() != 0)
+	{
+		bool checkX, checkY, checkZ;
+		checkX = checkY = checkZ = false;
+		for (int i = 0; i < hitbox.size(); ++i)
+		{
+			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(veh.View.x * dt * veh.newVehicle.getSpeed(), 0, 0)) && checkX == false)
+			{
+				checkX = true;
+			}
+			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(0, veh.View.y * dt * veh.newVehicle.getSpeed(), 0)) && checkY == false)
+			{
+				checkY = true;
+			}
+			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(0, 0, veh.View.z * dt * veh.newVehicle.getSpeed())) && checkZ == false)
+			{
+				checkZ = true;
+			}
+		}
+		if (!checkX)
+		{
+			veh.Pos.x += veh.View.x * dt * veh.newVehicle.getSpeed();
+			target.x += veh.View.x * dt * veh.newVehicle.getSpeed();
+			position.x += veh.View.x * dt * veh.newVehicle.getSpeed();
+		}
+		if (!checkY)
+		{
+			veh.Pos.y += veh.View.y * dt * veh.newVehicle.getSpeed();
+			target.y += veh.View.y * dt * veh.newVehicle.getSpeed();
+			position.y += veh.View.y * dt * veh.newVehicle.getSpeed();
+		}
+		if (!checkZ)
+		{
+			veh.Pos.z += veh.View.z * dt * veh.newVehicle.getSpeed();
+			target.z += veh.View.z * dt * veh.newVehicle.getSpeed();
+			position.z += veh.View.z * dt * veh.newVehicle.getSpeed();
+		}
+
+		if (checkX == true && veh.newVehicle.getSpeed() >= 500 || checkY == true && veh.newVehicle.getSpeed() >= 500 || checkZ == true && veh.newVehicle.getSpeed() >= 500)
+		{
+			veh.isDead = true;
+		}
+
+		veh.hitbox = AABB(Vector3(veh.Pos.x - 100, veh.Pos.y - 25, veh.Pos.z - 60), Vector3(veh.Pos.x + 100, veh.Pos.y + 80, veh.Pos.z + 60));
+	}
+
+	if (pitch != 0)
+	{
+		Mtx44 rotation;
+		rotation.SetToRotation(pitch, right.x, right.y, right.z);
+		view = rotation * view;
+		position = target - view * 200.f;
+		up = rotation * up;
+		right = rotation * right;
+	}
+	if (yaw != 0)
+	{
+		Mtx44 rotation;
+		rotation.SetToRotation(yaw, 0, 1, 0);
+		view = rotation *view;
+		position.x = target.x - view.x * 200.f;
+		position.z = target.z - view.z * 200.f;
+		up = rotation * up;
+		right = rotation * right;
+	}
+
+	if (Application::IsKeyPressed('W'))
+	{
+		Mtx44 rotation;
+		veh.Pitch -= dt * 50.f;
+		rotation.SetToRotation(-(dt * 50.f), veh.Right.x, veh.Right.y, veh.Right.z);
+		veh.View = rotation * veh.View;
+		veh.Up = rotation * veh.Up;
+		veh.Right = rotation * veh.Right;
+	}
+
+	if (Application::IsKeyPressed('S'))
+	{
+		Mtx44 rotation;
+		veh.Pitch += dt * 50.f;
+		rotation.SetToRotation(dt * 50.f, veh.Right.x, veh.Right.y, veh.Right.z);
+		veh.View = rotation * veh.View;
+		veh.Up = rotation * veh.Up;
+		veh.Right = rotation * veh.Right;
+	}
+
+	if (Application::IsKeyPressed('A'))
+	{
+		Mtx44 rotation;
+		veh.Yaw += dt * 50.f;
+		rotation.SetToRotation(dt * 50.f, 0, 1, 0);
+		veh.View = rotation * veh.View;
+		veh.Up = rotation * veh.Up;
+		veh.Right = rotation * veh.Right;
+	}
+
+	if (Application::IsKeyPressed('D'))
+	{
+		Mtx44 rotation;
+		veh.Yaw -= dt * 50.f;
+		rotation.SetToRotation(-(dt * 50.f), 0, 1, 0);
+		veh.View = rotation * veh.View;
+		veh.Up = rotation * veh.Up;
+		veh.Right = rotation * veh.Right;
+	}
+
+	if (Application::IsKeyPressed('E') && veh.newVehicle.getSpeed() < 50.f && veh.delay <= 0)
+	{
+		bool checkY = false;
+		for (int i = 0; i < hitbox.size(); ++i)
+		{
+			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(0, -2, 0)) && checkY == false)
+			{
+				checkY = true;
+			}
+		}
+		if (checkY == true)
+		{
+			veh.Pitch = 0;
+			veh.newVehicle.setSpeed(0);
+			veh.View.y = 0;
+			position = veh.Pos - Vector3(0, 10, -30);
+			target = position + Vector3(veh.View.x, 0, veh.View.z);
+			view = veh.View;
+			right = veh.Right;
+			up = right.Cross(view);
+			veh.interaction = AABB(Vector3(veh.Pos.x - 20, veh.Pos.y - 30, veh.Pos.z - 20), Vector3(veh.Pos.x + 20, veh.Pos.y, veh.Pos.z + 20));
+			veh.board = false;
+		}
+	}
+}
 
 void Camera::NoClip(double dt)
 {
