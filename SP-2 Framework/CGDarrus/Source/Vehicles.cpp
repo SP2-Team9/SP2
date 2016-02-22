@@ -74,7 +74,7 @@ isDead(false)
 
 */
 /////////////////////////////////////////////////////////////////
-Vehicles::Vehicles(Vector3 position, Vector3 viewDirection, float newSpeed) :
+Vehicles::Vehicles(Vector3 position, Vector3 viewDirection, float newSpeed, int newHealth) :
 board(false),
 isDead(false)
 {
@@ -87,7 +87,7 @@ isDead(false)
     newVehicle.setCurrentLocation(position);
     initialYaw = getRotationAngle(viewDirection);
 
-
+    health = newHealth;
 
 }
 
@@ -127,19 +127,28 @@ Vehicles::~Vehicles(){
 /////////////////////////////////////////////////////////////////
 void Vehicles::update(double dt){
 
+    if (health <= 0){
 
-	newVehicle.pathRoute(dt);
-    Pos = newVehicle.getCurrentLocation();
-	SetHitbox(AABB(Vector3(Pos.x - HitboxSize, Pos.y - HitboxSize, Pos.z - HitboxSize), Vector3(Pos.x + HitboxSize, Pos.y + HitboxSize, Pos.z + HitboxSize)));
+        isDead = true;
 
-	SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
-	Yaw = getRotationAngle();
+    }
 
-    SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
-    getRotationAngle();
+    if (!isDead){
+
+        newVehicle.pathRoute(dt);
+        Pos = newVehicle.getCurrentLocation();
+        SetHitbox(AABB(Vector3(Pos.x - HitboxSize, Pos.y - HitboxSize, Pos.z - HitboxSize), Vector3(Pos.x + HitboxSize, Pos.y + HitboxSize, Pos.z + HitboxSize)));
+
+        SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
+        Yaw = getRotationAngle();
+
+        SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
+        getRotationAngle();
 
 
-    Pos.y = 0;
+        Pos.y = 0;
+
+    }
 
 }
 
@@ -240,7 +249,7 @@ float Vehicles::getRotationAngle(){
 /////////////////////////////////////////////////////////////////
 /*!
 
-* \method: getRotationAngle
+* \method: setThrust
 
 * \author: Wong Keng Han Ashley
 
@@ -280,5 +289,4 @@ float Vehicles::getRotationAngle(Vector3 newView){
     }
 
     return degree;
-
 }

@@ -28,11 +28,16 @@ SP2::~SP2()
 		delete *it;
 		it = Vasteroid.erase(it);
 	}
+	 for (vector<Bullet*>::iterator it = playerBullets.begin(); it != playerBullets.end(); it++){
+
+        delete *it;
+        it = playerBullets.erase(it);
+
+    }
 
 	delete selection;
 	delete testShip;
 }
-
 
 void SP2::Init()
 {
@@ -132,6 +137,8 @@ void SP2::Init()
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("reference", 1000, 1000, 1000);
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("Lightball", Color(0, 1, 0), 18, 36);
 
+    meshList[GEO_BULLETS] = MeshBuilder::GenerateSphere("Bullets", Color(1, 0, 0), 18, 36);
+
 	meshList[GEO_FRONT] = MeshBuilder::GenerateQuad("Front", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_FRONT]->textureID = LoadTGA("Image//front.tga");
 
@@ -221,6 +228,8 @@ void SP2::Update(double dt)
 		picker.set(camera, projectionStack.Top());
 		picker.update();
 		MouseSelection(dt);
+        shipBulletCreation(dt);
+        bulletUpdates(dt);
 		if (Application::IsKeyPressed('E') && delay >= 1.f)
 		{
 			delay = 0;
@@ -265,7 +274,7 @@ void SP2::Update(double dt)
 		vehicleUpdates(dt);
 		checkHitboxes();
 		NPCUpdates(dt);
-        bulletCreation(dt);
+        playerBulletCreation(dt);
         bulletUpdates(dt);
 		if (Application::IsKeyPressed('E') && delay >= 1.f)
 		{
@@ -290,7 +299,7 @@ void SP2::Update(double dt)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
 
 	//Enable Light
-	if (Application::IsKeyPressed(VK_SPACE) && readyToUse >= 3.f)
+	if (Application::IsKeyPressed('P') && readyToUse >= 3.f)
 	{
 		readyToUse = 0.f;
 		if (enableLight)
@@ -401,11 +410,11 @@ void SP2::Render()
 
 	case TPS:
 		renderShips();
-        renderBullets();
 		renderFightingUI();
 		break;
 	}
 
+    renderBullets();
 	renderAllHitbox();
 	quests();
 }
@@ -439,20 +448,18 @@ void SP2::objectsInit()
 	playerShip.SetHitboxSize(5);
 
 	//Vehicles Init
-	ship.SetPos(100, 0, 0);
-	ship.SetView(0, 0, 1);
-	ship.SetHitboxSize(5);
-	ship.SetInteractionSize(10, 10, 10, 10, 10, 10);
-	ship.initialMoveDirection();
+    ship = new Vehicles(Vector3(100, 0, -100), Vector3(0, 0, 1), 20, 50);
+	ship->SetHitboxSize(5);
+    ship->SetInteractionSize(10, 10, 10, 10, 10, 10);
+    ship->initialMoveDirection();
 
-	boat.SetPos(100, 0, 0);
-	boat.SetView(0, 0, 1);
-	boat.SetHitboxSize(5);
-	boat.SetInteractionSize(10, 10, 10, 10, 10, 10);
-	boat.initialMoveDirection();
+    boat = new Vehicles(Vector3(100, 0, -100), Vector3(1, 0, 0), 30, 50);
+    boat->SetHitboxSize(5);
+    boat->SetInteractionSize(10, 10, 10, 10, 10, 10);
+    boat->initialMoveDirection();
 
-	allVehicles.push_back(&ship);
-	allVehicles.push_back(&boat);
+	allVehicles.push_back(ship);
+	allVehicles.push_back(boat);
 }
 
 void SP2::WorldHitboxInit()
@@ -468,7 +475,28 @@ void SP2::WorldHitboxInit()
 	Interactions.push_back(AABB(-20, 0, -20, 20, 20, 20));
 }
 
-void SP2::bulletCreation(double dt){
+void SP2::shipBulletCreation(double dt){
+
+
+    if (Application::IsKeyPressed(VK_SPACE) && bulletCooldown > 0.5 && selection != nullptr){
+
+        Mtx44 rotation;
+        rotation.SetToRotation(selection->getRotationAngle(), 0, 1, 0);
+
+        Vector3 view = rotation * selection->View;
+
+        Bullet* newBullet = new Bullet(view, selection->Pos);
+
+        playerBullets.push_back(newBullet);
+        bulletCooldown = 0;
+
+    }
+
+    bulletCooldown += dt;
+
+}
+
+void SP2::playerBulletCreation(double dt){
 
     if (Application::IsKeyPressed(VK_LBUTTON) && bulletCooldown > 0.5){
 
@@ -483,6 +511,7 @@ void SP2::bulletCreation(double dt){
 
 }
 
+
 void SP2::generateAsteroid()
 {
 	if (generate_range(0, 100) < 20)
@@ -494,6 +523,7 @@ void SP2::generateAsteroid()
 		Vasteroid.push_back(asteroid);
 	}
 }
+
 
 // Renders
 
@@ -737,7 +767,7 @@ void SP2::renderBullets(){
         modelStack.PushMatrix();
 
         modelStack.Translate(temp->Pos.x, temp->Pos.y, temp->Pos.z);
-        RenderMesh(meshList[GEO_LIGHTBALL], false);
+        RenderMesh(meshList[GEO_BULLETS], false);
 
         modelStack.PopMatrix();
 

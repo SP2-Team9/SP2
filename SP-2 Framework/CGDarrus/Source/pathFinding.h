@@ -26,6 +26,7 @@ using std::queue;
 class pathFinding{
 
 public:
+
 	pathFinding();
 	pathFinding(Vector3 location, Vector3 endlocation);
 	virtual ~pathFinding();

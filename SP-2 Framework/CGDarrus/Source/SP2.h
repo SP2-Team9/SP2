@@ -27,6 +27,7 @@ class SP2 : public Scene
 {
 	enum GEOMETRY_TYPE
 	{
+
 		GEO_AXES,
 		GEO_RAY,
 		GEO_QUAD,
@@ -46,12 +47,31 @@ class SP2 : public Scene
 		GEO_SPACE_STATION,
 		GEO_HITBOX,
 
+
+        GEO_AXES,
+        GEO_RAY,
+        GEO_QUAD,
+        GEO_LIGHTBALL,
+        GEO_FRONT,
+        GEO_BACK,
+        GEO_LEFT,
+        GEO_RIGHT,
+        GEO_TOP,
+        GEO_BOTTOM,
+        GEO_TEXT,
+        GEO_TEXT1,
+        GEO_XWING,
+        GEO_CONTROL_PANEL,
+        GEO_SPACE_STATION,
+        GEO_HITBOX,
         GEO_NPC,
         GEO_LEFTHAND,
         GEO_RIGHTHAND,
         GEO_LEFTLEG,
         GEO_RIGHTLEG,
+        GEO_BULLETS,
 		NUM_GEOMETRY,
+
 	};
 	enum UNIFORM_TYPE
 	{
@@ -114,6 +134,8 @@ public:
 	void WorldHitboxInit();
     void bulletCreation(double dt);
 	void generateAsteroid();
+    void shipBulletCreation(double dt);
+    void playerBulletCreation(double dt);
 	
 	// Renders
     void renderNPC();
@@ -128,12 +150,13 @@ public:
 	void renderTitleScreen();
 
 	// Others
+	void quests();
     void checkHitboxes();
     void NPCUpdates(double dt);
     void bulletUpdates(double dt);
 	void vehicleUpdates(double dt);
 	void MouseSelection(double dt);
-	void quests();
+	
 
 
 	// Tools
@@ -170,10 +193,10 @@ private:
     float rotate;
     float moveleg;
 
-    bool restart = 0;
-    bool restart2 = 0;
-	bool blink = 0;
-	bool re = 0;
+    bool restart = false;
+    bool restart2 = false;
+	bool blink = false;
+	bool re = false;
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay, second;
 
 
@@ -189,9 +212,9 @@ private:
 	Object LastLocation;
 	Object NPC;
 
-	Vehicles ship;
-	Vehicles boat;
 
+	Vehicles *ship;
+	Vehicles *boat;
     Vehicles* testShip;
 	Vehicles* selection;
 
@@ -208,7 +231,7 @@ private:
 	vector<Vector3> explosionPos;
     vector<Bullet*> playerBullets;
 	vector<Asteroid*> Vasteroid;
-    
+
 
 	MS modelStack, viewStack, projectionStack;
 };

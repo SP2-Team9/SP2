@@ -28,8 +28,7 @@
 
 */
 /////////////////////////////////////////////////////////////////
-Bullet::Bullet(Vector3 newView, Vector3 playerPos) :
-bulletSpeed(1000)
+Bullet::Bullet(Vector3 newView, Vector3 playerPos)
 {
 
     Pos = playerPos;

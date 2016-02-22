@@ -34,10 +34,9 @@ public:
 
 private:
 
-
-    float bulletSpeed;
-
-    float bulletMaxRange = 100;
+    float bulletSpeed = 300;
+    float BulletDamage = 10;
+    float bulletMaxRange = 200;
 
     Vector3 initialPosition;
 
