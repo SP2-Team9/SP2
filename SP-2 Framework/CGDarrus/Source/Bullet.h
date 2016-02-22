@@ -1,0 +1,49 @@
+#ifndef _BULLET_H
+#define _BULLET_H
+
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \File Name: Vehicles.h
+
+* \author: Wong Keng Han Ashley
+
+* \date: 22 feb 2016
+
+* \description: functions and data for all bullets
+
+*/
+/////////////////////////////////////////////////////////////////
+#include "Object.h"
+#include "pathFinding.h"
+#include "AABB.h"
+#include "Vector3.h"
+#include "Mtx44.h"
+
+class Bullet : public Object{
+
+public:
+
+    Bullet(Vector3 View, Vector3 playerPos);
+    ~Bullet();
+  
+    void bulletUpdate(double dt);
+    void bulletMovement(double dt);
+
+    bool furtherThanBulletMaxRange();
+
+private:
+
+
+    float bulletSpeed;
+
+    float bulletMaxRange = 100;
+
+    Vector3 initialPosition;
+
+
+
+
+};
+
+#endif
