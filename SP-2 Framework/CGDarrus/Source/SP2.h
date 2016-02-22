@@ -173,8 +173,7 @@ private:
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay;
 
 
-    bool restart = false;
-    bool restart2 = false;
+ 
 	bool enableLight, enableAxis;
 
 	GAMESTATE state;

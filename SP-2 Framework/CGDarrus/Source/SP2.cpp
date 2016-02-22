@@ -393,6 +393,7 @@ void SP2::Render()
 	}
 
 	renderAllHitbox();
+	quests();
 }
 
 void SP2::Exit()
@@ -985,7 +986,7 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 
 void SP2::quests()
 {
-	if (camera.position.z - NPC.Pos.z < 5.f)
+	if (NPC.Pos.z - camera.position.z  < 5.f)
 	{
 		RenderTextOnScreen(meshList[GEO_TEXT], "HI", Color(0, 1, 0), 10, 0, 5);
 	}
