@@ -9,6 +9,7 @@
 #include "LoadTGA.h"
 
 
+
 SP2::SP2()
 {
 }
@@ -16,21 +17,20 @@ SP2::SP2()
 SP2::~SP2()
 {
 
-    delete testShip;
-    delete selection;
+	for(vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end();)
+	{
+		delete *it;
+		it = allVehicles.erase(it);
+	}
 
-    for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++){
+	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
+	{
+		delete *it;
+		it = Vasteroid.erase(it);
+	}
 
-        delete *it;
-
-    }
-
-    for (vector<Bullet*>::iterator it = playerBullets.begin(); it != playerBullets.end(); it++){
-
-        delete *it;
-
-    }
-
+	delete selection;
+	delete testShip;
 }
 
 
@@ -165,7 +165,7 @@ void SP2::Init()
 	meshList[GEO_SPACE_STATION] = MeshBuilder::GenerateOBJ("Space Station", "OBJ//Space Station.obj");
 	meshList[GEO_SPACE_STATION]->textureID = LoadTGA("Image//Space Station.tga");
 
-   meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
+	meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
     meshList[GEO_NPC]->textureID = LoadTGA("Image//headnbody_uv.tga");
 
     meshList[GEO_LEFTHAND] = MeshBuilder::GenerateOBJ("left hand", "OBJ//lefthand.obj");
@@ -182,6 +182,8 @@ void SP2::Init()
 
 	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_QUAD]->textureID = LoadTGA("Image//menu.tga");
+
+	meshList[GEO_ASTEROID] = MeshBuilder::GenerateSphere("Asteroid", Color(1, 1, 1), 10, 10);
 
     move = 0.f;
     rotate = 0.f;
@@ -203,6 +205,17 @@ void SP2::Update(double dt)
 		}
 		break;
 	case RTS:
+		for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
+		{
+			Asteroid* asteroid = *it;
+			asteroid->update(dt);
+		}
+
+		if (Timer(1, dt) == true)
+		{
+			generateAsteroid();
+		}
+
 		camera.EnableCursor();
 		camera.YawRotation(dt);
 		picker.set(camera, projectionStack.Top());
@@ -348,6 +361,7 @@ void SP2::Render()
 		RenderMesh(meshList[GEO_AXES], false);
 
 	renderSkybox();
+	renderAsteroid();
 
 	//SpaceStation
 
@@ -467,6 +481,18 @@ void SP2::bulletCreation(double dt){
 
     bulletCooldown += dt;
 
+}
+
+void SP2::generateAsteroid()
+{
+	if (generate_range(0, 100) < 20)
+	{
+		Asteroid* asteroid = new Asteroid(generate_range(5, 30));
+		asteroid->SetPos(generate_range(-400, 400), 0, generate_range(-400, 400));
+		asteroid->SetView(Vector3(0, 0, 0) - asteroid->Pos);
+
+		Vasteroid.push_back(asteroid);
+	}
 }
 
 // Renders
@@ -608,8 +634,7 @@ void SP2::renderWayPoints(){
 
 void SP2::renderNPC()
 {
-
-    //npc
+    //NPC
     modelStack.PushMatrix();
 	modelStack.Translate(NPC.Pos.x, NPC.Pos.y, NPC.Pos.z);
 
@@ -668,35 +693,39 @@ void SP2::renderExplosion()
 
 void SP2::renderAllHitbox()
 {
+	/*vector<AABB> allHitbox;
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	for (vector<AABB>::iterator it = Interactions.begin(); it != Interactions.end(); ++it)
 	{
-		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), it->GetMin(), it->GetMax());
-		modelStack.PushMatrix();
-		RenderMesh(meshList[GEO_HITBOX], false);
-		modelStack.PopMatrix();
+		allHitbox.push_back(*it);
 	}
-	
+
 	for (vector<AABB>::iterator it = worldHitbox.begin(); it != worldHitbox.end(); ++it)
 	{
+		allHitbox.push_back(*it);
+	}
+
+	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
+	{
+		Asteroid* asteroid = *it;
+		allHitbox.push_back(asteroid->hitbox);
+	}
+
+	allHitbox.push_back(station.hitbox);
+	allHitbox.push_back(playerShip.hitbox);
+
+	for (vector<AABB>::iterator it = allHitbox.begin(); it != allHitbox.end(); ++it)
+	{
 		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), it->GetMin(), it->GetMax());
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		modelStack.PushMatrix();
 		RenderMesh(meshList[GEO_HITBOX], false);
 		modelStack.PopMatrix();
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
-	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), station.hitbox.GetMin(), station.hitbox.GetMax());
-	modelStack.PushMatrix();
-	RenderMesh(meshList[GEO_HITBOX], false);
-	modelStack.PopMatrix();
-
-	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), playerShip.hitbox.GetMin(), playerShip.hitbox.GetMax());
-	modelStack.PushMatrix();
-	RenderMesh(meshList[GEO_HITBOX], false);
-	modelStack.PopMatrix();
-
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);*/
 }
 
 void SP2::renderBullets(){
@@ -714,6 +743,19 @@ void SP2::renderBullets(){
 
     }
 
+}
+
+void SP2::renderAsteroid()
+{
+	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
+	{
+		Asteroid* asteroid = *it;
+		modelStack.PushMatrix();
+		modelStack.Translate(asteroid->Pos.x, asteroid->Pos.y, asteroid->Pos.z);
+		modelStack.Scale(asteroid->size, asteroid->size, asteroid->size);
+		RenderMesh(meshList[GEO_ASTEROID], enableLight);
+		modelStack.PopMatrix();
+	}
 }
 
 // Others
@@ -990,4 +1032,20 @@ void SP2::quests()
 	{
 		RenderTextOnScreen(meshList[GEO_TEXT], "HI", Color(0, 1, 0), 10, 0, 5);
 	}
+}
+
+bool SP2::Timer(float second, double dt)
+{
+	this->second += dt;
+	if (this->second > second)
+	{
+		this->second = 0;
+		return true;
+	}
+	return false;
+}
+
+int SP2::generate_range(int from, int to)
+{
+	return (rand() % (to - from)) + from;
 }

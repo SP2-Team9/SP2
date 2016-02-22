@@ -12,9 +12,11 @@
 #include "PlayerVehicle.h"
 #include "Object.h"
 #include "Bullet.h"
+#include "Asteroid.h"
 
 #include <queue>
 #include <vector>
+#include <cstdlib>
 
 using std::string;
 using std::vector;
@@ -37,10 +39,13 @@ class SP2 : public Scene
 		GEO_BOTTOM,
 		GEO_TEXT,
 		GEO_TEXT1,
+
+		GEO_ASTEROID,
 		GEO_XWING,
 		GEO_CONTROL_PANEL,
 		GEO_SPACE_STATION,
 		GEO_HITBOX,
+
         GEO_NPC,
         GEO_LEFTHAND,
         GEO_RIGHTHAND,
@@ -108,21 +113,19 @@ public:
 	void objectsInit();
 	void WorldHitboxInit();
     void bulletCreation(double dt);
+	void generateAsteroid();
 	
 	// Renders
     void renderNPC();
 	void renderShips();
     void renderSkybox();
+	void renderAsteroid();
     void renderBullets();
 	void renderAllHitbox();
     void renderExplosion();
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
-	
-
-	
-	
 
 	// Others
     void checkHitboxes();
@@ -137,7 +140,8 @@ public:
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	
+	bool Timer(float second, double dt);
+	int generate_range(int from, int to);
 
 
 private:
@@ -170,7 +174,7 @@ private:
     bool restart2 = 0;
 	bool blink = 0;
 	bool re = 0;
-	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay;
+	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay, second;
 
 
  
@@ -203,6 +207,7 @@ private:
 	vector<Vehicles*> allVehicles;
 	vector<Vector3> explosionPos;
     vector<Bullet*> playerBullets;
+	vector<Asteroid*> Vasteroid;
     
 
 	MS modelStack, viewStack, projectionStack;
