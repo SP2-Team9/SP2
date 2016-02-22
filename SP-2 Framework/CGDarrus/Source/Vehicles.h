@@ -1,3 +1,17 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \File Name: Vehicles.h
+
+* \author: Wong Keng Han Ashley
+
+* \date: 14 feb 2016
+
+* \description: functions and data for all vehicles
+
+*/
+/////////////////////////////////////////////////////////////////
+
 #ifndef VEHICLES_H
 #define VEHICLES_H
 
@@ -29,14 +43,13 @@ public:
 	
 
 
-	float Yaw, delay, initialYaw;
+	float Yaw, Pitch, delay, initialYaw;
 
 	bool board, isDead;
 
 	pathFinding newVehicle;
 
    
-
 };
 
 

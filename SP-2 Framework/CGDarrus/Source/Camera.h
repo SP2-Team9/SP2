@@ -3,7 +3,7 @@
 
 #include "Vector3.h"
 #include "Mtx44.h"
-#include "Vehicles.h"
+#include "PlayerVehicle.h"
 
 class Camera
 {
@@ -23,10 +23,11 @@ public:
 
 	void FPSMovement(double dt, vector <AABB> hitbox);
 	void NoClip(double dt);
-	void TPSMovement(double dt, Vehicles& veh, vector <AABB> hitbox);
+	void TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox);
 	void YawRotation(double dt);
 	void EnableCursor();
-	void DisableCursor(double dt);
+	void DisableCursor();
+	void getYawAndPitch(double dt);
 };
 
 #endif

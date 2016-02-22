@@ -15,7 +15,24 @@ SP2::SP2()
 
 SP2::~SP2()
 {
+
+    delete testShip;
+    delete selection;
+
+    for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++){
+
+        delete *it;
+
+    }
+
+    for (vector<Bullet*>::iterator it = playerBullets.begin(); it != playerBullets.end(); it++){
+
+        delete *it;
+
+    }
+
 }
+
 
 void SP2::Init()
 {
@@ -203,19 +220,49 @@ void SP2::Update(double dt)
 		checkHitboxes();
 		break;
 	case FPS:
-		camera.DisableCursor(dt);
+		camera.DisableCursor();
 		camera.FPSMovement(dt, worldHitbox);
 		if (Application::IsKeyPressed('E') && delay >= 1.f)
 		{
-			delay = 0;
-			state = RTS;
-			LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
-			LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
-			camera.PointAt(station, 100, 200);
-			quests();
+			if (Interactions[0].PointToAABB(camera.position))
+			{
+				delay = 0;
+				state = TPS;
+				LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
+				LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
+				camera.PointAt(playerShip, 20, 30);
+			}
+			else
+			{
+				delay = 0;
+				state = RTS;
+				LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
+				LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
+				camera.PointAt(station, 100, 200);
+			}
 		}
 		vehicleUpdates(dt);
 		checkHitboxes();
+        NPCUpdates(dt);
+		break;
+
+	case TPS:
+		camera.DisableCursor();
+		camera.TPSMovement(dt, playerShip, worldHitbox);
+		vehicleUpdates(dt);
+		checkHitboxes();
+		NPCUpdates(dt);
+        bulletCreation(dt);
+        bulletUpdates(dt);
+		if (Application::IsKeyPressed('E') && delay >= 1.f)
+		{
+			if (playerShip.hitbox.AABBtoAABB(Interactions[1], playerShip.View))
+			{
+				delay = 0;
+				state = FPS;
+				camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
+			}
+		}
 		break;
 	}
 
@@ -273,7 +320,6 @@ void SP2::Update(double dt)
 	//Path finding test
 	blinkDuration += dt;
 
-
     //buy health
     if (Application::IsKeyPressed(' ') && money != 0 && readyToUse >= 0.8f)
     {
@@ -281,77 +327,9 @@ void SP2::Update(double dt)
         money -= 100;
         HealthPoints += 5;
     }
-    
-
-    //npc move
-   
-
-	if (move <= 3 && re == 0)
-	{
-		move += (float)(2 * dt);
-
-		if (move >= 3)
-		{
-			re = 1;
-		}
-
-	}
-	if (move >= -3 && re == 1)
-	{
-		move -= (float)(2 * dt);
-		if (move <= -3)
-		{
-			re = 0;
-		}
-	}
-
-    if (rotate < 5 && restart == 0)
-    {
-        rotate += (float)(20 * dt);
-
-
-        if (rotate >= 5)
-        {
-            restart = 1;
-        }
-
-    }
-    if (rotate >= -5 && restart == 1)
-    {
-        rotate -= (float)(20 * dt);
-        if (rotate <= -5)
-        {
-            restart = 0;
-
-
-        }
-    }
-    if (moveleg < 5 && restart2 == 0)
-    {
-        moveleg += (float)(20 * dt);
-
-
-        if (moveleg >= 5)
-        {
-            restart2 = 1;
-
-        }
-
-    }
-    if (moveleg >= -5 && restart2 == 1)
-    {
-        moveleg -= (float)(20 * dt);
-        if (moveleg <= -5)
-        {
-            restart2 = 0;
-
-
-        }
-    }
 
 
 	HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
-
 }
 
 void SP2::Render()
@@ -390,8 +368,6 @@ void SP2::Render()
 
 	case RTS:
 
-        renderNPC();
-
 		if (Application::IsKeyPressed(VK_LBUTTON))
 		{
 			meshList[GEO_RAY] = MeshBuilder::GenerateLine("Ray", Vector3(0, 200, 0), picker.WorldCoord());
@@ -402,22 +378,21 @@ void SP2::Render()
 
         renderShips();
         renderWayPoints();
-        renderFightingUI();
 		break;
 
 	case FPS:
 		renderNPC();
 		renderShips();
 		break;
+
+	case TPS:
+		renderShips();
+        renderBullets();
+		renderFightingUI();
+		break;
 	}
 
-	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), station.hitbox.GetMin(), station.hitbox.GetMax());
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	modelStack.PushMatrix();
-	RenderMesh(meshList[GEO_HITBOX], false);
-	modelStack.PopMatrix();
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	
+	renderAllHitbox();
 }
 
 void SP2::Exit()
@@ -442,6 +417,11 @@ void SP2::objectsInit()
 
 	NPC.SetPos(0, 0.1, 0);
 
+	//Player Vehicle
+	playerShip.SetPos(0, 50, 0);
+	playerShip.SetView(0, 0, 1);
+	playerShip.SetRight(-1, 0, 0);
+	playerShip.SetHitboxSize(5);
 
 	//Vehicles Init
 	ship.SetPos(100, 0, 0);
@@ -462,11 +442,30 @@ void SP2::objectsInit()
 
 void SP2::WorldHitboxInit()
 {
-	worldHitbox.push_back(AABB(Vector3(-500, -10, -500), Vector3(500, 0, 500)));
+	worldHitbox.push_back(AABB(Vector3(-10, -10, -10), Vector3(10, 0, 10)));
+	worldHitbox.push_back(AABB(Vector3(-10, 8, -10), Vector3(10, 10, 10)));
 	worldHitbox.push_back(AABB(Vector3(-10, 0, 10), Vector3(10, 10, 15)));
 	worldHitbox.push_back(AABB(Vector3(-10, 0, -15), Vector3(10, 10, -10)));
 	worldHitbox.push_back(AABB(Vector3(8, 0, -10), Vector3(15, 10, 10)));
 	worldHitbox.push_back(AABB(Vector3(-15, 0, -10), Vector3(-8, 10, 10)));
+
+	Interactions.push_back(AABB(-1, 0, -1, 1, 2, 1));
+	Interactions.push_back(AABB(-20, 0, -20, 20, 20, 20));
+}
+
+void SP2::bulletCreation(double dt){
+
+    if (Application::IsKeyPressed(VK_LBUTTON) && bulletCooldown > 0.5){
+
+        Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos);
+
+        playerBullets.push_back(newBullet);
+        bulletCooldown = 0;
+
+    }
+
+    bulletCooldown += dt;
+
 }
 
 // Renders
@@ -571,9 +570,12 @@ void SP2::renderShips(){
 
 	}
 
-
- 
-
+	modelStack.PushMatrix();
+	modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
+	modelStack.Rotate(playerShip.pitch, playerShip.Right.x, 0, playerShip.Right.z);
+	modelStack.Rotate(playerShip.yaw, 0, 1, 0);
+	RenderMesh(meshList[GEO_XWING], enableLight);
+	modelStack.PopMatrix();
 }
 
 void SP2::renderWayPoints(){
@@ -663,6 +665,56 @@ void SP2::renderExplosion()
 	}
 }
 
+void SP2::renderAllHitbox()
+{
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+	for (vector<AABB>::iterator it = Interactions.begin(); it != Interactions.end(); ++it)
+	{
+		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), it->GetMin(), it->GetMax());
+		modelStack.PushMatrix();
+		RenderMesh(meshList[GEO_HITBOX], false);
+		modelStack.PopMatrix();
+	}
+	
+	for (vector<AABB>::iterator it = worldHitbox.begin(); it != worldHitbox.end(); ++it)
+	{
+		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), it->GetMin(), it->GetMax());
+		modelStack.PushMatrix();
+		RenderMesh(meshList[GEO_HITBOX], false);
+		modelStack.PopMatrix();
+	}
+
+	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), station.hitbox.GetMin(), station.hitbox.GetMax());
+	modelStack.PushMatrix();
+	RenderMesh(meshList[GEO_HITBOX], false);
+	modelStack.PopMatrix();
+
+	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), playerShip.hitbox.GetMin(), playerShip.hitbox.GetMax());
+	modelStack.PushMatrix();
+	RenderMesh(meshList[GEO_HITBOX], false);
+	modelStack.PopMatrix();
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+}
+
+void SP2::renderBullets(){
+
+    for (vector<Bullet*>::iterator vitB = playerBullets.begin(); vitB != playerBullets.end(); vitB++){
+
+        Bullet* temp = *vitB;
+
+        modelStack.PushMatrix();
+
+        modelStack.Translate(temp->Pos.x, temp->Pos.y, temp->Pos.z);
+        RenderMesh(meshList[GEO_LIGHTBALL], false);
+
+        modelStack.PopMatrix();
+
+    }
+
+}
+
 // Others
 
 void SP2::vehicleUpdates(double dt){
@@ -671,6 +723,65 @@ void SP2::vehicleUpdates(double dt){
 		Vehicles* temp = *vitV;
 		temp->update(dt);
 	}
+
+}
+
+void SP2::NPCUpdates(double dt){
+
+    //npc move
+    move += (float)(8 * dt);
+    if (rotate < 5 && restart == false)
+    {
+        rotate += (float)(20 * dt);
+
+
+        if (rotate >= 5)
+        {
+            restart = true;
+
+        }
+
+    }
+    if (rotate >= -5 && restart == true)
+    {
+        rotate -= (float)(20 * dt);
+        if (rotate <= -5)
+        {
+            restart = false;
+
+
+        }
+    }
+    if (moveleg < 5 && restart2 == false)
+    {
+        moveleg += (float)(20 * dt);
+
+
+        if (moveleg >= 5)
+        {
+            restart2 = true;
+
+        }
+
+    }
+    if (moveleg >= -5 && restart2 == true)
+    {
+        moveleg -= (float)(20 * dt);
+        if (moveleg <= -5)
+        {
+            restart2 = false;
+
+
+        }
+    }
+
+
+    HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
+
+
+
+
+
 
 }
 
@@ -732,6 +843,30 @@ void SP2::checkHitboxes()
 	case CheckAsteroids:
 		break;
 	}
+}
+
+void SP2::bulletUpdates(double dt){
+
+    for (vector<Bullet*>::iterator vitB = playerBullets.begin(); vitB != playerBullets.end();){
+
+        Bullet* temp = *vitB;
+
+        temp->bulletUpdate(dt);
+
+        if (temp->furtherThanBulletMaxRange()){
+
+            vitB = playerBullets.erase(vitB);
+            delete temp;
+
+        }
+        else{
+
+            vitB++;
+
+        }
+
+    }
+
 }
 
 // Tools
@@ -841,7 +976,7 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glUniform1i(m_parameters[U_TEXT_ENABLED], 0);
 
-	projectionStack.PopMatrix();
+    projectionStack.PopMatrix();
 	viewStack.PopMatrix();
 	modelStack.PopMatrix();
 

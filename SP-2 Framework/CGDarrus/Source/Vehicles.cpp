@@ -1,5 +1,32 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \File Name: Vehicles.cpp
+
+* \author: Wong Keng Han Ashley
+
+* \date: 14 feb 2016
+
+* \description: functions and data for all vehicles
+
+*/
+/////////////////////////////////////////////////////////////////
+
 #include "Vehicles.h"
 
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: constructor
+
+* \author: Wong Keng Han Ashley
+
+* \date: 16 feb 2016
+
+* \description: constructor for vehicals
+
+*/
+/////////////////////////////////////////////////////////////////
 Vehicles::Vehicles() :
 Yaw(0),
 delay(0),
@@ -12,6 +39,19 @@ isDead(false)
 
 }
 
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: overloaded constructor
+
+* \author: Wong Keng Han Ashley
+
+* \date: 16 feb 2016
+
+* \description: constructor for vehicals
+
+*/
+/////////////////////////////////////////////////////////////////
 Vehicles::Vehicles(Vector3 moveDirection) :
 Yaw(0),
 delay(0),
@@ -21,7 +61,19 @@ isDead(false)
 	
 }
 
+/////////////////////////////////////////////////////////////////
+/*!
 
+* \method: overloaded constructor
+
+* \author: Wong Keng Han Ashley
+
+* \date: 16 feb 2016
+
+* \description: overloaded constructor for vehicals
+
+*/
+/////////////////////////////////////////////////////////////////
 Vehicles::Vehicles(Vector3 position, Vector3 viewDirection, float newSpeed) :
 board(false),
 isDead(false)
@@ -39,7 +91,19 @@ isDead(false)
 
 }
 
+/////////////////////////////////////////////////////////////////
+/*!
 
+* \method: destructor
+
+* \author: Wong Keng Han Ashley
+
+* \date: 16 feb 2016
+
+* \description: destructor for vehicals
+
+*/
+/////////////////////////////////////////////////////////////////
 Vehicles::~Vehicles(){
 
 
@@ -48,6 +112,19 @@ Vehicles::~Vehicles(){
 
 }
 
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: update
+
+* \author: Wong Keng Han Ashley
+
+* \date: 16 feb 2016
+
+* \description: update the vehicle
+
+*/
+/////////////////////////////////////////////////////////////////
 void Vehicles::update(double dt){
 
 
@@ -61,29 +138,43 @@ void Vehicles::update(double dt){
     SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
     getRotationAngle();
 
-    std::cout << View << std::endl;
-
-    /*if (!newVehicle.getwayPoints().empty()){
-
-        View = newVehicle.getwayPoints().front() - Pos;
-        View.Normalize();
-
-    }
-
-    std::cout << View << std::endl;*/
 
     Pos.y = 0;
 
 }
 
+/////////////////////////////////////////////////////////////////
+/*!
 
+* \method: setNewWayPoint
+
+* \author: Wong Keng Han Ashley
+
+* \date: 16 feb 2016
+
+* \description: setting waypoints  for the object
+
+*/
+/////////////////////////////////////////////////////////////////
 void Vehicles::setNewWayPoint(float x, float z){
 
 	newVehicle.updateWayPoints(Vector3(x, 0, z));
 
 }
 
+/////////////////////////////////////////////////////////////////
+/*!
 
+* \method: initialMoveDirection
+
+* \author: Wong Keng Han Ashley
+
+* \date: 16 feb 2016
+
+* \description: setting Initial Move Direction  for the object
+
+*/
+/////////////////////////////////////////////////////////////////
 void Vehicles::initialMoveDirection(float x, float z){
 
 
@@ -92,6 +183,20 @@ void Vehicles::initialMoveDirection(float x, float z){
 
 }
 
+
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: overloaded initialMoveDirection
+
+* \author: Wong Keng Han Ashley
+
+* \date: 16 feb 2016
+
+* \description: setting Initial Move Direction  for the object
+
+*/
+/////////////////////////////////////////////////////////////////
 void Vehicles::initialMoveDirection(){
 
 	newVehicle.setInitialWayPoints(Pos, View);

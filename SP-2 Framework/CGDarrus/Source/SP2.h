@@ -9,7 +9,9 @@
 #include "MousePicker.h"
 #include "Vehicles.h"
 #include "pathFinding.h"
+#include "PlayerVehicle.h"
 #include "Object.h"
+#include "Bullet.h"
 
 #include <queue>
 #include <vector>
@@ -82,6 +84,7 @@ class SP2 : public Scene
 		MainMenu = 0,
 		FPS,
 		RTS,
+		TPS,
 	};
 
 	enum HITBOXCHECK
@@ -104,23 +107,31 @@ public:
 	// Initializers
 	void objectsInit();
 	void WorldHitboxInit();
+    void bulletCreation(double dt);
 	
 	// Renders
+    void renderNPC();
 	void renderShips();
-
-	void renderSkybox();
-
+    void renderSkybox();
+    void renderBullets();
+	void renderAllHitbox();
+    void renderExplosion();
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
-	void renderNPC();
-	void renderExplosion();
+	
+
+	
+	
 
 	// Others
+    void checkHitboxes();
+    void NPCUpdates(double dt);
+    void bulletUpdates(double dt);
 	void vehicleUpdates(double dt);
 	void MouseSelection(double dt);
-	void checkHitboxes();
 	void quests();
+
 
 	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);
@@ -128,11 +139,13 @@ public:
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 	
 
+
 private:
+
+    int money;
 	int AmmoCount;
 	int HealthPoints;
-    int money;
-	
+
 	Camera camera;
 	Light light[1];
 	Vector3 LightView;
@@ -144,32 +157,42 @@ private:
 	unsigned m_colorBuffer[NUM_GEOMETRY];
 	unsigned m_indexBuffer[NUM_GEOMETRY];
 	unsigned m_vertexBuffer[NUM_GEOMETRY];
-	
+
 	double blinkDuration = 0;
+    double bulletCooldown = 0;
 	double wayPointSetCoolDown = 0;
 
     float move;
     float rotate;
     float moveleg;
+
     bool restart = 0;
     bool restart2 = 0;
 	bool blink = 0;
 	bool re = 0;
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay;
+
+
+    bool restart = false;
+    bool restart2 = false;
 	bool enableLight, enableAxis;
-	
+
 	GAMESTATE state;
 	HITBOXCHECK HBcheck;
-	
+
 	MousePicker picker;
+
 	Object station;
 	Object LastLocation;
 	Object NPC;
+
 	Vehicles ship;
 	Vehicles boat;
 
     Vehicles* testShip;
 	Vehicles* selection;
+
+	PlayerVehicle playerShip;
 
 	string Ammo;
 	string Health;
@@ -180,7 +203,9 @@ private:
 	vector<AABB> Interactions;
 	vector<Vehicles*> allVehicles;
 	vector<Vector3> explosionPos;
-	
+    vector<Bullet*> playerBullets;
+    
+
 	MS modelStack, viewStack, projectionStack;
 };
 

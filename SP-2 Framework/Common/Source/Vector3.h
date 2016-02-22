@@ -80,6 +80,9 @@ struct Vector3
 
     //Returns magnitude of the vector
     float getMagnitude();
+
+    //returns the distance from this vector to another vector
+    float distanceBetween2points(Vector3 Point1);
 };
 
 #endif //VECTOR3_H

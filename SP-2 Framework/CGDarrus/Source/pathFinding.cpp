@@ -81,9 +81,11 @@ speed(0)
 pathFinding::~pathFinding(){
 
 
+    while (!wayPoints.empty()){
 
+        wayPoints.pop();
 
-
+    }
 }
 
 /////////////////////////////////////////////////////////////////

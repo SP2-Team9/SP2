@@ -19,12 +19,14 @@
 *.mod
 
 # Compiled Static libraries
+*.obj
 *.lai
 *.la
 *.a
 *.lib
 
 # Executables
+*.obj
 *.exe
 *.out
 *.app
