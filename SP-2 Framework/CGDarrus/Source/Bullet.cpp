@@ -126,3 +126,22 @@ bool Bullet::furtherThanBulletMaxRange(){
     return false;
 
 }
+
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: getBulletDamage
+
+* \author: Wong Keng Han Ashley
+
+* \date: 22 feb 2016
+
+* \description: changes the position of the bullet
+
+*/
+/////////////////////////////////////////////////////////////////
+float Bullet::getBulletDamage(){
+
+    return BulletDamage;
+
+}

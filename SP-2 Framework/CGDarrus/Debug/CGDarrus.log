@@ -1,123 +1,6 @@
-﻿Build started 2/22/2016 2:29:26 PM.
+﻿Build started 2/22/2016 3:24:03 PM.
      1>Project "C:\Users\n1507\Desktop\SP2\SP-2 Framework\CGDarrus\CGDarrus.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glew\include" /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glfw\include" /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\Common\Source" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\AABB.cpp Source\Application.cpp Source\Asteroid.cpp Source\Bullet.cpp Source\Camera.cpp Source\LoadOBJ.cpp Source\LoadTGA.cpp Source\main.cpp Source\Mesh.cpp Source\MeshBuilder.cpp Source\MousePicker.cpp Source\Object.cpp Source\pathFinding.cpp Source\shader.cpp Source\SP2.cpp Source\Utility.cpp Source\Vehicles.cpp
-         Vehicles.cpp
-         Utility.cpp
-         SP2.cpp
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\sp2.cpp(282): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\sp2.cpp(316): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\sp2.cpp(433): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\sp2.cpp(490): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\sp2.cpp(491): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\sp2.cpp(564): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\sp2.cpp(647): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\sp2.cpp(655): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\sp2.cpp(1039): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-         shader.cpp
-         pathFinding.cpp
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\pathfinding.cpp(111): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\pathfinding.cpp(125): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         Object.cpp
-         MousePicker.cpp
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\mousepicker.cpp(48): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\mousepicker.cpp(49): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\mousepicker.cpp(74): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         MeshBuilder.cpp
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\meshbuilder.cpp(986): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\meshbuilder.cpp(1035): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\meshbuilder.cpp(1037): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-         Mesh.cpp
-         main.cpp
-         LoadTGA.cpp
-         LoadOBJ.cpp
-         Camera.cpp
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(158): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(160): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(164): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(172): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(173): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(177): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(178): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(187): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(200): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(201): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(205): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(206): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(215): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(229): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(230): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(234): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(235): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(244): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(258): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(259): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(263): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(264): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(271): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(273): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(281): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(282): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(291): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(295): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(300): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(307): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(309): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(313): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(317): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(324): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(325): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(326): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(330): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(331): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(332): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(336): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(337): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(338): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(374): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(375): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(384): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(385): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(394): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(395): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(404): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(405): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(441): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(442): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(443): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(444): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(445): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(446): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(452): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(453): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(454): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(455): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(456): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(457): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(463): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(464): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(465): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(466): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(467): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(468): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(474): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(475): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(476): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(477): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(478): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(479): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(490): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(494): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(518): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\camera.cpp(519): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-         Bullet.cpp
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\bullet.cpp(98): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         Asteroid.cpp
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\cgdarrus\source\asteroid.cpp(16): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         Application.cpp
-         AABB.cpp
-         Generating Code...
-       Link:
+     1>Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\CGDarrus.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glew\lib" /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glfw\lib-msvc120" /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug" glew32.lib glu32.lib glfw3.lib opengl32.lib winmm.lib Common.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\CGDarrus.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\CGDarrus.lib" /MACHINE:X86 Debug\AABB.obj
          Debug\Application.obj
          Debug\Asteroid.obj
@@ -135,10 +18,11 @@
          Debug\SP2.obj
          Debug\Utility.obj
          Debug\Vehicles.obj
+         LINK : C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\CGDarrus.exe not found or not built by the last incremental link; performing full link
      1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
          CGDarrus.vcxproj -> C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\CGDarrus.exe
      1>Done Building Project "C:\Users\n1507\Desktop\SP2\SP-2 Framework\CGDarrus\CGDarrus.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:07.74
+Time Elapsed 00:00:00.34

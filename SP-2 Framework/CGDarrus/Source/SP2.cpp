@@ -212,16 +212,6 @@ void SP2::Update(double dt)
 		}
 		break;
 	case RTS:
-		for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
-		{
-			Asteroid* asteroid = *it;
-			asteroid->update(dt);
-		}
-
-		if (Timer(1, dt) == true)
-		{
-			generateAsteroid();
-		}
 
 		camera.EnableCursor();
 		camera.YawRotation(dt);
@@ -241,7 +231,9 @@ void SP2::Update(double dt)
 		vehicleUpdates(dt);
 		checkHitboxes();
 		break;
+
 	case FPS:
+
 		camera.DisableCursor();
 		camera.FPSMovement(dt, worldHitbox);
 		if (Application::IsKeyPressed('E') && delay >= 1.f)
@@ -287,6 +279,20 @@ void SP2::Update(double dt)
 		}
 		break;
 	}
+
+
+    for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
+    {
+        Asteroid* asteroid = *it;
+        asteroid->update(dt);
+    }
+
+    if (Timer(1, dt) == true)
+    {
+        generateAsteroid();
+    }
+
+
 
 	delay += dt;
 	if (Application::IsKeyPressed('1')) //enable back face culling
@@ -478,7 +484,7 @@ void SP2::WorldHitboxInit()
 void SP2::shipBulletCreation(double dt){
 
 
-    if (Application::IsKeyPressed(VK_SPACE) && bulletCooldown > 0.5 && selection != nullptr){
+    if (Application::IsKeyPressed(VK_SPACE) && bulletCooldown > 0.3 && selection != nullptr){
 
         Mtx44 rotation;
         rotation.SetToRotation(selection->getRotationAngle(), 0, 1, 0);
@@ -498,7 +504,7 @@ void SP2::shipBulletCreation(double dt){
 
 void SP2::playerBulletCreation(double dt){
 
-    if (Application::IsKeyPressed(VK_LBUTTON) && bulletCooldown > 0.5){
+    if (Application::IsKeyPressed(VK_LBUTTON) && bulletCooldown > 0.3){
 
         Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos);
 
@@ -510,7 +516,6 @@ void SP2::playerBulletCreation(double dt){
     bulletCooldown += dt;
 
 }
-
 
 void SP2::generateAsteroid()
 {
@@ -914,8 +919,52 @@ void SP2::checkHitboxes()
 
 		break;
 	case CheckAsteroids:
+        for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
+
+            Asteroid* tempAst = *vitA;
+
+            for (vector<Bullet*>::iterator vitB = playerBullets.begin(); vitB != playerBullets.end();){
+
+                Bullet* tempBull = *vitB;
+
+                if (tempAst->hitbox.PointToAABB(tempBull->Pos)){
+
+                    vitB = playerBullets.erase(vitB);
+
+                    tempAst->health -= tempBull->getBulletDamage();
+
+                    delete tempBull;
+
+                    std::cout << tempAst->health << std::endl;
+                }
+                else{
+
+                    vitB++;
+
+                }
+
+            }
+
+            if (tempAst->health <= 0){
+
+                vitA = Vasteroid.erase(vitA);
+                delete tempAst;
+
+            }
+            else{
+
+                vitA++;
+
+            }
+
+        }
+
 		break;
-	}
+	
+    }
+
+
+
 }
 
 void SP2::bulletUpdates(double dt){

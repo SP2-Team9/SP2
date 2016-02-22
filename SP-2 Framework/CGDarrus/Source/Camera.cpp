@@ -292,14 +292,14 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 
 	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 1000)
 	{
-        if (veh.thrust < 10)
-		veh.thrust += + 50.f * dt;
+        if (veh.thrust < 30)
+		veh.thrust += + 10.f * dt;
 	}
 
 	if (Application::IsKeyPressed(VK_LCONTROL))
 	{
-        if (veh.thrust > -10)
-		veh.thrust -= 50.f * dt;
+        if (veh.thrust > -20)
+		veh.thrust -= 10.f * dt;
 	}
 
 	if (veh.thrust != 0)

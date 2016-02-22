@@ -27,27 +27,6 @@ class SP2 : public Scene
 {
 	enum GEOMETRY_TYPE
 	{
-
-		GEO_AXES,
-		GEO_RAY,
-		GEO_QUAD,
-		GEO_LIGHTBALL,
-		GEO_FRONT,
-		GEO_BACK,
-		GEO_LEFT,
-		GEO_RIGHT,
-		GEO_TOP,
-		GEO_BOTTOM,
-		GEO_TEXT,
-		GEO_TEXT1,
-
-		GEO_ASTEROID,
-		GEO_XWING,
-		GEO_CONTROL_PANEL,
-		GEO_SPACE_STATION,
-		GEO_HITBOX,
-
-
         GEO_AXES,
         GEO_RAY,
         GEO_QUAD,
@@ -70,6 +49,7 @@ class SP2 : public Scene
         GEO_LEFTLEG,
         GEO_RIGHTLEG,
         GEO_BULLETS,
+        GEO_ASTEROID,
 		NUM_GEOMETRY,
 
 	};

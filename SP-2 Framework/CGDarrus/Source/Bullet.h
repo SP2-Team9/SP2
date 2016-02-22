@@ -30,13 +30,16 @@ public:
     void bulletUpdate(double dt);
     void bulletMovement(double dt);
 
+
+    float getBulletDamage();
+
     bool furtherThanBulletMaxRange();
 
 private:
 
-    float bulletSpeed = 300;
-    float BulletDamage = 10;
-    float bulletMaxRange = 200;
+    float bulletSpeed = 400;
+    float BulletDamage = 30;
+    float bulletMaxRange = 300;
 
     Vector3 initialPosition;
 
