@@ -521,3 +521,24 @@ float Vector3::getMagnitude(){
         );
 
 }
+
+/////////////////////////////////////////////////////////////////
+
+/*!
+
+* \method: pathFinding
+
+* \author: Wong Keng Han Ashley
+
+* \date: 15 feb 2016
+
+* \description: checks the distance between 2 vectors
+
+*/
+
+/////////////////////////////////////////////////////////////////
+float Vector3::distanceBetween2points(Vector3 Point1){
+
+    return sqrt(((Point1.x - x) * (Point1.x - x)) + ((Point1.y - y) *  (Point1.y - y)) + ((Point1.z - z)) *  (Point1.z - z));
+
+}

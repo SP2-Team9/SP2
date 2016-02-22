@@ -11,6 +11,7 @@
 #include "pathFinding.h"
 #include "PlayerVehicle.h"
 #include "Object.h"
+#include "Bullet.h"
 
 #include <queue>
 #include <vector>
@@ -106,12 +107,14 @@ public:
 	// Initializers
 	void objectsInit();
 	void WorldHitboxInit();
+    void bulletCreation(double dt);
 	
 	// Renders
 
     void renderNPC();
-	void renderSkybox();
 	void renderShips();
+    void renderSkybox();
+    void renderBullets();
 	void renderAllHitbox();
     void renderExplosion();
 	void renderWayPoints();
@@ -125,9 +128,10 @@ public:
 	// Others
     void checkHitboxes();
     void NPCUpdates(double dt);
+    void bulletUpdates(double dt);
 	void vehicleUpdates(double dt);
 	void MouseSelection(double dt);
-	
+
 
 
 	// Tools
@@ -155,6 +159,7 @@ private:
 	unsigned m_vertexBuffer[NUM_GEOMETRY];
 
 	double blinkDuration = 0;
+    double bulletCooldown = 0;
 	double wayPointSetCoolDown = 0;
 
     float move;
@@ -180,6 +185,7 @@ private:
 
     Vehicles* testShip;
 	Vehicles* selection;
+
 	PlayerVehicle playerShip;
 
 	string Ammo;
@@ -191,7 +197,9 @@ private:
 	vector<AABB> Interactions;
 	vector<Vehicles*> allVehicles;
 	vector<Vector3> explosionPos;
-s
+    vector<Bullet*> playerBullets;
+    
+
 	MS modelStack, viewStack, projectionStack;
 };
 

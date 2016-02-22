@@ -15,7 +15,24 @@ SP2::SP2()
 
 SP2::~SP2()
 {
+
+    delete testShip;
+    delete selection;
+
+    for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++){
+
+        delete *it;
+
+    }
+
+    for (vector<Bullet*>::iterator it = playerBullets.begin(); it != playerBullets.end(); it++){
+
+        delete *it;
+
+    }
+
 }
+
 
 void SP2::Init()
 {
@@ -227,12 +244,15 @@ void SP2::Update(double dt)
 		checkHitboxes();
         NPCUpdates(dt);
 		break;
+
 	case TPS:
 		camera.DisableCursor();
 		camera.TPSMovement(dt, playerShip, worldHitbox);
 		vehicleUpdates(dt);
 		checkHitboxes();
 		NPCUpdates(dt);
+        bulletCreation(dt);
+        bulletUpdates(dt);
 		if (Application::IsKeyPressed('E') && delay >= 1.f)
 		{
 			if (playerShip.hitbox.AABBtoAABB(Interactions[1], playerShip.View))
@@ -365,7 +385,9 @@ void SP2::Render()
 
 	case TPS:
 		renderShips();
+        renderBullets();
 		renderFightingUI();
+       
 		break;
 	}
 
@@ -427,6 +449,21 @@ void SP2::WorldHitboxInit()
 
 	Interactions.push_back(AABB(-1, 0, -1, 1, 2, 1));
 	Interactions.push_back(AABB(-20, 0, -20, 20, 20, 20));
+}
+
+void SP2::bulletCreation(double dt){
+
+    if (Application::IsKeyPressed(VK_LBUTTON) && bulletCooldown > 0.5){
+
+        Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos);
+
+        playerBullets.push_back(newBullet);
+        bulletCooldown = 0;
+
+    }
+
+    bulletCooldown += dt;
+
 }
 
 // Renders
@@ -659,6 +696,23 @@ void SP2::renderAllHitbox()
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
+void SP2::renderBullets(){
+
+    for (vector<Bullet*>::iterator vitB = playerBullets.begin(); vitB != playerBullets.end(); vitB++){
+
+        Bullet* temp = *vitB;
+
+        modelStack.PushMatrix();
+
+        modelStack.Translate(temp->Pos.x, temp->Pos.y, temp->Pos.z);
+        RenderMesh(meshList[GEO_LIGHTBALL], false);
+
+        modelStack.PopMatrix();
+
+    }
+
+}
+
 // Others
 
 void SP2::vehicleUpdates(double dt){
@@ -787,6 +841,30 @@ void SP2::checkHitboxes()
 	case CheckAsteroids:
 		break;
 	}
+}
+
+void SP2::bulletUpdates(double dt){
+
+    for (vector<Bullet*>::iterator vitB = playerBullets.begin(); vitB != playerBullets.end();){
+
+        Bullet* temp = *vitB;
+
+        temp->bulletUpdate(dt);
+
+        if (temp->furtherThanBulletMaxRange()){
+
+            vitB = playerBullets.erase(vitB);
+            delete temp;
+
+        }
+        else{
+
+            vitB++;
+
+        }
+
+    }
+
 }
 
 // Tools

@@ -6,6 +6,7 @@
 class Object
 {
 public:
+
 	Object();
 	Object(Vector3 pos, Vector3 view, Vector3 up);
 	~Object();
@@ -28,6 +29,7 @@ public:
 	void SetRight(Vector3 right);
 	void SetRight(Vector3 view, Vector3 up);
 	void SetRight(float x, float y, float z);
+
 };
 
 #endif
