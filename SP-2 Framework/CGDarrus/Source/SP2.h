@@ -110,13 +110,15 @@ public:
 	// Renders
 
     void renderNPC();
-	void renderShips();
 	void renderSkybox();
+	void renderShips();
+	void renderAllHitbox();
     void renderExplosion();
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
-	void renderAllHitbox();
+	
+
 	
 	
 
@@ -127,18 +129,19 @@ public:
 	void MouseSelection(double dt);
 	
 
+
 	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+
 
 private:
 
     int money;
 	int AmmoCount;
 	int HealthPoints;
-    
-	
+
 	Camera camera;
 	Light light[1];
 	Vector3 LightView;
@@ -150,7 +153,7 @@ private:
 	unsigned m_colorBuffer[NUM_GEOMETRY];
 	unsigned m_indexBuffer[NUM_GEOMETRY];
 	unsigned m_vertexBuffer[NUM_GEOMETRY];
-	
+
 	double blinkDuration = 0;
 	double wayPointSetCoolDown = 0;
 
@@ -163,10 +166,10 @@ private:
     bool restart = false;
     bool restart2 = false;
 	bool enableLight, enableAxis;
-	
+
 	GAMESTATE state;
 	HITBOXCHECK HBcheck;
-	
+
 	MousePicker picker;
 
 	Object station;
@@ -188,7 +191,7 @@ private:
 	vector<AABB> Interactions;
 	vector<Vehicles*> allVehicles;
 	vector<Vector3> explosionPos;
-	
+s
 	MS modelStack, viewStack, projectionStack;
 };
 
