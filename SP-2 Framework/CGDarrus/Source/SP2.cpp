@@ -910,6 +910,7 @@ void SP2::checkHitboxes()
 				{
 					selection = nullptr;
 				}
+                delete temp;
 			}
 			else
 				++it;
@@ -1126,5 +1127,10 @@ bool SP2::Timer(float second, double dt)
 
 int SP2::generate_range(int from, int to)
 {
-	return (rand() % (to - from)) + from;
+
+    int k = (rand() % (to - from)) + from;
+
+    return k;
+
+   
 }
