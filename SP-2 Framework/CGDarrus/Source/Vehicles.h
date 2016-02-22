@@ -21,6 +21,7 @@
 #include "Vector3.h"
 #include "Mtx44.h"
 #include "Bullet.h"
+#include "Asteroid.h"
 
 class Vehicles : public Object{
 
@@ -49,6 +50,8 @@ public:
 	bool board, isDead;
 
 	pathFinding newVehicle;
+
+    Asteroid* currAttackTarget;
 
    
 };

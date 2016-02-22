@@ -459,7 +459,7 @@ void SP2::objectsInit()
     ship->SetInteractionSize(10, 10, 10, 10, 10, 10);
     ship->initialMoveDirection();
 
-    boat = new Vehicles(Vector3(100, 0, -100), Vector3(1, 0, 0), 30, 50);
+    boat = new Vehicles(Vector3(100, 0, -100), Vector3(1, 0, 0), 100, 50);
     boat->SetHitboxSize(5);
     boat->SetInteractionSize(10, 10, 10, 10, 10, 10);
     boat->initialMoveDirection();
@@ -888,8 +888,35 @@ void SP2::MouseSelection(double dt)
 
 	if (Application::IsKeyPressed(VK_RBUTTON) && selection != nullptr)
 	{
-		selection->setNewWayPoint(picker.WorldCoord().x, picker.WorldCoord().z);
-		wayPointSetCoolDown = 0;
+	
+
+        for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
+
+            Asteroid* temp = *vitA;
+            if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay())){
+
+                selection->currAttackTarget = temp;
+                break;
+
+            }
+            else{
+
+                selection->currAttackTarget = nullptr;
+                vitA++;
+
+            } 
+
+        }
+
+        if (selection->currAttackTarget == nullptr){
+
+            selection->setNewWayPoint(picker.WorldCoord().x, picker.WorldCoord().z);
+
+        }
+        else
+        {
+            selection->setNewWayPoint(selection->currAttackTarget->Pos.x, selection->currAttackTarget->Pos.z);
+        }
 	}
 
 	wayPointSetCoolDown += dt;

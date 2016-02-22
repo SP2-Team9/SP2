@@ -86,7 +86,7 @@ isDead(false)
     initialMoveDirection();
     newVehicle.setCurrentLocation(position);
     initialYaw = getRotationAngle(viewDirection);
-
+    currAttackTarget = nullptr;
     health = newHealth;
 
 }
@@ -127,6 +127,7 @@ Vehicles::~Vehicles(){
 /////////////////////////////////////////////////////////////////
 void Vehicles::update(double dt){
 
+
     if (health <= 0){
 
         isDead = true;
@@ -145,10 +146,15 @@ void Vehicles::update(double dt){
         SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
         getRotationAngle();
 
+        if (currAttackTarget != nullptr){
 
+            newVehicle.updateWayPoints(currAttackTarget->Pos);
+
+        }
         Pos.y = 0;
 
     }
+    
 
 }
 
@@ -167,7 +173,7 @@ void Vehicles::update(double dt){
 /////////////////////////////////////////////////////////////////
 void Vehicles::setNewWayPoint(float x, float z){
 
-	newVehicle.updateWayPoints(Vector3(x, 0, z));
+        newVehicle.updateWayPoints(Vector3(x, 0, z));
 
 }
 
@@ -290,3 +296,4 @@ float Vehicles::getRotationAngle(Vector3 newView){
 
     return degree;
 }
+
