@@ -108,7 +108,7 @@ void Application::Run()
 	//Main Loop
 	Scene *scene = new SP2();
 	scene->Init();
-
+    srand(time(nullptr));
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
 	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE))
 	{

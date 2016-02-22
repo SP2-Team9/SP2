@@ -65,7 +65,7 @@ void Camera::Init(const Vector3& pos, const Vector3& target)
 	up = right.Cross(view);
 
 	cameraSpeed = 20.f;
-	mouseSpeed = 7.f;
+	mouseSpeed = 8.f;
 }
 
 /******************************************************************************/
@@ -116,7 +116,7 @@ void Camera::Update(double dt)
 		mouseSpeed -= 0.1f;
 
 	if (Application::IsKeyPressed(VK_LSHIFT))
-		cameraSpeed = 80.f;
+		cameraSpeed = 10.f;
 	else
 		cameraSpeed = 5.f;
 }
@@ -292,12 +292,14 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 
 	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 1000)
 	{
-		veh.thrust += + 50.f * dt;
+        if (veh.thrust < 40)
+		veh.thrust += + 10.f * dt;
 	}
 
 	if (Application::IsKeyPressed(VK_LCONTROL))
 	{
-		veh.thrust -= 50.f * dt;
+        if (veh.thrust > -30)
+		veh.thrust -= 10.f * dt;
 	}
 
 	if (veh.thrust != 0)

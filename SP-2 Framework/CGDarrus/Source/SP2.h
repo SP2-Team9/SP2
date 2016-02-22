@@ -11,9 +11,13 @@
 #include "pathFinding.h"
 #include "PlayerVehicle.h"
 #include "Object.h"
+#include "Bullet.h"
+#include "Asteroid.h"
 
 #include <queue>
 #include <vector>
+#include <cstdlib>
+
 
 using std::string;
 using std::vector;
@@ -24,28 +28,31 @@ class SP2 : public Scene
 {
 	enum GEOMETRY_TYPE
 	{
-		GEO_AXES,
-		GEO_RAY,
-		GEO_QUAD,
-		GEO_LIGHTBALL,
-		GEO_FRONT,
-		GEO_BACK,
-		GEO_LEFT,
-		GEO_RIGHT,
-		GEO_TOP,
-		GEO_BOTTOM,
-		GEO_TEXT,
-		GEO_TEXT1,
-		GEO_XWING,
-		GEO_CONTROL_PANEL,
-		GEO_SPACE_STATION,
-		GEO_HITBOX,
+        GEO_AXES,
+        GEO_RAY,
+        GEO_QUAD,
+        GEO_LIGHTBALL,
+        GEO_FRONT,
+        GEO_BACK,
+        GEO_LEFT,
+        GEO_RIGHT,
+        GEO_TOP,
+        GEO_BOTTOM,
+        GEO_TEXT,
+        GEO_TEXT1,
+        GEO_XWING,
+        GEO_CONTROL_PANEL,
+        GEO_SPACE_STATION,
+        GEO_HITBOX,
         GEO_NPC,
         GEO_LEFTHAND,
         GEO_RIGHTHAND,
         GEO_LEFTLEG,
         GEO_RIGHTLEG,
+        GEO_BULLETS,
+        GEO_ASTEROID,
 		NUM_GEOMETRY,
+
 	};
 	enum UNIFORM_TYPE
 	{
@@ -106,39 +113,47 @@ public:
 	// Initializers
 	void objectsInit();
 	void WorldHitboxInit();
+    void bulletCreation(double dt);
+	void generateAsteroid();
+    void shipBulletCreation(double dt);
+    void playerBulletCreation(double dt);
 	
 	// Renders
-
     void renderNPC();
 	void renderShips();
-	void renderSkybox();
+    void renderSkybox();
+	void renderAsteroid();
+    void renderBullets();
+	void renderAllHitbox();
     void renderExplosion();
 	void renderWayPoints();
 	void renderFightingUI();
 	void renderTitleScreen();
-	void renderAllHitbox();
-	
-	
 
 	// Others
+	void quests();
     void checkHitboxes();
     void NPCUpdates(double dt);
+    void bulletUpdates(double dt);
 	void vehicleUpdates(double dt);
 	void MouseSelection(double dt);
 	
+
 
 	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	bool Timer(float second, double dt);
+	int generate_range(int from, int to);
+
 
 private:
 
     int money;
 	int AmmoCount;
 	int HealthPoints;
-    
-	
+
 	Camera camera;
 	Light light[1];
 	Vector3 LightView;
@@ -150,33 +165,40 @@ private:
 	unsigned m_colorBuffer[NUM_GEOMETRY];
 	unsigned m_indexBuffer[NUM_GEOMETRY];
 	unsigned m_vertexBuffer[NUM_GEOMETRY];
-	
+
 	double blinkDuration = 0;
+    double bulletCooldown = 0;
 	double wayPointSetCoolDown = 0;
 
     float move;
     float rotate;
     float moveleg;
-	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay;
-
 
     bool restart = false;
     bool restart2 = false;
+	bool blink = false;
+	bool re = false;
+	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay, second;
+
+
+ 
 	bool enableLight, enableAxis;
-	
+
 	GAMESTATE state;
 	HITBOXCHECK HBcheck;
-	
+
 	MousePicker picker;
 
 	Object station;
 	Object LastLocation;
+	Object NPC;
 
-	Vehicles ship;
-	Vehicles boat;
 
+	Vehicles *ship;
+	Vehicles *boat;
     Vehicles* testShip;
 	Vehicles* selection;
+
 	PlayerVehicle playerShip;
 
 	string Ammo;
@@ -188,7 +210,10 @@ private:
 	vector<AABB> Interactions;
 	vector<Vehicles*> allVehicles;
 	vector<Vector3> explosionPos;
-	
+    vector<Bullet*> playerBullets;
+	vector<Asteroid*> Vasteroid;
+
+
 	MS modelStack, viewStack, projectionStack;
 };
 

@@ -6,13 +6,16 @@
 class Object
 {
 public:
+
 	Object();
-	Object(Vector3 pos, Vector3 view, Vector3 up);
+	Object(Vector3 pos, Vector3 view, Vector3 up, int health);
 	~Object();
 	AABB interaction;
 	AABB hitbox;
 	Vector3 Pos, View, Up, Right, InteractionMin, InteractionMax;
 	float HitboxSize;
+
+    int health;
 
 	void SetHitbox(AABB hitbox);
 	void SetHitboxSize(float size);
@@ -28,6 +31,7 @@ public:
 	void SetRight(Vector3 right);
 	void SetRight(Vector3 view, Vector3 up);
 	void SetRight(float x, float y, float z);
+
 };
 
 #endif

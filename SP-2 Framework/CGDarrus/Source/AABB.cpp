@@ -40,6 +40,17 @@ bool AABB::AABBtoAABB(const AABB& box, Vector3& view)
 	return false;
 }
 
+bool AABB::AABBtoAABB(const AABB& box)
+{
+	if (Max.x >= box.Min.x && Min.x <= box.Max.x &&
+		Max.y >= box.Min.y && Min.y <= box.Max.y &&
+		Max.z >= box.Min.z && Min.z <= box.Max.z)
+	{
+		return true;
+	}
+	return false;
+}
+
 bool AABB::AABBtoAABB(const vector<AABB>& box, Vector3& view)
 {
 	for (vector<AABB>::const_iterator cVit = box.begin(); cVit != box.end(); ++cVit)
