@@ -120,11 +120,13 @@ public:
 	void vehicleUpdates(double dt);
 	void MouseSelection(double dt);
 	void checkHitboxes();
+	void quests();
 
 	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+	
 
 private:
 	int AmmoCount;
@@ -151,6 +153,8 @@ private:
     float moveleg;
     bool restart = 0;
     bool restart2 = 0;
+	bool blink = 0;
+	bool re = 0;
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay;
 	bool enableLight, enableAxis;
 	
@@ -160,6 +164,7 @@ private:
 	MousePicker picker;
 	Object station;
 	Object LastLocation;
+	Object NPC;
 	Vehicles ship;
 	Vehicles boat;
 

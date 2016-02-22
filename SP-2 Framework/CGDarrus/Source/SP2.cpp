@@ -197,6 +197,7 @@ void SP2::Update(double dt)
 			state = FPS;
 			selection = nullptr;
 			camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
+			
 		}
 		vehicleUpdates(dt);
 		checkHitboxes();
@@ -211,6 +212,7 @@ void SP2::Update(double dt)
 			LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
 			LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
 			camera.PointAt(station, 100, 200);
+			quests();
 		}
 		vehicleUpdates(dt);
 		checkHitboxes();
@@ -282,7 +284,27 @@ void SP2::Update(double dt)
     
 
     //npc move
-    move += (float)(8 * dt);    
+   
+
+	if (move <= 3 && re == 0)
+	{
+		move += (float)(2 * dt);
+
+		if (move >= 3)
+		{
+			re = 1;
+		}
+
+	}
+	if (move >= -3 && re == 1)
+	{
+		move -= (float)(2 * dt);
+		if (move <= -3)
+		{
+			re = 0;
+		}
+	}
+
     if (rotate < 5 && restart == 0)
     {
         rotate += (float)(20 * dt);
@@ -291,7 +313,6 @@ void SP2::Update(double dt)
         if (rotate >= 5)
         {
             restart = 1;
-
         }
 
     }
@@ -418,6 +439,9 @@ void SP2::objectsInit()
 	LastLocation.SetView(0, 0, 1);
 	LastLocation.SetUp(0, 1, 0);
 	LastLocation.SetRight(-1, 0, 0);
+
+	NPC.SetPos(0, 0.1, 0);
+
 
 	//Vehicles Init
 	ship.SetPos(100, 0, 0);
@@ -584,42 +608,42 @@ void SP2::renderNPC()
 
     //npc
     modelStack.PushMatrix();
-    modelStack.Translate(0, 0, -move);
+	modelStack.Translate(NPC.Pos.x, NPC.Pos.y, NPC.Pos.z);
 
     modelStack.PushMatrix();
-    modelStack.Scale(10, 10, 10);
+	modelStack.Scale(0.5, 0.5, 0.5);
     RenderMesh(meshList[GEO_NPC], false);
     modelStack.PopMatrix();
 
     modelStack.PushMatrix();
-    modelStack.Translate(0, 45, 0);
+    modelStack.Translate(0, 2.2, 0);
     modelStack.Rotate(rotate, 1, 0, 0);
     modelStack.Rotate(180, 1, 0, 0);
-    modelStack.Scale(10, 10, 10);
+	modelStack.Scale(0.5, 0.5, 0.5);
     RenderMesh(meshList[GEO_LEFTHAND], false);
     modelStack.PopMatrix();
 
     modelStack.PushMatrix();
-    modelStack.Translate(0, 45, 0);
+    modelStack.Translate(0, 2.2, 0);
     modelStack.Rotate(-rotate, 1, 0, 0);
     modelStack.Rotate(180, 1, 0, 0);
-    modelStack.Scale(10, 10, 10);
+	modelStack.Scale(0.5, 0.5, 0.5);
     RenderMesh(meshList[GEO_RIGHTHAND], false);
     modelStack.PopMatrix();
 
     modelStack.PushMatrix();
-    modelStack.Translate(0, 10, 0);
+    modelStack.Translate(0, 0.5, 0);
     modelStack.Rotate(moveleg, 1, 0, 0);
     modelStack.Rotate(180, 1, 0, 0);
-    modelStack.Scale(10, 10, 10);
+	modelStack.Scale(0.5, 0.5, 0.5);
     RenderMesh(meshList[GEO_RIGHTLEG], false);
     modelStack.PopMatrix();
 
     modelStack.PushMatrix();
-    modelStack.Translate(0, 10, 0);
+    modelStack.Translate(0, 0.5, 0);
     modelStack.Rotate(-moveleg, 1, 0, 0);
     modelStack.Rotate(180, 1, 0, 0);
-    modelStack.Scale(10, 10, 10);
+	modelStack.Scale(0.5, 0.5, 0.5);
     RenderMesh(meshList[GEO_LEFTLEG], false);
     modelStack.PopMatrix();
 
@@ -822,4 +846,12 @@ void SP2::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float si
 	modelStack.PopMatrix();
 
 	glEnable(GL_DEPTH_TEST);
+}
+
+void SP2::quests()
+{
+	if (camera.position.z - NPC.Pos.z < 5.f)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT], "HI", Color(0, 1, 0), 10, 0, 5);
+	}
 }
