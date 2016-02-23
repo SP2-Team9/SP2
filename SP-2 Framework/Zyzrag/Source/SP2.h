@@ -210,7 +210,7 @@ private:
 	vector<AABB> Interactions;
 	vector<Vehicles*> allVehicles;
 	vector<Vector3> explosionPos;
-    vector<Bullet*> playerBullets;
+    vector<Bullet*> allBullets;
 	vector<Asteroid*> Vasteroid;
 
 

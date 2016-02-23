@@ -24,7 +24,7 @@ class Bullet : public Object{
 
 public:
 
-    Bullet(Vector3 View, Vector3 playerPos);
+    Bullet(Vector3 newView, Vector3 playerPos, float newBulletDamage);
     ~Bullet();
   
     void bulletUpdate(double dt);
@@ -40,6 +40,9 @@ private:
     float bulletSpeed = 400;
     float BulletDamage = 30;
     float bulletMaxRange = 300;
+
+
+  
 
     Vector3 initialPosition;
 

@@ -28,13 +28,13 @@
 
 */
 /////////////////////////////////////////////////////////////////
-Bullet::Bullet(Vector3 newView, Vector3 playerPos)
-{
+Bullet::Bullet(Vector3 newView, Vector3 playerPos, float newBulletDamage){
 
     Pos = playerPos;
     View = newView;
     View.Normalize();
     initialPosition = playerPos;
+    BulletDamage = newBulletDamage;
 
 }
 

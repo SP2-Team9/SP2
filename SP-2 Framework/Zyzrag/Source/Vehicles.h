@@ -29,23 +29,29 @@ public:
 
 	Vehicles();
     Vehicles(Vector3 endLocation);
-    Vehicles(Vector3 position, Vector3 moveDirection, float speed, int health);
+    Vehicles(Vector3 position, Vector3 viewDirection, float newSpeed, int newHealth, float newFireRate, float newBulletDamage);
 
 	~Vehicles();
 
     float getRotationAngle();
     float getRotationAngle(Vector3 newView);
 
-
+   
 	void update(double dt);
     void initialMoveDirection();
     void setThrust(float newThrust);
 	void setNewWayPoint(float x, float z);
 	void initialMoveDirection(float x, float z);
-	
 
+    bool fireBullets(double dt);
 
-	float Yaw, Pitch, delay, initialYaw;
+    double bulletCooldown;
+
+    float Yaw, Pitch, delay, initialYaw;
+    double bulletFireRate = 0;
+    double bulletDamage = 0;
+    double bulletCurrCooldown;
+
 
 	bool board, isDead;
 
