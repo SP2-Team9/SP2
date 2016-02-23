@@ -222,7 +222,7 @@ private:
 	vector<AABB> worldHitbox;
 	vector<AABB> Interactions;
 	vector<Vector3> explosionPos;
-    vector<Bullet*> playerBullets;
+    vector<Bullet*> allBullets;
 	vector<Asteroid*> Vasteroid;
 
 

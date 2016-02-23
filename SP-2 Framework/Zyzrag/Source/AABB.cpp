@@ -134,7 +134,6 @@ bool AABB::RayToAABB(Vector3 rayOrigin, Vector3 ray)
 	if (T2 < Tfar)
 		Tfar = T2;
 
-	std::cout << "TRUE" << std::endl;
 	return true;
 }
 

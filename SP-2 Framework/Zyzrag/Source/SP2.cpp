@@ -28,10 +28,10 @@ SP2::~SP2()
 		delete *it;
 		it = Vasteroid.erase(it);
 	}
-	 for (vector<Bullet*>::iterator it = playerBullets.begin(); it != playerBullets.end(); it++){
+    for (vector<Bullet*>::iterator it = allBullets.begin(); it != allBullets.end(); it++){
 
         delete *it;
-        it = playerBullets.erase(it);
+        it = allBullets.erase(it);
 
     }
 
@@ -464,24 +464,6 @@ void SP2::objectsInit()
 	allVehiclesTest.insert(std::pair<int, vector<Vehicles*>>(GEO_XWING, midVehicles));
 	allVehiclesTest.insert(std::pair<int, vector<Vehicles*>>(GEO_LARGESHIP, largeVehicles));
 
-	smallShip = new Vehicles(Vector3(0, 0, -100), Vector3(1, 0, 0), 30, 50);
-	smallShip->SetHitboxSize(5);
-	smallShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
-	smallShip->initialMoveDirection();
-
-	midShip = new Vehicles(Vector3(100, 0, -100), Vector3(0, 0, 1), 20, 50);
-	midShip->SetHitboxSize(5);
-	midShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
-	midShip->initialMoveDirection();
-
-	largeShip = new Vehicles(Vector3(0, 0, 100), Vector3(0, 0, 1), 20, 50);
-	largeShip->SetHitboxSize(5);
-	largeShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
-	largeShip->initialMoveDirection();
-
-	allVehiclesTest[GEO_SMALLSHIP].push_back(smallShip);
-	allVehiclesTest[GEO_XWING].push_back(midShip);
-	allVehiclesTest[GEO_LARGESHIP].push_back(largeShip);
 }
 
 void SP2::WorldHitboxInit()
@@ -500,7 +482,7 @@ void SP2::WorldHitboxInit()
 void SP2::shipBulletCreation(double dt){
 
 
-    if (Application::IsKeyPressed(VK_SPACE) && bulletCooldown > 0.3 && selection != nullptr){
+    /*if (Application::IsKeyPressed(VK_SPACE) && bulletCooldown > 0.3 && selection != nullptr){
 
         Mtx44 rotation;
         rotation.SetToRotation(selection->getRotationAngle(), 0, 1, 0);
@@ -509,11 +491,29 @@ void SP2::shipBulletCreation(double dt){
 
         Bullet* newBullet = new Bullet(view, selection->Pos);
 
-        playerBullets.push_back(newBullet);
+        allBullets.push_back(newBullet);
+      
         bulletCooldown = 0;
+    }*/
+
+    for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+
+        Vehicles* temp = *vitV;
+
+        if (temp->fireBullets(dt) == true){
+
+            Vector3 view = temp->currAttackTarget->Pos - temp->Pos;
+            view.Normalize();
+
+            Bullet* newBullet = new Bullet(view, temp->Pos, temp->bulletDamage);
+
+            allBullets.push_back(newBullet);
+
+        }
 
     }
 
+  
     bulletCooldown += dt;
 
 }
@@ -522,15 +522,14 @@ void SP2::playerBulletCreation(double dt){
 
     if (Application::IsKeyPressed(VK_LBUTTON) && bulletCooldown > 0.3){
 
-        Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos);
+        Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos, 30);
 
-        playerBullets.push_back(newBullet);
+        allBullets.push_back(newBullet);
         bulletCooldown = 0;
 
     }
 
     bulletCooldown += dt;
-
 }
 
 void SP2::generateAsteroid()
@@ -824,7 +823,7 @@ void SP2::renderAllHitbox()
 
 void SP2::renderBullets(){
 
-    for (vector<Bullet*>::iterator vitB = playerBullets.begin(); vitB != playerBullets.end(); vitB++){
+    for (vector<Bullet*>::iterator vitB = allBullets.begin(); vitB != allBullets.end(); vitB++){
 
         Bullet* temp = *vitB;
 
@@ -835,6 +834,7 @@ void SP2::renderBullets(){
 
         modelStack.PopMatrix();
 
+      
     }
 
 }
@@ -989,7 +989,9 @@ void SP2::MouseSelection(double dt)
         else
         {
             selection->setNewWayPoint(selection->currAttackTarget->Pos.x, selection->currAttackTarget->Pos.z);
+
         }
+
 	}
 
 	wayPointSetCoolDown += dt;
@@ -1027,6 +1029,18 @@ void SP2::checkHitboxes()
 			Asteroid* tempAst = *it;
 			if (tempAst->hitbox.AABBtoAABB(station.hitbox, tempAst->View) == true)
 			{
+                for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++)
+                {
+                    Vehicles* temp = *it;
+                    
+                    if (temp->currAttackTarget == tempAst){
+
+                        temp->currAttackTarget = nullptr;
+
+                    }
+                    
+                       
+                }
 				delete tempAst;
 				it = Vasteroid.erase(it);
 			}
@@ -1083,6 +1097,9 @@ void SP2::checkHitboxes()
 			Vehicles* Veh1 = *Vit;
 			if (Veh1->hitbox.AABBtoAABB(playerShip.hitbox))
 			{
+                if (selection == Veh1) {
+                    selection = nullptr;
+                }
 				delete Veh1;
 				Vit = allVehicles.erase(Vit);
 			}
@@ -1119,13 +1136,13 @@ void SP2::checkHitboxes()
 
             Asteroid* tempAst = *vitA;
 
-            for (vector<Bullet*>::iterator vitB = playerBullets.begin(); vitB != playerBullets.end();){
+            for (vector<Bullet*>::iterator vitB = allBullets.begin(); vitB != allBullets.end();){
 
                 Bullet* tempBull = *vitB;
 
                 if (tempAst->hitbox.PointToAABB(tempBull->Pos)){
 
-                    vitB = playerBullets.erase(vitB);
+                    vitB = allBullets.erase(vitB);
 
                     tempAst->health -= tempBull->getBulletDamage();
 
@@ -1143,6 +1160,17 @@ void SP2::checkHitboxes()
 
             if (tempAst->health <= 0){
 
+                 for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++)
+                {
+                    Vehicles* temp = *it;
+
+                    if (temp->currAttackTarget == tempAst){
+
+                        temp->currAttackTarget = nullptr;
+
+                    }
+
+                }
                 vitA = Vasteroid.erase(vitA);
                 delete tempAst;
 
@@ -1211,15 +1239,15 @@ void SP2::checkHitboxes()
 
 void SP2::bulletUpdates(double dt){
 
-    for (vector<Bullet*>::iterator vitB = playerBullets.begin(); vitB != playerBullets.end();){
+    for (vector<Bullet*>::iterator vitB = allBullets.begin(); vitB != allBullets.end();){
 
         Bullet* temp = *vitB;
 
         temp->bulletUpdate(dt);
-
         if (temp->furtherThanBulletMaxRange()){
 
-            vitB = playerBullets.erase(vitB);
+            vitB = allBullets.erase(vitB);
+            
             delete temp;
 
         }

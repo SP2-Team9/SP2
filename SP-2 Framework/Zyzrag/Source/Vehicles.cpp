@@ -31,7 +31,8 @@ Vehicles::Vehicles() :
 Yaw(0),
 delay(0),
 board(false),
-isDead(false)
+isDead(false),
+bulletCooldown(0)
 {
 
 
@@ -56,7 +57,8 @@ Vehicles::Vehicles(Vector3 moveDirection) :
 Yaw(0),
 delay(0),
 board(false),
-isDead(false)
+isDead(false),
+bulletCooldown(0)
 {
 	
 }
@@ -74,11 +76,11 @@ isDead(false)
 
 */
 /////////////////////////////////////////////////////////////////
-Vehicles::Vehicles(Vector3 position, Vector3 viewDirection, float newSpeed, int newHealth) :
+Vehicles::Vehicles(Vector3 position, Vector3 viewDirection, float newSpeed, int newHealth, float newFireRate, float newBulletDamage) :
 board(false),
-isDead(false)
+isDead(false),
+bulletCooldown(0)
 {
-
     Vector3 initialPosition = position + viewDirection.Normalize();
     Pos = position;
     View = viewDirection;
@@ -88,6 +90,8 @@ isDead(false)
     initialYaw = getRotationAngle(viewDirection);
     currAttackTarget = nullptr;
     health = newHealth;
+    bulletFireRate = newFireRate;
+    bulletDamage = newBulletDamage;
 
 }
 
@@ -151,10 +155,14 @@ void Vehicles::update(double dt){
             newVehicle.updateWayPoints(currAttackTarget->Pos);
 
         }
+
+
         Pos.y = 0;
 
     }
-    
+
+    bulletCurrCooldown += dt;
+
 
 }
 
@@ -234,6 +242,7 @@ void Vehicles::initialMoveDirection(){
 /////////////////////////////////////////////////////////////////
 float Vehicles::getRotationAngle(){
 
+
     float degree = Math::RadianToDegree(acos(View.Dot(newVehicle.getLastWayPointDirection())));
 
     
@@ -296,4 +305,45 @@ float Vehicles::getRotationAngle(Vector3 newView){
 
     return degree;
 }
+
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: fire bullets
+
+* \author: Wong Keng Han Ashley
+
+* \date: 23 feb 2016
+
+* \description: returns if the target is in range
+
+*/
+/////////////////////////////////////////////////////////////////
+bool Vehicles::fireBullets(double dt){
+
+    if (currAttackTarget != nullptr){
+
+        if (currAttackTarget->Pos.distanceBetween2points(Pos) < 50000){
+
+            if (bulletFireRate > 0 && bulletCurrCooldown > 100 / bulletFireRate){
+
+                bulletCurrCooldown = 0;
+                return true;
+            }
+            else{
+
+
+            }
+            
+
+        }
+
+    }
+    
+
+    return false;
+
+}
+
+
 

@@ -337,9 +337,7 @@ void pathFinding::setCurrentLocation(Vector3 newCurrLocation){
 /////////////////////////////////////////////////////////////////
 queue<Vector3>  pathFinding::getwayPoints(){
 
-
 	return wayPoints;
-
 
 }
 
