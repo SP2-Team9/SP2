@@ -6,7 +6,8 @@
 class Asteroid : public Object
 {
 public:
-	float speed, size, health;
+	float speed, size, health, curRange;
+	int maxRange;
 	bool boom;
 
 

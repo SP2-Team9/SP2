@@ -16,12 +16,14 @@
 
 #include <queue>
 #include <vector>
+#include <map>
 #include <cstdlib>
 
 
 using std::string;
 using std::vector;
 using std::queue;
+using std::map;
 
 
 class SP2 : public Scene
@@ -32,6 +34,7 @@ class SP2 : public Scene
         GEO_RAY,
         GEO_QUAD,
         GEO_LIGHTBALL,
+
         GEO_FRONT,
         GEO_BACK,
         GEO_LEFT,
@@ -40,10 +43,16 @@ class SP2 : public Scene
         GEO_BOTTOM,
         GEO_TEXT,
         GEO_TEXT1,
+
+		GEO_SMALLSHIP,
         GEO_XWING,
+		GEO_LARGESHIP,
+
         GEO_CONTROL_PANEL,
         GEO_SPACE_STATION,
+		GEO_TELEPORTER,
         GEO_HITBOX,
+
         GEO_NPC,
         GEO_LEFTHAND,
         GEO_RIGHTHAND,
@@ -120,6 +129,7 @@ public:
 	
 	// Renders
     void renderNPC();
+	void renderStation();
 	void renderShips();
     void renderSkybox();
 	void renderAsteroid();
@@ -193,22 +203,24 @@ private:
 	Object LastLocation;
 	Object NPC;
 
-
-	Vehicles *ship;
-	Vehicles *boat;
-    Vehicles* testShip;
-	Vehicles* selection;
-
-	PlayerVehicle playerShip;
-
 	string Ammo;
 	string Health;
 	string FPSText;
     string Money;
 
+	vector<Vehicles*> allVehicles;
+	map<int, vector<Vehicles*>> allVehiclesTest;
+	vector<Vehicles*> smallVehicles;
+	vector<Vehicles*> largeVehicles;
+	vector<Vehicles*> midVehicles;
+	PlayerVehicle playerShip;
+	Vehicles *midShip;
+	Vehicles *smallShip;
+	Vehicles *largeShip;
+	Vehicles* selection;
+
 	vector<AABB> worldHitbox;
 	vector<AABB> Interactions;
-	vector<Vehicles*> allVehicles;
 	vector<Vector3> explosionPos;
     vector<Bullet*> playerBullets;
 	vector<Asteroid*> Vasteroid;

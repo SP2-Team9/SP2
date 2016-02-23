@@ -36,7 +36,6 @@ SP2::~SP2()
     }
 
 	delete selection;
-	delete testShip;
 }
 
 void SP2::Init()
@@ -163,15 +162,28 @@ void SP2::Init()
 	meshList[GEO_TEXT1] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT1]->textureID = LoadTGA("Image//startfont.tga");
 
+	// Ships
 	meshList[GEO_XWING] = MeshBuilder::GenerateOBJ("spaceShip", "OBJ//Flying.obj");
 	meshList[GEO_XWING]->textureID = LoadTGA("Image//flyingUV.tga");
 
+	meshList[GEO_SMALLSHIP] = MeshBuilder::GenerateOBJ("Small Ship", "OBJ//smallship.obj");
+	meshList[GEO_SMALLSHIP]->textureID = LoadTGA("Image//smallship.tga");
+
+	meshList[GEO_LARGESHIP] = MeshBuilder::GenerateOBJ("Large Ship", "OBJ//largeship.obj");
+	meshList[GEO_LARGESHIP]->textureID = LoadTGA("Image//largeship.tga");
+
+
+	// Station
 	meshList[GEO_CONTROL_PANEL] = MeshBuilder::GenerateOBJ("Control Panel", "OBJ//Control Panel.obj");
 	meshList[GEO_CONTROL_PANEL]->textureID = LoadTGA("Image//Control Panel.tga");
 
 	meshList[GEO_SPACE_STATION] = MeshBuilder::GenerateOBJ("Space Station", "OBJ//Space Station.obj");
 	meshList[GEO_SPACE_STATION]->textureID = LoadTGA("Image//Space Station.tga");
 
+	meshList[GEO_TELEPORTER] = MeshBuilder::GenerateOBJ("Asteroid", "OBJ//teleporter.obj");
+	meshList[GEO_TELEPORTER]->textureID = LoadTGA("Image//teleporter.tga");
+
+	// NPC
 	meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
     meshList[GEO_NPC]->textureID = LoadTGA("Image//headnbody_uv.tga");
 
@@ -190,9 +202,8 @@ void SP2::Init()
 	meshList[GEO_QUAD] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_QUAD]->textureID = LoadTGA("Image//menu.tga");
 
-	meshList[GEO_ASTEROID] = MeshBuilder::GenerateSphere("Asteroid", Color(1, 1, 1), 10, 10);
-	//meshList[GEO_ASTEROID] = MeshBuilder::GenerateOBJ("Asteroid", "OBJ//asteroid.obj");
-	//meshList[GEO_ASTEROID]->textureID = LoadTGA("Image//AM3.tga");
+	meshList[GEO_ASTEROID] = MeshBuilder::GenerateOBJ("Asteroid", "OBJ//asteroid.obj");
+	meshList[GEO_ASTEROID]->textureID = LoadTGA("Image//AM3.tga");
 
     move = 0.f;
     rotate = 0.f;
@@ -378,15 +389,9 @@ void SP2::Render()
 		RenderMesh(meshList[GEO_AXES], false);
 
 	renderSkybox();
+	renderStation();
 	renderAsteroid();
-
-	//SpaceStation
-
-	modelStack.PushMatrix();
-	modelStack.Scale(10, 10, 10);
-	RenderMesh(meshList[GEO_SPACE_STATION], enableLight);
-	modelStack.PopMatrix();
-
+	
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 
 	renderExplosion();
@@ -398,7 +403,6 @@ void SP2::Render()
 		break;
 
 	case RTS:
-
 		if (Application::IsKeyPressed(VK_LBUTTON))
 		{
 			meshList[GEO_RAY] = MeshBuilder::GenerateLine("Ray", Vector3(0, 200, 0), picker.WorldCoord());
@@ -456,18 +460,28 @@ void SP2::objectsInit()
 	playerShip.SetHitboxSize(5);
 
 	//Vehicles Init
-    ship = new Vehicles(Vector3(100, 0, -100), Vector3(0, 0, 1), 20, 50);
-	ship->SetHitboxSize(5);
-    ship->SetInteractionSize(10, 10, 10, 10, 10, 10);
-    ship->initialMoveDirection();
+	allVehiclesTest.insert(std::pair<int, vector<Vehicles*>>(GEO_SMALLSHIP, smallVehicles));
+	allVehiclesTest.insert(std::pair<int, vector<Vehicles*>>(GEO_XWING, midVehicles));
+	allVehiclesTest.insert(std::pair<int, vector<Vehicles*>>(GEO_LARGESHIP, largeVehicles));
 
-    boat = new Vehicles(Vector3(0, 0, -100), Vector3(1, 0, 0), 30, 50);
-    boat->SetHitboxSize(5);
-    boat->SetInteractionSize(10, 10, 10, 10, 10, 10);
-    boat->initialMoveDirection();
+	smallShip = new Vehicles(Vector3(0, 0, -100), Vector3(1, 0, 0), 30, 50);
+	smallShip->SetHitboxSize(5);
+	smallShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
+	smallShip->initialMoveDirection();
 
-	allVehicles.push_back(ship);
-	allVehicles.push_back(boat);
+	midShip = new Vehicles(Vector3(100, 0, -100), Vector3(0, 0, 1), 20, 50);
+	midShip->SetHitboxSize(5);
+	midShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
+	midShip->initialMoveDirection();
+
+	largeShip = new Vehicles(Vector3(0, 0, 100), Vector3(0, 0, 1), 20, 50);
+	largeShip->SetHitboxSize(5);
+	largeShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
+	largeShip->initialMoveDirection();
+
+	allVehiclesTest[GEO_SMALLSHIP].push_back(smallShip);
+	allVehiclesTest[GEO_XWING].push_back(midShip);
+	allVehiclesTest[GEO_LARGESHIP].push_back(largeShip);
 }
 
 void SP2::WorldHitboxInit()
@@ -528,19 +542,19 @@ void SP2::generateAsteroid()
 		{
 		case 0:
 			asteroid->SetPos(generate_range(-400, 400), 0, generate_range(400, 500));
-			asteroid->SetView(Vector3(0, 0, 0) - asteroid->Pos);
+			asteroid->SetView(Vector3(generate_range(-400, 400), 0, -500));
 			break;
 		case 1:
 			asteroid->SetPos(generate_range(-400, 400), 0, generate_range(-400, -500));
-			asteroid->SetView(Vector3(0, 0, 0) - asteroid->Pos);
+			asteroid->SetView(Vector3(generate_range(-400, 400), 0, 500));
 			break;
 		case 2:
 			asteroid->SetPos(generate_range(400, 500), 0, generate_range(-400, 400));
-			asteroid->SetView(Vector3(0, 0, 0) - asteroid->Pos);
+			asteroid->SetView(Vector3(-500, 0, generate_range(-400, 400)));
 			break;
 		case 3:
 			asteroid->SetPos(generate_range(-400, -500), 0, generate_range(-400, 400));
-			asteroid->SetView(Vector3(0, 0, 0) - asteroid->Pos);
+			asteroid->SetView(Vector3(500, 0, generate_range(-400, 400)));
 			break;
 		}
 
@@ -608,6 +622,25 @@ void SP2::renderSkybox()
 	modelStack.PopMatrix();
 }
 
+void SP2::renderStation()
+{
+	modelStack.PushMatrix();
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_SPACE_STATION], enableLight);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Scale(1.6f, 1.6f, 1.6f);
+	RenderMesh(meshList[GEO_TELEPORTER], enableLight);
+	modelStack.PopMatrix();
+	
+	modelStack.PushMatrix();
+	modelStack.Scale(0.7f, 0.7f, 0.7f);
+	modelStack.Translate(0, -0.5f, 10);
+	RenderMesh(meshList[GEO_CONTROL_PANEL], enableLight);
+	modelStack.PopMatrix();
+}
+
 void SP2::renderTitleScreen(){
 	//start menu
 	modelStack.PushMatrix();
@@ -640,16 +673,20 @@ void SP2::renderShips(){
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
-	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+	{
+		vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
+		while (it != allVehiclesTest[i].end())
+		{
+			Vehicles* Vtemp = *it;
+			modelStack.PushMatrix();
+			modelStack.Translate(Vtemp->Pos.x, Vtemp->Pos.y, Vtemp->Pos.z);
+			modelStack.Rotate(Vtemp->Yaw, 0, 1, 0);
+			RenderMesh(meshList[i], enableLight);
+			modelStack.PopMatrix();
 
-		Vehicles* currVehicle = *vitV;
-
-		modelStack.PushMatrix();
-		modelStack.Translate(currVehicle->Pos.x, currVehicle->Pos.y, currVehicle->Pos.z);
-		modelStack.Rotate(currVehicle->Yaw, 0, 1, 0);
-		RenderMesh(meshList[GEO_XWING], enableLight);
-		modelStack.PopMatrix();
-
+			it++;
+		}
 	}
 
 	modelStack.PushMatrix();
@@ -661,28 +698,30 @@ void SP2::renderShips(){
 }
 
 void SP2::renderWayPoints(){
+	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+	{
+		vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
+		while (it != allVehiclesTest[i].end())
+		{
+			Vehicles* Vtemp = *it;
+			queue<Vector3> currVehicleQueue = Vtemp->newVehicle.getwayPoints();
+
+			while (!currVehicleQueue.empty()){
 
 
-	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+				modelStack.PushMatrix();
 
-		Vehicles* currVehicle = *vitV;
-		queue<Vector3> currVehicleQueue = currVehicle->newVehicle.getwayPoints();
+				modelStack.Translate(currVehicleQueue.front().x, currVehicleQueue.front().y, currVehicleQueue.front().z);
+				RenderMesh(meshList[GEO_LIGHTBALL], false);
 
+				modelStack.PopMatrix();
 
-		while (!currVehicleQueue.empty()){
+				currVehicleQueue.pop();
 
+			}
 
-			modelStack.PushMatrix();
-
-			modelStack.Translate(currVehicleQueue.front().x, currVehicleQueue.front().y, currVehicleQueue.front().z);
-			RenderMesh(meshList[GEO_LIGHTBALL], false);
-
-			modelStack.PopMatrix();
-
-			currVehicleQueue.pop();
-
+			it++;
 		}
-
 	}
 
 }
@@ -749,9 +788,9 @@ void SP2::renderExplosion()
 void SP2::renderAllHitbox()
 {
 	/*vector<AABB> allHitbox;
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);*/
 
-	for (vector<AABB>::iterator it = Interactions.begin(); it != Interactions.end(); ++it)
+	/*for (vector<AABB>::iterator it = Interactions.begin(); it != Interactions.end(); ++it)
 	{
 		allHitbox.push_back(*it);
 	}
@@ -759,9 +798,9 @@ void SP2::renderAllHitbox()
 	for (vector<AABB>::iterator it = worldHitbox.begin(); it != worldHitbox.end(); ++it)
 	{
 		allHitbox.push_back(*it);
-	}
+	}*/
 
-	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
+	/*for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
 	{
 		Asteroid* asteroid = *it;
 		allHitbox.push_back(asteroid->hitbox);
@@ -816,12 +855,17 @@ void SP2::renderAsteroid()
 // Others
 
 void SP2::vehicleUpdates(double dt){
+	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+	{
+		vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
+		while (it != allVehiclesTest[i].end())
+		{
+			Vehicles* Vtemp = *it;
+			Vtemp->update(dt);
 
-	for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
-		Vehicles* temp = *vitV;
-		temp->update(dt);
+			it++;
+		}
 	}
-
 }
 
 void SP2::NPCUpdates(double dt){
@@ -888,20 +932,29 @@ void SP2::MouseSelection(double dt)
 	if (Application::IsKeyPressed(VK_LBUTTON) && wayPointSetCoolDown > 0.5f)
 	{
 		Vector3 pressPosition = picker.WorldCoord();
-
-		for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); ++it){
-
-			Vehicles* temp = *it;
-			if (temp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
+		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+		{
+			bool Bselected = false;
+			vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
+			while (it != allVehiclesTest[i].end())
 			{
-				selection = temp;
+				Vehicles* Vtemp = *it;
+				if (Vtemp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
+				{
+					selection = Vtemp;
+					Bselected = true;
+					break;
+				}
+				else
+				{
+					selection = nullptr;
+				}
 
+				it++;
+			}
+
+			if (Bselected == true)
 				break;
-			}
-			else
-			{
-				selection = nullptr;
-			}
 		}
 		wayPointSetCoolDown = 0;
 	}
@@ -948,20 +1001,24 @@ void SP2::checkHitboxes()
 	{
 	case CheckStation:
 		// Vehicles to Station
-		for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end();)
+		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 		{
-			Vehicles* temp = *it;
-			if (temp->hitbox.AABBtoAABB(station.hitbox, temp->View) == true)
+			vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
+			while (it != allVehiclesTest[i].end())
 			{
-				it = allVehicles.erase(it);
-				if (selection == temp)
+				Vehicles* Vtemp = *it;
+				if (Vtemp->hitbox.AABBtoAABB(station.hitbox, Vtemp->View) == true)
 				{
-					selection = nullptr;
+					it = allVehiclesTest[i].erase(it);
+					if (selection == Vtemp)
+					{
+						selection = nullptr;
+					}
+					delete Vtemp;
 				}
-                delete temp;
+				else
+					++it;
 			}
-			else
-				++it;
 		}
 
 		// Asteroid to Station
@@ -980,32 +1037,43 @@ void SP2::checkHitboxes()
 		break;
 	case CheckShips:
 		// Ship to Ship
-		for (vector<Vehicles*>::iterator V1it = allVehicles.begin(); V1it != allVehicles.end();)
+		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 		{
-			Vehicles* Veh1 = *V1it;
-			for (vector<Vehicles*>::iterator V2it = allVehicles.begin(); V2it != allVehicles.end();)
+			vector<Vehicles*>::iterator V1it = allVehiclesTest[i].begin();
+
+			while (V1it != allVehiclesTest[i].end())
 			{
-				Vehicles* Veh2 = *V2it;
-				if (Veh1->hitbox.AABBtoAABB(Veh2->hitbox) == true && Veh1 != Veh2)
+				Vehicles* Veh1 = *V1it;
+				for (int j = GEO_SMALLSHIP; j <= GEO_LARGESHIP; ++j)
 				{
-					Veh1->isDead = true;
-					delete Veh2;
-					V2it = allVehicles.erase(V2it);
+					vector<Vehicles*>::iterator V2it = allVehiclesTest[j].begin();
+					while (V2it != allVehiclesTest[j].end())
+					{
+						Vehicles* Veh2 = *V2it;
+						if (Veh1->hitbox.AABBtoAABB(Veh2->hitbox) == true && Veh1 != Veh2)
+						{
+							Veh1->isDead = true;
+							if (selection == Veh1 || selection == Veh2)
+								selection = nullptr;
+							delete Veh2;
+							V2it = allVehiclesTest[j].erase(V2it);
+						}
+						else
+						{
+							V2it++;
+						}
+					}
+				}
+
+				if (Veh1->isDead == true)
+				{
+					delete Veh1;
+					V1it = allVehiclesTest[i].erase(V1it);
 				}
 				else
 				{
-					V2it++;
+					V1it++;
 				}
-			}
-
-			if (Veh1->isDead == true)
-			{
-				delete Veh1;
-				V1it = allVehicles.erase(V1it);
-			}
-			else
-			{
-				V1it++;
 			}
 		}
 
@@ -1023,7 +1091,28 @@ void SP2::checkHitboxes()
 				Vit++;
 			}
 		}
+
+		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+		{
+			vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
+			while (it != allVehiclesTest[i].end())
+			{
+				Vehicles* Vtemp = *it;
+				if (Vtemp->hitbox.AABBtoAABB(playerShip.hitbox))
+				{
+					if (selection == Vtemp)
+					{
+						selection = nullptr;
+					}
+					delete Vtemp;
+					it = allVehiclesTest[i].erase(it);
+				}
+				else
+					++it;
+			}
+		}
 		break;
+
 	case CheckAsteroids:
 		//Bullet To Asteroid
         for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
@@ -1067,34 +1156,37 @@ void SP2::checkHitboxes()
         }
 
 		//Vehicles to Asteroid
-		for (vector<Vehicles*>::iterator Vit = allVehicles.begin(); Vit != allVehicles.end();)
+		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 		{
-			Vehicles* tempVeh = *Vit;
-			for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
+			vector<Vehicles*>::iterator Vit = allVehiclesTest[i].begin();
+			while (Vit != allVehiclesTest[i].end())
 			{
-				Asteroid* tempAst = *Ait;
-				if (tempVeh->hitbox.AABBtoAABB(tempAst->hitbox))
+				Vehicles* tempVeh = *Vit;
+				for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
 				{
-					tempVeh->isDead = true;
-					delete tempAst;
-					Ait = Vasteroid.erase(Ait);
+					Asteroid* tempAst = *Ait;
+					if (tempVeh->hitbox.AABBtoAABB(tempAst->hitbox))
+					{
+						tempVeh->isDead = true;
+						delete tempAst;
+						Ait = Vasteroid.erase(Ait);
+					}
+					else
+					{
+						Ait++;
+					}
+				}
+
+				if (tempVeh->isDead == true)
+				{
+					delete tempVeh;
+					Vit = allVehiclesTest[i].erase(Vit);
 				}
 				else
 				{
-					Ait++;
+					Vit++;
 				}
 			}
-
-			if (tempVeh->isDead == true)
-			{
-				delete tempVeh;
-				Vit = allVehicles.erase(Vit);
-			}
-			else
-			{
-				Vit++;
-			}
-				
 		}
 
 		// Player Ship to Asteroid
@@ -1276,9 +1368,6 @@ bool SP2::Timer(float second, double dt)
 
 int SP2::generate_range(int from, int to)
 {
-
 	int k = (rand() % (to - from)) + from;
-    return k;
-
-   
+    return k; 
 }
