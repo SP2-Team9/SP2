@@ -44,9 +44,11 @@ class SP2 : public Scene
         GEO_TEXT,
         GEO_TEXT1,
 
+        // DONT PUT ANYTHING INBETWEEN! FROM HERE
 		GEO_SMALLSHIP,
         GEO_XWING,
 		GEO_LARGESHIP,
+        // TO HERE
 
         GEO_CONTROL_PANEL,
         GEO_SPACE_STATION,
@@ -208,8 +210,7 @@ private:
 	string FPSText;
     string Money;
 
-	vector<Vehicles*> allVehicles;
-	map<int, vector<Vehicles*>> allVehiclesTest;
+	map<int, vector<Vehicles*>> allVehicles;
 	vector<Vehicles*> smallVehicles;
 	vector<Vehicles*> largeVehicles;
 	vector<Vehicles*> midVehicles;

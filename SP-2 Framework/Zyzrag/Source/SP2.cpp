@@ -17,11 +17,16 @@ SP2::SP2()
 SP2::~SP2()
 {
 
-	for(vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end();)
-	{
-		delete *it;
-		it = allVehicles.erase(it);
-	}
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+    {
+        vector<Vehicles*>::iterator it = allVehicles[i].begin();
+        while (it != allVehicles[i].end())
+        {
+            Vehicles* Vtemp = *it;
+            delete Vtemp;
+            it = allVehicles[i].erase(it);
+        }
+    }
 
 	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
 	{
@@ -460,10 +465,15 @@ void SP2::objectsInit()
 	playerShip.SetHitboxSize(5);
 
 	//Vehicles Init
-	allVehiclesTest.insert(std::pair<int, vector<Vehicles*>>(GEO_SMALLSHIP, smallVehicles));
-	allVehiclesTest.insert(std::pair<int, vector<Vehicles*>>(GEO_XWING, midVehicles));
-	allVehiclesTest.insert(std::pair<int, vector<Vehicles*>>(GEO_LARGESHIP, largeVehicles));
+	allVehicles.insert(std::pair<int, vector<Vehicles*>>(GEO_SMALLSHIP, smallVehicles));
+	allVehicles.insert(std::pair<int, vector<Vehicles*>>(GEO_XWING, midVehicles));
+	allVehicles.insert(std::pair<int, vector<Vehicles*>>(GEO_LARGESHIP, largeVehicles));
 
+    smallShip = new Vehicles(Vector3(0, 0, 50), Vector3(0, 0, 1), 60, 20, 500, 10);
+    smallShip->SetHitboxSize(5);
+    smallShip->SetInteractionSize(10,10,10,10,10,10);
+
+    allVehicles[GEO_SMALLSHIP].push_back(smallShip);
 }
 
 void SP2::WorldHitboxInit()
@@ -496,7 +506,28 @@ void SP2::shipBulletCreation(double dt){
         bulletCooldown = 0;
     }*/
 
-    for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+    {
+        vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
+        while (vitV != allVehicles[i].end())
+        {
+            Vehicles* temp = *vitV;
+            if (temp->fireBullets(dt) == true){
+
+                Vector3 view = temp->currAttackTarget->Pos - temp->Pos;
+                view.Normalize();
+
+                Bullet* newBullet = new Bullet(view, temp->Pos, temp->bulletDamage);
+
+                allBullets.push_back(newBullet);
+
+            }
+
+            ++vitV;
+        }
+    }
+
+   /* for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
 
         Vehicles* temp = *vitV;
 
@@ -511,7 +542,7 @@ void SP2::shipBulletCreation(double dt){
 
         }
 
-    }
+    }*/
 
   
     bulletCooldown += dt;
@@ -674,8 +705,8 @@ void SP2::renderShips(){
 
 	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 	{
-		vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
-		while (it != allVehiclesTest[i].end())
+		vector<Vehicles*>::iterator it = allVehicles[i].begin();
+		while (it != allVehicles[i].end())
 		{
 			Vehicles* Vtemp = *it;
 			modelStack.PushMatrix();
@@ -699,8 +730,8 @@ void SP2::renderShips(){
 void SP2::renderWayPoints(){
 	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 	{
-		vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
-		while (it != allVehiclesTest[i].end())
+		vector<Vehicles*>::iterator it = allVehicles[i].begin();
+		while (it != allVehicles[i].end())
 		{
 			Vehicles* Vtemp = *it;
 			queue<Vector3> currVehicleQueue = Vtemp->newVehicle.getwayPoints();
@@ -857,8 +888,8 @@ void SP2::renderAsteroid()
 void SP2::vehicleUpdates(double dt){
 	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 	{
-		vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
-		while (it != allVehiclesTest[i].end())
+		vector<Vehicles*>::iterator it = allVehicles[i].begin();
+		while (it != allVehicles[i].end())
 		{
 			Vehicles* Vtemp = *it;
 			Vtemp->update(dt);
@@ -935,8 +966,8 @@ void SP2::MouseSelection(double dt)
 		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 		{
 			bool Bselected = false;
-			vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
-			while (it != allVehiclesTest[i].end())
+			vector<Vehicles*>::iterator it = allVehicles[i].begin();
+			while (it != allVehicles[i].end())
 			{
 				Vehicles* Vtemp = *it;
 				if (Vtemp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
@@ -1005,13 +1036,13 @@ void SP2::checkHitboxes()
 		// Vehicles to Station
 		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 		{
-			vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
-			while (it != allVehiclesTest[i].end())
+			vector<Vehicles*>::iterator it = allVehicles[i].begin();
+			while (it != allVehicles[i].end())
 			{
 				Vehicles* Vtemp = *it;
 				if (Vtemp->hitbox.AABBtoAABB(station.hitbox, Vtemp->View) == true)
 				{
-					it = allVehiclesTest[i].erase(it);
+					it = allVehicles[i].erase(it);
 					if (selection == Vtemp)
 					{
 						selection = nullptr;
@@ -1029,7 +1060,22 @@ void SP2::checkHitboxes()
 			Asteroid* tempAst = *it;
 			if (tempAst->hitbox.AABBtoAABB(station.hitbox, tempAst->View) == true)
 			{
-                for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++)
+                for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+                {
+                    vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
+                    while (vitV != allVehicles[i].end())
+                    {
+                        Vehicles* temp = *vitV;
+                        if (temp->currAttackTarget == tempAst){
+
+                            temp->currAttackTarget = nullptr;
+
+                        }
+
+                        vitV++;
+                    }
+                }
+               /* for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++)
                 {
                     Vehicles* temp = *it;
                     
@@ -1040,7 +1086,7 @@ void SP2::checkHitboxes()
                     }
                     
                        
-                }
+                }*/
 				delete tempAst;
 				it = Vasteroid.erase(it);
 			}
@@ -1053,15 +1099,15 @@ void SP2::checkHitboxes()
 		// Ship to Ship
 		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 		{
-			vector<Vehicles*>::iterator V1it = allVehiclesTest[i].begin();
+			vector<Vehicles*>::iterator V1it = allVehicles[i].begin();
 
-			while (V1it != allVehiclesTest[i].end())
+			while (V1it != allVehicles[i].end())
 			{
 				Vehicles* Veh1 = *V1it;
 				for (int j = GEO_SMALLSHIP; j <= GEO_LARGESHIP; ++j)
 				{
-					vector<Vehicles*>::iterator V2it = allVehiclesTest[j].begin();
-					while (V2it != allVehiclesTest[j].end())
+					vector<Vehicles*>::iterator V2it = allVehicles[j].begin();
+					while (V2it != allVehicles[j].end())
 					{
 						Vehicles* Veh2 = *V2it;
 						if (Veh1->hitbox.AABBtoAABB(Veh2->hitbox) == true && Veh1 != Veh2)
@@ -1070,7 +1116,7 @@ void SP2::checkHitboxes()
 							if (selection == Veh1 || selection == Veh2)
 								selection = nullptr;
 							delete Veh2;
-							V2it = allVehiclesTest[j].erase(V2it);
+							V2it = allVehicles[j].erase(V2it);
 						}
 						else
 						{
@@ -1082,7 +1128,7 @@ void SP2::checkHitboxes()
 				if (Veh1->isDead == true)
 				{
 					delete Veh1;
-					V1it = allVehiclesTest[i].erase(V1it);
+					V1it = allVehicles[i].erase(V1it);
 				}
 				else
 				{
@@ -1092,27 +1138,10 @@ void SP2::checkHitboxes()
 		}
 
 		//Player Ship to Ship
-		for (vector<Vehicles*>::iterator Vit = allVehicles.begin(); Vit != allVehicles.end();)
-		{
-			Vehicles* Veh1 = *Vit;
-			if (Veh1->hitbox.AABBtoAABB(playerShip.hitbox))
-			{
-                if (selection == Veh1) {
-                    selection = nullptr;
-                }
-				delete Veh1;
-				Vit = allVehicles.erase(Vit);
-			}
-			else
-			{
-				Vit++;
-			}
-		}
-
 		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 		{
-			vector<Vehicles*>::iterator it = allVehiclesTest[i].begin();
-			while (it != allVehiclesTest[i].end())
+			vector<Vehicles*>::iterator it = allVehicles[i].begin();
+			while (it != allVehicles[i].end())
 			{
 				Vehicles* Vtemp = *it;
 				if (Vtemp->hitbox.AABBtoAABB(playerShip.hitbox))
@@ -1122,7 +1151,7 @@ void SP2::checkHitboxes()
 						selection = nullptr;
 					}
 					delete Vtemp;
-					it = allVehiclesTest[i].erase(it);
+					it = allVehicles[i].erase(it);
 				}
 				else
 					++it;
@@ -1160,7 +1189,25 @@ void SP2::checkHitboxes()
 
             if (tempAst->health <= 0){
 
-                 for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++)
+                for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+                {
+                    vector<Vehicles*>::iterator it = allVehicles[i].begin();
+
+                    while (it != allVehicles[i].end())
+                    {
+
+                        Vehicles* temp = *it;
+
+                        if (temp->currAttackTarget == tempAst){
+
+                            temp->currAttackTarget = nullptr;
+
+                        }
+
+                        it++;
+                    }
+                }
+                /* for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++)
                 {
                     Vehicles* temp = *it;
 
@@ -1170,7 +1217,7 @@ void SP2::checkHitboxes()
 
                     }
 
-                }
+                }*/
                 vitA = Vasteroid.erase(vitA);
                 delete tempAst;
 
@@ -1186,8 +1233,8 @@ void SP2::checkHitboxes()
 		//Vehicles to Asteroid
 		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 		{
-			vector<Vehicles*>::iterator Vit = allVehiclesTest[i].begin();
-			while (Vit != allVehiclesTest[i].end())
+			vector<Vehicles*>::iterator Vit = allVehicles[i].begin();
+			while (Vit != allVehicles[i].end())
 			{
 				Vehicles* tempVeh = *Vit;
 				for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
@@ -1208,7 +1255,7 @@ void SP2::checkHitboxes()
 				if (tempVeh->isDead == true)
 				{
 					delete tempVeh;
-					Vit = allVehiclesTest[i].erase(Vit);
+					Vit = allVehicles[i].erase(Vit);
 				}
 				else
 				{
