@@ -3,6 +3,7 @@
 
 
 #include "Mesh.h"
+#include "Shop.h"
 #include "Light.h"
 #include "Scene.h"
 #include "Object.h"
@@ -15,7 +16,6 @@
 #include "MousePicker.h"
 #include "pathFinding.h"
 #include "PlayerVehicle.h"
-
 
 #include <map>
 #include <queue>
@@ -199,7 +199,6 @@ private:
 	bool blink = false;
 	bool re = false;
 
-    double bulletCooldown = 0;
 
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay, second;
 
@@ -221,12 +220,15 @@ private:
 	string Health;
 	string FPSText;
     
+    Shop* playerShop;
 
 	map<int, vector<Vehicles*>> allVehicles;
 	vector<Vehicles*> smallVehicles;
 	vector<Vehicles*> largeVehicles;
 	vector<Vehicles*> midVehicles;
+
 	PlayerVehicle playerShip;
+
 	Vehicles *midShip;
 	Vehicles *smallShip;
 	Vehicles *largeShip;

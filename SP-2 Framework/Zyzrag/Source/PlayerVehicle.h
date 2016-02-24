@@ -1,15 +1,31 @@
 #ifndef PLAYERVEHICLE_H
 #define PLAYERVEHICLE_H
 
-#include "Object.h"
+#include "Shop.h"
+#include "Vehicles.h"
 
-struct PlayerVehicle : public Object
-{
+
+struct PlayerVehicle : Object {
+
+
 	float thrust, pitch, yaw, delay;
 	bool isDead, board;
 
+    void update(double dt);
+
+    bool fireBullets(int bulletFireRate);
+   
+
+    double bulletCurrCooldown = 0;
+
+
+
 	PlayerVehicle() : thrust(0), pitch(0), yaw(0), delay(0), isDead(false){}
-	~PlayerVehicle(){}
+	
+    ~PlayerVehicle(){}
+
+
+
 };
 
 

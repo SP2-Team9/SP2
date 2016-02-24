@@ -323,21 +323,15 @@ bool Vehicles::fireBullets(double dt){
 
         if (currAttackTarget->Pos.distanceBetween2points(Pos) < 400){
 
-            if (bulletFireRate > 0 && bulletCurrCooldown > 100 / bulletFireRate){
+            if (bulletFireRate > 0 && bulletCurrCooldown > 100 / static_cast<float>(bulletFireRate)){
 
                 bulletCurrCooldown = 0;
                 return true;
             }
-            else{
-
-
-            }
-            
 
         }
 
     }
-    
 
     return false;
 

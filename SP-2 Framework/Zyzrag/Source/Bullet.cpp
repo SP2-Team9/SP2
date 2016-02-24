@@ -115,13 +115,11 @@ void Bullet::bulletMovement(double dt){
 /////////////////////////////////////////////////////////////////
 bool Bullet::furtherThanBulletMaxRange(){
 
-
     if (initialPosition.distanceBetween2points(Pos) > bulletMaxRange){
 
         return true;
 
     }
-
 
     return false;
 
