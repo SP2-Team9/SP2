@@ -15,6 +15,8 @@
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game
 const unsigned int frameTime = 1000 / FPS; // time for each frame
+int Application::screenHeight = 0;
+int Application::screenWidth = 0;
 
 
 //Define an error callback
@@ -38,7 +40,6 @@ bool Application::IsKeyPressed(unsigned short key)
 
 Application::Application()
 {
-	//mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 }
 
 Application::~Application()
@@ -70,9 +71,12 @@ void Application::Init()
 
 
 	//Create a window and create its OpenGL context
-
-	//m_window = glfwCreateWindow(width, height, "SP2", glfwGetPrimaryMonitor(), NULL);
-	m_window = glfwCreateWindow(800, 600, "SP2", NULL, NULL);
+	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	//screenWidth = mode->width;
+	//screenHeight = mode->height;
+	screenWidth = 800;
+	screenHeight = 600;
+	m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", NULL, NULL);
 
 	//Set window Size
 	glfwSetWindowSizeCallback(m_window, resize_callback);

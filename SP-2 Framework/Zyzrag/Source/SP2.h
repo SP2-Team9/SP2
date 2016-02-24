@@ -67,6 +67,7 @@ class SP2 : public Scene
         GEO_BULLETS,
         GEO_ASTEROID,
         GEO_EXPLOSION,
+		GEO_INNERSTATION,
 
 		NUM_GEOMETRY,
 

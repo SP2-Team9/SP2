@@ -19,6 +19,9 @@ public:
 	static void hideMouse();
 	static void showMouse();
 
+	static int screenWidth;
+	static int screenHeight;
+
 private:
 
 	//Declare a window object

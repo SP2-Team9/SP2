@@ -66,7 +66,16 @@ void SP2::Init()
 
 	// Matrix Stack Init
 	Mtx44 projection;
-	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 10000.f);
+	
+	if (static_cast<float>(Application::screenWidth) / static_cast<float>(Application::screenHeight) > 1.3334)
+	{
+		projection.SetToPerspective(45.f, 16.f / 9.f, 0.1f, 10000.f);
+	}
+	else
+	{
+		projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 10000.f);
+	}
+	
 	projectionStack.LoadMatrix(projection);
 
 	//Enable depth buffer and depth testing
@@ -211,6 +220,9 @@ void SP2::Init()
 	meshList[GEO_ASTEROID] = MeshBuilder::GenerateOBJ("Asteroid", "OBJ//asteroid.obj");
 	meshList[GEO_ASTEROID]->textureID = LoadTGA("Image//AM3.tga");
 
+	meshList[GEO_INNERSTATION] = MeshBuilder::GenerateOBJ("Test", "OBJ//innerstation.obj");
+	meshList[GEO_INNERSTATION]->textureID = LoadTGA("Image//innerstation.tga");
+
     move = 0.f;
     rotate = 0.f;
     moveleg = 0.f;
@@ -233,7 +245,6 @@ void SP2::Update(double dt)
 		}
 		break;
 	case RTS:
-
 		camera.EnableCursor();
 		camera.YawRotation(dt);
 		picker.set(camera, projectionStack.Top());
@@ -382,16 +393,6 @@ void SP2::Update(double dt)
 
 
 	HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
-
-
-    if (Application::IsKeyPressed('H')){
-
-        Explosion* newExplosion = new Explosion(100, 20, Vector3(0, 0, 10));
-
-        allExplosions.push_back(newExplosion);
-
-        std::cout << "BOOM" << std::endl;
-    }
 }
 
 void SP2::Render()
@@ -414,8 +415,6 @@ void SP2::Render()
 	renderAsteroid();
 	
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
-
-	renderExplosion();
 
 	switch (state)
 	{
@@ -450,7 +449,7 @@ void SP2::Render()
     quests();
     renderBullets();
 	renderAllHitbox();
-
+	renderExplosion();
 }
 
 void SP2::Exit()
@@ -490,7 +489,12 @@ void SP2::objectsInit()
     largeShip->SetHitboxSize(20);
     largeShip->SetInteractionSize(20, 10, 20, 20, 10, 20);
 
+	midShip = new Vehicles(Vector3(0, 0, -50), Vector3(0, 0, -1), 10, 20, 50, 100);
+	midShip->SetHitboxSize(20);
+	midShip->SetInteractionSize(20, 10, 20, 20, 10, 20);
+
     allVehicles[GEO_LARGESHIP].push_back(largeShip);
+	allVehicles[GEO_XWING].push_back(midShip);
 }
 
 void SP2::WorldHitboxInit()
@@ -640,6 +644,12 @@ void SP2::renderStation()
 	modelStack.PushMatrix();
 	modelStack.Scale(10, 10, 10);
 	RenderMesh(meshList[GEO_SPACE_STATION], enableLight);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, -0.3f, 0);
+	modelStack.Scale(10, 10, 10);
+	RenderMesh(meshList[GEO_INNERSTATION], enableLight);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
@@ -861,7 +871,7 @@ void SP2::renderExplosion()
         
         Explosion* currExplosion = *vitE;
         modelStack.PushMatrix();
-        modelStack.Translate(0, 30, 0);
+		modelStack.Translate(currExplosion->Pos.x, currExplosion->Pos.y, currExplosion->Pos.z);
         modelStack.Rotate(currExplosion->getYaw(), 0, 1, 0);
         modelStack.Rotate(currExplosion->getPitch(), 0, 0, 1);
         modelStack.Scale(currExplosion->getExplosionSize(), currExplosion->getExplosionSize(), currExplosion->getExplosionSize());
@@ -1032,6 +1042,7 @@ void SP2::checkHitboxes()
 				Vehicles* Vtemp = *it;
 				if (Vtemp->hitbox.AABBtoAABB(station.hitbox, Vtemp->View) == true)
 				{
+					allExplosions.push_back(new Explosion(100, 50, Vtemp->Pos));
 					it = allVehicles[i].erase(it);
 					if (selection == Vtemp)
 					{
@@ -1102,6 +1113,9 @@ void SP2::checkHitboxes()
 						Vehicles* Veh2 = *V2it;
 						if (Veh1->hitbox.AABBtoAABB(Veh2->hitbox) == true && Veh1 != Veh2)
 						{
+							Vector3 ExploCenter = Veh1->Pos + Veh2->Pos;
+							ExploCenter /= 2;
+							allExplosions.push_back(new Explosion(100, 50, ExploCenter));
 							Veh1->isDead = true;
 							if (selection == Veh1 || selection == Veh2)
 								selection = nullptr;
@@ -1244,6 +1258,7 @@ void SP2::checkHitboxes()
 
 				if (tempVeh->isDead == true)
 				{
+					allExplosions.push_back(new Explosion(100, 50, tempVeh->Pos));
 					delete tempVeh;
 					Vit = allVehicles[i].erase(Vit);
 				}
@@ -1304,30 +1319,33 @@ void SP2::explosionUpdate(double dt){
 
         Explosion* temp = *vitE;
 
-        Vector3 view = camera.target - camera.position;
-        Vector3 XZview(view.x, 0, view.z);
-        Vector3 initView(0, -1, 0);
-        XZview.Normalize();
-        view.Normalize();
-       
-        float explosionYaw = Math::RadianToDegree(acos(initView.Dot(XZview)));
-        float explosionPitch = Math::RadianToDegree(acos(initView.Dot(view)));
+		float explosionYaw = 0;
+		float explosionPitch = 0;
+		Vector3 initView = Vector3(0, 1, 0);
+		Vector3 view = (camera.position - camera.target).Normalized();
+		Vector3 XZview(view.x, 0, view.z);
+		XZview.Normalize();
 
-        Vector3 n = initView.Cross(view);
-        if (n.Dot(Vector3(0, 0, 1)) < 0)
-        {
-            explosionPitch = explosionPitch * -1;
-        }
-        Mtx44 rotation;
-        rotation.SetToRotation(explosionPitch, 0, 0, 1);
+		explosionPitch = Math::RadianToDegree(acos(initView.Dot(view)));
+		Vector3 V3 = initView.Cross(view);
+		if (V3.Dot(Vector3(0, 0, 1)) < 0)
+		{
+			explosionPitch *= -1;
+		}
 
-        initView.Set(0, 0, 1);
-        n = initView.Cross(XZview);
-        if (n.Dot(Vector3(0, 1, 0)) < 0)
-        {
-            explosionYaw = explosionYaw * -1;
-        }
+		Mtx44 rotation;
+		rotation.SetToRotation(explosionPitch, 0, 0, 1);
+		initView = rotation * initView;
+		initView.Set(initView.x, 0, initView.z);
+		initView.Normalize();
 
+		explosionYaw = Math::RadianToDegree(acos(initView.Dot(XZview)));
+		V3 = initView.Cross(XZview);
+		if (V3.Dot(Vector3(0, 1, 0)) < 0)
+		{
+			explosionYaw *= -1;
+		}
+		
         temp->setPitchandYaw(explosionPitch, explosionYaw);
         temp->explosionUpdate(dt);
 
@@ -1341,7 +1359,7 @@ void SP2::explosionUpdate(double dt){
 
             vitE++;
 
-        }
+		}
 
     }
 }

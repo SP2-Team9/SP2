@@ -186,11 +186,11 @@ void Camera::FPSMovement(double dt, vector<AABB> hitbox)
 		checkX = checkZ = false;
 		for (int i = 0; i < hitbox.size(); ++i)
 		{
-			if (hitbox[i].PointToAABB(Vector3(position.x, position.y, position.z - view.z)) && checkZ == false)
+			if (hitbox[i].PointToAABB(Vector3(position.x, position.y, position.z - view.z * dt * cameraSpeed)) && checkZ == false)
 			{
 				checkZ = true;
 			}
-			if (hitbox[i].PointToAABB(Vector3(position.x - view.x, position.y, position.z)) && checkX == false)
+			if (hitbox[i].PointToAABB(Vector3(position.x - view.x * dt * cameraSpeed, position.y, position.z)) && checkX == false)
 			{
 				checkX = true;
 			}
@@ -214,11 +214,11 @@ void Camera::FPSMovement(double dt, vector<AABB> hitbox)
 		checkX = checkZ = false;
 		for (int i = 0; i < hitbox.size(); ++i)
 		{
-			if (hitbox[i].PointToAABB(Vector3(position.x, position.y, position.z - right.z)) && checkZ == false)
+			if (hitbox[i].PointToAABB(Vector3(position.x, position.y, position.z - right.z * dt * cameraSpeed)) && checkZ == false)
 			{
 				checkZ = true;
 			}
-			if (hitbox[i].PointToAABB(Vector3(position.x - right.x, position.y, position.z)) && checkX == false)
+			if (hitbox[i].PointToAABB(Vector3(position.x - right.x * dt * cameraSpeed, position.y, position.z)) && checkX == false)
 			{
 				checkX = true;
 			}
@@ -243,11 +243,11 @@ void Camera::FPSMovement(double dt, vector<AABB> hitbox)
 		checkX = checkZ = false;
 		for (int i = 0; i < hitbox.size(); ++i)
 		{
-			if (hitbox[i].PointToAABB(Vector3(position.x, position.y, position.z + right.z)) && checkZ == false)
+			if (hitbox[i].PointToAABB(Vector3(position.x, position.y, position.z + right.z * dt * cameraSpeed)) && checkZ == false)
 			{
 				checkZ = true;
 			}
-			if (hitbox[i].PointToAABB(Vector3(position.x + right.x, position.y, position.z)) && checkX == false)
+			if (hitbox[i].PointToAABB(Vector3(position.x + right.x * dt * cameraSpeed, position.y, position.z)) && checkX == false)
 			{
 				checkX = true;
 			}
