@@ -106,9 +106,9 @@ class SP2 : public Scene
 	enum GAMESTATE
 	{
 		MainMenu = 0,
-		FPS,
 		RTS,
-		TPS,
+		inPlayerShip,
+		inSpaceStation,
 	};
 
 	enum HITBOXCHECK
@@ -151,14 +151,33 @@ public:
 	void renderTitleScreen();
 
 
-	// Others
+	// Updates
+
+	void RTSUpdates(double dt);
+	void NPCUpdates(double dt);
+	void bulletUpdates(double dt);
+	void vehicleUpdates(double dt);
+	void asteroidUpdate(double dt);
+	void generalUpdates(double dt);
+	void mainMenuUpdates(double dt);
+	void explosionUpdate(double dt);
+	void inPlayerShipUpdates(double dt);
+	void inSpaceStationUpdates(double dt);
+
+
+	//Others
+	
 	void quests();
     void checkHitboxes();
-    void NPCUpdates(double dt);
-    void bulletUpdates(double dt);
-	void vehicleUpdates(double dt);
+	void shipHitboxCheck();
+	void stationHitboxCheck();
+	void asteroidHitboxCheck();
 	void MouseSelection(double dt);
-    void explosionUpdate(double dt);
+
+
+	
+	
+
 
 
 	// Tools
@@ -166,7 +185,10 @@ public:
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 	void RenderOnScreen(Mesh* mesh, float size, float x, float y);
+
+
 	bool Timer(float second, double dt);
+
 	int generate_range(int from, int to);
 
 

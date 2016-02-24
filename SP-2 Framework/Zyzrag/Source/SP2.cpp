@@ -10,13 +10,13 @@
 
 
 
-SP2::SP2()
-{
+SP2::SP2(){
+
+
 
 }
 
-SP2::~SP2()
-{
+SP2::~SP2(){
 
     for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
     {
@@ -42,6 +42,7 @@ SP2::~SP2()
     }
 
 	delete selection;
+
 }
 
 void SP2::Init()
@@ -238,102 +239,42 @@ void SP2::Init()
 void SP2::Update(double dt)
 {
 	camera.Update(dt);
-	switch (state)
-	{
+
+	switch (state){
 	case MainMenu:
-		camera.EnableCursor();
-		if (Application::IsKeyPressed(VK_LBUTTON))
-		{
-			state = RTS;
-			camera.PointAt(station, 100, 200);
-		}
+
+		mainMenuUpdates(dt);
+
 		break;
+
 	case RTS:
-		camera.EnableCursor();
-		camera.YawRotation(dt);
-		picker.set(camera, projectionStack.Top());
-		picker.update();
-		MouseSelection(dt);
-        shipBulletCreation(dt);
-        bulletUpdates(dt);
-		if (Application::IsKeyPressed('E') && delay >= 1.f)
-		{
-			delay = 0;
-			state = FPS;
-			selection = nullptr;
-			camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
-			
-		}
-		vehicleUpdates(dt);
-		checkHitboxes();
-        explosionUpdate(dt);
+
+		RTSUpdates(dt);
+
 		break;
 
-	case FPS:
+	case inSpaceStation:
 
-		camera.DisableCursor();
-		camera.FPSMovement(dt, worldHitbox);
-		if (Application::IsKeyPressed('E') && delay >= 1.f)
-		{
-			if (Interactions[0].PointToAABB(camera.position))
-			{
-				delay = 0;
-				state = TPS;
-				LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
-				LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
-				camera.PointAt(playerShip, 20, 30);
-			}
-			else
-			{
-				delay = 0;
-				state = RTS;
-				LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
-				LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
-				camera.PointAt(station, 100, 200);
-			}
-		}
-		vehicleUpdates(dt);
-		checkHitboxes();
-        NPCUpdates(dt);
-        explosionUpdate(dt);
+		inSpaceStationUpdates(dt);
+
 		break;
 
-	case TPS:
-		camera.DisableCursor();
-		camera.TPSMovement(dt, playerShip, worldHitbox);
-		vehicleUpdates(dt);
-		checkHitboxes();
-		NPCUpdates(dt);
-        playerBulletCreation(dt);
-        bulletUpdates(dt);
-        explosionUpdate(dt);
-		if (Application::IsKeyPressed('E') && delay >= 1.f)
-		{
-			if (playerShip.hitbox.AABBtoAABB(Interactions[1], playerShip.View))
-			{
-				delay = 0;
-				state = FPS;
-				camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
-			}
-		}
+	case inPlayerShip:
+
+		inPlayerShipUpdates(dt);
+
 		break;
+
 	}
 
+	if (state != MainMenu){
 
-    for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
-    {
-        Asteroid* asteroid = *it;
-        asteroid->update(dt);
-    }
+		generalUpdates(dt);
 
-    if (Timer(1, dt) == true)
-    {
-        generateAsteroid();
-    }
+	}
 
+	
 
-
-	delay += dt;
 	if (Application::IsKeyPressed('1')) //enable back face culling
 		glEnable(GL_CULL_FACE);
 	if (Application::IsKeyPressed('2')) //disable back face culling
@@ -342,6 +283,7 @@ void SP2::Update(double dt)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //default fill mode
 	if (Application::IsKeyPressed('4'))
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
+
 
 	//Enable Light
 	if (Application::IsKeyPressed('P') && readyToUse >= 3.f)
@@ -367,36 +309,9 @@ void SP2::Update(double dt)
 	else if (readyToUse < 3.f)
 		readyToUse += (float)(1 * dt);
 
-	FPSText = std::to_string(toupper(1 / dt)) + " FPS";
-
-	//ammo use
-	Ammo = "Ammo: " + std::to_string(AmmoCount);
-	if (Application::IsKeyPressed('Z') && AmmoCount != 0 && readyToUse >= 0.8f)
-	{
-		readyToUse = 0.f;
-		AmmoCount--;
-	}
-
-
-	//health
-	Health = "Health: " + std::to_string(HealthPoints);
-
-    //money
-    Money = "Money: $" + std::to_string(money);
-
-	//Path finding test
-	blinkDuration += dt;
-
-    //buy health
-    if (Application::IsKeyPressed(' ') && money != 0 && readyToUse >= 0.8f)
-    {
-        readyToUse = 0.f;
-        money -= 100;
-        HealthPoints += 5;
-    }
-
 
 	HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
+
 }
 
 void SP2::Render()
@@ -439,15 +354,18 @@ void SP2::Render()
         renderWayPoints();
 		break;
 
-	case FPS:
+	case inSpaceStation:
 		renderNPC();
 		renderShips();
 		break;
 
-	case TPS:
+	case inPlayerShip:
+
 		renderShips();
 		renderFightingUI();
+
 		break;
+
 	}
 
     quests();
@@ -590,6 +508,50 @@ void SP2::generateAsteroid()
 
 
 // Renders
+void SP2::renderNPC()
+{
+	//NPC
+	modelStack.PushMatrix();
+	modelStack.Translate(NPC.Pos.x, NPC.Pos.y, NPC.Pos.z);
+
+	modelStack.PushMatrix();
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_NPC], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(-rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(-moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTLEG], false);
+	modelStack.PopMatrix();
+
+}
 
 void SP2::renderSkybox()
 {
@@ -672,26 +634,6 @@ void SP2::renderStation()
 	modelStack.PopMatrix();
 }
 
-void SP2::renderTitleScreen(){
-	//start menu
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 100, 420);
-	modelStack.Rotate(270, 1, 0, 0);
-	modelStack.Scale(500, 500, 500);
-	RenderMesh(meshList[GEO_QUAD], false);
-	modelStack.PopMatrix();
-	RenderTextOnScreen(meshList[GEO_TEXT1], "SPACE CONTROL", Color(0, 1, 0), 10, 0.1, 5);
-
-	RenderTextOnScreen(meshList[GEO_TEXT], "Click to Start", Color(0, 1, 0), 3, 9.5, 7);
-}
-
-void SP2::renderFightingUI(){
-	//Asteroid fighting
-	RenderTextOnScreen(meshList[GEO_TEXT], Health, Color(0, 1, 0), 3, 0, 19);
-	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 0, 18);
-    RenderTextOnScreen(meshList[GEO_TEXT], Money, Color(0, 1, 0), 3, 0, 17);
-}
-
 void SP2::renderShips(){
 
 	if (selection)
@@ -729,6 +671,26 @@ void SP2::renderShips(){
 	modelStack.PopMatrix();
 }
 
+void SP2::renderTitleScreen(){
+	//start menu
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 100, 420);
+	modelStack.Rotate(270, 1, 0, 0);
+	modelStack.Scale(500, 500, 500);
+	RenderMesh(meshList[GEO_QUAD], false);
+	modelStack.PopMatrix();
+	RenderTextOnScreen(meshList[GEO_TEXT1], "SPACE CONTROL", Color(0, 1, 0), 10, 0.1, 5);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Click to Start", Color(0, 1, 0), 3, 9.5, 7);
+}
+
+void SP2::renderFightingUI(){
+	//Asteroid fighting
+	RenderTextOnScreen(meshList[GEO_TEXT], Health, Color(0, 1, 0), 3, 0, 19);
+	RenderTextOnScreen(meshList[GEO_TEXT], Ammo, Color(0, 1, 0), 3, 0, 18);
+    RenderTextOnScreen(meshList[GEO_TEXT], Money, Color(0, 1, 0), 3, 0, 17);
+}
+
 void SP2::renderWayPoints(){
 	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 	{
@@ -755,51 +717,6 @@ void SP2::renderWayPoints(){
 			it++;
 		}
 	}
-
-}
-
-void SP2::renderNPC()
-{
-    //NPC
-    modelStack.PushMatrix();
-	modelStack.Translate(NPC.Pos.x, NPC.Pos.y, NPC.Pos.z);
-
-    modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-    RenderMesh(meshList[GEO_NPC], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Translate(0, 2.2, 0);
-    modelStack.Rotate(rotate, 1, 0, 0);
-    modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-    RenderMesh(meshList[GEO_LEFTHAND], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Translate(0, 2.2, 0);
-    modelStack.Rotate(-rotate, 1, 0, 0);
-    modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-    RenderMesh(meshList[GEO_RIGHTHAND], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Translate(0, 0.5, 0);
-    modelStack.Rotate(moveleg, 1, 0, 0);
-    modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-    RenderMesh(meshList[GEO_RIGHTLEG], false);
-    modelStack.PopMatrix();
-
-    modelStack.PushMatrix();
-    modelStack.Translate(0, 0.5, 0);
-    modelStack.Rotate(-moveleg, 1, 0, 0);
-    modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-    RenderMesh(meshList[GEO_LEFTLEG], false);
-    modelStack.PopMatrix();
 
 }
 
@@ -890,21 +807,8 @@ void SP2::renderExplosion()
 
 }
 
-// Others
 
-void SP2::vehicleUpdates(double dt){
-	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-	{
-		vector<Vehicles*>::iterator it = allVehicles[i].begin();
-		while (it != allVehicles[i].end())
-		{
-			Vehicles* Vtemp = *it;
-			Vtemp->update(dt);
-
-			it++;
-		}
-	}
-}
+//Updates
 
 void SP2::NPCUpdates(double dt){
 
@@ -965,366 +869,39 @@ void SP2::NPCUpdates(double dt){
 
 }
 
-void SP2::MouseSelection(double dt)
-{
-	if (Application::IsKeyPressed(VK_LBUTTON) && wayPointSetCoolDown > 0.5f)
+void SP2::RTSUpdates(double dt){
+
+	camera.EnableCursor();
+	camera.YawRotation(dt);
+	picker.set(camera, projectionStack.Top());
+	picker.update();
+	MouseSelection(dt);
+	shipBulletCreation(dt);
+	bulletUpdates(dt);
+	if (Application::IsKeyPressed('E') && delay >= 1.f)
 	{
-		Vector3 pressPosition = picker.WorldCoord();
-		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-		{
-			bool Bselected = false;
-			vector<Vehicles*>::iterator it = allVehicles[i].begin();
-			while (it != allVehicles[i].end())
-			{
-				Vehicles* Vtemp = *it;
-				if (Vtemp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
-				{
-					selection = Vtemp;
-					Bselected = true;
-					break;
-				}
-				else
-				{
-					selection = nullptr;
-				}
-
-				it++;
-			}
-
-			if (Bselected == true)
-				break;
-		}
-		wayPointSetCoolDown = 0;
-	}
-
-	if (Application::IsKeyPressed(VK_RBUTTON) && selection != nullptr)
-	{
-	
-
-        for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
-
-            Asteroid* temp = *vitA;
-            if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay())){
-
-                selection->currAttackTarget = temp;
-                break;
-
-            }
-            else{
-
-                selection->currAttackTarget = nullptr;
-                vitA++;
-
-            } 
-
-        }
-
-        if (selection->currAttackTarget == nullptr){
-
-            selection->setNewWayPoint(picker.WorldCoord().x, picker.WorldCoord().z);
-
-        }
-        else
-        {
-            selection->setNewWayPoint(selection->currAttackTarget->Pos.x, selection->currAttackTarget->Pos.z);
-
-        }
+		delay = 0;
+		state = inSpaceStation;
+		selection = nullptr;
+		camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
 
 	}
 
-	wayPointSetCoolDown += dt;
+
 }
 
-void SP2::checkHitboxes()
-{
-	switch (HBcheck)
+void SP2::vehicleUpdates(double dt){
+	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 	{
-	case CheckStation:
-		// Vehicles to Station
-		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+		vector<Vehicles*>::iterator it = allVehicles[i].begin();
+		while (it != allVehicles[i].end())
 		{
-			vector<Vehicles*>::iterator it = allVehicles[i].begin();
-			while (it != allVehicles[i].end())
-			{
-				Vehicles* Vtemp = *it;
-				if (Vtemp->hitbox.AABBtoAABB(station.hitbox, Vtemp->View) == true)
-				{
-					allExplosions.push_back(new Explosion(100, 50, Vtemp->Pos));
-					it = allVehicles[i].erase(it);
-					if (selection == Vtemp)
-					{
-						selection = nullptr;
-					}
-					delete Vtemp;
-				}
-				else
-					++it;
-			}
+			Vehicles* Vtemp = *it;
+			Vtemp->update(dt);
+
+			it++;
 		}
-
-		// Asteroid to Station
-		for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
-		{
-			Asteroid* tempAst = *it;
-			if (tempAst->hitbox.AABBtoAABB(station.hitbox, tempAst->View) == true)
-			{
-                for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-                {
-                    vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
-                    while (vitV != allVehicles[i].end())
-                    {
-                        Vehicles* temp = *vitV;
-                        if (temp->currAttackTarget == tempAst){
-
-                            temp->currAttackTarget = nullptr;
-
-                        }
-
-                        vitV++;
-                    }
-                }
-				delete tempAst;
-				it = Vasteroid.erase(it);
-			}
-			else
-				it++;
-		}
-
-		break;
-	case CheckShips:
-		// Ship to Ship
-		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-		{
-			vector<Vehicles*>::iterator V1it = allVehicles[i].begin();
-
-			while (V1it != allVehicles[i].end())
-			{
-				Vehicles* Veh1 = *V1it;
-				for (int j = GEO_SMALLSHIP; j <= GEO_LARGESHIP; ++j)
-				{
-					vector<Vehicles*>::iterator V2it = allVehicles[j].begin();
-					while (V2it != allVehicles[j].end())
-					{
-						Vehicles* Veh2 = *V2it;
-						if (Veh1->hitbox.AABBtoAABB(Veh2->hitbox) == true && Veh1 != Veh2)
-						{
-							Vector3 ExploCenter = Veh1->Pos + Veh2->Pos;
-							ExploCenter /= 2;
-							allExplosions.push_back(new Explosion(100, 50, ExploCenter));
-							Veh1->isDead = true;
-							if (selection == Veh1 || selection == Veh2)
-								selection = nullptr;
-							delete Veh2;
-							V2it = allVehicles[j].erase(V2it);
-						}
-						else
-						{
-							V2it++;
-						}
-					}
-				}
-
-				if (Veh1->isDead == true)
-				{
-					delete Veh1;
-					V1it = allVehicles[i].erase(V1it);
-				}
-				else
-				{
-					V1it++;
-				}
-			}
-		}
-
-		//Player Ship to Ship
-		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-		{
-			vector<Vehicles*>::iterator it = allVehicles[i].begin();
-			while (it != allVehicles[i].end())
-			{
-				Vehicles* Vtemp = *it;
-				if (Vtemp->hitbox.AABBtoAABB(playerShip.hitbox))
-				{
-					if (selection == Vtemp)
-					{
-						selection = nullptr;
-					}
-					delete Vtemp;
-					it = allVehicles[i].erase(it);
-				}
-				else
-					++it;
-			}
-		}
-		break;
-
-	case CheckAsteroids:
-		//Bullet To Asteroid
-        for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
-
-            Asteroid* tempAst = *vitA;
-
-            for (vector<Bullet*>::iterator vitB = allBullets.begin(); vitB != allBullets.end();){
-
-                Bullet* tempBull = *vitB;
-
-                if (tempAst->hitbox.PointToAABB(tempBull->Pos)){
-
-                    vitB = allBullets.erase(vitB);
-
-                    tempAst->health -= tempBull->getBulletDamage();
-
-                    delete tempBull;
-
-                    std::cout << tempAst->health << std::endl;
-                }
-                else{
-
-                    vitB++;
-
-                }
-
-            }
-
-            if (tempAst->health <= 0){
-
-                for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-                {
-                    vector<Vehicles*>::iterator it = allVehicles[i].begin();
-
-                    while (it != allVehicles[i].end())
-                    {
-
-                        Vehicles* temp = *it;
-
-                        if (temp->currAttackTarget == tempAst){
-
-                            temp->currAttackTarget = nullptr;
-
-                        }
-
-                        it++;
-                    }
-                }
-                vitA = Vasteroid.erase(vitA);
-                delete tempAst;
-
-            }
-            else{
-
-                vitA++;
-
-            }
-
-        }
-
-		//Vehicles to Asteroid
-		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-		{
-			vector<Vehicles*>::iterator Vit = allVehicles[i].begin();
-			while (Vit != allVehicles[i].end())
-			{
-				Vehicles* tempVeh = *Vit;
-				for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
-				{
-					Asteroid* tempAst = *Ait;
-					if (tempVeh->hitbox.AABBtoAABB(tempAst->hitbox))
-					{
-						tempVeh->isDead = true;
-						delete tempAst;
-						Ait = Vasteroid.erase(Ait);
-					}
-					else
-					{
-						Ait++;
-					}
-				}
-
-				if (tempVeh->isDead == true)
-				{
-
-					allExplosions.push_back(new Explosion(100, 50, tempVeh->Pos));
-                    if (selection == tempVeh)
-                    {
-                        selection = nullptr;
-                    }
-					delete tempVeh;
-					Vit = allVehicles[i].erase(Vit);
-				}
-				else
-				{
-					Vit++;
-				}
-			}
-		}
-
-		// Player Ship to Asteroid
-		for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
-		{
-			Asteroid* tempAst = *Ait;
-			if (tempAst->hitbox.AABBtoAABB(playerShip.hitbox))
-			{
-				delete tempAst;
-				Ait = Vasteroid.erase(Ait);
-			}
-			else
-				Ait++;
-		}
-
-		//Asteroid to Asteroid
-		for (vector<Asteroid*>::iterator A1it = Vasteroid.begin(); A1it != Vasteroid.end();)
-		{
-			Asteroid* temp1Ast = *A1it;
-			for (vector<Asteroid*>::iterator A2it = Vasteroid.begin(); A2it != Vasteroid.end();)
-			{
-				Asteroid* temp2Ast = *A2it;
-				if (temp1Ast->hitbox.AABBtoAABB(temp2Ast->hitbox) && temp1Ast != temp2Ast)
-				{
-					std::cout << "HIT" << std::endl;
-					if (temp1Ast->size > 10)
-					{
-						temp1Ast->size /= 2;
-						temp1Ast->speed /= 2;
-						temp1Ast->health /= 2;
-					}
-					else
-					{
-						temp1Ast->boom = true;
-					}
-
-					if (temp2Ast->size > 20)
-					{
-						temp2Ast->size /= 2;
-						temp2Ast->speed *= 2;
-						temp2Ast->health /= 2;
-					}
-					else
-					{
-						delete temp2Ast;
-						A2it = Vasteroid.erase(A2it);
-					}
-				}
-				else
-				{
-					A2it++;
-				}
-			}
-
-			if (temp1Ast->boom == true)
-			{
-				delete temp1Ast;
-				A1it = Vasteroid.erase(A1it);
-			}
-			else
-			{
-				A1it++;
-			}
-		}
-		break;
-    }
-
-
-
+	}
 }
 
 void SP2::bulletUpdates(double dt){
@@ -1348,6 +925,44 @@ void SP2::bulletUpdates(double dt){
         }
 
     }
+
+}
+
+void SP2::asteroidUpdate(double dt){
+
+	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
+	{
+		Asteroid* asteroid = *it;
+		asteroid->update(dt);
+	}
+
+	if (Timer(1, dt) == true)
+	{
+		generateAsteroid();
+	}
+
+}
+
+void SP2::generalUpdates(double dt){
+
+	asteroidUpdate(dt);
+	bulletUpdates(dt);
+	explosionUpdate(dt);
+	vehicleUpdates(dt);
+	checkHitboxes();
+	delay += dt;
+
+}
+
+void SP2::mainMenuUpdates(double dt){
+
+	camera.EnableCursor();
+	if (Application::IsKeyPressed(VK_LBUTTON))
+	{
+		state = RTS;
+		camera.PointAt(station, 100, 200);
+	}
+
 
 }
 
@@ -1401,6 +1016,452 @@ void SP2::explosionUpdate(double dt){
 
     }
 }
+
+void SP2::inPlayerShipUpdates(double dt){
+
+	camera.DisableCursor();
+	camera.TPSMovement(dt, playerShip, worldHitbox);
+	playerBulletCreation(dt);
+	if (Application::IsKeyPressed('E') && delay >= 1.f)
+	{
+		if (playerShip.hitbox.AABBtoAABB(Interactions[1], playerShip.View))
+		{
+			delay = 0;
+			state = inSpaceStation;
+			camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
+		}
+	}
+
+}
+
+void SP2::inSpaceStationUpdates(double dt){
+
+	camera.DisableCursor();
+	camera.FPSMovement(dt, worldHitbox);
+	if (Application::IsKeyPressed('E') && delay >= 1.f)
+	{
+		if (Interactions[0].PointToAABB(camera.position))
+		{
+			delay = 0;
+			state = inPlayerShip;
+			LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
+			LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
+			camera.PointAt(playerShip, 20, 30);
+		}
+		else
+		{
+			delay = 0;
+			state = RTS;
+			LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
+			LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
+			camera.PointAt(station, 100, 200);
+		}
+	}
+
+	NPCUpdates(dt);
+
+}
+
+
+
+//Others
+
+void SP2::quests()
+{
+	if (NPC.Pos.z - camera.position.z  < 5.f)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT], "HI", Color(0, 1, 0), 10, 0, 5);
+	}
+}
+
+void SP2::checkHitboxes(){
+	switch (HBcheck){
+
+	case CheckStation:
+
+		stationHitboxCheck();
+
+		break;
+
+	case CheckShips:
+		
+		shipHitboxCheck();
+
+		break;
+
+	case CheckAsteroids:
+
+		asteroidHitboxCheck();
+	
+		break;
+	}
+
+
+
+}
+
+void SP2::shipHitboxCheck(){
+	// Ship to Ship
+	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+	{
+		vector<Vehicles*>::iterator V1it = allVehicles[i].begin();
+
+		while (V1it != allVehicles[i].end())
+		{
+			Vehicles* Veh1 = *V1it;
+			for (int j = GEO_SMALLSHIP; j <= GEO_LARGESHIP; ++j)
+			{
+				vector<Vehicles*>::iterator V2it = allVehicles[j].begin();
+				while (V2it != allVehicles[j].end())
+				{
+					Vehicles* Veh2 = *V2it;
+					if (Veh1->hitbox.AABBtoAABB(Veh2->hitbox) == true && Veh1 != Veh2)
+					{
+						Vector3 ExploCenter = Veh1->Pos + Veh2->Pos;
+						ExploCenter /= 2;
+						allExplosions.push_back(new Explosion(100, 50, ExploCenter));
+						Veh1->isDead = true;
+						if (selection == Veh1 || selection == Veh2)
+							selection = nullptr;
+						delete Veh2;
+						V2it = allVehicles[j].erase(V2it);
+					}
+					else
+					{
+						V2it++;
+					}
+				}
+			}
+
+			if (Veh1->isDead == true)
+			{
+				delete Veh1;
+				V1it = allVehicles[i].erase(V1it);
+			}
+			else
+			{
+				V1it++;
+			}
+		}
+	}
+
+	//Player Ship to Ship
+	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+	{
+		vector<Vehicles*>::iterator it = allVehicles[i].begin();
+		while (it != allVehicles[i].end())
+		{
+			Vehicles* Vtemp = *it;
+			if (Vtemp->hitbox.AABBtoAABB(playerShip.hitbox))
+			{
+				if (selection == Vtemp)
+				{
+					selection = nullptr;
+				}
+				delete Vtemp;
+				it = allVehicles[i].erase(it);
+			}
+			else
+				++it;
+		}
+	}
+}
+
+void SP2::stationHitboxCheck(){
+
+	// Vehicles to Station
+	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+	{
+		vector<Vehicles*>::iterator it = allVehicles[i].begin();
+		while (it != allVehicles[i].end())
+		{
+			Vehicles* Vtemp = *it;
+			if (Vtemp->hitbox.AABBtoAABB(station.hitbox, Vtemp->View) == true)
+			{
+				allExplosions.push_back(new Explosion(100, 50, Vtemp->Pos));
+				it = allVehicles[i].erase(it);
+				if (selection == Vtemp)
+				{
+					selection = nullptr;
+				}
+				delete Vtemp;
+			}
+			else
+				++it;
+		}
+	}
+
+	// Asteroid to Station
+	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
+	{
+		Asteroid* tempAst = *it;
+		if (tempAst->hitbox.AABBtoAABB(station.hitbox, tempAst->View) == true)
+		{
+			for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+			{
+				vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
+				while (vitV != allVehicles[i].end())
+				{
+					Vehicles* temp = *vitV;
+					if (temp->currAttackTarget == tempAst){
+
+						temp->currAttackTarget = nullptr;
+
+					}
+
+					vitV++;
+				}
+			}
+			delete tempAst;
+			it = Vasteroid.erase(it);
+		}
+		else
+			it++;
+	}
+
+
+
+}
+
+void SP2::asteroidHitboxCheck(){
+
+	//Bullet To Asteroid
+	for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
+
+		Asteroid* tempAst = *vitA;
+
+		for (vector<Bullet*>::iterator vitB = allBullets.begin(); vitB != allBullets.end();){
+
+			Bullet* tempBull = *vitB;
+
+			if (tempAst->hitbox.PointToAABB(tempBull->Pos)){
+
+				vitB = allBullets.erase(vitB);
+
+				tempAst->health -= tempBull->getBulletDamage();
+
+				delete tempBull;
+
+				std::cout << tempAst->health << std::endl;
+			}
+			else{
+
+				vitB++;
+
+			}
+
+		}
+
+		if (tempAst->health <= 0){
+
+			for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+			{
+				vector<Vehicles*>::iterator it = allVehicles[i].begin();
+
+				while (it != allVehicles[i].end())
+				{
+
+					Vehicles* temp = *it;
+
+					if (temp->currAttackTarget == tempAst){
+
+						temp->currAttackTarget = nullptr;
+
+					}
+
+					it++;
+				}
+			}
+			vitA = Vasteroid.erase(vitA);
+			delete tempAst;
+
+		}
+		else{
+
+			vitA++;
+
+		}
+
+	}
+
+	//Vehicles to Asteroid
+	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+	{
+		vector<Vehicles*>::iterator Vit = allVehicles[i].begin();
+		while (Vit != allVehicles[i].end())
+		{
+			Vehicles* tempVeh = *Vit;
+			for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
+			{
+				Asteroid* tempAst = *Ait;
+				if (tempVeh->hitbox.AABBtoAABB(tempAst->hitbox))
+				{
+					tempVeh->isDead = true;
+					delete tempAst;
+					Ait = Vasteroid.erase(Ait);
+				}
+				else
+				{
+					Ait++;
+				}
+			}
+
+			if (tempVeh->isDead == true)
+			{
+
+				allExplosions.push_back(new Explosion(100, 50, tempVeh->Pos));
+				if (selection == tempVeh)
+				{
+					selection = nullptr;
+				}
+				delete tempVeh;
+				Vit = allVehicles[i].erase(Vit);
+			}
+			else
+			{
+				Vit++;
+			}
+		}
+	}
+
+	// Player Ship to Asteroid
+	for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
+	{
+		Asteroid* tempAst = *Ait;
+		if (tempAst->hitbox.AABBtoAABB(playerShip.hitbox))
+		{
+			delete tempAst;
+			Ait = Vasteroid.erase(Ait);
+		}
+		else
+			Ait++;
+	}
+
+	//Asteroid to Asteroid
+	for (vector<Asteroid*>::iterator A1it = Vasteroid.begin(); A1it != Vasteroid.end();)
+	{
+		Asteroid* temp1Ast = *A1it;
+		for (vector<Asteroid*>::iterator A2it = Vasteroid.begin(); A2it != Vasteroid.end();)
+		{
+			Asteroid* temp2Ast = *A2it;
+			if (temp1Ast->hitbox.AABBtoAABB(temp2Ast->hitbox) && temp1Ast != temp2Ast)
+			{
+				std::cout << "HIT" << std::endl;
+				if (temp1Ast->size > 10)
+				{
+					temp1Ast->size /= 2;
+					temp1Ast->speed /= 2;
+					temp1Ast->health /= 2;
+				}
+				else
+				{
+					temp1Ast->boom = true;
+				}
+
+				if (temp2Ast->size > 20)
+				{
+					temp2Ast->size /= 2;
+					temp2Ast->speed *= 2;
+					temp2Ast->health /= 2;
+				}
+				else
+				{
+					delete temp2Ast;
+					A2it = Vasteroid.erase(A2it);
+				}
+			}
+			else
+			{
+				A2it++;
+			}
+		}
+
+		if (temp1Ast->boom == true)
+		{
+			delete temp1Ast;
+			A1it = Vasteroid.erase(A1it);
+		}
+		else
+		{
+			A1it++;
+		}
+	}
+
+
+}
+
+void SP2::MouseSelection(double dt)
+{
+	if (Application::IsKeyPressed(VK_LBUTTON) && wayPointSetCoolDown > 0.5f)
+	{
+		Vector3 pressPosition = picker.WorldCoord();
+		for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+		{
+			bool Bselected = false;
+			vector<Vehicles*>::iterator it = allVehicles[i].begin();
+			while (it != allVehicles[i].end())
+			{
+				Vehicles* Vtemp = *it;
+				if (Vtemp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
+				{
+					selection = Vtemp;
+					Bselected = true;
+					break;
+				}
+				else
+				{
+					selection = nullptr;
+				}
+
+				it++;
+			}
+
+			if (Bselected == true)
+				break;
+		}
+		wayPointSetCoolDown = 0;
+	}
+
+	if (Application::IsKeyPressed(VK_RBUTTON) && selection != nullptr)
+	{
+
+
+		for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
+
+			Asteroid* temp = *vitA;
+			if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay())){
+
+				selection->currAttackTarget = temp;
+				break;
+
+			}
+			else{
+
+				selection->currAttackTarget = nullptr;
+				vitA++;
+
+			}
+
+		}
+
+		if (selection->currAttackTarget == nullptr){
+
+			selection->setNewWayPoint(picker.WorldCoord().x, picker.WorldCoord().z);
+
+		}
+		else
+		{
+			selection->setNewWayPoint(selection->currAttackTarget->Pos.x, selection->currAttackTarget->Pos.z);
+
+		}
+
+	}
+
+	wayPointSetCoolDown += dt;
+}
+
+
+
 
 // Tools
 
@@ -1550,14 +1611,6 @@ void SP2::RenderOnScreen(Mesh* mesh, float size, float x, float y)
 	modelStack.PopMatrix();
 
 	glEnable(GL_DEPTH_TEST);
-}
-
-void SP2::quests()
-{
-	if (NPC.Pos.z - camera.position.z  < 5.f)
-	{
-		RenderTextOnScreen(meshList[GEO_TEXT], "HI", Color(0, 1, 0), 10, 0, 5);
-	}
 }
 
 bool SP2::Timer(float second, double dt)
