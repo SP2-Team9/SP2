@@ -489,7 +489,7 @@ void SP2::objectsInit()
 	allVehicles.insert(std::pair<int, vector<Vehicles*>>(GEO_XWING, midVehicles));
 	allVehicles.insert(std::pair<int, vector<Vehicles*>>(GEO_LARGESHIP, largeVehicles));
 
-    smallShip = new Vehicles(Vector3(0, 0, 50), Vector3(0, 0, 1), 50, 20, 500, 10);
+    smallShip = new Vehicles(Vector3(0, 0, -50), Vector3(0, 0, -1), 50, 20, 500, 10);
     smallShip->SetHitboxSize(10);
     smallShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
 
@@ -801,7 +801,6 @@ void SP2::renderNPC()
     RenderMesh(meshList[GEO_LEFTLEG], false);
     modelStack.PopMatrix();
 
-    modelStack.PopMatrix();
 }
 
 void SP2::renderAllHitbox()
