@@ -12,6 +12,7 @@
 
 SP2::SP2()
 {
+
 }
 
 SP2::~SP2()
@@ -45,6 +46,9 @@ SP2::~SP2()
 
 void SP2::Init()
 {
+
+    playerShop = new Shop(10, 10, 100, 0, 0, 0);
+
 	enableLight = true;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
@@ -486,11 +490,11 @@ void SP2::objectsInit()
 	allVehicles.insert(std::pair<int, vector<Vehicles*>>(GEO_XWING, midVehicles));
 	allVehicles.insert(std::pair<int, vector<Vehicles*>>(GEO_LARGESHIP, largeVehicles));
 
-    largeShip = new Vehicles(Vector3(0, 0, 50), Vector3(0, 0, 1), 10, 20, 50, 100);
-    largeShip->SetHitboxSize(20);
-    largeShip->SetInteractionSize(20, 10, 20, 20, 10, 20);
+    smallShip = new Vehicles(Vector3(0, 0, 50), Vector3(0, 0, 1), 50, 20, 500, 10);
+    smallShip->SetHitboxSize(10);
+    smallShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
 
-    allVehicles[GEO_LARGESHIP].push_back(largeShip);
+    allVehicles[GEO_SMALLSHIP].push_back(smallShip);
 }
 
 void SP2::WorldHitboxInit()
@@ -534,16 +538,20 @@ void SP2::shipBulletCreation(double dt){
 
 void SP2::playerBulletCreation(double dt){
 
-    if (Application::IsKeyPressed(VK_LBUTTON) && bulletCooldown > 0.3){
+    playerShip.update(dt);
+   
+    if (Application::IsKeyPressed(VK_LBUTTON)){
 
-        Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos, 30);
+        if (playerShip.fireBullets(playerShop->playerShipFireRate)){
 
-        allBullets.push_back(newBullet);
-        bulletCooldown = 0;
+            Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos, playerShop->playerShipDamage);
+
+            allBullets.push_back(newBullet);
+
+        }
 
     }
 
-    bulletCooldown += dt;
 }
 
 void SP2::generateAsteroid()
@@ -1065,18 +1073,6 @@ void SP2::checkHitboxes()
                         vitV++;
                     }
                 }
-               /* for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++)
-                {
-                    Vehicles* temp = *it;
-                    
-                    if (temp->currAttackTarget == tempAst){
-
-                        temp->currAttackTarget = nullptr;
-
-                    }
-                    
-                       
-                }*/
 				delete tempAst;
 				it = Vasteroid.erase(it);
 			}
@@ -1197,17 +1193,6 @@ void SP2::checkHitboxes()
                         it++;
                     }
                 }
-                /* for (vector<Vehicles*>::iterator it = allVehicles.begin(); it != allVehicles.end(); it++)
-                {
-                    Vehicles* temp = *it;
-
-                    if (temp->currAttackTarget == tempAst){
-
-                        temp->currAttackTarget = nullptr;
-
-                    }
-
-                }*/
                 vitA = Vasteroid.erase(vitA);
                 delete tempAst;
 
@@ -1244,6 +1229,10 @@ void SP2::checkHitboxes()
 
 				if (tempVeh->isDead == true)
 				{
+                    if (selection == tempVeh)
+                    {
+                        selection = nullptr;
+                    }
 					delete tempVeh;
 					Vit = allVehicles[i].erase(Vit);
 				}
