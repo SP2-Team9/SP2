@@ -1344,8 +1344,6 @@ void SP2::explosionUpdate(double dt){
         }
 
     }
-
-
 }
 
 // Tools
