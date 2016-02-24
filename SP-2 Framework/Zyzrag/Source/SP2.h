@@ -1,29 +1,33 @@
 #ifndef SP2_H
 #define SP2_H
 
-#include "Scene.h"
-#include "Camera.h"
+
 #include "Mesh.h"
-#include "MatrixStack.h"
 #include "Light.h"
-#include "MousePicker.h"
-#include "Vehicles.h"
-#include "pathFinding.h"
-#include "PlayerVehicle.h"
+#include "Scene.h"
 #include "Object.h"
 #include "Bullet.h"
+#include "Camera.h"
 #include "Asteroid.h"
+#include "Vehicles.h"
+#include "Explosion.h"
+#include "MatrixStack.h"
+#include "MousePicker.h"
+#include "pathFinding.h"
+#include "PlayerVehicle.h"
 
+
+#include <map>
 #include <queue>
 #include <vector>
-#include <map>
 #include <cstdlib>
 
-
+using std::map;
+using std::queue;
 using std::string;
 using std::vector;
-using std::queue;
-using std::map;
+
+
 
 
 class SP2 : public Scene
@@ -62,6 +66,8 @@ class SP2 : public Scene
         GEO_RIGHTLEG,
         GEO_BULLETS,
         GEO_ASTEROID,
+        GEO_EXPLOSION,
+
 		NUM_GEOMETRY,
 
 	};
@@ -131,16 +137,18 @@ public:
 	
 	// Renders
     void renderNPC();
-	void renderStation();
 	void renderShips();
     void renderSkybox();
-	void renderAsteroid();
+    void renderStation();
     void renderBullets();
+	void renderAsteroid();
 	void renderAllHitbox();
     void renderExplosion();
 	void renderWayPoints();
 	void renderFightingUI();
+    void renderExplosions();
 	void renderTitleScreen();
+
 
 	// Others
 	void quests();
@@ -149,7 +157,7 @@ public:
     void bulletUpdates(double dt);
 	void vehicleUpdates(double dt);
 	void MouseSelection(double dt);
-	
+    void explosionUpdate(double dt);
 
 
 	// Tools
@@ -179,7 +187,6 @@ private:
 	unsigned m_vertexBuffer[NUM_GEOMETRY];
 
 	double blinkDuration = 0;
-    double bulletCooldown = 0;
 	double wayPointSetCoolDown = 0;
 
     float move;
@@ -190,25 +197,29 @@ private:
     bool restart2 = false;
 	bool blink = false;
 	bool re = false;
+
+    double bulletCooldown = 0;
+
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay, second;
 
-
- 
 	bool enableLight, enableAxis;
 
 	GAMESTATE state;
+
 	HITBOXCHECK HBcheck;
 
 	MousePicker picker;
 
+    Object NPC;
 	Object station;
 	Object LastLocation;
-	Object NPC;
+	
 
 	string Ammo;
+    string Money;
 	string Health;
 	string FPSText;
-    string Money;
+    
 
 	map<int, vector<Vehicles*>> allVehicles;
 	vector<Vehicles*> smallVehicles;
@@ -222,10 +233,9 @@ private:
 
 	vector<AABB> worldHitbox;
 	vector<AABB> Interactions;
-	vector<Vector3> explosionPos;
     vector<Bullet*> allBullets;
 	vector<Asteroid*> Vasteroid;
-
+    vector<Explosion*> allExplosions;
 
 	MS modelStack, viewStack, projectionStack;
 };

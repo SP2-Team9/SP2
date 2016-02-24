@@ -4,7 +4,7 @@
 /////////////////////////////////////////////////////////////////
 /*!
 
-* \File Name: Vehicles.h
+* \File Name: Bullet.h
 
 * \author: Wong Keng Han Ashley
 
@@ -39,7 +39,7 @@ private:
 
     float bulletSpeed = 400;
     float BulletDamage = 30;
-    float bulletMaxRange = 300;
+    float bulletMaxRange = 400;
 
 
   

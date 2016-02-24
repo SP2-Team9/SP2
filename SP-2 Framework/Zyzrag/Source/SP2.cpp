@@ -141,7 +141,7 @@ void SP2::Init()
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("reference", 1000, 1000, 1000);
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("Lightball", Color(0, 1, 0), 18, 36);
 
-    meshList[GEO_BULLETS] = MeshBuilder::GenerateSphere("Bullets", Color(1, 0, 0), 18, 36);
+    meshList[GEO_BULLETS] = MeshBuilder::GenerateSphere("Bullets", Color(1, 0.5, 0), 18, 36);
 
 	meshList[GEO_FRONT] = MeshBuilder::GenerateQuad("Front", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_FRONT]->textureID = LoadTGA("Image//front.tga");
@@ -166,6 +166,7 @@ void SP2::Init()
 
 	meshList[GEO_TEXT1] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT1]->textureID = LoadTGA("Image//startfont.tga");
+
 
 	// Ships
 	meshList[GEO_XWING] = MeshBuilder::GenerateOBJ("spaceShip", "OBJ//Flying.obj");
@@ -214,6 +215,8 @@ void SP2::Init()
     rotate = 0.f;
     moveleg = 0.f;
 
+    meshList[GEO_EXPLOSION] = MeshBuilder::GenerateQuad("Explosion", Color(1, 1, 1), 1.f, 1.f);
+    meshList[GEO_EXPLOSION]->textureID = LoadTGA("Image//explosion.tga");
 }
 
 void SP2::Update(double dt)
@@ -248,6 +251,7 @@ void SP2::Update(double dt)
 		}
 		vehicleUpdates(dt);
 		checkHitboxes();
+        explosionUpdate(dt);
 		break;
 
 	case FPS:
@@ -276,6 +280,7 @@ void SP2::Update(double dt)
 		vehicleUpdates(dt);
 		checkHitboxes();
         NPCUpdates(dt);
+        explosionUpdate(dt);
 		break;
 
 	case TPS:
@@ -286,6 +291,7 @@ void SP2::Update(double dt)
 		NPCUpdates(dt);
         playerBulletCreation(dt);
         bulletUpdates(dt);
+        explosionUpdate(dt);
 		if (Application::IsKeyPressed('E') && delay >= 1.f)
 		{
 			if (playerShip.hitbox.AABBtoAABB(Interactions[1], playerShip.View))
@@ -376,6 +382,16 @@ void SP2::Update(double dt)
 
 
 	HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
+
+
+    if (Application::IsKeyPressed('H')){
+
+        Explosion* newExplosion = new Explosion(100, 20, Vector3(0, 0, 10));
+
+        allExplosions.push_back(newExplosion);
+
+        std::cout << "BOOM" << std::endl;
+    }
 }
 
 void SP2::Render()
@@ -431,9 +447,10 @@ void SP2::Render()
 		break;
 	}
 
+    quests();
     renderBullets();
 	renderAllHitbox();
-	quests();
+
 }
 
 void SP2::Exit()
@@ -469,11 +486,11 @@ void SP2::objectsInit()
 	allVehicles.insert(std::pair<int, vector<Vehicles*>>(GEO_XWING, midVehicles));
 	allVehicles.insert(std::pair<int, vector<Vehicles*>>(GEO_LARGESHIP, largeVehicles));
 
-    smallShip = new Vehicles(Vector3(0, 0, 50), Vector3(0, 0, 1), 60, 20, 500, 10);
-    smallShip->SetHitboxSize(5);
-    smallShip->SetInteractionSize(10,10,10,10,10,10);
+    largeShip = new Vehicles(Vector3(0, 0, 50), Vector3(0, 0, 1), 10, 20, 50, 100);
+    largeShip->SetHitboxSize(20);
+    largeShip->SetInteractionSize(20, 10, 20, 20, 10, 20);
 
-    allVehicles[GEO_SMALLSHIP].push_back(smallShip);
+    allVehicles[GEO_LARGESHIP].push_back(largeShip);
 }
 
 void SP2::WorldHitboxInit()
@@ -491,27 +508,13 @@ void SP2::WorldHitboxInit()
 
 void SP2::shipBulletCreation(double dt){
 
-
-    /*if (Application::IsKeyPressed(VK_SPACE) && bulletCooldown > 0.3 && selection != nullptr){
-
-        Mtx44 rotation;
-        rotation.SetToRotation(selection->getRotationAngle(), 0, 1, 0);
-
-        Vector3 view = rotation * selection->View;
-
-        Bullet* newBullet = new Bullet(view, selection->Pos);
-
-        allBullets.push_back(newBullet);
-      
-        bulletCooldown = 0;
-    }*/
-
     for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
     {
         vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
         while (vitV != allVehicles[i].end())
         {
             Vehicles* temp = *vitV;
+
             if (temp->fireBullets(dt) == true){
 
                 Vector3 view = temp->currAttackTarget->Pos - temp->Pos;
@@ -526,26 +529,6 @@ void SP2::shipBulletCreation(double dt){
             ++vitV;
         }
     }
-
-   /* for (vector<Vehicles*>::iterator vitV = allVehicles.begin(); vitV != allVehicles.end(); vitV++){
-
-        Vehicles* temp = *vitV;
-
-        if (temp->fireBullets(dt) == true){
-
-            Vector3 view = temp->currAttackTarget->Pos - temp->Pos;
-            view.Normalize();
-
-            Bullet* newBullet = new Bullet(view, temp->Pos, temp->bulletDamage);
-
-            allBullets.push_back(newBullet);
-
-        }
-
-    }*/
-
-  
-    bulletCooldown += dt;
 
 }
 
@@ -697,6 +680,7 @@ void SP2::renderShips(){
 	{
 		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), selection->interaction.GetMin(), selection->interaction.GetMax());
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
 		modelStack.PushMatrix();
 		RenderMesh(meshList[GEO_HITBOX], false);
 		modelStack.PopMatrix();
@@ -802,19 +786,6 @@ void SP2::renderNPC()
     modelStack.PopMatrix();
 }
 
-void SP2::renderExplosion()
-{
-	for (vector<Vector3>::iterator it = explosionPos.begin(); it != explosionPos.end(); ++it)
-	{
-		modelStack.PushMatrix();
-		modelStack.Translate(it->x, it->y, it->z);
-		modelStack.Rotate(ExplosionYaw, 0, 1, 0);
-		modelStack.Rotate(ExplosionPitch, -1, 0, 0);
-		modelStack.Scale(ExplosionSize, ExplosionSize, ExplosionSize);
-		modelStack.PopMatrix();
-	}
-}
-
 void SP2::renderAllHitbox()
 {
 	/*vector<AABB> allHitbox;
@@ -861,6 +832,7 @@ void SP2::renderBullets(){
         modelStack.PushMatrix();
 
         modelStack.Translate(temp->Pos.x, temp->Pos.y, temp->Pos.z);
+        modelStack.Scale(1.5f, 1.f, 1.5f);
         RenderMesh(meshList[GEO_BULLETS], false);
 
         modelStack.PopMatrix();
@@ -881,6 +853,24 @@ void SP2::renderAsteroid()
 		RenderMesh(meshList[GEO_ASTEROID], enableLight);
 		modelStack.PopMatrix();
 	}
+}
+
+void SP2::renderExplosion()
+{
+    for (vector<Explosion*>::iterator vitE = allExplosions.begin(); vitE != allExplosions.end(); ++vitE){
+        
+        Explosion* currExplosion = *vitE;
+        modelStack.PushMatrix();
+        modelStack.Translate(0, 30, 0);
+        modelStack.Rotate(currExplosion->getYaw(), 0, 1, 0);
+        modelStack.Rotate(currExplosion->getPitch(), 0, 0, 1);
+        modelStack.Scale(currExplosion->getExplosionSize(), currExplosion->getExplosionSize(), currExplosion->getExplosionSize());
+        RenderMesh(meshList[GEO_EXPLOSION], false);
+        modelStack.PopMatrix();
+
+     
+    }
+
 }
 
 // Others
@@ -1305,6 +1295,56 @@ void SP2::bulletUpdates(double dt){
         }
 
     }
+
+}
+
+void SP2::explosionUpdate(double dt){
+
+    for (vector<Explosion*>::iterator vitE = allExplosions.begin(); vitE != allExplosions.end();){
+
+        Explosion* temp = *vitE;
+
+        Vector3 view = camera.target - camera.position;
+        Vector3 XZview(view.x, 0, view.z);
+        Vector3 initView(0, -1, 0);
+        XZview.Normalize();
+        view.Normalize();
+       
+        float explosionYaw = Math::RadianToDegree(acos(initView.Dot(XZview)));
+        float explosionPitch = Math::RadianToDegree(acos(initView.Dot(view)));
+
+        Vector3 n = initView.Cross(view);
+        if (n.Dot(Vector3(0, 0, 1)) < 0)
+        {
+            explosionPitch = explosionPitch * -1;
+        }
+        Mtx44 rotation;
+        rotation.SetToRotation(explosionPitch, 0, 0, 1);
+
+        initView.Set(0, 0, 1);
+        n = initView.Cross(XZview);
+        if (n.Dot(Vector3(0, 1, 0)) < 0)
+        {
+            explosionYaw = explosionYaw * -1;
+        }
+
+        temp->setPitchandYaw(explosionPitch, explosionYaw);
+        temp->explosionUpdate(dt);
+
+        if (temp->explosionEnd()){
+
+            vitE = allExplosions.erase(vitE);
+            delete temp;
+
+        }
+        else{
+
+            vitE++;
+
+        }
+
+    }
+
 
 }
 

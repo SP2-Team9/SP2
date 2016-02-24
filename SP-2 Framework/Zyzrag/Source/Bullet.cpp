@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////
 /*!
 
-* \File Name: Vehicles.cpp
+* \File Name: Bullet.cpp
 
 * \author: Wong Keng Han Ashley
 
@@ -103,13 +103,13 @@ void Bullet::bulletMovement(double dt){
 /////////////////////////////////////////////////////////////////
 /*!
 
-* \method: bulletMovement
+* \method: furtherThanBulletMaxRange
 
 * \author: Wong Keng Han Ashley
 
 * \date: 22 feb 2016
 
-* \description: changes the position of the bullet
+* \description: check if the bullet is out of range
 
 */
 /////////////////////////////////////////////////////////////////
@@ -136,7 +136,7 @@ bool Bullet::furtherThanBulletMaxRange(){
 
 * \date: 22 feb 2016
 
-* \description: changes the position of the bullet
+* \description: returns the bullet damage
 
 */
 /////////////////////////////////////////////////////////////////

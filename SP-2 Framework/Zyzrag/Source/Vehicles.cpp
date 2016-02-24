@@ -142,13 +142,11 @@ void Vehicles::update(double dt){
 
         newVehicle.pathRoute(dt);
         Pos = newVehicle.getCurrentLocation();
+
         SetHitbox(AABB(Vector3(Pos.x - HitboxSize, Pos.y - HitboxSize, Pos.z - HitboxSize), Vector3(Pos.x + HitboxSize, Pos.y + HitboxSize, Pos.z + HitboxSize)));
 
         SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
         Yaw = getRotationAngle();
-
-        SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
-        getRotationAngle();
 
         if (currAttackTarget != nullptr){
 
@@ -323,7 +321,7 @@ bool Vehicles::fireBullets(double dt){
 
     if (currAttackTarget != nullptr){
 
-        if (currAttackTarget->Pos.distanceBetween2points(Pos) < 50000){
+        if (currAttackTarget->Pos.distanceBetween2points(Pos) < 400){
 
             if (bulletFireRate > 0 && bulletCurrCooldown > 100 / bulletFireRate){
 

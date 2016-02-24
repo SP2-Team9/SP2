@@ -21,7 +21,7 @@ Object::~Object()
 
 void Object::SetHitbox(AABB hitbox)
 {
-	this->hitbox = hitbox;
+    this->hitbox.Set(hitbox.GetMin(), hitbox.GetMax());
 }
 
 void Object::SetHitboxSize(float size)
