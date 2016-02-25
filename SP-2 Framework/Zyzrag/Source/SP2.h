@@ -36,9 +36,9 @@ class SP2 : public Scene
 	{
         GEO_AXES,
         GEO_RAY,
-        GEO_QUAD,
         GEO_LIGHTBALL,
 		GEO_SPHERE,
+		GEO_TITLESCREEN,
 
         GEO_FRONT,
         GEO_BACK,
@@ -61,6 +61,10 @@ class SP2 : public Scene
         GEO_SPACE_STATION,
 		GEO_TELEPORTER,
         GEO_HITBOX,
+		GEO_SHOPBACKDROP,
+		GEO_ATTACKUP,
+		GEO_FIRERATEUP,
+		GEO_HEALTHUP,
 
         GEO_NPC,
         GEO_LEFTHAND,
@@ -113,6 +117,7 @@ class SP2 : public Scene
 		RTS,
 		inPlayerShip,
 		inSpaceStation,
+		inShop,
 	};
 
 	enum HITBOXCHECK
@@ -129,6 +134,14 @@ class SP2 : public Scene
         asteroidQuest,
     };
 
+	enum SHOPSTATE
+	{
+		Main = 0,
+		FirstShip,
+		SecondShip,
+		ThirdShip,
+	};
+
 public:
 
 	SP2();
@@ -141,6 +154,7 @@ public:
 	
 	// Initializers
 	void objectsInit();
+	void shopInit();
 	void WorldHitboxInit();
     void bulletCreation(double dt);
 	void generateAsteroid();
@@ -155,6 +169,7 @@ public:
     void renderSkybox();
     void renderStation();
     void renderBullets();
+	void renderShopMenu();
 	void renderAsteroid();
 	void renderAllHitbox();
     void renderExplosion();
@@ -168,6 +183,8 @@ public:
 
 	void RTSUpdates(double dt);
 	void NPCUpdates(double dt);
+	void shopUpdates(double dt);
+	void inShopUpdates(double dt);
 	void bulletUpdates(double dt);
 	void vehicleUpdates(double dt);
 	void asteroidUpdate(double dt);
@@ -193,9 +210,9 @@ public:
 	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
-	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	void RenderOnScreen(Mesh* mesh, float size, float x, float y);
-
+	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z = 0);
+	void RenderOnScreen(Mesh* mesh, float x, float y, float z, float size, float rotX, float rotY, float rotZ);
+	void RenderOnScreen(Mesh* mesh, Vector3 pos, float size, float rotX, float rotY, float rotZ);
 
 	bool Timer(float second, double dt);
 
@@ -238,13 +255,22 @@ private:
 	bool quest2 = 0;
 	bool complete = 0;
 	bool complete2 = 0;
-	
 
 	int destroyed;
+	bool enableLight, enableAxis, widescreen;
 
-	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay, second;
+	
+	float readyToUse, delay, second;
 
-	bool enableLight, enableAxis;
+	// Shop variables
+	float screenWidth;
+	float screenHeight;
+	Vector3 shopSmallPos, shopMidPos, shopLargePos, shopTarget;
+	float objSize;
+	float shopSmallScale, shopMidScale, shopLargeScale;
+	float shopSmallRot, shopMidRot, shopLargeRot;
+
+	SHOPSTATE shopState;
 
 	GAMESTATE state;
 
