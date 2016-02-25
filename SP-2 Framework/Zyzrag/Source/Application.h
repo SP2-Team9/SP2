@@ -26,6 +26,7 @@ private:
 
 	//Declare a window object
 	StopWatch m_timer;
+	//const GLFWvidmode * mode;
 };
 
 #endif
