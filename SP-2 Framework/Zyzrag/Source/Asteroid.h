@@ -11,6 +11,7 @@ public:
 	int maxRange;
 	bool boom;
 
+    int maxHealth;
 
 	Asteroid(float size);
 	~Asteroid();

@@ -20,7 +20,7 @@ struct PlayerVehicle : Object {
 
 
 
-	PlayerVehicle() : thrust(100), pitch(0), yaw(0), delay(0), isDead(false){}
+	PlayerVehicle() : thrust(0), pitch(0), yaw(0), delay(0), isDead(false){}
 	
     ~PlayerVehicle(){}
 

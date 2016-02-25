@@ -155,6 +155,8 @@ void SP2::Init()
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("reference", 1000, 1000, 1000);
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("Lightball", Color(0, 1, 0), 18, 36);
 
+    meshList[GEO_ASTEROID_HEALTH] = MeshBuilder::GenerateQuad("Asteroid Health Bar", Color(1, 0, 0), 3, 1);
+
     meshList[GEO_BULLETS] = MeshBuilder::GenerateSphere("Bullets", Color(1, 0.5, 0), 18, 36);
 
 	meshList[GEO_FRONT] = MeshBuilder::GenerateQuad("Front", Color(1, 1, 1), 1.f, 1.f);
@@ -391,6 +393,7 @@ void SP2::Exit()
 	glDeleteProgram(m_programID);
 }
 
+
 // Initializers
 
 void SP2::objectsInit()
@@ -450,6 +453,7 @@ void SP2::WorldHitboxInit()
 
 	Interactions.push_back(AABB(-1, 0, -1, 1, 2, 1));
 	Interactions.push_back(AABB(-20, 0, -20, 20, 20, 20));
+
 }
 
 void SP2::shipBulletCreation(double dt){
@@ -539,6 +543,7 @@ void SP2::generateAsteroid()
 	}
 }
 
+
 // Renders
 
 void SP2::renderNPC()
@@ -588,9 +593,12 @@ void SP2::renderNPC()
 
 void SP2::renderSkybox()
 {
-	modelStack.PushMatrix();
-	float skyboxSize = 1005;
+	
+	float skyboxSize = 5005;
 
+    modelStack.PushMatrix();
+
+    modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
 
 	modelStack.PushMatrix();
 	modelStack.Translate(0, 0, -skyboxSize / 2);
@@ -811,6 +819,7 @@ void SP2::renderBullets(){
 
 void SP2::renderAsteroid()
 {
+    
 	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
 	{
 		Asteroid* asteroid = *it;
@@ -819,8 +828,15 @@ void SP2::renderAsteroid()
 		modelStack.Scale(asteroid->size, asteroid->size, asteroid->size);
 		RenderMesh(meshList[GEO_ASTEROID], enableLight);
 		modelStack.PopMatrix();
-	}
 
+        if (asteroid->health < asteroid->maxHealth){
+
+            renderHealthBar(asteroid->Pos, asteroid->size, asteroid->health);
+
+        }
+
+	}
+   
 }
 
 void SP2::renderExplosion()
@@ -837,6 +853,53 @@ void SP2::renderExplosion()
         modelStack.PopMatrix();
 
      
+    }
+
+}
+
+void SP2::renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health){
+
+    float asteroidHealthYaw = 0;
+    float asteroidHealthPitch = 0;
+    Vector3 initView(0, 1, 0);
+    Vector3 view = (camera.position - camera.target).Normalized();
+    Vector3 XZview(view.x, 0, view.z);
+    XZview.Normalize();
+
+    asteroidHealthPitch = Math::RadianToDegree(acos(initView.Dot(view)));
+    Vector3 V3 = initView.Cross(view);
+    if (V3.Dot(Vector3(0, 0, 1)) < 0)
+    {
+        asteroidHealthPitch *= -1;
+    }
+
+    Mtx44 rotation;
+    rotation.SetToRotation(asteroidHealthPitch, 0, 0, 1);
+    initView = rotation * initView;
+    initView.Set(initView.x, 0, initView.z);
+    initView.Normalize();
+
+    asteroidHealthYaw = Math::RadianToDegree(acos(initView.Dot(XZview)));
+    V3 = initView.Cross(XZview);
+    if (V3.Dot(Vector3(0, 1, 0)) < 0)
+    {
+        asteroidHealthYaw *= -1;
+    }
+
+
+    if (health > 0){
+
+        modelStack.PushMatrix();
+
+        modelStack.Translate(asteroidPosition.x, asteroidPosition.y + asteroidSize * 1.5, asteroidPosition.z);
+        modelStack.Rotate(asteroidHealthYaw, 0, 1, 0);
+        modelStack.Rotate(asteroidHealthPitch, 0, 0, 1);
+        modelStack.Scale(1, 1, health / 2);
+        RenderMesh(meshList[GEO_ASTEROID_HEALTH], false);
+
+        modelStack.PopMatrix();
+
+
     }
 
 }
@@ -994,6 +1057,7 @@ void SP2::asteroidUpdate(double dt){
 	{
 		Asteroid* asteroid = *it;
 		asteroid->update(dt);
+
 	}
 
 	if (Timer(1, dt) == true)
@@ -1007,6 +1071,7 @@ void SP2::asteroidUpdate(double dt){
 
         if (tempAst->boom == true){
 
+            allExplosions.push_back(new Explosion(100, 50, tempAst->Pos));
             Ait = Vasteroid.erase(Ait);
             delete tempAst;
 
@@ -1138,7 +1203,6 @@ void SP2::inSpaceStationUpdates(double dt){
 	NPCUpdates(dt);
 
 }
-
 
 
 //Others
@@ -1347,26 +1411,19 @@ void SP2::asteroidHitboxCheck(){
 					it++;
 				}
 			}
-			vitA = Vasteroid.erase(vitA);
-			delete tempAst;
-			destroyed++;
-		}
-		else{
-
-                    it++;
-                }
-            }
-
             allExplosions.push_back(new Explosion(100, 50, tempAst->Pos));
             vitA = Vasteroid.erase(vitA);
             delete tempAst;
+            destroyed++;
 
-        }
-        else{
+		}
+		else{
 
             vitA++;
 
         }
+
+
 
     }
 
@@ -1447,6 +1504,31 @@ void SP2::asteroidHitboxCheck(){
                 temp1Ast->health -= temp2Ast->health;
                 temp2Ast->health -= ast1Health;
 
+                if (temp2Ast->health > 0){
+                    if (temp2Ast->health / 10 < 5){
+
+                        temp2Ast->size = 5;
+
+                    }
+                    else{
+
+                        temp2Ast->size = temp2Ast->health / 10;
+
+                    }
+                }
+                else if (temp1Ast->health > 0){
+                    if (temp1Ast->health / 10 < 5){
+
+                        temp1Ast->size = 5;
+
+                    }
+                    else{
+
+                        temp1Ast->size = temp1Ast->health / 10;
+
+                    }
+                }
+
             }
 
 
@@ -1461,6 +1543,7 @@ void SP2::asteroidHitboxCheck(){
 
             }
             else{
+
 
                 A2it++;
 
