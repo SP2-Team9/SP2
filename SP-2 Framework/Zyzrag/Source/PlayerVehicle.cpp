@@ -1,16 +1,32 @@
 #include "PlayerVehicle.h"
 
-
-
 void PlayerVehicle::update(double dt){
 
     bulletCurrCooldown += dt;
-
-
+	if (health <= 0)
+		isDead = true;
+	if (isDead == true)
+		respawnTimer += dt;
 }
 
+bool PlayerVehicle::respawn(int time)
+{
+	if (respawnTimer > time)
+	{
+		respawnTimer = 0;
+		isDead = false;
+		return true;
+	}
+	return false;
+}
 
-
+void PlayerVehicle::reset()
+{
+	thrust = 0;
+	yaw = 0;
+	pitch = 0;
+	health = 100;
+}
 
 bool PlayerVehicle::fireBullets(int bulletFireRate){
 

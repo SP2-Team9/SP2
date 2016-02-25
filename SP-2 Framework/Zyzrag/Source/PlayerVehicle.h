@@ -8,10 +8,13 @@
 struct PlayerVehicle : Object {
 
 
-	float thrust, pitch, yaw, delay;
+	float thrust, pitch, yaw, delay, respawnTimer;
+	int health;
 	bool isDead, board;
 
     void update(double dt);
+	bool respawn(int time);
+	void reset();
 
     bool fireBullets(int bulletFireRate);
    
@@ -20,7 +23,7 @@ struct PlayerVehicle : Object {
 
 
 
-	PlayerVehicle() : thrust(0), pitch(0), yaw(0), delay(0), isDead(false){}
+	PlayerVehicle() : thrust(0), pitch(0), yaw(0), delay(0), health(100), isDead(false){}
 	
     ~PlayerVehicle(){}
 

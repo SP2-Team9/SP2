@@ -50,11 +50,9 @@ void SP2::Init()
 	enableLight = true;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
-	state = inShop;
+	state = MainMenu;
 	selection = nullptr;
 	widescreen = false;
-
-	HealthPoints = 100;
     money = 1000;
 
 	shopInit();
@@ -445,7 +443,7 @@ void SP2::objectsInit()
 	ball.SetHitboxSize(2);
 
 	//Player Vehicle
-	playerShip.SetPos(0, 50, 0);
+	playerShip.SetPos(0, 15, 0);
 	playerShip.SetView(0, 0, 1);
 	playerShip.SetRight(-1, 0, 0);
 	playerShip.SetHitboxSize(5);
@@ -496,10 +494,11 @@ void SP2::WorldHitboxInit()
 	worldHitbox.push_back(AABB(Vector3(-10, 0, -15), Vector3(10, 10, -10)));
 	worldHitbox.push_back(AABB(Vector3(8, 0, -10), Vector3(15, 10, 10)));
 	worldHitbox.push_back(AABB(Vector3(-15, 0, -10), Vector3(-8, 10, 10)));
+	worldHitbox.push_back(AABB(-0.5, 0, 6.6f, 0.5, 1.2f, 7.3f));
 
 	Interactions.push_back(AABB(-1, 0, -1, 1, 2, 1));
 	Interactions.push_back(AABB(-0.5, 0, 6, 0.5, 1.2f, 7));
-	Interactions.push_back(AABB(10, 10, 10, 20, 20, 20));
+	Interactions.push_back(AABB(-10, 5, -10, 10, 20, 10));
 	
 }
 
@@ -530,8 +529,6 @@ void SP2::shipBulletCreation(double dt){
 }
 
 void SP2::playerBulletCreation(double dt){
-
-    playerShip.update(dt);
 
     if (Application::IsKeyPressed(VK_LBUTTON)){
 
@@ -844,12 +841,15 @@ void SP2::renderShips(){
 		}
 	}
 
-	modelStack.PushMatrix();
-	modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
-	modelStack.Rotate(playerShip.pitch, playerShip.Right.x, 0, playerShip.Right.z);
-	modelStack.Rotate(playerShip.yaw, 0, 1, 0);
-	RenderMesh(meshList[GEO_XWING], enableLight);
-	modelStack.PopMatrix();
+	if (playerShip.isDead == false)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
+		modelStack.Rotate(playerShip.pitch, playerShip.Right.x, 0, playerShip.Right.z);
+		modelStack.Rotate(playerShip.yaw, 0, 1, 0);
+		RenderMesh(meshList[GEO_XWING], enableLight);
+		modelStack.PopMatrix();
+	}
 }
 
 void SP2::renderShopMenu()
@@ -908,7 +908,7 @@ void SP2::renderTitleScreen(){
 }
 
 void SP2::renderFightingUI(){
-	RenderTextOnScreen(meshList[GEO_TEXT], "HP:" + std::to_string(HealthPoints), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
+	RenderTextOnScreen(meshList[GEO_TEXT], "HP:" + std::to_string(playerShip.health), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
     RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(money), Color(0, 1, 0), objSize * 8, 0.75f * screenWidth, screenHeight * 0.9f, 50);
 }
 
@@ -946,7 +946,7 @@ void SP2::renderAllHitbox()
 	vector<AABB> allHitbox;
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), Interactions[1].GetMin(), Interactions[1].GetMax());
+	meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), worldHitbox[6].GetMin(), worldHitbox[6].GetMax());
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	modelStack.PushMatrix();
 	RenderMesh(meshList[GEO_HITBOX], false);
@@ -1243,20 +1243,21 @@ void SP2::shopUpdates(double dt)
 			}
 			else if (mouseX > 0.8f * screenWidth && mouseX < 0.9f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-				if (money - 200 >= 0)
+				if (money - 200 >= 0 && playerShip.health < 100)
 				{
 					money -= 200;
-					playerShop->playerShipDamage += 10;
+					playerShip.health = 100;
 				}
 			}
 		}
-		else if (Application::IsKeyPressed(VK_RBUTTON))
+		else if (Application::IsKeyPressed(VK_RBUTTON) || Application::IsKeyPressed('E') && delay > 0.5f)
 		{
+			delay = 0;
 			Application::centerMouse();
 			state = inSpaceStation;
 		}
-			
 		break;
+
 	case FirstShip:
 		shopSmallRot += dt * 50;
 		if (shopSmallScale < objSize * 3)
@@ -1390,6 +1391,7 @@ void SP2::asteroidUpdate(double dt){
 
 void SP2::generalUpdates(double dt){
 
+	playerShip.update(dt);
 	asteroidUpdate(dt);
 	bulletUpdates(dt);
 	explosionUpdate(dt);
@@ -1397,6 +1399,14 @@ void SP2::generalUpdates(double dt){
 	checkHitboxes();
 	delay += dt;
 
+	if (playerShip.respawn(10) == true)
+	{
+		playerShip.reset();
+		playerShip.SetPos(0, 15, 0);
+		playerShip.SetView(0, 0, 1);
+		playerShip.SetRight(-1, 0, 0);
+		playerShip.SetHitboxSize(5);
+	}
 }
 
 void SP2::mainMenuUpdates(double dt){
@@ -1471,10 +1481,25 @@ void SP2::inPlayerShipUpdates(double dt){
 	{
 		if (playerShip.hitbox.AABBtoAABB(Interactions[2], playerShip.View))
 		{
+			playerShip.yaw = 0;
+			playerShip.pitch = 0;
+			playerShip.thrust = 0;
+			playerShip.SetPos(0, 15, 0);
+			playerShip.SetView(0, 0, 1);
+			playerShip.SetRight(-1, 0, 0);
+			playerShip.SetHitboxSize(5);
 			delay = 0;
-			state = inSpaceStation;
 			camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
+			state = inSpaceStation;
+			
 		}
+	}
+
+	if (playerShip.isDead == true)
+	{
+		delay = 0;
+		state = inSpaceStation;
+		camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
 	}
 
 }
@@ -1485,7 +1510,7 @@ void SP2::inSpaceStationUpdates(double dt){
 	camera.FPSMovement(dt, worldHitbox);
 	if (Application::IsKeyPressed('E') && delay >= 1.f)
 	{
-		if (Interactions[0].PointToAABB(camera.position))
+		if (Interactions[0].PointToAABB(camera.position) && playerShip.isDead == false)
 		{
 			delay = 0;
 			state = inPlayerShip;
@@ -1495,6 +1520,7 @@ void SP2::inSpaceStationUpdates(double dt){
 		}
 		else if (Interactions[1].PointToAABB(camera.position))
 		{
+			delay = 0;
 			state = inShop;
 		}
 		else
@@ -1785,7 +1811,7 @@ void SP2::asteroidHitboxCheck(){
         Asteroid* tempAst = *Ait;
         if (tempAst->hitbox.AABBtoAABB(playerShip.hitbox))
         {
-
+			playerShip.health -= 50;
             Vector3 ExploCenter = playerShip.Pos + tempAst->Pos;
             ExploCenter /= 2;
             allExplosions.push_back(new Explosion(100, 50, ExploCenter));
