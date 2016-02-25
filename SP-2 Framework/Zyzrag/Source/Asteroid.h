@@ -6,6 +6,7 @@
 class Asteroid : public Object
 {
 public:
+
 	float speed, size, health, curRange;
 	int maxRange;
 	bool boom;
@@ -15,6 +16,7 @@ public:
 	~Asteroid();
 
 	void update(double dt);
+
 };
 
 #endif

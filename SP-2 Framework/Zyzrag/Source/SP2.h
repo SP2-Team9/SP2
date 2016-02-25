@@ -120,6 +120,13 @@ class SP2 : public Scene
 		CheckAsteroids,
 	};
 
+    enum QUEST
+    {
+        noQuest = 0,
+        ballQuest,
+        asteroidQuest,
+    };
+
 public:
 
 	SP2();
@@ -277,6 +284,10 @@ private:
     vector<Explosion*> allExplosions;
 
 	MS modelStack, viewStack, projectionStack;
+
+
+    QUEST currentQuest = noQuest;
+
 };
 
 

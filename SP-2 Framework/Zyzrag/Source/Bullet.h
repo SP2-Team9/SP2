@@ -37,7 +37,7 @@ public:
 
 private:
 
-    float bulletSpeed = 650;
+    float bulletSpeed = 400;
     float BulletDamage = 30;
     float bulletMaxRange = 400;
 
