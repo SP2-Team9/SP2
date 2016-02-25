@@ -181,6 +181,8 @@ void SP2::Init()
 	meshList[GEO_TEXT1] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT1]->textureID = LoadTGA("Image//startfont.tga");
 
+	meshList[GEO_TEXT2] = MeshBuilder::GenerateText("text", 16, 16);
+	meshList[GEO_TEXT2]->textureID = LoadTGA("Image//OCRA.tga");
 
 	// Ships
 	meshList[GEO_XWING] = MeshBuilder::GenerateOBJ("spaceShip", "OBJ//Flying.obj");
@@ -225,12 +227,17 @@ void SP2::Init()
 	meshList[GEO_ASTEROID] = MeshBuilder::GenerateOBJ("Asteroid", "OBJ//asteroid.obj");
 	meshList[GEO_ASTEROID]->textureID = LoadTGA("Image//AM3.tga");
 
+	meshList[GEO_SPHERE] = MeshBuilder::GenerateSphere("ball", Color(1, 1, 1), 10, 20);
+
+
 	meshList[GEO_INNERSTATION] = MeshBuilder::GenerateOBJ("Test", "OBJ//innerstation.obj");
 	meshList[GEO_INNERSTATION]->textureID = LoadTGA("Image//innerstation.tga");
 
     move = 0.f;
     rotate = 0.f;
     moveleg = 0.f;
+	count = 0.f;
+	destroyed = 0;
 
     meshList[GEO_EXPLOSION] = MeshBuilder::GenerateQuad("Explosion", Color(1, 1, 1), 1.f, 1.f);
     meshList[GEO_EXPLOSION]->textureID = LoadTGA("Image//explosion.tga");
@@ -356,6 +363,8 @@ void SP2::Render()
 
 	case inSpaceStation:
 		renderNPC();
+		renderNPC2();
+		renderNPC3();
 		renderShips();
 		break;
 
@@ -369,6 +378,8 @@ void SP2::Render()
 	}
 
     quests();
+	ballquest();
+	asteroidquest();
     renderBullets();
 	renderAllHitbox();
 	renderExplosion();
@@ -395,6 +406,16 @@ void SP2::objectsInit()
 	LastLocation.SetRight(-1, 0, 0);
 
 	NPC.SetPos(0, 0.1, 0);
+	NPC.SetHitboxSize(2);
+
+	NPC2.SetPos(0, 0.1, 7);
+	NPC2.SetHitboxSize(2);
+
+	NPC3.SetPos(4, 0.1, -4);
+	NPC3.SetHitboxSize(2);
+
+	ball.SetPos(0, 1, 4);
+	ball.SetHitboxSize(2);
 
 	//Player Vehicle
 	playerShip.SetPos(0, 50, 0);
@@ -512,7 +533,7 @@ void SP2::renderNPC()
 {
 	//NPC
 	modelStack.PushMatrix();
-	modelStack.Translate(NPC.Pos.x, NPC.Pos.y, NPC.Pos.z);
+	modelStack.Translate(NPC.Pos.x, NPC.Pos.y, NPC.Pos.z + move);
 
 	modelStack.PushMatrix();
 	modelStack.Scale(0.5, 0.5, 0.5);
@@ -812,56 +833,81 @@ void SP2::renderExplosion()
 
 void SP2::NPCUpdates(double dt){
 
-    //npc move
-    move += (float)(8 * dt);
-    if (rotate < 5 && restart == false)
-    {
-        rotate += (float)(20 * dt);
+	//npc move
+	if (talking == false)
+	{
+
+		if (move < 2 && re == false)
+		{
+			move += (float)(2 * dt);
 
 
-        if (rotate >= 5)
-        {
-            restart = true;
+			if (move >= 2)
+			{
+				re = true;
 
-        }
+			}
 
-    }
-    if (rotate >= -5 && restart == true)
-    {
-        rotate -= (float)(20 * dt);
-        if (rotate <= -5)
-        {
-            restart = false;
-
-
-        }
-    }
-    if (moveleg < 5 && restart2 == false)
-    {
-        moveleg += (float)(20 * dt);
+		}
+		if (move >= -2 && re == true)
+		{
+			move -= (float)(2 * dt);
+			if (move <= -2)
+			{
+				re = false;
 
 
-        if (moveleg >= 5)
-        {
-            restart2 = true;
-
-        }
-
-    }
-    if (moveleg >= -5 && restart2 == true)
-    {
-        moveleg -= (float)(20 * dt);
-        if (moveleg <= -5)
-        {
-            restart2 = false;
+			}
+		}
 
 
-        }
-    }
+		if (rotate < 5 && restart == false)
+		{
+			rotate += (float)(20 * dt);
 
 
-    HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
+			if (rotate >= 5)
+			{
+				restart = true;
 
+			}
+
+		}
+		if (rotate >= -5 && restart == true)
+		{
+			rotate -= (float)(20 * dt);
+			if (rotate <= -5)
+			{
+				restart = false;
+
+
+			}
+		}
+		if (moveleg < 5 && restart2 == false)
+		{
+			moveleg += (float)(20 * dt);
+
+
+			if (moveleg >= 5)
+			{
+				restart2 = true;
+
+			}
+
+		}
+		if (moveleg >= -5 && restart2 == true)
+		{
+			moveleg -= (float)(20 * dt);
+			if (moveleg <= -5)
+			{
+				restart2 = false;
+
+
+			}
+		}
+	}
+
+	HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
 
 
 
@@ -1066,14 +1112,6 @@ void SP2::inSpaceStationUpdates(double dt){
 
 //Others
 
-void SP2::quests()
-{
-	if (NPC.Pos.z - camera.position.z  < 5.f)
-	{
-		RenderTextOnScreen(meshList[GEO_TEXT], "HI", Color(0, 1, 0), 10, 0, 5);
-	}
-}
-
 void SP2::checkHitboxes(){
 	switch (HBcheck){
 
@@ -1274,7 +1312,7 @@ void SP2::asteroidHitboxCheck(){
 			}
 			vitA = Vasteroid.erase(vitA);
 			delete tempAst;
-
+			destroyed++;
 		}
 		else{
 
@@ -1460,6 +1498,181 @@ void SP2::MouseSelection(double dt)
 	wayPointSetCoolDown += dt;
 }
 
+void SP2::quests()
+{
+	if (NPC.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed(VK_LBUTTON) && complete == false)
+	{
+		talking = true;
+		RenderTextOnScreen(meshList[GEO_TEXT2], "GIMME BALL I NEED BALL", Color(0, 1, 0), 3, 0, 5);
+		quest1 = true;
+		//ballquest();
+	}
+	else
+	{
+		talking = false;
+	}
+	if (Application::IsKeyPressed(VK_LBUTTON) && NPC2.hitbox.PointToAABB(camera.position) && complete2 == false)
+	{
+		talking = true;
+		RenderTextOnScreen(meshList[GEO_TEXT2], "Destroy 5 asteroids for me", Color(0, 1, 0), 3, 0, 5);
+		quest2 = true;
+		//asteroidquest();
+		
+	}
+}
+
+void SP2::ballquest()
+{
+	if (quest1 == true && complete == false)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT2], "Find the ball and give it to pucboi: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
+	}
+	if (pickup == false)
+	{
+
+		modelStack.PushMatrix();
+		modelStack.Translate(ball.Pos.x, ball.Pos.y, ball.Pos.z - move);
+		modelStack.Scale(0.5, 0.5, 0.5);
+		RenderMesh(meshList[GEO_SPHERE], false);
+		modelStack.PopMatrix();
+	}
+
+	if (ball.hitbox.PointToAABB(camera.position) && pickup == false)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT2], "Press 'T' to pick up the ball", Color(0, 1, 0), 3, 0, 5);
+		if (Application::IsKeyPressed('T'))
+		{
+			pickup = true;
+		}
+	}
+	if (pickup == true && NPC.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed('T'))
+	{
+		complete = true;
+	}
+
+
+	if (complete == true && count <= 150.f)
+
+	{
+		count += (float)(2);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "Find the ball and give it to pucboi: COMPLETE", Color(0, 1, 0), 3, 0, 10);
+	}
+
+}
+
+void SP2::renderNPC2()
+{
+	//npc
+	modelStack.PushMatrix();
+	modelStack.Translate(NPC2.Pos.x, NPC2.Pos.y, NPC2.Pos.z + move);
+
+	modelStack.PushMatrix();
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_NPC], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(-rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(-moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PopMatrix();
+}
+
+void SP2::asteroidquest()
+{
+	if (quest2 == true && complete2 == false)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT2], "DE_STROY asteroids: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
+	}
+
+	if (destroyed >= 2 && NPC2.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed(VK_LBUTTON))
+	{
+		complete2 = true;
+	}
+
+
+	if (complete2 == true && count <= 150.f)
+
+	{
+		count += (float)(2);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "DE_STROY asteroids: COMPLETE", Color(0, 1, 0), 3, 0, 10);
+	}
+
+}
+
+void SP2::renderNPC3()
+{
+	//npc
+	modelStack.PushMatrix();
+	modelStack.Translate(NPC3.Pos.x, NPC3.Pos.y, NPC3.Pos.z + move);
+
+	modelStack.PushMatrix();
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_NPC], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(-rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(-moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PopMatrix();
+}	  
 
 
 

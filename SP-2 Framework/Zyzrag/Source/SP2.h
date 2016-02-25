@@ -38,6 +38,7 @@ class SP2 : public Scene
         GEO_RAY,
         GEO_QUAD,
         GEO_LIGHTBALL,
+		GEO_SPHERE,
 
         GEO_FRONT,
         GEO_BACK,
@@ -45,8 +46,9 @@ class SP2 : public Scene
         GEO_RIGHT,
         GEO_TOP,
         GEO_BOTTOM,
-        GEO_TEXT,
-        GEO_TEXT1,
+		GEO_TEXT,
+		GEO_TEXT1,
+		GEO_TEXT2,
 
         // DONT PUT ANYTHING INBETWEEN! FROM HERE
 		GEO_SMALLSHIP,
@@ -137,7 +139,9 @@ public:
     void playerBulletCreation(double dt);
 	
 	// Renders
-    void renderNPC();
+	void renderNPC();
+	void renderNPC2();
+	void renderNPC3();
 	void renderShips();
     void renderSkybox();
     void renderStation();
@@ -167,17 +171,14 @@ public:
 
 	//Others
 	
-	void quests();
     void checkHitboxes();
 	void shipHitboxCheck();
 	void stationHitboxCheck();
 	void asteroidHitboxCheck();
 	void MouseSelection(double dt);
-
-
-	
-	
-
+	void quests();
+	void ballquest();
+	void asteroidquest();
 
 
 	// Tools
@@ -216,12 +217,21 @@ private:
     float move;
     float rotate;
     float moveleg;
+	float count;
 
     bool restart = false;
     bool restart2 = false;
 	bool blink = false;
 	bool re = false;
+	bool talking = 0;
+	bool pickup = 0;
+	bool quest1 = 0;
+	bool quest2 = 0;
+	bool complete = 0;
+	bool complete2 = 0;
+	
 
+	int destroyed;
 
 	float readyToUse, rotateAngle, ExplosionYaw, ExplosionPitch, ExplosionSize, delay, second;
 
@@ -234,8 +244,11 @@ private:
 	MousePicker picker;
 
     Object NPC;
+	Object NPC2;
+	Object NPC3;
 	Object station;
 	Object LastLocation;
+	Object ball;
 	
 
 	string Ammo;
