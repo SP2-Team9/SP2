@@ -1099,14 +1099,19 @@ void SP2::renderDistances(){
 
     }
 
-    float scaleSize = 10 + playerShip.Pos.distanceBetween2points(station.Pos) / 75;
+    float scaleSize = 10 + playerShip.Pos.distanceBetween2points(station.Pos) / 70;
 
+    int currDistance = playerShip.Pos.distanceBetween2points(station.Pos);
+    int numberOfDigits = 0;
+    string distance = std::to_string(currDistance);
 
-    Mtx44 rotation;
-    Vector3 signPosition = (10, 0, -50);
+    for (float i = currDistance; i / 10 > 1;){
 
+        numberOfDigits += 1;
+        i /= 10;
 
-
+    }
+    std::cout << numberOfDigits << std::endl;
     //Pushing the space station Word
     modelStack.PushMatrix(); 
 
@@ -1117,11 +1122,28 @@ void SP2::renderDistances(){
     modelStack.PushMatrix();
 
 
-    modelStack.Translate(-5, 2, 0);
+    modelStack.Translate(-5, 3, 0);
     RenderText(meshList[GEO_TEXT], "Space Station", Color(0, 1, 0));
 
     modelStack.PopMatrix();
    
+
+    modelStack.PopMatrix();
+
+    //Pushing the Distance
+    modelStack.PushMatrix();
+
+    modelStack.Rotate(Yaw, 0, 1, 0);
+    modelStack.Scale(scaleSize, scaleSize, scaleSize);
+
+    modelStack.PushMatrix();
+
+    
+    modelStack.Translate(1 - numberOfDigits, 2, 0);
+    RenderText(meshList[GEO_TEXT], distance + "m", Color(0, 1, 0));
+
+    modelStack.PopMatrix();
+
 
     modelStack.PopMatrix();
 
