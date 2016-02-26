@@ -85,7 +85,6 @@ bulletCooldown(0)
     Pos = position;
     View = viewDirection;
     newVehicle.setSpeed(newSpeed);
-    //initialMoveDirection();
     newVehicle.setCurrentLocation(position);
 
     initialYaw = getRotationAngle(viewDirection);

@@ -32,10 +32,6 @@ struct Shop{
     int numberOfLargeShips;
     int numberOfMediumShips;
 
-    
-   
-
-
 };
 
 #endif _SHOP_H

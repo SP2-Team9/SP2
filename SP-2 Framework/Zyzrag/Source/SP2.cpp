@@ -56,7 +56,6 @@ SP2::~SP2(){
     }
 
 	delete selection;
-	delete playerShop;
 }
 
 void SP2::Init()
@@ -320,13 +319,13 @@ void SP2::Update(double dt)
 	}
 
 
-	if (Application::IsKeyPressed('1')) //enable back face culling
+	if (Application::IsKeyPressed(VK_NUMPAD1)) //enable back face culling
 		glEnable(GL_CULL_FACE);
-	if (Application::IsKeyPressed('2')) //disable back face culling
+	if (Application::IsKeyPressed(VK_NUMPAD2)) //disable back face culling
 		glDisable(GL_CULL_FACE);
-	if (Application::IsKeyPressed('3'))
+	if (Application::IsKeyPressed(VK_NUMPAD3))
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); //default fill mode
-	if (Application::IsKeyPressed('4'))
+	if (Application::IsKeyPressed(VK_NUMPAD4))
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); //wireframe mode
 
 
