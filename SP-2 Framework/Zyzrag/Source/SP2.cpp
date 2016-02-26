@@ -41,6 +41,13 @@ SP2::~SP2(){
 
     }
 
+    for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end(); it++){
+
+        delete *it;
+        it = allExplosions    .erase(it);
+
+    }
+
 	delete selection;
 
 }
@@ -150,6 +157,7 @@ void SP2::Init()
 	glUniform1f(m_parameters[U_LIGHT0_EXPONENT], light[0].exponent);
 
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("reference", 1000, 1000, 1000);
+
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("Lightball", Color(0, 1, 0), 18, 36);
 
     meshList[GEO_ASTEROID_HEALTH] = MeshBuilder::GenerateQuad("Asteroid Health Bar", Color(1, 0, 0), 3, 1);
@@ -174,7 +182,7 @@ void SP2::Init()
 	meshList[GEO_BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_BOTTOM]->textureID = LoadTGA("Image//bottom.tga");
 
-	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
+	meshList[GEO_TEXT] = MeshBuilder::GenerateText("Text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//OCRA.tga");
 
 	meshList[GEO_TEXT1] = MeshBuilder::GenerateText("text", 16, 16);
@@ -227,7 +235,6 @@ void SP2::Init()
 	meshList[GEO_ASTEROID]->textureID = LoadTGA("Image//AM3.tga");
 
 	meshList[GEO_SPHERE] = MeshBuilder::GenerateSphere("ball", Color(1, 1, 1), 10, 20);
-
 
 	meshList[GEO_INNERSTATION] = MeshBuilder::GenerateOBJ("Test", "OBJ//innerstation.obj");
 	meshList[GEO_INNERSTATION]->textureID = LoadTGA("Image//innerstation.tga");
@@ -377,6 +384,7 @@ void SP2::Render()
 
         renderShips();
         renderWayPoints();
+        renderDistances();
 		break;
 
 	case inSpaceStation:
@@ -390,6 +398,8 @@ void SP2::Render()
 
 		renderShips();
 		renderFightingUI();
+        renderDistances();
+       
 
 		break;
 
@@ -407,6 +417,7 @@ void SP2::Render()
 	renderAllHitbox();
 	renderExplosion();
 	renderFightingUI();
+    
 }
 
 void SP2::Exit()
@@ -909,7 +920,12 @@ void SP2::renderTitleScreen(){
 
 void SP2::renderFightingUI(){
 
-	RenderTextOnScreen(meshList[GEO_TEXT], "HP:" + std::to_string(playerShip.health), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
+    if (playerShip.health > 0){
+        RenderTextOnScreen(meshList[GEO_TEXT], "HP:" + std::to_string(playerShip.health), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
+    }
+    else{
+        RenderTextOnScreen(meshList[GEO_TEXT], "Ship is Destroyed!!!", Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
+    }
     RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(currMoney), Color(0, 1, 0), objSize * 8, 0.75f * screenWidth, screenHeight * 0.9f, 50);
 
 }
@@ -1062,6 +1078,69 @@ void SP2::renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health
 
     }
 
+}
+
+void SP2::renderDistances(){
+    //NPC
+
+    float Yaw = 0;
+    float Pitch = 0;
+    Vector3 initView(0, 0, 1);
+    Vector3 view = (camera.position - station.Pos).Normalized();
+    Vector3 XZview(view.x, 0, view.z);
+    XZview.Normalize();
+
+    Vector3 normal = initView.Cross(view);
+    Yaw = Math::RadianToDegree(acos(initView.Dot(XZview)));
+
+    if (normal.y < 0){
+
+        Yaw *= -1;
+
+    }
+
+    float scaleSize = 10 + playerShip.Pos.distanceBetween2points(station.Pos) / 75;
+
+
+    Mtx44 rotation;
+    Vector3 signPosition = (10, 0, -50);
+
+
+
+    //Pushing the space station Word
+    modelStack.PushMatrix(); 
+
+    
+    modelStack.Rotate(Yaw, 0, 1, 0);
+    modelStack.Scale(scaleSize, scaleSize, scaleSize);
+
+    modelStack.PushMatrix();
+
+
+    modelStack.Translate(-5, 2, 0);
+    RenderText(meshList[GEO_TEXT], "Space Station", Color(0, 1, 0));
+
+    modelStack.PopMatrix();
+   
+
+    modelStack.PopMatrix();
+
+    //Pushing the Arrow
+    modelStack.PushMatrix();
+
+    modelStack.Rotate(Yaw, 0, 1, 0);
+    modelStack.Scale(scaleSize, scaleSize, scaleSize);
+
+    modelStack.PushMatrix();
+
+    modelStack.Translate(0.02f, 1, 0);
+    RenderText(meshList[GEO_TEXT], "V ", Color(0, 1, 0));
+
+    modelStack.PopMatrix();
+   
+
+    modelStack.PopMatrix();
+ 
 }
 
 
