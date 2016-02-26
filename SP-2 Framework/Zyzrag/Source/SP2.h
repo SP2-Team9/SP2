@@ -175,6 +175,7 @@ public:
     void renderBullets();
 	void renderShopMenu();
 	void renderAsteroid();
+    void renderDistances();
 	void renderAllHitbox();
     void renderExplosion();
 	void renderWayPoints();
@@ -200,18 +201,20 @@ public:
 
 
 	//Others
-	
+
+    void quests();
+    void ballquest();
+    void asteroidquest();
     void checkHitboxes();
 	void shipHitboxCheck();
 	void stationHitboxCheck();
 	void asteroidHitboxCheck();
 	void MouseSelection(double dt);
-	void quests();
-	void ballquest();
-	void asteroidquest();
+
 
 
 	// Tools
+
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z = 0);
