@@ -217,16 +217,14 @@ public:
     void quests();
     void ballquest();
     void asteroidquest();
+	void buyshipquest();
+	void abductionquest();
     void checkHitboxes();
 	void shipHitboxCheck();
 	void stationHitboxCheck();
 	void asteroidHitboxCheck();
 	void MouseSelection(double dt);
-	void quests();
-	void ballquest();
-	void asteroidquest();
-	void buyshipquest();
-	void abductionquest();
+	
 	
 
 

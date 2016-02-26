@@ -2249,7 +2249,7 @@ void SP2::ballquest()
 	}
 	if (pickup == true)
 	{
-		RenderOnScreen(meshList[GEO_SPHERE], 5, 10, 10);
+		RenderOnScreen(meshList[GEO_SPHERE], 10, 10, 0, 5, 0, 0, 0);
 	}
 	if (pickup == true && NPC1.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed('T'))
 	{
