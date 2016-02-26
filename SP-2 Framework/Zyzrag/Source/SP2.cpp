@@ -47,8 +47,7 @@ SP2::~SP2(){
 
 void SP2::Init()
 {
-
-    playerShop = new Shop(10, 10, 100, 0, 0, 0);
+	playerShop = new Shop(10, 10, 100, 0, 0, 0);
 
 	enableLight = true;
 	readyToUse = 2.f;
@@ -207,7 +206,16 @@ void SP2::Init()
 
 	// NPC
 	meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
-    meshList[GEO_NPC]->textureID = LoadTGA("Image//headnbody_uv.tga");
+	meshList[GEO_NPC]->textureID = LoadTGA("Image//headnbody_uv.tga");
+
+	meshList[GEO_NPC2] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
+	meshList[GEO_NPC2]->textureID = LoadTGA("Image//headnbody_uv2.tga");
+
+	meshList[GEO_NPC3] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
+	meshList[GEO_NPC3]->textureID = LoadTGA("Image//headnbody_uv3.tga");
+
+	meshList[GEO_NPC4] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
+	meshList[GEO_NPC4]->textureID = LoadTGA("Image//headnbody_uv4.tga");
 
     meshList[GEO_LEFTHAND] = MeshBuilder::GenerateOBJ("left hand", "OBJ//lefthand.obj");
     meshList[GEO_LEFTHAND]->textureID = LoadTGA("Image//arms_uv.tga");
@@ -365,6 +373,7 @@ void SP2::Render()
 		renderNPC();
 		renderNPC2();
 		renderNPC3();
+		renderNPC4();
 		renderShips();
 		break;
 
@@ -380,6 +389,8 @@ void SP2::Render()
     quests();
 	ballquest();
 	asteroidquest();
+	buyshipquest();
+	abductionquest();
     renderBullets();
 	renderAllHitbox();
 	renderExplosion();
@@ -405,16 +416,22 @@ void SP2::objectsInit()
 	LastLocation.SetUp(0, 1, 0);
 	LastLocation.SetRight(-1, 0, 0);
 
-	NPC.SetPos(0, 0.1, 0);
-	NPC.SetHitboxSize(2);
+	NPC1.SetPos(3, 0, 1);
+	NPC1.SetHitboxSize(2);
 
-	NPC2.SetPos(0, 0.1, 7);
-	NPC2.SetHitboxSize(2);
+	NPC2.SetPos(-3, 0, 7);
+	NPC2.SetHitboxSize(4);
 
-	NPC3.SetPos(4, 0.1, -4);
-	NPC3.SetHitboxSize(2);
+	NPC3.SetPos(4, 0, -4);
+	NPC3.SetHitboxSize(4);
 
-	ball.SetPos(0, 1, 4);
+	NPC4.SetPos(-5, 0, -1);
+	NPC4.SetHitboxSize(4);
+
+	NPC5.SetPos(-5, 0, -5);
+	NPC5.SetHitboxSize(4);
+
+	ball.SetPos(4, 0.1, 7);
 	ball.SetHitboxSize(2);
 
 	//Player Vehicle
@@ -529,50 +546,6 @@ void SP2::generateAsteroid()
 
 
 // Renders
-void SP2::renderNPC()
-{
-	//NPC
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC.Pos.x, NPC.Pos.y, NPC.Pos.z + move);
-
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-}
 
 void SP2::renderSkybox()
 {
@@ -837,29 +810,28 @@ void SP2::NPCUpdates(double dt){
 	if (talking == false)
 	{
 
-		if (move < 2 && re == false)
+		if (move < 1 && re == false)
 		{
-			move += (float)(2 * dt);
+			move += (float)(1 * dt);
 
 
-			if (move >= 2)
+			if (move >= 1)
 			{
 				re = true;
 
 			}
 
 		}
-		if (move >= -2 && re == true)
+		if (move >= -1 && re == true)
 		{
-			move -= (float)(2 * dt);
-			if (move <= -2)
+			move -= (float)(1 * dt);
+			if (move <= -1)
 			{
 				re = false;
 
 
 			}
 		}
-
 
 		if (rotate < 5 && restart == false)
 		{
@@ -1500,12 +1472,13 @@ void SP2::MouseSelection(double dt)
 
 void SP2::quests()
 {
-	if (NPC.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed(VK_LBUTTON) && complete == false)
+	if (NPC1.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed(VK_LBUTTON) && complete == false)
 	{
 		talking = true;
 		RenderTextOnScreen(meshList[GEO_TEXT2], "GIMME BALL I NEED BALL", Color(0, 1, 0), 3, 0, 5);
-		quest1 = true;
-		//ballquest();
+		
+		currentQuest = ballQuest;
+	
 	}
 	else
 	{
@@ -1515,15 +1488,86 @@ void SP2::quests()
 	{
 		talking = true;
 		RenderTextOnScreen(meshList[GEO_TEXT2], "Destroy 5 asteroids for me", Color(0, 1, 0), 3, 0, 5);
-		quest2 = true;
-		//asteroidquest();
+		
+		currentQuest = asteroidQuest;
+		
 		
 	}
+
+	if (Application::IsKeyPressed(VK_LBUTTON) && NPC3.hitbox.PointToAABB(camera.position) && complete3 == false)
+	{
+		talking = true;
+		RenderTextOnScreen(meshList[GEO_TEXT2], "Buy duh 3 powderful shipzz", Color(0, 1, 0), 3, 0, 5);
+
+		currentQuest = buyshipQuest;
+	
+
+	}
+
+	if (Application::IsKeyPressed(VK_LBUTTON) && NPC4.hitbox.PointToAABB(camera.position) && complete4 == false)
+	{
+		talking = true;
+		RenderTextOnScreen(meshList[GEO_TEXT2], "gimmeh 1000 bucks, gotta kidnap sum alien kidz", Color(0, 1, 0), 3, 0, 5);
+
+		currentQuest = abductionQuest;
+
+
+	}
+
+
+}
+
+void SP2::renderNPC()
+{
+
+	//NPC
+	modelStack.PushMatrix();
+	modelStack.Translate(NPC1.Pos.x, NPC1.Pos.y, NPC1.Pos.z + move);
+
+	modelStack.PushMatrix();
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_NPC], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(-rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(-moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTLEG], false);
+	modelStack.PopMatrix();
+
+
+	modelStack.PopMatrix();
 }
 
 void SP2::ballquest()
 {
-	if (quest1 == true && complete == false)
+	if (currentQuest == ballQuest && complete == false)
 	{
 		RenderTextOnScreen(meshList[GEO_TEXT2], "Find the ball and give it to pucboi: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
 	}
@@ -1531,8 +1575,8 @@ void SP2::ballquest()
 	{
 
 		modelStack.PushMatrix();
-		modelStack.Translate(ball.Pos.x, ball.Pos.y, ball.Pos.z - move);
-		modelStack.Scale(0.5, 0.5, 0.5);
+		modelStack.Translate(ball.Pos.x, ball.Pos.y, ball.Pos.z );
+		modelStack.Scale(0.1, 0.1, 0.1);
 		RenderMesh(meshList[GEO_SPHERE], false);
 		modelStack.PopMatrix();
 	}
@@ -1543,9 +1587,14 @@ void SP2::ballquest()
 		if (Application::IsKeyPressed('T'))
 		{
 			pickup = true;
+
 		}
 	}
-	if (pickup == true && NPC.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed('T'))
+	if (pickup == true)
+	{
+		RenderOnScreen(meshList[GEO_SPHERE], 5, 10, 10);
+	}
+	if (pickup == true && NPC1.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed('T'))
 	{
 		complete = true;
 	}
@@ -1568,7 +1617,7 @@ void SP2::renderNPC2()
 
 	modelStack.PushMatrix();
 	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC], false);
+	RenderMesh(meshList[GEO_NPC2], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
@@ -1608,12 +1657,12 @@ void SP2::renderNPC2()
 
 void SP2::asteroidquest()
 {
-	if (quest2 == true && complete2 == false)
+	if (currentQuest == asteroidQuest && complete2 == false)
 	{
 		RenderTextOnScreen(meshList[GEO_TEXT2], "DE_STROY asteroids: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
 	}
 
-	if (destroyed >= 2 && NPC2.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed(VK_LBUTTON))
+	if (destroyed >= 5 && NPC2.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed(VK_LBUTTON))
 	{
 		complete2 = true;
 	}
@@ -1636,7 +1685,7 @@ void SP2::renderNPC3()
 
 	modelStack.PushMatrix();
 	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC], false);
+	RenderMesh(meshList[GEO_NPC3], false);
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
@@ -1673,6 +1722,125 @@ void SP2::renderNPC3()
 
 	modelStack.PopMatrix();
 }	  
+
+void SP2::buyshipquest()
+{
+	if (currentQuest == buyshipQuest && complete3 == false)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT2], "Buy 3 shipz: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
+	}
+
+
+	if (complete3 == true && count <= 150.f)
+
+	{
+		count += (float)(2);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "Buy 3 shipz: COMPLETE", Color(0, 1, 0), 3, 0, 10);
+	}
+}
+
+void SP2::renderNPC4()
+{
+	//npc
+	modelStack.PushMatrix();
+	modelStack.Translate(NPC4.Pos.x + move, NPC4.Pos.y, NPC4.Pos.z);
+	modelStack.Rotate(90, 0, 1, 0);
+
+	modelStack.PushMatrix();
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_NPC4], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(-rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(-moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PopMatrix();
+}
+
+void SP2::abductionquest()
+{
+	if (currentQuest == abductionQuest && complete4 == false)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT2], "Help fund kidnap: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
+	}
+}
+
+void SP2::renderNPC5()
+{
+	//npc
+	modelStack.PushMatrix();
+	modelStack.Translate(NPC5.Pos.x + move, NPC5.Pos.y, NPC5.Pos.z);
+	modelStack.Rotate(90, 0, 1, 0);
+
+	modelStack.PushMatrix();
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_NPC4], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 2.2, 0);
+	modelStack.Rotate(-rotate, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTHAND], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_RIGHTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(0, 0.5, 0);
+	modelStack.Rotate(-moveleg, 1, 0, 0);
+	modelStack.Rotate(180, 1, 0, 0);
+	modelStack.Scale(0.5, 0.5, 0.5);
+	RenderMesh(meshList[GEO_LEFTLEG], false);
+	modelStack.PopMatrix();
+
+	modelStack.PopMatrix();
+}
+
 
 
 

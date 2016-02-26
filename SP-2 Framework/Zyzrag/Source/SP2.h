@@ -16,6 +16,7 @@
 #include "MousePicker.h"
 #include "pathFinding.h"
 #include "PlayerVehicle.h"
+#include "NPC.h"
 
 #include <map>
 #include <queue>
@@ -62,6 +63,12 @@ class SP2 : public Scene
         GEO_HITBOX,
 
         GEO_NPC,
+		GEO_NPC2,
+		GEO_NPC3,
+		GEO_NPC4,
+		GEO_NPC5,
+		GEO_NPC6,
+		GEO_NPC7,
         GEO_LEFTHAND,
         GEO_RIGHTHAND,
         GEO_LEFTLEG,
@@ -120,6 +127,15 @@ class SP2 : public Scene
 		CheckAsteroids,
 	};
 
+	enum QUEST
+	{
+		noQuest = 0,
+		ballQuest,
+		asteroidQuest,
+		buyshipQuest,
+		abductionQuest,
+	};
+
 public:
 
 	SP2();
@@ -142,6 +158,8 @@ public:
 	void renderNPC();
 	void renderNPC2();
 	void renderNPC3();
+	void renderNPC4();
+	void renderNPC5();
 	void renderShips();
     void renderSkybox();
     void renderStation();
@@ -179,6 +197,9 @@ public:
 	void quests();
 	void ballquest();
 	void asteroidquest();
+	void buyshipquest();
+	void abductionquest();
+	
 
 
 	// Tools
@@ -225,10 +246,11 @@ private:
 	bool re = false;
 	bool talking = 0;
 	bool pickup = 0;
-	bool quest1 = 0;
-	bool quest2 = 0;
 	bool complete = 0;
 	bool complete2 = 0;
+	bool complete3 = 0;
+	bool complete4 = 0;
+	bool complete5 = 0;
 	
 
 	int destroyed;
@@ -243,13 +265,14 @@ private:
 
 	MousePicker picker;
 
-    Object NPC;
+    Object NPC1;
 	Object NPC2;
 	Object NPC3;
+	Object NPC4;
+	Object NPC5;
 	Object station;
 	Object LastLocation;
 	Object ball;
-	
 
 	string Ammo;
     string Money;
@@ -277,6 +300,8 @@ private:
     vector<Explosion*> allExplosions;
 
 	MS modelStack, viewStack, projectionStack;
+
+	QUEST currentQuest = noQuest;
 };
 
 

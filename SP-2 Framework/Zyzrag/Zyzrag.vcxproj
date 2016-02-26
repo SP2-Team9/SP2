@@ -97,6 +97,7 @@
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshBuilder.cpp" />
     <ClCompile Include="Source\MousePicker.cpp" />
+    <ClCompile Include="Source\NPC.cpp" />
     <ClCompile Include="Source\Object.cpp" />
     <ClCompile Include="Source\pathFinding.cpp" />
     <ClCompile Include="Source\PlayerVehicle.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="Source\Mesh.h" />
     <ClInclude Include="Source\MeshBuilder.h" />
     <ClInclude Include="Source\MousePicker.h" />
+    <ClInclude Include="Source\NPC.h" />
     <ClInclude Include="Source\Object.h" />
     <ClInclude Include="Source\pathFinding.h" />
     <ClInclude Include="Source\PlayerVehicle.h" />
