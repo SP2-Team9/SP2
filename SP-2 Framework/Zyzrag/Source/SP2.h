@@ -24,6 +24,7 @@
 
 using std::map;
 using std::queue;
+using std::stack;
 using std::string;
 using std::vector;
 
@@ -51,9 +52,10 @@ class SP2 : public Scene
 		GEO_TEXT2,
       
 
+		GEO_XWING,
         // DONT PUT ANYTHING INBETWEEN! FROM HERE
 		GEO_SMALLSHIP,
-        GEO_XWING,
+		GEO_MIDSHIP,
 		GEO_LARGESHIP,
         // TO HERE
 
@@ -61,10 +63,12 @@ class SP2 : public Scene
         GEO_SPACE_STATION,
 		GEO_TELEPORTER,
         GEO_HITBOX,
+
 		GEO_SHOPBACKDROP,
 		GEO_ATTACKUP,
 		GEO_FIRERATEUP,
 		GEO_HEALTHUP,
+		GEO_BUYBUTTON,
 
         GEO_NPC,
         GEO_LEFTHAND,
@@ -290,9 +294,15 @@ private:
     Shop* playerShop;
 
 	map<int, vector<Vehicles*>> allVehicles;
+	map<int, stack<Vehicles*>> storedVehicles;
+
 	vector<Vehicles*> smallVehicles;
 	vector<Vehicles*> largeVehicles;
 	vector<Vehicles*> midVehicles;
+
+	stack<Vehicles*> stackSmallVehicles;
+	stack<Vehicles*> stackLargeVehicles;
+	stack<Vehicles*> stackMidVehicles;
 
 	PlayerVehicle playerShip;
 
@@ -300,6 +310,10 @@ private:
 	Vehicles *smallShip;
 	Vehicles *largeShip;
 	Vehicles* selection;
+
+	Vehicles* place;
+	int placeType;
+	bool hold;
 
 	vector<AABB> worldHitbox;
 	vector<AABB> Interactions;

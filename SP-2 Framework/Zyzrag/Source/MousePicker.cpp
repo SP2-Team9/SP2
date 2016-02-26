@@ -46,7 +46,7 @@ Vector3 MousePicker::calculateMouseRay()
 	double mouseX, mouseY;
 	Application::getMouse(mouseX, mouseY);
 	x = (2.f * mouseX) / Application::screenWidth - 1.f;
-	y = 1.0f - (2.0f * mouseY) / Application::screenHeight;
+	y = 1.f - (2.f * mouseY) / Application::screenHeight;
 
 	Vector3 clipCoord(x, y, -1.f);
 	Vector3 eyeCoords = projection.GetInverse() * clipCoord;

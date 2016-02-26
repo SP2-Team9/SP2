@@ -85,7 +85,7 @@ bulletCooldown(0)
     Pos = position;
     View = viewDirection;
     newVehicle.setSpeed(newSpeed);
-    initialMoveDirection();
+    //initialMoveDirection();
     newVehicle.setCurrentLocation(position);
 
     initialYaw = getRotationAngle(viewDirection);
@@ -294,9 +294,11 @@ void Vehicles::setThrust(float newThrust){
 /////////////////////////////////////////////////////////////////
 float Vehicles::getRotationAngle(Vector3 newView){
 
-    float degree = Math::RadianToDegree(acos(Vector3(0, 0, 1).Dot(View)));
+	Vector3 initView(0, 0, 1);
+    float degree = Math::RadianToDegree(acos(initView.Dot(View)));
 
-    Vector3 n = View.Cross(newVehicle.getLastWayPointDirection());
+    //Vector3 n = View.Cross(newVehicle.getLastWayPointDirection());
+	Vector3 n = initView.Cross(newView);
 
     if ((n.Dot(Vector3(0, 1, 0))) < 0){
 
