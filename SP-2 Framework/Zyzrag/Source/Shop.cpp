@@ -40,3 +40,8 @@ Shop::Shop(int Health, int Damage, int fireRate, int numSmallShips, int numMediu
 
 
 }
+
+Shop::~Shop()
+{
+
+}

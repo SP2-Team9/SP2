@@ -116,7 +116,6 @@ void pathFinding::pathRoute(double dt){
 	if (!wayPoints.empty() && distanceBetween2points(currentLocation, wayPoints.front()) < 1){
 
 		wayPoints.pop();
-		
 
 	}
 
