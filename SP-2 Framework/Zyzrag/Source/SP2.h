@@ -221,9 +221,8 @@ public:
 
 private:
 
-    int money;
-	int AmmoCount;
-	int HealthPoints;
+    
+    int currMoney;
 
 	Camera camera;
 	Light light[1];
@@ -257,8 +256,8 @@ private:
 	bool complete2 = 0;
 
 	int destroyed;
-	bool enableLight, enableAxis, widescreen;
 
+	bool enableLight, enableAxis, widescreen;
 	
 	float readyToUse, delay, second;
 
@@ -286,9 +285,6 @@ private:
 	Object ball;
 	
 
-	string Ammo;
-    string Money;
-	string Health;
 	string FPSText;
     
     Shop* playerShop;

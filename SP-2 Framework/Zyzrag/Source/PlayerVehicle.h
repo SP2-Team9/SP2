@@ -8,8 +8,10 @@
 struct PlayerVehicle : Object {
 
 
-	float thrust, pitch, yaw, delay, respawnTimer;
+	
 	int health;
+    int maxHealth;
+
 	bool isDead, board;
 
     void update(double dt);
@@ -21,9 +23,14 @@ struct PlayerVehicle : Object {
 
     double bulletCurrCooldown = 0;
 
+    float thrust, pitch, yaw, delay, respawnTimer;
+    
 
-
-	PlayerVehicle() : thrust(0), pitch(0), yaw(0), delay(0), health(100), isDead(false){}
+    PlayerVehicle() : thrust(0), pitch(0), yaw(0), delay(0), health(100), isDead(false), maxHealth(100){
+    
+    
+    
+    }
 	
     ~PlayerVehicle(){}
 

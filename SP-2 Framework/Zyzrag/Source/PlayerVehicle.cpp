@@ -25,7 +25,7 @@ void PlayerVehicle::reset()
 	thrust = 0;
 	yaw = 0;
 	pitch = 0;
-	health = 100;
+	health = maxHealth;
 }
 
 bool PlayerVehicle::fireBullets(int bulletFireRate){

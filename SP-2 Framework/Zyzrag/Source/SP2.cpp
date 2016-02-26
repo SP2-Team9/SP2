@@ -53,7 +53,7 @@ void SP2::Init()
 	state = MainMenu;
 	selection = nullptr;
 	widescreen = false;
-    money = 1000;
+    currMoney = 1000;
 
 	shopInit();
 	WorldHitboxInit();
@@ -908,8 +908,10 @@ void SP2::renderTitleScreen(){
 }
 
 void SP2::renderFightingUI(){
+
 	RenderTextOnScreen(meshList[GEO_TEXT], "HP:" + std::to_string(playerShip.health), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
-    RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(money), Color(0, 1, 0), objSize * 8, 0.75f * screenWidth, screenHeight * 0.9f, 50);
+    RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(currMoney), Color(0, 1, 0), objSize * 8, 0.75f * screenWidth, screenHeight * 0.9f, 50);
+
 }
 
 void SP2::renderWayPoints(){
@@ -1227,26 +1229,28 @@ void SP2::shopUpdates(double dt)
 			}
 			else if (mouseX > 0.1f * screenWidth && mouseX < 0.3f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-				if (money - 100 >= 0)
+                if (currMoney - 100 >= 0)
 				{
-					money -= 100;
+                    currMoney -= 100;
 					playerShop->playerShipDamage += 10;
 				}
 			}
 			else if (mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-				if (money - 50 >= 0)
+                if (currMoney - 50 >= 0)
 				{
-					money -= 50;
+                    currMoney -= 50;
 					playerShop->playerShipFireRate += 20;
 				}
 			}
-			else if (mouseX > 0.8f * screenWidth && mouseX < 0.9f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
+			else if (mouseX > 0.7f * screenWidth && mouseX < 0.9f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-				if (money - 200 >= 0 && playerShip.health < 100)
+                if (currMoney - 200 >= 0)
 				{
-					money -= 200;
-					playerShip.health = 100;
+                    currMoney -= 200;
+                    playerShip.maxHealth += 10;
+                    playerShip.health = playerShip.maxHealth;
+
 				}
 			}
 		}
@@ -1392,8 +1396,14 @@ void SP2::asteroidUpdate(double dt){
 void SP2::generalUpdates(double dt){
 
 	playerShip.update(dt);
+
 	asteroidUpdate(dt);
+    asteroidHitboxCheck();
 	bulletUpdates(dt);
+    asteroidHitboxCheck();
+    bulletUpdates(dt);
+    asteroidHitboxCheck();
+
 	explosionUpdate(dt);
 	vehicleUpdates(dt);
 	checkHitboxes();
@@ -1744,6 +1754,9 @@ void SP2::asteroidHitboxCheck(){
 					it++;
 				}
 			}
+
+            currMoney += tempAst->size * 10;
+
             allExplosions.push_back(new Explosion(100, 50, tempAst->Pos));
             vitA = Vasteroid.erase(vitA);
             delete tempAst;
@@ -1811,7 +1824,7 @@ void SP2::asteroidHitboxCheck(){
         Asteroid* tempAst = *Ait;
         if (tempAst->hitbox.AABBtoAABB(playerShip.hitbox))
         {
-			playerShip.health -= 50;
+            playerShip.health -= tempAst->size;
             Vector3 ExploCenter = playerShip.Pos + tempAst->Pos;
             ExploCenter /= 2;
             allExplosions.push_back(new Explosion(100, 50, ExploCenter));
