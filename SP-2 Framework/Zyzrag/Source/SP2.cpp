@@ -790,7 +790,7 @@ void SP2::renderShopMenu()
 		RenderTextOnScreen(meshList[GEO_TEXT], "Fire Rate: " + std::to_string(playerShop->playerShipFireRate / 100) + "RPS", Color(0, 1, 0), objSize * 5, 0.4f * screenWidth, 0.15f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "$50", Color(0, 1, 0), objSize * 5, 0.48f * screenWidth, 0.10f * screenHeight, 9);
 
-		RenderTextOnScreen(meshList[GEO_TEXT], "Repair Ship", Color(0, 1, 0), objSize * 5, 0.733f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Increase Max Health", Color(0, 1, 0), objSize * 5, 0.68f * screenWidth, 0.15f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "$200", Color(0, 1, 0), objSize * 5, 0.775f * screenWidth, 0.10f * screenHeight, 9);
 
 		RenderOnScreen(meshList[GEO_ATTACKUP], 0.2f * screenWidth, 0.3f * screenHeight, 2, 0.1f * objSize, 90, 0, 0);
@@ -798,19 +798,19 @@ void SP2::renderShopMenu()
 		RenderOnScreen(meshList[GEO_HEALTHUP], 0.8f * screenWidth, 0.3f * screenHeight, 2, 0.1f *  objSize, 90, 0, 0);
 		break;
 	case FirstShip:
-		RenderTextOnScreen(meshList[GEO_TEXT], "Mercenaries", Color(0, 1, 0), objSize * 12, 0.32f * screenWidth, 0.9f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Speeder", Color(0, 1, 0), objSize * 12, 0.39f * screenWidth, 0.9f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Buy", Color(0, 1, 0), objSize * 10, 0.46f * screenWidth, 0.2f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size() + allVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.15f * screenHeight, 9);
 		RenderOnScreen(meshList[GEO_SMALLSHIP], shopSmallPos, shopSmallScale, 20, shopSmallRot, 0);
 		break;
 	case SecondShip:
-		RenderTextOnScreen(meshList[GEO_TEXT], "Mercenaries", Color(0, 1, 0), objSize * 12, 0.32f * screenWidth, 0.9f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Fighter", Color(0, 1, 0), objSize * 12, 0.39f * screenWidth, 0.9f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Buy", Color(0, 1, 0), objSize * 10, 0.46f * screenWidth, 0.2f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_MIDSHIP].size() + allVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.15f * screenHeight, 9);
 		RenderOnScreen(meshList[GEO_MIDSHIP], shopMidPos, shopMidScale, 20, shopMidRot, 0);
 		break;
 	case ThirdShip:
-		RenderTextOnScreen(meshList[GEO_TEXT], "Mercenaries", Color(0, 1, 0), objSize * 12, 0.32f * screenWidth, 0.9f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Devastator", Color(0, 1, 0), objSize * 12, 0.32f * screenWidth, 0.9f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Buy", Color(0, 1, 0), objSize * 10, 0.46f * screenWidth, 0.2f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_LARGESHIP].size() + allVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.15f * screenHeight, 9);
 		RenderOnScreen(meshList[GEO_LARGESHIP], shopLargePos, shopLargeScale, 20, shopLargeRot, 0);
@@ -838,8 +838,13 @@ void SP2::renderFightingUI(){
     else{
         RenderTextOnScreen(meshList[GEO_TEXT], "Ship is Destroyed!!!", Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
     }
-	RenderTextOnScreen(meshList[GEO_TEXT], "Thrust: " + std::to_string((int)(playerShip.thrust)), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f -4.f, 50);
-
+	if (state == RTS)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT], "Speeder: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.79f, 50);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Fighter: " + std::to_string(storedVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.73f, 50);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Devastator: " + std::to_string(storedVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.67f, 50);
+	}
+	RenderTextOnScreen(meshList[GEO_TEXT], "Thrust: " + std::to_string((int)(playerShip.thrust)), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.84f, 50);
     RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(currMoney), Color(0, 1, 0), objSize * 8, 0.7f * screenWidth, screenHeight * 0.9f, 50);
 }
 
@@ -1160,12 +1165,11 @@ void SP2::NPCUpdates(double dt){
 		}
 	}
 
-	HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
-
-
-
-
-
+	NPC1.updateHitbox();
+	NPC2.updateHitbox();
+	NPC3.updateHitbox();
+	NPC4.updateHitbox();
+	ball.updateHitbox();
 }
 
 void SP2::RTSUpdates(double dt){
@@ -1585,7 +1589,7 @@ void SP2::inPlayerShipUpdates(double dt){
 	camera.DisableCursor();
 	camera.TPSMovement(dt, playerShip, worldHitbox);
 	playerBulletCreation(dt);
-
+	shipBulletCreation(dt);
 
 	if (Application::IsKeyPressed('E') && delay >= 1.f)
 	{

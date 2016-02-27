@@ -9,8 +9,7 @@ struct PlayerVehicle : Object {
 
 
 	
-	int health;
-    int maxHealth;
+	int health, maxHealth;
 
 	bool isDead, board;
 

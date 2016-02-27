@@ -40,11 +40,10 @@ void PlayerVehicle::update(double dt, vector<AABB> hitbox){
 			Pos.z += View.z * dt * thrust;
 		}
 
-		/*if (checkX == true && veh.thrust >= 500 || checkY == true && veh.thrust >= 500 || checkZ == true && veh.thrust >= 500)
+		if (checkX || checkY || checkZ)
 		{
-			veh.isDead = true;
-		}*/
-
+			health -= thrust;
+		}
 		updateHitbox();
 	}
 }
