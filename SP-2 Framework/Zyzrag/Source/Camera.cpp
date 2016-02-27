@@ -80,9 +80,10 @@ Points at object
 void Camera::PointAt(Object& obj, float height, float offset)
 {
 	target = obj.Pos;
-	position = obj.Pos - offset;
-	position.y = position.y + height;
-	view = (target - position);
+	position.z = target.z + offset;
+	position.x = target.x;
+	position.y = target.y + height;
+	view = position - target;
 	right = view.Cross(Vector3(0, 1, 0));
 	up = right.Cross(view);
 }
@@ -270,7 +271,7 @@ void Camera::FPSMovement(double dt, vector<AABB> hitbox)
 	checkY = false;
 	for (int i = 0; i < hitbox.size(); ++i)
 	{
-		if (hitbox[i].PointToAABB(Vector3(position.x, position.y - 1.f - 250.f * dt, position.z)) && checkY == false)
+		if (hitbox[i].PointToAABB(Vector3(position.x, position.y - 1.f, position.z)) == true && checkY == false)
 		{
 			checkY = true;
 			break;
@@ -290,19 +291,16 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 	if (veh.delay > 0)
 		veh.delay -= dt;
 
-	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 1000)
+	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 100)
 	{
-        if (veh.thrust < 100)
 		veh.thrust += + 10.f * dt;
 	}
 
-	if (Application::IsKeyPressed(VK_LCONTROL))
+	if (Application::IsKeyPressed(VK_LCONTROL) && veh.thrust > -40)
 	{
-        if (veh.thrust > -80)
 		veh.thrust -= 10.f * dt;
 	}
-
-	if (veh.thrust != 0)
+	/*if (veh.thrust != 0)
 	{
 		bool checkX, checkY, checkZ;
 		checkX = checkY = checkZ = false;
@@ -345,16 +343,13 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 			veh.isDead = true;
 		}
 
-		veh.SetHitboxSize(5);
-	}
-
-
+		veh.updateHitbox();
+	}*/
 	if (pitch != 0)
 	{
 		Mtx44 rotation;
-		rotation.SetToRotation(pitch, right.x, 0, right.z);
+		rotation.SetToRotation(pitch * -1, right.x, 0, right.z);
 		view = rotation * view;
-		position.y = target.y - view.y;
 		up = rotation * up;
 		right = rotation * right;
 	}
@@ -364,12 +359,10 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 		Mtx44 rotation;
 		rotation.SetToRotation(yaw, 0, 1, 0);
 		view = rotation * view;
-		position.x = target.x - view.x;
-		position.z = target.z - view.z;
 		up = rotation * up;
 		right = rotation * right;
 	}
-
+	
 	if (Application::IsKeyPressed('W'))
 	{
 		Mtx44 rotation;
@@ -409,6 +402,9 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 		veh.Up = rotation * veh.Up;
 		veh.Right = rotation * veh.Right;
 	}
+
+	target = veh.Pos;
+	position = target + view;
 }
 
 void Camera::NoClip(double dt)
@@ -482,7 +478,7 @@ void Camera::NoClip(double dt)
 	}
 }
 
-void Camera::YawRotation(double dt)
+void Camera::YawRotation(PlayerVehicle& veh, double dt)
 {
 	getYawAndPitch(dt);
 
@@ -495,10 +491,22 @@ void Camera::YawRotation(double dt)
 	{
 		yaw = 50.f * dt;
 	}
+
+	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 100)
+	{
+		veh.thrust += +10.f * dt;
+	}
+
+	if (Application::IsKeyPressed(VK_LCONTROL) && veh.thrust > -40)
+	{
+		veh.thrust -= 10.f * dt;
+	}
+
+	target = veh.Pos;
 	Mtx44 rotation;
 	rotation.SetToRotation(yaw, 0, 1, 0);
 	view = rotation * view;
-	position = rotation * position;
+	position = target + view;
 	up = rotation * up;
 	right = rotation * right;
 }

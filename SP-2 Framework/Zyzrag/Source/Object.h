@@ -12,6 +12,7 @@ public:
 	~Object();
 	AABB interaction;
 	AABB hitbox;
+	AABB hitboxSize;
 	Vector3 Pos, View, Up, Right, InteractionMin, InteractionMax;
 	float HitboxSize;
 
@@ -19,6 +20,8 @@ public:
 
 	void SetHitbox(AABB hitbox);
 	void SetHitboxSize(float size);
+	void SetHitboxSize(float minX, float minY, float minZ, float maxX, float maxY, float maxZ);
+	void updateHitbox();
 	void SetInteraction(AABB interaction);
 	void SetInteractionSize(float minX, float minY, float minZ, float maxX, float maxY, float maxZ);
 	void SetPos(Vector3 position);

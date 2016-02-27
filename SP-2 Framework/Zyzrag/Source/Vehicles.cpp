@@ -110,10 +110,6 @@ bulletCooldown(0)
 /////////////////////////////////////////////////////////////////
 Vehicles::~Vehicles(){
 
-
-
-
-
 }
 
 /////////////////////////////////////////////////////////////////
@@ -143,7 +139,7 @@ void Vehicles::update(double dt){
         newVehicle.pathRoute(dt);
         Pos = newVehicle.getCurrentLocation();
 
-        SetHitbox(AABB(Vector3(Pos.x - HitboxSize, Pos.y - HitboxSize, Pos.z - HitboxSize), Vector3(Pos.x + HitboxSize, Pos.y + HitboxSize, Pos.z + HitboxSize)));
+		updateHitbox();
 
         SetInteraction(AABB(Vector3(Pos.x - InteractionMin.x, Pos.y - InteractionMin.y, Pos.z - InteractionMin.z), Vector3(Pos.x + InteractionMax.x, Pos.y + InteractionMax.y, Pos.z + InteractionMax.z)));
         Yaw = getRotationAngle();

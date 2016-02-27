@@ -243,7 +243,7 @@ public:
 
 private:
 
-    
+	int lastState;
     int currMoney;
 
 	Camera camera;

@@ -52,16 +52,16 @@ Vector3 MousePicker::calculateMouseRay()
 	Vector3 eyeCoords = projection.GetInverse() * clipCoord;
 
 	eyeCoords.Set(eyeCoords.x, eyeCoords.y, -1.f);
-	Vector3 worldCoord = view.GetInverse() * eyeCoords;
+	Vector3 ray = view.GetInverse() * eyeCoords;
 
-	return Vector3(worldCoord.x, worldCoord.y, worldCoord.z).Normalized();
+	return Vector3(ray.x, ray.y, ray.z).Normalized();
 }
 
 Vector3 MousePicker::WorldCoord()
 {
 	Vector3 up(0, 1, 0);
 	Vector3 RayOrigin = camera.position;
-	Vector3 RayFinal = currentRay * 10000.f;
+	Vector3 RayFinal = currentRay * 100000.f;
 	Vector3 RayDir = RayFinal - RayOrigin;
 	Vector3 PointOnPlane(1, 0, 1);
 

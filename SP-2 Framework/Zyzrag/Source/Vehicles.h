@@ -58,8 +58,6 @@ public:
 	pathFinding newVehicle;
 
     Asteroid* currAttackTarget;
-
-   
 };
 
 

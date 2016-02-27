@@ -21,13 +21,24 @@ Object::~Object()
 
 void Object::SetHitbox(AABB hitbox)
 {
-    this->hitbox.Set(hitbox.GetMin(), hitbox.GetMax());
+	//this->hitbox.Set(Pos.x + hitbox.GetMin().x, Pos.y + hitbox.GetMin().y, Pos.z + hitbox.GetMin().z, Pos.x + hitbox.GetMax().x, Pos.y + hitbox.GetMax().y, Pos.z + hitbox.GetMax().z);
+	this->hitbox.Set(hitbox.GetMin(), hitbox.GetMax());
 }
 
 void Object::SetHitboxSize(float size)
 {
 	HitboxSize = size;
 	SetHitbox(AABB(Pos.x - size, Pos.y - size, Pos.z - size, Pos.x + size, Pos.y + size, Pos.z + size));
+}
+
+void Object::SetHitboxSize(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
+{
+	hitboxSize.Set(minX, minY, minZ, maxX, maxY, maxZ);
+}
+
+void Object::updateHitbox()
+{
+	hitbox.Set(Pos + hitboxSize.GetMin(), Pos + hitboxSize.GetMax());
 }
 
 void Object::SetInteraction(AABB interaction)

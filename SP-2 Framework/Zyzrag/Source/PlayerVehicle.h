@@ -14,7 +14,7 @@ struct PlayerVehicle : Object {
 
 	bool isDead, board;
 
-    void update(double dt);
+    void update(double dt, vector<AABB> hitbox);
 	bool respawn(int time);
 	void reset();
 

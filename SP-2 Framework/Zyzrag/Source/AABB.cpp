@@ -80,7 +80,7 @@ bool AABB::RayToAABB(Vector3 rayOrigin, Vector3 ray)
 {
 	float T1, T2, Tnear, Tfar;
 	T1 = T2 = Tnear = Tfar = 0.f;
-	Vector3 rayFinal = ray * 10000.f;
+	Vector3 rayFinal = ray * 100000.f;
 	Vector3 rayDir = rayFinal - rayOrigin;
 	rayDir.Normalize();
 
