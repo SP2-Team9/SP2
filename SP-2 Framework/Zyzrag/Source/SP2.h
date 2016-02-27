@@ -85,7 +85,7 @@ class SP2 : public Scene
         GEO_BULLETS,
         GEO_ASTEROID,
         GEO_EXPLOSION,
-        GEO_ASTEROID_HEALTH,
+        GEO_HEALTHBAR,
 		GEO_INNERSTATION,
 
 		NUM_GEOMETRY,
@@ -195,7 +195,7 @@ public:
 	void renderFightingUI();
     void renderExplosions();
 	void renderTitleScreen();
-    void renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health);
+    void renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health, Color color);
 
 	// Updates
 

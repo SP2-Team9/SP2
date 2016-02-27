@@ -89,10 +89,10 @@ bulletCooldown(0)
 
     initialYaw = getRotationAngle(viewDirection);
     currAttackTarget = nullptr;
-    health = newHealth;
+    maxHealth = newHealth;
+	health = maxHealth;
     bulletFireRate = newFireRate;
     bulletDamage = newBulletDamage;
-
 }
 
 /////////////////////////////////////////////////////////////////

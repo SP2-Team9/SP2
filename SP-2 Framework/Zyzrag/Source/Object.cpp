@@ -5,13 +5,12 @@ Object::Object()
 
 }
 
-Object::Object(Vector3 pos, Vector3 view, Vector3 up, int newHealth)
+Object::Object(Vector3 pos, Vector3 view, Vector3 up)
 {
 	Pos = pos;
 	View = view;
 	Up = up;
 	Right = view.Cross(up);
-    health = newHealth;
 }
 
 Object::~Object()

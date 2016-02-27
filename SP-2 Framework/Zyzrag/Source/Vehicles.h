@@ -26,6 +26,7 @@
 class Vehicles : public Object{
 
 public:
+	int maxHealth, health;
 
 	Vehicles();
     Vehicles(Vector3 endLocation);

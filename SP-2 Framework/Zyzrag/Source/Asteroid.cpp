@@ -3,7 +3,7 @@
 Asteroid::Asteroid(float size) : size(size), boom(false)
 {
 	health = 10 * size;
-	speed = 500 / size;
+	speed = 600 / size;
 	curRange = 0;
 	maxRange = 5000;
 

@@ -133,8 +133,6 @@ void SP2::Init()
 
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("Lightball", Color(0, 1, 0), 18, 36);
 
-    meshList[GEO_ASTEROID_HEALTH] = MeshBuilder::GenerateQuad("Asteroid Health Bar", Color(1, 0, 0), 3, 1);
-
     meshList[GEO_BULLETS] = MeshBuilder::GenerateSphere("Bullets", Color(1, 0.5, 0), 18, 36);
 
 	meshList[GEO_FRONT] = MeshBuilder::GenerateQuad("Front", Color(1, 1, 1), 1.f, 1.f);
@@ -251,6 +249,11 @@ void SP2::Init()
 
 void SP2::Update(double dt)
 {
+	if (Application::IsKeyPressed(VK_ESCAPE))
+	{
+		state = exit;
+	}
+
 	camera.Update(dt);
 	FPSText = std::to_string(toupper(1 / dt));
 
@@ -424,6 +427,12 @@ void SP2::Exit()
 			delete Vtemp;
 			it = allVehicles[i].erase(it);
 		}
+
+		while (!storedVehicles[i].empty())
+		{
+			delete storedVehicles[i].top();
+			storedVehicles[i].pop();
+		}
 	}
 
 	std::cout << "Clearing Explosions" << std::endl;
@@ -594,7 +603,7 @@ void SP2::generateAsteroid()
 	{
 		if (generate_range(0, 100) < 100)
 		{
-			Asteroid* asteroid = new Asteroid(generate_range(5, 30));
+			Asteroid* asteroid = new Asteroid(generate_range(5, 100));
 
 			switch (generate_range(0, 4))
 			{
@@ -755,6 +764,12 @@ void SP2::renderShips(){
 			RenderMesh(meshList[i], enableLight);
 			modelStack.PopMatrix();
 
+			if (Vtemp->health < Vtemp->maxHealth){
+
+				renderHealthBar(Vtemp->Pos, 10, Vtemp->health, Color(0, 0, 1));
+
+			}
+
 			it++;
 		}
 	}
@@ -800,19 +815,22 @@ void SP2::renderShopMenu()
 	case FirstShip:
 		RenderTextOnScreen(meshList[GEO_TEXT], "Speeder", Color(0, 1, 0), objSize * 12, 0.39f * screenWidth, 0.9f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Buy", Color(0, 1, 0), objSize * 10, 0.46f * screenWidth, 0.2f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size() + allVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$200", Color(0, 1, 0), objSize * 8, 0.453f * screenWidth, 0.135f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size() + allVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.1f * screenHeight, 9);
 		RenderOnScreen(meshList[GEO_SMALLSHIP], shopSmallPos, shopSmallScale, 20, shopSmallRot, 0);
 		break;
 	case SecondShip:
 		RenderTextOnScreen(meshList[GEO_TEXT], "Fighter", Color(0, 1, 0), objSize * 12, 0.39f * screenWidth, 0.9f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Buy", Color(0, 1, 0), objSize * 10, 0.46f * screenWidth, 0.2f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_MIDSHIP].size() + allVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$400", Color(0, 1, 0), objSize * 8, 0.453f * screenWidth, 0.135f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_MIDSHIP].size() + allVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.1f * screenHeight, 9);
 		RenderOnScreen(meshList[GEO_MIDSHIP], shopMidPos, shopMidScale, 20, shopMidRot, 0);
 		break;
 	case ThirdShip:
 		RenderTextOnScreen(meshList[GEO_TEXT], "Devastator", Color(0, 1, 0), objSize * 12, 0.32f * screenWidth, 0.9f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Buy", Color(0, 1, 0), objSize * 10, 0.46f * screenWidth, 0.2f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_LARGESHIP].size() + allVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$600", Color(0, 1, 0), objSize * 8, 0.453f * screenWidth, 0.135f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_LARGESHIP].size() + allVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.1f * screenHeight, 9);
 		RenderOnScreen(meshList[GEO_LARGESHIP], shopLargePos, shopLargeScale, 20, shopLargeRot, 0);
 		break;
 	}
@@ -929,7 +947,7 @@ void SP2::renderAsteroid()
 
         if (asteroid->health < asteroid->maxHealth){
 
-            renderHealthBar(asteroid->Pos, asteroid->size, asteroid->health);
+            renderHealthBar(asteroid->Pos, asteroid->size, asteroid->health, Color(1,0,0));
 
         }
 
@@ -955,7 +973,7 @@ void SP2::renderExplosion()
 
 }
 
-void SP2::renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health){
+void SP2::renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health, Color color){
 
     float asteroidHealthYaw = 0;
     float asteroidHealthPitch = 0;
@@ -987,13 +1005,13 @@ void SP2::renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health
 
     if (health > 0){
 
+		meshList[GEO_HEALTHBAR] = MeshBuilder::GenerateQuad("Asteroid Health Bar", color, 3, 1);
         modelStack.PushMatrix();
-
         modelStack.Translate(asteroidPosition.x, asteroidPosition.y + asteroidSize * 1.5, asteroidPosition.z);
         modelStack.Rotate(asteroidHealthYaw, 0, 1, 0);
         modelStack.Rotate(asteroidHealthPitch, 0, 0, 1);
         modelStack.Scale(1, 1, health / 2);
-        RenderMesh(meshList[GEO_ASTEROID_HEALTH], false);
+        RenderMesh(meshList[GEO_HEALTHBAR], false);
 
         modelStack.PopMatrix();
 
@@ -1513,11 +1531,6 @@ void SP2::generalUpdates(double dt){
 		playerShip.SetRight(-1, 0, 0);
 		playerShip.SetHitboxSize(5);
 	}
-
-	if (Application::IsKeyPressed(VK_ESCAPE))
-	{
-		state = exit;
-	}
 }
 
 void SP2::mainMenuUpdates(double dt){
@@ -1713,9 +1726,11 @@ void SP2::shipHitboxCheck(){
 						Vector3 ExploCenter = Veh1->Pos + Veh2->Pos;
 						ExploCenter /= 2;
 						allExplosions.push_back(new Explosion(30, 50, ExploCenter));
+
 						Veh1->isDead = true;
 						if (selection == Veh1 || selection == Veh2)
 							selection = nullptr;
+
 						delete Veh2;
 						V2it = allVehicles[j].erase(V2it);
 					}
@@ -1904,7 +1919,7 @@ void SP2::asteroidHitboxCheck(){
                     ExploCenter /= 2;
 					allExplosions.push_back(new Explosion(tempAst->size * 2, 50, ExploCenter));
 
-                    tempVeh->isDead = true;
+					tempVeh->health -= tempAst->size * 2;
                     delete tempAst;
                     Ait = Vasteroid.erase(Ait);
                 }

@@ -4,7 +4,12 @@ void PlayerVehicle::update(double dt, vector<AABB> hitbox){
 
     bulletCurrCooldown += dt;
 	if (health <= 0)
+	{
+		thrust = 0;
+		Pos.SetZero();
 		isDead = true;
+	}
+		
 	if (isDead == true)
 		respawnTimer += dt;
 
@@ -42,7 +47,14 @@ void PlayerVehicle::update(double dt, vector<AABB> hitbox){
 
 		if (checkX || checkY || checkZ)
 		{
-			health -= thrust;
+			if (thrust > 30)
+			{
+				health -= thrust;
+				thrust *= -1;
+				if (thrust < -40)
+					thrust = -40;
+			}
+			
 		}
 		updateHitbox();
 	}
