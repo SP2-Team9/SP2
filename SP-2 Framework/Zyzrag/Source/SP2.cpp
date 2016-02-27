@@ -287,7 +287,7 @@ void SP2::Update(double dt)
 
 	}
 
-	if (state != MainMenu){
+	if (state != MainMenu && state != exit){
 
 		generalUpdates(dt);
 
@@ -433,6 +433,7 @@ void SP2::Exit()
 		delete temp;
 		it = allExplosions.erase(it);
 	}
+	
 
 	std::cout << "Clearing Asteroids" << std::endl;
 	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
@@ -882,11 +883,7 @@ void SP2::renderAllHitbox()
 		while (it != allVehicles[i].end())
 		{
 			Vehicles* Vtemp = *it;
-			meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), Vtemp->hitbox.GetMin(), Vtemp->hitbox.GetMax());
-			modelStack.PushMatrix();
-			RenderMesh(meshList[GEO_HITBOX], enableLight);
-			modelStack.PopMatrix();
-
+			allHitbox.push_back(Vtemp->hitbox);
 			it++;
 		}
 	}
@@ -1511,6 +1508,11 @@ void SP2::generalUpdates(double dt){
 		playerShip.SetView(0, 0, 1);
 		playerShip.SetRight(-1, 0, 0);
 		playerShip.SetHitboxSize(5);
+	}
+
+	if (Application::IsKeyPressed(VK_ESCAPE))
+	{
+		state = exit;
 	}
 }
 

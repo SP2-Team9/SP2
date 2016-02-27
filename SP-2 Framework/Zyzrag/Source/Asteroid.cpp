@@ -24,6 +24,7 @@ void Asteroid::update(double dt)
 		boom = true;
 
 	SetHitboxSize(size);
+	updateHitbox();
 	if (health < 0)
 		boom = true;
 

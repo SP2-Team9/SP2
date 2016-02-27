@@ -129,6 +129,7 @@ class SP2 : public Scene
 		inPlayerShip,
 		inSpaceStation,
 		inShop,
+		exit,
 	};
 
 	enum HITBOXCHECK

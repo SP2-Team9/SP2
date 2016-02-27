@@ -14,7 +14,6 @@ public:
 	AABB hitbox;
 	AABB hitboxSize;
 	Vector3 Pos, View, Up, Right, InteractionMin, InteractionMax;
-	float HitboxSize;
 
     int health;
 
