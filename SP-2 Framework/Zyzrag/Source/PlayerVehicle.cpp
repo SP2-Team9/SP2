@@ -1,5 +1,26 @@
+/******************************************************************************/
+/*!
+\file	PlayerVehicle.cpp
+\author Goh Zheng Yuan
+\par	email: 150377B@mymail.nyp.edu.sg
+\brief
+Contains anything related to player's vehicle
+*/
+/******************************************************************************/
 #include "PlayerVehicle.h"
 
+/******************************************************************************/
+/*!
+\brief
+Update player vehicle
+
+\param dt 
+	Delta Time
+
+\param hitbox
+	Vector of AABB hitbox, to test if vehicle is colliding with anything
+*/
+/******************************************************************************/
 void PlayerVehicle::update(double dt, vector<AABB> hitbox){
 
     bulletCurrCooldown += dt;
@@ -60,6 +81,18 @@ void PlayerVehicle::update(double dt, vector<AABB> hitbox){
 	}
 }
 
+/******************************************************************************/
+/*!
+\brief
+Respawn timer
+
+\param time
+	How much time it should take before respawning.
+
+\return	
+	True when respawnTimer hits the time given, else false
+*/
+/******************************************************************************/
 bool PlayerVehicle::respawn(int time)
 {
 	if (respawnTimer > time)
@@ -71,6 +104,12 @@ bool PlayerVehicle::respawn(int time)
 	return false;
 }
 
+/******************************************************************************/
+/*!
+\brief
+Resets everything to default values
+*/
+/******************************************************************************/
 void PlayerVehicle::reset()
 {
 	thrust = 0;
@@ -79,6 +118,18 @@ void PlayerVehicle::reset()
 	health = maxHealth;
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Function use to see if bullets are ready to be fired
+
+\param bulletFireRate
+	Pass in the bullet's fire rate to the function
+
+\return
+	True when bullet cooldown is more then fire rate. else false 
+*/
+/******************************************************************************/
 bool PlayerVehicle::fireBullets(int bulletFireRate){
 
     float currFireRate = 100 / static_cast<float>(bulletFireRate);

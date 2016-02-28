@@ -24,7 +24,7 @@ public:
 
 	void FPSMovement(double dt, vector <AABB> hitbox);
 	void NoClip(double dt);
-	void TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox);
+	void TPSMovement(double dt, PlayerVehicle& veh);
 	void YawRotation(PlayerVehicle& veh, double dt);
 	void EnableCursor();
 	void DisableCursor();

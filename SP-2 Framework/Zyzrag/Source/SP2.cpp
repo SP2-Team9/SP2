@@ -9,7 +9,6 @@
 #include "LoadTGA.h"
 
 
-
 SP2::SP2(){
 
 
@@ -477,7 +476,7 @@ void SP2::objectsInit()
 	station.SetHitbox(AABB(-15, -25, -15, 15, 10, 15));
 
 	LastLocation.SetPos(0, 1, 0);
-	LastLocation.SetView(0, 0, -1);
+	LastLocation.SetView(0, 0, 1);
 	LastLocation.SetUp(0, 1, 0);
 	LastLocation.SetRight(1, 0, 0);
 
@@ -1346,7 +1345,7 @@ void SP2::shopUpdates(double dt)
 			shopSmallScale += dt * 3.5f;
 		if (shopSmallPos.x < screenWidth / 2)
 			shopSmallPos += shopTarget * 2;
-		if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
+		if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.3f * screenHeight)
 		{
 			delay = 0;
 			if (currMoney - 200 >= 0)
@@ -1375,7 +1374,7 @@ void SP2::shopUpdates(double dt)
 			shopMidPos += shopTarget;
 		}
 
-		if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
+		if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.3f * screenHeight)
 		{
 			delay = 0;
 			if (currMoney - 400 >= 0)
@@ -1404,7 +1403,7 @@ void SP2::shopUpdates(double dt)
 			shopLargePos += shopTarget * 2;
 		}
 
-		if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
+		if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.3f * screenHeight)
 		{
 			delay = 0;
 			if (currMoney - 600 >= 0)
@@ -1538,6 +1537,7 @@ void SP2::mainMenuUpdates(double dt){
 	camera.EnableCursor();
 	if (Application::IsKeyPressed(VK_LBUTTON))
 	{
+		Application::centerMouse();
 		state = inSpaceStation;
 		camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
 	}
@@ -1600,7 +1600,7 @@ void SP2::explosionUpdate(double dt){
 void SP2::inPlayerShipUpdates(double dt){
 
 	camera.DisableCursor();
-	camera.TPSMovement(dt, playerShip, worldHitbox);
+	camera.TPSMovement(dt, playerShip);
 	playerBulletCreation(dt);
 	shipBulletCreation(dt);
 

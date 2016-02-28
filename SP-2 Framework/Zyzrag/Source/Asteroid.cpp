@@ -1,5 +1,28 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \file AABB.cpp
+
+* \author: Goh ZHeng Yuan
+
+* \date: 23 feb 2016
+
+* \description: This class contains the Asteroid class.
+
+*/
+/////////////////////////////////////////////////////////////////
+
 #include "Asteroid.h"
 
+/******************************************************************************/
+/*!
+\brief
+	Constructor for Asteroid.
+
+\param size
+	Sets size for asteroid.
+*/
+/******************************************************************************/
 Asteroid::Asteroid(float size) : size(size), boom(false)
 {
 	health = 10 * size;
@@ -10,11 +33,26 @@ Asteroid::Asteroid(float size) : size(size), boom(false)
     maxHealth = health;
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Destructor for Asteroid.
+*/
+/******************************************************************************/
 Asteroid::~Asteroid()
 {
 
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Update asteroid position, range, hitbox and health.
+
+\param dt
+	Delta time.
+*/
+/******************************************************************************/
 void Asteroid::update(double dt)
 {
 	Pos += View.Normalize() * dt * speed;
