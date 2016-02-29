@@ -402,6 +402,8 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 
 	target = veh.Pos;
 	position = target + view;
+
+
 }
 
 /******************************************************************************/

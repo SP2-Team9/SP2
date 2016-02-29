@@ -219,6 +219,11 @@ void pathFinding::setInitialWayPoints(Vector3 location, Vector3 view){
 
 }
 
+void pathFinding::setInitialDirection(Vector3 view)
+{
+	lastWayPointDirection = view;
+}
+
 
 /////////////////////////////////////////////////////////////////
 

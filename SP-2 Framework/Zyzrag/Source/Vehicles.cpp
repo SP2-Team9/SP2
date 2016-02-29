@@ -214,8 +214,8 @@ void Vehicles::initialMoveDirection(float x, float z){
 /////////////////////////////////////////////////////////////////
 void Vehicles::initialMoveDirection(){
 
-	newVehicle.setInitialWayPoints(Pos, View);
-
+	//newVehicle.setInitialWayPoints(Pos, View);
+	newVehicle.setInitialDirection(View);
 }
  
 

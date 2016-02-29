@@ -321,3 +321,47 @@ Vector3 AABB::GetMin()
 {
 	return Min;
 }
+
+/******************************************************************************/
+/*!
+\brief
+	Checks if AABB is within the plane
+
+\param init
+	Get's the initial starting point of the plane
+
+\param end
+	Get's the ending point of the plane
+
+\return
+	True if AABB is within the plane
+*/
+/******************************************************************************/
+bool AABB::withinPlane(Vector3 init, Vector3 end)
+{
+	float swap;
+	if (init.x > end.x)
+	{
+		swap = init.x;
+		init.x = end.x;
+		end.x = swap;
+	}
+	if (init.y > end.y)
+	{
+		swap = init.y;
+		init.y = end.y;
+		end.y = swap;
+	}
+	if (init.z > end.z)
+	{
+		swap = init.z;
+		init.z = end.z;
+		end.z = swap;
+	}
+	if (Min.x > init.x && Max.x < end.x &&
+		Min.z > init.z && Max.z < end.z)
+	{
+		return true;
+	}
+	return false;
+}

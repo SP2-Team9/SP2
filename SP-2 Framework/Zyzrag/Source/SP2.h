@@ -1,7 +1,6 @@
 #ifndef SP2_H
 #define SP2_H
 
-
 #include "Mesh.h"
 #include "Shop.h"
 #include "Light.h"
@@ -16,6 +15,7 @@
 #include "MousePicker.h"
 #include "pathFinding.h"
 #include "PlayerVehicle.h"
+#include "sharedData.h"
 #include "NPC.h"
 
 #include <map>
@@ -38,34 +38,34 @@ class SP2 : public Scene
 {
 	enum GEOMETRY_TYPE
 	{
-        GEO_AXES,
-        GEO_RAY,
-        GEO_LIGHTBALL,
+		GEO_AXES,
+		GEO_RAY,
+		GEO_LIGHTBALL,
 		GEO_SPHERE,
 		GEO_TITLESCREEN,
 
-        GEO_FRONT,
-        GEO_BACK,
-        GEO_LEFT,
-        GEO_RIGHT,
-        GEO_TOP,
-        GEO_BOTTOM,
+		GEO_FRONT,
+		GEO_BACK,
+		GEO_LEFT,
+		GEO_RIGHT,
+		GEO_TOP,
+		GEO_BOTTOM,
 		GEO_TEXT,
 		GEO_TEXT1,
 		GEO_TEXT2,
-      
+
 
 		GEO_XWING,
-        // DONT PUT ANYTHING INBETWEEN! FROM HERE
+		// DONT PUT ANYTHING INBETWEEN! FROM HERE
 		GEO_SMALLSHIP,
 		GEO_MIDSHIP,
 		GEO_LARGESHIP,
-        // TO HERE
+		// TO HERE
 
-        GEO_CONTROL_PANEL,
-        GEO_SPACE_STATION,
+		GEO_CONTROL_PANEL,
+		GEO_SPACE_STATION,
 		GEO_TELEPORTER,
-        GEO_HITBOX,
+		GEO_HITBOX,
 
 		GEO_SHOPBACKDROP,
 		GEO_ATTACKUP,
@@ -73,22 +73,23 @@ class SP2 : public Scene
 		GEO_HEALTHUP,
 		GEO_BUYBUTTON,
 
-        GEO_NPC,
+		GEO_NPC,
 		GEO_NPC2,
 		GEO_NPC3,
 		GEO_NPC4,
 		GEO_NPC5,
 		GEO_NPC6,
 		GEO_NPC7,
-        GEO_LEFTHAND,
-        GEO_RIGHTHAND,
-        GEO_LEFTLEG,
-        GEO_RIGHTLEG,
-        GEO_BULLETS,
-        GEO_ASTEROID,
-        GEO_EXPLOSION,
-        GEO_HEALTHBAR,
+		GEO_LEFTHAND,
+		GEO_RIGHTHAND,
+		GEO_LEFTLEG,
+		GEO_RIGHTLEG,
+		GEO_BULLETS,
+		GEO_ASTEROID,
+		GEO_EXPLOSION,
+		GEO_HEALTHBAR,
 		GEO_INNERSTATION,
+		GEO_SELECTION,
 
 		NUM_GEOMETRY,
 
@@ -171,6 +172,7 @@ public:
 	
 	// Initializers
 	void objectsInit();
+	void lightInit();
 	void shopInit();
 	void WorldHitboxInit();
     void bulletCreation(double dt);
@@ -228,9 +230,6 @@ public:
 	void stationHitboxCheck();
 	void asteroidHitboxCheck();
 	void MouseSelection(double dt);
-	
-    void checkHitboxes(Vehicles* currVehicle);
-
 
 	// Tools
 
@@ -297,6 +296,9 @@ private:
 	float shopSmallScale, shopMidScale, shopLargeScale;
 	float shopSmallRot, shopMidRot, shopLargeRot;
 
+	bool hold;
+	Vector3 initCursor, endCursor;
+
 	SHOPSTATE shopState;
 
 	GAMESTATE state;
@@ -334,11 +336,12 @@ private:
 	Vehicles *midShip;
 	Vehicles *smallShip;
 	Vehicles *largeShip;
+
 	Vehicles* selection;
+	vector<Vehicles*> selectionTest;
 
 	Vehicles* place;
 	int placeType;
-	bool hold;
 
 	vector<AABB> worldHitbox;
 	vector<AABB> Interactions;

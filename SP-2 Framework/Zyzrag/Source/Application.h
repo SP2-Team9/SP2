@@ -3,6 +3,7 @@
 
 #include "Vector3.h"
 #include "timer.h"
+#include "sharedData.h"
 
 class Application
 {

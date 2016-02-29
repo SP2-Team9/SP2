@@ -29,7 +29,7 @@ Asteroid::Asteroid(float size) : size(size), boom(false)
 	speed = 600 / size;
 	curRange = 0;
 	maxRange = 5000;
-
+	SetHitboxSize(size);
     maxHealth = health;
 }
 
@@ -55,15 +55,16 @@ Asteroid::~Asteroid()
 /******************************************************************************/
 void Asteroid::update(double dt)
 {
-	Pos += View.Normalize() * dt * speed;
-	curRange += View.getMagnitude() * dt * speed;
+	if (boom == false)
+	{
+		Pos += View.Normalize() * dt * speed;
+		curRange += View.getMagnitude() * dt * speed;
 
-	if (curRange > maxRange)
-		boom = true;
-
-	SetHitboxSize(size);
-	updateHitbox();
-	if (health < 0)
-		boom = true;
-
+		if (curRange > maxRange)
+			boom = true;
+		if (health < 0)
+			boom = true;
+		
+		updateHitbox();
+	}
 }

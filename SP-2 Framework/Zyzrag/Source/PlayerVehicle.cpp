@@ -75,10 +75,12 @@ void PlayerVehicle::update(double dt, vector<AABB> hitbox){
 				if (thrust < -40)
 					thrust = -40;
 			}
-			
+
 		}
-		updateHitbox();
 	}
+
+
+	updateHitbox();
 }
 
 /******************************************************************************/

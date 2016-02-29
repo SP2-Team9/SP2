@@ -39,6 +39,7 @@ public:
 	void setInitialWayPoints(Vector3 endLocation);
     void setCurrentLocation(Vector3 newCurrLocation);
 	void setInitialWayPoints(Vector3 location, Vector3 view);
+	void setInitialDirection(Vector3 view);
 
     float getSpeed();
 	float distanceBetween2points(Vector3 Point1, Vector3 Point2);

@@ -25,6 +25,7 @@ public:
 	bool AABBtoAABB(const vector<AABB>& box, Vector3& view);
 	bool RayToAABB(Vector3 rayOrigin, Vector3 ray);
 	bool PointToAABB(const Vector3& position);
+	bool withinPlane(Vector3 init, Vector3 end);
 
 	Vector3 GetMax();
 	Vector3 GetMin();

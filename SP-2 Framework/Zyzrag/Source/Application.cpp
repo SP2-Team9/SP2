@@ -75,8 +75,8 @@ void Application::Init()
 	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	screenWidth = mode->width;
 	screenHeight = mode->height;
-	//screenWidth = 800;
-	//screenHeight = 600;
+	screenWidth = 800;
+	screenHeight = 600;
 	m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", NULL, NULL);
 
 	//Set window Size
@@ -94,7 +94,7 @@ void Application::Init()
 	glfwMakeContextCurrent(m_window);
 
 	//Sets the key callback
-	glfwSetKeyCallback(m_window, key_callback);
+	//glfwSetKeyCallback(m_window, key_callback);
 
 	glewExperimental = true; // Needed for core profile
 	//Initialize GLEW
@@ -115,7 +115,7 @@ void Application::Run()
 	scene->Init();
     srand(time(nullptr));
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
-	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE))
+	while (!glfwWindowShouldClose(m_window) && sharedData::GetInstance()->quit == false)
 	{
 
         scene->Update(m_timer.getElapsedTime());
@@ -130,6 +130,7 @@ void Application::Run()
 		
 	} //Check if the ESC key had been pressed or if the window had been closed
 	scene->Exit();
+	std::cout << "DELETING SCENE" << std::endl;
 	delete scene;
 }
 
@@ -148,7 +149,7 @@ void Application::getMouse(double & x, double & y)
 
 void Application::centerMouse()
 {
-	glfwSetCursorPos(m_window, 800 / 2, 600 / 2);
+	glfwSetCursorPos(m_window, screenWidth / 2, screenHeight / 2);
 }
 
 void Application::hideMouse()
