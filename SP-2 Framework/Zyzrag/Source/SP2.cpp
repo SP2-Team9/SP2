@@ -430,11 +430,12 @@ void SP2::Exit()
 	}
 
 	std::cout << "Clearing Explosions" << std::endl;
-	for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end();)
-	{
+	for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end();){
+
 		Explosion* temp = *it;
 		delete temp;
 		it = allExplosions.erase(it);
+
 	}
 	
 
@@ -447,7 +448,7 @@ void SP2::Exit()
 	}
 
 	std::cout << "Clearing Bullets" << std::endl;
-	for (vector<Bullet*>::iterator it = allBullets.begin(); it != allBullets.end(); it++){
+	for (vector<Bullet*>::iterator it = allBullets.begin(); it != allBullets.end();){
 
 		Bullet* temp = *it;
 		delete temp;
@@ -460,7 +461,6 @@ void SP2::Exit()
 	glDeleteVertexArrays(1, &m_vertexArrayID);
 	glDeleteProgram(m_programID);
 }
-
 
 // Initializers
 
@@ -531,7 +531,7 @@ void SP2::shopInit()
 	shopLargeScale = objSize;
 }
 
-void SP2::WorldHitboxInit()
+void SP2::WorldHitboxInit() 
 {
 	worldHitbox.push_back(AABB(Vector3(-10, -1, -10), Vector3(10, 0, 10)));
 	worldHitbox.push_back(AABB(Vector3(-10, 3, -10), Vector3(10, 5, 10)));
@@ -639,6 +639,7 @@ void SP2::generateAsteroid()
 
 
 // Renders
+
 void SP2::renderSkybox()
 {
 	
@@ -1105,15 +1106,16 @@ void SP2::renderDistances(){
 
 void SP2::renderGeneral(){
 
+    renderSkybox();
+
     renderBullets();
     renderWayPoints();
     renderAsteroid();
     renderExplosion();
     asteroidquest(); 
-    renderSkybox();
     renderStation();
     renderAsteroid();
-
+    renderShips();
 
 }
 
@@ -1495,30 +1497,13 @@ void SP2::asteroidUpdate(double dt){
 		asteroid->update(dt);
 
 	}
-
-	if (Timer(1, dt) == true)
+	if (Timer(0, dt) == true)
 	{
 		generateAsteroid();
 	}
 
-    for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
-    {
-        Asteroid* tempAst = *Ait;
 
-        if (tempAst->boom == true){
 
-			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, tempAst->Pos));
-            Ait = Vasteroid.erase(Ait);
-            delete tempAst;
-
-        }
-        else{
-
-            Ait++;
-
-        }
-
-    }
 }
 
 void SP2::generalUpdates(double dt){
@@ -1567,50 +1552,52 @@ void SP2::explosionUpdate(double dt){
 
         Explosion* temp = *vitE;
 
-		float explosionYaw = 0;
-		float explosionPitch = 0;
-		Vector3 initView(0, 1, 0);
-		Vector3 view = (camera.position - camera.target).Normalized();
-		Vector3 XZview(view.x, 0, view.z);
-		XZview.Normalize();
-
-		explosionPitch = Math::RadianToDegree(acos(initView.Dot(view)));
-		Vector3 V3 = initView.Cross(view);
-		if (V3.Dot(Vector3(0, 0, 1)) < 0)
-		{
-			explosionPitch *= -1;
-		}
-
-		Mtx44 rotation;
-		rotation.SetToRotation(explosionPitch, 0, 0, 1);
-		initView = rotation * initView;
-		initView.Set(initView.x, 0, initView.z);
-		initView.Normalize();
-
-		explosionYaw = Math::RadianToDegree(acos(initView.Dot(XZview)));
-		V3 = initView.Cross(XZview);
-		if (V3.Dot(Vector3(0, 1, 0)) < 0)
-		{
-			explosionYaw *= -1;
-		}
-		
-        temp->setPitchandYaw(explosionPitch, explosionYaw);
-        temp->explosionUpdate(dt);
-
         if (temp->explosionEnd()){
 
-			delete temp;
+            delete temp;
             vitE = allExplosions.erase(vitE);
-
 
         }
         else{
 
-            vitE++;
+            float explosionYaw = 0;
+            float explosionPitch = 0;
+            Vector3 initView(0, 1, 0);
+            Vector3 view = (camera.position - camera.target).Normalized();
+            Vector3 XZview(view.x, 0, view.z);
+            XZview.Normalize();
 
-		}
+            explosionPitch = Math::RadianToDegree(acos(initView.Dot(view)));
+            Vector3 V3 = initView.Cross(view);
+            if (V3.Dot(Vector3(0, 0, 1)) < 0)
+            {
+                explosionPitch *= -1;
+            }
+
+            Mtx44 rotation;
+            rotation.SetToRotation(explosionPitch, 0, 0, 1);
+            initView = rotation * initView;
+            initView.Set(initView.x, 0, initView.z);
+            initView.Normalize();
+
+            explosionYaw = Math::RadianToDegree(acos(initView.Dot(XZview)));
+            V3 = initView.Cross(XZview);
+            if (V3.Dot(Vector3(0, 1, 0)) < 0)
+            {
+                explosionYaw *= -1;
+            }
+
+            temp->setPitchandYaw(explosionPitch, explosionYaw);
+            temp->explosionUpdate(dt);
+
+            vitE++;
+        }
+
+
+          
 
     }
+
 }
 
 void SP2::inPlayerShipUpdates(double dt){
@@ -2032,126 +2019,92 @@ void SP2::asteroidHitboxCheck(){
     }
 
     //Asteroid to Asteroid
-    for (vector<Asteroid*>::iterator A1it = Vasteroid.begin(); A1it != Vasteroid.end();)
-    {
-        Asteroid* temp1Ast = *A1it;
-        int ast1Health = temp1Ast->health;
+    for (vector<Asteroid*>::iterator A1it = Vasteroid.begin(); A1it != Vasteroid.end();){
 
-        for (vector<Asteroid*>::iterator A2it = Vasteroid.begin(); A2it != Vasteroid.end();)
-        {
+        Asteroid* temp1Ast = *A1it;
+        bool checkHitbox = false;
+
+        for (vector<Asteroid*>::iterator A2it = Vasteroid.begin(); A2it != Vasteroid.end();){
+
             Asteroid* temp2Ast = *A2it;
 
-            if (temp1Ast->hitbox.AABBtoAABB(temp2Ast->hitbox) && temp1Ast != temp2Ast){
+            if (temp2Ast->hitbox.AABBtoAABB(temp1Ast->hitbox) && A2it != A1it){
 
+                int ast1Health = temp1Ast->health;
+                
                 temp1Ast->health -= temp2Ast->health;
                 temp2Ast->health -= ast1Health;
 
-                if (temp2Ast->health > 0){
-                    if (temp2Ast->health / 10 < 5){
+                if (temp2Ast->health <= 0){
 
-                        temp2Ast->size = 5;
+                    allExplosions.push_back(new Explosion(temp2Ast->size * 2, 50, temp2Ast->Pos));
 
+                    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
+
+                        vector<Vehicles*>::iterator Vit = allVehicles[i].begin();
+
+                        while (Vit != allVehicles[i].end()){
+                            Vehicles* tempVeh = *Vit;
+
+                            if (tempVeh->currAttackTarget == temp2Ast){
+
+                                tempVeh->currAttackTarget = nullptr;
+
+                            }
+
+                            Vit++;
+                        }
                     }
-                    else{
 
-                        temp2Ast->size = temp2Ast->health / 10;
+                    delete temp2Ast;
+                    A2it = Vasteroid.erase(A2it);
+              }
 
-                    }
-                }
-                else if (temp1Ast->health > 0){
-                    if (temp1Ast->health / 10 < 5){
-
-                        temp1Ast->size = 5;
-
-                    }
-                    else{
-
-                        temp1Ast->size = temp1Ast->health / 10;
-
-                    }
-                }
-
-            }
-
-
-            if (temp2Ast->health <= 0){
-
-				for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-				{
-					vector<Vehicles*>::iterator it = allVehicles[i].begin();
-
-					while (it != allVehicles[i].end())
-					{
-
-						Vehicles* temp = *it;
-
-						if (temp->currAttackTarget == temp2Ast){
-
-							temp->currAttackTarget = nullptr;
-
-						}
-
-
-						it++;
-					}
-				}
-
-                Vector3 ExploCenter = temp2Ast->Pos + temp1Ast->Pos;
-                ExploCenter /= 2;
-				allExplosions.push_back(new Explosion(temp2Ast->size * 2, 50, ExploCenter));
-
-                delete temp2Ast;
-                A2it = Vasteroid.erase(A2it);
-
-
+                checkHitbox = true;
+                break;
 
             }
             else{
-
-
                 A2it++;
-
             }
+            
 
         }
+        if (checkHitbox == true){
 
-        if (temp1Ast->health <= 0){
+            if (temp1Ast->health <= 0){
 
-			for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-			{
-				vector<Vehicles*>::iterator it = allVehicles[i].begin();
+                allExplosions.push_back(new Explosion(temp1Ast->size * 2, 50, temp1Ast->Pos));
 
-				while (it != allVehicles[i].end())
-				{
+                for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
 
-					Vehicles* temp = *it;
+                    vector<Vehicles*>::iterator Vit = allVehicles[i].begin();
 
-					if (temp->currAttackTarget == temp1Ast){
+                    while (Vit != allVehicles[i].end()){
+                        Vehicles* tempVeh = *Vit;
 
-						temp->currAttackTarget = nullptr;
+                        if (tempVeh->currAttackTarget == temp1Ast){
 
-					}
+                            tempVeh->currAttackTarget = nullptr;
 
+                        }
+                        Vit++;
+                    }
 
-					it++;
-				}
-			}
+                }
+                delete temp1Ast;
+                A1it = Vasteroid.erase(A1it);
+                break;
 
-			allExplosions.push_back(new Explosion(temp1Ast->size * 2, 50, temp1Ast->Pos));
-            delete temp1Ast;
-            A1it = Vasteroid.erase(A1it);
+            }
 
         }
         else{
 
             A1it++;
 
-        }
-    
-    
+        } 
     }
-
-
 }
 
 void SP2::MouseSelection(double dt)
@@ -2634,6 +2587,14 @@ void SP2::renderNPC5()
 	modelStack.PopMatrix();
 }
 
+void SP2::checkHitboxes(Vehicles* currVehicle){
+
+
+
+
+
+
+}
 
 // Tools
 

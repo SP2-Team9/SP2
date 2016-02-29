@@ -229,7 +229,7 @@ public:
 	void asteroidHitboxCheck();
 	void MouseSelection(double dt);
 	
-	
+    void checkHitboxes(Vehicles* currVehicle);
 
 
 	// Tools
