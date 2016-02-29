@@ -80,6 +80,7 @@ speed(0)
 /////////////////////////////////////////////////////////////////
 pathFinding::~pathFinding(){
 
+
 }
 
 /////////////////////////////////////////////////////////////////
@@ -107,6 +108,7 @@ void pathFinding::pathRoute(double dt){
 		
 
 	}
+
 	if (!wayPoints.empty() && distanceBetween2points(currentLocation, wayPoints.front()) < 1){
 
 		wayPoints.pop();
@@ -166,17 +168,28 @@ void pathFinding::setInitialWayPoints(Vector3 endLocation){
 	Vector3 view = (endLocation - currentLocation).Normalized();
 	Vector3 wayPointPosition = currentLocation;
 
+    resetWayPoints();
+
 	float length = distanceBetween2points(endLocation, wayPointPosition);
 	
-    length /= 10;
+    if (length > 25){
 
-	for (int i = 0; i < 10; i++){
+        length /= 10;
 
-		wayPoints.push(wayPointPosition);
-		wayPointPosition += (view * length);
+        for (int i = 0; i < 10; i++){
+
+            wayPoints.push(wayPointPosition);
+            wayPointPosition += (view * length);
 
 
-	}
+        }
+
+    }
+    else{
+
+        wayPoints.push(endLocation);
+
+    }
 
 }
 
@@ -199,7 +212,10 @@ void pathFinding::setInitialWayPoints(Vector3 endLocation){
 void pathFinding::setInitialWayPoints(Vector3 location, Vector3 view){
 
 	currentLocation = location;
-	wayPoints.push(currentLocation + view);
+	wayPoints.push(currentLocation + view * 10);
+
+    lastWayPointDirection = view - currentLocation;
+    lastWayPointDirection.Normalize();
 
 }
 

@@ -90,6 +90,7 @@
     <ClCompile Include="Source\Asteroid.cpp" />
     <ClCompile Include="Source\Bullet.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="source\Earth.cpp" />
     <ClCompile Include="source\Explosion.cpp" />
     <ClCompile Include="Source\LoadOBJ.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="Source\Asteroid.h" />
     <ClInclude Include="Source\Bullet.h" />
     <ClInclude Include="Source\Camera.h" />
+    <ClInclude Include="source\Earth.h" />
     <ClInclude Include="source\Explosion.h" />
     <ClInclude Include="Source\Light.h" />
     <ClInclude Include="Source\LoadOBJ.h" />

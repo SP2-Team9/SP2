@@ -28,6 +28,8 @@ using std::queue;
 using std::stack;
 using std::string;
 using std::vector;
+using std::cout;
+using std::endl;
 
 
 
@@ -186,6 +188,7 @@ public:
     void renderSkybox();
     void renderStation();
     void renderBullets();
+    void renderGeneral();
 	void renderShopMenu();
 	void renderAsteroid();
     void renderDistances();

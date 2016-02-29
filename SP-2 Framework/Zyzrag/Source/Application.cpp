@@ -11,6 +11,7 @@
 #include <stdlib.h>
 
 #include "SP2.h"
+#include "Earth.h"
 
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game
@@ -116,8 +117,9 @@ void Application::Run()
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
 	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE))
 	{
-		scene->Update(m_timer.getElapsedTime());
-		scene->Render();
+
+        scene->Update(m_timer.getElapsedTime());
+        scene->Render();
 
 		//Swap buffers
 		glfwSwapBuffers(m_window);

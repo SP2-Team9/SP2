@@ -338,6 +338,7 @@ void SP2::Render()
 {
 	// Render VBO here
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	viewStack.LoadIdentity();
 	viewStack.LookAt(camera.position.x, camera.position.y, camera.position.z, camera.target.x, camera.target.y, camera.target.z, camera.up.x, camera.up.y, camera.up.z);
 	modelStack.LoadIdentity();
@@ -348,62 +349,56 @@ void SP2::Render()
 
 	if (enableAxis == true)
 		RenderMesh(meshList[GEO_AXES], false);
-
-	renderSkybox();
-	renderStation();
-	renderAsteroid();
 	
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 	switch (state)
 	{
 	case MainMenu:
+
 		renderTitleScreen();
 		break;
 
-	case RTS:
-		renderBullets();
-		renderExplosion();
-        renderShips();
-        renderWayPoints();
-		renderFightingUI();
-		quests();
-		ballquest();
-		asteroidquest();
-		buyshipquest();
-		abductionquest();
+    case RTS:
+		
+	
+        renderGeneral();
+        renderFightingUI();
+        quests();
+        ballquest();
+        buyshipquest();
+        abductionquest();
 		break;
 
 	case inSpaceStation:
-		renderBullets();
-		renderExplosion();
+
+        renderGeneral();
 		renderNPC();
 		renderNPC2();
 		renderNPC3();
 		renderNPC4();
-		renderShips();
 		renderFightingUI();
 		quests();
 		ballquest();
-		asteroidquest();
 		buyshipquest();
 		abductionquest();
+        
+
 		break;
 
 	case inPlayerShip:
-		renderBullets();
-		renderExplosion();
-		renderWayPoints();
-		renderShips();
+
+        renderGeneral();
 		renderFightingUI();
         renderDistances();
 		quests();
 		ballquest();
-		asteroidquest();
 		buyshipquest();
 		abductionquest();
+
 		break;
 
 	case inShop:
+
 		renderShopMenu();
 		renderFightingUI();
 		break;
@@ -435,7 +430,7 @@ void SP2::Exit()
 	}
 
 	std::cout << "Clearing Explosions" << std::endl;
-	for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end(); ++it)
+	for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end();)
 	{
 		Explosion* temp = *it;
 		delete temp;
@@ -730,6 +725,39 @@ void SP2::renderStation()
 
 void SP2::renderShips(){
 
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+    {
+        vector<Vehicles*>::iterator it = allVehicles[i].begin();
+        while (it != allVehicles[i].end())
+        {
+            Vehicles* Vtemp = *it;
+            modelStack.PushMatrix();
+            modelStack.Translate(Vtemp->Pos.x, Vtemp->Pos.y, Vtemp->Pos.z);
+            modelStack.Rotate(Vtemp->Yaw, 0, 1, 0);
+            RenderMesh(meshList[i], enableLight);
+            modelStack.PopMatrix();
+
+            if (Vtemp->health < Vtemp->maxHealth){
+
+                renderHealthBar(Vtemp->Pos, 10, Vtemp->health, Color(0, 0, 1));
+
+            }
+
+            it++;
+        }
+
+    }
+
+    if (playerShip.isDead == false)
+    {
+        modelStack.PushMatrix();
+        modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
+        modelStack.Rotate(playerShip.pitch, playerShip.Right.x, 0, playerShip.Right.z);
+        modelStack.Rotate(playerShip.yaw, 0, 1, 0);
+        RenderMesh(meshList[GEO_XWING], enableLight);
+        modelStack.PopMatrix();
+    }
+
 	if (selection)
 	{
 		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), selection->interaction.GetMin(), selection->interaction.GetMax());
@@ -749,38 +777,9 @@ void SP2::renderShips(){
 		RenderMesh(meshList[placeType], enableLight);
 		modelStack.PopMatrix();
 	}
-	int test = 0;
-	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-	{
-		vector<Vehicles*>::iterator it = allVehicles[i].begin();
-		while (it != allVehicles[i].end())
-		{
-			test += 1;
-			Vehicles* Vtemp = *it;
-			modelStack.PushMatrix();
-			modelStack.Translate(Vtemp->Pos.x, Vtemp->Pos.y, Vtemp->Pos.z);
-			modelStack.Rotate(Vtemp->Yaw, 0, 1, 0);
-			RenderMesh(meshList[i], enableLight);
-			modelStack.PopMatrix();
 
-			if (Vtemp->health < Vtemp->maxHealth){
+	
 
-				renderHealthBar(Vtemp->Pos, 10, Vtemp->health, Color(0, 0, 1));
-
-			}
-
-			it++;
-		}
-	}
-	if (playerShip.isDead == false)
-	{
-		modelStack.PushMatrix();
-		modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
-		modelStack.Rotate(playerShip.pitch, playerShip.Right.x, 0, playerShip.Right.z);
-		modelStack.Rotate(playerShip.yaw, 0, 1, 0);
-		RenderMesh(meshList[GEO_XWING], enableLight);
-		modelStack.PopMatrix();
-	}
 }
 
 void SP2::renderShopMenu()
@@ -872,6 +871,7 @@ void SP2::renderWayPoints(){
 		while (it != allVehicles[i].end())
 		{
 			Vehicles* Vtemp = *it;
+
 			queue<Vector3> currVehicleQueue = Vtemp->newVehicle.getwayPoints();
 
 			while (!currVehicleQueue.empty()){
@@ -1101,6 +1101,20 @@ void SP2::renderDistances(){
 
     modelStack.PopMatrix();
  
+}
+
+void SP2::renderGeneral(){
+
+    renderBullets();
+    renderWayPoints();
+    renderAsteroid();
+    renderExplosion();
+    asteroidquest(); 
+    renderSkybox();
+    renderStation();
+    renderAsteroid();
+
+
 }
 
 
@@ -1433,6 +1447,7 @@ void SP2::inShopUpdates(double dt)
 }
 
 void SP2::vehicleUpdates(double dt){
+
 	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 	{
 		vector<Vehicles*>::iterator it = allVehicles[i].begin();
@@ -1444,6 +1459,7 @@ void SP2::vehicleUpdates(double dt){
 			it++;
 		}
 	}
+
 }
 
 void SP2::bulletUpdates(double dt){
@@ -1708,50 +1724,99 @@ void SP2::checkHitboxes(){
 void SP2::shipHitboxCheck(){
 
 	// Ship to Ship
-	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-	{
-		vector<Vehicles*>::iterator V1it = allVehicles[i].begin();
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
 
-		while (V1it != allVehicles[i].end())
-		{
-			Vehicles* Veh1 = *V1it;
-			for (int j = GEO_SMALLSHIP; j <= GEO_LARGESHIP; ++j)
-			{
-				vector<Vehicles*>::iterator V2it = allVehicles[j].begin();
-				while (V2it != allVehicles[j].end())
-				{
-					Vehicles* Veh2 = *V2it;
-					if (Veh1->hitbox.AABBtoAABB(Veh2->hitbox) == true && Veh1 != Veh2)
-					{
-						Vector3 ExploCenter = Veh1->Pos + Veh2->Pos;
-						ExploCenter /= 2;
-						allExplosions.push_back(new Explosion(30, 50, ExploCenter));
+        bool checkHitbox = false;
 
-						Veh1->isDead = true;
-						if (selection == Veh1 || selection == Veh2)
-							selection = nullptr;
+        vector<Vehicles*>::iterator vitV1 = allVehicles[i].begin();
+        
+        while (vitV1 != allVehicles[i].end()){
 
-						delete Veh2;
-						V2it = allVehicles[j].erase(V2it);
-					}
-					else
-					{
-						V2it++;
-					}
-				}
-			}
+            Vehicles* tempV1 = *vitV1;
 
-			if (Veh1->isDead == true)
-			{
-				delete Veh1;
-				V1it = allVehicles[i].erase(V1it);
-			}
-			else
-			{
-				V1it++;
-			}
-		}
-	}
+            for (int j = GEO_SMALLSHIP; j <= GEO_LARGESHIP; ++j){
+
+                vector<Vehicles*>::iterator vitV2 = allVehicles[j].begin();
+
+                while (vitV2 != allVehicles[j].end()){
+
+                    Vehicles* tempV2 = *vitV2;
+
+                    if (tempV2->hitbox.AABBtoAABB(tempV1->hitbox) && tempV1 != tempV2){
+
+                        checkHitbox = true;
+                        tempV1->health -= tempV2->maxHealth;
+                        tempV2->health -= tempV1->maxHealth;
+
+                        cout << tempV2->health << tempV1->health << endl;
+                        if (tempV2->health <= 0){
+
+                            if (selection == tempV2){
+
+                                selection = nullptr;
+
+                            }
+                            allExplosions.push_back(new Explosion(tempV2->maxHealth / 2, 50, tempV2->Pos));
+                            delete tempV2;
+                            allVehicles[j].erase(vitV2);
+                         
+                        }
+
+                        break;
+
+                    }
+                    else{
+
+                        vitV2++;
+
+                    }
+
+                }
+
+                if (checkHitbox == true){
+
+                    break;
+
+                }
+
+            }
+
+            if (tempV1->health <= 0){
+
+                if (selection == tempV1){
+
+                    selection = nullptr;
+
+                }
+
+                allExplosions.push_back(new Explosion(tempV1->maxHealth / 2, 50, tempV1->Pos));
+                delete tempV1;
+                allVehicles[i].erase(vitV1);
+
+                break;
+            }
+            else{
+
+                vitV1++;
+
+            }
+
+            if (checkHitbox == true){
+
+                break;
+
+            }
+
+        }
+
+        if (checkHitbox == true){
+
+            break;
+
+        }
+
+
+    }
 
 	//Player playerShip to Ship
 	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
@@ -1824,8 +1889,10 @@ void SP2::stationHitboxCheck(){
 			delete tempAst;
 			it = Vasteroid.erase(it);
 		}
-		else
-			it++;
+        else{
+            it++;
+        }
+
 	}
 
 

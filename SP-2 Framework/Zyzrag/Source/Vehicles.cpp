@@ -194,9 +194,7 @@ void Vehicles::setNewWayPoint(float x, float z){
 /////////////////////////////////////////////////////////////////
 void Vehicles::initialMoveDirection(float x, float z){
 
-
 	newVehicle.setInitialWayPoints(Vector3(x, 0, z));
-
 
 }
 
