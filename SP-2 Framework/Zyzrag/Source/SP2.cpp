@@ -419,7 +419,7 @@ void SP2::Render()
 
 	}
 
-	meshList[GEO_SELECTION] = MeshBuilder::GenerateSquare("menu", Color(0, 1, 0), initCursor, endCursor);
+	meshList[GEO_SELECTION] = MeshBuilder::GenerateSquare("Selection box", Color(0, 1, 0), initCursor, endCursor);
 	modelStack.PushMatrix();
 	RenderMesh(meshList[GEO_SELECTION], false);
 	modelStack.PopMatrix();
@@ -2467,7 +2467,7 @@ void SP2::MouseSelection(double dt)
 						}
 						else
 						{
-							selectionTest.clear();
+							selection.clear();
 						}
 
 						it++;
