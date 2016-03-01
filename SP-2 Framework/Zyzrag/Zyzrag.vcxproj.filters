@@ -71,9 +71,6 @@
     <ClCompile Include="Source\PlayerVehicle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\sharedData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Shop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

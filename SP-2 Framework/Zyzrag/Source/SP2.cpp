@@ -1,7 +1,6 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
-#include <stdio.h>
 
 #include "SP2.h"
 #include "GL\glew.h"
@@ -271,7 +270,7 @@ void SP2::Update(double dt)
 	}
 
 	if (state != MainMenu && state != exit && state != help){
-		std::cout << "TEST" << std::endl;
+	
 		generalUpdates(dt);
 
 	}
@@ -374,6 +373,8 @@ void SP2::Update(double dt)
 
 
 	HBcheck = static_cast<HITBOXCHECK>((HBcheck + 1) % 3);
+
+
 }
 
 void SP2::Render()
@@ -462,47 +463,48 @@ void SP2::Render()
 
 void SP2::Exit()
 {
-	std::cout << "Exiting" << std::endl;
-	std::cout << "Clearing Ships" << std::endl;
-	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-	{
-		vector<Vehicles*>::iterator it = allVehicles[i].begin();
-		while (it != allVehicles[i].end())
-		{
-			delete *it;
-			it = allVehicles[i].erase(it);
-		}
+    std::cout << "Exiting" << std::endl;
+    std::cout << "Clearing Ships" << std::endl;
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+    {
+        vector<Vehicles*>::iterator it = allVehicles[i].begin();
+        while (it != allVehicles[i].end())
+        {
+            delete *it;
+            it = allVehicles[i].erase(it);
+        }
 
-		while (!storedVehicles[i].empty())
-		{
-			delete storedVehicles[i].top();
-			storedVehicles[i].pop();
-		}
-	}
+        while (!storedVehicles[i].empty())
+        {
+            delete storedVehicles[i].top();
+            storedVehicles[i].pop();
+        }
+    }
 
-	std::cout << "Clearing Explosions" << std::endl;
-	for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end();)
-	{
-		delete *it;
-		it = allExplosions.erase(it);
-	}
+    std::cout << "Clearing Explosions" << std::endl;
+    for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end();)
+    {
+        delete *it;
+        it = allExplosions.erase(it);
+    }
 
-	std::cout << "Clearing Asteroids" << std::endl;
-	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
-	{
-		delete *it;
-		it = Vasteroid.erase(it);
-	}
+    std::cout << "Clearing Asteroids" << std::endl;
+    for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
+    {
+        delete *it;
+        it = Vasteroid.erase(it);
+    }
 
-	std::cout << "Clearing Bullets" << std::endl;
-	for (vector<Bullet*>::iterator it = allBullets.begin(); it != allBullets.end();){
+    std::cout << "Clearing Bullets" << std::endl;
+    for (vector<Bullet*>::iterator it = allBullets.begin(); it != allBullets.end();){
 
-		delete *it;
-		it = allBullets.erase(it);
-	}
+        delete *it;
+        it = allBullets.erase(it);
+    }
 
-	delete playerShop;
+    delete playerShop;
 
+	
 	// Cleanup VBO here
 	glDeleteVertexArrays(1, &m_vertexArrayID);
 	glDeleteProgram(m_programID);
@@ -670,7 +672,7 @@ void SP2::generateAsteroid()
 {
 	if (Vasteroid.size() < 40)
 	{
-		if (generate_range(0, 100) < 40)
+		if (generate_range(0, 100) < 50)
 		{
 			Asteroid* asteroid = new Asteroid(generate_range(5, 100));
 
@@ -821,6 +823,7 @@ void SP2::renderStation()
 }
 
 void SP2::renderShips(){
+
 	if (playerShip.isDead == false)
 	{
 		modelStack.PushMatrix();
@@ -855,19 +858,8 @@ void SP2::renderShips(){
 
     } 
 
-	/*if (selection)
-	{
-		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), selection->interaction.GetMin(), selection->interaction.GetMax());
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	if (!selection.empty()){
 
-		modelStack.PushMatrix();
-		RenderMesh(meshList[GEO_HITBOX], false);
-		modelStack.PopMatrix();
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}*/
-
-	if (!selection.empty())
-	{
 		for (vector<Vehicles*>::iterator it = selection.begin(); it != selection.end(); ++it)
 		{
 			meshList[GEO_HITBOX] = MeshBuilder::GenerateSquare("Hitbox", Color(0, 1, 0), (*it)->interaction.GetMin(), (*it)->interaction.GetMax());
@@ -877,6 +869,7 @@ void SP2::renderShips(){
 			modelStack.PopMatrix();
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		}
+
 	}
 
 	if (place)
@@ -975,36 +968,6 @@ void SP2::renderFightingUI(){
 		RenderTextOnScreen(meshList[GEO_TEXT], "Thrust: " + std::to_string((int)(playerShip.thrust)), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.84f, 50);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(currMoney), Color(0, 1, 0), objSize * 8, 0.7f * screenWidth, screenHeight * 0.9f, 50);
 	}
-}
-
-void SP2::renderWayPoints(){
-	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-	{
-		vector<Vehicles*>::iterator it = allVehicles[i].begin();
-		while (it != allVehicles[i].end())
-		{
-			Vehicles* Vtemp = *it;
-
-			queue<Vector3> currVehicleQueue = Vtemp->newVehicle.getwayPoints();
-
-			while (!currVehicleQueue.empty()){
-
-
-				modelStack.PushMatrix();
-
-				modelStack.Translate(currVehicleQueue.front().x, currVehicleQueue.front().y, currVehicleQueue.front().z);
-				RenderMesh(meshList[GEO_LIGHTBALL], false);
-
-				modelStack.PopMatrix();
-
-				currVehicleQueue.pop();
-
-			}
-
-			it++;
-		}
-	}
-
 }
 
 void SP2::renderAllHitbox()
@@ -1214,6 +1177,36 @@ void SP2::renderDistances(){
 
     modelStack.PopMatrix();
  
+}
+
+void SP2::renderWayPoints(){
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+    {
+        vector<Vehicles*>::iterator it = allVehicles[i].begin();
+        while (it != allVehicles[i].end())
+        {
+            Vehicles* Vtemp = *it;
+
+            queue<Vector3> currVehicleQueue = Vtemp->newVehicle.getwayPoints();
+
+            while (!currVehicleQueue.empty()){
+
+
+                modelStack.PushMatrix();
+
+                modelStack.Translate(currVehicleQueue.front().x, currVehicleQueue.front().y, currVehicleQueue.front().z);
+                RenderMesh(meshList[GEO_LIGHTBALL], false);
+
+                modelStack.PopMatrix();
+
+                currVehicleQueue.pop();
+
+            }
+
+            it++;
+        }
+    }
+
 }
 
 void SP2::renderGeneral(){
@@ -1796,7 +1789,15 @@ void SP2::vehicleUpdates(double dt){
 			Vehicles* Vtemp = *it;
 			Vtemp->update(dt);
 
-			it++;
+            if (Vtemp->checkMaxDistance(camera.position)){
+           
+                it = allVehicles[i].erase(it);
+                delete Vtemp;
+            
+            }
+            else{
+                it++;
+            }
 		}
 	}
 
@@ -1829,10 +1830,22 @@ void SP2::bulletUpdates(double dt){
 
 void SP2::asteroidUpdate(double dt){
 
-	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
+	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
 	{
 		Asteroid* asteroid = *it;
 		asteroid->update(dt);
+
+        if (asteroid->curRange > asteroid->maxRange || asteroid->health < 0){
+
+            it = Vasteroid.erase(it);
+            delete asteroid;
+
+        }
+        else{
+
+            it++;
+
+        }   
 
 	}
 
@@ -2012,8 +2025,6 @@ void SP2::inSpaceStationUpdates(double dt){
 }
 
 
-
-
 //Hitbox
 
 void SP2::checkHitboxes(){
@@ -2178,26 +2189,11 @@ void SP2::stationHitboxCheck(){
 		Asteroid* tempAst = *it;
 		if (tempAst->hitbox.AABBtoAABB(station.hitbox, tempAst->View) == true)
 		{
-			for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-			{
-				vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
-				while (vitV != allVehicles[i].end())
-				{
-					Vehicles* temp = *vitV;
-					if (temp->currAttackTarget == tempAst){
-
-						temp->currAttackTarget = nullptr;
-
-					}
-
-					vitV++;
-				}
-			}
-
+            vehiclesRemoveTarget(tempAst);
 			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, tempAst->Pos));
+			explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(tempAst->Pos.x, tempAst->Pos.y, tempAst->Pos.z));
 			delete tempAst;
 			it = Vasteroid.erase(it);
-			explosionsfx->play2D("Sound/asteroidboom.mp3");
 		}
         else{
             it++;
@@ -2241,28 +2237,8 @@ void SP2::asteroidHitboxCheck(){
 
         if (tempAst->health <= 0){
 
-            for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-            {
-                vector<Vehicles*>::iterator it = allVehicles[i].begin();
-
-                while (it != allVehicles[i].end())
-                {
-
-                    Vehicles* temp = *it;
-
-                    if (temp->currAttackTarget == tempAst){
-
-                        temp->currAttackTarget = nullptr;
-
-                    }
-
-
-					it++;
-				}
-			}
-
+            vehiclesRemoveTarget(tempAst);
             currMoney += tempAst->size * 10;
-
 			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, tempAst->Pos));
             vitA = Vasteroid.erase(vitA);
 			explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(tempAst->Pos.x, tempAst->Pos.y, tempAst->Pos.z));
@@ -2292,7 +2268,6 @@ void SP2::asteroidHitboxCheck(){
                 Asteroid* tempAst = *Ait;
                 if (tempVeh->hitbox.AABBtoAABB(tempAst->hitbox))
                 {
-
                     Vector3 ExploCenter = tempVeh->Pos + tempAst->Pos;
                     ExploCenter /= 2;
 					allExplosions.push_back(new Explosion(tempAst->size * 2, 50, ExploCenter));
@@ -2301,6 +2276,7 @@ void SP2::asteroidHitboxCheck(){
 					explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(tempAst->Pos.x, tempAst->Pos.y, tempAst->Pos.z));
                     delete tempAst;
                     Ait = Vasteroid.erase(Ait);
+
                 }
                 else
                 {
@@ -2335,8 +2311,10 @@ void SP2::asteroidHitboxCheck(){
             ExploCenter /= 2;
 			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, ExploCenter));
 			explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(tempAst->Pos.x, tempAst->Pos.y, tempAst->Pos.z));
+            vehiclesRemoveTarget(tempAst);
             delete tempAst;
             Ait = Vasteroid.erase(Ait);
+
         }
         else
             Ait++;
@@ -2387,26 +2365,7 @@ void SP2::asteroidHitboxCheck(){
 
             if (temp2Ast->health <= 0){
 
-				for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-				{
-					vector<Vehicles*>::iterator it = allVehicles[i].begin();
-
-					while (it != allVehicles[i].end())
-					{
-
-						Vehicles* temp = *it;
-
-						if (temp->currAttackTarget == temp2Ast){
-
-							temp->currAttackTarget = nullptr;
-
-						}
-
-
-						it++;
-					}
-				}
-
+                vehiclesRemoveTarget(temp2Ast);
                 Vector3 ExploCenter = temp2Ast->Pos + temp1Ast->Pos;
                 ExploCenter /= 2;
 				allExplosions.push_back(new Explosion(temp2Ast->size * 2, 50, ExploCenter));
@@ -2426,26 +2385,7 @@ void SP2::asteroidHitboxCheck(){
 
         if (temp1Ast->health <= 0){
 
-			for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-			{
-				vector<Vehicles*>::iterator it = allVehicles[i].begin();
-
-				while (it != allVehicles[i].end())
-				{
-
-					Vehicles* temp = *it;
-
-					if (temp->currAttackTarget == temp1Ast){
-
-						temp->currAttackTarget = nullptr;
-
-					}
-
-
-					it++;
-				}
-			}
-
+            vehiclesRemoveTarget(temp1Ast);
 			allExplosions.push_back(new Explosion(temp1Ast->size * 2, 50, temp1Ast->Pos));
 			explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(temp1Ast->Pos.x, temp1Ast->Pos.y, temp1Ast->Pos.z));
             delete temp1Ast;
@@ -2464,13 +2404,13 @@ void SP2::asteroidHitboxCheck(){
 }
 
 
-
-
 //Others
+
 void SP2::MouseSelection(double dt)
 {
 	if (place == nullptr)
 	{
+       
 		if (Application::IsKeyPressed(VK_LBUTTON))
 		{
 			if (hold == true)
@@ -2493,6 +2433,7 @@ void SP2::MouseSelection(double dt)
 			}
 			else
 			{
+                selection.clear();
 				initCursor = picker.WorldCoord();
 				endCursor = picker.WorldCoord();
 				bool Bselected = false;
@@ -2513,9 +2454,9 @@ void SP2::MouseSelection(double dt)
 						else
 						{
 							selection.clear();
+                            it++;
 						}
-
-						it++;
+					
 					}
 
 					if (Bselected == true)
@@ -2583,7 +2524,6 @@ void SP2::MouseSelection(double dt)
 			}
 			else{
 
-                selectionRemovetarget();
 				vitA++;
 
 			}
@@ -2592,6 +2532,7 @@ void SP2::MouseSelection(double dt)
 
         if (setTarget == false){
 
+            selectionSetTarget(nullptr);
             selectionSetWaypoints(picker.WorldCoord());
 
 		}
@@ -2768,6 +2709,30 @@ void SP2::selectionRemovetarget(){
 
     }
    
+}
+
+void SP2::vehiclesRemoveTarget(Asteroid* oldTarget){
+
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
+
+        vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
+
+        while (vitV != allVehicles[i].end()){
+
+            Vehicles* tempV = *vitV;
+
+            if (tempV->currAttackTarget == oldTarget){
+
+                tempV->currAttackTarget = nullptr;
+                
+            }
+
+            vitV++;
+
+        }
+
+    }
+
 }
 
 void SP2::selectionSetWaypoints(Vector3 newPosition){

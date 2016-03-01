@@ -336,5 +336,34 @@ bool Vehicles::fireBullets(double dt){
 
 }
 
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: ship Max distance
+
+* \author: Wong Keng Han Ashley
+
+* \date: 28 feb 2016
+
+* \description: returns if the target is in range
+
+*/
+/////////////////////////////////////////////////////////////////
+bool Vehicles::checkMaxDistance(Vector3 playerPos){
+
+    if (playerPos.distanceBetween2points(Pos) > maxDistance){
+
+        return true;
+
+    }
+
+    return false;
+
+
+}
+
+
+
+
 
 

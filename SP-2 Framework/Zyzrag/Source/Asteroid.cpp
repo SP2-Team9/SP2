@@ -55,16 +55,10 @@ Asteroid::~Asteroid()
 /******************************************************************************/
 void Asteroid::update(double dt)
 {
-	if (boom == false)
-	{
-		Pos += View.Normalize() * dt * speed;
-		curRange += View.getMagnitude() * dt * speed;
+	
+	
+	Pos += View.Normalize() * dt * speed;
+	curRange += View.getMagnitude() * dt * speed;
+	updateHitbox();
 
-		if (curRange > maxRange)
-			boom = true;
-		if (health < 0)
-			boom = true;
-		
-		updateHitbox();
-	}
 }
