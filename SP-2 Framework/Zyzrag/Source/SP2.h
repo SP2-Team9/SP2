@@ -234,6 +234,7 @@ public:
     void selectionRemovetarget();
 	void MouseSelection(double dt);
     void selectionSetTarget(Asteroid* newTarget);
+    void vehiclesRemoveTarget(Asteroid* oldTarget);
     void removeOneSelection(Vehicles* removedVehicle);
 
     void selectionSetWaypoints(Vector3 newPosition);
