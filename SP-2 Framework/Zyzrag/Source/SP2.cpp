@@ -1,6 +1,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
+#include <stdio.h>
 
 #include "SP2.h"
 #include "GL\glew.h"
@@ -44,7 +45,7 @@ void SP2::Init()
 
 	explosionsfx->setDefault3DSoundMinDistance(1000.f);
 	explosionsfx->setDefault3DSoundMaxDistance(5000.f);
-	shootingsfx->setSoundVolume(1.f);
+	explosionsfx->setSoundVolume(1.f);
 
 	shopInit();
 	WorldHitboxInit();
