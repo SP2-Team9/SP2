@@ -75,9 +75,9 @@ void Application::Init()
 	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	screenWidth = mode->width;
 	screenHeight = mode->height;
-	screenWidth = 800;
-	screenHeight = 600;
-	m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", NULL, NULL);
+	//screenWidth = 1920;
+	//screenHeight = 1080;
+	m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", glfwGetPrimaryMonitor(), NULL);
 
 	//Set window Size
 	glfwSetWindowSizeCallback(m_window, resize_callback);
@@ -149,7 +149,7 @@ void Application::getMouse(double & x, double & y)
 
 void Application::centerMouse()
 {
-	glfwSetCursorPos(m_window, screenWidth / 2, screenHeight / 2);
+	glfwSetCursorPos(m_window, 800 / 2, 600 / 2);
 }
 
 void Application::hideMouse()
