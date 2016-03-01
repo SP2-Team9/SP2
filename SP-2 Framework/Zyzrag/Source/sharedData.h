@@ -3,6 +3,7 @@
 
 class sharedData{
 public:
+
 	static sharedData* GetInstance()
 	{
 		static sharedData data;
@@ -29,10 +30,13 @@ public:
 
 	bool quit = false;
 
+
 private:
+
 	sharedData(){};
 
 	float delay;
+
 };
 
 
