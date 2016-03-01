@@ -1,6 +1,8 @@
 #ifndef SP2_H
 #define SP2_H
 
+#include "irrKlang.h"
+
 #include "Mesh.h"
 #include "Shop.h"
 #include "Light.h"
@@ -133,6 +135,7 @@ class SP2 : public Scene{
 		inPlayerShip,
 		inSpaceStation,
 		inShop,
+		help,
 		exit,
 	};
 
@@ -182,6 +185,7 @@ public:
     void playerBulletCreation(double dt);
 	
 	// Renders
+	void renderHelp();
 	void renderNPC();
 	void renderNPC2();
 	void renderNPC3();
@@ -218,8 +222,6 @@ public:
 	void inPlayerShipUpdates(double dt);
 	void inSpaceStationUpdates(double dt);
 
-
-
 	//Others
 
     void quests();
@@ -235,10 +237,9 @@ public:
 	void MouseSelection(double dt);
     void selectionSetTarget(Asteroid* newTarget);
     void removeOneSelection(Vehicles* removedVehicle);
-
     void selectionSetWaypoints(Vector3 newPosition);
-	// Tools
 
+	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z = 0);
@@ -251,8 +252,9 @@ public:
 
 
 private:
+	irrklang::ISoundEngine* shootingsfx = irrklang::createIrrKlangDevice();
+	irrklang::ISoundEngine* explosionsfx = irrklang::createIrrKlangDevice();
 
-	int lastState;
     int currMoney;
 
 	Camera camera;
@@ -309,6 +311,7 @@ private:
 	SHOPSTATE shopState;
 
 	GAMESTATE state;
+	GAMESTATE lastState;
 
 	HITBOXCHECK HBcheck;
 

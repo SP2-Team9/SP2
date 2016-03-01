@@ -1,6 +1,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
+#include <stdio.h>
 
 #include "SP2.h"
 #include "GL\glew.h"
@@ -11,6 +12,7 @@
 #include "MeshBuilder.h"
 #include "Application.h"
 #include "LoadTGA.h"
+
 
 
 SP2::SP2(){
@@ -36,7 +38,14 @@ void SP2::Init()
     currMoney = 10000;
 	place = nullptr;
 	placeType = 0;
-	lastState = 0;
+
+	shootingsfx->setDefault3DSoundMinDistance(200.f);
+	shootingsfx->setDefault3DSoundMaxDistance(1000.f);
+	shootingsfx->setSoundVolume(0.5f);
+
+	explosionsfx->setDefault3DSoundMinDistance(1000.f);
+	explosionsfx->setDefault3DSoundMaxDistance(5000.f);
+	shootingsfx->setSoundVolume(1.f);
 
 	shopInit();
 	WorldHitboxInit();
@@ -255,12 +264,20 @@ void SP2::Init()
 
 void SP2::Update(double dt)
 {
-	if (state != MainMenu || state != exit){
+	if (Application::IsKeyPressed('P'))
+	{
+		Exit();
+		Init();
+	}
 
+	if (state != MainMenu && state != exit && state != help){
+		std::cout << "TEST" << std::endl;
 		generalUpdates(dt);
 
 	}
+
 	sharedData::GetInstance()->DelayIncrement(dt, 5);
+
 	if (Application::IsKeyPressed(VK_ESCAPE) && state != inShop && sharedData::GetInstance()->Delay(0.5f))
 	{
 		state = exit;
@@ -299,12 +316,23 @@ void SP2::Update(double dt)
 		inShopUpdates(dt);
 
 		break;
+
+	case help:
+
+		if (Application::IsKeyPressed('H') && sharedData::GetInstance()->Delay(0.5f))
+		{
+			state = lastState;
+		}
+
+		break;
 		
 	case exit:
 
 		sharedData::GetInstance()->quit = true;
 
 		break;
+
+
 
 	}
 
@@ -417,6 +445,10 @@ void SP2::Render()
 
 		break;
 
+	case help:
+		renderHelp();
+		break;
+
 	}
 
 	meshList[GEO_SELECTION] = MeshBuilder::GenerateSquare("Selection box", Color(0, 1, 0), initCursor, endCursor);
@@ -481,7 +513,7 @@ void SP2::Exit()
 
 void SP2::objectsInit()
 {
-	//Object Init
+	//Object init
 	station.SetPos(0, 0, 0);
 	station.SetHitbox(AABB(-15, -25, -15, 15, 10, 15));
 
@@ -513,6 +545,7 @@ void SP2::objectsInit()
 	playerShip.SetView(0, 0, 1);
 	playerShip.SetRight(-1, 0, 0);
 	playerShip.SetHitboxSize(-5, -3, -5, 4, 5, 5);
+	playerShip.reset();
 	playerShip.updateHitbox();
 
 	//Vehicles Init
@@ -607,6 +640,7 @@ void SP2::shipBulletCreation(double dt){
                 Bullet* newBullet = new Bullet(view, temp->Pos, temp->bulletDamage);
 
                 allBullets.push_back(newBullet);
+				shootingsfx->play3D("Sound/vehicleshooting.mp3", irrklang::vec3df(temp->Pos.x, temp->Pos.y, temp->Pos.z));
 
             }
 
@@ -625,7 +659,7 @@ void SP2::playerBulletCreation(double dt){
             Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos, playerShop->playerShipDamage);
 
             allBullets.push_back(newBullet);
-
+			shootingsfx->play3D("Sound/shooting.mp3", irrklang::vec3df(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z));
         }
 
     }
@@ -680,6 +714,28 @@ void SP2::generateAsteroid()
 
 
 // Renders
+void SP2::renderHelp()
+{
+	RenderOnScreen(meshList[GEO_HELPSCREEN], screenWidth / 2, screenHeight / 2, -20, 1, 90, 0, 0);
+	RenderTextOnScreen(meshList[GEO_TEXT], "General Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.9 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Press TAB to go into RTS mode", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.85 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Walk to control panel and Press E to buy/upgrade ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.8 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Press E when at teleporter to beam into your ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.75 * screenHeight);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Ship Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.65 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "W,S,A,D to control ship's yaw and pitch", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.6 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Shift to increase Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.55 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Ctrl to decrease Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.5 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Left click to shoot", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.45 * screenHeight);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "RTS controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.35 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "1 to select Speeder", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.3 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "2 to select Fighter", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.25 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "3 to select Devastator", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.2 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Left click to select ship, Drag to select multiple ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.15 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Right click to give command to selected ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.1 * screenHeight);
+}
+
 void SP2::renderSkybox()
 {
 	
@@ -1171,28 +1227,6 @@ void SP2::renderGeneral(){
     renderAsteroid();
 	renderExplosion();
 	asteroidquest();
-
-	if (displayHelp == true)
-	{
-		RenderOnScreen(meshList[GEO_HELPSCREEN], screenWidth / 2, screenHeight / 2, -20, 1, 90, 0, 0);
-		RenderTextOnScreen(meshList[GEO_TEXT], "General Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.9 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Press TAB to go into RTS mode", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.85 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Walk to control panel and Press E to buy/upgrade ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.8 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Press E when at teleporter to beam into your ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.75 * screenHeight);
-
-		RenderTextOnScreen(meshList[GEO_TEXT], "Ship Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.65 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "W,S,A,D to control ship's yaw and pitch", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.6 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Shift to increase Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.55 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Ctrl to decrease Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.5 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Left click to shoot", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.45 * screenHeight);
-
-		RenderTextOnScreen(meshList[GEO_TEXT], "RTS controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.35 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "1 to select Speeder", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.3 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "2 to select Fighter", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.25 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "3 to select Devastator", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.2 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Left click to select ship, Drag to select multiple ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.15 * screenHeight);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Right click to give command to selected ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.1 * screenHeight);
-	}
 }
 
 void SP2::renderNPC()
@@ -1802,7 +1836,7 @@ void SP2::asteroidUpdate(double dt){
 
 	}
 
-	if (Timer(1, dt) == true)
+	if (Timer(0, dt) == true)
 	{
 		generateAsteroid();
 	}
@@ -1829,16 +1863,20 @@ void SP2::generalUpdates(double dt){
 		playerShip.SetHitboxSize(5);
 	}
 
-	if (Application::IsKeyPressed('H'))
-		displayHelp = true;
-	else
-		displayHelp = false;
+	if (Application::IsKeyPressed('H') && sharedData::GetInstance()->Delay(0.5f))
+	{
+		lastState = state;
+		state = help;
+	}
+
+	shootingsfx->setListenerPosition(irrklang::vec3df(camera.position.x, camera.position.y, camera.position.z), irrklang::vec3df(camera.view.x, camera.view.y, camera.view.z));
+	explosionsfx->setListenerPosition(irrklang::vec3df(camera.position.x, camera.position.y, camera.position.z), irrklang::vec3df(camera.view.x, camera.view.y, camera.view.z));
 }
 
 void SP2::mainMenuUpdates(double dt){
 
 	camera.EnableCursor();
-	if (Application::IsKeyPressed(VK_LBUTTON))
+	if (Application::IsKeyPressed(VK_LBUTTON) && sharedData::GetInstance()->Delay(0.5f))
 	{
 		Application::centerMouse();
 		state = inSpaceStation;
@@ -2036,9 +2074,9 @@ void SP2::shipHitboxCheck(){
 
                             removeOneSelection(tempV2);
                             allExplosions.push_back(new Explosion(tempV2->maxHealth / 2, 50, tempV2->Pos));
+							explosionsfx->play3D("Sound/vehicleboom.mp3", irrklang::vec3df(tempV2->Pos.x, tempV2->Pos.y, tempV2->Pos.z));
                             delete tempV2;
                             allVehicles[j].erase(vitV2);
-                         
                         }
 
                         break;
@@ -2064,9 +2102,9 @@ void SP2::shipHitboxCheck(){
 
                 removeOneSelection(tempV1);
                 allExplosions.push_back(new Explosion(tempV1->maxHealth / 2, 50, tempV1->Pos));
+				explosionsfx->play3D("Sound/vehicleboom.mp3", irrklang::vec3df(tempV1->Pos.x, tempV1->Pos.y, tempV1->Pos.z));
                 delete tempV1;
                 allVehicles[i].erase(vitV1);
-
                 break;
 
             }
@@ -2103,9 +2141,10 @@ void SP2::shipHitboxCheck(){
 			if (Vtemp->hitbox.AABBtoAABB(playerShip.hitbox))
 			{
                 removeOneSelection(Vtemp);
-
+				explosionsfx->play3D("Sound/vehicleboom.mp3", irrklang::vec3df(Vtemp->Pos.x, Vtemp->Pos.y, Vtemp->Pos.z));
 				delete Vtemp;
 				it = allVehicles[i].erase(it);
+				
 			}
 			else
 				++it;
@@ -2158,6 +2197,7 @@ void SP2::stationHitboxCheck(){
 			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, tempAst->Pos));
 			delete tempAst;
 			it = Vasteroid.erase(it);
+			explosionsfx->play2D("Sound/asteroidboom.mp3");
 		}
         else{
             it++;
@@ -2225,6 +2265,7 @@ void SP2::asteroidHitboxCheck(){
 
 			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, tempAst->Pos));
             vitA = Vasteroid.erase(vitA);
+			explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(tempAst->Pos.x, tempAst->Pos.y, tempAst->Pos.z));
             delete tempAst;
             destroyed++;
 
@@ -2257,6 +2298,7 @@ void SP2::asteroidHitboxCheck(){
 					allExplosions.push_back(new Explosion(tempAst->size * 2, 50, ExploCenter));
 
 					tempVeh->health -= tempAst->size * 2;
+					explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(tempAst->Pos.x, tempAst->Pos.y, tempAst->Pos.z));
                     delete tempAst;
                     Ait = Vasteroid.erase(Ait);
                 }
@@ -2270,6 +2312,7 @@ void SP2::asteroidHitboxCheck(){
             {
 
                 removeOneSelection(tempVeh);
+				explosionsfx->play3D("Sound/vehicleboom.mp3", irrklang::vec3df(tempVeh->Pos.x, tempVeh->Pos.y, tempVeh->Pos.z));
                 delete tempVeh;
                 Vit = allVehicles[i].erase(Vit);
 
@@ -2291,6 +2334,7 @@ void SP2::asteroidHitboxCheck(){
             Vector3 ExploCenter = playerShip.Pos + tempAst->Pos;
             ExploCenter /= 2;
 			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, ExploCenter));
+			explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(tempAst->Pos.x, tempAst->Pos.y, tempAst->Pos.z));
             delete tempAst;
             Ait = Vasteroid.erase(Ait);
         }
@@ -2366,11 +2410,9 @@ void SP2::asteroidHitboxCheck(){
                 Vector3 ExploCenter = temp2Ast->Pos + temp1Ast->Pos;
                 ExploCenter /= 2;
 				allExplosions.push_back(new Explosion(temp2Ast->size * 2, 50, ExploCenter));
-
+				explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(temp2Ast->Pos.x, temp2Ast->Pos.y, temp2Ast->Pos.z));
                 delete temp2Ast;
                 A2it = Vasteroid.erase(A2it);
-
-
 
             }
             else{
@@ -2405,6 +2447,7 @@ void SP2::asteroidHitboxCheck(){
 			}
 
 			allExplosions.push_back(new Explosion(temp1Ast->size * 2, 50, temp1Ast->Pos));
+			explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(temp1Ast->Pos.x, temp1Ast->Pos.y, temp1Ast->Pos.z));
             delete temp1Ast;
             A1it = Vasteroid.erase(A1it);
         }
@@ -2461,6 +2504,8 @@ void SP2::MouseSelection(double dt)
 						Vehicles* Vtemp = *it;
 						if (Vtemp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
 						{
+							if (!selection.empty())
+								selection.clear();
 							selection.push_back(Vtemp);
 							Bselected = true;
 							break;
