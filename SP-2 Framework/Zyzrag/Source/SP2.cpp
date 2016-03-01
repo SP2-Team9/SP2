@@ -28,6 +28,7 @@ void SP2::Init()
 	playerShop = new Shop(10, 10, 100, 0, 0, 0);
 	
 	enableLight = true;
+	displayHelp = false;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
 	state = MainMenu;
@@ -228,13 +229,22 @@ void SP2::Init()
     meshList[GEO_EXPLOSION] = MeshBuilder::GenerateQuad("Explosion", Color(1, 1, 1), 1.f, 1.f);
     meshList[GEO_EXPLOSION]->textureID = LoadTGA("Image//explosion.tga");
 
+	meshList[GEO_HELPSCREEN] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), screenWidth, screenHeight);
+
 	//Shop Related
 	meshList[GEO_SHOPBACKDROP] = MeshBuilder::GenerateQuad("Shop Background", Color(1, 1, 1), screenWidth, screenHeight);
 
+
 	if (widescreen == false)
+	{
+		meshList[GEO_HELPSCREEN]->textureID = LoadTGA("Image//help.tga");
 		meshList[GEO_SHOPBACKDROP]->textureID = LoadTGA("Image//shopbackground.tga");
+	}
 	else
+	{
+		meshList[GEO_HELPSCREEN]->textureID = LoadTGA("Image//helpwide.tga");
 		meshList[GEO_SHOPBACKDROP]->textureID = LoadTGA("Image//shopbackgroundwide.tga");
+	}
 
 	meshList[GEO_ATTACKUP] = MeshBuilder::GenerateQuad("Attack Up Logo", Color(1, 1, 1), screenWidth, screenWidth);
 	meshList[GEO_ATTACKUP]->textureID = LoadTGA("Image//attackup.tga");
@@ -627,7 +637,7 @@ void SP2::generateAsteroid()
 {
 	if (Vasteroid.size() < 40)
 	{
-		if (generate_range(0, 100) < 80)
+		if (generate_range(0, 100) < 40)
 		{
 			Asteroid* asteroid = new Asteroid(generate_range(5, 100));
 
@@ -805,7 +815,7 @@ void SP2::renderShips(){
 	{
 		for (vector<Vehicles*>::iterator it = selectionTest.begin(); it != selectionTest.end(); ++it)
 		{
-			meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), (*it)->interaction.GetMin(), (*it)->interaction.GetMax());
+			meshList[GEO_HITBOX] = MeshBuilder::GenerateSquare("Hitbox", Color(0, 1, 0), (*it)->interaction.GetMin(), (*it)->interaction.GetMax());
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 			modelStack.PushMatrix();
 			RenderMesh(meshList[GEO_HITBOX], false);
@@ -893,20 +903,23 @@ void SP2::renderTitleScreen(){
 
 void SP2::renderFightingUI(){
 
-    if (playerShip.health > 0){
-        RenderTextOnScreen(meshList[GEO_TEXT], "HP:" + std::to_string(playerShip.health), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
-    }
-    else{
-        RenderTextOnScreen(meshList[GEO_TEXT], "Ship is Destroyed!!!", Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
-    }
-	if (state == RTS)
+	if (displayHelp == false)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT], "Speeder: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.79f, 50);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Fighter: " + std::to_string(storedVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.73f, 50);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Devastator: " + std::to_string(storedVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.67f, 50);
+		if (playerShip.health > 0){
+			RenderTextOnScreen(meshList[GEO_TEXT], "HP:" + std::to_string(playerShip.health), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
+		}
+		else{
+			RenderTextOnScreen(meshList[GEO_TEXT], "Ship is Destroyed!!!", Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
+		}
+		if (state == RTS)
+		{
+			RenderTextOnScreen(meshList[GEO_TEXT], "Speeder: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.79f, 50);
+			RenderTextOnScreen(meshList[GEO_TEXT], "Fighter: " + std::to_string(storedVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.73f, 50);
+			RenderTextOnScreen(meshList[GEO_TEXT], "Devastator: " + std::to_string(storedVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.67f, 50);
+		}
+		RenderTextOnScreen(meshList[GEO_TEXT], "Thrust: " + std::to_string((int)(playerShip.thrust)), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.84f, 50);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(currMoney), Color(0, 1, 0), objSize * 8, 0.7f * screenWidth, screenHeight * 0.9f, 50);
 	}
-	RenderTextOnScreen(meshList[GEO_TEXT], "Thrust: " + std::to_string((int)(playerShip.thrust)), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.84f, 50);
-    RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(currMoney), Color(0, 1, 0), objSize * 8, 0.7f * screenWidth, screenHeight * 0.9f, 50);
 }
 
 void SP2::renderWayPoints(){
@@ -1159,6 +1172,28 @@ void SP2::renderGeneral(){
     renderAsteroid();
 	renderExplosion();
 	asteroidquest();
+
+	if (displayHelp == true)
+	{
+		RenderOnScreen(meshList[GEO_HELPSCREEN], screenWidth / 2, screenHeight / 2, -20, 1, 90, 0, 0);
+		RenderTextOnScreen(meshList[GEO_TEXT], "General Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.9 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Press TAB to go into RTS mode", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.85 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Walk to control panel and Press E to buy/upgrade ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.8 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Press E when at teleporter to beam into your ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.75 * screenHeight);
+
+		RenderTextOnScreen(meshList[GEO_TEXT], "Ship Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.65 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "W,S,A,D to control ship's yaw and pitch", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.6 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Shift to increase Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.55 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Ctrl to decrease Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.5 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Left click to shoot", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.45 * screenHeight);
+
+		RenderTextOnScreen(meshList[GEO_TEXT], "RTS controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.35 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "1 to select Speeder", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.3 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "2 to select Fighter", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.25 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "3 to select Devastator", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.2 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Left click to select ship, Drag to select multiple ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.15 * screenHeight);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Right click to give command to selected ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.1 * screenHeight);
+	}
 }
 
 
@@ -1261,7 +1296,7 @@ void SP2::RTSUpdates(double dt){
 		place->SetPos(picker.WorldCoord());
 	}
 
-	if (Application::IsKeyPressed('E') && sharedData::GetInstance()->Delay(0.5f))
+	if (Application::IsKeyPressed(VK_TAB) && sharedData::GetInstance()->Delay(0.5f))
 	{
 		Application::centerMouse();
 		selection = nullptr;
@@ -1534,7 +1569,7 @@ void SP2::asteroidUpdate(double dt){
 
 	}
 
-	if (Timer(0, dt) == true)
+	if (Timer(1, dt) == true)
 	{
 		generateAsteroid();
 	}
@@ -1560,6 +1595,11 @@ void SP2::generalUpdates(double dt){
 		playerShip.SetRight(-1, 0, 0);
 		playerShip.SetHitboxSize(5);
 	}
+
+	if (Application::IsKeyPressed('H'))
+		displayHelp = true;
+	else
+		displayHelp = false;
 }
 
 void SP2::mainMenuUpdates(double dt){
@@ -1650,7 +1690,7 @@ void SP2::inPlayerShipUpdates(double dt){
 			
 		}
 	}
-	else if (Application::IsKeyPressed('F') && sharedData::GetInstance()->Delay(0.5f))
+	else if (Application::IsKeyPressed(VK_TAB) && sharedData::GetInstance()->Delay(0.5f))
 	{
 		state = RTS;
 		lastState = inPlayerShip;
@@ -1687,7 +1727,7 @@ void SP2::inSpaceStationUpdates(double dt){
 		}
 	}
 
-	if (Application::IsKeyPressed('F') && sharedData::GetInstance()->Delay(0.5f))
+	if (Application::IsKeyPressed(VK_TAB) && sharedData::GetInstance()->Delay(0.5f))
 	{
 		state = RTS;
 		lastState = inSpaceStation;
@@ -2204,10 +2244,7 @@ void SP2::MouseSelection(double dt)
 						}
 						else
 						{
-							while (!selectionTest.empty())
-							{
-								selectionTest.pop_back();
-							}
+							selectionTest.clear();
 						}
 
 						it++;

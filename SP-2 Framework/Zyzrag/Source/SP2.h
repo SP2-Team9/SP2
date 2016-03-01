@@ -43,6 +43,7 @@ class SP2 : public Scene
 		GEO_LIGHTBALL,
 		GEO_SPHERE,
 		GEO_TITLESCREEN,
+		GEO_HELPSCREEN,
 
 		GEO_FRONT,
 		GEO_BACK,
@@ -281,6 +282,7 @@ private:
 	bool complete4 = 0;
 	bool complete5 = 0;
 	
+	bool displayHelp;
 
 	int destroyed;
 
