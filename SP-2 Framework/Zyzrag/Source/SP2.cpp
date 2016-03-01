@@ -32,7 +32,6 @@ void SP2::Init()
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
 	state = MainMenu;
-	selection = nullptr;
 	widescreen = false;
     currMoney = 10000;
 	place = nullptr;
@@ -811,9 +810,9 @@ void SP2::renderShips(){
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}*/
 
-	if (!selectionTest.empty())
+	if (!selection.empty())
 	{
-		for (vector<Vehicles*>::iterator it = selectionTest.begin(); it != selectionTest.end(); ++it)
+		for (vector<Vehicles*>::iterator it = selection.begin(); it != selection.end(); ++it)
 		{
 			meshList[GEO_HITBOX] = MeshBuilder::GenerateSquare("Hitbox", Color(0, 1, 0), (*it)->interaction.GetMin(), (*it)->interaction.GetMax());
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -1196,6 +1195,240 @@ void SP2::renderGeneral(){
 	}
 }
 
+void SP2::renderNPC()
+{
+
+    //NPC
+    modelStack.PushMatrix();
+    modelStack.Translate(NPC1.Pos.x, NPC1.Pos.y, NPC1.Pos.z + move);
+
+    modelStack.PushMatrix();
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_NPC], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(-rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(-moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTLEG], false);
+    modelStack.PopMatrix();
+
+
+    modelStack.PopMatrix();
+}
+
+void SP2::renderNPC2()
+{
+    //npc
+    modelStack.PushMatrix();
+    modelStack.Translate(NPC2.Pos.x, NPC2.Pos.y, NPC2.Pos.z + move);
+
+    modelStack.PushMatrix();
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_NPC2], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(-rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(-moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PopMatrix();
+}
+
+void SP2::renderNPC3()
+{
+    //npc
+    modelStack.PushMatrix();
+    modelStack.Translate(NPC3.Pos.x, NPC3.Pos.y, NPC3.Pos.z + move);
+
+    modelStack.PushMatrix();
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_NPC3], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(-rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(-moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PopMatrix();
+}
+
+void SP2::renderNPC4()
+{
+    //npc
+    modelStack.PushMatrix();
+    modelStack.Translate(NPC4.Pos.x + move, NPC4.Pos.y, NPC4.Pos.z);
+    modelStack.Rotate(90, 0, 1, 0);
+
+    modelStack.PushMatrix();
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_NPC4], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(-rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(-moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PopMatrix();
+}
+
+void SP2::renderNPC5()
+{
+    //npc
+    modelStack.PushMatrix();
+    modelStack.Translate(NPC5.Pos.x + move, NPC5.Pos.y, NPC5.Pos.z);
+    modelStack.Rotate(90, 0, 1, 0);
+
+    modelStack.PushMatrix();
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_NPC4], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 2.2, 0);
+    modelStack.Rotate(-rotate, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTHAND], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_RIGHTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PushMatrix();
+    modelStack.Translate(0, 0.5, 0);
+    modelStack.Rotate(-moveleg, 1, 0, 0);
+    modelStack.Rotate(180, 1, 0, 0);
+    modelStack.Scale(0.5, 0.5, 0.5);
+    RenderMesh(meshList[GEO_LEFTLEG], false);
+    modelStack.PopMatrix();
+
+    modelStack.PopMatrix();
+}
+
 
 //Updates
 
@@ -1299,7 +1532,7 @@ void SP2::RTSUpdates(double dt){
 	if (Application::IsKeyPressed(VK_TAB) && sharedData::GetInstance()->Delay(0.5f))
 	{
 		Application::centerMouse();
-		selection = nullptr;
+        selection.clear();
 		place = nullptr;
 		if (lastState == inSpaceStation)
 		{
@@ -1741,7 +1974,9 @@ void SP2::inSpaceStationUpdates(double dt){
 }
 
 
-//Others
+
+
+//Hitbox
 
 void SP2::checkHitboxes(){
 	switch (HBcheck){
@@ -1799,11 +2034,7 @@ void SP2::shipHitboxCheck(){
                         cout << tempV2->health << tempV1->health << endl;
                         if (tempV2->health <= 0){
 
-                            if (selection == tempV2){
-
-                                selection = nullptr;
-
-                            }
+                            removeOneSelection(tempV2);
                             allExplosions.push_back(new Explosion(tempV2->maxHealth / 2, 50, tempV2->Pos));
                             delete tempV2;
                             allVehicles[j].erase(vitV2);
@@ -1831,17 +2062,13 @@ void SP2::shipHitboxCheck(){
 
             if (tempV1->health <= 0){
 
-                if (selection == tempV1){
-
-                    selection = nullptr;
-
-                }
-
+                removeOneSelection(tempV1);
                 allExplosions.push_back(new Explosion(tempV1->maxHealth / 2, 50, tempV1->Pos));
                 delete tempV1;
                 allVehicles[i].erase(vitV1);
 
                 break;
+
             }
             else{
 
@@ -1875,10 +2102,8 @@ void SP2::shipHitboxCheck(){
 			Vehicles* Vtemp = *it;
 			if (Vtemp->hitbox.AABBtoAABB(playerShip.hitbox))
 			{
-				if (selection == Vtemp)
-				{
-					selection = nullptr;
-				}
+                removeOneSelection(Vtemp);
+
 				delete Vtemp;
 				it = allVehicles[i].erase(it);
 			}
@@ -1900,10 +2125,7 @@ void SP2::stationHitboxCheck(){
 			if (Vtemp->hitbox.AABBtoAABB(station.hitbox, Vtemp->View) == true)
 			{
 				storedVehicles[i].push(Vtemp);
-				if (selection == Vtemp)
-				{
-					selection = nullptr;
-				}
+                removeOneSelection(Vtemp);
 				it = allVehicles[i].erase(it);
 			}
 			else
@@ -2047,10 +2269,7 @@ void SP2::asteroidHitboxCheck(){
             if (tempVeh->isDead == true)
             {
 
-                if (selection == tempVeh)
-                {
-                    selection = nullptr;
-                }
+                removeOneSelection(tempVeh);
                 delete tempVeh;
                 Vit = allVehicles[i].erase(Vit);
 
@@ -2201,6 +2420,10 @@ void SP2::asteroidHitboxCheck(){
 
 }
 
+
+
+
+//Others
 void SP2::MouseSelection(double dt)
 {
 	if (place == nullptr)
@@ -2218,7 +2441,7 @@ void SP2::MouseSelection(double dt)
 						Vehicles* Vtemp = *it;
 						if (Vtemp->interaction.withinPlane(initCursor, endCursor))
 						{
-							selectionTest.push_back(Vtemp);
+							selection.push_back(Vtemp);
 						}
 						it++;
 					}
@@ -2238,7 +2461,7 @@ void SP2::MouseSelection(double dt)
 						Vehicles* Vtemp = *it;
 						if (Vtemp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
 						{
-							selectionTest.push_back(Vtemp);
+							selection.push_back(Vtemp);
 							Bselected = true;
 							break;
 						}
@@ -2297,38 +2520,37 @@ void SP2::MouseSelection(double dt)
 		}
 	}
 
-	if (Application::IsKeyPressed(VK_RBUTTON) && selection != nullptr)
+	if (Application::IsKeyPressed(VK_RBUTTON) && !selection.empty())
 	{
 
+        bool setTarget = false;
 
 		for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
 
 			Asteroid* temp = *vitA;
+
 			if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay())){
 
-				selection->currAttackTarget = temp;
+                setTarget = true;
+                selectionSetTarget(temp);
 				break;
 
 			}
 			else{
 
-				selection->currAttackTarget = nullptr;
+                selectionRemovetarget();
 				vitA++;
 
 			}
 
 		}
 
-		if (selection->currAttackTarget == nullptr){
+        if (setTarget == false){
 
-			selection->setNewWayPoint(picker.WorldCoord().x, picker.WorldCoord().z);
-
-		}
-		else
-		{
-			selection->setNewWayPoint(selection->currAttackTarget->Pos.x, selection->currAttackTarget->Pos.z);
+            selectionSetWaypoints(picker.WorldCoord());
 
 		}
+
 
 	}
 	
@@ -2381,54 +2603,6 @@ void SP2::quests()
 
 }
 
-void SP2::renderNPC()
-{
-
-	//NPC
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC1.Pos.x, NPC1.Pos.y, NPC1.Pos.z + move);
-
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-
-	modelStack.PopMatrix();
-}
-
 void SP2::ballquest()
 {
 	if (currentQuest == ballQuest && complete == false)
@@ -2472,52 +2646,6 @@ void SP2::ballquest()
 
 }
 
-void SP2::renderNPC2()
-{
-	//npc
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC2.Pos.x, NPC2.Pos.y, NPC2.Pos.z + move);
-
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC2], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PopMatrix();
-}
-
 void SP2::asteroidquest()
 {
 	if (currentQuest == asteroidQuest && complete2 == false)
@@ -2540,52 +2668,6 @@ void SP2::asteroidquest()
 
 }
 
-void SP2::renderNPC3()
-{
-	//npc
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC3.Pos.x, NPC3.Pos.y, NPC3.Pos.z + move);
-
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC3], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PopMatrix();
-}	  
-
 void SP2::buyshipquest()
 {
 	if (currentQuest == buyshipQuest && complete3 == false)
@@ -2602,53 +2684,6 @@ void SP2::buyshipquest()
 	}
 }
 
-void SP2::renderNPC4()
-{
-	//npc
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC4.Pos.x + move, NPC4.Pos.y, NPC4.Pos.z);
-	modelStack.Rotate(90, 0, 1, 0);
-
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC4], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PopMatrix();
-}
-
 void SP2::abductionquest()
 {
 	if (currentQuest == abductionQuest && complete4 == false)
@@ -2657,53 +2692,81 @@ void SP2::abductionquest()
 	}
 }
 
-void SP2::renderNPC5()
-{
-	//npc
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC5.Pos.x + move, NPC5.Pos.y, NPC5.Pos.z);
-	modelStack.Rotate(90, 0, 1, 0);
+void SP2::selectionSetTarget(Asteroid* newTarget){
 
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC4], false);
-	modelStack.PopMatrix();
+    vector<Vehicles*>::iterator vitV = selection.begin();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
+    while (vitV != selection.end()){
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
+        Vehicles* tempV = *vitV;
+        tempV->currAttackTarget = newTarget;
+        vitV++;
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
+    }
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PopMatrix();
+   
 }
 
+void SP2::selectionRemovetarget(){
+
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
+
+        vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
+
+        while (vitV != allVehicles[i].end()){
+
+            Vehicles* tempV = *vitV;
+            tempV->currAttackTarget = nullptr;
+            vitV++;
+
+        }
+
+    }
+   
+}
+
+void SP2::selectionSetWaypoints(Vector3 newPosition){
+
+   vector<Vehicles*>::iterator vitV = selection.begin();
+  
+   while (vitV != selection.end()){
+
+       Vehicles* tempV = *vitV;
+
+       tempV->setNewWayPoint(newPosition.x, newPosition.z);
+       vitV++;
+
+   }
+
+
+}
+
+void SP2::removeOneSelection(Vehicles* removedVehicle){
+
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
+
+        vector<Vehicles*>::iterator vitV = selection.begin();
+
+        while (vitV != selection.end()){
+
+            Vehicles* tempV = *vitV;
+
+            if (tempV == removedVehicle){
+
+                vitV = selection.erase(vitV);
+
+            }
+            else{
+
+                vitV++;
+            }
+
+        }
+
+    }
+
+
+}
 
 // Tools
 

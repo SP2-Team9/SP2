@@ -34,8 +34,8 @@ using std::endl;
 
 
 
-class SP2 : public Scene
-{
+class SP2 : public Scene{
+
 	enum GEOMETRY_TYPE
 	{
 		GEO_AXES,
@@ -219,19 +219,24 @@ public:
 	void inSpaceStationUpdates(double dt);
 
 
+
 	//Others
 
     void quests();
     void ballquest();
-    void asteroidquest();
-	void buyshipquest();
-	void abductionquest();
+    void buyshipquest();
     void checkHitboxes();
+    void asteroidquest();
+	void abductionquest();  
 	void shipHitboxCheck();
 	void stationHitboxCheck();
 	void asteroidHitboxCheck();
+    void selectionRemovetarget();
 	void MouseSelection(double dt);
+    void selectionSetTarget(Asteroid* newTarget);
+    void removeOneSelection(Vehicles* removedVehicle);
 
+    void selectionSetWaypoints(Vector3 newPosition);
 	// Tools
 
 	void RenderMesh(Mesh* mesh, bool enableLight);
@@ -339,8 +344,7 @@ private:
 	Vehicles *smallShip;
 	Vehicles *largeShip;
 
-	Vehicles* selection;
-	vector<Vehicles*> selectionTest;
+    vector<Vehicles*> selection;
 
 	Vehicles* place;
 	int placeType;
