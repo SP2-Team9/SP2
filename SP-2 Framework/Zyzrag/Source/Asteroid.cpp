@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////
 /*!
 
-* \file AABB.cpp
+* \file Asteroid.cpp
 
 * \author: Goh ZHeng Yuan
 
@@ -26,7 +26,7 @@
 Asteroid::Asteroid(float size) : size(size), boom(false)
 {
 	health = 10 * size;
-	speed = 600 / size;
+	speed = 10000 / size;
 	curRange = 0;
 	maxRange = 5000;
 	SetHitboxSize(size);

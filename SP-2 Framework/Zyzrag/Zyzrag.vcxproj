@@ -107,6 +107,7 @@
     <ClCompile Include="Source\SP2.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\Vehicles.cpp" />
+    <ClCompile Include="source\Wave.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AABB.h" />
@@ -135,6 +136,7 @@
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vehicles.h" />
     <ClInclude Include="Source\Vertex.h" />
+    <ClInclude Include="source\Wave.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
