@@ -34,7 +34,7 @@ void SP2::Init()
 	LightView = Vector3(0, 1, 0);
 	state = MainMenu;
 	widescreen = false;
-    currMoney = 10000;
+    currMoney = 500;
 	place = nullptr;
 	placeType = 0;
 
@@ -668,46 +668,53 @@ void SP2::playerBulletCreation(double dt){
 
 void SP2::generateAsteroid()
 {
+	int minOffset = -2000;
+	int maxOffset = 2000;
+	int viewOffset = 500;
 	if (Vasteroid.size() < 40)
 	{
 		if (generate_range(0, 100) < 50)
 		{
 			Asteroid* asteroid = new Asteroid(generate_range(5, 100));
+			Vector3 target(generate_range(-viewOffset, viewOffset), 0, generate_range(-viewOffset, viewOffset));
 
 			switch (generate_range(0, 4))
 			{
 			case 0:
 
-				asteroid->SetPos(generate_range(-2400 + camera.position.x, 2400 + camera.position.x), 0, generate_range(2400 + camera.position.z, 2500 + camera.position.z));
-				asteroid->SetView(Vector3(generate_range(-2400, 2400), 0, -2500));
-
+				asteroid->SetPos(generate_range(camera.position.x + minOffset, camera.position.x + maxOffset), 0, generate_range(camera.position.z + maxOffset - 1000, camera.position.z + maxOffset));
+				asteroid->SetView((target - asteroid->Pos).Normalized());
+				Vasteroid.push_back(asteroid);
 				break;
 
 			case 1:
 
-				asteroid->SetPos(generate_range(-2400 + camera.position.x, 2400 + camera.position.x), 0, generate_range(-2400 + camera.position.z, -2500 + camera.position.z));
-				asteroid->SetView(Vector3(generate_range(-2400, 2400), 0, 2500));
+				asteroid->SetPos(generate_range(camera.position.x + minOffset, camera.position.x + maxOffset), 0, generate_range(camera.position.z + minOffset - 1000, camera.position.z + minOffset));
+				asteroid->SetView((target - asteroid->Pos).Normalized());
+				Vasteroid.push_back(asteroid);
 
 				break;
 
 			case 2:
 
-				asteroid->SetPos(generate_range(2400 + camera.position.x, 2500 + camera.position.x), 0, generate_range(-2400 + camera.position.z, 2400 + camera.position.z));
-				asteroid->SetView(Vector3(-2500, 0, generate_range(-2400, 2400)));
+				asteroid->SetPos(generate_range(camera.position.x + maxOffset - 1000, camera.position.x + maxOffset), 0, generate_range(camera.position.z + minOffset, camera.position.z + maxOffset));
+				asteroid->SetView((target - asteroid->Pos).Normalized());
+				Vasteroid.push_back(asteroid);
 
 				break;
 
 			case 3:
 
-				asteroid->SetPos(generate_range(-2400 + camera.position.x, -2500 + camera.position.x), 0, generate_range(-2400 + camera.position.z, 2400 + camera.position.z));
-				asteroid->SetView(Vector3(2500, 0, generate_range(-2400, 2400)));
+				asteroid->SetPos(generate_range(camera.position.x + minOffset - 1000, camera.position.x + minOffset), 0, generate_range(camera.position.z + minOffset, camera.position.z + maxOffset));
+				asteroid->SetView((target - asteroid->Pos).Normalized());
+				Vasteroid.push_back(asteroid);
 
 				break;
 
 			}
 
 
-			Vasteroid.push_back(asteroid);
+			
 		}
 	}
 }
@@ -1967,7 +1974,7 @@ void SP2::inPlayerShipUpdates(double dt){
 	{
 		state = RTS;
 		lastState = inPlayerShip;
-		camera.PointAt(playerShip, 100, -200);
+		camera.PointAt(playerShip, 50, -200);
 	}
 
 	if (playerShip.isDead == true)
@@ -2006,7 +2013,7 @@ void SP2::inSpaceStationUpdates(double dt){
 		lastState = inSpaceStation;
 		LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
 		LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
-		camera.PointAt(playerShip, 100, -200);
+		camera.PointAt(playerShip, 50, -200);
 	}
 
 	NPCUpdates(dt);

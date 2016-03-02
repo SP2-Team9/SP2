@@ -327,10 +327,34 @@ Third person movement
 /******************************************************************************/
 void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 {
-	getYawAndPitch(dt);
-
 	if (veh.delay > 0)
 		veh.delay -= dt;
+
+	if (Application::IsKeyPressed(VK_MENU))
+	{
+		getYawAndPitch(dt);
+		if (pitch != 0)
+		{
+			Mtx44 rotation;
+			rotation.SetToRotation(pitch * -1, right.x, 0, right.z);
+			view = rotation * view;
+			up = rotation * up;
+			right = rotation * right;
+		}
+
+		if (yaw != 0)
+		{
+			Mtx44 rotation;
+			rotation.SetToRotation(yaw, 0, 1, 0);
+			view = rotation * view;
+			up = rotation * up;
+			right = rotation * right;
+		}
+	}
+	else
+	{
+		PointAt(veh, 10, -30);
+	}
 
 	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 100)
 	{
@@ -340,23 +364,6 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 	if (Application::IsKeyPressed(VK_LCONTROL) && veh.thrust > -40)
 	{
 		veh.thrust -= 10.f * dt;
-	}
-	if (pitch != 0)
-	{
-		Mtx44 rotation;
-		rotation.SetToRotation(pitch * -1, right.x, 0, right.z);
-		view = rotation * view;
-		up = rotation * up;
-		right = rotation * right;
-	}
-
-	if (yaw != 0)
-	{
-		Mtx44 rotation;
-		rotation.SetToRotation(yaw, 0, 1, 0);
-		view = rotation * view;
-		up = rotation * up;
-		right = rotation * right;
 	}
 	
 	if (Application::IsKeyPressed('W'))
