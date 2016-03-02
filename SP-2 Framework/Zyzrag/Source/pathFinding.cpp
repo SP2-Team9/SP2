@@ -33,7 +33,8 @@
 pathFinding::pathFinding() :
 currentLocation(Vector3(0, 0, 0)),
 lastWayPointDirection(Vector3(0, 0, 0)),
-speed(0)
+currSpeed(0),
+maxSpeed(0)
 {
 
 }
@@ -56,7 +57,8 @@ speed(0)
 /////////////////////////////////////////////////////////////////
 pathFinding::pathFinding(Vector3 location, Vector3 endlocation) :
 currentLocation(location),
-speed(0)
+currSpeed(0),
+maxSpeed(0)
 {
 	wayPoints.push(endlocation);
 
@@ -103,7 +105,7 @@ void pathFinding::pathRoute(double dt){
 	if (!wayPoints.empty()){
 
 		Vector3 view = (wayPoints.front() - currentLocation).Normalized();
-		currentLocation += view * speed * dt;
+		currentLocation += view * currSpeed * dt;
 		lastWayPointDirection = view;
 		
 
@@ -117,7 +119,7 @@ void pathFinding::pathRoute(double dt){
 
 	if (wayPoints.empty()){
 
-        currentLocation += lastWayPointDirection * speed * dt;
+        currentLocation += lastWayPointDirection * currSpeed * dt;
 
 	}
 
@@ -221,7 +223,9 @@ void pathFinding::setInitialWayPoints(Vector3 location, Vector3 view){
 
 void pathFinding::setInitialDirection(Vector3 view)
 {
+
 	lastWayPointDirection = view;
+
 }
 
 
@@ -387,14 +391,45 @@ Vector3 pathFinding::getLastWayPointDirection(){
 
 * \date: 18 feb 2016
 
-* \description: set the speed of the vehicle
+* \description: set the currSpeed of the vehicle
 */
 
 /////////////////////////////////////////////////////////////////
-void pathFinding::setSpeed(float newSpeed){
+void pathFinding::setCurrSpeed(float newSpeed){
+
+    if (newSpeed < 0){
+
+        newSpeed = 0;
+
+    }
+    else if (newSpeed > maxSpeed){
+
+        newSpeed = maxSpeed;
+
+    }
+
+    currSpeed = newSpeed;
+
+}
+
+////////////////////////////////////////////////////////////////
+
+/*!
+
+* \method: setMaxSpeed
+
+* \author: Wong Keng Han Ashley
+
+* \date: 18 feb 2016
+
+* \description: set the maxSpeed of the vehicle
+*/
+
+/////////////////////////////////////////////////////////////////
+void pathFinding::setMaxSpeed(float newSpeed){
 
 
-    speed = newSpeed;
+    maxSpeed = newSpeed;
 
 
 }
@@ -414,13 +449,38 @@ void pathFinding::setSpeed(float newSpeed){
 */
 
 /////////////////////////////////////////////////////////////////
-float pathFinding::getSpeed(){
+float pathFinding::getCurrSpeed(){
 
 
-    return speed;
+    return currSpeed;
 
 
 }
+
+
+////////////////////////////////////////////////////////////////
+
+/*!
+
+* \method: getmaxSpeed
+
+* \author: Wong Keng Han Ashley
+
+* \date: 19 feb 2016
+
+* \description: return maxSpeed
+
+*/
+
+/////////////////////////////////////////////////////////////////
+float pathFinding::getMaxSpeed(){
+
+
+    return maxSpeed;
+
+
+}
+
 
 
 

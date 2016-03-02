@@ -85,7 +85,8 @@ void Application::Init()
 	screenHeight = mode->height;
 	//screenWidth = 1920;
 	//screenHeight = 1080;
-	m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", glfwGetPrimaryMonitor(), NULL);
+
+	m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", NULL, NULL);
 
 	//Set window Size
 	glfwSetWindowSizeCallback(m_window, resize_callback);
@@ -138,6 +139,9 @@ void Application::Run()
         m_timer.waitUntil(frameTime);       // Frame rate limiter. Limits each frame to a specified time in ms.   
 		
 	} //Check if the ESC key had been pressed or if the window had been closed
+
+    scene->Exit();
+	std::cout << "DELETING SCENE" << std::endl;
 	delete scene;
 }
 

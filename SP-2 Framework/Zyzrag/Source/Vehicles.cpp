@@ -79,12 +79,12 @@ bulletCooldown(0)
 Vehicles::Vehicles(Vector3 position, Vector3 viewDirection, float newSpeed, int newHealth, float newFireRate, float newBulletDamage) :
 board(false),
 isDead(false),
-bulletCooldown(0)
-{
+bulletCooldown(0){
+
     Vector3 initialPosition = position + viewDirection.Normalize();
     Pos = position;
     View = viewDirection;
-    newVehicle.setSpeed(newSpeed);
+    newVehicle.setMaxSpeed(newSpeed);
     newVehicle.setCurrentLocation(position);
 
     initialYaw = getRotationAngle(viewDirection);
@@ -93,6 +93,7 @@ bulletCooldown(0)
 	health = maxHealth;
     bulletFireRate = newFireRate;
     bulletDamage = newBulletDamage;
+
 }
 
 /////////////////////////////////////////////////////////////////
@@ -136,6 +137,7 @@ void Vehicles::update(double dt){
 
     if (!isDead){
 
+        speedControl(dt);
         newVehicle.pathRoute(dt);
         Pos = newVehicle.getCurrentLocation();
 
@@ -268,7 +270,7 @@ float Vehicles::getRotationAngle(){
 /////////////////////////////////////////////////////////////////
 void Vehicles::setThrust(float newThrust){
 
-    newVehicle.setSpeed(newThrust);
+    newVehicle.setMaxSpeed(newThrust);
 
 }
 
@@ -362,6 +364,53 @@ bool Vehicles::checkMaxDistance(Vector3 playerPos){
 
 }
 
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: speedControl
+
+* \author: Wong Keng Han Ashley
+
+* \date: 1st March 2016
+
+* \description: reduce speed if it's near asteroid and increase speed when far away
+
+*/
+/////////////////////////////////////////////////////////////////
+void Vehicles::speedControl(double dt){
+
+    if (currAttackTarget != nullptr){
+
+        float distance = newVehicle.getCurrentLocation().distanceBetween2points(currAttackTarget->Pos);
+
+        if (distance <= 150 &&
+            newVehicle.getCurrSpeed() > 0
+            )
+        {
+
+            newVehicle.setCurrSpeed(newVehicle.getCurrSpeed() - dt * 15);
+
+            std::cout << "Hello" << std::endl;
+        }
+        else if(newVehicle.getCurrSpeed() < newVehicle.getMaxSpeed()){
+
+            newVehicle.setCurrSpeed(newVehicle.getCurrSpeed() + dt * 10);
+
+        }
+
+
+    }
+    else{
+
+        if (newVehicle.getCurrSpeed() < newVehicle.getMaxSpeed()){
+
+            newVehicle.setCurrSpeed(newVehicle.getCurrSpeed() + dt * 10);
+
+        }
+
+    }
+
+}
 
 
 

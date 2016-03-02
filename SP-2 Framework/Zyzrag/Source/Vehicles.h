@@ -44,6 +44,7 @@ public:
    
 	void update(double dt);
     void initialMoveDirection();
+    void speedControl(double dt);
     void setThrust(float newThrust);
 	void setNewWayPoint(float x, float z);
 	void initialMoveDirection(float x, float z);

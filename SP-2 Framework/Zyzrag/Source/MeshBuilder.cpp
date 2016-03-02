@@ -221,6 +221,7 @@ Mesh* MeshBuilder::GenerateQuad(const std::string &meshName, Color color, float 
 	mesh->mode = Mesh::DRAW_TRIANGLE_STRIP;
 
 	return mesh;
+
 }
 
 /******************************************************************************/
