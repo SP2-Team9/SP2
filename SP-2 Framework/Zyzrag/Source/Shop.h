@@ -15,22 +15,27 @@
 */
 /////////////////////////////////////////////////////////////////
 #include "Object.h"
+#include "PlayerVehicle.h"
 #include "pathFinding.h"
 
 
 struct Shop{
 
 
-    Shop(int Health, int Damage, int fireRate, int numberOfSmallShips, int numMediumShips, int numLargeShip);
-    ~Shop();
+	void increaseHealth();
+	void increaseDamage();
+	void increaseFireRate();
+	
+	int damageUpgradePrice;
+	int healthUpgradePrice;
+	int fireRateUpgradePrice;
 
-    int playerShipHealth;
-    int playerShipDamage;
-    int playerShipFireRate;
+	Shop(PlayerVehicle& playerShip);
+	~Shop();
     
-    int numberOfSmallShips;
-    int numberOfLargeShips;
-    int numberOfMediumShips;
+
+	PlayerVehicle* playerVehicle;
+
 
 };
 

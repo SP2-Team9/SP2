@@ -28,20 +28,41 @@
 
 */
 /////////////////////////////////////////////////////////////////
-Shop::Shop(int Health, int Damage, int fireRate, int numSmallShips, int numMediumShips, int numLargeShips){
+Shop::Shop(PlayerVehicle& playerShip):
+damageUpgradePrice(250),
+healthUpgradePrice(75),
+fireRateUpgradePrice(300)
+{
 
-   playerShipHealth = Health;
-   playerShipDamage = Damage;
-   playerShipFireRate = fireRate;
+	playerVehicle = &playerShip;
 
-   numberOfSmallShips = numSmallShips;
-   numberOfMediumShips = numMediumShips;
-   numberOfLargeShips = numLargeShips;
+}
+
+Shop::~Shop(){
+
 
 
 }
 
-Shop::~Shop()
-{
+void Shop::increaseHealth(){
+
+	healthUpgradePrice *= 2;
+	playerVehicle->maxHealth += 10;
+	playerVehicle->health = playerVehicle->maxHealth;
+
+}
+
+void Shop::increaseDamage(){
+
+	damageUpgradePrice *= 2;
+	playerVehicle->bulletDamage += 10;
+
+}
+
+void Shop::increaseFireRate(){
+
+	fireRateUpgradePrice *= 2;
+	playerVehicle->bulletFireRate += 100;
+
 
 }

@@ -22,11 +22,14 @@ SP2::SP2(){
 }
 
 SP2::~SP2(){
+
+
 }
 
 void SP2::Init()
 {
-	playerShop = new Shop(10, 10, 100, 0, 0, 0);
+
+	playerShop = new Shop(playerShip);
 	
 	enableLight = true;
 	displayHelp = false;
@@ -34,7 +37,7 @@ void SP2::Init()
 	LightView = Vector3(0, 1, 0);
 	state = MainMenu;
 	widescreen = false;
-    currMoney = 10000;
+    currMoney = 500;
 	place = nullptr;
 	placeType = 0;
 
@@ -586,7 +589,7 @@ void SP2::lightInit()
 
 void SP2::shopInit()
 {
-	playerShop = new Shop(100, 10, 100, 0, 0, 0);
+	playerShop = new Shop(playerShip);
 
 	objSize = static_cast<float>(Application::screenWidth) / 1920.f;
 	shopState = Main;
@@ -654,12 +657,12 @@ void SP2::playerBulletCreation(double dt){
 
     if (Application::IsKeyPressed(VK_LBUTTON)){
 
-        if (playerShip.fireBullets(playerShop->playerShipFireRate)){
+        if (playerShip.fireBullets()){
 
-            Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos, playerShop->playerShipDamage);
-
+            Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos, playerShip.bulletDamage);
             allBullets.push_back(newBullet);
 			shootingsfx->play3D("Sound/shooting.mp3", irrklang::vec3df(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z));
+
         }
 
     }
@@ -898,14 +901,14 @@ void SP2::renderShopMenu()
 
 		RenderTextOnScreen(meshList[GEO_TEXT], "Player Ship Upgrades", Color(0, 1, 0), objSize * 8, 0.3f * screenWidth, 0.45f * screenHeight, 9);
 
-		RenderTextOnScreen(meshList[GEO_TEXT], "Damage: " + std::to_string(playerShop->playerShipDamage), Color(0, 1, 0), objSize * 5, 0.13f * screenWidth, 0.15f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "$100", Color(0, 1, 0), objSize * 5, 0.17f * screenWidth, 0.10f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Damage: " + std::to_string(playerShip.bulletDamage), Color(0, 1, 0), objSize * 5, 0.13f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$" + std::to_string(playerShop->damageUpgradePrice), Color(0, 1, 0), objSize * 5, 0.17f * screenWidth, 0.10f * screenHeight, 9);
 
-		RenderTextOnScreen(meshList[GEO_TEXT], "Fire Rate: " + std::to_string(playerShop->playerShipFireRate / 100) + "RPS", Color(0, 1, 0), objSize * 5, 0.4f * screenWidth, 0.15f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "$50", Color(0, 1, 0), objSize * 5, 0.48f * screenWidth, 0.10f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Fire Rate: " + std::to_string(playerShip.bulletFireRate / 100) + "RPS", Color(0, 1, 0), objSize * 5, 0.4f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$" + std::to_string(playerShop->fireRateUpgradePrice), Color(0, 1, 0), objSize * 5, 0.48f * screenWidth, 0.10f * screenHeight, 9);
 
 		RenderTextOnScreen(meshList[GEO_TEXT], "Increase Max Health", Color(0, 1, 0), objSize * 5, 0.68f * screenWidth, 0.15f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "$200", Color(0, 1, 0), objSize * 5, 0.775f * screenWidth, 0.10f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$" + std::to_string(playerShop->healthUpgradePrice), Color(0, 1, 0), objSize * 5, 0.775f * screenWidth, 0.10f * screenHeight, 9);
 
 		RenderOnScreen(meshList[GEO_ATTACKUP], 0.2f * screenWidth, 0.3f * screenHeight, 2, 0.1f * objSize, 90, 0, 0);
 		RenderOnScreen(meshList[GEO_FIRERATEUP], 0.5f * screenWidth, 0.3f * screenHeight, 2, 0.1f *  objSize, 90, 0, 0);
@@ -1648,27 +1651,27 @@ void SP2::shopUpdates(double dt)
 			}
 			else if (mouseX > 0.1f * screenWidth && mouseX < 0.3f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-                if (currMoney - 100 >= 0)
+				if (currMoney - playerShop->damageUpgradePrice >= 0)
 				{
-                    currMoney -= 100;
-					playerShop->playerShipDamage += 10;
+					currMoney -= playerShop->damageUpgradePrice;
+					playerShop->increaseDamage();
 				}
 			}
 			else if (mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-                if (currMoney - 50 >= 0)
+				if (currMoney - playerShop->fireRateUpgradePrice >= 0)
 				{
-                    currMoney -= 50;
-					playerShop->playerShipFireRate += 20;
+					currMoney -= playerShop->fireRateUpgradePrice;
+					playerShop->increaseFireRate();
+
 				}
 			}
 			else if (mouseX > 0.7f * screenWidth && mouseX < 0.9f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-                if (currMoney - 200 >= 0)
+				if (currMoney - playerShop->healthUpgradePrice >= 0)
 				{
-                    currMoney -= 200;
-                    playerShip.maxHealth += 10;
-                    playerShip.health = playerShip.maxHealth;
+					currMoney -= playerShop->healthUpgradePrice;
+					playerShop->increaseHealth();
 
 				}
 			}
@@ -2260,6 +2263,7 @@ void SP2::asteroidHitboxCheck(){
                 {
                     Ait++;
                 }
+
             }
 
             if ((*Vit)->isDead == true)
@@ -2281,8 +2285,8 @@ void SP2::asteroidHitboxCheck(){
     // Player Ship to Asteroid
     for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
     {
-        if ((*Ait)->hitbox.AABBtoAABB(playerShip.hitbox))
-        {
+        if ((*Ait)->hitbox.AABBtoAABB(playerShip.hitbox)){
+
             playerShip.health -= (*Ait)->size * 2;
             Vector3 ExploCenter = playerShip.Pos + (*Ait)->Pos;
             ExploCenter /= 2;
@@ -2298,12 +2302,12 @@ void SP2::asteroidHitboxCheck(){
     }
 
     //Asteroid to Asteroid
-    for (vector<Asteroid*>::iterator A1it = Vasteroid.begin(); A1it != Vasteroid.end();)
-    {
+    for (vector<Asteroid*>::iterator A1it = Vasteroid.begin(); A1it != Vasteroid.end();){
+
         int ast1Health = (*A1it)->health;
 
-        for (vector<Asteroid*>::iterator A2it = Vasteroid.begin(); A2it != Vasteroid.end();)
-        {
+        for (vector<Asteroid*>::iterator A2it = Vasteroid.begin(); A2it != Vasteroid.end();){
+
             if ((*A1it)->hitbox.AABBtoAABB((*A2it)->hitbox) && (*A1it) != (*A2it)){
                      
                 (*A1it)->health -= (*A2it)->health;

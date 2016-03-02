@@ -254,6 +254,7 @@ public:
 
 
 private:
+
 	irrklang::ISoundEngine* shootingsfx = irrklang::createIrrKlangDevice();
 	irrklang::ISoundEngine* explosionsfx = irrklang::createIrrKlangDevice();
 
@@ -363,6 +364,7 @@ private:
 	MS modelStack, viewStack, projectionStack;
 
 	QUEST currentQuest = noQuest;
+
 };
 
 
