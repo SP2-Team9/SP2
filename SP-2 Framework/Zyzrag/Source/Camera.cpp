@@ -98,9 +98,8 @@ Points at object
 void Camera::PointAt(Object& obj, float height, float offset)
 {
 	target = obj.Pos;
-	position.z = target.z + offset;
-	position.x = target.x;
-	position.y = target.y + height;
+	position = target + (obj.View * offset);
+	position.y += height;
 	view = position - target;
 	right = view.Cross(Vector3(0, 1, 0));
 	up = right.Cross(view);
@@ -505,21 +504,25 @@ void Camera::YawRotation(PlayerVehicle& veh, double dt)
 	float yaw = 0.f;
 	if (Application::IsKeyPressed('A'))
 	{
-		yaw = -1 * 50.f * dt;
+		yaw = -1 * 80.f * dt;
 	}
 	else if (Application::IsKeyPressed('D'))
 	{
-		yaw = 50.f * dt;
+		yaw = 80.f * dt;
 	}
 
-	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 100)
+	if (Application::scrollY > 0 && view.getMagnitude() > 50)
 	{
-		veh.thrust += +10.f * dt;
+		Vector3 normView = view.Normalized();
+		view -= normView * 10;
+		Application::scrollY = 0;
 	}
 
-	if (Application::IsKeyPressed(VK_LCONTROL) && veh.thrust > -40)
+	if (Application::scrollY < 0 && view.getMagnitude() < 300)
 	{
-		veh.thrust -= 10.f * dt;
+		Vector3 normView = view.Normalized();
+		view += normView * 10;
+		Application::scrollY = 0;
 	}
 
 	target = veh.Pos;
@@ -566,6 +569,6 @@ void Camera::DisableCursor()
 /******************************************************************************/
 void Camera::getYawAndPitch(double dt)
 {
-	yaw = mouseSpeed * dt * static_cast<float>(800 / 2 - mouseX);
-	pitch = mouseSpeed * dt * static_cast<float>(600 / 2 - mouseY);
+	yaw = mouseSpeed * dt * static_cast<float>(Application::screenWidth/ 2 - mouseX);
+	pitch = mouseSpeed * dt * static_cast<float>(Application::screenHeight / 2 - mouseY);
 }

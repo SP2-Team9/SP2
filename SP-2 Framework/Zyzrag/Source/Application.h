@@ -23,6 +23,9 @@ public:
 	static int screenWidth;
 	static int screenHeight;
 
+	static double scrollX;
+	static double scrollY;
+
 private:
 
 	//Declare a window object

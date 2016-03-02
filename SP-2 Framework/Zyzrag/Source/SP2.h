@@ -185,6 +185,7 @@ public:
     void playerBulletCreation(double dt);
 	
 	// Renders
+
 	void renderHelp();
 	void renderNPC();
 	void renderNPC2();

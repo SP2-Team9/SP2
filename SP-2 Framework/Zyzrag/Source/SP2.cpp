@@ -22,7 +22,6 @@ SP2::SP2(){
 }
 
 SP2::~SP2(){
-	
 }
 
 void SP2::Init()
@@ -457,6 +456,7 @@ void SP2::Render()
 	modelStack.PushMatrix();
 	RenderMesh(meshList[GEO_SELECTION], false);
 	modelStack.PopMatrix();
+	delete meshList[GEO_SELECTION];
 
 	renderAllHitbox();
 	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
@@ -494,6 +494,7 @@ void SP2::Exit()
     {
         delete *it;
         it = Vasteroid.erase(it);
+
     }
 
     std::cout << "Clearing Bullets" << std::endl;
@@ -504,7 +505,6 @@ void SP2::Exit()
     }
 
     delete playerShop;
-
 	
 	// Cleanup VBO here
 	glDeleteVertexArrays(1, &m_vertexArrayID);
@@ -662,7 +662,7 @@ void SP2::playerBulletCreation(double dt){
             Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos, playerShop->playerShipDamage);
 
             allBullets.push_back(newBullet);
-			shootingsfx->play3D("Sound/shooting.mp3", irrklang::vec3df(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z));
+			shootingsfx->play3D("Sound//shooting.mp3", irrklang::vec3df(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z));
         }
 
     }
@@ -869,6 +869,7 @@ void SP2::renderShips(){
 			RenderMesh(meshList[GEO_HITBOX], false);
 			modelStack.PopMatrix();
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			delete meshList[GEO_HITBOX];
 		}
 
 	}
@@ -1088,7 +1089,7 @@ void SP2::renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health
         modelStack.Rotate(asteroidHealthPitch, 0, 0, 1);
         modelStack.Scale(1, 1, health / 2);
         RenderMesh(meshList[GEO_HEALTHBAR], false);
-
+		delete meshList[GEO_HEALTHBAR];
         modelStack.PopMatrix();
 
 
