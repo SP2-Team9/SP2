@@ -75,7 +75,6 @@ void PlayerVehicle::update(double dt, vector<AABB> hitbox){
 				if (thrust < -40)
 					thrust = -40;
 			}
-
 		}
 	}
 
@@ -132,7 +131,7 @@ void PlayerVehicle::reset()
 	True when bullet cooldown is more then fire rate. else false 
 */
 /******************************************************************************/
-bool PlayerVehicle::fireBullets(int bulletFireRate){
+bool PlayerVehicle::fireBullets(){
 
     float currFireRate = 100 / static_cast<float>(bulletFireRate);
 
