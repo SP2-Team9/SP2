@@ -32,7 +32,7 @@ void SP2::Init()
 	widescreen = false;
 	kidnap = false;
 	pickup = false;
-    currMoney = 1000;
+    currMoney = 10000;
 	place = nullptr;
 	placeType = 0;
 	destroyed = 0;
@@ -2670,6 +2670,7 @@ void SP2::MouseSelection(double dt)
 				place->View.Set(picker.WorldCoord().x - place->Pos.x, picker.WorldCoord().y - place->Pos.y, picker.WorldCoord().z - place->Pos.z);
 				place->View.Normalize();
 				place->initialYaw = place->getRotationAngle(place->View);
+				place->update(dt);
 			}
 		}
 		else if (hold == true)
