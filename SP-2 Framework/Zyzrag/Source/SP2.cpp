@@ -37,6 +37,7 @@ void SP2::Init()
 	shopInit();
 	WorldHitboxInit();
 	objectsInit();
+	npcInit();
 
 	// Set background color to dark blue
 	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
@@ -201,6 +202,10 @@ void SP2::Init()
 	meshList[GEO_NPC4] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
 	meshList[GEO_NPC4]->textureID = LoadTGA("Image//headnbody_uv4.tga");
 
+	meshList[GEO_NPC5] = MeshBuilder::GenerateOBJ("NPChead", "OBJ//headnbody.obj");
+	meshList[GEO_NPC5]->textureID = LoadTGA("Image//headnbody_uv4.tga");
+
+
     meshList[GEO_LEFTHAND] = MeshBuilder::GenerateOBJ("left hand", "OBJ//lefthand.obj");
     meshList[GEO_LEFTHAND]->textureID = LoadTGA("Image//arms_uv.tga");
 
@@ -220,6 +225,7 @@ void SP2::Init()
 	meshList[GEO_ASTEROID]->textureID = LoadTGA("Image//AM3.tga");
 
 	meshList[GEO_SPHERE] = MeshBuilder::GenerateSphere("ball", Color(1, 1, 1), 10, 20);
+	meshList[GEO_SPHERE]->textureID = LoadTGA("Image//ballquest.tga");
 
 	meshList[GEO_INNERSTATION] = MeshBuilder::GenerateOBJ("Test", "OBJ//innerstation.obj");
 	meshList[GEO_INNERSTATION]->textureID = LoadTGA("Image//innerstation.tga");
@@ -228,7 +234,11 @@ void SP2::Init()
     rotate = 0.f;
     moveleg = 0.f;
 	count = 0.f;
+	count2 = 0.f;
+	count3 = 0.f;
+	count4 = 0.f;
 	destroyed = 0;
+	shipbought = 0;
 
     meshList[GEO_EXPLOSION] = MeshBuilder::GenerateQuad("Explosion", Color(1, 1, 1), 1.f, 1.f);
     meshList[GEO_EXPLOSION]->textureID = LoadTGA("Image//explosion.tga");
@@ -270,12 +280,14 @@ void SP2::Update(double dt)
 	case inSpaceStation:
 
 		inSpaceStationUpdates(dt);
+		quests();
 
 		break;
 
 	case inPlayerShip:
 
 		inPlayerShipUpdates(dt);
+		quests();
 
 		break;
 
@@ -364,20 +376,16 @@ void SP2::Render()
         renderShips();
         renderWayPoints();
 		renderFightingUI();
-		quests();
-		ballquest();
-		asteroidquest();
-		buyshipquest();
-		abductionquest();
 		break;
 
 	case inSpaceStation:
 		renderBullets();
 		renderExplosion();
 		renderNPC();
-		renderNPC2();
-		renderNPC3();
-		renderNPC4();
+		//renderNPC2();
+		//renderNPC3();
+		//renderNPC4();
+		renderNPC5();
 		renderShips();
 		renderFightingUI();
 		quests();
@@ -427,7 +435,7 @@ void SP2::Exit()
 	}
 
 	std::cout << "Clearing Explosions" << std::endl;
-	for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end(); ++it)
+	for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end();)
 	{
 		Explosion* temp = *it;
 		delete temp;
@@ -472,24 +480,6 @@ void SP2::objectsInit()
 	LastLocation.SetUp(0, 1, 0);
 	LastLocation.SetRight(1, 0, 0);
 
-	NPC1.SetPos(3, 0, 1);
-	NPC1.SetHitboxSize(2);
-
-	NPC2.SetPos(5, 0, 7);
-	NPC2.SetHitboxSize(4);
-
-	NPC3.SetPos(4, 0, -4);
-	NPC3.SetHitboxSize(4);
-
-	NPC4.SetPos(-5, 0, -1);
-	NPC4.SetHitboxSize(4);
-
-	NPC5.SetPos(-5, 0, -5);
-	NPC5.SetHitboxSize(4);
-
-	ball.SetPos(4, 0.1, 7);
-	ball.SetHitboxSize(2);
-
 	//Player Vehicle
 	playerShip.SetPos(0, 10, 0);
 	playerShip.SetView(0, 0, 1);
@@ -505,6 +495,40 @@ void SP2::objectsInit()
 	storedVehicles.insert(std::pair<int, stack<Vehicles*>>(GEO_SMALLSHIP, stackSmallVehicles));
 	storedVehicles.insert(std::pair<int, stack<Vehicles*>>(GEO_MIDSHIP, stackMidVehicles));
 	storedVehicles.insert(std::pair<int, stack<Vehicles*>>(GEO_LARGESHIP, stackLargeVehicles));
+}
+
+void SP2::npcInit()
+{
+	NPC5.SetPos(-6, 0, -7);
+	NPC5.SetHitboxSize(2);
+
+	ball.SetPos(4, 0.1, 7);
+	ball.SetHitboxSize(1);
+
+	NPC* newNPC = new NPC(Vector3(2, 0, -7), Vector3(0,0,1), 0.5f, 2, 3, GEO_NPC);
+	newNPC->questName = "Find my ball";
+	newNPC->questDialogue = "Find the ball and give it to pucboi: ";
+	newNPC->questCompleteDialogue = "GUD BALL KTHXBYE";
+	allNPC.push_back(newNPC);
+
+	newNPC = new NPC(Vector3(2, 0, 3), Vector3(1, 0, 0), 0.5f, 2, 3, GEO_NPC2);
+	newNPC->questName = "Too much asteroids, help KILL 5 kthx";
+	newNPC->questDialogue = "DE_STROY asteroids: " + destroyed;
+	newNPC->questCompleteDialogue = "YU HAV DONE W3LL";
+	allNPC.push_back(newNPC);
+
+	newNPC = new NPC(Vector3(-5, 0, 5), Vector3(0, 0, 1), 0.5f, 2, 4, GEO_NPC3);
+	newNPC->questName = "buy any ship skillfully 3 times";
+	newNPC->questDialogue = "Buy ships: ";
+	newNPC->questCompleteDialogue = "GUD JOB YU ARE MLG";
+	allNPC.push_back(newNPC);
+
+
+	newNPC = new NPC(Vector3(-3, 0, -7), Vector3(0, 0, 1), 0.5f, 2, 5, GEO_NPC4);
+	newNPC->questName = "help meh kidnapz cuti3 pi3";
+	newNPC->questDialogue = "Abduction: ";
+	newNPC->questCompleteDialogue = "teim for sum lovey dovey stuff ohhh yeaaaa";
+	allNPC.push_back(newNPC);
 }
 
 void SP2::shopInit()
@@ -1090,86 +1114,13 @@ void SP2::renderDistances(){
 //Updates
 
 void SP2::NPCUpdates(double dt){
-
-	//npc move
-	if (talking == false)
+	for (vector<NPC*>::iterator it = allNPC.begin(); it != allNPC.end(); ++it)
 	{
-
-		if (move < 2 && re == false)
-		{
-			move += (float)(2 * dt);
-
-
-			if (move >= 2)
-			{
-				re = true;
-
-			}
-
-		}
-		if (move >= -2 && re == true)
-		{
-			move -= (float)(2 * dt);
-			if (move <= -2)
-			{
-				re = false;
-
-
-			}
-		}
-
-
-		if (rotate < 5 && restart == false)
-		{
-			rotate += (float)(20 * dt);
-
-
-			if (rotate >= 5)
-			{
-				restart = true;
-
-			}
-
-		}
-		if (rotate >= -5 && restart == true)
-		{
-			rotate -= (float)(20 * dt);
-			if (rotate <= -5)
-			{
-				restart = false;
-
-
-			}
-		}
-		if (moveleg < 5 && restart2 == false)
-		{
-			moveleg += (float)(20 * dt);
-
-
-			if (moveleg >= 5)
-			{
-				restart2 = true;
-
-			}
-
-		}
-		if (moveleg >= -5 && restart2 == true)
-		{
-			moveleg -= (float)(20 * dt);
-			if (moveleg <= -5)
-			{
-				restart2 = false;
-
-
-			}
-		}
+		(*it)->update(dt);
 	}
 
-	NPC1.updateHitbox();
-	NPC2.updateHitbox();
-	NPC3.updateHitbox();
-	NPC4.updateHitbox();
 	ball.updateHitbox();
+	NPC5.updateHitbox();
 }
 
 void SP2::RTSUpdates(double dt){
@@ -1338,6 +1289,7 @@ void SP2::shopUpdates(double dt)
 				smallShip->SetHitboxSize(-10, -10, -10, 10, 10, 10);
 				smallShip->SetInteractionSize(10, 10, 10, 10, 10, 10);
 				storedVehicles[GEO_SMALLSHIP].push(smallShip);
+				shipbought++;
 			}
 		}
 		else if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f)
@@ -1367,6 +1319,7 @@ void SP2::shopUpdates(double dt)
 				midShip->SetHitboxSize(-15, -10, -15, 15, 10, 15);
 				midShip->SetInteractionSize(15, 10, 15, 15, 10, 15);
 				storedVehicles[GEO_MIDSHIP].push(midShip);
+				shipbought++;
 			}
 		}
 		else if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f)
@@ -1396,6 +1349,7 @@ void SP2::shopUpdates(double dt)
 				largeShip->SetHitboxSize(-20, -10, -20, 20, 10, 20);
 				largeShip->SetInteractionSize(20, 10, 20, 20, 10, 20);
 				storedVehicles[GEO_LARGESHIP].push(largeShip);
+				shipbought++;
 			}
 		}
 		else if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f)
@@ -1477,6 +1431,7 @@ void SP2::asteroidUpdate(double dt){
 			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, tempAst->Pos));
             Ait = Vasteroid.erase(Ait);
             delete tempAst;
+			destroyed++;
 
         }
         else{
@@ -2183,46 +2138,69 @@ void SP2::MouseSelection(double dt)
 
 void SP2::quests()
 {
-	if (NPC1.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed(VK_LBUTTON) && complete == false)
+	// Ball Quest
+	if (Application::IsKeyPressed('E') && allNPC[0]->hitbox.PointToAABB(camera.position))
 	{
-		talking = true;
-		RenderTextOnScreen(meshList[GEO_TEXT2], "GIMME BALL I NEED BALL", Color(0, 1, 0), 3, 0, 5);
-		
 		currentQuest = ballQuest;
-	
+		if (allNPC[0]->complete == false)
+		{
+			RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questName, Color(0, 1, 0), 3, 0, 10);
+		}
+		if (pickup == true)
+		{
+			pickup = false;
+			allNPC[0]->complete = true;
+		}
 	}
-	else
+
+	if (Application::IsKeyPressed('E') && ball.hitbox.PointToAABB(camera.position))
 	{
-		talking = false;
+		pickup = true;
 	}
-	if (Application::IsKeyPressed(VK_LBUTTON) && NPC2.hitbox.PointToAABB(camera.position) && complete2 == false)
+
+	// asteroids
+	if (Application::IsKeyPressed('E') && allNPC[1]->hitbox.PointToAABB(camera.position) && allNPC[1]->complete == false)
 	{
-		talking = true;
-		RenderTextOnScreen(meshList[GEO_TEXT2], "Destroy 5 asteroids for me", Color(0, 1, 0), 3, 0, 5);
-		
+		//talking = true;
 		currentQuest = asteroidQuest;
-		
-		
+		if (allNPC[1]->complete == false)
+		{
+			RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questName, Color(0, 1, 0), 3, 0, 10);
+		}
+		if (destroyed >= 1)
+		{
+			allNPC[1]->complete = true;
+		}
 	}
 
-	if (Application::IsKeyPressed(VK_LBUTTON) && NPC3.hitbox.PointToAABB(camera.position) && complete3 == false)
+	//buyship
+	if (Application::IsKeyPressed('E') && allNPC[2]->hitbox.PointToAABB(camera.position) && allNPC[2]->complete == false)
 	{
-		talking = true;
-		RenderTextOnScreen(meshList[GEO_TEXT2], "Buy duh 3 powderful shipzz", Color(0, 1, 0), 3, 0, 5);
-
+		//talking = true;
 		currentQuest = buyshipQuest;
-	
-
+		if (allNPC[2]->complete == false)
+		{
+			RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questName, Color(0, 1, 0), 3, 0, 10);
+		}
+		if (shipbought >= 3)
+		{
+			allNPC[2]->complete = true;
+		}
 	}
 
-	if (Application::IsKeyPressed(VK_LBUTTON) && NPC4.hitbox.PointToAABB(camera.position) && complete4 == false)
+	//abduction
+	if (Application::IsKeyPressed('E') && allNPC[3]->hitbox.PointToAABB(camera.position) && allNPC[3]->complete == false)
 	{
-		talking = true;
-		RenderTextOnScreen(meshList[GEO_TEXT2], "gimmeh 1000 bucks, gotta kidnap sum alien kidz", Color(0, 1, 0), 3, 0, 5);
-
+		//talking = true;
 		currentQuest = abductionQuest;
-
-
+		if (allNPC[3]->complete == false)
+		{
+			RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questName, Color(0, 1, 0), 3, 0, 10);
+		}
+		if (kidnap == true)
+		{
+			allNPC[3]->complete = true;
+		}
 	}
 
 
@@ -2230,93 +2208,136 @@ void SP2::quests()
 
 void SP2::renderNPC()
 {
+	for (vector<NPC*>::iterator it = allNPC.begin(); it != allNPC.end(); ++it)
+	{
+		//NPC
+		modelStack.PushMatrix();
+		modelStack.Translate((*it)->Pos.x, (*it)->Pos.y, (*it)->Pos.z);
 
-	//NPC
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC1.Pos.x, NPC1.Pos.y, NPC1.Pos.z + move);
+		modelStack.PushMatrix();
+		modelStack.Rotate((*it)->yaw, 0, 1, 0);
+		modelStack.Scale((*it)->NPCsize, (*it)->NPCsize, (*it)->NPCsize);
+		RenderMesh(meshList[(*it)->mesh], false);
+		modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC], false);
-	modelStack.PopMatrix();
+		modelStack.PushMatrix();
+		modelStack.Translate(0, 2.2, 0);
+		modelStack.Rotate((*it)->yaw, 0, 1, 0);
+		modelStack.Rotate((*it)->rotateHand, 1, 0, 0);
+		modelStack.Translate(0, -2.2, 0);
+		modelStack.Scale((*it)->NPCsize, (*it)->NPCsize, (*it)->NPCsize);
+		RenderMesh(meshList[GEO_LEFTHAND], false);
+		modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
+		modelStack.PushMatrix();
+		modelStack.Translate(0, 2.2, 0);
+		modelStack.Rotate((*it)->yaw, 0, 1, 0);
+		modelStack.Rotate(-(*it)->rotateHand, 1, 0, 0);
+		modelStack.Translate(0, -2.2, 0);
+		modelStack.Scale((*it)->NPCsize, (*it)->NPCsize, (*it)->NPCsize);
+		RenderMesh(meshList[GEO_RIGHTHAND], false);
+		modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
+		modelStack.PushMatrix();
+		modelStack.Translate(0, 0.5, 0);
+		modelStack.Rotate((*it)->yaw, 0, 1, 0);
+		modelStack.Rotate((*it)->rotateLeg, 1, 0, 0);
+		modelStack.Translate(0, -0.5, 0);
+		modelStack.Scale((*it)->NPCsize, (*it)->NPCsize, (*it)->NPCsize);
+		RenderMesh(meshList[GEO_RIGHTLEG], false);
+		modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
+		modelStack.PushMatrix();
+		modelStack.Translate(0, 0.5, 0);
+		modelStack.Rotate((*it)->yaw, 0, 1, 0);
+		modelStack.Rotate(-(*it)->rotateLeg, 1, 0, 0);
+		modelStack.Translate(0, -0.5, 0);
+		modelStack.Scale((*it)->NPCsize, (*it)->NPCsize, (*it)->NPCsize);
+		RenderMesh(meshList[GEO_LEFTLEG], false);
+		modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-
-	modelStack.PopMatrix();
+		modelStack.PopMatrix();
+	}
 }
 
 void SP2::ballquest()
 {
-	if (currentQuest == ballQuest && complete == false)
-	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], "Find the ball and give it to pucboi: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
-	}
-	if (pickup == false)
+	if (currentQuest == ballQuest && allNPC[0]->complete != true)
 	{
 
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questDialogue + allNPC[0]->questStatus, Color(0, 1, 0), 3, 0, 12);
+		
+		
+	}
+
+	if (Application::IsKeyPressed('E') && allNPC[0]->hitbox.PointToAABB(camera.position) && allNPC[0]->complete == true)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questDialogue + allNPC[0]->questStatus, Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questCompleteDialogue , Color(0, 1, 0), 3, 0, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6);
+	}
+
+	if (pickup == false && allNPC[0]->complete == false)
+	{
+		if (ball.hitbox.PointToAABB(camera.position))
+		{
+			renderTextonball();
+		}
 		modelStack.PushMatrix();
 		modelStack.Translate(ball.Pos.x, ball.Pos.y, ball.Pos.z );
 		modelStack.Scale(0.1, 0.1, 0.1);
 		RenderMesh(meshList[GEO_SPHERE], false);
 		modelStack.PopMatrix();
 	}
-
-	if (ball.hitbox.PointToAABB(camera.position) && pickup == false)
+	else if (allNPC[0]->complete == false)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], "Press 'T' to pick up the ball", Color(0, 1, 0), 3, 0, 5);
-		if (Application::IsKeyPressed('T'))
-		{
-			pickup = true;
-
-		}
+		RenderOnScreen(meshList[GEO_SPHERE], 70, 10, 0, 5, 0, 0, 0);
 	}
-	if (pickup == true)
+	
+	if (allNPC[0]->complete == true && allNPC[0]->reward == false)
 	{
-		RenderOnScreen(meshList[GEO_SPHERE], 10, 10, 0, 5, 0, 0, 0);
+		currMoney += 400;
+		allNPC[0]->reward = true;
 	}
-	if (pickup == true && NPC1.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed('T'))
-	{
-		complete = true;
+}
+
+void SP2::renderTextonball(){
+
+	float Yaw = 0;
+	float Pitch = 0;
+	Vector3 initView(0, 0, 1);
+	Vector3 view = (camera.position - ball.Pos).Normalized();
+	Vector3 XZview(view.x, 0, view.z);
+	XZview.Normalize();
+
+	Vector3 normal = initView.Cross(view);
+	Yaw = Math::RadianToDegree(acos(initView.Dot(XZview)));
+
+	if (normal.y < 0){
+
+		Yaw *= -1;
+
 	}
 
+	modelStack.PushMatrix();
+	
 
-	if (complete == true && count <= 150.f)
 
-	{
-		count += (float)(2);
-		RenderTextOnScreen(meshList[GEO_TEXT2], "Find the ball and give it to pucboi: COMPLETE", Color(0, 1, 0), 3, 0, 10);
-	}
+	
+	modelStack.Translate(4 , 0.3, 7);
+
+	modelStack.Rotate(Yaw, 0, 1, 0);
+	modelStack.Scale(0.05, 0.05, 0.05);
+	modelStack.PushMatrix();
+
+	modelStack.Translate(-9, 0, 0);
+	
+
+	RenderText(meshList[GEO_TEXT], "Press 'E' to pick up", Color(0, 1, 0));
+
+	modelStack.PopMatrix();
+	modelStack.PopMatrix();
+
 
 }
 
@@ -2368,24 +2389,25 @@ void SP2::renderNPC2()
 
 void SP2::asteroidquest()
 {
-	if (currentQuest == asteroidQuest && complete2 == false)
+	if (currentQuest == asteroidQuest && allNPC[1]->complete != true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], "DE_STROY asteroids: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questDialogue + allNPC[1]->questStatus, Color(0, 1, 0), 3, 0, 12);
+
 	}
 
-	if (destroyed >= 5 && NPC2.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed(VK_LBUTTON))
+	if (Application::IsKeyPressed('E') && allNPC[1]->hitbox.PointToAABB(camera.position) && allNPC[1]->complete == true)
 	{
-		complete2 = true;
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questDialogue + allNPC[1]->questStatus, Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6);
 	}
 
-
-	if (complete2 == true && count <= 150.f)
-
+	if (allNPC[1]->complete == true && allNPC[1]->reward == false)
 	{
-		count += (float)(2);
-		RenderTextOnScreen(meshList[GEO_TEXT2], "DE_STROY asteroids: COMPLETE", Color(0, 1, 0), 3, 0, 10);
+		currMoney += 400;
+		allNPC[1]->reward = true;
 	}
-
+	
 }
 
 void SP2::renderNPC3()
@@ -2436,18 +2458,25 @@ void SP2::renderNPC3()
 
 void SP2::buyshipquest()
 {
-	if (currentQuest == buyshipQuest && complete3 == false)
+	if (currentQuest == buyshipQuest && allNPC[2]->complete != true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], "Buy 3 shipz: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questDialogue + allNPC[2]->questStatus, Color(0, 1, 0), 3, 0, 12);
+
 	}
 
-
-	if (complete3 == true && count <= 150.f)
-
+	if (Application::IsKeyPressed('E') && allNPC[2]->hitbox.PointToAABB(camera.position) && allNPC[2]->complete == true)
 	{
-		count += (float)(2);
-		RenderTextOnScreen(meshList[GEO_TEXT2], "Buy 3 shipz: COMPLETE", Color(0, 1, 0), 3, 0, 10);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questDialogue + allNPC[2]->questStatus, Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6);
 	}
+
+	if (allNPC[2]->complete == true && allNPC[2]->reward == false)
+	{
+		currMoney += 400;
+		allNPC[2]->reward = true;
+	}
+	
 }
 
 void SP2::renderNPC4()
@@ -2499,60 +2528,111 @@ void SP2::renderNPC4()
 
 void SP2::abductionquest()
 {
-	if (currentQuest == abductionQuest && complete4 == false)
+
+	if (currentQuest == abductionQuest && allNPC[3]->complete != true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], "Help fund kidnap: IN PROGRESS", Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questDialogue + allNPC[3]->questStatus, Color(0, 1, 0), 3, 0, 12);
+
 	}
+
+	if (NPC5.hitbox.PointToAABB(camera.position) && Application::IsKeyPressed('E') && allNPC[3]->complete == false)
+	{	
+		kidnap = true;
+	}
+
+	if (NPC5.hitbox.PointToAABB(camera.position) && kidnap == false)
+	{
+		renderchildtext();
+	}
+
+	if (Application::IsKeyPressed('E') && allNPC[3]->hitbox.PointToAABB(camera.position) && allNPC[3]->complete == true)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questDialogue + allNPC[3]->questStatus, Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6);
+	}
+
+	if (allNPC[3]->complete == true && allNPC[3]->reward == false)
+	{
+		currMoney += 400;
+		allNPC[3]->reward = true;
+	}
+
 }
 
 void SP2::renderNPC5()
 {
 	//npc
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC5.Pos.x + move, NPC5.Pos.y, NPC5.Pos.z);
-	modelStack.Rotate(90, 0, 1, 0);
+	if (kidnap == false)
+	{
 
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC4], false);
-	modelStack.PopMatrix();
+		modelStack.PushMatrix();
+		modelStack.Translate(NPC5.Pos.x, NPC5.Pos.y, NPC5.Pos.z);
+		modelStack.Rotate(90, 0, 1, 0);
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
+		modelStack.PushMatrix();
+		modelStack.Scale(0.25, 0.25, 0.25);
+		RenderMesh(meshList[GEO_NPC5], false);
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
+		modelStack.PushMatrix();
+		modelStack.Translate(0, 1, 0);
+		modelStack.Rotate(180, 1, 0, 0);
+		modelStack.Scale(0.5, 0.5, 0.5);
+		RenderMesh(meshList[GEO_RIGHTLEG], false);
+		modelStack.PopMatrix();
 
-	modelStack.PopMatrix();
+		modelStack.PushMatrix();
+		modelStack.Translate(0, 1.2, 0);
+		modelStack.Rotate(180, 1, 0, 0);
+		modelStack.Scale(0.5, 0.5, 0.5);
+		RenderMesh(meshList[GEO_LEFTLEG], false);
+		modelStack.PopMatrix();
+		modelStack.PopMatrix();
+		modelStack.PopMatrix();
+	}
 }
 
+void SP2::renderchildtext(){
 
+	float Yaw = 0;
+	float Pitch = 0;
+	Vector3 initView(0, 0, 1);
+	Vector3 view = (camera.position - NPC5.Pos).Normalized();
+	Vector3 XZview(view.x, 0, view.z);
+	XZview.Normalize();
+
+	Vector3 normal = initView.Cross(view);
+	Yaw = Math::RadianToDegree(acos(initView.Dot(XZview)));
+
+	if (normal.y < 0){
+
+		Yaw *= -1;
+
+	}
+
+	modelStack.PushMatrix();
+
+
+
+
+	modelStack.Translate(-6, 0.5, -7);
+
+	modelStack.Rotate(Yaw, 0, 1, 0);
+	modelStack.Scale(0.05, 0.05, 0.05);
+	modelStack.PushMatrix();
+
+	//modelStack.Translate(-9, 0, 0);
+
+	RenderText(meshList[GEO_TEXT2], "PLZ KIDNAPZ MEH I NID ROV <3", Color(0, 1, 0));
+
+
+	modelStack.PopMatrix();
+	modelStack.PopMatrix();
+
+
+}
 // Tools
 
 void SP2::RenderMesh(Mesh* mesh, bool enableLight)

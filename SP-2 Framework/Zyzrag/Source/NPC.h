@@ -1,29 +1,20 @@
-#ifndef NPC_H
-#define NPC_H
-
 #include "Object.h"
-#include <string>
-#include "Vector3.h"
+#include "MyMath.h"
 
 using std::string;
 
-class NPC
+class NPC : public Object
 {
 public:
 	NPC();
-	NPC(Vector3 pos);
+	NPC(Vector3 pos, Vector3 view, float NPCsize, float hitboxSize, float maxDistance, int mesh);
 	~NPC();
 
-	string tgaLocation;
-	Vector3 pos;
+	void update(double dt);
 
-	void NPCinit();
-	void Render();
-	void Update(double dt);
+	string questCompleteDialogue, questDialogue, questName, questStatus;
 
-
-	
-	
+	float curDistance, NPCsize, yaw, rotateHand, rotateLeg, count;
+	int maxDistance, rotateDir, mesh;
+	bool reward, complete;
 };
-
-#endif 

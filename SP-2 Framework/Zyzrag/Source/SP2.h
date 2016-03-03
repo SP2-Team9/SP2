@@ -169,6 +169,7 @@ public:
 	
 	// Initializers
 	void objectsInit();
+	void npcInit();
 	void shopInit();
 	void WorldHitboxInit();
     void bulletCreation(double dt);
@@ -225,6 +226,8 @@ public:
 	void stationHitboxCheck();
 	void asteroidHitboxCheck();
 	void MouseSelection(double dt);
+	void renderTextonball();
+	void renderchildtext();
 	
 	
 
@@ -266,11 +269,21 @@ private:
     float rotate;
     float moveleg;
 	float count;
+	float count2;
+	float count3;
+	float count4;
 
     bool restart = false;
     bool restart2 = false;
 	bool blink = false;
 	bool re = false;
+	bool givemoney = false;
+	bool stop = false;
+	bool stop2 = false;
+	bool stop3 = false;
+	bool stop4 = false;
+	bool stop5 = false;
+	bool kidnap = 0;
 	bool talking = 0;
 	bool pickup = 0;
 	bool complete = 0;
@@ -281,6 +294,7 @@ private:
 	
 
 	int destroyed;
+	int shipbought;
 
 	bool enableLight, enableAxis, widescreen;
 	
@@ -321,6 +335,8 @@ private:
 	vector<Vehicles*> smallVehicles;
 	vector<Vehicles*> largeVehicles;
 	vector<Vehicles*> midVehicles;
+
+	vector<NPC*> allNPC;
 
 	stack<Vehicles*> stackSmallVehicles;
 	stack<Vehicles*> stackLargeVehicles;
