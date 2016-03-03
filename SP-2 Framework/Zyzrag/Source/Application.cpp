@@ -86,7 +86,7 @@ void Application::Init()
 	screenWidth = 800;
 	screenHeight = 600;
 
-	m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", NULL, NULL);
+    m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", glfwGetPrimaryMonitor(), NULL);
 
 	//Set window Size
 	glfwSetWindowSizeCallback(m_window, resize_callback);

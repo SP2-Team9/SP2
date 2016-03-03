@@ -150,6 +150,7 @@ class SP2 : public Scene{
 		inShop,
         waveTransition,
 		help,
+        gameOver,
 		exit,
 	};
 
@@ -202,7 +203,6 @@ public:
 	
 	// Renders
 
-  
 	void renderHelp();
 	void renderNPC();
 	void renderNPC2();
@@ -223,11 +223,13 @@ public:
 	void renderFightingUI();
     void renderExplosions();
 	void renderTitleScreen();
+    void renderGameOverScreen();
     void renderWaveTransition();
     void renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health, Color color);
 
 	// Updates
 
+    void gameOverUpdate();
 	void RTSUpdates(double dt);
 	void NPCUpdates(double dt);
 	void shopUpdates(double dt);

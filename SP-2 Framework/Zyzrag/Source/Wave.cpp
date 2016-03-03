@@ -30,12 +30,14 @@
 
 Wave::Wave(){
 
+    stationHealth = 1000;
+
 	waveNumber = 1;
 	maxNumberOfAsteroids = 5;
 	numberOfAsteroidsDestroyed = 0;
 
 	maxWaveCooldownTime = 30;
-	currWaveCooldownTime = 30;
+	currWaveCooldownTime = 15;
 
 	maxAsteroidSpawnCooldownTime = 1;
 	currAsteroidSpawnCooldownTime = 0;
@@ -115,6 +117,7 @@ void Wave::nextWave(){
 
 	currAsteroidSpawnCooldownTime = 0;
    
+    stationHealth = 1000 +  waveNumber * 100;
 
 }
 

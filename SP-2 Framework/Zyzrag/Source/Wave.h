@@ -27,6 +27,8 @@ public:
 	Wave();
 	~Wave();
 
+    int stationHealth;
+
 	bool waveComplete();
 	bool spawnAsteroid();
     bool transitionComplete();
