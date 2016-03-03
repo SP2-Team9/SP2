@@ -11,6 +11,7 @@ public:
 	Vector3 position, target, up, view, right;
 	float cameraSpeed, mouseSpeed, pitch, yaw, delay;
 	double mouseX, mouseY;
+	bool lock;
 	float time;
 
 	Camera();

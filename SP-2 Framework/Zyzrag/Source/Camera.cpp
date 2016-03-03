@@ -24,6 +24,7 @@ Default constructor
 /******************************************************************************/
 Camera::Camera()
 {
+	lock = false;
 }
 
 /******************************************************************************/
@@ -99,9 +100,9 @@ void Camera::PointAt(Object& obj, float height, float offset)
 {
 	target = obj.Pos;
 	position = target + (obj.View * offset);
-	position.y += height;
+	position += obj.Up * height;
 	view = position - target;
-	right = view.Cross(Vector3(0, 1, 0));
+	right = view.Cross(obj.Up);
 	up = right.Cross(view);
 }
 
@@ -330,9 +331,15 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 	if (veh.delay > 0)
 		veh.delay -= dt;
 
-	if (Application::IsKeyPressed(VK_MENU))
+	if (Application::IsKeyPressed(VK_MENU) && sharedData::GetInstance()->Delay(0.5f))
+	{
+		lock = (lock + 1) % 2;
+	}
+
+	if (lock == true)
 	{
 		getYawAndPitch(dt);
+		target = veh.Pos;
 		if (pitch != 0)
 		{
 			Mtx44 rotation;
@@ -340,6 +347,7 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 			view = rotation * view;
 			up = rotation * up;
 			right = rotation * right;
+			
 		}
 
 		if (yaw != 0)
@@ -350,10 +358,11 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 			up = rotation * up;
 			right = rotation * right;
 		}
+		position = target + view;
 	}
 	else
 	{
-		PointAt(veh, 10, -30);
+		PointAt(veh, 5, -30);
 	}
 
 	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 100)
@@ -370,7 +379,7 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 	{
 		Mtx44 rotation;
 		veh.pitch -= dt * 50.f;
-		rotation.SetToRotation(-(dt * 50.f), veh.Right.x, veh.Right.y, veh.Right.z);
+		rotation.SetToRotation(-(dt * 50.f), veh.Right.x, 0, veh.Right.z);
 		veh.View = rotation * veh.View;
 		veh.Up = rotation * veh.Up;
 		veh.Right = rotation * veh.Right;
@@ -380,7 +389,7 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 	{
 		Mtx44 rotation;
 		veh.pitch += dt * 50.f;
-		rotation.SetToRotation(dt * 50.f, veh.Right.x, veh.Right.y, veh.Right.z);
+		rotation.SetToRotation(dt * 50.f, veh.Right.x, 0, veh.Right.z);
 		veh.View = rotation * veh.View;
 		veh.Up = rotation * veh.Up;
 		veh.Right = rotation * veh.Right;
@@ -390,7 +399,7 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 	{
 		Mtx44 rotation;
 		veh.yaw += dt * 50.f;
-		rotation.SetToRotation(dt * 50.f, 0, 1, 0);
+		rotation.SetToRotation(dt * 50.f, 0,1,0);
 		veh.View = rotation * veh.View;
 		veh.Up = rotation * veh.Up;
 		veh.Right = rotation * veh.Right;
@@ -400,16 +409,11 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 	{
 		Mtx44 rotation;
 		veh.yaw -= dt * 50.f;
-		rotation.SetToRotation(-(dt * 50.f), 0, 1, 0);
+		rotation.SetToRotation(-(dt * 50.f), 0,1,0);
 		veh.View = rotation * veh.View;
 		veh.Up = rotation * veh.Up;
 		veh.Right = rotation * veh.Right;
 	}
-
-	target = veh.Pos;
-	position = target + view;
-
-
 }
 
 /******************************************************************************/

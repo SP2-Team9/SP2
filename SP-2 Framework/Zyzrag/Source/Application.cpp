@@ -83,8 +83,8 @@ void Application::Init()
 	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	screenWidth = mode->width;
 	screenHeight = mode->height;
-	//screenWidth = 1920;
-	//screenHeight = 1080;
+	screenWidth = 800;
+	screenHeight = 600;
 
 	m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", NULL, NULL);
 

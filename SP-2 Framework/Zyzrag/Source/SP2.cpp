@@ -547,6 +547,7 @@ void SP2::objectsInit()
 	playerShip.SetPos(0, 10, 0);
 	playerShip.SetView(0, 0, 1);
 	playerShip.SetRight(-1, 0, 0);
+	playerShip.SetUp(playerShip.Right, playerShip.View);
 	playerShip.SetHitboxSize(-5, -3, -5, 4, 5, 5);
 	playerShip.reset();
 	playerShip.updateHitbox();
@@ -836,6 +837,7 @@ void SP2::renderShips(){
 	{
 		modelStack.PushMatrix();
 		modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
+		
 		modelStack.Rotate(playerShip.pitch, playerShip.Right.x, 0, playerShip.Right.z);
 		modelStack.Rotate(playerShip.yaw, 0, 1, 0);
 		RenderMesh(meshList[GEO_XWING], enableLight);
@@ -1874,6 +1876,7 @@ void SP2::generalUpdates(double dt){
 		playerShip.SetPos(0, 15, 0);
 		playerShip.SetView(0, 0, 1);
 		playerShip.SetRight(-1, 0, 0);
+		playerShip.SetUp(0, 1, 0);
 		playerShip.SetHitboxSize(5);
 	}
 
@@ -1967,6 +1970,7 @@ void SP2::inPlayerShipUpdates(double dt){
 			playerShip.SetPos(0, 10, 0);
 			playerShip.SetView(0, 0, 1);
 			playerShip.SetRight(-1, 0, 0);
+			playerShip.SetUp(0, 1, 0);
 			playerShip.updateHitbox();
 			camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
 			state = inSpaceStation;

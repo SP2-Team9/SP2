@@ -23,13 +23,8 @@ struct PlayerVehicle : Object {
 	int bulletFireRate;
 	int bulletDamage;
 
-	PlayerVehicle() : thrust(0), pitch(0), yaw(0), delay(0), health(100), isDead(false), maxHealth(100), bulletFireRate(100), bulletDamage(10){
-    
-    
-    
-    }
-	
-    ~PlayerVehicle(){}
+	PlayerVehicle();
+	~PlayerVehicle();
 
 
 

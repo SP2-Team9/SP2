@@ -9,6 +9,16 @@ Contains anything related to player's vehicle
 /******************************************************************************/
 #include "PlayerVehicle.h"
 
+PlayerVehicle::PlayerVehicle() : thrust(0), pitch(0), yaw(0), delay(0), health(100), isDead(false), maxHealth(100), bulletFireRate(100), bulletDamage(10)
+{
+
+}
+
+PlayerVehicle::~PlayerVehicle()
+{
+
+}
+
 /******************************************************************************/
 /*!
 \brief
