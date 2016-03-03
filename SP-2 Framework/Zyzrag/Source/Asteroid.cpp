@@ -27,7 +27,7 @@ Asteroid::Asteroid(float size) : size(size), boom(false)
 	health = 10 * size;
 	speed = 500 / size;
 	curRange = 0;
-	maxRange = 2500;
+	maxRange = 4000;
 	SetHitboxSize(size);
     maxHealth = health;
 }

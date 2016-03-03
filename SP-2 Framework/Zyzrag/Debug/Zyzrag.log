@@ -1,94 +1,89 @@
-﻿Build started 3/3/2016 6:10:49 PM.
+﻿Build started 3/3/2016 6:17:59 PM.
      1>Project "C:\Users\n1507\Desktop\SP2\SP-2 Framework\Zyzrag\Zyzrag.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glew\include" /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glfw\include" /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\Common\Source" /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\Irrklang\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\Asteroid.cpp Source\SP2.cpp
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glew\include" /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glfw\include" /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\Common\Source" /I"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\Irrklang\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Source\SP2.cpp
          SP2.cpp
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\shareddata.h(26): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(326): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(325): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(387): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(388): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(389): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(654): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(653): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(758): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(759): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(760): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(764): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(767): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(770): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(787): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(806): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(825): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(841): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(763): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(766): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(769): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(786): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(805): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(824): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(840): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(842): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(843): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(844): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(850): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(850): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(856): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(856): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(862): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(862): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(868): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(868): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(849): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(849): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(855): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(855): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(861): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(861): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(867): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(867): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(886): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(887): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(888): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(889): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(895): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(896): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(897): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(898): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(905): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(906): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(907): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(914): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(915): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(916): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(917): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(918): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(919): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(920): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(921): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(922): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(923): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(924): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(925): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(926): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(927): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(928): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(929): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(930): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(931): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1228): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1289): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1292): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1323): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1327): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1360): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1438): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1441): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1447): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1450): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1501): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1537): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1572): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1575): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1227): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1288): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1291): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1322): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1326): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1359): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1437): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1440): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1446): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1449): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1500): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1536): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1571): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1574): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1752): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1753): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1754): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1766): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1773): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1780): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1838): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1840): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1864): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1866): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1893): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1895): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2272): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2301): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2380): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2423): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2456): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2491): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2508): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2753): warning C4305: 'argument' : truncation from 'double' to 'float'
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(3127): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-         Asteroid.cpp
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\asteroid.cpp(32): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\asteroid.cpp(58): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\asteroid.cpp(59): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
-         Generating Code...
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1765): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1772): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1779): warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1837): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1839): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1863): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1865): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1892): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(1894): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2271): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2300): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2379): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2422): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2455): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2490): warning C4244: '-=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2507): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(2752): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\users\n1507\desktop\sp2\sp-2 framework\zyzrag\source\sp2.cpp(3126): warning C4244: '+=' : conversion from 'double' to 'float', possible loss of data
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\Zyzrag.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glew\lib" /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glfw\lib-msvc120" /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug" /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\Irrklang\lib" glew32.lib glu32.lib glfw3.lib opengl32.lib winmm.lib Common.lib irrKlang.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\Zyzrag.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\Zyzrag.lib" /MACHINE:X86 Debug\AABB.obj
          Debug\Application.obj
@@ -117,4 +112,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.71
+Time Elapsed 00:00:01.41

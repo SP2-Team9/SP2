@@ -1984,6 +1984,7 @@ void SP2::asteroidUpdate(double dt){
 
         if (asteroid->curRange > asteroid->maxRange || asteroid->health < 0){
 
+			vehiclesRemoveTarget(asteroid);
             waveFunctions->numberOfAsteroidsDestroyed++;
             delete asteroid;
             it = Vasteroid.erase(it);
@@ -2171,7 +2172,7 @@ void SP2::waveTransitionUpdate(double dt){
 
             Application::centerMouse();
             state = RTS;
-            camera.PointAt(playerShip, 50, -200);
+            camera.PointAt(playerShip, 100, -200);
         }
 
 		currMoney += 1000 * waveFunctions->waveNumber;
