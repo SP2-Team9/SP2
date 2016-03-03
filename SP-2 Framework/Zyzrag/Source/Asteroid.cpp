@@ -3,7 +3,7 @@
 
 * \file Asteroid.cpp
 
-* \author: Goh ZHeng Yuan
+* \author: Goh Zheng Yuan
 
 * \date: 23 feb 2016
 
@@ -19,14 +19,13 @@
 \brief
 	Constructor for Asteroid.
 
-\param size
-	Sets size for asteroid.
+\param size - Sets size for asteroid.
 */
 /******************************************************************************/
 Asteroid::Asteroid(float size) : size(size), boom(false)
 {
 	health = 10 * size;
-	speed = 10000 / size;
+	speed = 1000 / size;
 	curRange = 0;
 	maxRange = 5000;
 	SetHitboxSize(size);
@@ -49,8 +48,7 @@ Asteroid::~Asteroid()
 \brief
 	Update asteroid position, range, hitbox and health.
 
-\param dt
-	Delta time.
+\param dt - Delta time.
 */
 /******************************************************************************/
 void Asteroid::update(double dt)

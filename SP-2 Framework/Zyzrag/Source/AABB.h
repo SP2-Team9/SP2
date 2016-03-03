@@ -1,3 +1,17 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \file AABB.h
+
+* \author: Goh Zheng Yuan
+
+* \date: 15 feb 2016
+
+* \description: This header contains the class AABB
+
+*/
+/////////////////////////////////////////////////////////////////
+
 #ifndef AABB_H
 #define AABB_H
 
@@ -6,6 +20,13 @@
 
 using std::vector;
 
+
+/******************************************************************************/
+/*!
+\brief
+	Contains the class AABB hitbox, along with all it's functions
+*/
+/******************************************************************************/
 class AABB
 {
 private:

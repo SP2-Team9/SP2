@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////
 /*!
 
-* \file AABB.cpp
+* \file Camera.cpp
 
-* \author: Goh ZHeng Yuan
+* \author: Goh Zheng Yuan
 
 * \date: 15 feb 2016
 
-* \description: This class contains anything related to camera movements.
+* \description: This cpp contains the functions of the class Camera
 
 */
 /////////////////////////////////////////////////////////////////
@@ -88,12 +88,9 @@ void Camera::Init(const Vector3& pos, const Vector3& target)
 \brief
 Points at object
 
-\param obj
-	The object that the camera wants to look at.
-\param height
-	Height away from the object
-\param offset
-	Z distance away from object.
+\param obj - The object that the camera wants to look at.
+\param height - Height away from the object
+\param offset - Z distance away from object.
 */
 /******************************************************************************/
 void Camera::PointAt(Object& obj, float height, float offset)
@@ -145,11 +142,8 @@ void Camera::Update(double dt)
 \brief
 First Person camera movement
 
-\param dt
-	Delta time.
-
-\param hitbox
-	Vector of AABB hitbox to test if camera is colliding with anything.
+\param dt - Delta time.
+\param hitbox - Vector of AABB hitbox to test if camera is colliding with anything.
 */
 /******************************************************************************/
 void Camera::FPSMovement(double dt, vector<AABB> hitbox)
@@ -319,11 +313,8 @@ void Camera::FPSMovement(double dt, vector<AABB> hitbox)
 \brief
 Third person movement
 
-\param dt
-	Delta time.
-
-\param veh
-	Player's vehicle to control.
+\param dt - Delta time.
+\param veh - Player's vehicle to control.
 */
 /******************************************************************************/
 void Camera::TPSMovement(double dt, PlayerVehicle& veh)
@@ -421,8 +412,7 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh)
 \brief
 	Camera mode that is not affected by any hitboxes
 
-\param dt
-	Delta Time.
+\param dt - Delta Time.
 */
 /******************************************************************************/
 void Camera::NoClip(double dt)
@@ -501,11 +491,8 @@ void Camera::NoClip(double dt)
 \brief
 	Camera mode that only allows Yaw Rotation and controlling vehicle's thrust.
 
-\param veh
-	Player's vehicle to control.
-
-\param dt
-	Delta time.
+\param veh - Player's vehicle to control.
+\param dt - Delta time.
 */
 /******************************************************************************/
 void Camera::YawRotation(PlayerVehicle& veh, double dt)
@@ -574,8 +561,7 @@ void Camera::DisableCursor()
 \brief
 	Sets Yaw and Pitch from mouse movement
 
-\param dt
-	Delta time.
+\param dt - Delta time.
 */
 /******************************************************************************/
 void Camera::getYawAndPitch(double dt)

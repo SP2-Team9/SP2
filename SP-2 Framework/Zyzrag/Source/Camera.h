@@ -1,3 +1,16 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \file Camera.h
+
+* \author: Goh Zheng Yuan
+
+* \date: 15 feb 2016
+
+* \description: This header contains the class camera
+
+*/
+/////////////////////////////////////////////////////////////////
 #ifndef CAMERA_H
 #define CAMERA_H
 
@@ -5,6 +18,12 @@
 #include "Mtx44.h"
 #include "PlayerVehicle.h"
 
+/******************************************************************************/
+/*!
+\brief
+	The class camera, and any functions that moves the camera.
+*/
+/******************************************************************************/
 class Camera
 {
 public:

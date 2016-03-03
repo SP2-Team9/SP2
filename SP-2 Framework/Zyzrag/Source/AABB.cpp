@@ -3,11 +3,11 @@
 
 * \file AABB.cpp
 
-* \author: Goh ZHeng Yuan
+* \author: Goh Zheng Yuan
 
 * \date: 15 feb 2016
 
-* \description: This class contains the AABB hitbox as well as the functions to test for collisions.
+* \description: This cpp contains the functions of the class AABB
 
 */
 /////////////////////////////////////////////////////////////////
@@ -29,11 +29,8 @@ AABB::AABB()
 \brief
 	Constructor that takes in Vector3 min and max
 		
-\param min
-	Gets the Vector3 min value
-
-\param max
-	Gets the Vector3 max value
+\param min - Gets the Vector3 minimum value
+\param max - Gets the Vector3 maximum value
 */
 /******************************************************************************/
 AABB::AABB(const Vector3 min, const Vector3 max) : Min(min), Max(max) 
@@ -45,18 +42,12 @@ AABB::AABB(const Vector3 min, const Vector3 max) : Min(min), Max(max)
 \brief
 	Constructor that takes it float of min X, Y, Z and max X, Y, Z.
 
-\param minX
-	Min X coordinates
-\param minY
-	Min Y coordinates
-\param minZ
-	Min Z coordinates
-\param maxX
-	Max X coordinates
-\param maxY
-	Max Y coordinates
-\param maxZ
-	Max Z coordinates
+\param minX - Mininum X coordinates
+\param minY - Mininum Y coordinates
+\param minZ - Mininum Z coordinates
+\param maxX - Maximum X coordinates
+\param maxY - Maximum Y coordinates
+\param maxZ - Maximum Z coordinates
 */
 /******************************************************************************/
 AABB::AABB(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
@@ -79,11 +70,8 @@ AABB::~AABB()
 \brief
 	Sets the AABB's Vector3 min and max.
 
-\param min
-	Gets the Vector3 min value
-
-\param max
-	Gets the Vector3 max value
+\param min - Gets the Vector3 mininum value
+\param max - Gets the Vector3 maximum value
 */
 /******************************************************************************/
 void AABB::Set(const Vector3 min, const Vector3 max)
@@ -97,18 +85,12 @@ void AABB::Set(const Vector3 min, const Vector3 max)
 \brief
 	Sets the AABB's Vector3 min and max.
 
-\param minX
-	Min X coordinates
-\param minY
-	Min Y coordinates
-\param minZ
-	Min Z coordinates
-\param maxX
-	Max X coordinates
-\param maxY
-	Max Y coordinates
-\param maxZ
-	Max Z coordinates
+\param minX - Mininum X coordinates
+\param minY - Mininum Y coordinates
+\param minZ - Mininum Z coordinates
+\param maxX - Maximum X coordinates
+\param maxY - Maximum Y coordinates
+\param maxZ - Maximum Z coordinates
 */
 /******************************************************************************/
 void AABB::Set(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
@@ -122,11 +104,8 @@ void AABB::Set(float minX, float minY, float minZ, float maxX, float maxY, float
 \brief
 	Checks if current AABB is colliding with another AABB
 
-\param box
-	The other AABB class to check with
-
-\param view
-	To check which direction the current AABB is heading.
+\param box - The other AABB class to check with
+\param view - To check which direction the current AABB is heading.
 
 \return 
 	Returns true if colliding else false.
@@ -148,8 +127,7 @@ bool AABB::AABBtoAABB(const AABB& box, Vector3& view)
 \brief
 	Checks if current AABB is colliding with another AABB
 
-\param box
-	The other AABB class to check with
+\param box - The other AABB class to check with
 
 \return
 	Returns true if colliding else false.
@@ -171,11 +149,8 @@ bool AABB::AABBtoAABB(const AABB& box)
 \brief
 	Checks if current AABB is colliding with a vector of AABBs
 
-\param box
-	vector AABB class to check with
-
-\param view
-	To check which direction the current AABB is heading.
+\param box - vector AABB class to check with
+\param view - To check which direction the current AABB is heading.
 
 \return
 	Returns true if colliding else false.
@@ -200,8 +175,7 @@ bool AABB::AABBtoAABB(const vector<AABB>& box, Vector3& view)
 \brief
 	Checks if current AABB is colliding with a point
 
-\param position
-	Position of the point
+\param position - Position of the point
 
 \return
 	Returns true if colliding else false.
@@ -223,11 +197,8 @@ bool AABB::PointToAABB(const Vector3& position)
 \brief
 	Checks if current AABB is colliding with a ray
 
-\param rayOrigin
-	Get's the ray origin
-
-\pram ray
-	Get's where the ray ends at
+\param rayOrigin - Get's the ray origin
+\pram ray - Get's where the ray ends at
 
 \return
 	Returns true if colliding else false.
@@ -327,11 +298,8 @@ Vector3 AABB::GetMin()
 \brief
 	Checks if AABB is within the plane
 
-\param init
-	Get's the initial starting point of the plane
-
-\param end
-	Get's the ending point of the plane
+\param init - Get's the initial starting point of the plane
+\param end - Get's the ending point of the plane
 
 \return
 	True if AABB is within the plane
