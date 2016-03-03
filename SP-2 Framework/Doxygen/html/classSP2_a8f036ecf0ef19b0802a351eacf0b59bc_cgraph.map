@@ -1,0 +1,6 @@
+<map id="SP2::shipBulletCreation" name="SP2::shipBulletCreation">
+<area shape="rect" id="node2" href="$classVehicles.html#ace4cb72efc022d31fec76b442b57d3fd" title="Vehicles::fireBullets" alt="" coords="221,5,358,32"/>
+<area shape="rect" id="node3" href="$structVector3.html#aaef4f25a38878a640ab4a48002a7eff8" title="Normalize this vector and return a reference to it. " alt="" coords="223,56,356,83"/>
+<area shape="rect" id="node5" href="$classirrklang_1_1ISoundEngine.html#adb09ecc8f61120ce14d26545ed43d8ec" title="Loads a sound source (if not loaded already) from a file and plays it as 3D sound. " alt="" coords="213,107,365,149"/>
+<area shape="rect" id="node4" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="413,56,528,83"/>
+</map>

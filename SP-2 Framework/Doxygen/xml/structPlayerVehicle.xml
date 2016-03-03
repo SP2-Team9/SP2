@@ -1,0 +1,493 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="structPlayerVehicle" kind="struct" language="C++" prot="public">
+    <compoundname>PlayerVehicle</compoundname>
+    <basecompoundref refid="classObject" prot="public" virt="non-virtual">Object</basecompoundref>
+    <includes refid="PlayerVehicle_8h" local="no">PlayerVehicle.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPlayerVehicle_1ad76ad098d789983394711b0d9a6ef3f5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int PlayerVehicle::health</definition>
+        <argsstring></argsstring>
+        <name>health</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="10" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="10" bodyend="-1"/>
+        <referencedby refid="classSP2_1aa30f865a5270160ade491858cd0f7b31" compoundref="SP2_8cpp" startline="2397" endline="2587">SP2::asteroidHitboxCheck</referencedby>
+        <referencedby refid="structShop_1a939417adbb842846884c60e252947d7f" compoundref="Shop_8cpp" startline="47" endline="53">Shop::increaseHealth</referencedby>
+        <referencedby refid="classSP2_1ab9091eedf4e10df408fdc3cd406e67a9" compoundref="SP2_8cpp" startline="1145" endline="1177">SP2::renderFightingUI</referencedby>
+        <referencedby refid="structPlayerVehicle_1aeb9a7f9d45750ff293f6c216ba464092" compoundref="PlayerVehicle_8cpp" startline="124" endline="130">reset</referencedby>
+        <referencedby refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" compoundref="PlayerVehicle_8cpp" startline="34" endline="93">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a0cf8cb41989e3a369ef3532066cea302" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int PlayerVehicle::maxHealth</definition>
+        <argsstring></argsstring>
+        <name>maxHealth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="10" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="10" bodyend="-1"/>
+        <referencedby refid="structShop_1a939417adbb842846884c60e252947d7f" compoundref="Shop_8cpp" startline="47" endline="53">Shop::increaseHealth</referencedby>
+        <referencedby refid="structPlayerVehicle_1aeb9a7f9d45750ff293f6c216ba464092" compoundref="PlayerVehicle_8cpp" startline="124" endline="130">reset</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a15c6b1ea09312b3bd0e6541338bf1cc5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PlayerVehicle::isDead</definition>
+        <argsstring></argsstring>
+        <name>isDead</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="12" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="12" bodyend="-1"/>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+        <referencedby refid="classSP2_1acef0d78c34373d56e30e309ac3233232" compoundref="SP2_8cpp" startline="1017" endline="1079">SP2::renderShips</referencedby>
+        <referencedby refid="structPlayerVehicle_1a7294156f5d01b711797593dc86891be9" compoundref="PlayerVehicle_8cpp" startline="107" endline="116">respawn</referencedby>
+        <referencedby refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" compoundref="PlayerVehicle_8cpp" startline="34" endline="93">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a39577a02dce81c7fc9a4efc3c3d4c07a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PlayerVehicle::board</definition>
+        <argsstring></argsstring>
+        <name>board</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="12" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a68bdde1f0f6e7bcd6bba425a7581d144" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double PlayerVehicle::bulletCurrCooldown</definition>
+        <argsstring></argsstring>
+        <name>bulletCurrCooldown</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="17" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="structPlayerVehicle_1a2b33c49b25427ce5322de28afd9241df" compoundref="PlayerVehicle_8cpp" startline="144" endline="158">fireBullets</referencedby>
+        <referencedby refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" compoundref="PlayerVehicle_8cpp" startline="34" endline="93">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a20bff632e3cf1c2113a0b41a49d71662" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float PlayerVehicle::thrust</definition>
+        <argsstring></argsstring>
+        <name>thrust</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="21" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1ab9091eedf4e10df408fdc3cd406e67a9" compoundref="SP2_8cpp" startline="1145" endline="1177">SP2::renderFightingUI</referencedby>
+        <referencedby refid="structPlayerVehicle_1aeb9a7f9d45750ff293f6c216ba464092" compoundref="PlayerVehicle_8cpp" startline="124" endline="130">reset</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+        <referencedby refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" compoundref="PlayerVehicle_8cpp" startline="34" endline="93">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a0895b32b2c253eee444d67537aeebb75" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float PlayerVehicle::pitch</definition>
+        <argsstring></argsstring>
+        <name>pitch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="21" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1acef0d78c34373d56e30e309ac3233232" compoundref="SP2_8cpp" startline="1017" endline="1079">SP2::renderShips</referencedby>
+        <referencedby refid="structPlayerVehicle_1aeb9a7f9d45750ff293f6c216ba464092" compoundref="PlayerVehicle_8cpp" startline="124" endline="130">reset</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1adf952e73bd684379f82c765ba4da41c6" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float PlayerVehicle::yaw</definition>
+        <argsstring></argsstring>
+        <name>yaw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="21" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1acef0d78c34373d56e30e309ac3233232" compoundref="SP2_8cpp" startline="1017" endline="1079">SP2::renderShips</referencedby>
+        <referencedby refid="structPlayerVehicle_1aeb9a7f9d45750ff293f6c216ba464092" compoundref="PlayerVehicle_8cpp" startline="124" endline="130">reset</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a509804c06b7e8f77f446908dbea1b7a4" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float PlayerVehicle::delay</definition>
+        <argsstring></argsstring>
+        <name>delay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="21" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a4ea81ddc04fba119ebee42c5c0d7f746" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float PlayerVehicle::respawnTimer</definition>
+        <argsstring></argsstring>
+        <name>respawnTimer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="21" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="21" bodyend="-1"/>
+        <referencedby refid="structPlayerVehicle_1a7294156f5d01b711797593dc86891be9" compoundref="PlayerVehicle_8cpp" startline="107" endline="116">respawn</referencedby>
+        <referencedby refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" compoundref="PlayerVehicle_8cpp" startline="34" endline="93">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a757332394bce258ee5f33cd8d088255d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int PlayerVehicle::bulletFireRate</definition>
+        <argsstring></argsstring>
+        <name>bulletFireRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="23" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="structPlayerVehicle_1a2b33c49b25427ce5322de28afd9241df" compoundref="PlayerVehicle_8cpp" startline="144" endline="158">fireBullets</referencedby>
+        <referencedby refid="structShop_1a45013c064ceeef5efa3f44d57107e9b0" compoundref="Shop_8cpp" startline="62" endline="68">Shop::increaseFireRate</referencedby>
+        <referencedby refid="classSP2_1ae518feb0ebb1cff93a409fe067cf5018" compoundref="SP2_8cpp" startline="1081" endline="1131">SP2::renderShopMenu</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPlayerVehicle_1a35251aa8728a6700334aa53406d653db" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int PlayerVehicle::bulletDamage</definition>
+        <argsstring></argsstring>
+        <name>bulletDamage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="24" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="structShop_1add73247f38202e232a2ed33418241eab" compoundref="Shop_8cpp" startline="55" endline="60">Shop::increaseDamage</referencedby>
+        <referencedby refid="classSP2_1aa322f4df791b0bb5633f794ac4f39758" compoundref="SP2_8cpp" startline="818" endline="832">SP2::playerBulletCreation</referencedby>
+        <referencedby refid="classSP2_1ae518feb0ebb1cff93a409fe067cf5018" compoundref="SP2_8cpp" startline="1081" endline="1131">SP2::renderShopMenu</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerVehicle::update</definition>
+        <argsstring>(double dt, vector&lt; AABB &gt; hitbox)</argsstring>
+        <name>update</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>vector&lt; <ref refid="classAABB" kindref="compound">AABB</ref> &gt;</type>
+          <declname>hitbox</declname>
+        </param>
+        <briefdescription>
+<para>Update player vehicle. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delta Time</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hitbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector of <ref refid="classAABB" kindref="compound">AABB</ref> hitbox, to test if vehicle is colliding with anything </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="13" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.cpp" bodystart="34" bodyend="93"/>
+        <references refid="structPlayerVehicle_1a68bdde1f0f6e7bcd6bba425a7581d144" compoundref="PlayerVehicle_8h" startline="17">bulletCurrCooldown</references>
+        <references refid="structPlayerVehicle_1ad76ad098d789983394711b0d9a6ef3f5" compoundref="PlayerVehicle_8h" startline="10">health</references>
+        <references refid="structPlayerVehicle_1a15c6b1ea09312b3bd0e6541338bf1cc5" compoundref="PlayerVehicle_8h" startline="12">isDead</references>
+        <references refid="classObject_1a61ffad7d6db49c0a486797f852804291" compoundref="Object_8h" startline="16">Object::Pos</references>
+        <references refid="structPlayerVehicle_1a4ea81ddc04fba119ebee42c5c0d7f746" compoundref="PlayerVehicle_8h" startline="21">respawnTimer</references>
+        <references refid="structVector3_1ac6c9b941ccefd7744eace77ceab16b56" compoundref="Vector3_8cpp" startline="79" endline="82">Vector3::SetZero</references>
+        <references refid="structPlayerVehicle_1a20bff632e3cf1c2113a0b41a49d71662" compoundref="PlayerVehicle_8h" startline="21">thrust</references>
+        <references refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" compoundref="Object_8cpp" startline="120" endline="123">Object::updateHitbox</references>
+        <references refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" compoundref="Object_8h" startline="16">Object::View</references>
+        <references refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" compoundref="Vector3_8h" startline="27">Vector3::x</references>
+        <references refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" compoundref="Vector3_8h" startline="27">Vector3::y</references>
+        <references refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" compoundref="Vector3_8h" startline="27">Vector3::z</references>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structPlayerVehicle_1a7294156f5d01b711797593dc86891be9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlayerVehicle::respawn</definition>
+        <argsstring>(int time)</argsstring>
+        <name>respawn</name>
+        <param>
+          <type>int</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+<para>Respawn timer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>How much time it should take before respawning.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when respawnTimer hits the time given, else false </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="14" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.cpp" bodystart="107" bodyend="116"/>
+        <references refid="structPlayerVehicle_1a15c6b1ea09312b3bd0e6541338bf1cc5" compoundref="PlayerVehicle_8h" startline="12">isDead</references>
+        <references refid="structPlayerVehicle_1a4ea81ddc04fba119ebee42c5c0d7f746" compoundref="PlayerVehicle_8h" startline="21">respawnTimer</references>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structPlayerVehicle_1aeb9a7f9d45750ff293f6c216ba464092" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerVehicle::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+<para>Resets everything to default values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="15" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.cpp" bodystart="124" bodyend="130"/>
+        <references refid="structPlayerVehicle_1ad76ad098d789983394711b0d9a6ef3f5" compoundref="PlayerVehicle_8h" startline="10">health</references>
+        <references refid="structPlayerVehicle_1a0cf8cb41989e3a369ef3532066cea302" compoundref="PlayerVehicle_8h" startline="10">maxHealth</references>
+        <references refid="structPlayerVehicle_1a0895b32b2c253eee444d67537aeebb75" compoundref="PlayerVehicle_8h" startline="21">pitch</references>
+        <references refid="structPlayerVehicle_1a20bff632e3cf1c2113a0b41a49d71662" compoundref="PlayerVehicle_8h" startline="21">thrust</references>
+        <references refid="structPlayerVehicle_1adf952e73bd684379f82c765ba4da41c6" compoundref="PlayerVehicle_8h" startline="21">yaw</references>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structPlayerVehicle_1a2b33c49b25427ce5322de28afd9241df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlayerVehicle::fireBullets</definition>
+        <argsstring>()</argsstring>
+        <name>fireBullets</name>
+        <briefdescription>
+<para>Function use to see if bullets are ready to be fired. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bulletFireRate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pass in the bullet&apos;s fire rate to the function</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True when bullet cooldown is more then fire rate. else false </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="19" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.cpp" bodystart="144" bodyend="158"/>
+        <references refid="structPlayerVehicle_1a68bdde1f0f6e7bcd6bba425a7581d144" compoundref="PlayerVehicle_8h" startline="17">bulletCurrCooldown</references>
+        <references refid="structPlayerVehicle_1a757332394bce258ee5f33cd8d088255d" compoundref="PlayerVehicle_8h" startline="23">bulletFireRate</references>
+        <referencedby refid="classSP2_1aa322f4df791b0bb5633f794ac4f39758" compoundref="SP2_8cpp" startline="818" endline="832">SP2::playerBulletCreation</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structPlayerVehicle_1a0b3a7ad40675a7e57985ec842a326faa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PlayerVehicle::PlayerVehicle</definition>
+        <argsstring>()</argsstring>
+        <name>PlayerVehicle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="26" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.cpp" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="structPlayerVehicle_1a3a85ad6eacbd50eb97a24be4216d242d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PlayerVehicle::~PlayerVehicle</definition>
+        <argsstring>()</argsstring>
+        <name>~PlayerVehicle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/PlayerVehicle.h" line="27" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="497">
+        <label>Object</label>
+        <link refid="classObject"/>
+      </node>
+      <node id="496">
+        <label>PlayerVehicle</label>
+        <link refid="structPlayerVehicle"/>
+        <childnode refid="497" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="502">
+        <label>float</label>
+      </node>
+      <node id="500">
+        <label>AABB</label>
+        <link refid="classAABB"/>
+        <childnode refid="501" relation="usage">
+          <edgelabel>Min</edgelabel>
+          <edgelabel>Max</edgelabel>
+        </childnode>
+      </node>
+      <node id="499">
+        <label>Object</label>
+        <link refid="classObject"/>
+        <childnode refid="500" relation="usage">
+          <edgelabel>hitboxSize</edgelabel>
+          <edgelabel>hitbox</edgelabel>
+          <edgelabel>interaction</edgelabel>
+        </childnode>
+        <childnode refid="501" relation="usage">
+          <edgelabel>InteractionMin</edgelabel>
+          <edgelabel>View</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>InteractionMax</edgelabel>
+          <edgelabel>Pos</edgelabel>
+        </childnode>
+      </node>
+      <node id="498">
+        <label>PlayerVehicle</label>
+        <link refid="structPlayerVehicle"/>
+        <childnode refid="499" relation="public-inheritance">
+        </childnode>
+        <childnode refid="503" relation="usage">
+          <edgelabel>bulletCurrCooldown</edgelabel>
+        </childnode>
+        <childnode refid="502" relation="usage">
+          <edgelabel>respawnTimer</edgelabel>
+          <edgelabel>yaw</edgelabel>
+          <edgelabel>pitch</edgelabel>
+          <edgelabel>thrust</edgelabel>
+          <edgelabel>delay</edgelabel>
+        </childnode>
+        <childnode refid="504" relation="usage">
+          <edgelabel>bulletFireRate</edgelabel>
+          <edgelabel>health</edgelabel>
+          <edgelabel>maxHealth</edgelabel>
+          <edgelabel>bulletDamage</edgelabel>
+        </childnode>
+        <childnode refid="505" relation="usage">
+          <edgelabel>board</edgelabel>
+          <edgelabel>isDead</edgelabel>
+        </childnode>
+      </node>
+      <node id="504">
+        <label>int</label>
+      </node>
+      <node id="503">
+        <label>double</label>
+      </node>
+      <node id="505">
+        <label>bool</label>
+      </node>
+      <node id="501">
+        <label>Vector3</label>
+        <link refid="structVector3"/>
+        <childnode refid="502" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/PlayerVehicle.h" line="6" column="1" bodyfile="Zyzrag/Source/PlayerVehicle.h" bodystart="6" bodyend="31"/>
+    <listofallmembers>
+      <member refid="structPlayerVehicle_1a39577a02dce81c7fc9a4efc3c3d4c07a" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>board</name></member>
+      <member refid="structPlayerVehicle_1a68bdde1f0f6e7bcd6bba425a7581d144" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>bulletCurrCooldown</name></member>
+      <member refid="structPlayerVehicle_1a35251aa8728a6700334aa53406d653db" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>bulletDamage</name></member>
+      <member refid="structPlayerVehicle_1a757332394bce258ee5f33cd8d088255d" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>bulletFireRate</name></member>
+      <member refid="structPlayerVehicle_1a509804c06b7e8f77f446908dbea1b7a4" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>delay</name></member>
+      <member refid="structPlayerVehicle_1a2b33c49b25427ce5322de28afd9241df" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>fireBullets</name></member>
+      <member refid="structPlayerVehicle_1ad76ad098d789983394711b0d9a6ef3f5" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>health</name></member>
+      <member refid="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>hitbox</name></member>
+      <member refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>hitboxSize</name></member>
+      <member refid="classObject_1aacafc6287e6765c621111d5c5577c8a6" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>interaction</name></member>
+      <member refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>InteractionMax</name></member>
+      <member refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>InteractionMin</name></member>
+      <member refid="structPlayerVehicle_1a15c6b1ea09312b3bd0e6541338bf1cc5" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>isDead</name></member>
+      <member refid="structPlayerVehicle_1a0cf8cb41989e3a369ef3532066cea302" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>maxHealth</name></member>
+      <member refid="classObject_1a40860402e64d8008fb42329df7097cdb" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>Object</name></member>
+      <member refid="classObject_1a503fc1152db4ee07cfece48f8a17a882" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>Object</name></member>
+      <member refid="structPlayerVehicle_1a0895b32b2c253eee444d67537aeebb75" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>pitch</name></member>
+      <member refid="structPlayerVehicle_1a0b3a7ad40675a7e57985ec842a326faa" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>PlayerVehicle</name></member>
+      <member refid="classObject_1a61ffad7d6db49c0a486797f852804291" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>Pos</name></member>
+      <member refid="structPlayerVehicle_1aeb9a7f9d45750ff293f6c216ba464092" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>reset</name></member>
+      <member refid="structPlayerVehicle_1a7294156f5d01b711797593dc86891be9" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>respawn</name></member>
+      <member refid="structPlayerVehicle_1a4ea81ddc04fba119ebee42c5c0d7f746" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>respawnTimer</name></member>
+      <member refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>Right</name></member>
+      <member refid="classObject_1a2198f4c2b626c0633a18962cd7eb84e4" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetHitbox</name></member>
+      <member refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetHitboxSize</name></member>
+      <member refid="classObject_1a03acfeda7945d7c0358befe32f6ebaed" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetHitboxSize</name></member>
+      <member refid="classObject_1a564eeecf7deefdfb0144458beb28599b" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetInteraction</name></member>
+      <member refid="classObject_1a02290ed3825318459e72cb80d450afd0" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetInteractionSize</name></member>
+      <member refid="classObject_1a048d20a358acb913055e7e128cf5120e" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetPos</name></member>
+      <member refid="classObject_1aaaf6f6e7ec1a712ce23b5b4ad2ffad3f" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetPos</name></member>
+      <member refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetRight</name></member>
+      <member refid="classObject_1ac7bd4c23a77ee9e7de4f051300bc7b5f" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetRight</name></member>
+      <member refid="classObject_1a0174b9a71374d4b3c8f3402ff2cebeaf" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetRight</name></member>
+      <member refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetUp</name></member>
+      <member refid="classObject_1a1c38ee52b9773fb15827f7f8d5e8cf47" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetUp</name></member>
+      <member refid="classObject_1ae2e3ba0210f52fbaeef2b824cd2e80d4" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetUp</name></member>
+      <member refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetView</name></member>
+      <member refid="classObject_1a7cc1c711ebe79a023b24abd69c590036" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>SetView</name></member>
+      <member refid="structPlayerVehicle_1a20bff632e3cf1c2113a0b41a49d71662" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>thrust</name></member>
+      <member refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>Up</name></member>
+      <member refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>update</name></member>
+      <member refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>updateHitbox</name></member>
+      <member refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>View</name></member>
+      <member refid="structPlayerVehicle_1adf952e73bd684379f82c765ba4da41c6" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>yaw</name></member>
+      <member refid="classObject_1ae8f5483f459e46687bd01e6f9977afd3" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>~Object</name></member>
+      <member refid="structPlayerVehicle_1a3a85ad6eacbd50eb97a24be4216d242d" prot="public" virt="non-virtual"><scope>PlayerVehicle</scope><name>~PlayerVehicle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,9 @@
+<map id="Asteroid::update" name="Asteroid::update">
+<area shape="rect" id="node2" href="$structVector3.html#a54b8f55a970ee252479a326ffd0699c0" title="Vector3::getMagnitude" alt="" coords="171,5,324,32"/>
+<area shape="rect" id="node3" href="$structVector3.html#aaef4f25a38878a640ab4a48002a7eff8" title="Normalize this vector and return a reference to it. " alt="" coords="181,56,314,83"/>
+<area shape="rect" id="node5" href="$classObject.html#a79185f158d60e9f8fde4940d9dda4cea" title="Updates hitbox by getting object pos added with hitbox size. " alt="" coords="175,132,319,159"/>
+<area shape="rect" id="node4" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="372,43,487,69"/>
+<area shape="rect" id="node6" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="386,93,473,120"/>
+<area shape="rect" id="node7" href="$classAABB.html#a7969d3aaabc54615c0ad2b39719cfeea" title="Get&#39;s Vector3 min of class. " alt="" coords="375,144,483,171"/>
+<area shape="rect" id="node8" href="$classAABB.html#a19ea75e7f7b92d7100c0898c7a6c5f81" title="Get&#39;s Vector3 max of class. " alt="" coords="373,195,485,221"/>
+</map>

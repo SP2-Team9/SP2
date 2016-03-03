@@ -1,0 +1,70 @@
+<map id="SP2::Render" name="SP2::Render">
+<area shape="rect" id="node2" href="$classSP2.html#a92133b572f908abf6c33501a9d95092d" title="SP2::abductionquest" alt="" coords="372,204,515,231"/>
+<area shape="rect" id="node12" href="$classMS.html#a9fb4fff5036f3f197b893f9a579c97b2" title="Make a copy of the top matrix on the matrix stack and push it on top. " alt="" coords="882,990,998,1016"/>
+<area shape="rect" id="node23" href="$classMS.html#a21291d7fb488f63c589bdc9bd620ba58" title="Return the top matrix on the matrix stack. " alt="" coords="1142,382,1213,408"/>
+<area shape="rect" id="node25" href="$classMS.html#aac22e39d0ac437fcb85403a9f0a7a25f" title="Pop the top matrix on the matrix stack. " alt="" coords="885,1319,995,1346"/>
+<area shape="rect" id="node26" href="$classSP2.html#ac8acf6067a10475ad2e4c5ada88a6c65" title="SP2::RenderTextOnScreen" alt="" coords="597,356,775,383"/>
+<area shape="rect" id="node30" href="$classMS.html#a77c5f7e4a21ea48dcf902a7ff6824a11" title="Replace the top matrix with an identity matrix. " alt="" coords="880,432,1000,459"/>
+<area shape="rect" id="node31" href="$classSP2.html#aff4b863be2e75f8f45cfa2b1b8aa938e" title="SP2::asteroidquest" alt="" coords="377,154,510,180"/>
+<area shape="rect" id="node32" href="$classSP2.html#aa9c1683d167509e5d6f0e50340947f2a" title="SP2::ballquest" alt="" coords="390,610,497,636"/>
+<area shape="rect" id="node33" href="$classSP2.html#a87c33349b172e206bda7f1c03250b619" title="SP2::RenderMesh" alt="" coords="876,1370,1004,1396"/>
+<area shape="rect" id="node40" href="$classSP2.html#ac457fe761dd0acbf7428f0bb8654efb7" title="SP2::buyshipquest" alt="" coords="377,52,509,79"/>
+<area shape="rect" id="node41" href="$classMeshBuilder.html#ada654a09cd23bc2c2bec641e2dee101e" title="MeshBuilder::GenerateSquare" alt="" coords="588,2028,784,2055"/>
+<area shape="rect" id="node43" href="$classMS.html#a2638cd3249260877cc31329978fb6b38" title="Setup lookat matrix and push to matrix stack. " alt="" coords="179,762,269,788"/>
+<area shape="rect" id="node45" href="$classSP2.html#a23517ffd078dbea3018c0eb9e64c78aa" title="SP2::quests" alt="" coords="396,103,491,130"/>
+<area shape="rect" id="node46" href="$classSP2.html#a516783baa08f593bc80e1c8935753d43" title="SP2::renderAllHitbox" alt="" coords="153,2180,295,2207"/>
+<area shape="rect" id="node47" href="$classSP2.html#ae816a6913862562a4390643111cb0e06" title="SP2::renderDistances" alt="" coords="611,660,761,687"/>
+<area shape="rect" id="node49" href="$classSP2.html#ac0b11bcd62c386e060fb5c123dc85b61" title="SP2::renderExit" alt="" coords="386,508,501,535"/>
+<area shape="rect" id="node50" href="$classSP2.html#ab9091eedf4e10df408fdc3cd406e67a9" title="SP2::renderFightingUI" alt="" coords="149,255,299,282"/>
+<area shape="rect" id="node51" href="$classSP2.html#ae41e83a44dec3aa0cd664f18ba98894c" title="SP2::renderGameOverScreen" alt="" coords="347,356,540,383"/>
+<area shape="rect" id="node52" href="$classSP2.html#a432ead63d66b2475fc8dc6341ed493e5" title="SP2::renderGeneral" alt="" coords="156,1294,292,1320"/>
+<area shape="rect" id="node64" href="$classSP2.html#aa3f7d636c2d1b420df9f463f2392dc47" title="SP2::renderHelp" alt="" coords="385,407,502,434"/>
+<area shape="rect" id="node65" href="$classSP2.html#ab9c402fa937458cc1e7961a01f7a40ce" title="SP2::renderNPC" alt="" coords="627,1471,745,1498"/>
+<area shape="rect" id="node66" href="$classSP2.html#a518d28d6602a30f615f3391742143199" title="SP2::renderNPC5" alt="" coords="623,1522,749,1548"/>
+<area shape="rect" id="node67" href="$classSP2.html#ae518feb0ebb1cff93a409fe067cf5018" title="SP2::renderShopMenu" alt="" coords="367,458,520,484"/>
+<area shape="rect" id="node68" href="$classSP2.html#ae58835fa50b823c3f72a70e918f181ba" title="SP2::renderTitleScreen" alt="" coords="365,660,521,687"/>
+<area shape="rect" id="node69" href="$classSP2.html#a4f9848f01e5c7be94af1f60978f9f302" title="SP2::renderWaveTransition" alt="" coords="354,559,533,586"/>
+<area shape="rect" id="node3" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="599,154,773,180"/>
+<area shape="rect" id="node4" href="$classAABB.html#ae111c88c4157c86067be620e15d45072" title="Checks if current AABB is colliding with a point. " alt="" coords="613,204,759,231"/>
+<area shape="rect" id="node5" href="$classSP2.html#a66ffac3316b8be4cda0f6d51fd3ecc2d" title="SP2::renderchildtext" alt="" coords="616,559,756,586"/>
+<area shape="rect" id="node6" href="$structVector3.html#aaef4f25a38878a640ab4a48002a7eff8" title="Normalize this vector and return a reference to it. " alt="" coords="873,686,1007,712"/>
+<area shape="rect" id="node8" href="$structVector3.html#aa1cdc5357009b47fe585ddd61e263aad" title="Cross product of 2 vectors. " alt="" coords="885,635,995,662"/>
+<area shape="rect" id="node10" href="$namespaceMath.html#a1a1d364c850f9d66fda85cf71598bbe5" title="Converts from radians to degrees. " alt="" coords="863,787,1017,814"/>
+<area shape="rect" id="node11" href="$structVector3.html#a71b1271deb064c65f9dc7dba638c5b57" title="Dot product of 2 vectors. " alt="" coords="893,736,987,763"/>
+<area shape="rect" id="node13" href="$classMS.html#a7e94a35ce566fe3ec49c92b6c4bb663a" title="Multiply the top matrix with a translation matrix based on the following parameters. " alt="" coords="889,1196,991,1223"/>
+<area shape="rect" id="node17" href="$classMS.html#a6ce592114042b920b648bca5519690cd" title="Multiply the top matrix with a rotation matrix based on the following parameters. ..." alt="" coords="896,1250,984,1276"/>
+<area shape="rect" id="node20" href="$classMS.html#a52109795de960e24663b315e9128533f" title="Multiply the top matrix with a scale matrix based on the following parameters. " alt="" coords="899,914,981,940"/>
+<area shape="rect" id="node22" href="$classSP2.html#ab49c40d25cc25c6272e7943708a1867e" title="SP2::RenderText" alt="" coords="879,584,1001,611"/>
+<area shape="rect" id="node7" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="1120,686,1235,712"/>
+<area shape="rect" id="node9" href="$structVector3.html#afa5e0c801fc2c8a820a54ea99302fe08" title="Vector3 default constructor. " alt="" coords="1117,635,1237,662"/>
+<area shape="rect" id="node14" href="$classMtx44.html#a0cc88cc5c648da14effba480c4d2ac70" title="Set this matrix to a translation matrix with translation of (x, y, z) " alt="" coords="1096,559,1259,586"/>
+<area shape="rect" id="node15" href="$classMtx44.html#a3ac8a0afd66412e15e4246474b893da2" title="Set the matrix to an identity matrix (1&#39;s along the diagonal) " alt="" coords="1307,559,1449,586"/>
+<area shape="rect" id="node16" href="$classMtx44.html#a3aea63c08759ac98b8a4f23fdc0d6a28" title="Set this matrix to zero. " alt="" coords="1497,559,1623,586"/>
+<area shape="rect" id="node18" href="$classMtx44.html#ac0587ffb5ff9fd58ad5768d28fc06574" title="Set Matrix to a rotation matrix about arbitrary axis. " alt="" coords="1103,1250,1251,1276"/>
+<area shape="rect" id="node19" href="$namespaceMath.html#ac91173ab2efdf7313fe7aaeb6cb44cf6" title="Math::FAbs" alt="" coords="1333,1282,1423,1308"/>
+<area shape="rect" id="node21" href="$classMtx44.html#a04c49a922f8e8ffcb57a90c6ce955600" title="Set this matrix to a scaling matrix with scale factors sx, sy and sz. " alt="" coords="1111,824,1244,851"/>
+<area shape="rect" id="node24" href="$classMesh.html#a75e66bcd90c09492676a4cfe5b23c3af" title="OpenGL render code. " alt="" coords="1126,502,1229,528"/>
+<area shape="rect" id="node27" href="$classMtx44.html#a0a4c7818be7c1aeb0601ad069c1a591d" title="Setup orthogonal matrix. " alt="" coords="874,280,1006,307"/>
+<area shape="rect" id="node29" href="$classMS.html#a86606fe9f575ccb747d77195c8aefdaf" title="Return the top matrix with a new matrix. " alt="" coords="883,331,997,358"/>
+<area shape="rect" id="node28" href="$classMtx44.html#a1b985913080679da29ff94217935b3c7" title="Default Constructor. Default values are zero. " alt="" coords="1126,280,1229,307"/>
+<area shape="rect" id="node38" href="$classSP2.html#af22c6f23198a4b66a31c1b00d194466c" title="SP2::RenderOnScreen" alt="" coords="609,407,763,434"/>
+<area shape="rect" id="node39" href="$classSP2.html#abf67ed7b015f0412a00d85d4cb43d9b5" title="SP2::renderTextonball" alt="" coords="611,610,761,636"/>
+<area shape="rect" id="node34" href="$classMtx44.html#aac1ba21ddfc5f3c24baa4f58d9c5c256" title="Return a new matrix that is an inverse. " alt="" coords="1114,1312,1241,1339"/>
+<area shape="rect" id="node35" href="$classMtx44.html#aebb16a0329c5237e314af0d75d8081fd" title="Return a new matrix that is a transpose of this matrix. " alt="" coords="1104,1370,1251,1396"/>
+<area shape="rect" id="node36" href="$classMtx44.html#a6c95e149e42cba381918782a93f8a68b" title="Set this matrix to its Transpose. " alt="" coords="1315,1370,1441,1396"/>
+<area shape="rect" id="node37" href="$Mtx44_8cpp.html#a1ef521a2e5e5ae2ef55d1bc0c3b0c437" title="Helper function swap. " alt="" coords="1534,1370,1586,1396"/>
+<area shape="rect" id="node42" href="$structPosition.html#a2919b2441baf7a2f799791d65a1cfc15" title="Position::Set" alt="" coords="1129,1171,1226,1198"/>
+<area shape="rect" id="node44" href="$classMtx44.html#a7c3d2d30d9ed5bfca2ba97d0e570930f" title="Set matrix to be a lookat matrix. " alt="" coords="615,508,757,535"/>
+<area shape="rect" id="node48" href="$structVector3.html#a17abffd128562414c7f59bf7aa0b4456" title="Vector3::distanceBetween2points" alt="" coords="832,838,1048,864"/>
+<area shape="rect" id="node53" href="$classSP2.html#aa6eb01e507b119156ff4b13df9152e7b" title="SP2::renderSkybox" alt="" coords="619,1370,753,1396"/>
+<area shape="rect" id="node54" href="$classSP2.html#acef0d78c34373d56e30e309ac3233232" title="SP2::renderShips" alt="" coords="381,1522,505,1548"/>
+<area shape="rect" id="node59" href="$classSP2.html#a605ae7401549bbcf255e0048849bece3" title="SP2::renderAsteroid" alt="" coords="374,1167,513,1194"/>
+<area shape="rect" id="node60" href="$classSP2.html#aa411393cf213b32dc0e8583ed8404ceb" title="SP2::renderBullets" alt="" coords="621,1218,751,1244"/>
+<area shape="rect" id="node61" href="$classSP2.html#a08ba9086abdc2b7dcc05864d88cd80a1" title="SP2::renderWayPoints" alt="" coords="609,1623,763,1650"/>
+<area shape="rect" id="node62" href="$classSP2.html#adee4c36140439dabfec6b6fe1a42c7f9" title="SP2::renderStation" alt="" coords="620,1268,752,1295"/>
+<area shape="rect" id="node63" href="$classSP2.html#a758452dced20dd622c43f620a762e516" title="SP2::renderExplosion" alt="" coords="612,1319,760,1346"/>
+<area shape="rect" id="node55" href="$classSP2.html#ad1060157516e3232ae5d69d85096f952" title="SP2::renderHealthBar" alt="" coords="612,1066,760,1092"/>
+<area shape="rect" id="node56" href="$structVector3.html#a9c25d604bd52b162cfcb56302ef032bb" title="Set the elements of this vector. " alt="" coords="1130,1044,1225,1071"/>
+<area shape="rect" id="node57" href="$classMeshBuilder.html#a8fede2f411aebe5d41af99b51be7ed77" title="Generate the vertices of a quad; Use random color for each vertex Then generate the VBO/IBO and store..." alt="" coords="847,1095,1033,1122"/>
+<area shape="rect" id="node58" href="$structTexCoord.html#a64b4ceeb1733c478cb4b5b1216146c32" title="TexCoord::Set" alt="" coords="1125,1095,1230,1122"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Asteroid::Asteroid" name="Asteroid::Asteroid">
+<area shape="rect" id="node2" href="$classObject.html#a96fe42f8ef68ace9d2dedc6d0fe4be22" title="Gives a default size to hitbox size. " alt="" coords="180,5,331,32"/>
+<area shape="rect" id="node3" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="379,5,465,32"/>
+</map>

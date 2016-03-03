@@ -1,0 +1,368 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="classApplication" kind="class" language="C++" prot="public">
+    <compoundname>Application</compoundname>
+    <includes refid="Application_8h" local="no">Application.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int Application::screenWidth</definition>
+        <argsstring></argsstring>
+        <name>screenWidth</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="23" column="1" bodyfile="Zyzrag/Source/Application.h" bodystart="23" bodyend="-1"/>
+        <referencedby refid="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" compoundref="MousePicker_8cpp" startline="92" endline="106">MousePicker::calculateMouseRay</referencedby>
+        <referencedby refid="classApplication_1abce8352d49081a282686af6246a379a6" compoundref="Application_8cpp" startline="157" endline="160">centerMouse</referencedby>
+        <referencedby refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">Camera::getYawAndPitch</referencedby>
+        <referencedby refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" compoundref="Application_8cpp" startline="63" endline="117">Init</referencedby>
+        <referencedby refid="classSP2_1a8669c489b6a968f367a4610b254ac992" compoundref="SP2_8cpp" startline="25" endline="273">SP2::Init</referencedby>
+        <referencedby refid="classSP2_1ae58835fa50b823c3f72a70e918f181ba" compoundref="SP2_8cpp" startline="1133" endline="1143">SP2::renderTitleScreen</referencedby>
+        <referencedby refid="classSP2_1a29257181842015318f63d9e2e2a7d927" compoundref="SP2_8cpp" startline="752" endline="771">SP2::shopInit</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" prot="public" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int Application::screenHeight</definition>
+        <argsstring></argsstring>
+        <name>screenHeight</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="24" column="1" bodyfile="Zyzrag/Source/Application.h" bodystart="24" bodyend="-1"/>
+        <referencedby refid="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" compoundref="MousePicker_8cpp" startline="92" endline="106">MousePicker::calculateMouseRay</referencedby>
+        <referencedby refid="classApplication_1abce8352d49081a282686af6246a379a6" compoundref="Application_8cpp" startline="157" endline="160">centerMouse</referencedby>
+        <referencedby refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">Camera::getYawAndPitch</referencedby>
+        <referencedby refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" compoundref="Application_8cpp" startline="63" endline="117">Init</referencedby>
+        <referencedby refid="classSP2_1a8669c489b6a968f367a4610b254ac992" compoundref="SP2_8cpp" startline="25" endline="273">SP2::Init</referencedby>
+        <referencedby refid="classSP2_1a29257181842015318f63d9e2e2a7d927" compoundref="SP2_8cpp" startline="752" endline="771">SP2::shopInit</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classApplication_1a55f72770edd95411a9cd241cf8151a20" prot="public" static="yes" mutable="no">
+        <type>double</type>
+        <definition>double Application::scrollX</definition>
+        <argsstring></argsstring>
+        <name>scrollX</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="26" column="1" bodyfile="Zyzrag/Source/Application.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="Application_8cpp_1a28fc843e2e5aaf82f524f80eb6df2ded" compoundref="Application_8cpp" startline="57" endline="61">scrollwheel_callback</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classApplication_1a651b3026e02ef581e9c4655ad6907f5c" prot="public" static="yes" mutable="no">
+        <type>double</type>
+        <definition>double Application::scrollY</definition>
+        <argsstring></argsstring>
+        <name>scrollY</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="27" column="1" bodyfile="Zyzrag/Source/Application.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="Application_8cpp_1a28fc843e2e5aaf82f524f80eb6df2ded" compoundref="Application_8cpp" startline="57" endline="61">scrollwheel_callback</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">Camera::YawRotation</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classApplication_1ac81ea1396dc69c6d48b9a701954f53fe" prot="private" static="no" mutable="no">
+        <type><ref refid="classStopWatch" kindref="compound">StopWatch</ref></type>
+        <definition>StopWatch Application::m_timer</definition>
+        <argsstring></argsstring>
+        <name>m_timer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="32" column="1" bodyfile="Zyzrag/Source/Application.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classApplication_1aaf09cd6cb412086dc039e28cdb059f0d" compoundref="Application_8cpp" startline="119" endline="142">Run</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classApplication_1afa8cc05ce6b6092be5ecdfdae44e05f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Application::Application</definition>
+        <argsstring>()</argsstring>
+        <name>Application</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="11" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classApplication_1a748bca84fefb9c12661cfaa2f623748d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Application::~Application</definition>
+        <argsstring>()</argsstring>
+        <name>~Application</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="12" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="48" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Application::Init</definition>
+        <argsstring>()</argsstring>
+        <name>Init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="13" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="63" bodyend="117"/>
+        <references refid="Application_8cpp_1a6e6d1771a9242858811be0a3569838fa" compoundref="Application_8cpp" startline="26" endline="30">error_callback</references>
+        <references refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" compoundref="Application_8cpp" startline="16">m_window</references>
+        <references refid="Application_8cpp_1aadcee9765075e232ca0720f80a76ad37" compoundref="Application_8cpp" startline="52" endline="55">resize_callback</references>
+        <references refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" compoundref="Application_8h" startline="24">screenHeight</references>
+        <references refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" compoundref="Application_8h" startline="23">screenWidth</references>
+        <references refid="Application_8cpp_1a28fc843e2e5aaf82f524f80eb6df2ded" compoundref="Application_8cpp" startline="57" endline="61">scrollwheel_callback</references>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="5" endline="11">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classApplication_1aaf09cd6cb412086dc039e28cdb059f0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Application::Run</definition>
+        <argsstring>()</argsstring>
+        <name>Run</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="14" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="119" bodyend="142"/>
+        <references refid="classScene_1aae8e24654ef98c79961c2b804b12852c">Scene::Exit</references>
+        <references refid="Application_8cpp_1ae228418b33873657fa31313fb4189a8f" compoundref="Application_8cpp" startline="18">frameTime</references>
+        <references refid="classStopWatch_1ac8be1626396d1a5ca414f74349d59eb2" compoundref="timer_8cpp" startline="34" endline="41">StopWatch::getElapsedTime</references>
+        <references refid="classsharedData_1a89de3cc4c06c0dc4474fd330138cb0d1" compoundref="sharedData_8h" startline="6" endline="10">sharedData::GetInstance</references>
+        <references refid="classScene_1ac3c4677dfd702a3ffd5ffadd3f1ac478">Scene::Init</references>
+        <references refid="classApplication_1ac81ea1396dc69c6d48b9a701954f53fe" compoundref="Application_8h" startline="32">m_timer</references>
+        <references refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" compoundref="Application_8cpp" startline="16">m_window</references>
+        <references refid="classScene_1ae24d21e12b34839994ad265662ea24d7">Scene::Render</references>
+        <references refid="classStopWatch_1a23301f735a2e3190435e39c9fd70cdf2" compoundref="timer_8cpp" startline="29" endline="32">StopWatch::startTimer</references>
+        <references refid="classScene_1af5c6bcf2185087fb32c27fb8f6a18d91">Scene::Update</references>
+        <references refid="classStopWatch_1a2cd0856fc87a40038edfd66d784be8b4" compoundref="timer_8cpp" startline="43" endline="56">StopWatch::waitUntil</references>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="5" endline="11">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classApplication_1a9d410604b39b8374a884b1f2a1f2a5ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Application::Exit</definition>
+        <argsstring>()</argsstring>
+        <name>Exit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="15" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="144" bodyend="150"/>
+        <references refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" compoundref="Application_8cpp" startline="16">m_window</references>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="5" endline="11">main</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Application::IsKeyPressed</definition>
+        <argsstring>(unsigned short key)</argsstring>
+        <name>IsKeyPressed</name>
+        <param>
+          <type>unsigned short</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="17" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="39" bodyend="42"/>
+        <referencedby refid="classSP2_1a92133b572f908abf6c33501a9d95092d" compoundref="SP2_8cpp" startline="2819" endline="2851">SP2::abductionquest</referencedby>
+        <referencedby refid="classSP2_1aff4b863be2e75f8f45cfa2b1b8aa938e" compoundref="SP2_8cpp" startline="2773" endline="2794">SP2::asteroidquest</referencedby>
+        <referencedby refid="classSP2_1aa9c1683d167509e5d6f0e50340947f2a" compoundref="SP2_8cpp" startline="2733" endline="2771">SP2::ballquest</referencedby>
+        <referencedby refid="classSP2_1ac457fe761dd0acbf7428f0bb8654efb7" compoundref="SP2_8cpp" startline="2796" endline="2817">SP2::buyshipquest</referencedby>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">Camera::FPSMovement</referencedby>
+        <referencedby refid="classSP2_1ae3b8fa1d8f987a6f5b9175c10944398a" compoundref="SP2_8cpp" startline="1592" endline="1607">SP2::gameOverUpdate</referencedby>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+        <referencedby refid="classSP2_1a30e847649a0454ba1ad0bb271fb66d24" compoundref="SP2_8cpp" startline="2047" endline="2058">SP2::mainMenuUpdates</referencedby>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">Camera::NoClip</referencedby>
+        <referencedby refid="classSP2_1aa322f4df791b0bb5633f794ac4f39758" compoundref="SP2_8cpp" startline="818" endline="832">SP2::playerBulletCreation</referencedby>
+        <referencedby refid="classSP2_1a23517ffd078dbea3018c0eb9e64c78aa" compoundref="SP2_8cpp" startline="1609" endline="1677">SP2::quests</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+        <referencedby refid="classCamera_1acc1741feb6d9da849ea4b6c12e0711e6" compoundref="Camera_8cpp" startline="127" endline="138">Camera::Update</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">Camera::YawRotation</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classApplication_1aa5dd89fb2981442b5a2e38abad6b7cfb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Application::getMouse</definition>
+        <argsstring>(double &amp;x, double &amp;y)</argsstring>
+        <name>getMouse</name>
+        <param>
+          <type>double &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="18" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="152" bodyend="155"/>
+        <references refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" compoundref="Application_8cpp" startline="16">m_window</references>
+        <referencedby refid="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" compoundref="MousePicker_8cpp" startline="92" endline="106">MousePicker::calculateMouseRay</referencedby>
+        <referencedby refid="classCamera_1ac44f493bfcf873d1e5c7fb8076323586" compoundref="Camera_8cpp" startline="552" endline="557">Camera::DisableCursor</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classApplication_1abce8352d49081a282686af6246a379a6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Application::centerMouse</definition>
+        <argsstring>()</argsstring>
+        <name>centerMouse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="19" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="157" bodyend="160"/>
+        <references refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" compoundref="Application_8cpp" startline="16">m_window</references>
+        <references refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" compoundref="Application_8h" startline="24">screenHeight</references>
+        <references refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" compoundref="Application_8h" startline="23">screenWidth</references>
+        <referencedby refid="classCamera_1ac44f493bfcf873d1e5c7fb8076323586" compoundref="Camera_8cpp" startline="552" endline="557">Camera::DisableCursor</referencedby>
+        <referencedby refid="classSP2_1a30e847649a0454ba1ad0bb271fb66d24" compoundref="SP2_8cpp" startline="2047" endline="2058">SP2::mainMenuUpdates</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+        <referencedby refid="classSP2_1ab3a40eadc29b0efa8da32b25c2b4a3c5" compoundref="SP2_8cpp" startline="2153" endline="2183">SP2::waveTransitionUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classApplication_1ad689c120e0bb8369561b0c3a4278fcb6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Application::hideMouse</definition>
+        <argsstring>()</argsstring>
+        <name>hideMouse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="20" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="162" bodyend="165"/>
+        <references refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" compoundref="Application_8cpp" startline="16">m_window</references>
+        <referencedby refid="classCamera_1ac44f493bfcf873d1e5c7fb8076323586" compoundref="Camera_8cpp" startline="552" endline="557">Camera::DisableCursor</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classApplication_1a813f994cc6ef2c195541692f2ad63cec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Application::showMouse</definition>
+        <argsstring>()</argsstring>
+        <name>showMouse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.h" line="21" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="167" bodyend="170"/>
+        <references refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" compoundref="Application_8cpp" startline="16">m_window</references>
+        <referencedby refid="classCamera_1ae9c5958375a46c218508ae57bfaa98f6" compoundref="Camera_8cpp" startline="541" endline="544">Camera::EnableCursor</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="320">
+        <label>int</label>
+      </node>
+      <node id="316">
+        <label>double</label>
+      </node>
+      <node id="315">
+        <label>Application</label>
+        <link refid="classApplication"/>
+        <childnode refid="316" relation="usage">
+          <edgelabel>scrollX</edgelabel>
+          <edgelabel>scrollY</edgelabel>
+        </childnode>
+        <childnode refid="317" relation="usage">
+          <edgelabel>m_timer</edgelabel>
+        </childnode>
+        <childnode refid="320" relation="usage">
+          <edgelabel>screenWidth</edgelabel>
+          <edgelabel>screenHeight</edgelabel>
+        </childnode>
+      </node>
+      <node id="319">
+        <label>LARGE_INTEGER</label>
+      </node>
+      <node id="317">
+        <label>StopWatch</label>
+        <link refid="classStopWatch"/>
+        <childnode refid="318" relation="usage">
+          <edgelabel>wTimerRes</edgelabel>
+        </childnode>
+        <childnode refid="319" relation="usage">
+          <edgelabel>frequency</edgelabel>
+          <edgelabel>currTime</edgelabel>
+          <edgelabel>prevTime</edgelabel>
+        </childnode>
+      </node>
+      <node id="318">
+        <label>UINT</label>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/Application.h" line="9" column="1" bodyfile="Zyzrag/Source/Application.h" bodystart="8" bodyend="33"/>
+    <listofallmembers>
+      <member refid="classApplication_1afa8cc05ce6b6092be5ecdfdae44e05f8" prot="public" virt="non-virtual"><scope>Application</scope><name>Application</name></member>
+      <member refid="classApplication_1abce8352d49081a282686af6246a379a6" prot="public" virt="non-virtual"><scope>Application</scope><name>centerMouse</name></member>
+      <member refid="classApplication_1a9d410604b39b8374a884b1f2a1f2a5ba" prot="public" virt="non-virtual"><scope>Application</scope><name>Exit</name></member>
+      <member refid="classApplication_1aa5dd89fb2981442b5a2e38abad6b7cfb" prot="public" virt="non-virtual"><scope>Application</scope><name>getMouse</name></member>
+      <member refid="classApplication_1ad689c120e0bb8369561b0c3a4278fcb6" prot="public" virt="non-virtual"><scope>Application</scope><name>hideMouse</name></member>
+      <member refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" prot="public" virt="non-virtual"><scope>Application</scope><name>Init</name></member>
+      <member refid="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" prot="public" virt="non-virtual"><scope>Application</scope><name>IsKeyPressed</name></member>
+      <member refid="classApplication_1ac81ea1396dc69c6d48b9a701954f53fe" prot="private" virt="non-virtual"><scope>Application</scope><name>m_timer</name></member>
+      <member refid="classApplication_1aaf09cd6cb412086dc039e28cdb059f0d" prot="public" virt="non-virtual"><scope>Application</scope><name>Run</name></member>
+      <member refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" prot="public" virt="non-virtual"><scope>Application</scope><name>screenHeight</name></member>
+      <member refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" prot="public" virt="non-virtual"><scope>Application</scope><name>screenWidth</name></member>
+      <member refid="classApplication_1a55f72770edd95411a9cd241cf8151a20" prot="public" virt="non-virtual"><scope>Application</scope><name>scrollX</name></member>
+      <member refid="classApplication_1a651b3026e02ef581e9c4655ad6907f5c" prot="public" virt="non-virtual"><scope>Application</scope><name>scrollY</name></member>
+      <member refid="classApplication_1a813f994cc6ef2c195541692f2ad63cec" prot="public" virt="non-virtual"><scope>Application</scope><name>showMouse</name></member>
+      <member refid="classApplication_1a748bca84fefb9c12661cfaa2f623748d" prot="public" virt="non-virtual"><scope>Application</scope><name>~Application</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

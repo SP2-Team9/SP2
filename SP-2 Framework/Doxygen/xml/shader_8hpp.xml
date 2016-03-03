@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="shader_8hpp" kind="file" language="C++">
+    <compoundname>shader.hpp</compoundname>
+    <includedby refid="shader_8cpp" local="yes">Zyzrag/Source/shader.cpp</includedby>
+    <includedby refid="SP2_8cpp" local="yes">Zyzrag/Source/SP2.cpp</includedby>
+    <invincdepgraph>
+      <node id="2540">
+        <label>Zyzrag/Source/shader.hpp</label>
+        <link refid="shader.hpp"/>
+        <childnode refid="2541" relation="include">
+        </childnode>
+        <childnode refid="2542" relation="include">
+        </childnode>
+      </node>
+      <node id="2542">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2541">
+        <label>Zyzrag/Source/shader.cpp</label>
+        <link refid="shader_8cpp"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="shader_8hpp_1a833f10cca6a76fe34ae9efa23ac5e73c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint LoadShaders</definition>
+        <argsstring>(const char *vertex_file_path, const char *fragment_file_path)</argsstring>
+        <name>LoadShaders</name>
+        <param>
+          <type>const char *</type>
+          <declname>vertex_file_path</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fragment_file_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/shader.hpp" line="4" column="1" bodyfile="Zyzrag/Source/shader.cpp" bodystart="16" bodyend="107"/>
+        <referencedby refid="classSP2_1a8669c489b6a968f367a4610b254ac992" compoundref="SP2_8cpp" startline="25" endline="273">SP2::Init</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>SHADER_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SHADER_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">GLuint<sp/><ref refid="shader_8hpp_1a833f10cca6a76fe34ae9efa23ac5e73c" kindref="member">LoadShaders</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>vertex_file_path,</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>fragment_file_path);</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/shader.hpp"/>
+  </compounddef>
+</doxygen>

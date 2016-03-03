@@ -1,0 +1,12 @@
+<map id="Object::SetView" name="Object::SetView">
+<area shape="rect" id="node2" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="617,50,763,77"/>
+<area shape="rect" id="node4" href="$classSP2.html#a71cb6a8fae424771777b139233ae7be8" title="SP2::generateAsteroid" alt="" coords="169,50,323,77"/>
+<area shape="rect" id="node6" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="371,101,547,128"/>
+<area shape="rect" id="node7" href="$classSP2.html#a48207cfb8991c95ceca13e7d5cfab56d" title="SP2::inSpaceStationUpdates" alt="" coords="595,152,785,178"/>
+<area shape="rect" id="node8" href="$classNPC.html#a033c1e0db335f048ae89c4445324cf86" title="NPC::NPC" alt="" coords="204,202,288,229"/>
+<area shape="rect" id="node9" href="$classSP2.html#a276a9a58452b8b6263b133252d1ab340" title="SP2::objectsInit" alt="" coords="189,253,303,280"/>
+<area shape="rect" id="node3" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="833,152,929,178"/>
+<area shape="rect" id="node5" href="$classSP2.html#a53d2b974fb541cea55ce6c261ec9f5ce" title="SP2::asteroidUpdate" alt="" coords="387,50,530,77"/>
+<area shape="rect" id="node10" href="$classSP2.html#a8669c489b6a968f367a4610b254ac992" title="SP2::Init" alt="" coords="423,253,495,280"/>
+<area shape="rect" id="node11" href="$classSP2.html#ae3b8fa1d8f987a6f5b9175c10944398a" title="SP2::gameOverUpdate" alt="" coords="613,253,767,280"/>
+</map>

@@ -1,0 +1,51 @@
+<map id="SP2::RTSUpdates" name="SP2::RTSUpdates">
+<area shape="rect" id="node2" href="$classApplication.html#abce8352d49081a282686af6246a379a6" title="Application::centerMouse" alt="" coords="181,56,351,83"/>
+<area shape="rect" id="node3" href="$classsharedData.html#a498074410dbc501a68589af7926b71ab" title="sharedData::Delay" alt="" coords="201,107,331,133"/>
+<area shape="rect" id="node4" href="$classCamera.html#ae9c5958375a46c218508ae57bfaa98f6" title="Enable mouse cursor. " alt="" coords="189,157,343,184"/>
+<area shape="rect" id="node6" href="$classsharedData.html#a89de3cc4c06c0dc4474fd330138cb0d1" title="sharedData::GetInstance" alt="" coords="183,208,349,235"/>
+<area shape="rect" id="node7" href="$classCamera.html#a609775f7ec4cd936ad7add808cd7354c" title="Initialize camera. " alt="" coords="463,107,555,133"/>
+<area shape="rect" id="node12" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="421,461,596,488"/>
+<area shape="rect" id="node13" href="$classSP2.html#aaea998312e5a606293e8848c706c5acf" title="SP2::MouseSelection" alt="" coords="192,791,340,817"/>
+<area shape="rect" id="node29" href="$classMousePicker.html#a03b71750b7a048985983b7cdf83ec85f" title="Calculates the coordinates on X and Z world space. " alt="" coords="421,1221,596,1248"/>
+<area shape="rect" id="node31" href="$classCamera.html#a9b3f661b16633d32bcc4e6e08210a53e" title="Points at object. " alt="" coords="207,259,325,285"/>
+<area shape="rect" id="node32" href="$classMousePicker.html#a2c94fa7238b7496f599b3a11114077df" title="Sets camera and projection. " alt="" coords="204,943,328,969"/>
+<area shape="rect" id="node33" href="$classObject.html#a048d20a358acb913055e7e128cf5120e" title="Set object&#39;s position. " alt="" coords="211,993,321,1020"/>
+<area shape="rect" id="node34" href="$classSP2.html#a8f036ecf0ef19b0802a351eacf0b59bc" title="SP2::shipBulletCreation" alt="" coords="186,892,346,919"/>
+<area shape="rect" id="node37" href="$classMS.html#a21291d7fb488f63c589bdc9bd620ba58" title="Return the top matrix on the matrix stack. " alt="" coords="231,1044,301,1071"/>
+<area shape="rect" id="node38" href="$classMousePicker.html#a4574a22a56dc36909a5826fcf847ff92" title="Updates the class to the latest camera position, target, up and caluclate the latest mouse ray..." alt="" coords="193,360,339,387"/>
+<area shape="rect" id="node47" href="$classCamera.html#a50900c795715881db70f2e8cb23d0c6a" title="Camera mode that only allows Yaw Rotation and controlling vehicle&#39;s thrust. " alt="" coords="192,411,340,437"/>
+<area shape="rect" id="node5" href="$classApplication.html#a813f994cc6ef2c195541692f2ad63cec" title="Application::showMouse" alt="" coords="427,5,590,32"/>
+<area shape="rect" id="node8" href="$structVector3.html#aa1cdc5357009b47fe585ddd61e263aad" title="Cross product of 2 vectors. " alt="" coords="693,107,803,133"/>
+<area shape="rect" id="node10" href="$structVector3.html#a2da0f00c5529bced69763320dac9c414" title="Return a copy of this vector, normalized. " alt="" coords="678,208,818,235"/>
+<area shape="rect" id="node9" href="$structVector3.html#afa5e0c801fc2c8a820a54ea99302fe08" title="Vector3 default constructor. " alt="" coords="889,107,1009,133"/>
+<area shape="rect" id="node11" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="891,747,1006,773"/>
+<area shape="rect" id="node14" href="$classMousePicker.html#a219531b0628bdabc3581381306548def" title="Gets the current ray and return it. " alt="" coords="414,613,603,640"/>
+<area shape="rect" id="node15" href="$classVehicles.html#a614a06ca64b85891325c4f352da40598" title="Vehicles::getRotationAngle" alt="" coords="419,664,598,691"/>
+<area shape="rect" id="node16" href="$classVehicles.html#a7cf8fdc0ddbcb34659bb66a48b731831" title="Vehicles::initialMoveDirection" alt="" coords="413,715,604,741"/>
+<area shape="rect" id="node17" href="$structVector3.html#aaef4f25a38878a640ab4a48002a7eff8" title="Normalize this vector and return a reference to it. " alt="" coords="681,1120,815,1147"/>
+<area shape="rect" id="node18" href="$classAABB.html#a505a2b25c75dde521a6207fc34b7619c" title="Checks if current AABB is colliding with a ray. " alt="" coords="439,1120,578,1147"/>
+<area shape="rect" id="node19" href="$classpathFinding.html#aaec2344e1dc4f7e528d956b1d02b599c" title="pathFinding::resetWayPoints" alt="" coords="413,765,604,792"/>
+<area shape="rect" id="node20" href="$classSP2.html#a017282e5b01ba676860de1b793b40f82" title="SP2::selectionSetTarget" alt="" coords="427,816,590,843"/>
+<area shape="rect" id="node21" href="$classSP2.html#af545386336a508b457984e5ec3cbaaf5" title="SP2::selectionSetWaypoints" alt="" coords="414,867,603,893"/>
+<area shape="rect" id="node22" href="$structVector3.html#a9c25d604bd52b162cfcb56302ef032bb" title="Set the elements of this vector. " alt="" coords="701,499,795,525"/>
+<area shape="rect" id="node23" href="$classpathFinding.html#a8be240ece0214fd2259eb122fc283695" title="pathFinding::setCurrentLocation" alt="" coords="405,917,612,944"/>
+<area shape="rect" id="node24" href="$classpathFinding.html#ace5f799cd222949692c7d55dd9cf6464" title="pathFinding::setCurrSpeed" alt="" coords="421,968,597,995"/>
+<area shape="rect" id="node25" href="$structVector3.html#ac6c9b941ccefd7744eace77ceab16b56" title="Set all elements to zero. " alt="" coords="449,1019,569,1045"/>
+<area shape="rect" id="node26" href="$classVehicles.html#a7209b3349a347d9b945ef55e69d116b6" title="Vehicles::update" alt="" coords="449,1069,568,1096"/>
+<area shape="rect" id="node27" href="$classAABB.html#ab11957582e01d031a5693aee4f130525" title="Checks if AABB is within the plane. " alt="" coords="443,563,575,589"/>
+<area shape="rect" id="node28" href="$Mtx44_8cpp.html#a1ef521a2e5e5ae2ef55d1bc0c3b0c437" title="Helper function swap. " alt="" coords="722,563,774,589"/>
+<area shape="rect" id="node30" href="$structVector3.html#a71b1271deb064c65f9dc7dba638c5b57" title="Dot product of 2 vectors. " alt="" coords="701,1221,795,1248"/>
+<area shape="rect" id="node35" href="$classVehicles.html#ace4cb72efc022d31fec76b442b57d3fd" title="Vehicles::fireBullets" alt="" coords="440,1323,577,1349"/>
+<area shape="rect" id="node36" href="$classirrklang_1_1ISoundEngine.html#adb09ecc8f61120ce14d26545ed43d8ec" title="Loads a sound source (if not loaded already) from a file and plays it as 3D sound. " alt="" coords="433,1374,585,1415"/>
+<area shape="rect" id="node39" href="$classMousePicker.html#a4ec25b13977155fa8c06ddcda9a2f55a" title="Calculate&#39;s the mouse ray from screen coordinates to world coordinates. " alt="" coords="399,259,619,285"/>
+<area shape="rect" id="node43" href="$classMtx44.html#a7c3d2d30d9ed5bfca2ba97d0e570930f" title="Set matrix to be a lookat matrix. " alt="" coords="438,157,579,184"/>
+<area shape="rect" id="node40" href="$classMtx44.html#aac1ba21ddfc5f3c24baa4f58d9c5c256" title="Return a new matrix that is an inverse. " alt="" coords="685,321,811,348"/>
+<area shape="rect" id="node42" href="$classApplication.html#aa5dd89fb2981442b5a2e38abad6b7cfb" title="Application::getMouse" alt="" coords="673,259,823,285"/>
+<area shape="rect" id="node41" href="$namespaceMath.html#ac91173ab2efdf7313fe7aaeb6cb44cf6" title="Math::FAbs" alt="" coords="903,360,994,387"/>
+<area shape="rect" id="node44" href="$classMtx44.html#a0cc88cc5c648da14effba480c4d2ac70" title="Set this matrix to a translation matrix with translation of (x, y, z) " alt="" coords="667,157,829,184"/>
+<area shape="rect" id="node45" href="$classMtx44.html#a3ac8a0afd66412e15e4246474b893da2" title="Set the matrix to an identity matrix (1&#39;s along the diagonal) " alt="" coords="877,157,1020,184"/>
+<area shape="rect" id="node46" href="$classMtx44.html#a3aea63c08759ac98b8a4f23fdc0d6a28" title="Set this matrix to zero. " alt="" coords="1068,157,1193,184"/>
+<area shape="rect" id="node48" href="$structVector3.html#a54b8f55a970ee252479a326ffd0699c0" title="Vector3::getMagnitude" alt="" coords="432,360,585,387"/>
+<area shape="rect" id="node49" href="$classCamera.html#ae3766936b577b4062dc0f49cd4008e1a" title="Sets Yaw and Pitch from mouse movement. " alt="" coords="423,309,594,336"/>
+<area shape="rect" id="node50" href="$classMtx44.html#ac0587ffb5ff9fd58ad5768d28fc06574" title="Set Matrix to a rotation matrix about arbitrary axis. " alt="" coords="674,397,822,424"/>
+</map>

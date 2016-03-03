@@ -1,0 +1,6 @@
+<map id="Wave::spawnAsteroid" name="Wave::spawnAsteroid">
+<area shape="rect" id="node2" href="$classSP2.html#a71cb6a8fae424771777b139233ae7be8" title="SP2::generateAsteroid" alt="" coords="200,5,353,32"/>
+<area shape="rect" id="node3" href="$classSP2.html#a53d2b974fb541cea55ce6c261ec9f5ce" title="SP2::asteroidUpdate" alt="" coords="401,5,544,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="592,5,737,32"/>
+<area shape="rect" id="node5" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="785,5,881,32"/>
+</map>

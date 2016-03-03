@@ -1,0 +1,5 @@
+<map id="SP2::npcInit" name="SP2::npcInit">
+<area shape="rect" id="node2" href="$classObject.html#a96fe42f8ef68ace9d2dedc6d0fe4be22" title="Gives a default size to hitbox size. " alt="" coords="147,5,297,32"/>
+<area shape="rect" id="node4" href="$classObject.html#a048d20a358acb913055e7e128cf5120e" title="Set object&#39;s position. " alt="" coords="167,56,277,83"/>
+<area shape="rect" id="node3" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="345,5,432,32"/>
+</map>

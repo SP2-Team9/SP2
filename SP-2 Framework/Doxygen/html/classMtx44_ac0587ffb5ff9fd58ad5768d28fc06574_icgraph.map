@@ -1,0 +1,34 @@
+<map id="Mtx44::SetToRotation" name="Mtx44::SetToRotation">
+<area shape="rect" id="node2" href="$classSP2.html#a148c1fd23483c953f3771b38163f46ff" title="SP2::explosionUpdate" alt="" coords="206,65,357,92"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="677,116,773,143"/>
+<area shape="rect" id="node5" href="$classCamera.html#ab9aa2e59e45fad19917825b44f994f98" title="First Person camera movement. " alt="" coords="201,116,361,143"/>
+<area shape="rect" id="node7" href="$classCamera.html#ac2e052fce2f07f7e772cc9311b2ebb7b" title="Camera mode that is not affected by any hitboxes. " alt="" coords="225,268,338,295"/>
+<area shape="rect" id="node8" href="$classSP2.html#ad1060157516e3232ae5d69d85096f952" title="SP2::renderHealthBar" alt="" coords="431,293,579,320"/>
+<area shape="rect" id="node13" href="$classMS.html#a6ce592114042b920b648bca5519690cd" title="Multiply the top matrix with a rotation matrix based on the following parameters. ..." alt="" coords="237,496,325,523"/>
+<area shape="rect" id="node30" href="$classCamera.html#aa1033d059406a563baf0eb83e9422c01" title="Third person movement. " alt="" coords="202,167,361,193"/>
+<area shape="rect" id="node32" href="$classCamera.html#a50900c795715881db70f2e8cb23d0c6a" title="Camera mode that only allows Yaw Rotation and controlling vehicle&#39;s thrust. " alt="" coords="207,217,355,244"/>
+<area shape="rect" id="node3" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="432,65,577,92"/>
+<area shape="rect" id="node6" href="$classSP2.html#a48207cfb8991c95ceca13e7d5cfab56d" title="SP2::inSpaceStationUpdates" alt="" coords="409,116,600,143"/>
+<area shape="rect" id="node9" href="$classSP2.html#acef0d78c34373d56e30e309ac3233232" title="SP2::renderShips" alt="" coords="663,344,787,371"/>
+<area shape="rect" id="node12" href="$classSP2.html#a605ae7401549bbcf255e0048849bece3" title="SP2::renderAsteroid" alt="" coords="656,293,795,320"/>
+<area shape="rect" id="node10" href="$classSP2.html#a432ead63d66b2475fc8dc6341ed493e5" title="SP2::renderGeneral" alt="" coords="879,395,1015,421"/>
+<area shape="rect" id="node11" href="$classSP2.html#a90159ea511cadcc99364c6f75d108a71" title="SP2::Render" alt="" coords="1092,724,1188,751"/>
+<area shape="rect" id="node14" href="$classSP2.html#a66ffac3316b8be4cda0f6d51fd3ecc2d" title="SP2::renderchildtext" alt="" coords="435,496,575,523"/>
+<area shape="rect" id="node16" href="$classSP2.html#ae816a6913862562a4390643111cb0e06" title="SP2::renderDistances" alt="" coords="651,547,800,573"/>
+<area shape="rect" id="node17" href="$classSP2.html#a758452dced20dd622c43f620a762e516" title="SP2::renderExplosion" alt="" coords="651,395,799,421"/>
+<area shape="rect" id="node18" href="$classSP2.html#ab9c402fa937458cc1e7961a01f7a40ce" title="SP2::renderNPC" alt="" coords="666,597,785,624"/>
+<area shape="rect" id="node19" href="$classSP2.html#a518d28d6602a30f615f3391742143199" title="SP2::renderNPC5" alt="" coords="442,648,567,675"/>
+<area shape="rect" id="node20" href="$classSP2.html#af22c6f23198a4b66a31c1b00d194466c" title="SP2::RenderOnScreen" alt="" coords="648,825,803,852"/>
+<area shape="rect" id="node28" href="$classSP2.html#aa6eb01e507b119156ff4b13df9152e7b" title="SP2::renderSkybox" alt="" coords="658,445,793,472"/>
+<area shape="rect" id="node29" href="$classSP2.html#abf67ed7b015f0412a00d85d4cb43d9b5" title="SP2::renderTextonball" alt="" coords="429,889,580,916"/>
+<area shape="rect" id="node15" href="$classSP2.html#a92133b572f908abf6c33501a9d95092d" title="SP2::abductionquest" alt="" coords="654,496,797,523"/>
+<area shape="rect" id="node21" href="$classSP2.html#ac0b11bcd62c386e060fb5c123dc85b61" title="SP2::renderExit" alt="" coords="890,699,1005,725"/>
+<area shape="rect" id="node22" href="$classSP2.html#ae41e83a44dec3aa0cd664f18ba98894c" title="SP2::renderGameOverScreen" alt="" coords="851,749,1044,776"/>
+<area shape="rect" id="node23" href="$classSP2.html#a4f9848f01e5c7be94af1f60978f9f302" title="SP2::renderWaveTransition" alt="" coords="858,800,1037,827"/>
+<area shape="rect" id="node24" href="$classSP2.html#aa3f7d636c2d1b420df9f463f2392dc47" title="SP2::renderHelp" alt="" coords="889,851,1006,877"/>
+<area shape="rect" id="node25" href="$classSP2.html#ae518feb0ebb1cff93a409fe067cf5018" title="SP2::renderShopMenu" alt="" coords="871,901,1024,928"/>
+<area shape="rect" id="node26" href="$classSP2.html#ae58835fa50b823c3f72a70e918f181ba" title="SP2::renderTitleScreen" alt="" coords="869,952,1025,979"/>
+<area shape="rect" id="node27" href="$classSP2.html#aa9c1683d167509e5d6f0e50340947f2a" title="SP2::ballquest" alt="" coords="894,1003,1001,1029"/>
+<area shape="rect" id="node31" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="417,167,593,193"/>
+<area shape="rect" id="node33" href="$classSP2.html#ad5924ef549fb8781c7862817da890f45" title="SP2::RTSUpdates" alt="" coords="441,217,569,244"/>
+</map>

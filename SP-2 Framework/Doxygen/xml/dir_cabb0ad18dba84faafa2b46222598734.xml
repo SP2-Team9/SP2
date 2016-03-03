@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="dir_cabb0ad18dba84faafa2b46222598734" kind="dir">
+    <compoundname>Zyzrag</compoundname>
+    <innerdir refid="dir_d9a131329c20e24061d7d8a72fb3503f">Zyzrag/Source</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Zyzrag/"/>
+  </compounddef>
+</doxygen>

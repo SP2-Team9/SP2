@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Asteroid_8cpp" kind="file" language="C++">
+    <compoundname>Asteroid.cpp</compoundname>
+    <includes refid="Asteroid_8h" local="yes">Asteroid.h</includes>
+    <incdepgraph>
+      <node id="2018">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2019" relation="include">
+        </childnode>
+        <childnode refid="2026" relation="include">
+        </childnode>
+      </node>
+      <node id="2016">
+        <label>Asteroid.h</label>
+        <link refid="Asteroid_8h"/>
+        <childnode refid="2017" relation="include">
+        </childnode>
+      </node>
+      <node id="2021">
+        <label>cmath</label>
+      </node>
+      <node id="2015">
+        <label>Zyzrag/Source/Asteroid.cpp</label>
+        <link refid="Asteroid.cpp"/>
+        <childnode refid="2016" relation="include">
+        </childnode>
+      </node>
+      <node id="2022">
+        <label>exception</label>
+      </node>
+      <node id="2023">
+        <label>ctime</label>
+      </node>
+      <node id="2026">
+        <label>vector</label>
+      </node>
+      <node id="2019">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2020" relation="include">
+        </childnode>
+        <childnode refid="2025" relation="include">
+        </childnode>
+      </node>
+      <node id="2024">
+        <label>cstdlib</label>
+      </node>
+      <node id="2025">
+        <label>iostream</label>
+      </node>
+      <node id="2020">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2021" relation="include">
+        </childnode>
+        <childnode refid="2022" relation="include">
+        </childnode>
+        <childnode refid="2023" relation="include">
+        </childnode>
+        <childnode refid="2024" relation="include">
+        </childnode>
+      </node>
+      <node id="2017">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2018" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>: Goh Zheng Yuan</para></simplesect>
+<simplesect kind="date"><para>: 23 feb 2016</para></simplesect>
+: This class contains the <ref refid="classAsteroid" kindref="compound">Asteroid</ref> class. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Asteroid_8h" kindref="compound">Asteroid.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classAsteroid_1aa85d83bf1101255cf59810a44e8746fa" refkind="member"><highlight class="normal"><ref refid="classAsteroid_1aa85d83bf1101255cf59810a44e8746fa" kindref="member">Asteroid::Asteroid</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>size)<sp/>:<sp/>size(size),<sp/>boom(false)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classAsteroid_1a381a4221420bf9ba5173fa2b1e3e8725" kindref="member">health</ref><sp/>=<sp/>10<sp/>*<sp/><ref refid="classAsteroid_1aa80ff2a1586bcd629f9b23a8d3a3aa80" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classAsteroid_1a8288705d515d1504e5e0966dfa8cdf2e" kindref="member">speed</ref><sp/>=<sp/>500<sp/>/<sp/><ref refid="classAsteroid_1aa80ff2a1586bcd629f9b23a8d3a3aa80" kindref="member">size</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classAsteroid_1ac906cae51b8b5a0aa3aca3574ed31023" kindref="member">curRange</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classAsteroid_1ae75a5b32742f4b46e539df43202e20ea" kindref="member">maxRange</ref><sp/>=<sp/>4000;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" kindref="member">SetHitboxSize</ref>(size);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classAsteroid_1a163a5ad73a12a8f4d7e735771a69fdde" kindref="member">maxHealth</ref><sp/>=<sp/><ref refid="classAsteroid_1a381a4221420bf9ba5173fa2b1e3e8725" kindref="member">health</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classAsteroid_1af2d697c3722cfb1c79997b6cf63c89df" refkind="member"><highlight class="normal"><ref refid="classAsteroid_1af2d697c3722cfb1c79997b6cf63c89df" kindref="member">Asteroid::~Asteroid</ref>()</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="53"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classAsteroid_1ae5e7c9985caf1b9d111aef30973c97e7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAsteroid_1ae5e7c9985caf1b9d111aef30973c97e7" kindref="member">Asteroid::update</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref><sp/>+=<sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>.<ref refid="structVector3_1aaef4f25a38878a640ab4a48002a7eff8" kindref="member">Normalize</ref>()<sp/>*<sp/>dt<sp/>*<sp/><ref refid="classAsteroid_1a8288705d515d1504e5e0966dfa8cdf2e" kindref="member">speed</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classAsteroid_1ac906cae51b8b5a0aa3aca3574ed31023" kindref="member">curRange</ref><sp/>+=<sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>.<ref refid="structVector3_1a54b8f55a970ee252479a326ffd0699c0" kindref="member">getMagnitude</ref>()<sp/>*<sp/>dt<sp/>*<sp/><ref refid="classAsteroid_1a8288705d515d1504e5e0966dfa8cdf2e" kindref="member">speed</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" kindref="member">updateHitbox</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Asteroid.cpp"/>
+  </compounddef>
+</doxygen>

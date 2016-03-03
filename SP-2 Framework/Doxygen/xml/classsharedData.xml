@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="classsharedData" kind="class" language="C++" prot="public">
+    <compoundname>sharedData</compoundname>
+    <includes refid="sharedData_8h" local="no">sharedData.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classsharedData_1a394c7ba9d58b6d8bc47df14e15ddf8f5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool sharedData::quit</definition>
+        <argsstring></argsstring>
+        <name>quit</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/sharedData.h" line="30" column="1" bodyfile="Zyzrag/Source/sharedData.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classSP2_1ae3b8fa1d8f987a6f5b9175c10944398a" compoundref="SP2_8cpp" startline="1592" endline="1607">SP2::gameOverUpdate</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classsharedData_1a434a4e5b5b445c2d352a00be2817f171" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float sharedData::delay</definition>
+        <argsstring></argsstring>
+        <name>delay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/sharedData.h" line="35" column="1" bodyfile="Zyzrag/Source/sharedData.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classsharedData_1a498074410dbc501a68589af7926b71ab" compoundref="sharedData_8h" startline="12" endline="20">Delay</referencedby>
+        <referencedby refid="classsharedData_1a9c7ba37be4f757e4f1058a4ebfe76974" compoundref="sharedData_8h" startline="22" endline="28">DelayIncrement</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classsharedData_1a89de3cc4c06c0dc4474fd330138cb0d1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classsharedData" kindref="compound">sharedData</ref> *</type>
+        <definition>static sharedData* sharedData::GetInstance</definition>
+        <argsstring>()</argsstring>
+        <name>GetInstance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/sharedData.h" line="6" column="1" bodyfile="Zyzrag/Source/sharedData.h" bodystart="6" bodyend="10"/>
+        <referencedby refid="classSP2_1ae3b8fa1d8f987a6f5b9175c10944398a" compoundref="SP2_8cpp" startline="1592" endline="1607">SP2::gameOverUpdate</referencedby>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+        <referencedby refid="classSP2_1a30e847649a0454ba1ad0bb271fb66d24" compoundref="SP2_8cpp" startline="2047" endline="2058">SP2::mainMenuUpdates</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+        <referencedby refid="classApplication_1aaf09cd6cb412086dc039e28cdb059f0d" compoundref="Application_8cpp" startline="119" endline="142">Application::Run</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsharedData_1a498074410dbc501a68589af7926b71ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool sharedData::Delay</definition>
+        <argsstring>(double time)</argsstring>
+        <name>Delay</name>
+        <param>
+          <type>double</type>
+          <declname>time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/sharedData.h" line="12" column="1" bodyfile="Zyzrag/Source/sharedData.h" bodystart="12" bodyend="20"/>
+        <references refid="classsharedData_1a434a4e5b5b445c2d352a00be2817f171" compoundref="sharedData_8h" startline="33">delay</references>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classsharedData_1a9c7ba37be4f757e4f1058a4ebfe76974" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void sharedData::DelayIncrement</definition>
+        <argsstring>(double dt, double time=0.5f)</argsstring>
+        <name>DelayIncrement</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>time</declname>
+          <defval>0.5f</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/sharedData.h" line="22" column="1" bodyfile="Zyzrag/Source/sharedData.h" bodystart="22" bodyend="28"/>
+        <references refid="classsharedData_1a434a4e5b5b445c2d352a00be2817f171" compoundref="sharedData_8h" startline="33">delay</references>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classsharedData_1aeb67827b305acb7f9587d5d502450064" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>sharedData::sharedData</definition>
+        <argsstring>()</argsstring>
+        <name>sharedData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/sharedData.h" line="33" column="1" bodyfile="Zyzrag/Source/sharedData.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="517">
+        <label>sharedData</label>
+        <link refid="classsharedData"/>
+        <childnode refid="518" relation="usage">
+          <edgelabel>delay</edgelabel>
+        </childnode>
+        <childnode refid="519" relation="usage">
+          <edgelabel>quit</edgelabel>
+        </childnode>
+      </node>
+      <node id="518">
+        <label>float</label>
+      </node>
+      <node id="519">
+        <label>bool</label>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/sharedData.h" line="4" column="1" bodyfile="Zyzrag/Source/sharedData.h" bodystart="4" bodyend="36"/>
+    <listofallmembers>
+      <member refid="classsharedData_1a434a4e5b5b445c2d352a00be2817f171" prot="private" virt="non-virtual"><scope>sharedData</scope><name>delay</name></member>
+      <member refid="classsharedData_1a498074410dbc501a68589af7926b71ab" prot="public" virt="non-virtual"><scope>sharedData</scope><name>Delay</name></member>
+      <member refid="classsharedData_1a9c7ba37be4f757e4f1058a4ebfe76974" prot="public" virt="non-virtual"><scope>sharedData</scope><name>DelayIncrement</name></member>
+      <member refid="classsharedData_1a89de3cc4c06c0dc4474fd330138cb0d1" prot="public" virt="non-virtual"><scope>sharedData</scope><name>GetInstance</name></member>
+      <member refid="classsharedData_1a394c7ba9d58b6d8bc47df14e15ddf8f5" prot="public" virt="non-virtual"><scope>sharedData</scope><name>quit</name></member>
+      <member refid="classsharedData_1aeb67827b305acb7f9587d5d502450064" prot="private" virt="non-virtual"><scope>sharedData</scope><name>sharedData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

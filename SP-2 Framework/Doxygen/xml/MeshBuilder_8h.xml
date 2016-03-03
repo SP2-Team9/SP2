@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="MeshBuilder_8h" kind="file" language="C++">
+    <compoundname>MeshBuilder.h</compoundname>
+    <includes refid="Mesh_8h" local="yes">Mesh.h</includes>
+    <includes refid="Vertex_8h" local="yes">Vertex.h</includes>
+    <includes refid="Vector3_8h" local="yes">Vector3.h</includes>
+    <includes refid="LoadOBJ_8h" local="yes">LoadOBJ.h</includes>
+    <includedby refid="MeshBuilder_8cpp" local="yes">Zyzrag/Source/MeshBuilder.cpp</includedby>
+    <includedby refid="SP2_8cpp" local="yes">Zyzrag/Source/SP2.cpp</includedby>
+    <incdepgraph>
+      <node id="2296">
+        <label>Vertex.h</label>
+        <link refid="Vertex_8h"/>
+        <childnode refid="2297" relation="include">
+        </childnode>
+      </node>
+      <node id="2299">
+        <label>cmath</label>
+      </node>
+      <node id="2294">
+        <label>string</label>
+      </node>
+      <node id="2293">
+        <label>Mesh.h</label>
+        <link refid="Mesh_8h"/>
+        <childnode refid="2294" relation="include">
+        </childnode>
+        <childnode refid="2295" relation="include">
+        </childnode>
+      </node>
+      <node id="2300">
+        <label>exception</label>
+      </node>
+      <node id="2292">
+        <label>Zyzrag/Source/MeshBuilder.h</label>
+        <link refid="MeshBuilder.h"/>
+        <childnode refid="2293" relation="include">
+        </childnode>
+        <childnode refid="2296" relation="include">
+        </childnode>
+        <childnode refid="2297" relation="include">
+        </childnode>
+        <childnode refid="2304" relation="include">
+        </childnode>
+      </node>
+      <node id="2304">
+        <label>LoadOBJ.h</label>
+        <link refid="LoadOBJ_8h"/>
+        <childnode refid="2305" relation="include">
+        </childnode>
+        <childnode refid="2296" relation="include">
+        </childnode>
+        <childnode refid="2297" relation="include">
+        </childnode>
+      </node>
+      <node id="2301">
+        <label>ctime</label>
+      </node>
+      <node id="2305">
+        <label>vector</label>
+      </node>
+      <node id="2297">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2298" relation="include">
+        </childnode>
+        <childnode refid="2303" relation="include">
+        </childnode>
+      </node>
+      <node id="2302">
+        <label>cstdlib</label>
+      </node>
+      <node id="2303">
+        <label>iostream</label>
+      </node>
+      <node id="2295">
+        <label>Material.h</label>
+        <link refid="Material_8h"/>
+      </node>
+      <node id="2298">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2299" relation="include">
+        </childnode>
+        <childnode refid="2300" relation="include">
+        </childnode>
+        <childnode refid="2301" relation="include">
+        </childnode>
+        <childnode refid="2302" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2308">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2306">
+        <label>Zyzrag/Source/MeshBuilder.h</label>
+        <link refid="MeshBuilder.h"/>
+        <childnode refid="2307" relation="include">
+        </childnode>
+        <childnode refid="2308" relation="include">
+        </childnode>
+      </node>
+      <node id="2307">
+        <label>Zyzrag/Source/MeshBuilder.cpp</label>
+        <link refid="MeshBuilder_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMeshBuilder" prot="public">MeshBuilder</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>MESH_BUILDER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MESH_BUILDER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Mesh_8h" kindref="compound">Mesh.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vertex_8h" kindref="compound">Vertex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vector3_8h" kindref="compound">Vector3.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="LoadOBJ_8h" kindref="compound">LoadOBJ.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classMeshBuilder" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMeshBuilder" kindref="compound">MeshBuilder</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a78d37e2b0cc068eec801f17c367100e7" kindref="member">GenerateAxes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthZ);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a81264ab3e7a00beba1549c4e418af506" kindref="member">GenerateLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>init,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>end);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1ada654a09cd23bc2c2bec641e2dee101e" kindref="member">GenerateSquare</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>init,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>end);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a8fede2f411aebe5d41af99b51be7ed77" kindref="member">GenerateQuad</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthY);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a4b433a1857045baef8e45f544a9939c2" kindref="member">GenerateCube</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthZ);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a4b433a1857045baef8e45f544a9939c2" kindref="member">GenerateCube</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>min,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>max);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a7159eed1c0e58ad5f45f785796166ab4" kindref="member">GenerateCircle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numSlices);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1ad364edd609741da0115e7ee189133202" kindref="member">GenerateCone</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numSlices,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>height);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1ad01b11d521f6bd6377f00e1aa5fe8f77" kindref="member">GenerateCone2</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numSlices,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>degree);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1aaa989b0714d5fc01a4c10c4ffaf8a2d8" kindref="member">GenerateRing</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>innerRadius,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numSlices);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a4000eab8102c6a68b28410daad6ef757" kindref="member">GenerateSphere</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numStacks,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numSlices,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hemi<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1abde539c1c59e68656a0522d816dfd98f" kindref="member">GenerateHollowHemiSphere</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numStacks,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numSlices,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thickness);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a6d1843f86bd7b1152e393008e2cc817c" kindref="member">GenerateTorus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numStacks,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numSlices,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>Radius,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>Thickness);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a5590752eb61ab4b4cc068d5f61a8e2d8" kindref="member">GenerateTorus2</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>degree,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numSlices,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>Radius,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>Thickness);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a790be08b30b0a42808c4cfbe78636460" kindref="member">GenerateCyclinder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numSlices,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>height,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>innerCyclinder<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>innerRadius<sp/>=<sp/>1,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>thickness<sp/>=<sp/>1);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1aba87550d7726a610c911fbb977fd3575" kindref="member">GenerateOBJ</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;file_path);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1aac7c87881dbc08f8d41f2068e0f40c76" kindref="member">GenerateText</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numRow,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>numCol);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classMesh" kindref="compound">Mesh</ref>*<sp/><ref refid="classMeshBuilder_1a2193b89bee6380b7210e6b8b49e8c6eb" kindref="member">GenerateFloor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;meshName,<sp/><ref refid="structColor" kindref="compound">Color</ref><sp/>color,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>lengthY);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/MeshBuilder.h"/>
+  </compounddef>
+</doxygen>

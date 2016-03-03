@@ -1,0 +1,7 @@
+<map id="PlayerVehicle::update" name="PlayerVehicle::update">
+<area shape="rect" id="node2" href="$structVector3.html#ac6c9b941ccefd7744eace77ceab16b56" title="Set all elements to zero. " alt="" coords="215,5,335,32"/>
+<area shape="rect" id="node3" href="$classObject.html#a79185f158d60e9f8fde4940d9dda4cea" title="Updates hitbox by getting object pos added with hitbox size. " alt="" coords="203,56,347,83"/>
+<area shape="rect" id="node4" href="$classAABB.html#a19ea75e7f7b92d7100c0898c7a6c5f81" title="Get&#39;s Vector3 max of class. " alt="" coords="395,5,507,32"/>
+<area shape="rect" id="node5" href="$classAABB.html#a7969d3aaabc54615c0ad2b39719cfeea" title="Get&#39;s Vector3 min of class. " alt="" coords="397,56,505,83"/>
+<area shape="rect" id="node6" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="407,107,494,133"/>
+</map>

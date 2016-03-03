@@ -1,0 +1,24 @@
+<map id="SP2" name="SP2">
+<area shape="rect" id="node2" href="$classScene.html" title="Scene" alt="" coords="1295,13,1354,39"/>
+<area shape="rect" id="node4" href="$structLight.html" title="Light" alt="" coords="435,198,486,225"/>
+<area shape="rect" id="node7" href="$structVector3.html" title="Defines a 3D vector and its methods. " alt="" coords="142,1229,209,1255"/>
+<area shape="rect" id="node8" href="$structPosition.html" title="Position" alt="" coords="141,121,210,147"/>
+<area shape="rect" id="node9" href="$structColor.html" title="Color" alt="" coords="149,171,201,198"/>
+<area shape="rect" id="node10" href="$structPlayerVehicle.html" title="PlayerVehicle" alt="" coords="964,723,1067,750"/>
+<area shape="rect" id="node19" href="$classCamera.html" title="The class camera, and any functions that moves the camera. " alt="" coords="982,1481,1049,1507"/>
+<area shape="rect" id="node28" href="$classVehicles.html" title="Vehicles" alt="" coords="1289,1162,1361,1189"/>
+<area shape="rect" id="node29" href="$classAsteroid.html" title="The class Asteroid along with it&#39;s position, health, size. " alt="" coords="980,1202,1051,1229"/>
+<area shape="rect" id="node30" href="$classpathFinding.html" title="pathFinding" alt="" coords="416,1441,505,1467"/>
+<area shape="rect" id="node32" href="$classMousePicker.html" title="MousePicker" alt="" coords="1275,1581,1374,1607"/>
+<area shape="rect" id="node33" href="$classMtx44.html" title="A 4 by 4 matrix. " alt="" coords="298,1629,357,1655"/>
+<area shape="rect" id="node36" href="$structMaterial.html" title="Material" alt="" coords="427,1785,495,1811"/>
+<area shape="rect" id="node37" href="$structComponent.html" title="Component" alt="" coords="131,1810,219,1837"/>
+<area shape="rect" id="node11" href="$classObject.html" title="Object" alt="" coords="648,1229,708,1255"/>
+<area shape="rect" id="node12" href="$classAABB.html" title="Contains the class AABB hitbox, along with all it&#39;s functions. " alt="" coords="431,1201,490,1227"/>
+<area shape="rect" id="node18" href="$structShop.html" title="Shop" alt="" coords="1299,679,1351,706"/>
+<area shape="rect" id="node26" href="$classWave.html" title="Wave" alt="" coords="988,902,1043,929"/>
+<area shape="rect" id="node17" href="$classirrklang_1_1IRefCounted.html" title="Base class of most objects of the irrKlang. " alt="" coords="944,365,1087,391"/>
+<area shape="rect" id="node16" href="$classirrklang_1_1ISoundEngine.html" title="Interface to the sound engine, for playing 3d and 2d sound and music. " alt="" coords="1249,510,1401,537"/>
+<area shape="rect" id="node20" href="$classMS.html" title="Matrix Stack class. " alt="" coords="1303,793,1346,819"/>
+<area shape="rect" id="node35" href="$classMesh.html" title="To store VBO (vertex &amp; color buffer) and IBO (index buffer) " alt="" coords="1297,1745,1352,1771"/>
+</map>

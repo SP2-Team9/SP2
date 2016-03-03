@@ -1,0 +1,8 @@
+<map id="SP2::vehiclesRemoveTarget" name="SP2::vehiclesRemoveTarget">
+<area shape="rect" id="node2" href="$classSP2.html#aa30f865a5270160ade491858cd0f7b31" title="SP2::asteroidHitboxCheck" alt="" coords="236,5,411,32"/>
+<area shape="rect" id="node6" href="$classSP2.html#a53d2b974fb541cea55ce6c261ec9f5ce" title="SP2::asteroidUpdate" alt="" coords="459,107,601,133"/>
+<area shape="rect" id="node7" href="$classSP2.html#ac86d5964ce2cd619e2fb843a3582a411" title="SP2::stationHitboxCheck" alt="" coords="239,56,407,83"/>
+<area shape="rect" id="node3" href="$classSP2.html#ab0c289753020129773c539b0fe8f1c68" title="SP2::checkHitboxes" alt="" coords="459,56,601,83"/>
+<area shape="rect" id="node4" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="649,81,795,108"/>
+<area shape="rect" id="node5" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="843,81,939,108"/>
+</map>

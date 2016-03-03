@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="PlayerVehicle_8h" kind="file" language="C++">
+    <compoundname>PlayerVehicle.h</compoundname>
+    <includes refid="Vehicles_8h" local="yes">Vehicles.h</includes>
+    <includedby refid="Shop_8h" local="yes">Zyzrag/Source/Shop.h</includedby>
+    <includedby refid="Camera_8h" local="yes">Zyzrag/Source/Camera.h</includedby>
+    <includedby refid="SP2_8h" local="yes">Zyzrag/Source/SP2.h</includedby>
+    <includedby refid="PlayerVehicle_8cpp" local="yes">Zyzrag/Source/PlayerVehicle.cpp</includedby>
+    <incdepgraph>
+      <node id="2507">
+        <label>queue</label>
+      </node>
+      <node id="2497">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2498" relation="include">
+        </childnode>
+        <childnode refid="2505" relation="include">
+        </childnode>
+      </node>
+      <node id="2506">
+        <label>pathFinding.h</label>
+        <link refid="pathFinding_8h"/>
+        <childnode refid="2505" relation="include">
+        </childnode>
+        <childnode refid="2507" relation="include">
+        </childnode>
+        <childnode refid="2498" relation="include">
+        </childnode>
+        <childnode refid="2499" relation="include">
+        </childnode>
+      </node>
+      <node id="2495">
+        <label>Vehicles.h</label>
+        <link refid="Vehicles_8h"/>
+        <childnode refid="2496" relation="include">
+        </childnode>
+        <childnode refid="2506" relation="include">
+        </childnode>
+        <childnode refid="2497" relation="include">
+        </childnode>
+        <childnode refid="2498" relation="include">
+        </childnode>
+        <childnode refid="2508" relation="include">
+        </childnode>
+        <childnode refid="2509" relation="include">
+        </childnode>
+        <childnode refid="2510" relation="include">
+        </childnode>
+      </node>
+      <node id="2510">
+        <label>Asteroid.h</label>
+        <link refid="Asteroid_8h"/>
+        <childnode refid="2496" relation="include">
+        </childnode>
+      </node>
+      <node id="2494">
+        <label>Zyzrag/Source/PlayerVehicle.h</label>
+        <link refid="PlayerVehicle.h"/>
+        <childnode refid="2495" relation="include">
+        </childnode>
+      </node>
+      <node id="2500">
+        <label>cmath</label>
+      </node>
+      <node id="2508">
+        <label>Mtx44.h</label>
+        <link refid="Mtx44_8h"/>
+        <childnode refid="2499" relation="include">
+        </childnode>
+        <childnode refid="2498" relation="include">
+        </childnode>
+      </node>
+      <node id="2501">
+        <label>exception</label>
+      </node>
+      <node id="2509">
+        <label>Bullet.h</label>
+        <link refid="Bullet_8h"/>
+        <childnode refid="2496" relation="include">
+        </childnode>
+        <childnode refid="2506" relation="include">
+        </childnode>
+        <childnode refid="2497" relation="include">
+        </childnode>
+        <childnode refid="2498" relation="include">
+        </childnode>
+        <childnode refid="2508" relation="include">
+        </childnode>
+      </node>
+      <node id="2502">
+        <label>ctime</label>
+      </node>
+      <node id="2505">
+        <label>vector</label>
+      </node>
+      <node id="2498">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2499" relation="include">
+        </childnode>
+        <childnode refid="2504" relation="include">
+        </childnode>
+      </node>
+      <node id="2503">
+        <label>cstdlib</label>
+      </node>
+      <node id="2504">
+        <label>iostream</label>
+      </node>
+      <node id="2499">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2500" relation="include">
+        </childnode>
+        <childnode refid="2501" relation="include">
+        </childnode>
+        <childnode refid="2502" relation="include">
+        </childnode>
+        <childnode refid="2503" relation="include">
+        </childnode>
+      </node>
+      <node id="2496">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2497" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2521">
+        <label>Zyzrag/Source/PlayerVehicle.cpp</label>
+        <link refid="PlayerVehicle_8cpp"/>
+      </node>
+      <node id="2511">
+        <label>Zyzrag/Source/PlayerVehicle.h</label>
+        <link refid="PlayerVehicle.h"/>
+        <childnode refid="2512" relation="include">
+        </childnode>
+        <childnode refid="2517" relation="include">
+        </childnode>
+        <childnode refid="2513" relation="include">
+        </childnode>
+        <childnode refid="2521" relation="include">
+        </childnode>
+      </node>
+      <node id="2514">
+        <label>Zyzrag/Source/Application.cpp</label>
+        <link refid="Application_8cpp"/>
+      </node>
+      <node id="2512">
+        <label>Zyzrag/Source/Shop.h</label>
+        <link refid="Shop_8h"/>
+        <childnode refid="2513" relation="include">
+        </childnode>
+        <childnode refid="2516" relation="include">
+        </childnode>
+      </node>
+      <node id="2515">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2516">
+        <label>Zyzrag/Source/Shop.cpp</label>
+        <link refid="Shop_8cpp"/>
+      </node>
+      <node id="2519">
+        <label>Zyzrag/Source/MousePicker.cpp</label>
+        <link refid="MousePicker_8cpp"/>
+      </node>
+      <node id="2513">
+        <label>Zyzrag/Source/SP2.h</label>
+        <link refid="SP2_8h"/>
+        <childnode refid="2514" relation="include">
+        </childnode>
+        <childnode refid="2515" relation="include">
+        </childnode>
+      </node>
+      <node id="2518">
+        <label>Zyzrag/Source/MousePicker.h</label>
+        <link refid="MousePicker_8h"/>
+        <childnode refid="2513" relation="include">
+        </childnode>
+        <childnode refid="2519" relation="include">
+        </childnode>
+      </node>
+      <node id="2520">
+        <label>Zyzrag/Source/Camera.cpp</label>
+        <link refid="Camera_8cpp"/>
+      </node>
+      <node id="2517">
+        <label>Zyzrag/Source/Camera.h</label>
+        <link refid="Camera_8h"/>
+        <childnode refid="2513" relation="include">
+        </childnode>
+        <childnode refid="2518" relation="include">
+        </childnode>
+        <childnode refid="2520" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structPlayerVehicle" prot="public">PlayerVehicle</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>PLAYERVEHICLE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PLAYERVEHICLE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vehicles_8h" kindref="compound">Vehicles.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="structPlayerVehicle" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPlayerVehicle" kindref="compound">PlayerVehicle</ref><sp/>:<sp/><ref refid="classObject" kindref="compound">Object</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="10" refid="structPlayerVehicle_1a0cf8cb41989e3a369ef3532066cea302" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1ad76ad098d789983394711b0d9a6ef3f5" kindref="member">health</ref>,<sp/><ref refid="structPlayerVehicle_1a0cf8cb41989e3a369ef3532066cea302" kindref="member">maxHealth</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="structPlayerVehicle_1a15c6b1ea09312b3bd0e6541338bf1cc5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1a15c6b1ea09312b3bd0e6541338bf1cc5" kindref="member">isDead</ref>,<sp/><ref refid="structPlayerVehicle_1a39577a02dce81c7fc9a4efc3c3d4c07a" kindref="member">board</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" kindref="member">update</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt,<sp/>vector&lt;AABB&gt;<sp/><ref refid="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" kindref="member">hitbox</ref>);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1a7294156f5d01b711797593dc86891be9" kindref="member">respawn</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>time);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1aeb9a7f9d45750ff293f6c216ba464092" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="structPlayerVehicle_1a68bdde1f0f6e7bcd6bba425a7581d144" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1a68bdde1f0f6e7bcd6bba425a7581d144" kindref="member">bulletCurrCooldown</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1a2b33c49b25427ce5322de28afd9241df" kindref="member">fireBullets</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="21" refid="structPlayerVehicle_1adf952e73bd684379f82c765ba4da41c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1a20bff632e3cf1c2113a0b41a49d71662" kindref="member">thrust</ref>,<sp/><ref refid="structPlayerVehicle_1a0895b32b2c253eee444d67537aeebb75" kindref="member">pitch</ref>,<sp/><ref refid="structPlayerVehicle_1adf952e73bd684379f82c765ba4da41c6" kindref="member">yaw</ref>,<sp/><ref refid="structPlayerVehicle_1a509804c06b7e8f77f446908dbea1b7a4" kindref="member">delay</ref>,<sp/><ref refid="structPlayerVehicle_1a4ea81ddc04fba119ebee42c5c0d7f746" kindref="member">respawnTimer</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="23" refid="structPlayerVehicle_1a757332394bce258ee5f33cd8d088255d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1a757332394bce258ee5f33cd8d088255d" kindref="member">bulletFireRate</ref>;</highlight></codeline>
+<codeline lineno="24" refid="structPlayerVehicle_1a35251aa8728a6700334aa53406d653db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structPlayerVehicle_1a35251aa8728a6700334aa53406d653db" kindref="member">bulletDamage</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPlayerVehicle_1a0b3a7ad40675a7e57985ec842a326faa" kindref="member">PlayerVehicle</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPlayerVehicle_1a3a85ad6eacbd50eb97a24be4216d242d" kindref="member">~PlayerVehicle</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/PlayerVehicle.h"/>
+  </compounddef>
+</doxygen>

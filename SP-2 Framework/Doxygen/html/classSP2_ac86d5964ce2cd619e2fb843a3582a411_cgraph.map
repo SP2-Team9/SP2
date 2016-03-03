@@ -1,0 +1,6 @@
+<map id="SP2::stationHitboxCheck" name="SP2::stationHitboxCheck">
+<area shape="rect" id="node2" href="$classAABB.html#a09c06a196b3f2c89c207f49a15160f29" title="Checks if current AABB is colliding with another AABB. " alt="" coords="238,5,387,32"/>
+<area shape="rect" id="node3" href="$classirrklang_1_1ISoundEngine.html#adb09ecc8f61120ce14d26545ed43d8ec" title="Loads a sound source (if not loaded already) from a file and plays it as 3D sound. " alt="" coords="237,57,389,98"/>
+<area shape="rect" id="node4" href="$classSP2.html#a10890277bbc10fff48c1e275bf46df44" title="SP2::removeOneSelection" alt="" coords="225,123,400,149"/>
+<area shape="rect" id="node5" href="$classSP2.html#a6a8b835489d56022a82dfa40a6e9498a" title="SP2::vehiclesRemoveTarget" alt="" coords="221,173,404,200"/>
+</map>

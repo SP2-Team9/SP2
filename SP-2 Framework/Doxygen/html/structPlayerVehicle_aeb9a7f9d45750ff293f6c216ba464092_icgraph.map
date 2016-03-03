@@ -1,0 +1,7 @@
+<map id="PlayerVehicle::reset" name="PlayerVehicle::reset">
+<area shape="rect" id="node2" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="355,5,500,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#a276a9a58452b8b6263b133252d1ab340" title="SP2::objectsInit" alt="" coords="192,56,307,83"/>
+<area shape="rect" id="node3" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="751,56,847,83"/>
+<area shape="rect" id="node5" href="$classSP2.html#a8669c489b6a968f367a4610b254ac992" title="SP2::Init" alt="" coords="391,56,463,83"/>
+<area shape="rect" id="node6" href="$classSP2.html#ae3b8fa1d8f987a6f5b9175c10944398a" title="SP2::gameOverUpdate" alt="" coords="548,107,703,133"/>
+</map>

@@ -1,0 +1,416 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="classWave" kind="class" language="C++" prot="public">
+    <compoundname>Wave</compoundname>
+    <includes refid="Wave_8h" local="no">Wave.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classWave_1aa2c0a4968f51e7d12b8f8d53dfdedbf0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Wave::stationHealth</definition>
+        <argsstring></argsstring>
+        <name>stationHealth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="30" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" compoundref="Wave_8cpp" startline="109" endline="122">nextWave</referencedby>
+        <referencedby refid="classSP2_1ab9091eedf4e10df408fdc3cd406e67a9" compoundref="SP2_8cpp" startline="1145" endline="1177">SP2::renderFightingUI</referencedby>
+        <referencedby refid="classSP2_1ac86d5964ce2cd619e2fb843a3582a411" compoundref="SP2_8cpp" startline="2350" endline="2395">SP2::stationHitboxCheck</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1abecc054ec26b18e8b27bacfe3ba4faea" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Wave::endOfTransition</definition>
+        <argsstring></argsstring>
+        <name>endOfTransition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="40" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="40" bodyend="-1"/>
+        <referencedby refid="classWave_1acefda66b54d01598305db699ecf51833" compoundref="Wave_8cpp" startline="208" endline="222">transitionComplete</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+        <referencedby refid="classSP2_1ab3a40eadc29b0efa8da32b25c2b4a3c5" compoundref="SP2_8cpp" startline="2153" endline="2183">SP2::waveTransitionUpdate</referencedby>
+        <referencedby refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" compoundref="Wave_8cpp" startline="137" endline="162">waveUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1a7c9139b94ce3c4a6e6990350834d88c0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Wave::waveNumber</definition>
+        <argsstring></argsstring>
+        <name>waveNumber</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="42" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classSP2_1a71cb6a8fae424771777b139233ae7be8" compoundref="SP2_8cpp" startline="834" endline="877">SP2::generateAsteroid</referencedby>
+        <referencedby refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" compoundref="Wave_8cpp" startline="109" endline="122">nextWave</referencedby>
+        <referencedby refid="classSP2_1a4f9848f01e5c7be94af1f60978f9f302" compoundref="SP2_8cpp" startline="901" endline="908">SP2::renderWaveTransition</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+        <referencedby refid="classSP2_1ab3a40eadc29b0efa8da32b25c2b4a3c5" compoundref="SP2_8cpp" startline="2153" endline="2183">SP2::waveTransitionUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1a8d4d18452658c7d5e98f9895e59cb707" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Wave::maxNumberOfAsteroids</definition>
+        <argsstring></argsstring>
+        <name>maxNumberOfAsteroids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="43" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classSP2_1a71cb6a8fae424771777b139233ae7be8" compoundref="SP2_8cpp" startline="834" endline="877">SP2::generateAsteroid</referencedby>
+        <referencedby refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" compoundref="Wave_8cpp" startline="109" endline="122">nextWave</referencedby>
+        <referencedby refid="classSP2_1ab9091eedf4e10df408fdc3cd406e67a9" compoundref="SP2_8cpp" startline="1145" endline="1177">SP2::renderFightingUI</referencedby>
+        <referencedby refid="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" compoundref="Wave_8cpp" startline="178" endline="193">spawnAsteroid</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+        <referencedby refid="classWave_1a6eb595e96d2e63e2c42123dcdf3b1abf" compoundref="Wave_8cpp" startline="85" endline="94">waveComplete</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1a709036402636dd75d201dddc1a7451a2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Wave::numberOfAsteroidsDestroyed</definition>
+        <argsstring></argsstring>
+        <name>numberOfAsteroidsDestroyed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="44" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="44" bodyend="-1"/>
+        <referencedby refid="classSP2_1aa30f865a5270160ade491858cd0f7b31" compoundref="SP2_8cpp" startline="2397" endline="2587">SP2::asteroidHitboxCheck</referencedby>
+        <referencedby refid="classSP2_1a53d2b974fb541cea55ce6c261ec9f5ce" compoundref="SP2_8cpp" startline="1978" endline="2006">SP2::asteroidUpdate</referencedby>
+        <referencedby refid="classSP2_1a71cb6a8fae424771777b139233ae7be8" compoundref="SP2_8cpp" startline="834" endline="877">SP2::generateAsteroid</referencedby>
+        <referencedby refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" compoundref="Wave_8cpp" startline="109" endline="122">nextWave</referencedby>
+        <referencedby refid="classSP2_1ab9091eedf4e10df408fdc3cd406e67a9" compoundref="SP2_8cpp" startline="1145" endline="1177">SP2::renderFightingUI</referencedby>
+        <referencedby refid="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" compoundref="Wave_8cpp" startline="178" endline="193">spawnAsteroid</referencedby>
+        <referencedby refid="classSP2_1ac86d5964ce2cd619e2fb843a3582a411" compoundref="SP2_8cpp" startline="2350" endline="2395">SP2::stationHitboxCheck</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+        <referencedby refid="classWave_1a6eb595e96d2e63e2c42123dcdf3b1abf" compoundref="Wave_8cpp" startline="85" endline="94">waveComplete</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1a7f73894afa1286496e6decd8066db061" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Wave::maxWaveCooldownTime</definition>
+        <argsstring></argsstring>
+        <name>maxWaveCooldownTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="46" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="46" bodyend="-1"/>
+        <referencedby refid="classSP2_1ab9091eedf4e10df408fdc3cd406e67a9" compoundref="SP2_8cpp" startline="1145" endline="1177">SP2::renderFightingUI</referencedby>
+        <referencedby refid="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" compoundref="Wave_8cpp" startline="178" endline="193">spawnAsteroid</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+        <referencedby refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" compoundref="Wave_8cpp" startline="137" endline="162">waveUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1af2af911017d0aba73a86135fa560cb31" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Wave::currWaveCooldownTime</definition>
+        <argsstring></argsstring>
+        <name>currWaveCooldownTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="47" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="47" bodyend="-1"/>
+        <referencedby refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" compoundref="Wave_8cpp" startline="109" endline="122">nextWave</referencedby>
+        <referencedby refid="classSP2_1ab9091eedf4e10df408fdc3cd406e67a9" compoundref="SP2_8cpp" startline="1145" endline="1177">SP2::renderFightingUI</referencedby>
+        <referencedby refid="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" compoundref="Wave_8cpp" startline="178" endline="193">spawnAsteroid</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+        <referencedby refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" compoundref="Wave_8cpp" startline="137" endline="162">waveUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1a10373abe0bdf2a7ff3722732889d9885" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Wave::maxTransitionTime</definition>
+        <argsstring></argsstring>
+        <name>maxTransitionTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="49" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="49" bodyend="-1"/>
+        <referencedby refid="classWave_1acefda66b54d01598305db699ecf51833" compoundref="Wave_8cpp" startline="208" endline="222">transitionComplete</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Wave::currTransitionTime</definition>
+        <argsstring></argsstring>
+        <name>currTransitionTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="50" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="50" bodyend="-1"/>
+        <referencedby refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" compoundref="Wave_8cpp" startline="109" endline="122">nextWave</referencedby>
+        <referencedby refid="classWave_1acefda66b54d01598305db699ecf51833" compoundref="Wave_8cpp" startline="208" endline="222">transitionComplete</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+        <referencedby refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" compoundref="Wave_8cpp" startline="137" endline="162">waveUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1a1f598ebc6eeac0ea7b347dbcb39e16af" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Wave::maxAsteroidSpawnCooldownTime</definition>
+        <argsstring></argsstring>
+        <name>maxAsteroidSpawnCooldownTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="52" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="52" bodyend="-1"/>
+        <referencedby refid="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" compoundref="Wave_8cpp" startline="178" endline="193">spawnAsteroid</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classWave_1a4de844d4a92e3eb53ba134dd246c728a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Wave::currAsteroidSpawnCooldownTime</definition>
+        <argsstring></argsstring>
+        <name>currAsteroidSpawnCooldownTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="53" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="53" bodyend="-1"/>
+        <referencedby refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" compoundref="Wave_8cpp" startline="109" endline="122">nextWave</referencedby>
+        <referencedby refid="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" compoundref="Wave_8cpp" startline="178" endline="193">spawnAsteroid</referencedby>
+        <referencedby refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" compoundref="Wave_8cpp" startline="31" endline="50">Wave</referencedby>
+        <referencedby refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" compoundref="Wave_8cpp" startline="137" endline="162">waveUpdate</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Wave::Wave</definition>
+        <argsstring>()</argsstring>
+        <name>Wave</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: constructor</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 1 March 2016</para></simplesect>
+: constructor for <ref refid="classWave" kindref="compound">Wave</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="27" column="1" bodyfile="Zyzrag/Source/Wave.cpp" bodystart="31" bodyend="50"/>
+        <references refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" compoundref="Wave_8h" startline="53">currAsteroidSpawnCooldownTime</references>
+        <references refid="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" compoundref="Wave_8h" startline="50">currTransitionTime</references>
+        <references refid="classWave_1af2af911017d0aba73a86135fa560cb31" compoundref="Wave_8h" startline="47">currWaveCooldownTime</references>
+        <references refid="classWave_1abecc054ec26b18e8b27bacfe3ba4faea" compoundref="Wave_8h" startline="40">endOfTransition</references>
+        <references refid="classWave_1a1f598ebc6eeac0ea7b347dbcb39e16af" compoundref="Wave_8h" startline="52">maxAsteroidSpawnCooldownTime</references>
+        <references refid="classWave_1a8d4d18452658c7d5e98f9895e59cb707" compoundref="Wave_8h" startline="43">maxNumberOfAsteroids</references>
+        <references refid="classWave_1a10373abe0bdf2a7ff3722732889d9885" compoundref="Wave_8h" startline="49">maxTransitionTime</references>
+        <references refid="classWave_1a7f73894afa1286496e6decd8066db061" compoundref="Wave_8h" startline="46">maxWaveCooldownTime</references>
+        <references refid="classWave_1a709036402636dd75d201dddc1a7451a2" compoundref="Wave_8h" startline="44">numberOfAsteroidsDestroyed</references>
+        <references refid="classWave_1aa2c0a4968f51e7d12b8f8d53dfdedbf0" compoundref="Wave_8h" startline="30">stationHealth</references>
+        <references refid="classWave_1a7c9139b94ce3c4a6e6990350834d88c0" compoundref="Wave_8h" startline="42">waveNumber</references>
+      </memberdef>
+      <memberdef kind="function" id="classWave_1a1ee01745e8ec8fff53f1581f0bd3af1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Wave::~Wave</definition>
+        <argsstring>()</argsstring>
+        <name>~Wave</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: Destructor</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 1 March 2016</para></simplesect>
+: Destructor for <ref refid="classWave" kindref="compound">Wave</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="28" column="1" bodyfile="Zyzrag/Source/Wave.cpp" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classWave_1a6eb595e96d2e63e2c42123dcdf3b1abf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Wave::waveComplete</definition>
+        <argsstring>()</argsstring>
+        <name>waveComplete</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: waveComplete</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 1 March 2016</para></simplesect>
+: checks if wave is completed </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="32" column="1" bodyfile="Zyzrag/Source/Wave.cpp" bodystart="85" bodyend="94"/>
+        <references refid="classWave_1a8d4d18452658c7d5e98f9895e59cb707" compoundref="Wave_8h" startline="43">maxNumberOfAsteroids</references>
+        <references refid="classWave_1a709036402636dd75d201dddc1a7451a2" compoundref="Wave_8h" startline="44">numberOfAsteroidsDestroyed</references>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" compoundref="Wave_8cpp" startline="137" endline="162">waveUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Wave::spawnAsteroid</definition>
+        <argsstring>()</argsstring>
+        <name>spawnAsteroid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: spawn <ref refid="classAsteroid" kindref="compound">Asteroid</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 1 March 2016</para></simplesect>
+: checks if spawning asteroid would be true </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="33" column="1" bodyfile="Zyzrag/Source/Wave.cpp" bodystart="178" bodyend="193"/>
+        <references refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" compoundref="Wave_8h" startline="53">currAsteroidSpawnCooldownTime</references>
+        <references refid="classWave_1af2af911017d0aba73a86135fa560cb31" compoundref="Wave_8h" startline="47">currWaveCooldownTime</references>
+        <references refid="classWave_1a1f598ebc6eeac0ea7b347dbcb39e16af" compoundref="Wave_8h" startline="52">maxAsteroidSpawnCooldownTime</references>
+        <references refid="classWave_1a8d4d18452658c7d5e98f9895e59cb707" compoundref="Wave_8h" startline="43">maxNumberOfAsteroids</references>
+        <references refid="classWave_1a7f73894afa1286496e6decd8066db061" compoundref="Wave_8h" startline="46">maxWaveCooldownTime</references>
+        <references refid="classWave_1a709036402636dd75d201dddc1a7451a2" compoundref="Wave_8h" startline="44">numberOfAsteroidsDestroyed</references>
+        <referencedby refid="classSP2_1a71cb6a8fae424771777b139233ae7be8" compoundref="SP2_8cpp" startline="834" endline="877">SP2::generateAsteroid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWave_1acefda66b54d01598305db699ecf51833" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Wave::transitionComplete</definition>
+        <argsstring>()</argsstring>
+        <name>transitionComplete</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: check if transition is complete</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 1 March 2016</para></simplesect>
+: check if tansition time is over </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="34" column="1" bodyfile="Zyzrag/Source/Wave.cpp" bodystart="208" bodyend="222"/>
+        <references refid="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" compoundref="Wave_8h" startline="50">currTransitionTime</references>
+        <references refid="classWave_1abecc054ec26b18e8b27bacfe3ba4faea" compoundref="Wave_8h" startline="40">endOfTransition</references>
+        <references refid="classWave_1a10373abe0bdf2a7ff3722732889d9885" compoundref="Wave_8h" startline="49">maxTransitionTime</references>
+        <referencedby refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" compoundref="Wave_8cpp" startline="137" endline="162">waveUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWave_1a50d7dbc99d58342f69d1c1f851683462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Wave::nextWave</definition>
+        <argsstring>()</argsstring>
+        <name>nextWave</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: loads the next <ref refid="classWave" kindref="compound">Wave</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 1 March 2016</para></simplesect>
+: loads the variables for next wave </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="36" column="1" bodyfile="Zyzrag/Source/Wave.cpp" bodystart="109" bodyend="122"/>
+        <references refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" compoundref="Wave_8h" startline="53">currAsteroidSpawnCooldownTime</references>
+        <references refid="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" compoundref="Wave_8h" startline="50">currTransitionTime</references>
+        <references refid="classWave_1af2af911017d0aba73a86135fa560cb31" compoundref="Wave_8h" startline="47">currWaveCooldownTime</references>
+        <references refid="classWave_1a8d4d18452658c7d5e98f9895e59cb707" compoundref="Wave_8h" startline="43">maxNumberOfAsteroids</references>
+        <references refid="classWave_1a709036402636dd75d201dddc1a7451a2" compoundref="Wave_8h" startline="44">numberOfAsteroidsDestroyed</references>
+        <references refid="classWave_1aa2c0a4968f51e7d12b8f8d53dfdedbf0" compoundref="Wave_8h" startline="30">stationHealth</references>
+        <references refid="classWave_1a7c9139b94ce3c4a6e6990350834d88c0" compoundref="Wave_8h" startline="42">waveNumber</references>
+        <referencedby refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" compoundref="Wave_8cpp" startline="137" endline="162">waveUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classWave_1a94797e89b8243ff7ac9ac40b551d1733" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Wave::waveUpdate</definition>
+        <argsstring>(double dt)</argsstring>
+        <name>waveUpdate</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: check if asteroid can spawn</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 1 March 2016</para></simplesect>
+: update the wave </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Wave.h" line="37" column="1" bodyfile="Zyzrag/Source/Wave.cpp" bodystart="137" bodyend="162"/>
+        <references refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" compoundref="Wave_8h" startline="53">currAsteroidSpawnCooldownTime</references>
+        <references refid="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" compoundref="Wave_8h" startline="50">currTransitionTime</references>
+        <references refid="classWave_1af2af911017d0aba73a86135fa560cb31" compoundref="Wave_8h" startline="47">currWaveCooldownTime</references>
+        <references refid="classWave_1abecc054ec26b18e8b27bacfe3ba4faea" compoundref="Wave_8h" startline="40">endOfTransition</references>
+        <references refid="classWave_1a7f73894afa1286496e6decd8066db061" compoundref="Wave_8h" startline="46">maxWaveCooldownTime</references>
+        <references refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" compoundref="Wave_8cpp" startline="109" endline="122">nextWave</references>
+        <references refid="classWave_1acefda66b54d01598305db699ecf51833" compoundref="Wave_8cpp" startline="208" endline="222">transitionComplete</references>
+        <references refid="classWave_1a6eb595e96d2e63e2c42123dcdf3b1abf" compoundref="Wave_8cpp" startline="85" endline="94">waveComplete</references>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classSP2_1ab3a40eadc29b0efa8da32b25c2b4a3c5" compoundref="SP2_8cpp" startline="2153" endline="2183">SP2::waveTransitionUpdate</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="618">
+        <label>int</label>
+      </node>
+      <node id="617">
+        <label>double</label>
+      </node>
+      <node id="616">
+        <label>Wave</label>
+        <link refid="classWave"/>
+        <childnode refid="617" relation="usage">
+          <edgelabel>currTransitionTime</edgelabel>
+          <edgelabel>maxTransitionTime</edgelabel>
+          <edgelabel>maxAsteroidSpawnCooldownTime</edgelabel>
+          <edgelabel>currAsteroidSpawnCooldownTime</edgelabel>
+          <edgelabel>maxWaveCooldownTime</edgelabel>
+          <edgelabel>currWaveCooldownTime</edgelabel>
+        </childnode>
+        <childnode refid="618" relation="usage">
+          <edgelabel>waveNumber</edgelabel>
+          <edgelabel>numberOfAsteroidsDestroyed</edgelabel>
+          <edgelabel>stationHealth</edgelabel>
+          <edgelabel>maxNumberOfAsteroids</edgelabel>
+        </childnode>
+        <childnode refid="619" relation="usage">
+          <edgelabel>endOfTransition</edgelabel>
+        </childnode>
+      </node>
+      <node id="619">
+        <label>bool</label>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/Wave.h" line="23" column="1" bodyfile="Zyzrag/Source/Wave.h" bodystart="23" bodyend="55"/>
+    <listofallmembers>
+      <member refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" prot="public" virt="non-virtual"><scope>Wave</scope><name>currAsteroidSpawnCooldownTime</name></member>
+      <member refid="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" prot="public" virt="non-virtual"><scope>Wave</scope><name>currTransitionTime</name></member>
+      <member refid="classWave_1af2af911017d0aba73a86135fa560cb31" prot="public" virt="non-virtual"><scope>Wave</scope><name>currWaveCooldownTime</name></member>
+      <member refid="classWave_1abecc054ec26b18e8b27bacfe3ba4faea" prot="public" virt="non-virtual"><scope>Wave</scope><name>endOfTransition</name></member>
+      <member refid="classWave_1a1f598ebc6eeac0ea7b347dbcb39e16af" prot="public" virt="non-virtual"><scope>Wave</scope><name>maxAsteroidSpawnCooldownTime</name></member>
+      <member refid="classWave_1a8d4d18452658c7d5e98f9895e59cb707" prot="public" virt="non-virtual"><scope>Wave</scope><name>maxNumberOfAsteroids</name></member>
+      <member refid="classWave_1a10373abe0bdf2a7ff3722732889d9885" prot="public" virt="non-virtual"><scope>Wave</scope><name>maxTransitionTime</name></member>
+      <member refid="classWave_1a7f73894afa1286496e6decd8066db061" prot="public" virt="non-virtual"><scope>Wave</scope><name>maxWaveCooldownTime</name></member>
+      <member refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" prot="public" virt="non-virtual"><scope>Wave</scope><name>nextWave</name></member>
+      <member refid="classWave_1a709036402636dd75d201dddc1a7451a2" prot="public" virt="non-virtual"><scope>Wave</scope><name>numberOfAsteroidsDestroyed</name></member>
+      <member refid="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" prot="public" virt="non-virtual"><scope>Wave</scope><name>spawnAsteroid</name></member>
+      <member refid="classWave_1aa2c0a4968f51e7d12b8f8d53dfdedbf0" prot="public" virt="non-virtual"><scope>Wave</scope><name>stationHealth</name></member>
+      <member refid="classWave_1acefda66b54d01598305db699ecf51833" prot="public" virt="non-virtual"><scope>Wave</scope><name>transitionComplete</name></member>
+      <member refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" prot="public" virt="non-virtual"><scope>Wave</scope><name>Wave</name></member>
+      <member refid="classWave_1a6eb595e96d2e63e2c42123dcdf3b1abf" prot="public" virt="non-virtual"><scope>Wave</scope><name>waveComplete</name></member>
+      <member refid="classWave_1a7c9139b94ce3c4a6e6990350834d88c0" prot="public" virt="non-virtual"><scope>Wave</scope><name>waveNumber</name></member>
+      <member refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" prot="public" virt="non-virtual"><scope>Wave</scope><name>waveUpdate</name></member>
+      <member refid="classWave_1a1ee01745e8ec8fff53f1581f0bd3af1f" prot="public" virt="non-virtual"><scope>Wave</scope><name>~Wave</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

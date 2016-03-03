@@ -1,0 +1,11 @@
+<map id="Application::centerMouse" name="Application::centerMouse">
+<area shape="rect" id="node2" href="$classCamera.html#ac44f493bfcf873d1e5c7fb8076323586" title="Disable mouse cursor. " alt="" coords="235,56,391,83"/>
+<area shape="rect" id="node6" href="$classSP2.html#a30e847649a0454ba1ad0bb271fb66d24" title="SP2::mainMenuUpdates" alt="" coords="465,107,627,133"/>
+<area shape="rect" id="node7" href="$classSP2.html#ad5924ef549fb8781c7862817da890f45" title="SP2::RTSUpdates" alt="" coords="249,157,377,184"/>
+<area shape="rect" id="node8" href="$classSP2.html#a19f8a68701a7cc6fd6d2b304da90ffed" title="SP2::shopUpdates" alt="" coords="247,208,378,235"/>
+<area shape="rect" id="node10" href="$classSP2.html#ab3a40eadc29b0efa8da32b25c2b4a3c5" title="SP2::waveTransitionUpdate" alt="" coords="223,259,403,285"/>
+<area shape="rect" id="node3" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="458,5,634,32"/>
+<area shape="rect" id="node5" href="$classSP2.html#a48207cfb8991c95ceca13e7d5cfab56d" title="SP2::inSpaceStationUpdates" alt="" coords="451,56,641,83"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="689,132,785,159"/>
+<area shape="rect" id="node9" href="$classSP2.html#a3d0db2dcdacd9ec9b9db5e4a86f9643b" title="SP2::inShopUpdates" alt="" coords="475,208,617,235"/>
+</map>

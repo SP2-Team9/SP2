@@ -1,0 +1,6 @@
+<map id="Camera::FPSMovement" name="Camera::FPSMovement">
+<area shape="rect" id="node2" href="$classCamera.html#ae3766936b577b4062dc0f49cd4008e1a" title="Sets Yaw and Pitch from mouse movement. " alt="" coords="215,5,386,32"/>
+<area shape="rect" id="node3" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="213,56,388,83"/>
+<area shape="rect" id="node4" href="$classMtx44.html#ac0587ffb5ff9fd58ad5768d28fc06574" title="Set Matrix to a rotation matrix about arbitrary axis. " alt="" coords="227,107,375,133"/>
+<area shape="rect" id="node5" href="$namespaceMath.html#ac91173ab2efdf7313fe7aaeb6cb44cf6" title="Math::FAbs" alt="" coords="436,107,527,133"/>
+</map>

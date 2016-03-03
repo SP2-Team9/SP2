@@ -1,0 +1,1060 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="classObject" kind="class" language="C++" prot="public">
+    <compoundname>Object</compoundname>
+    <derivedcompoundref refid="classAsteroid" prot="public" virt="non-virtual">Asteroid</derivedcompoundref>
+    <derivedcompoundref refid="classBullet" prot="public" virt="non-virtual">Bullet</derivedcompoundref>
+    <derivedcompoundref refid="classExplosion" prot="public" virt="non-virtual">Explosion</derivedcompoundref>
+    <derivedcompoundref refid="classNPC" prot="public" virt="non-virtual">NPC</derivedcompoundref>
+    <derivedcompoundref refid="structPlayerVehicle" prot="public" virt="non-virtual">PlayerVehicle</derivedcompoundref>
+    <derivedcompoundref refid="classVehicles" prot="public" virt="non-virtual">Vehicles</derivedcompoundref>
+    <includes refid="Object_8h" local="no">Object.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classObject_1aacafc6287e6765c621111d5c5577c8a6" prot="public" static="no" mutable="no">
+        <type><ref refid="classAABB" kindref="compound">AABB</ref></type>
+        <definition>AABB Object::interaction</definition>
+        <argsstring></argsstring>
+        <name>interaction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="13" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="13" bodyend="-1"/>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+        <referencedby refid="classObject_1a564eeecf7deefdfb0144458beb28599b" compoundref="Object_8cpp" startline="134" endline="137">SetInteraction</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" prot="public" static="no" mutable="no">
+        <type><ref refid="classAABB" kindref="compound">AABB</ref></type>
+        <definition>AABB Object::hitbox</definition>
+        <argsstring></argsstring>
+        <name>hitbox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="14" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="14" bodyend="-1"/>
+        <referencedby refid="classSP2_1a92133b572f908abf6c33501a9d95092d" compoundref="SP2_8cpp" startline="2819" endline="2851">SP2::abductionquest</referencedby>
+        <referencedby refid="classSP2_1aa30f865a5270160ade491858cd0f7b31" compoundref="SP2_8cpp" startline="2397" endline="2587">SP2::asteroidHitboxCheck</referencedby>
+        <referencedby refid="classSP2_1aa9c1683d167509e5d6f0e50340947f2a" compoundref="SP2_8cpp" startline="2733" endline="2771">SP2::ballquest</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+        <referencedby refid="classSP2_1a23517ffd078dbea3018c0eb9e64c78aa" compoundref="SP2_8cpp" startline="1609" endline="1677">SP2::quests</referencedby>
+        <referencedby refid="classSP2_1a065068b2bde7c9a526db759b3c6d0aea" compoundref="SP2_8cpp" startline="2246" endline="2348">SP2::shipHitboxCheck</referencedby>
+        <referencedby refid="classSP2_1ac86d5964ce2cd619e2fb843a3582a411" compoundref="SP2_8cpp" startline="2350" endline="2395">SP2::stationHitboxCheck</referencedby>
+        <referencedby refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" compoundref="Object_8cpp" startline="120" endline="123">updateHitbox</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" prot="public" static="no" mutable="no">
+        <type><ref refid="classAABB" kindref="compound">AABB</ref></type>
+        <definition>AABB Object::hitboxSize</definition>
+        <argsstring></argsstring>
+        <name>hitboxSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="15" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" compoundref="Object_8cpp" startline="85" endline="88">SetHitboxSize</referencedby>
+        <referencedby refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" compoundref="Object_8cpp" startline="120" endline="123">updateHitbox</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObject_1a61ffad7d6db49c0a486797f852804291" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Object::Pos</definition>
+        <argsstring></argsstring>
+        <name>Pos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="16" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classSP2_1aa30f865a5270160ade491858cd0f7b31" compoundref="SP2_8cpp" startline="2397" endline="2587">SP2::asteroidHitboxCheck</referencedby>
+        <referencedby refid="classSP2_1aa9c1683d167509e5d6f0e50340947f2a" compoundref="SP2_8cpp" startline="2733" endline="2771">SP2::ballquest</referencedby>
+        <referencedby refid="classSP2_1ab7fdd4057eb7b08d1fe2aa28a4e25b15" compoundref="SP2_8cpp" startline="1952" endline="1976">SP2::bulletUpdates</referencedby>
+        <referencedby refid="classSP2_1a71cb6a8fae424771777b139233ae7be8" compoundref="SP2_8cpp" startline="834" endline="877">SP2::generateAsteroid</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a30e847649a0454ba1ad0bb271fb66d24" compoundref="SP2_8cpp" startline="2047" endline="2058">SP2::mainMenuUpdates</referencedby>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+        <referencedby refid="classObject_1a503fc1152db4ee07cfece48f8a17a882" compoundref="Object_8cpp" startline="43" endline="49">Object</referencedby>
+        <referencedby refid="classSP2_1aa322f4df791b0bb5633f794ac4f39758" compoundref="SP2_8cpp" startline="818" endline="832">SP2::playerBulletCreation</referencedby>
+        <referencedby refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" compoundref="Camera_8cpp" startline="96" endline="104">Camera::PointAt</referencedby>
+        <referencedby refid="classSP2_1a66ffac3316b8be4cda0f6d51fd3ecc2d" compoundref="SP2_8cpp" startline="1510" endline="1546">SP2::renderchildtext</referencedby>
+        <referencedby refid="classSP2_1ae816a6913862562a4390643111cb0e06" compoundref="SP2_8cpp" startline="1301" endline="1383">SP2::renderDistances</referencedby>
+        <referencedby refid="classSP2_1a518d28d6602a30f615f3391742143199" compoundref="SP2_8cpp" startline="1476" endline="1508">SP2::renderNPC5</referencedby>
+        <referencedby refid="classSP2_1acef0d78c34373d56e30e309ac3233232" compoundref="SP2_8cpp" startline="1017" endline="1079">SP2::renderShips</referencedby>
+        <referencedby refid="classSP2_1aa6eb01e507b119156ff4b13df9152e7b" compoundref="SP2_8cpp" startline="933" endline="990">SP2::renderSkybox</referencedby>
+        <referencedby refid="classSP2_1abf67ed7b015f0412a00d85d4cb43d9b5" compoundref="SP2_8cpp" startline="1548" endline="1586">SP2::renderTextonball</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+        <referencedby refid="classObject_1a048d20a358acb913055e7e128cf5120e" compoundref="Object_8cpp" startline="173" endline="176">SetPos</referencedby>
+        <referencedby refid="classSP2_1a8f036ecf0ef19b0802a351eacf0b59bc" compoundref="SP2_8cpp" startline="791" endline="816">SP2::shipBulletCreation</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">NPC::update</referencedby>
+        <referencedby refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" compoundref="PlayerVehicle_8cpp" startline="34" endline="93">PlayerVehicle::update</referencedby>
+        <referencedby refid="classAsteroid_1ae5e7c9985caf1b9d111aef30973c97e7" compoundref="Asteroid_8cpp" startline="54" endline="62">Asteroid::update</referencedby>
+        <referencedby refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" compoundref="Object_8cpp" startline="120" endline="123">updateHitbox</referencedby>
+        <referencedby refid="classSP2_1ab3a40eadc29b0efa8da32b25c2b4a3c5" compoundref="SP2_8cpp" startline="2153" endline="2183">SP2::waveTransitionUpdate</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">Camera::YawRotation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObject_1a9f75760503e51c4f2290f3e23192fb82" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Object::View</definition>
+        <argsstring></argsstring>
+        <name>View</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="16" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a30e847649a0454ba1ad0bb271fb66d24" compoundref="SP2_8cpp" startline="2047" endline="2058">SP2::mainMenuUpdates</referencedby>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+        <referencedby refid="classObject_1a503fc1152db4ee07cfece48f8a17a882" compoundref="Object_8cpp" startline="43" endline="49">Object</referencedby>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+        <referencedby refid="classSP2_1aa322f4df791b0bb5633f794ac4f39758" compoundref="SP2_8cpp" startline="818" endline="832">SP2::playerBulletCreation</referencedby>
+        <referencedby refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" compoundref="Camera_8cpp" startline="96" endline="104">Camera::PointAt</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+        <referencedby refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" compoundref="Object_8cpp" startline="205" endline="208">SetView</referencedby>
+        <referencedby refid="classSP2_1ac86d5964ce2cd619e2fb843a3582a411" compoundref="SP2_8cpp" startline="2350" endline="2395">SP2::stationHitboxCheck</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">NPC::update</referencedby>
+        <referencedby refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" compoundref="PlayerVehicle_8cpp" startline="34" endline="93">PlayerVehicle::update</referencedby>
+        <referencedby refid="classAsteroid_1ae5e7c9985caf1b9d111aef30973c97e7" compoundref="Asteroid_8cpp" startline="54" endline="62">Asteroid::update</referencedby>
+        <referencedby refid="classSP2_1ab3a40eadc29b0efa8da32b25c2b4a3c5" compoundref="SP2_8cpp" startline="2153" endline="2183">SP2::waveTransitionUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Object::Up</definition>
+        <argsstring></argsstring>
+        <name>Up</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="16" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classObject_1a503fc1152db4ee07cfece48f8a17a882" compoundref="Object_8cpp" startline="43" endline="49">Object</referencedby>
+        <referencedby refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" compoundref="Camera_8cpp" startline="96" endline="104">Camera::PointAt</referencedby>
+        <referencedby refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" compoundref="Object_8cpp" startline="237" endline="240">SetUp</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Object::Right</definition>
+        <argsstring></argsstring>
+        <name>Right</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="16" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classObject_1a503fc1152db4ee07cfece48f8a17a882" compoundref="Object_8cpp" startline="43" endline="49">Object</referencedby>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+        <referencedby refid="classSP2_1acef0d78c34373d56e30e309ac3233232" compoundref="SP2_8cpp" startline="1017" endline="1079">SP2::renderShips</referencedby>
+        <referencedby refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" compoundref="Object_8cpp" startline="286" endline="289">SetRight</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">Camera::TPSMovement</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Object::InteractionMin</definition>
+        <argsstring></argsstring>
+        <name>InteractionMin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="16" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classObject_1a02290ed3825318459e72cb80d450afd0" compoundref="Object_8cpp" startline="158" endline="162">SetInteractionSize</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Object::InteractionMax</definition>
+        <argsstring></argsstring>
+        <name>InteractionMax</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="16" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classObject_1a02290ed3825318459e72cb80d450afd0" compoundref="Object_8cpp" startline="158" endline="162">SetInteractionSize</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classObject_1a40860402e64d8008fb42329df7097cdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Object::Object</definition>
+        <argsstring>()</argsstring>
+        <name>Object</name>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="10" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a503fc1152db4ee07cfece48f8a17a882" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Object::Object</definition>
+        <argsstring>(Vector3 pos, Vector3 view, Vector3 up)</argsstring>
+        <name>Object</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>view</declname>
+        </param>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>up</declname>
+        </param>
+        <briefdescription>
+<para>Constuctor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sets position of object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sets view of object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>up</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sets up of object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="11" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="43" bodyend="49"/>
+        <references refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" compoundref="Vector3_8cpp" startline="427" endline="430">Vector3::Cross</references>
+        <references refid="classObject_1a61ffad7d6db49c0a486797f852804291" compoundref="Object_8h" startline="16">Pos</references>
+        <references refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" compoundref="Object_8h" startline="16">Right</references>
+        <references refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" compoundref="Object_8h" startline="16">Up</references>
+        <references refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" compoundref="Object_8h" startline="16">View</references>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1ae8f5483f459e46687bd01e6f9977afd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Object::~Object</definition>
+        <argsstring>()</argsstring>
+        <name>~Object</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="12" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a2198f4c2b626c0633a18962cd7eb84e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetHitbox</definition>
+        <argsstring>(AABB hitbox)</argsstring>
+        <name>SetHitbox</name>
+        <param>
+          <type><ref refid="classAABB" kindref="compound">AABB</ref></type>
+          <declname>hitbox</declname>
+        </param>
+        <briefdescription>
+<para>Sets object hitbox. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hitbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Takes in an <ref refid="classAABB" kindref="compound">AABB</ref> class hitbox. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="18" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="71" bodyend="74"/>
+        <references refid="classAABB_1a19ea75e7f7b92d7100c0898c7a6c5f81" compoundref="AABB_8cpp" startline="277" endline="280">AABB::GetMax</references>
+        <references refid="classAABB_1a7969d3aaabc54615c0ad2b39719cfeea" compoundref="AABB_8cpp" startline="291" endline="294">AABB::GetMin</references>
+        <references refid="classAABB_1a58c802c10ec2e9f0b7ecc49d96b9a162" compoundref="AABB_8cpp" startline="77" endline="81">AABB::Set</references>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetHitboxSize</definition>
+        <argsstring>(float size)</argsstring>
+        <name>SetHitboxSize</name>
+        <param>
+          <type>float</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Gives a default size to hitbox size. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of hitbox wanted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="19" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="85" bodyend="88"/>
+        <references refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" compoundref="Object_8h" startline="15">hitboxSize</references>
+        <references refid="classAABB_1a58c802c10ec2e9f0b7ecc49d96b9a162" compoundref="AABB_8cpp" startline="77" endline="81">AABB::Set</references>
+        <referencedby refid="classAsteroid_1aa85d83bf1101255cf59810a44e8746fa" compoundref="Asteroid_8cpp" startline="25" endline="33">Asteroid::Asteroid</referencedby>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC::NPC</referencedby>
+        <referencedby refid="classSP2_1ab9e05fbb4c2dcdf212481cb826e01139" compoundref="SP2_8cpp" startline="648" endline="680">SP2::npcInit</referencedby>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a03acfeda7945d7c0358befe32f6ebaed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetHitboxSize</definition>
+        <argsstring>(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)</argsstring>
+        <name>SetHitboxSize</name>
+        <param>
+          <type>float</type>
+          <declname>minX</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>minY</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>minZ</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxX</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxY</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxZ</declname>
+        </param>
+        <briefdescription>
+<para>Gives a default size to hitbox size. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>minX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Min X coordinates. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>minY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Min Y coordinates. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>minZ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Min Z coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maxX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Max X coordinates. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maxY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Max Y coordinates. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maxZ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Max Z coordinates. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="20" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="109" bodyend="112"/>
+        <references refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" compoundref="Object_8h" startline="15">hitboxSize</references>
+        <references refid="classAABB_1a58c802c10ec2e9f0b7ecc49d96b9a162" compoundref="AABB_8cpp" startline="77" endline="81">AABB::Set</references>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a79185f158d60e9f8fde4940d9dda4cea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::updateHitbox</definition>
+        <argsstring>()</argsstring>
+        <name>updateHitbox</name>
+        <briefdescription>
+<para>Updates hitbox by getting object pos added with hitbox size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="21" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="120" bodyend="123"/>
+        <references refid="classAABB_1a19ea75e7f7b92d7100c0898c7a6c5f81" compoundref="AABB_8cpp" startline="277" endline="280">AABB::GetMax</references>
+        <references refid="classAABB_1a7969d3aaabc54615c0ad2b39719cfeea" compoundref="AABB_8cpp" startline="291" endline="294">AABB::GetMin</references>
+        <references refid="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" compoundref="Object_8h" startline="14">hitbox</references>
+        <references refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" compoundref="Object_8h" startline="15">hitboxSize</references>
+        <references refid="classObject_1a61ffad7d6db49c0a486797f852804291" compoundref="Object_8h" startline="16">Pos</references>
+        <references refid="classAABB_1a58c802c10ec2e9f0b7ecc49d96b9a162" compoundref="AABB_8cpp" startline="77" endline="81">AABB::Set</references>
+        <referencedby refid="classSP2_1a71cb6a8fae424771777b139233ae7be8" compoundref="SP2_8cpp" startline="834" endline="877">SP2::generateAsteroid</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1ae3446475b6de146a3342e26604c78d6f" compoundref="SP2_8cpp" startline="1679" endline="1687">SP2::NPCUpdates</referencedby>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">NPC::update</referencedby>
+        <referencedby refid="structPlayerVehicle_1aa77ce5452a993d479830f61ef2281b5f" compoundref="PlayerVehicle_8cpp" startline="34" endline="93">PlayerVehicle::update</referencedby>
+        <referencedby refid="classAsteroid_1ae5e7c9985caf1b9d111aef30973c97e7" compoundref="Asteroid_8cpp" startline="54" endline="62">Asteroid::update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a564eeecf7deefdfb0144458beb28599b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetInteraction</definition>
+        <argsstring>(AABB interaction)</argsstring>
+        <name>SetInteraction</name>
+        <param>
+          <type><ref refid="classAABB" kindref="compound">AABB</ref></type>
+          <declname>interaction</declname>
+        </param>
+        <briefdescription>
+<para>Set interaction hitbox. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>interaction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gets an <ref refid="classAABB" kindref="compound">AABB</ref> class hitbox. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="22" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="134" bodyend="137"/>
+        <references refid="classObject_1aacafc6287e6765c621111d5c5577c8a6" compoundref="Object_8h" startline="13">interaction</references>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a02290ed3825318459e72cb80d450afd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetInteractionSize</definition>
+        <argsstring>(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)</argsstring>
+        <name>SetInteractionSize</name>
+        <param>
+          <type>float</type>
+          <declname>minX</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>minY</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>minZ</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxX</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxY</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxZ</declname>
+        </param>
+        <briefdescription>
+<para>Gives a default size to interaction hitbox size. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>minX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Min X coordinates. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>minY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Min Y coordinates. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>minZ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Min Z coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maxX</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Max X coordinates. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maxY</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Max Y coordinates. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maxZ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Max Z coordinates. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="23" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="158" bodyend="162"/>
+        <references refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" compoundref="Object_8h" startline="16">InteractionMax</references>
+        <references refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" compoundref="Object_8h" startline="16">InteractionMin</references>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a048d20a358acb913055e7e128cf5120e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetPos</definition>
+        <argsstring>(Vector3 position)</argsstring>
+        <name>SetPos</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Set object&apos;s position. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structVector3" kindref="compound">Vector3</ref> position wanted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="24" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="173" bodyend="176"/>
+        <references refid="classObject_1a61ffad7d6db49c0a486797f852804291" compoundref="Object_8h" startline="16">Pos</references>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classSP2_1a71cb6a8fae424771777b139233ae7be8" compoundref="SP2_8cpp" startline="834" endline="877">SP2::generateAsteroid</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC::NPC</referencedby>
+        <referencedby refid="classSP2_1ab9e05fbb4c2dcdf212481cb826e01139" compoundref="SP2_8cpp" startline="648" endline="680">SP2::npcInit</referencedby>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1aaaf6f6e7ec1a712ce23b5b4ad2ffad3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetPos</definition>
+        <argsstring>(float x, float y, float z)</argsstring>
+        <name>SetPos</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Set object&apos;s position. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Y coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z coordinates </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="25" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="191" bodyend="194"/>
+        <references refid="classObject_1a61ffad7d6db49c0a486797f852804291" compoundref="Object_8h" startline="16">Pos</references>
+        <references refid="structVector3_1a9c25d604bd52b162cfcb56302ef032bb" compoundref="Vector3_8cpp" startline="67" endline="72">Vector3::Set</references>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetView</definition>
+        <argsstring>(Vector3 view)</argsstring>
+        <name>SetView</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+<para>Set View of object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structVector3" kindref="compound">Vector3</ref> view wanted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="26" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="205" bodyend="208"/>
+        <references refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" compoundref="Object_8h" startline="16">View</references>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classSP2_1a71cb6a8fae424771777b139233ae7be8" compoundref="SP2_8cpp" startline="834" endline="877">SP2::generateAsteroid</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC::NPC</referencedby>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a7cc1c711ebe79a023b24abd69c590036" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetView</definition>
+        <argsstring>(float x, float y, float z)</argsstring>
+        <name>SetView</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Set View of object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Y coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z coordinates </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="27" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="223" bodyend="226"/>
+        <references refid="structVector3_1a9c25d604bd52b162cfcb56302ef032bb" compoundref="Vector3_8cpp" startline="67" endline="72">Vector3::Set</references>
+        <references refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" compoundref="Object_8h" startline="16">View</references>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1ada985c9da2c4c7efe3a72d836912e909" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetUp</definition>
+        <argsstring>(Vector3 up)</argsstring>
+        <name>SetUp</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>up</declname>
+        </param>
+        <briefdescription>
+<para>Set up of object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>up</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structVector3" kindref="compound">Vector3</ref> up wanted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="28" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="237" bodyend="240"/>
+        <references refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" compoundref="Object_8h" startline="16">Up</references>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a1c38ee52b9773fb15827f7f8d5e8cf47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetUp</definition>
+        <argsstring>(Vector3 right, Vector3 view)</argsstring>
+        <name>SetUp</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>right</declname>
+        </param>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+<para>Sets up of object by getting the cross of right and view. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>right</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Passes in the <ref refid="structVector3" kindref="compound">Vector3</ref> right.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Passes in the <ref refid="structVector3" kindref="compound">Vector3</ref> view. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="29" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="254" bodyend="257"/>
+        <references refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" compoundref="Vector3_8cpp" startline="427" endline="430">Vector3::Cross</references>
+        <references refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" compoundref="Object_8h" startline="16">Up</references>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1ae2e3ba0210f52fbaeef2b824cd2e80d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetUp</definition>
+        <argsstring>(float x, float y, float z)</argsstring>
+        <name>SetUp</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Set up of object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Y coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z coordinates </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="30" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="272" bodyend="275"/>
+        <references refid="structVector3_1a9c25d604bd52b162cfcb56302ef032bb" compoundref="Vector3_8cpp" startline="67" endline="72">Vector3::Set</references>
+        <references refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" compoundref="Object_8h" startline="16">Up</references>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetRight</definition>
+        <argsstring>(Vector3 right)</argsstring>
+        <name>SetRight</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>right</declname>
+        </param>
+        <briefdescription>
+<para>Set right of object. </para>        </briefdescription>
+        <detaileddescription>
+<para>right <ref refid="structVector3" kindref="compound">Vector3</ref> right wanted. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="31" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="286" bodyend="289"/>
+        <references refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" compoundref="Object_8h" startline="16">Right</references>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a276a9a58452b8b6263b133252d1ab340" compoundref="SP2_8cpp" startline="616" endline="646">SP2::objectsInit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1ac7bd4c23a77ee9e7de4f051300bc7b5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetRight</definition>
+        <argsstring>(Vector3 view, Vector3 up)</argsstring>
+        <name>SetRight</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>view</declname>
+        </param>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>up</declname>
+        </param>
+        <briefdescription>
+<para>Set right of object by getting the cross of view and up. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structVector3" kindref="compound">Vector3</ref> view of object.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>up</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structVector3" kindref="compound">Vector3</ref> up of object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="32" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="303" bodyend="306"/>
+        <references refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" compoundref="Vector3_8cpp" startline="427" endline="430">Vector3::Cross</references>
+        <references refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" compoundref="Object_8h" startline="16">Right</references>
+      </memberdef>
+      <memberdef kind="function" id="classObject_1a0174b9a71374d4b3c8f3402ff2cebeaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Object::SetRight</definition>
+        <argsstring>(float x, float y, float z)</argsstring>
+        <name>SetRight</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Set Right of object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Y coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z coordinates </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Object.h" line="33" column="1" bodyfile="Zyzrag/Source/Object.cpp" bodystart="321" bodyend="324"/>
+        <references refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" compoundref="Object_8h" startline="16">Right</references>
+        <references refid="structVector3_1a9c25d604bd52b162cfcb56302ef032bb" compoundref="Vector3_8cpp" startline="67" endline="72">Vector3::Set</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="480">
+        <label>Vehicles</label>
+        <link refid="classVehicles"/>
+        <childnode refid="474" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="478">
+        <label>NPC</label>
+        <link refid="classNPC"/>
+        <childnode refid="474" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="475">
+        <label>Asteroid</label>
+        <link refid="classAsteroid"/>
+        <childnode refid="474" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="477">
+        <label>Explosion</label>
+        <link refid="classExplosion"/>
+        <childnode refid="474" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="474">
+        <label>Object</label>
+        <link refid="classObject"/>
+      </node>
+      <node id="479">
+        <label>PlayerVehicle</label>
+        <link refid="structPlayerVehicle"/>
+        <childnode refid="474" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="476">
+        <label>Bullet</label>
+        <link refid="classBullet"/>
+        <childnode refid="474" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="484">
+        <label>float</label>
+      </node>
+      <node id="482">
+        <label>AABB</label>
+        <link refid="classAABB"/>
+        <childnode refid="483" relation="usage">
+          <edgelabel>Min</edgelabel>
+          <edgelabel>Max</edgelabel>
+        </childnode>
+      </node>
+      <node id="481">
+        <label>Object</label>
+        <link refid="classObject"/>
+        <childnode refid="482" relation="usage">
+          <edgelabel>hitboxSize</edgelabel>
+          <edgelabel>hitbox</edgelabel>
+          <edgelabel>interaction</edgelabel>
+        </childnode>
+        <childnode refid="483" relation="usage">
+          <edgelabel>InteractionMin</edgelabel>
+          <edgelabel>View</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>InteractionMax</edgelabel>
+          <edgelabel>Pos</edgelabel>
+        </childnode>
+      </node>
+      <node id="483">
+        <label>Vector3</label>
+        <link refid="structVector3"/>
+        <childnode refid="484" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/Object.h" line="7" column="1" bodyfile="Zyzrag/Source/Object.h" bodystart="6" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" prot="public" virt="non-virtual"><scope>Object</scope><name>hitbox</name></member>
+      <member refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" prot="public" virt="non-virtual"><scope>Object</scope><name>hitboxSize</name></member>
+      <member refid="classObject_1aacafc6287e6765c621111d5c5577c8a6" prot="public" virt="non-virtual"><scope>Object</scope><name>interaction</name></member>
+      <member refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" prot="public" virt="non-virtual"><scope>Object</scope><name>InteractionMax</name></member>
+      <member refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" prot="public" virt="non-virtual"><scope>Object</scope><name>InteractionMin</name></member>
+      <member refid="classObject_1a40860402e64d8008fb42329df7097cdb" prot="public" virt="non-virtual"><scope>Object</scope><name>Object</name></member>
+      <member refid="classObject_1a503fc1152db4ee07cfece48f8a17a882" prot="public" virt="non-virtual"><scope>Object</scope><name>Object</name></member>
+      <member refid="classObject_1a61ffad7d6db49c0a486797f852804291" prot="public" virt="non-virtual"><scope>Object</scope><name>Pos</name></member>
+      <member refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" prot="public" virt="non-virtual"><scope>Object</scope><name>Right</name></member>
+      <member refid="classObject_1a2198f4c2b626c0633a18962cd7eb84e4" prot="public" virt="non-virtual"><scope>Object</scope><name>SetHitbox</name></member>
+      <member refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" prot="public" virt="non-virtual"><scope>Object</scope><name>SetHitboxSize</name></member>
+      <member refid="classObject_1a03acfeda7945d7c0358befe32f6ebaed" prot="public" virt="non-virtual"><scope>Object</scope><name>SetHitboxSize</name></member>
+      <member refid="classObject_1a564eeecf7deefdfb0144458beb28599b" prot="public" virt="non-virtual"><scope>Object</scope><name>SetInteraction</name></member>
+      <member refid="classObject_1a02290ed3825318459e72cb80d450afd0" prot="public" virt="non-virtual"><scope>Object</scope><name>SetInteractionSize</name></member>
+      <member refid="classObject_1a048d20a358acb913055e7e128cf5120e" prot="public" virt="non-virtual"><scope>Object</scope><name>SetPos</name></member>
+      <member refid="classObject_1aaaf6f6e7ec1a712ce23b5b4ad2ffad3f" prot="public" virt="non-virtual"><scope>Object</scope><name>SetPos</name></member>
+      <member refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" prot="public" virt="non-virtual"><scope>Object</scope><name>SetRight</name></member>
+      <member refid="classObject_1ac7bd4c23a77ee9e7de4f051300bc7b5f" prot="public" virt="non-virtual"><scope>Object</scope><name>SetRight</name></member>
+      <member refid="classObject_1a0174b9a71374d4b3c8f3402ff2cebeaf" prot="public" virt="non-virtual"><scope>Object</scope><name>SetRight</name></member>
+      <member refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" prot="public" virt="non-virtual"><scope>Object</scope><name>SetUp</name></member>
+      <member refid="classObject_1a1c38ee52b9773fb15827f7f8d5e8cf47" prot="public" virt="non-virtual"><scope>Object</scope><name>SetUp</name></member>
+      <member refid="classObject_1ae2e3ba0210f52fbaeef2b824cd2e80d4" prot="public" virt="non-virtual"><scope>Object</scope><name>SetUp</name></member>
+      <member refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" prot="public" virt="non-virtual"><scope>Object</scope><name>SetView</name></member>
+      <member refid="classObject_1a7cc1c711ebe79a023b24abd69c590036" prot="public" virt="non-virtual"><scope>Object</scope><name>SetView</name></member>
+      <member refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" prot="public" virt="non-virtual"><scope>Object</scope><name>Up</name></member>
+      <member refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" prot="public" virt="non-virtual"><scope>Object</scope><name>updateHitbox</name></member>
+      <member refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" prot="public" virt="non-virtual"><scope>Object</scope><name>View</name></member>
+      <member refid="classObject_1ae8f5483f459e46687bd01e6f9977afd3" prot="public" virt="non-virtual"><scope>Object</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

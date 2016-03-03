@@ -1,0 +1,7 @@
+<map id="NPC::NPC" name="NPC::NPC">
+<area shape="rect" id="node2" href="$namespaceMath.html#a1a1d364c850f9d66fda85cf71598bbe5" title="Converts from radians to degrees. " alt="" coords="137,5,292,32"/>
+<area shape="rect" id="node3" href="$classObject.html#a96fe42f8ef68ace9d2dedc6d0fe4be22" title="Gives a default size to hitbox size. " alt="" coords="139,56,290,83"/>
+<area shape="rect" id="node5" href="$classObject.html#a048d20a358acb913055e7e128cf5120e" title="Set object&#39;s position. " alt="" coords="159,107,270,133"/>
+<area shape="rect" id="node6" href="$classObject.html#a21f9115fbf9a7f2767de1d1a1c98ac09" title="Set View of object. " alt="" coords="157,157,273,184"/>
+<area shape="rect" id="node4" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="340,56,427,83"/>
+</map>

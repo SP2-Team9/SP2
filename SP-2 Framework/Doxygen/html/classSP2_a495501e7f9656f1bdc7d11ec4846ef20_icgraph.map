@@ -1,0 +1,5 @@
+<map id="SP2::WorldHitboxInit" name="SP2::WorldHitboxInit">
+<area shape="rect" id="node2" href="$classSP2.html#a8669c489b6a968f367a4610b254ac992" title="SP2::Init" alt="" coords="196,31,268,57"/>
+<area shape="rect" id="node3" href="$classSP2.html#ae3b8fa1d8f987a6f5b9175c10944398a" title="SP2::gameOverUpdate" alt="" coords="316,5,471,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="519,31,615,57"/>
+</map>

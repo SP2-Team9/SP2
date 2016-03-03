@@ -1,0 +1,13 @@
+<map id="Vector3::Normalized" name="Vector3::Normalized">
+<area shape="rect" id="node2" href="$classMousePicker.html#a4ec25b13977155fa8c06ddcda9a2f55a" title="Calculate&#39;s the mouse ray from screen coordinates to world coordinates. " alt="" coords="193,309,413,336"/>
+<area shape="rect" id="node6" href="$classCamera.html#a609775f7ec4cd936ad7add808cd7354c" title="Initialize camera. " alt="" coords="257,132,349,159"/>
+<area shape="rect" id="node12" href="$classCamera.html#a50900c795715881db70f2e8cb23d0c6a" title="Camera mode that only allows Yaw Rotation and controlling vehicle&#39;s thrust. " alt="" coords="229,259,377,285"/>
+<area shape="rect" id="node3" href="$classMousePicker.html#a4574a22a56dc36909a5826fcf847ff92" title="Updates the class to the latest camera position, target, up and caluclate the latest mouse ray..." alt="" coords="479,309,624,336"/>
+<area shape="rect" id="node4" href="$classSP2.html#ad5924ef549fb8781c7862817da890f45" title="SP2::RTSUpdates" alt="" coords="713,259,841,285"/>
+<area shape="rect" id="node5" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="913,132,1009,159"/>
+<area shape="rect" id="node7" href="$classSP2.html#a8669c489b6a968f367a4610b254ac992" title="SP2::Init" alt="" coords="515,107,587,133"/>
+<area shape="rect" id="node9" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="689,208,865,235"/>
+<area shape="rect" id="node10" href="$classSP2.html#a30e847649a0454ba1ad0bb271fb66d24" title="SP2::mainMenuUpdates" alt="" coords="696,5,859,32"/>
+<area shape="rect" id="node11" href="$classSP2.html#ab3a40eadc29b0efa8da32b25c2b4a3c5" title="SP2::waveTransitionUpdate" alt="" coords="461,56,641,83"/>
+<area shape="rect" id="node8" href="$classSP2.html#ae3b8fa1d8f987a6f5b9175c10944398a" title="SP2::gameOverUpdate" alt="" coords="700,157,855,184"/>
+</map>

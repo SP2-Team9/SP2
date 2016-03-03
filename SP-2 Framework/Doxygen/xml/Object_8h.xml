@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Object_8h" kind="file" language="C++">
+    <compoundname>Object.h</compoundname>
+    <includes refid="AABB_8h" local="yes">AABB.h</includes>
+    <includedby refid="Shop_8h" local="yes">Zyzrag/Source/Shop.h</includedby>
+    <includedby refid="Vehicles_8h" local="yes">Zyzrag/Source/Vehicles.h</includedby>
+    <includedby refid="Bullet_8h" local="yes">Zyzrag/Source/Bullet.h</includedby>
+    <includedby refid="Asteroid_8h" local="yes">Zyzrag/Source/Asteroid.h</includedby>
+    <includedby refid="SP2_8h" local="yes">Zyzrag/Source/SP2.h</includedby>
+    <includedby refid="Explosion_8h" local="yes">Zyzrag/Source/Explosion.h</includedby>
+    <includedby refid="NPC_8h" local="yes">Zyzrag/Source/NPC.h</includedby>
+    <includedby refid="Object_8cpp" local="yes">Zyzrag/Source/Object.cpp</includedby>
+    <incdepgraph>
+      <node id="2404">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2405" relation="include">
+        </childnode>
+        <childnode refid="2412" relation="include">
+        </childnode>
+      </node>
+      <node id="2407">
+        <label>cmath</label>
+      </node>
+      <node id="2408">
+        <label>exception</label>
+      </node>
+      <node id="2409">
+        <label>ctime</label>
+      </node>
+      <node id="2412">
+        <label>vector</label>
+      </node>
+      <node id="2405">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2406" relation="include">
+        </childnode>
+        <childnode refid="2411" relation="include">
+        </childnode>
+      </node>
+      <node id="2410">
+        <label>cstdlib</label>
+      </node>
+      <node id="2411">
+        <label>iostream</label>
+      </node>
+      <node id="2406">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2407" relation="include">
+        </childnode>
+        <childnode refid="2408" relation="include">
+        </childnode>
+        <childnode refid="2409" relation="include">
+        </childnode>
+        <childnode refid="2410" relation="include">
+        </childnode>
+      </node>
+      <node id="2403">
+        <label>Zyzrag/Source/Object.h</label>
+        <link refid="Object.h"/>
+        <childnode refid="2404" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2425">
+        <label>Zyzrag/Source/PlayerVehicle.cpp</label>
+        <link refid="PlayerVehicle_8cpp"/>
+      </node>
+      <node id="2419">
+        <label>Zyzrag/Source/Vehicles.h</label>
+        <link refid="Vehicles_8h"/>
+        <childnode refid="2420" relation="include">
+        </childnode>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2426" relation="include">
+        </childnode>
+      </node>
+      <node id="2429">
+        <label>Zyzrag/Source/Asteroid.h</label>
+        <link refid="Asteroid_8h"/>
+        <childnode refid="2419" relation="include">
+        </childnode>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2430" relation="include">
+        </childnode>
+      </node>
+      <node id="2420">
+        <label>Zyzrag/Source/PlayerVehicle.h</label>
+        <link refid="PlayerVehicle_8h"/>
+        <childnode refid="2414" relation="include">
+        </childnode>
+        <childnode refid="2421" relation="include">
+        </childnode>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2425" relation="include">
+        </childnode>
+      </node>
+      <node id="2431">
+        <label>Zyzrag/Source/Explosion.h</label>
+        <link refid="Explosion_8h"/>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2432" relation="include">
+        </childnode>
+      </node>
+      <node id="2416">
+        <label>Zyzrag/Source/Application.cpp</label>
+        <link refid="Application_8cpp"/>
+      </node>
+      <node id="2414">
+        <label>Zyzrag/Source/Shop.h</label>
+        <link refid="Shop_8h"/>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2418" relation="include">
+        </childnode>
+      </node>
+      <node id="2432">
+        <label>Zyzrag/Source/Explosion.cpp</label>
+        <link refid="Explosion_8cpp"/>
+      </node>
+      <node id="2417">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2435">
+        <label>Zyzrag/Source/Object.cpp</label>
+        <link refid="Object_8cpp"/>
+      </node>
+      <node id="2430">
+        <label>Zyzrag/Source/Asteroid.cpp</label>
+        <link refid="Asteroid_8cpp"/>
+      </node>
+      <node id="2418">
+        <label>Zyzrag/Source/Shop.cpp</label>
+        <link refid="Shop_8cpp"/>
+      </node>
+      <node id="2427">
+        <label>Zyzrag/Source/Bullet.h</label>
+        <link refid="Bullet_8h"/>
+        <childnode refid="2419" relation="include">
+        </childnode>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2428" relation="include">
+        </childnode>
+      </node>
+      <node id="2434">
+        <label>Zyzrag/Source/NPC.cpp</label>
+        <link refid="NPC_8cpp"/>
+      </node>
+      <node id="2423">
+        <label>Zyzrag/Source/MousePicker.cpp</label>
+        <link refid="MousePicker_8cpp"/>
+      </node>
+      <node id="2428">
+        <label>Zyzrag/Source/Bullet.cpp</label>
+        <link refid="Bullet_8cpp"/>
+      </node>
+      <node id="2415">
+        <label>Zyzrag/Source/SP2.h</label>
+        <link refid="SP2_8h"/>
+        <childnode refid="2416" relation="include">
+        </childnode>
+        <childnode refid="2417" relation="include">
+        </childnode>
+      </node>
+      <node id="2426">
+        <label>Zyzrag/Source/Vehicles.cpp</label>
+        <link refid="Vehicles_8cpp"/>
+      </node>
+      <node id="2422">
+        <label>Zyzrag/Source/MousePicker.h</label>
+        <link refid="MousePicker_8h"/>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2423" relation="include">
+        </childnode>
+      </node>
+      <node id="2424">
+        <label>Zyzrag/Source/Camera.cpp</label>
+        <link refid="Camera_8cpp"/>
+      </node>
+      <node id="2433">
+        <label>Zyzrag/Source/NPC.h</label>
+        <link refid="NPC_8h"/>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2434" relation="include">
+        </childnode>
+      </node>
+      <node id="2421">
+        <label>Zyzrag/Source/Camera.h</label>
+        <link refid="Camera_8h"/>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2422" relation="include">
+        </childnode>
+        <childnode refid="2424" relation="include">
+        </childnode>
+      </node>
+      <node id="2413">
+        <label>Zyzrag/Source/Object.h</label>
+        <link refid="Object.h"/>
+        <childnode refid="2414" relation="include">
+        </childnode>
+        <childnode refid="2419" relation="include">
+        </childnode>
+        <childnode refid="2427" relation="include">
+        </childnode>
+        <childnode refid="2429" relation="include">
+        </childnode>
+        <childnode refid="2415" relation="include">
+        </childnode>
+        <childnode refid="2431" relation="include">
+        </childnode>
+        <childnode refid="2433" relation="include">
+        </childnode>
+        <childnode refid="2435" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classObject" prot="public">Object</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>OBJECT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OBJECT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="AABB_8h" kindref="compound">AABB.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classObject" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classObject" kindref="compound">Object</ref></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a40860402e64d8008fb42329df7097cdb" kindref="member">Object</ref>();</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a40860402e64d8008fb42329df7097cdb" kindref="member">Object</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>pos,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>up);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1ae8f5483f459e46687bd01e6f9977afd3" kindref="member">~Object</ref>();</highlight></codeline>
+<codeline lineno="13" refid="classObject_1aacafc6287e6765c621111d5c5577c8a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classAABB" kindref="compound">AABB</ref><sp/><ref refid="classObject_1aacafc6287e6765c621111d5c5577c8a6" kindref="member">interaction</ref>;</highlight></codeline>
+<codeline lineno="14" refid="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classAABB" kindref="compound">AABB</ref><sp/><ref refid="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" kindref="member">hitbox</ref>;</highlight></codeline>
+<codeline lineno="15" refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classAABB" kindref="compound">AABB</ref><sp/><ref refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" kindref="member">hitboxSize</ref>;</highlight></codeline>
+<codeline lineno="16" refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>,<sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>,<sp/><ref refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" kindref="member">Up</ref>,<sp/><ref refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" kindref="member">Right</ref>,<sp/><ref refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" kindref="member">InteractionMin</ref>,<sp/><ref refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" kindref="member">InteractionMax</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a2198f4c2b626c0633a18962cd7eb84e4" kindref="member">SetHitbox</ref>(<ref refid="classAABB" kindref="compound">AABB</ref><sp/>hitbox);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" kindref="member">SetHitboxSize</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" kindref="member">SetHitboxSize</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minZ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxZ);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" kindref="member">updateHitbox</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a564eeecf7deefdfb0144458beb28599b" kindref="member">SetInteraction</ref>(<ref refid="classAABB" kindref="compound">AABB</ref><sp/>interaction);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a02290ed3825318459e72cb80d450afd0" kindref="member">SetInteractionSize</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minZ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxZ);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a048d20a358acb913055e7e128cf5120e" kindref="member">SetPos</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>position);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a048d20a358acb913055e7e128cf5120e" kindref="member">SetPos</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" kindref="member">SetView</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" kindref="member">SetView</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" kindref="member">SetUp</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>up);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" kindref="member">SetUp</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>right,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" kindref="member">SetUp</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" kindref="member">SetRight</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>right);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" kindref="member">SetRight</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>up);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" kindref="member">SetRight</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Object.h"/>
+  </compounddef>
+</doxygen>

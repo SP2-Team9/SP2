@@ -1,0 +1,10 @@
+<map id="Camera::YawRotation" name="Camera::YawRotation">
+<area shape="rect" id="node2" href="$structVector3.html#a54b8f55a970ee252479a326ffd0699c0" title="Vector3::getMagnitude" alt="" coords="212,5,365,32"/>
+<area shape="rect" id="node3" href="$classCamera.html#ae3766936b577b4062dc0f49cd4008e1a" title="Sets Yaw and Pitch from mouse movement. " alt="" coords="203,56,374,83"/>
+<area shape="rect" id="node4" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="201,107,376,133"/>
+<area shape="rect" id="node5" href="$structVector3.html#a2da0f00c5529bced69763320dac9c414" title="Return a copy of this vector, normalized. " alt="" coords="219,157,359,184"/>
+<area shape="rect" id="node8" href="$classMtx44.html#ac0587ffb5ff9fd58ad5768d28fc06574" title="Set Matrix to a rotation matrix about arbitrary axis. " alt="" coords="215,208,363,235"/>
+<area shape="rect" id="node6" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="427,107,541,133"/>
+<area shape="rect" id="node7" href="$structVector3.html#afa5e0c801fc2c8a820a54ea99302fe08" title="Vector3 default constructor. " alt="" coords="424,157,544,184"/>
+<area shape="rect" id="node9" href="$namespaceMath.html#ac91173ab2efdf7313fe7aaeb6cb44cf6" title="Math::FAbs" alt="" coords="439,208,529,235"/>
+</map>

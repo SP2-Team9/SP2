@@ -1,0 +1,33 @@
+<map id="SP2::inPlayerShipUpdates" name="SP2::inPlayerShipUpdates">
+<area shape="rect" id="node2" href="$classAABB.html#a09c06a196b3f2c89c207f49a15160f29" title="Checks if current AABB is colliding with another AABB. " alt="" coords="240,56,389,83"/>
+<area shape="rect" id="node3" href="$classCamera.html#ac44f493bfcf873d1e5c7fb8076323586" title="Disable mouse cursor. " alt="" coords="237,107,393,133"/>
+<area shape="rect" id="node7" href="$classsharedData.html#a89de3cc4c06c0dc4474fd330138cb0d1" title="sharedData::GetInstance" alt="" coords="452,157,619,184"/>
+<area shape="rect" id="node8" href="$classCamera.html#a609775f7ec4cd936ad7add808cd7354c" title="Initialize camera. " alt="" coords="269,512,361,539"/>
+<area shape="rect" id="node13" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="448,360,623,387"/>
+<area shape="rect" id="node14" href="$classSP2.html#aa322f4df791b0bb5633f794ac4f39758" title="SP2::playerBulletCreation" alt="" coords="229,411,400,437"/>
+<area shape="rect" id="node17" href="$classCamera.html#a9b3f661b16633d32bcc4e6e08210a53e" title="Points at object. " alt="" coords="476,309,595,336"/>
+<area shape="rect" id="node18" href="$classObject.html#a048d20a358acb913055e7e128cf5120e" title="Set object&#39;s position. " alt="" coords="259,563,370,589"/>
+<area shape="rect" id="node19" href="$classObject.html#a9a2de2d0a7b684ad05493a8f95e25408" title="Set right of object. " alt="" coords="255,613,374,640"/>
+<area shape="rect" id="node20" href="$classObject.html#ada985c9da2c4c7efe3a72d836912e909" title="Set up of object. " alt="" coords="263,664,367,691"/>
+<area shape="rect" id="node21" href="$classObject.html#a21f9115fbf9a7f2767de1d1a1c98ac09" title="Set View of object. " alt="" coords="257,715,373,741"/>
+<area shape="rect" id="node22" href="$classSP2.html#a8f036ecf0ef19b0802a351eacf0b59bc" title="SP2::shipBulletCreation" alt="" coords="235,461,395,488"/>
+<area shape="rect" id="node25" href="$classCamera.html#aa1033d059406a563baf0eb83e9422c01" title="Third person movement. " alt="" coords="235,259,394,285"/>
+<area shape="rect" id="node29" href="$classObject.html#a79185f158d60e9f8fde4940d9dda4cea" title="Updates hitbox by getting object pos added with hitbox size. " alt="" coords="243,773,387,800"/>
+<area shape="rect" id="node4" href="$classApplication.html#abce8352d49081a282686af6246a379a6" title="Application::centerMouse" alt="" coords="451,56,620,83"/>
+<area shape="rect" id="node5" href="$classApplication.html#aa5dd89fb2981442b5a2e38abad6b7cfb" title="Application::getMouse" alt="" coords="460,107,611,133"/>
+<area shape="rect" id="node6" href="$classApplication.html#ad689c120e0bb8369561b0c3a4278fcb6" title="Application::hideMouse" alt="" coords="457,5,614,32"/>
+<area shape="rect" id="node9" href="$structVector3.html#aa1cdc5357009b47fe585ddd61e263aad" title="Cross product of 2 vectors. " alt="" coords="673,579,783,605"/>
+<area shape="rect" id="node11" href="$structVector3.html#a2da0f00c5529bced69763320dac9c414" title="Return a copy of this vector, normalized. " alt="" coords="465,680,605,707"/>
+<area shape="rect" id="node10" href="$structVector3.html#afa5e0c801fc2c8a820a54ea99302fe08" title="Vector3 default constructor. " alt="" coords="833,629,953,656"/>
+<area shape="rect" id="node12" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="671,629,785,656"/>
+<area shape="rect" id="node15" href="$structPlayerVehicle.html#a2b33c49b25427ce5322de28afd9241df" title="Function use to see if bullets are ready to be fired. " alt="" coords="452,411,619,437"/>
+<area shape="rect" id="node16" href="$classirrklang_1_1ISoundEngine.html#adb09ecc8f61120ce14d26545ed43d8ec" title="Loads a sound source (if not loaded already) from a file and plays it as 3D sound. " alt="" coords="459,462,611,503"/>
+<area shape="rect" id="node23" href="$classVehicles.html#ace4cb72efc022d31fec76b442b57d3fd" title="Vehicles::fireBullets" alt="" coords="467,579,604,605"/>
+<area shape="rect" id="node24" href="$structVector3.html#aaef4f25a38878a640ab4a48002a7eff8" title="Normalize this vector and return a reference to it. " alt="" coords="469,528,602,555"/>
+<area shape="rect" id="node26" href="$classCamera.html#ae3766936b577b4062dc0f49cd4008e1a" title="Sets Yaw and Pitch from mouse movement. " alt="" coords="450,259,621,285"/>
+<area shape="rect" id="node27" href="$classMtx44.html#ac0587ffb5ff9fd58ad5768d28fc06574" title="Set Matrix to a rotation matrix about arbitrary axis. " alt="" coords="461,208,609,235"/>
+<area shape="rect" id="node28" href="$namespaceMath.html#ac91173ab2efdf7313fe7aaeb6cb44cf6" title="Math::FAbs" alt="" coords="683,208,773,235"/>
+<area shape="rect" id="node30" href="$classAABB.html#a19ea75e7f7b92d7100c0898c7a6c5f81" title="Get&#39;s Vector3 max of class. " alt="" coords="479,781,591,808"/>
+<area shape="rect" id="node31" href="$classAABB.html#a7969d3aaabc54615c0ad2b39719cfeea" title="Get&#39;s Vector3 min of class. " alt="" coords="481,832,589,859"/>
+<area shape="rect" id="node32" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="492,731,579,757"/>
+</map>

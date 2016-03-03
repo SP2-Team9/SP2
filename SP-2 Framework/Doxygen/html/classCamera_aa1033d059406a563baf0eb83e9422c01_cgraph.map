@@ -1,0 +1,10 @@
+<map id="Camera::TPSMovement" name="Camera::TPSMovement">
+<area shape="rect" id="node2" href="$classsharedData.html#a89de3cc4c06c0dc4474fd330138cb0d1" title="sharedData::GetInstance" alt="" coords="216,5,383,32"/>
+<area shape="rect" id="node3" href="$classCamera.html#ae3766936b577b4062dc0f49cd4008e1a" title="Sets Yaw and Pitch from mouse movement. " alt="" coords="214,56,385,83"/>
+<area shape="rect" id="node4" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="212,107,387,133"/>
+<area shape="rect" id="node5" href="$classCamera.html#a9b3f661b16633d32bcc4e6e08210a53e" title="Points at object. " alt="" coords="240,157,359,184"/>
+<area shape="rect" id="node8" href="$classMtx44.html#ac0587ffb5ff9fd58ad5768d28fc06574" title="Set Matrix to a rotation matrix about arbitrary axis. " alt="" coords="225,208,373,235"/>
+<area shape="rect" id="node6" href="$structVector3.html#aa1cdc5357009b47fe585ddd61e263aad" title="Cross product of 2 vectors. " alt="" coords="435,157,544,184"/>
+<area shape="rect" id="node7" href="$structVector3.html#afa5e0c801fc2c8a820a54ea99302fe08" title="Vector3 default constructor. " alt="" coords="592,157,712,184"/>
+<area shape="rect" id="node9" href="$namespaceMath.html#ac91173ab2efdf7313fe7aaeb6cb44cf6" title="Math::FAbs" alt="" coords="444,208,535,235"/>
+</map>

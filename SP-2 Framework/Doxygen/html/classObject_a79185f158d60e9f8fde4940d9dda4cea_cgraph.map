@@ -1,0 +1,5 @@
+<map id="Object::updateHitbox" name="Object::updateHitbox">
+<area shape="rect" id="node2" href="$classAABB.html#a19ea75e7f7b92d7100c0898c7a6c5f81" title="Get&#39;s Vector3 max of class. " alt="" coords="197,5,309,32"/>
+<area shape="rect" id="node3" href="$classAABB.html#a7969d3aaabc54615c0ad2b39719cfeea" title="Get&#39;s Vector3 min of class. " alt="" coords="199,56,307,83"/>
+<area shape="rect" id="node4" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="210,107,297,133"/>
+</map>

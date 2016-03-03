@@ -1,0 +1,22 @@
+<map id="SP2::inSpaceStationUpdates" name="SP2::inSpaceStationUpdates">
+<area shape="rect" id="node2" href="$classCamera.html#ac44f493bfcf873d1e5c7fb8076323586" title="Disable mouse cursor. " alt="" coords="249,81,405,108"/>
+<area shape="rect" id="node6" href="$classCamera.html#ab9aa2e59e45fad19917825b44f994f98" title="First Person camera movement. " alt="" coords="247,208,407,235"/>
+<area shape="rect" id="node8" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="459,259,633,285"/>
+<area shape="rect" id="node11" href="$classsharedData.html#a89de3cc4c06c0dc4474fd330138cb0d1" title="sharedData::GetInstance" alt="" coords="244,309,411,336"/>
+<area shape="rect" id="node12" href="$classSP2.html#ae3446475b6de146a3342e26604c78d6f" title="SP2::NPCUpdates" alt="" coords="262,360,393,387"/>
+<area shape="rect" id="node17" href="$classCamera.html#a9b3f661b16633d32bcc4e6e08210a53e" title="Points at object. " alt="" coords="268,411,387,437"/>
+<area shape="rect" id="node20" href="$classObject.html#a048d20a358acb913055e7e128cf5120e" title="Set object&#39;s position. " alt="" coords="272,461,383,488"/>
+<area shape="rect" id="node21" href="$classObject.html#a21f9115fbf9a7f2767de1d1a1c98ac09" title="Set View of object. " alt="" coords="269,512,385,539"/>
+<area shape="rect" id="node3" href="$classApplication.html#abce8352d49081a282686af6246a379a6" title="Application::centerMouse" alt="" coords="461,5,631,32"/>
+<area shape="rect" id="node4" href="$classApplication.html#aa5dd89fb2981442b5a2e38abad6b7cfb" title="Application::getMouse" alt="" coords="471,56,621,83"/>
+<area shape="rect" id="node5" href="$classApplication.html#ad689c120e0bb8369561b0c3a4278fcb6" title="Application::hideMouse" alt="" coords="467,107,625,133"/>
+<area shape="rect" id="node7" href="$classCamera.html#ae3766936b577b4062dc0f49cd4008e1a" title="Sets Yaw and Pitch from mouse movement. " alt="" coords="461,157,631,184"/>
+<area shape="rect" id="node9" href="$classMtx44.html#ac0587ffb5ff9fd58ad5768d28fc06574" title="Set Matrix to a rotation matrix about arbitrary axis. " alt="" coords="472,208,620,235"/>
+<area shape="rect" id="node10" href="$namespaceMath.html#ac91173ab2efdf7313fe7aaeb6cb44cf6" title="Math::FAbs" alt="" coords="696,208,787,235"/>
+<area shape="rect" id="node13" href="$classObject.html#a79185f158d60e9f8fde4940d9dda4cea" title="Updates hitbox by getting object pos added with hitbox size. " alt="" coords="474,335,618,361"/>
+<area shape="rect" id="node14" href="$classAABB.html#a19ea75e7f7b92d7100c0898c7a6c5f81" title="Get&#39;s Vector3 max of class. " alt="" coords="685,271,797,297"/>
+<area shape="rect" id="node15" href="$classAABB.html#a7969d3aaabc54615c0ad2b39719cfeea" title="Get&#39;s Vector3 min of class. " alt="" coords="687,321,795,348"/>
+<area shape="rect" id="node16" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="698,372,785,399"/>
+<area shape="rect" id="node18" href="$structVector3.html#aa1cdc5357009b47fe585ddd61e263aad" title="Cross product of 2 vectors. " alt="" coords="491,411,601,437"/>
+<area shape="rect" id="node19" href="$structVector3.html#afa5e0c801fc2c8a820a54ea99302fe08" title="Vector3 default constructor. " alt="" coords="681,423,801,449"/>
+</map>

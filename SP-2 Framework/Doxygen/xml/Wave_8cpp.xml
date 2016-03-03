@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Wave_8cpp" kind="file" language="C++">
+    <compoundname>Wave.cpp</compoundname>
+    <includes refid="Wave_8h" local="yes">Wave.h</includes>
+    <incdepgraph>
+      <node id="2819">
+        <label>Zyzrag/Source/Wave.cpp</label>
+        <link refid="Wave.cpp"/>
+        <childnode refid="2820" relation="include">
+        </childnode>
+      </node>
+      <node id="2820">
+        <label>Wave.h</label>
+        <link refid="Wave_8h"/>
+        <childnode refid="2821" relation="include">
+        </childnode>
+      </node>
+      <node id="2821">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>: Ashley Wong</para></simplesect>
+<simplesect kind="date"><para>: 1 March 2016</para></simplesect>
+: This class defines the functions for <ref refid="classWave" kindref="compound">Wave</ref> class. </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Wave_8h" kindref="compound">Wave.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" refkind="member"><highlight class="normal"><ref refid="classWave_1a3d8144ec0d6c0b0ede77ff59f54471aa" kindref="member">Wave::Wave</ref>(){</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWave_1aa2c0a4968f51e7d12b8f8d53dfdedbf0" kindref="member">stationHealth</ref><sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a7c9139b94ce3c4a6e6990350834d88c0" kindref="member">waveNumber</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a8d4d18452658c7d5e98f9895e59cb707" kindref="member">maxNumberOfAsteroids</ref><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a709036402636dd75d201dddc1a7451a2" kindref="member">numberOfAsteroidsDestroyed</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a7f73894afa1286496e6decd8066db061" kindref="member">maxWaveCooldownTime</ref><sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1af2af911017d0aba73a86135fa560cb31" kindref="member">currWaveCooldownTime</ref><sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a1f598ebc6eeac0ea7b347dbcb39e16af" kindref="member">maxAsteroidSpawnCooldownTime</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" kindref="member">currAsteroidSpawnCooldownTime</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWave_1a10373abe0bdf2a7ff3722732889d9885" kindref="member">maxTransitionTime</ref><sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" kindref="member">currTransitionTime</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWave_1abecc054ec26b18e8b27bacfe3ba4faea" kindref="member">endOfTransition</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classWave_1a1ee01745e8ec8fff53f1581f0bd3af1f" refkind="member"><highlight class="normal"><ref refid="classWave_1a1ee01745e8ec8fff53f1581f0bd3af1f" kindref="member">Wave::~Wave</ref>(){</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classWave_1a6eb595e96d2e63e2c42123dcdf3b1abf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWave_1a6eb595e96d2e63e2c42123dcdf3b1abf" kindref="member">Wave::waveComplete</ref>(){</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWave_1a709036402636dd75d201dddc1a7451a2" kindref="member">numberOfAsteroidsDestroyed</ref><sp/>&gt;=<sp/><ref refid="classWave_1a8d4d18452658c7d5e98f9895e59cb707" kindref="member">maxNumberOfAsteroids</ref>){</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" kindref="member">Wave::nextWave</ref>(){</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a7c9139b94ce3c4a6e6990350834d88c0" kindref="member">waveNumber</ref><sp/>+=<sp/>1;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a8d4d18452658c7d5e98f9895e59cb707" kindref="member">maxNumberOfAsteroids</ref><sp/>+=<sp/>5;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a709036402636dd75d201dddc1a7451a2" kindref="member">numberOfAsteroidsDestroyed</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" kindref="member">currTransitionTime</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1af2af911017d0aba73a86135fa560cb31" kindref="member">currWaveCooldownTime</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" kindref="member">currAsteroidSpawnCooldownTime</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWave_1aa2c0a4968f51e7d12b8f8d53dfdedbf0" kindref="member">stationHealth</ref><sp/>=<sp/>1000<sp/>+<sp/><sp/><ref refid="classWave_1a7c9139b94ce3c4a6e6990350834d88c0" kindref="member">waveNumber</ref><sp/>*<sp/>100;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classWave_1a94797e89b8243ff7ac9ac40b551d1733" kindref="member">Wave::waveUpdate</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt){</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWave_1af2af911017d0aba73a86135fa560cb31" kindref="member">currWaveCooldownTime</ref><sp/>+=<sp/>dt;<sp/></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWave_1a6eb595e96d2e63e2c42123dcdf3b1abf" kindref="member">waveComplete</ref>()){</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1abecc054ec26b18e8b27bacfe3ba4faea" kindref="member">endOfTransition</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" kindref="member">currTransitionTime</ref><sp/>+=<sp/>dt;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWave_1a6eb595e96d2e63e2c42123dcdf3b1abf" kindref="member">waveComplete</ref>()<sp/>&amp;&amp;<sp/><ref refid="classWave_1acefda66b54d01598305db699ecf51833" kindref="member">transitionComplete</ref>()){</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1abecc054ec26b18e8b27bacfe3ba4faea" kindref="member">endOfTransition</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a50d7dbc99d58342f69d1c1f851683462" kindref="member">nextWave</ref>();</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWave_1af2af911017d0aba73a86135fa560cb31" kindref="member">currWaveCooldownTime</ref><sp/>&gt;<sp/><ref refid="classWave_1a7f73894afa1286496e6decd8066db061" kindref="member">maxWaveCooldownTime</ref>){</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" kindref="member">currAsteroidSpawnCooldownTime</ref><sp/>+=<sp/>dt;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWave_1a6e2d45bb01631ba7c317d70002e9d8f7" kindref="member">Wave::spawnAsteroid</ref>(){</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWave_1af2af911017d0aba73a86135fa560cb31" kindref="member">currWaveCooldownTime</ref><sp/>&gt;<sp/><ref refid="classWave_1a7f73894afa1286496e6decd8066db061" kindref="member">maxWaveCooldownTime</ref>){</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" kindref="member">currAsteroidSpawnCooldownTime</ref><sp/>&gt;<sp/><ref refid="classWave_1a1f598ebc6eeac0ea7b347dbcb39e16af" kindref="member">maxAsteroidSpawnCooldownTime</ref><sp/>&amp;&amp;<sp/><ref refid="classWave_1a8d4d18452658c7d5e98f9895e59cb707" kindref="member">maxNumberOfAsteroids</ref><sp/>-<sp/><ref refid="classWave_1a709036402636dd75d201dddc1a7451a2" kindref="member">numberOfAsteroidsDestroyed</ref><sp/>&gt;<sp/>0){</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1a4de844d4a92e3eb53ba134dd246c728a" kindref="member">currAsteroidSpawnCooldownTime</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="classWave_1acefda66b54d01598305db699ecf51833" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classWave_1acefda66b54d01598305db699ecf51833" kindref="member">Wave::transitionComplete</ref>(){</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWave_1a0fbd8376c0315fa05e43b39bf6efe2f0" kindref="member">currTransitionTime</ref><sp/>&gt;<sp/><ref refid="classWave_1a10373abe0bdf2a7ff3722732889d9885" kindref="member">maxTransitionTime</ref>){</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWave_1abecc054ec26b18e8b27bacfe3ba4faea" kindref="member">endOfTransition</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Wave.cpp"/>
+  </compounddef>
+</doxygen>

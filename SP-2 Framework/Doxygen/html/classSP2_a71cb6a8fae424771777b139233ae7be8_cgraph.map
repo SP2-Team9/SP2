@@ -1,0 +1,10 @@
+<map id="SP2::generateAsteroid" name="SP2::generateAsteroid">
+<area shape="rect" id="node2" href="$classSP2.html#acd9f06ec52951d9741ac248cd93ad62b" title="SP2::generate_range" alt="" coords="208,5,352,32"/>
+<area shape="rect" id="node3" href="$classObject.html#a048d20a358acb913055e7e128cf5120e" title="Set object&#39;s position. " alt="" coords="225,56,335,83"/>
+<area shape="rect" id="node4" href="$classObject.html#a21f9115fbf9a7f2767de1d1a1c98ac09" title="Set View of object. " alt="" coords="222,107,338,133"/>
+<area shape="rect" id="node5" href="$classWave.html#a6e2d45bb01631ba7c317d70002e9d8f7" title="Wave::spawnAsteroid" alt="" coords="207,157,353,184"/>
+<area shape="rect" id="node6" href="$classObject.html#a79185f158d60e9f8fde4940d9dda4cea" title="Updates hitbox by getting object pos added with hitbox size. " alt="" coords="208,208,352,235"/>
+<area shape="rect" id="node7" href="$classAABB.html#a19ea75e7f7b92d7100c0898c7a6c5f81" title="Get&#39;s Vector3 max of class. " alt="" coords="401,157,513,184"/>
+<area shape="rect" id="node8" href="$classAABB.html#a7969d3aaabc54615c0ad2b39719cfeea" title="Get&#39;s Vector3 min of class. " alt="" coords="403,208,511,235"/>
+<area shape="rect" id="node9" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="414,259,501,285"/>
+</map>

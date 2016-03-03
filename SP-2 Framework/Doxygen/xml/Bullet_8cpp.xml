@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Bullet_8cpp" kind="file" language="C++">
+    <compoundname>Bullet.cpp</compoundname>
+    <includes refid="Bullet_8h" local="yes">Bullet.h</includes>
+    <incdepgraph>
+      <node id="2067">
+        <label>queue</label>
+      </node>
+      <node id="2057">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2058" relation="include">
+        </childnode>
+        <childnode refid="2065" relation="include">
+        </childnode>
+      </node>
+      <node id="2066">
+        <label>pathFinding.h</label>
+        <link refid="pathFinding_8h"/>
+        <childnode refid="2065" relation="include">
+        </childnode>
+        <childnode refid="2067" relation="include">
+        </childnode>
+        <childnode refid="2058" relation="include">
+        </childnode>
+        <childnode refid="2059" relation="include">
+        </childnode>
+      </node>
+      <node id="2060">
+        <label>cmath</label>
+      </node>
+      <node id="2068">
+        <label>Mtx44.h</label>
+        <link refid="Mtx44_8h"/>
+        <childnode refid="2059" relation="include">
+        </childnode>
+        <childnode refid="2058" relation="include">
+        </childnode>
+      </node>
+      <node id="2061">
+        <label>exception</label>
+      </node>
+      <node id="2055">
+        <label>Bullet.h</label>
+        <link refid="Bullet_8h"/>
+        <childnode refid="2056" relation="include">
+        </childnode>
+        <childnode refid="2066" relation="include">
+        </childnode>
+        <childnode refid="2057" relation="include">
+        </childnode>
+        <childnode refid="2058" relation="include">
+        </childnode>
+        <childnode refid="2068" relation="include">
+        </childnode>
+      </node>
+      <node id="2054">
+        <label>Zyzrag/Source/Bullet.cpp</label>
+        <link refid="Bullet.cpp"/>
+        <childnode refid="2055" relation="include">
+        </childnode>
+      </node>
+      <node id="2062">
+        <label>ctime</label>
+      </node>
+      <node id="2065">
+        <label>vector</label>
+      </node>
+      <node id="2058">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2059" relation="include">
+        </childnode>
+        <childnode refid="2064" relation="include">
+        </childnode>
+      </node>
+      <node id="2063">
+        <label>cstdlib</label>
+      </node>
+      <node id="2064">
+        <label>iostream</label>
+      </node>
+      <node id="2059">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2060" relation="include">
+        </childnode>
+        <childnode refid="2061" relation="include">
+        </childnode>
+        <childnode refid="2062" relation="include">
+        </childnode>
+        <childnode refid="2063" relation="include">
+        </childnode>
+      </node>
+      <node id="2056">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2057" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Bullet_8h" kindref="compound">Bullet.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"></codeline>
+<codeline lineno="30"><highlight class="normal"><ref refid="classBullet_1ac2b2c4cabd617426f1357ddcb6c78a4b" kindref="member">Bullet::Bullet</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>newView,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>playerPos,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newBulletDamage){</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref><sp/>=<sp/>playerPos;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref><sp/>=<sp/>newView;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>.<ref refid="structVector3_1aaef4f25a38878a640ab4a48002a7eff8" kindref="member">Normalize</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBullet_1a6c48b856d54c32d178c052c0eba398c6" kindref="member">initialPosition</ref><sp/>=<sp/>playerPos;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBullet_1ac676d8c1ae271f3de8d365ab607bab41" kindref="member">BulletDamage</ref><sp/>=<sp/>newBulletDamage;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"></codeline>
+<codeline lineno="53"><highlight class="normal"><ref refid="classBullet_1aaeb5cb41d7db89f49007b08b41f1bfcf" kindref="member">Bullet::~Bullet</ref>(){</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"></codeline>
+<codeline lineno="74"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBullet_1a85db31e6f9f7561eb1b78e4696680292" kindref="member">Bullet::bulletUpdate</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt){</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBullet_1ac2583fcea03332c217f9e67ced3001c4" kindref="member">bulletMovement</ref>(dt);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"></codeline>
+<codeline lineno="93"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBullet_1ac2583fcea03332c217f9e67ced3001c4" kindref="member">Bullet::bulletMovement</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt){</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref><sp/>+=<sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref><sp/>*<sp/><ref refid="classBullet_1a2f38090c36700a8de5ab2d4c16fca03e" kindref="member">bulletSpeed</ref><sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"></codeline>
+<codeline lineno="113"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBullet_1a3a474fbd9f01031ca52d2dfa4d5c6e6f" kindref="member">Bullet::furtherThanBulletMaxRange</ref>(){</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBullet_1a6c48b856d54c32d178c052c0eba398c6" kindref="member">initialPosition</ref>.<ref refid="structVector3_1a17abffd128562414c7f59bf7aa0b4456" kindref="member">distanceBetween2points</ref>(<ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>)<sp/>&gt;<sp/><ref refid="classBullet_1a78f636cc348add10cfb7eade4b44c125" kindref="member">bulletMaxRange</ref>){</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"></codeline>
+<codeline lineno="138"><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBullet_1a5c6f0ee40c2ffadb500dbb91291f6263" kindref="member">Bullet::getBulletDamage</ref>(){</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBullet_1ac676d8c1ae271f3de8d365ab607bab41" kindref="member">BulletDamage</ref>;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Bullet.cpp"/>
+  </compounddef>
+</doxygen>

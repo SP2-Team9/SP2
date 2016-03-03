@@ -1,0 +1,6 @@
+<map id="Vehicles::fireBullets" name="Vehicles::fireBullets">
+<area shape="rect" id="node2" href="$classSP2.html#a8f036ecf0ef19b0802a351eacf0b59bc" title="SP2::shipBulletCreation" alt="" coords="191,31,351,57"/>
+<area shape="rect" id="node3" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="399,5,575,32"/>
+<area shape="rect" id="node5" href="$classSP2.html#ad5924ef549fb8781c7862817da890f45" title="SP2::RTSUpdates" alt="" coords="423,56,551,83"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="623,31,719,57"/>
+</map>

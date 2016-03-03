@@ -1,0 +1,470 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="classpathFinding" kind="class" language="C++" prot="public">
+    <compoundname>pathFinding</compoundname>
+    <includes refid="pathFinding_8h" local="no">pathFinding.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpathFinding_1a4a3346dc1182a0201d34411f7d00ab57" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float pathFinding::maxSpeed</definition>
+        <argsstring></argsstring>
+        <name>maxSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="58" column="1" bodyfile="Zyzrag/Source/pathFinding.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpathFinding_1a5ce1f4f26a688a5beb596ec7b78986e4" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float pathFinding::currSpeed</definition>
+        <argsstring></argsstring>
+        <name>currSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="59" column="1" bodyfile="Zyzrag/Source/pathFinding.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpathFinding_1ada788e905dcd0c9428ae7256f1424326" prot="private" static="no" mutable="no">
+        <type>queue&lt; <ref refid="structVector3" kindref="compound">Vector3</ref> &gt;</type>
+        <definition>queue&lt;Vector3&gt; pathFinding::wayPoints</definition>
+        <argsstring></argsstring>
+        <name>wayPoints</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="62" column="1" bodyfile="Zyzrag/Source/pathFinding.h" bodystart="62" bodyend="-1"/>
+        <referencedby refid="classpathFinding_1ad06d8a3df5628c64b07aa45c6be018e8" compoundref="pathFinding_8cpp" startline="214" endline="222">setInitialWayPoints</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpathFinding_1a62a351404975f7bdebacb909bfecdfb9" prot="private" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 pathFinding::currentLocation</definition>
+        <argsstring></argsstring>
+        <name>currentLocation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="65" column="1" bodyfile="Zyzrag/Source/pathFinding.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="classpathFinding_1ad06d8a3df5628c64b07aa45c6be018e8" compoundref="pathFinding_8cpp" startline="214" endline="222">setInitialWayPoints</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classpathFinding_1a8f735c44e05ab3855a4a4485e8abb838" prot="private" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 pathFinding::lastWayPointDirection</definition>
+        <argsstring></argsstring>
+        <name>lastWayPointDirection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="66" column="1" bodyfile="Zyzrag/Source/pathFinding.h" bodystart="66" bodyend="-1"/>
+        <referencedby refid="classpathFinding_1a2446009959863155e26e3bb05cddc58e" compoundref="pathFinding_8cpp" startline="224" endline="229">setInitialDirection</referencedby>
+        <referencedby refid="classpathFinding_1ad06d8a3df5628c64b07aa45c6be018e8" compoundref="pathFinding_8cpp" startline="214" endline="222">setInitialWayPoints</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpathFinding_1a7d0742acee37d4243ed8c4f15da5f26c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>pathFinding::pathFinding</definition>
+        <argsstring>()</argsstring>
+        <name>pathFinding</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classpathFinding" kindref="compound">pathFinding</ref>:</para><para><simplesect kind="author"><para>Wong Keng Han Ashley:</para></simplesect>
+<simplesect kind="date"><para>15 feb 2016:</para></simplesect>
+: Default constructor </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="30" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="33" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a58a6d3c9e3a79faa1e648110a31fbca7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>pathFinding::pathFinding</definition>
+        <argsstring>(Vector3 location, Vector3 endlocation)</argsstring>
+        <name>pathFinding</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>location</declname>
+        </param>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>endlocation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: <ref refid="classpathFinding" kindref="compound">pathFinding</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 15 feb 2016</para></simplesect>
+: overloaded constructor that takes in and sets initial location and final location </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="31" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="58" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a3cf76747fd56f329f108cac1ed870a13" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>pathFinding::~pathFinding</definition>
+        <argsstring>()</argsstring>
+        <name>~pathFinding</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: <ref refid="classpathFinding" kindref="compound">pathFinding</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 15 feb 2016</para></simplesect>
+: default constructor </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="32" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="83" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1aaec2344e1dc4f7e528d956b1d02b599c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathFinding::resetWayPoints</definition>
+        <argsstring>()</argsstring>
+        <name>resetWayPoints</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: resetWayPoints</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 16 feb 2016</para></simplesect>
+: remove all current waypoints </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="34" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="286" bodyend="295"/>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a1872b965e8997223be22b36526cdaefb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathFinding::pathRoute</definition>
+        <argsstring>(double dt)</argsstring>
+        <name>pathRoute</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: <ref refid="classpathFinding" kindref="compound">pathFinding</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 15 feb 2016</para></simplesect>
+: moves the object towards the waypoint </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="36" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="103" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a3de937d314008cf9db25825f8b19aa7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathFinding::updateWayPoints</definition>
+        <argsstring>(Vector3 endLocation)</argsstring>
+        <name>updateWayPoints</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>endLocation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: updateWayPoints</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 15 feb 2016</para></simplesect>
+: setting initial waypoints for the object </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="37" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="247" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1ab2ab143264e5fc0397cdc2d5b5a6edb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathFinding::setInitialWayPoints</definition>
+        <argsstring>(Vector3 endLocation)</argsstring>
+        <name>setInitialWayPoints</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>endLocation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: setInitialWayPoints</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 15 feb 2016</para></simplesect>
+: setting initial waypoints for the object </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="38" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="168" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a8be240ece0214fd2259eb122fc283695" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathFinding::setCurrentLocation</definition>
+        <argsstring>(Vector3 newCurrLocation)</argsstring>
+        <name>setCurrentLocation</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>newCurrLocation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: setCurrentLocation</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 19 feb 2016</para></simplesect>
+: return current location </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="39" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="333" bodyend="337"/>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1ad06d8a3df5628c64b07aa45c6be018e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathFinding::setInitialWayPoints</definition>
+        <argsstring>(Vector3 location, Vector3 view)</argsstring>
+        <name>setInitialWayPoints</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>location</declname>
+        </param>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: overLoaded setInitialWayPoints</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 18 feb 2016</para></simplesect>
+: overloaded function for setting way points </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="40" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="214" bodyend="222"/>
+        <references refid="classpathFinding_1a62a351404975f7bdebacb909bfecdfb9" compoundref="pathFinding_8h" startline="65">currentLocation</references>
+        <references refid="classpathFinding_1a8f735c44e05ab3855a4a4485e8abb838" compoundref="pathFinding_8h" startline="66">lastWayPointDirection</references>
+        <references refid="structVector3_1aaef4f25a38878a640ab4a48002a7eff8" compoundref="Vector3_8cpp" startline="466" endline="475">Vector3::Normalize</references>
+        <references refid="classpathFinding_1ada788e905dcd0c9428ae7256f1424326" compoundref="pathFinding_8h" startline="62">wayPoints</references>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a2446009959863155e26e3bb05cddc58e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathFinding::setInitialDirection</definition>
+        <argsstring>(Vector3 view)</argsstring>
+        <name>setInitialDirection</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="41" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="224" bodyend="229"/>
+        <references refid="classpathFinding_1a8f735c44e05ab3855a4a4485e8abb838" compoundref="pathFinding_8h" startline="66">lastWayPointDirection</references>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a67d762ee2567af93e933a7241846de81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathFinding::setMaxSpeed</definition>
+        <argsstring>(float newSpeed)</argsstring>
+        <name>setMaxSpeed</name>
+        <param>
+          <type>float</type>
+          <declname>newSpeed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: setMaxSpeed</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 18 feb 2016</para></simplesect>
+: set the maxSpeed of the vehicle </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="43" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="429" bodyend="435"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1ace5f799cd222949692c7d55dd9cf6464" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pathFinding::setCurrSpeed</definition>
+        <argsstring>(float newSpeed)</argsstring>
+        <name>setCurrSpeed</name>
+        <param>
+          <type>float</type>
+          <declname>newSpeed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: setSpeed</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 18 feb 2016</para></simplesect>
+: set the currSpeed of the vehicle </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="44" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="398" bodyend="413"/>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a15d4bc582f17cdddf8eada41b94794df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float pathFinding::getMaxSpeed</definition>
+        <argsstring>()</argsstring>
+        <name>getMaxSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: getmaxSpeed</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 19 feb 2016</para></simplesect>
+: return maxSpeed </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="46" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="476" bodyend="482"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a668a9bc3f9bc4ba01b5cac2549c0bfc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float pathFinding::getCurrSpeed</definition>
+        <argsstring>()</argsstring>
+        <name>getCurrSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: getSpeed</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 19 feb 2016</para></simplesect>
+: return speed </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="47" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="452" bodyend="458"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a363531d0dc33cf32adee3db4022109a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float pathFinding::distanceBetween2points</definition>
+        <argsstring>(Vector3 Point1, Vector3 Point2)</argsstring>
+        <name>distanceBetween2points</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>Point1</declname>
+        </param>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>Point2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: <ref refid="classpathFinding" kindref="compound">pathFinding</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 15 feb 2016</para></simplesect>
+: checks the distance between 2 vectors </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="49" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="145" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a9bd82a4142701b260862e433d11fc5db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 pathFinding::getCurrentLocation</definition>
+        <argsstring>()</argsstring>
+        <name>getCurrentLocation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: getCurrentLocation</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 16 feb 2016</para></simplesect>
+: return current location </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="51" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="312" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1a90b0e2b4876ae5145a16ce3ee9c8c565" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 pathFinding::getLastWayPointDirection</definition>
+        <argsstring>()</argsstring>
+        <name>getLastWayPointDirection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: getLastWayPointDirection</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 17 feb 2016</para></simplesect>
+: return the direction of the previous waypoint </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="52" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="378" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="classpathFinding_1ac16d2fc81fb8894ab2e45d957785987b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>queue&lt; <ref refid="structVector3" kindref="compound">Vector3</ref> &gt;</type>
+        <definition>queue&lt; Vector3 &gt; pathFinding::getwayPoints</definition>
+        <argsstring>()</argsstring>
+        <name>getwayPoints</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: getwayPoints</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 17 feb 2016</para></simplesect>
+: returns the vector of way points </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/pathFinding.h" line="54" column="1" bodyfile="Zyzrag/Source/pathFinding.cpp" bodystart="356" bodyend="360"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="494">
+        <label>float</label>
+      </node>
+      <node id="492">
+        <label>pathFinding</label>
+        <link refid="classpathFinding"/>
+        <childnode refid="493" relation="usage">
+          <edgelabel>wayPoints</edgelabel>
+        </childnode>
+        <childnode refid="494" relation="usage">
+          <edgelabel>maxSpeed</edgelabel>
+          <edgelabel>currSpeed</edgelabel>
+        </childnode>
+        <childnode refid="495" relation="usage">
+          <edgelabel>currentLocation</edgelabel>
+          <edgelabel>lastWayPointDirection</edgelabel>
+        </childnode>
+      </node>
+      <node id="493">
+        <label>queue&lt; Vector3 &gt;</label>
+      </node>
+      <node id="495">
+        <label>Vector3</label>
+        <link refid="structVector3"/>
+        <childnode refid="494" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/pathFinding.h" line="26" column="1" bodyfile="Zyzrag/Source/pathFinding.h" bodystart="26" bodyend="71"/>
+    <listofallmembers>
+      <member refid="classpathFinding_1a62a351404975f7bdebacb909bfecdfb9" prot="private" virt="non-virtual"><scope>pathFinding</scope><name>currentLocation</name></member>
+      <member refid="classpathFinding_1a5ce1f4f26a688a5beb596ec7b78986e4" prot="private" virt="non-virtual"><scope>pathFinding</scope><name>currSpeed</name></member>
+      <member refid="classpathFinding_1a363531d0dc33cf32adee3db4022109a2" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>distanceBetween2points</name></member>
+      <member refid="classpathFinding_1a9bd82a4142701b260862e433d11fc5db" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>getCurrentLocation</name></member>
+      <member refid="classpathFinding_1a668a9bc3f9bc4ba01b5cac2549c0bfc1" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>getCurrSpeed</name></member>
+      <member refid="classpathFinding_1a90b0e2b4876ae5145a16ce3ee9c8c565" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>getLastWayPointDirection</name></member>
+      <member refid="classpathFinding_1a15d4bc582f17cdddf8eada41b94794df" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>getMaxSpeed</name></member>
+      <member refid="classpathFinding_1ac16d2fc81fb8894ab2e45d957785987b" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>getwayPoints</name></member>
+      <member refid="classpathFinding_1a8f735c44e05ab3855a4a4485e8abb838" prot="private" virt="non-virtual"><scope>pathFinding</scope><name>lastWayPointDirection</name></member>
+      <member refid="classpathFinding_1a4a3346dc1182a0201d34411f7d00ab57" prot="private" virt="non-virtual"><scope>pathFinding</scope><name>maxSpeed</name></member>
+      <member refid="classpathFinding_1a7d0742acee37d4243ed8c4f15da5f26c" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>pathFinding</name></member>
+      <member refid="classpathFinding_1a58a6d3c9e3a79faa1e648110a31fbca7" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>pathFinding</name></member>
+      <member refid="classpathFinding_1a1872b965e8997223be22b36526cdaefb" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>pathRoute</name></member>
+      <member refid="classpathFinding_1aaec2344e1dc4f7e528d956b1d02b599c" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>resetWayPoints</name></member>
+      <member refid="classpathFinding_1a8be240ece0214fd2259eb122fc283695" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>setCurrentLocation</name></member>
+      <member refid="classpathFinding_1ace5f799cd222949692c7d55dd9cf6464" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>setCurrSpeed</name></member>
+      <member refid="classpathFinding_1a2446009959863155e26e3bb05cddc58e" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>setInitialDirection</name></member>
+      <member refid="classpathFinding_1ab2ab143264e5fc0397cdc2d5b5a6edb7" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>setInitialWayPoints</name></member>
+      <member refid="classpathFinding_1ad06d8a3df5628c64b07aa45c6be018e8" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>setInitialWayPoints</name></member>
+      <member refid="classpathFinding_1a67d762ee2567af93e933a7241846de81" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>setMaxSpeed</name></member>
+      <member refid="classpathFinding_1a3de937d314008cf9db25825f8b19aa7f" prot="public" virt="non-virtual"><scope>pathFinding</scope><name>updateWayPoints</name></member>
+      <member refid="classpathFinding_1ada788e905dcd0c9428ae7256f1424326" prot="private" virt="non-virtual"><scope>pathFinding</scope><name>wayPoints</name></member>
+      <member refid="classpathFinding_1a3cf76747fd56f329f108cac1ed870a13" prot="public" virt="virtual"><scope>pathFinding</scope><name>~pathFinding</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

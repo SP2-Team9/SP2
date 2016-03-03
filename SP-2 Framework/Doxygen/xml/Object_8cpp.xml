@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Object_8cpp" kind="file" language="C++">
+    <compoundname>Object.cpp</compoundname>
+    <includes refid="Object_8h" local="yes">Object.h</includes>
+    <incdepgraph>
+      <node id="2393">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2394" relation="include">
+        </childnode>
+        <childnode refid="2401" relation="include">
+        </childnode>
+      </node>
+      <node id="2396">
+        <label>cmath</label>
+      </node>
+      <node id="2391">
+        <label>Zyzrag/Source/Object.cpp</label>
+        <link refid="Object.cpp"/>
+        <childnode refid="2392" relation="include">
+        </childnode>
+      </node>
+      <node id="2397">
+        <label>exception</label>
+      </node>
+      <node id="2398">
+        <label>ctime</label>
+      </node>
+      <node id="2401">
+        <label>vector</label>
+      </node>
+      <node id="2394">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2395" relation="include">
+        </childnode>
+        <childnode refid="2400" relation="include">
+        </childnode>
+      </node>
+      <node id="2399">
+        <label>cstdlib</label>
+      </node>
+      <node id="2400">
+        <label>iostream</label>
+      </node>
+      <node id="2395">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2396" relation="include">
+        </childnode>
+        <childnode refid="2397" relation="include">
+        </childnode>
+        <childnode refid="2398" relation="include">
+        </childnode>
+        <childnode refid="2399" relation="include">
+        </childnode>
+      </node>
+      <node id="2392">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2393" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Object_8h" kindref="compound">Object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classObject_1a40860402e64d8008fb42329df7097cdb" refkind="member"><highlight class="normal"><ref refid="classObject_1a40860402e64d8008fb42329df7097cdb" kindref="member">Object::Object</ref>()</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classObject_1a503fc1152db4ee07cfece48f8a17a882" refkind="member"><highlight class="normal"><ref refid="classObject_1a40860402e64d8008fb42329df7097cdb" kindref="member">Object::Object</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>pos,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>up)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref><sp/>=<sp/>pos;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref><sp/>=<sp/>view;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" kindref="member">Up</ref><sp/>=<sp/>up;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" kindref="member">Right</ref><sp/>=<sp/>view.<ref refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" kindref="member">Cross</ref>(up);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="56"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classObject_1ae8f5483f459e46687bd01e6f9977afd3" refkind="member"><highlight class="normal"><ref refid="classObject_1ae8f5483f459e46687bd01e6f9977afd3" kindref="member">Object::~Object</ref>()</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="70"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classObject_1a2198f4c2b626c0633a18962cd7eb84e4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a2198f4c2b626c0633a18962cd7eb84e4" kindref="member">Object::SetHitbox</ref>(<ref refid="classAABB" kindref="compound">AABB</ref><sp/>hitbox)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;hitbox.<ref refid="classAABB_1a58c802c10ec2e9f0b7ecc49d96b9a162" kindref="member">Set</ref>(hitbox.<ref refid="classAABB_1a7969d3aaabc54615c0ad2b39719cfeea" kindref="member">GetMin</ref>(),<sp/>hitbox.<ref refid="classAABB_1a19ea75e7f7b92d7100c0898c7a6c5f81" kindref="member">GetMax</ref>());</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="84"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" kindref="member">Object::SetHitboxSize</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>size)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" kindref="member">hitboxSize</ref>.<ref refid="classAABB_1a58c802c10ec2e9f0b7ecc49d96b9a162" kindref="member">Set</ref>(-size,<sp/>-size,<sp/>-size,<sp/>size,<sp/>size,<sp/>size);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="108"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classObject_1a03acfeda7945d7c0358befe32f6ebaed" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" kindref="member">Object::SetHitboxSize</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minZ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxZ)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" kindref="member">hitboxSize</ref>.<ref refid="classAABB_1a58c802c10ec2e9f0b7ecc49d96b9a162" kindref="member">Set</ref>(minX,<sp/>minY,<sp/>minZ,<sp/>maxX,<sp/>maxY,<sp/>maxZ);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="119"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" kindref="member">Object::updateHitbox</ref>()</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" kindref="member">hitbox</ref>.<ref refid="classAABB_1a58c802c10ec2e9f0b7ecc49d96b9a162" kindref="member">Set</ref>(<ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref><sp/>+<sp/><ref refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" kindref="member">hitboxSize</ref>.<ref refid="classAABB_1a7969d3aaabc54615c0ad2b39719cfeea" kindref="member">GetMin</ref>(),<sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref><sp/>+<sp/><ref refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" kindref="member">hitboxSize</ref>.<ref refid="classAABB_1a19ea75e7f7b92d7100c0898c7a6c5f81" kindref="member">GetMax</ref>());</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="133"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classObject_1a564eeecf7deefdfb0144458beb28599b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a564eeecf7deefdfb0144458beb28599b" kindref="member">Object::SetInteraction</ref>(<ref refid="classAABB" kindref="compound">AABB</ref><sp/>interaction)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;interaction<sp/>=<sp/><ref refid="classObject_1aacafc6287e6765c621111d5c5577c8a6" kindref="member">interaction</ref>;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="157"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158" refid="classObject_1a02290ed3825318459e72cb80d450afd0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a02290ed3825318459e72cb80d450afd0" kindref="member">Object::SetInteractionSize</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>minZ,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxX,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxY,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxZ)</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" kindref="member">InteractionMin</ref><sp/>=<sp/><ref refid="structVector3" kindref="compound">Vector3</ref>(minX,<sp/>minY,<sp/>minZ);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" kindref="member">InteractionMax</ref><sp/>=<sp/><ref refid="structVector3" kindref="compound">Vector3</ref>(maxX,<sp/>maxY,<sp/>maxZ);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="172"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="classObject_1a048d20a358acb913055e7e128cf5120e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a048d20a358acb913055e7e128cf5120e" kindref="member">Object::SetPos</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>position)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref><sp/>=<sp/>position;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="190"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="classObject_1aaaf6f6e7ec1a712ce23b5b4ad2ffad3f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a048d20a358acb913055e7e128cf5120e" kindref="member">Object::SetPos</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>.<ref refid="structVector3_1a9c25d604bd52b162cfcb56302ef032bb" kindref="member">Set</ref>(x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="204"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205" refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" kindref="member">Object::SetView</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view)</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref><sp/>=<sp/>view;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="222"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="classObject_1a7cc1c711ebe79a023b24abd69c590036" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" kindref="member">Object::SetView</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>.<ref refid="structVector3_1a9c25d604bd52b162cfcb56302ef032bb" kindref="member">Set</ref>(x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="236"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237" refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" kindref="member">Object::SetUp</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>up)</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" kindref="member">Up</ref><sp/>=<sp/>up;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="253"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254" refid="classObject_1a1c38ee52b9773fb15827f7f8d5e8cf47" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" kindref="member">Object::SetUp</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>right,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view)</highlight></codeline>
+<codeline lineno="255"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" kindref="member">Up</ref><sp/>=<sp/>right.<ref refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" kindref="member">Cross</ref>(view);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="271"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="classObject_1ae2e3ba0210f52fbaeef2b824cd2e80d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" kindref="member">Object::SetUp</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" kindref="member">Up</ref>.<ref refid="structVector3_1a9c25d604bd52b162cfcb56302ef032bb" kindref="member">Set</ref>(x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="285"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" kindref="member">Object::SetRight</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>right)</highlight></codeline>
+<codeline lineno="287"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" kindref="member">Right</ref><sp/>=<sp/>right;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="302"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="classObject_1ac7bd4c23a77ee9e7de4f051300bc7b5f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" kindref="member">Object::SetRight</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>up)</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" kindref="member">Right</ref><sp/>=<sp/>view.<ref refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" kindref="member">Cross</ref>(up);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight><highlight class="comment">/******************************************************************************/</highlight></codeline>
+<codeline lineno="320"><highlight class="comment">/******************************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321" refid="classObject_1a0174b9a71374d4b3c8f3402ff2cebeaf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" kindref="member">Object::SetRight</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z)</highlight></codeline>
+<codeline lineno="322"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" kindref="member">Right</ref>.<ref refid="structVector3_1a9c25d604bd52b162cfcb56302ef032bb" kindref="member">Set</ref>(x,<sp/>y,<sp/>z);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Object.cpp"/>
+  </compounddef>
+</doxygen>

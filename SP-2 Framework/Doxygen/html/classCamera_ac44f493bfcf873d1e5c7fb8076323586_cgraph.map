@@ -1,0 +1,5 @@
+<map id="Camera::DisableCursor" name="Camera::DisableCursor">
+<area shape="rect" id="node2" href="$classApplication.html#abce8352d49081a282686af6246a379a6" title="Application::centerMouse" alt="" coords="209,5,379,32"/>
+<area shape="rect" id="node3" href="$classApplication.html#aa5dd89fb2981442b5a2e38abad6b7cfb" title="Application::getMouse" alt="" coords="219,56,369,83"/>
+<area shape="rect" id="node4" href="$classApplication.html#ad689c120e0bb8369561b0c3a4278fcb6" title="Application::hideMouse" alt="" coords="215,107,373,133"/>
+</map>

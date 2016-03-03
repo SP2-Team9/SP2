@@ -1,0 +1,4 @@
+<map id="SP2::shipHitboxCheck" name="SP2::shipHitboxCheck">
+<area shape="rect" id="node2" href="$classirrklang_1_1ISoundEngine.html#adb09ecc8f61120ce14d26545ed43d8ec" title="Loads a sound source (if not loaded already) from a file and plays it as 3D sound. " alt="" coords="218,5,370,47"/>
+<area shape="rect" id="node3" href="$classSP2.html#a10890277bbc10fff48c1e275bf46df44" title="SP2::removeOneSelection" alt="" coords="207,71,381,98"/>
+</map>

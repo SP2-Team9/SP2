@@ -1,0 +1,32 @@
+<map id="Vector3::Cross" name="Vector3::Cross">
+<area shape="rect" id="node2" href="$classSP2.html#a148c1fd23483c953f3771b38163f46ff" title="SP2::explosionUpdate" alt="" coords="163,53,313,80"/>
+<area shape="rect" id="node5" href="$classCamera.html#a609775f7ec4cd936ad7add808cd7354c" title="Initialize camera. " alt="" coords="192,180,284,207"/>
+<area shape="rect" id="node12" href="$classObject.html#a503fc1152db4ee07cfece48f8a17a882" title="Constuctor. " alt="" coords="185,864,291,891"/>
+<area shape="rect" id="node13" href="$classCamera.html#a9b3f661b16633d32bcc4e6e08210a53e" title="Points at object. " alt="" coords="179,383,297,409"/>
+<area shape="rect" id="node16" href="$classSP2.html#a66ffac3316b8be4cda0f6d51fd3ecc2d" title="SP2::renderchildtext" alt="" coords="383,661,523,688"/>
+<area shape="rect" id="node19" href="$classSP2.html#ae816a6913862562a4390643111cb0e06" title="SP2::renderDistances" alt="" coords="613,712,762,739"/>
+<area shape="rect" id="node20" href="$classSP2.html#ad1060157516e3232ae5d69d85096f952" title="SP2::renderHealthBar" alt="" coords="164,763,312,789"/>
+<area shape="rect" id="node24" href="$classSP2.html#abf67ed7b015f0412a00d85d4cb43d9b5" title="SP2::renderTextonball" alt="" coords="163,813,313,840"/>
+<area shape="rect" id="node26" href="$classObject.html#ac7bd4c23a77ee9e7de4f051300bc7b5f" title="Set right of object by getting the cross of view and up. " alt="" coords="179,915,297,941"/>
+<area shape="rect" id="node27" href="$classMtx44.html#a7c3d2d30d9ed5bfca2ba97d0e570930f" title="Set matrix to be a lookat matrix. " alt="" coords="167,585,309,612"/>
+<area shape="rect" id="node31" href="$classObject.html#a1c38ee52b9773fb15827f7f8d5e8cf47" title="Sets up of object by getting the cross of right and view. " alt="" coords="186,965,290,992"/>
+<area shape="rect" id="node3" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="615,5,760,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="831,217,927,244"/>
+<area shape="rect" id="node6" href="$classSP2.html#a8669c489b6a968f367a4610b254ac992" title="SP2::Init" alt="" coords="417,53,489,80"/>
+<area shape="rect" id="node8" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="599,305,775,332"/>
+<area shape="rect" id="node9" href="$classSP2.html#a30e847649a0454ba1ad0bb271fb66d24" title="SP2::mainMenuUpdates" alt="" coords="371,104,534,131"/>
+<area shape="rect" id="node10" href="$classSP2.html#ad5924ef549fb8781c7862817da890f45" title="SP2::RTSUpdates" alt="" coords="623,368,751,395"/>
+<area shape="rect" id="node11" href="$classSP2.html#ab3a40eadc29b0efa8da32b25c2b4a3c5" title="SP2::waveTransitionUpdate" alt="" coords="363,256,543,283"/>
+<area shape="rect" id="node7" href="$classSP2.html#ae3b8fa1d8f987a6f5b9175c10944398a" title="SP2::gameOverUpdate" alt="" coords="610,116,765,143"/>
+<area shape="rect" id="node14" href="$classSP2.html#a48207cfb8991c95ceca13e7d5cfab56d" title="SP2::inSpaceStationUpdates" alt="" coords="592,444,783,471"/>
+<area shape="rect" id="node15" href="$classCamera.html#aa1033d059406a563baf0eb83e9422c01" title="Third person movement. " alt="" coords="373,357,532,384"/>
+<area shape="rect" id="node17" href="$classSP2.html#a92133b572f908abf6c33501a9d95092d" title="SP2::abductionquest" alt="" coords="616,661,759,688"/>
+<area shape="rect" id="node18" href="$classSP2.html#a90159ea511cadcc99364c6f75d108a71" title="SP2::Render" alt="" coords="831,712,927,739"/>
+<area shape="rect" id="node21" href="$classSP2.html#a605ae7401549bbcf255e0048849bece3" title="SP2::renderAsteroid" alt="" coords="383,813,522,840"/>
+<area shape="rect" id="node23" href="$classSP2.html#acef0d78c34373d56e30e309ac3233232" title="SP2::renderShips" alt="" coords="391,763,515,789"/>
+<area shape="rect" id="node22" href="$classSP2.html#a432ead63d66b2475fc8dc6341ed493e5" title="SP2::renderGeneral" alt="" coords="619,763,755,789"/>
+<area shape="rect" id="node25" href="$classSP2.html#aa9c1683d167509e5d6f0e50340947f2a" title="SP2::ballquest" alt="" coords="634,839,741,865"/>
+<area shape="rect" id="node28" href="$classMS.html#a2638cd3249260877cc31329978fb6b38" title="Setup lookat matrix and push to matrix stack. " alt="" coords="642,611,733,637"/>
+<area shape="rect" id="node29" href="$classMousePicker.html#a45200bf16e944756dd7bd72700665ac2" title="Constructor. " alt="" coords="361,509,544,536"/>
+<area shape="rect" id="node30" href="$classMousePicker.html#a4574a22a56dc36909a5826fcf847ff92" title="Updates the class to the latest camera position, target, up and caluclate the latest mouse ray..." alt="" coords="380,560,525,587"/>
+</map>

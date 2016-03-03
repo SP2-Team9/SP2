@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Application_8h" kind="file" language="C++">
+    <compoundname>Application.h</compoundname>
+    <includes refid="Vector3_8h" local="yes">Vector3.h</includes>
+    <includes refid="timer_8h" local="yes">timer.h</includes>
+    <includes refid="sharedData_8h" local="yes">sharedData.h</includes>
+    <includedby refid="Application_8cpp" local="yes">Zyzrag/Source/Application.cpp</includedby>
+    <includedby refid="MousePicker_8h" local="yes">Zyzrag/Source/MousePicker.h</includedby>
+    <includedby refid="Camera_8cpp" local="yes">Zyzrag/Source/Camera.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">Zyzrag/Source/main.cpp</includedby>
+    <includedby refid="SP2_8cpp" local="yes">Zyzrag/Source/SP2.cpp</includedby>
+    <incdepgraph>
+      <node id="2005">
+        <label>windows.h</label>
+      </node>
+      <node id="1999">
+        <label>cmath</label>
+      </node>
+      <node id="2000">
+        <label>exception</label>
+      </node>
+      <node id="2004">
+        <label>timer.h</label>
+        <link refid="timer_8h"/>
+        <childnode refid="2005" relation="include">
+        </childnode>
+      </node>
+      <node id="1996">
+        <label>Zyzrag/Source/Application.h</label>
+        <link refid="Application.h"/>
+        <childnode refid="1997" relation="include">
+        </childnode>
+        <childnode refid="2004" relation="include">
+        </childnode>
+        <childnode refid="2006" relation="include">
+        </childnode>
+      </node>
+      <node id="2001">
+        <label>ctime</label>
+      </node>
+      <node id="1997">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="1998" relation="include">
+        </childnode>
+        <childnode refid="2003" relation="include">
+        </childnode>
+      </node>
+      <node id="2006">
+        <label>sharedData.h</label>
+        <link refid="sharedData_8h"/>
+      </node>
+      <node id="2002">
+        <label>cstdlib</label>
+      </node>
+      <node id="2003">
+        <label>iostream</label>
+      </node>
+      <node id="1998">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="1999" relation="include">
+        </childnode>
+        <childnode refid="2000" relation="include">
+        </childnode>
+        <childnode refid="2001" relation="include">
+        </childnode>
+        <childnode refid="2002" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2008">
+        <label>Zyzrag/Source/Application.cpp</label>
+        <link refid="Application_8cpp"/>
+      </node>
+      <node id="2011">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2012">
+        <label>Zyzrag/Source/MousePicker.cpp</label>
+        <link refid="MousePicker_8cpp"/>
+      </node>
+      <node id="2007">
+        <label>Zyzrag/Source/Application.h</label>
+        <link refid="Application.h"/>
+        <childnode refid="2008" relation="include">
+        </childnode>
+        <childnode refid="2009" relation="include">
+        </childnode>
+        <childnode refid="2013" relation="include">
+        </childnode>
+        <childnode refid="2014" relation="include">
+        </childnode>
+        <childnode refid="2011" relation="include">
+        </childnode>
+      </node>
+      <node id="2010">
+        <label>Zyzrag/Source/SP2.h</label>
+        <link refid="SP2_8h"/>
+        <childnode refid="2008" relation="include">
+        </childnode>
+        <childnode refid="2011" relation="include">
+        </childnode>
+      </node>
+      <node id="2014">
+        <label>Zyzrag/Source/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="2009">
+        <label>Zyzrag/Source/MousePicker.h</label>
+        <link refid="MousePicker_8h"/>
+        <childnode refid="2010" relation="include">
+        </childnode>
+        <childnode refid="2012" relation="include">
+        </childnode>
+      </node>
+      <node id="2013">
+        <label>Zyzrag/Source/Camera.cpp</label>
+        <link refid="Camera_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classApplication" prot="public">Application</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>APPLICATION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>APPLICATION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vector3_8h" kindref="compound">Vector3.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="timer_8h" kindref="compound">timer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sharedData_8h" kindref="compound">sharedData.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="classApplication" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classApplication" kindref="compound">Application</ref></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classApplication_1afa8cc05ce6b6092be5ecdfdae44e05f8" kindref="member">Application</ref>();</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classApplication_1a748bca84fefb9c12661cfaa2f623748d" kindref="member">~Application</ref>();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" kindref="member">Init</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1aaf09cd6cb412086dc039e28cdb059f0d" kindref="member">Run</ref>();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a9d410604b39b8374a884b1f2a1f2a5ba" kindref="member">Exit</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" kindref="member">IsKeyPressed</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/>key);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1aa5dd89fb2981442b5a2e38abad6b7cfb" kindref="member">getMouse</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>y);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1abce8352d49081a282686af6246a379a6" kindref="member">centerMouse</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1ad689c120e0bb8369561b0c3a4278fcb6" kindref="member">hideMouse</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a813f994cc6ef2c195541692f2ad63cec" kindref="member">showMouse</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" kindref="member">screenWidth</ref>;</highlight></codeline>
+<codeline lineno="24" refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" kindref="member">screenHeight</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classApplication_1a55f72770edd95411a9cd241cf8151a20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a55f72770edd95411a9cd241cf8151a20" kindref="member">scrollX</ref>;</highlight></codeline>
+<codeline lineno="27" refid="classApplication_1a651b3026e02ef581e9c4655ad6907f5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a651b3026e02ef581e9c4655ad6907f5c" kindref="member">scrollY</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Declare<sp/>a<sp/>window<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classApplication_1ac81ea1396dc69c6d48b9a701954f53fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classStopWatch" kindref="compound">StopWatch</ref><sp/><ref refid="classApplication_1ac81ea1396dc69c6d48b9a701954f53fe" kindref="member">m_timer</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Application.h"/>
+  </compounddef>
+</doxygen>

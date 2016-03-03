@@ -1,0 +1,6 @@
+<map id="Application::hideMouse" name="Application::hideMouse">
+<area shape="rect" id="node2" href="$classCamera.html#ac44f493bfcf873d1e5c7fb8076323586" title="Disable mouse cursor. " alt="" coords="211,31,367,57"/>
+<area shape="rect" id="node3" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="422,5,598,32"/>
+<area shape="rect" id="node5" href="$classSP2.html#a48207cfb8991c95ceca13e7d5cfab56d" title="SP2::inSpaceStationUpdates" alt="" coords="415,56,605,83"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="653,31,749,57"/>
+</map>

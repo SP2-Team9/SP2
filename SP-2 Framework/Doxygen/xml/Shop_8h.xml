@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Shop_8h" kind="file" language="C++">
+    <compoundname>Shop.h</compoundname>
+    <includes refid="Object_8h" local="yes">Object.h</includes>
+    <includes refid="PlayerVehicle_8h" local="yes">PlayerVehicle.h</includes>
+    <includes refid="pathFinding_8h" local="yes">pathFinding.h</includes>
+    <includedby refid="SP2_8h" local="yes">Zyzrag/Source/SP2.h</includedby>
+    <includedby refid="Shop_8cpp" local="yes">Zyzrag/Source/Shop.cpp</includedby>
+    <incdepgraph>
+      <node id="2587">
+        <label>queue</label>
+      </node>
+      <node id="2575">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2576" relation="include">
+        </childnode>
+        <childnode refid="2583" relation="include">
+        </childnode>
+      </node>
+      <node id="2586">
+        <label>pathFinding.h</label>
+        <link refid="pathFinding_8h"/>
+        <childnode refid="2583" relation="include">
+        </childnode>
+        <childnode refid="2587" relation="include">
+        </childnode>
+        <childnode refid="2576" relation="include">
+        </childnode>
+        <childnode refid="2577" relation="include">
+        </childnode>
+      </node>
+      <node id="2585">
+        <label>Vehicles.h</label>
+        <link refid="Vehicles_8h"/>
+        <childnode refid="2574" relation="include">
+        </childnode>
+        <childnode refid="2586" relation="include">
+        </childnode>
+        <childnode refid="2575" relation="include">
+        </childnode>
+        <childnode refid="2576" relation="include">
+        </childnode>
+        <childnode refid="2588" relation="include">
+        </childnode>
+        <childnode refid="2589" relation="include">
+        </childnode>
+        <childnode refid="2590" relation="include">
+        </childnode>
+      </node>
+      <node id="2590">
+        <label>Asteroid.h</label>
+        <link refid="Asteroid_8h"/>
+        <childnode refid="2574" relation="include">
+        </childnode>
+      </node>
+      <node id="2584">
+        <label>PlayerVehicle.h</label>
+        <link refid="PlayerVehicle_8h"/>
+        <childnode refid="2585" relation="include">
+        </childnode>
+      </node>
+      <node id="2578">
+        <label>cmath</label>
+      </node>
+      <node id="2573">
+        <label>Zyzrag/Source/Shop.h</label>
+        <link refid="Shop.h"/>
+        <childnode refid="2574" relation="include">
+        </childnode>
+        <childnode refid="2584" relation="include">
+        </childnode>
+        <childnode refid="2586" relation="include">
+        </childnode>
+      </node>
+      <node id="2588">
+        <label>Mtx44.h</label>
+        <link refid="Mtx44_8h"/>
+        <childnode refid="2577" relation="include">
+        </childnode>
+        <childnode refid="2576" relation="include">
+        </childnode>
+      </node>
+      <node id="2579">
+        <label>exception</label>
+      </node>
+      <node id="2589">
+        <label>Bullet.h</label>
+        <link refid="Bullet_8h"/>
+        <childnode refid="2574" relation="include">
+        </childnode>
+        <childnode refid="2586" relation="include">
+        </childnode>
+        <childnode refid="2575" relation="include">
+        </childnode>
+        <childnode refid="2576" relation="include">
+        </childnode>
+        <childnode refid="2588" relation="include">
+        </childnode>
+      </node>
+      <node id="2580">
+        <label>ctime</label>
+      </node>
+      <node id="2583">
+        <label>vector</label>
+      </node>
+      <node id="2576">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2577" relation="include">
+        </childnode>
+        <childnode refid="2582" relation="include">
+        </childnode>
+      </node>
+      <node id="2581">
+        <label>cstdlib</label>
+      </node>
+      <node id="2582">
+        <label>iostream</label>
+      </node>
+      <node id="2577">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2578" relation="include">
+        </childnode>
+        <childnode refid="2579" relation="include">
+        </childnode>
+        <childnode refid="2580" relation="include">
+        </childnode>
+        <childnode refid="2581" relation="include">
+        </childnode>
+      </node>
+      <node id="2574">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2575" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2593">
+        <label>Zyzrag/Source/Application.cpp</label>
+        <link refid="Application_8cpp"/>
+      </node>
+      <node id="2591">
+        <label>Zyzrag/Source/Shop.h</label>
+        <link refid="Shop.h"/>
+        <childnode refid="2592" relation="include">
+        </childnode>
+        <childnode refid="2595" relation="include">
+        </childnode>
+      </node>
+      <node id="2594">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2595">
+        <label>Zyzrag/Source/Shop.cpp</label>
+        <link refid="Shop_8cpp"/>
+      </node>
+      <node id="2592">
+        <label>Zyzrag/Source/SP2.h</label>
+        <link refid="SP2_8h"/>
+        <childnode refid="2593" relation="include">
+        </childnode>
+        <childnode refid="2594" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structShop" prot="public">Shop</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_SHOP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SHOP_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"></codeline>
+<codeline lineno="16"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Object_8h" kindref="compound">Object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PlayerVehicle_8h" kindref="compound">PlayerVehicle.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pathFinding_8h" kindref="compound">pathFinding.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="structShop" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structShop" kindref="compound">Shop</ref>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structShop_1a939417adbb842846884c60e252947d7f" kindref="member">increaseHealth</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structShop_1add73247f38202e232a2ed33418241eab" kindref="member">increaseDamage</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structShop_1a45013c064ceeef5efa3f44d57107e9b0" kindref="member">increaseFireRate</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="29" refid="structShop_1ae32b0335c816708b65bb973f0dd01ab3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structShop_1ae32b0335c816708b65bb973f0dd01ab3" kindref="member">damageUpgradePrice</ref>;</highlight></codeline>
+<codeline lineno="30" refid="structShop_1a1837e5497b4e09ea01d2000c2ed7348d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structShop_1a1837e5497b4e09ea01d2000c2ed7348d" kindref="member">healthUpgradePrice</ref>;</highlight></codeline>
+<codeline lineno="31" refid="structShop_1a3e2843161dace4f9c1e562ebe303a029" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structShop_1a3e2843161dace4f9c1e562ebe303a029" kindref="member">fireRateUpgradePrice</ref>;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structShop_1a0dc41d9a2746d49314ed12305b59d28e" kindref="member">Shop</ref>(<ref refid="structPlayerVehicle" kindref="compound">PlayerVehicle</ref>&amp;<sp/>playerShip);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structShop_1a36bf69bdc0da1b7258acc63a5fe89d40" kindref="member">~Shop</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="structShop_1a5b3cc6a7558856b4e5ce22a7d80899a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPlayerVehicle" kindref="compound">PlayerVehicle</ref>*<sp/><ref refid="structShop_1a5b3cc6a7558856b4e5ce22a7d80899a2" kindref="member">playerVehicle</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>_SHOP_H</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Shop.h"/>
+  </compounddef>
+</doxygen>

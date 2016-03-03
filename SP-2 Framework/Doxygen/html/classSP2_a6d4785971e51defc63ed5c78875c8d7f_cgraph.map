@@ -1,0 +1,51 @@
+<map id="SP2::generalUpdates" name="SP2::generalUpdates">
+<area shape="rect" id="node2" href="$classSP2.html#a53d2b974fb541cea55ce6c261ec9f5ce" title="SP2::asteroidUpdate" alt="" coords="215,259,357,285"/>
+<area shape="rect" id="node6" href="$classObject.html#a048d20a358acb913055e7e128cf5120e" title="Set object&#39;s position. " alt="" coords="680,5,791,32"/>
+<area shape="rect" id="node7" href="$classObject.html#a21f9115fbf9a7f2767de1d1a1c98ac09" title="Set View of object. " alt="" coords="677,56,793,83"/>
+<area shape="rect" id="node18" href="$classSP2.html#ab7fdd4057eb7b08d1fe2aa28a4e25b15" title="SP2::bulletUpdates" alt="" coords="219,689,353,716"/>
+<area shape="rect" id="node21" href="$classSP2.html#ab0c289753020129773c539b0fe8f1c68" title="SP2::checkHitboxes" alt="" coords="215,639,357,665"/>
+<area shape="rect" id="node28" href="$classSP2.html#a148c1fd23483c953f3771b38163f46ff" title="SP2::explosionUpdate" alt="" coords="211,588,361,615"/>
+<area shape="rect" id="node36" href="$classsharedData.html#a89de3cc4c06c0dc4474fd330138cb0d1" title="sharedData::GetInstance" alt="" coords="203,740,369,767"/>
+<area shape="rect" id="node37" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="199,791,373,817"/>
+<area shape="rect" id="node38" href="$structPlayerVehicle.html#aeb9a7f9d45750ff293f6c216ba464092" title="Resets everything to default values. " alt="" coords="217,841,355,868"/>
+<area shape="rect" id="node39" href="$structPlayerVehicle.html#a7294156f5d01b711797593dc86891be9" title="Respawn timer. " alt="" coords="207,892,365,919"/>
+<area shape="rect" id="node40" href="$classObject.html#a96fe42f8ef68ace9d2dedc6d0fe4be22" title="Gives a default size to hitbox size. " alt="" coords="660,385,811,412"/>
+<area shape="rect" id="node41" href="$classirrklang_1_1ISoundEngine.html#af3e6223435969159ef3b22d0c83d2b84" title="Sets the current listener 3d position. " alt="" coords="210,943,362,985"/>
+<area shape="rect" id="node42" href="$classObject.html#a9a2de2d0a7b684ad05493a8f95e25408" title="Set right of object. " alt="" coords="227,1009,345,1036"/>
+<area shape="rect" id="node43" href="$classObject.html#ada985c9da2c4c7efe3a72d836912e909" title="Set up of object. " alt="" coords="234,1060,338,1087"/>
+<area shape="rect" id="node44" href="$structPlayerVehicle.html#aa77ce5452a993d479830f61ef2281b5f" title="Update player vehicle. " alt="" coords="211,360,361,387"/>
+<area shape="rect" id="node46" href="$classSP2.html#a09e7d05249aeecb574fe09a0ee324229" title="SP2::vehicleUpdates" alt="" coords="215,1111,357,1137"/>
+<area shape="rect" id="node47" href="$classWave.html#a6eb595e96d2e63e2c42123dcdf3b1abf" title="Wave::waveComplete" alt="" coords="436,1161,581,1188"/>
+<area shape="rect" id="node48" href="$classWave.html#a94797e89b8243ff7ac9ac40b551d1733" title="Wave::waveUpdate" alt="" coords="221,1212,351,1239"/>
+<area shape="rect" id="node3" href="$classSP2.html#a71cb6a8fae424771777b139233ae7be8" title="SP2::generateAsteroid" alt="" coords="432,157,585,184"/>
+<area shape="rect" id="node12" href="$classSP2.html#afd0484905f52f03eefe6d9f6dd05004d" title="SP2::Timer" alt="" coords="465,107,552,133"/>
+<area shape="rect" id="node13" href="$classAsteroid.html#ae5e7c9985caf1b9d111aef30973c97e7" title="Update asteroid position, range, hitbox and health. " alt="" coords="450,259,567,285"/>
+<area shape="rect" id="node17" href="$classSP2.html#a6a8b835489d56022a82dfa40a6e9498a" title="SP2::vehiclesRemoveTarget" alt="" coords="644,703,827,729"/>
+<area shape="rect" id="node4" href="$classWave.html#a6e2d45bb01631ba7c317d70002e9d8f7" title="Wave::spawnAsteroid" alt="" coords="662,107,809,133"/>
+<area shape="rect" id="node5" href="$classSP2.html#acd9f06ec52951d9741ac248cd93ad62b" title="SP2::generate_range" alt="" coords="663,157,807,184"/>
+<area shape="rect" id="node8" href="$classObject.html#a79185f158d60e9f8fde4940d9dda4cea" title="Updates hitbox by getting object pos added with hitbox size. " alt="" coords="663,208,807,235"/>
+<area shape="rect" id="node9" href="$classAABB.html#a19ea75e7f7b92d7100c0898c7a6c5f81" title="Get&#39;s Vector3 max of class. " alt="" coords="876,208,988,235"/>
+<area shape="rect" id="node10" href="$classAABB.html#a7969d3aaabc54615c0ad2b39719cfeea" title="Get&#39;s Vector3 min of class. " alt="" coords="878,259,986,285"/>
+<area shape="rect" id="node11" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="889,360,975,387"/>
+<area shape="rect" id="node14" href="$structVector3.html#a54b8f55a970ee252479a326ffd0699c0" title="Vector3::getMagnitude" alt="" coords="659,259,812,285"/>
+<area shape="rect" id="node15" href="$structVector3.html#aaef4f25a38878a640ab4a48002a7eff8" title="Normalize this vector and return a reference to it. " alt="" coords="669,449,802,476"/>
+<area shape="rect" id="node16" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="875,449,989,476"/>
+<area shape="rect" id="node19" href="$classBullet.html#a85db31e6f9f7561eb1b78e4696680292" title="Bullet::bulletUpdate" alt="" coords="441,917,576,944"/>
+<area shape="rect" id="node20" href="$classBullet.html#a3a474fbd9f01031ca52d2dfa4d5c6e6f" title="Bullet::furtherThanBullet\lMaxRange" alt="" coords="429,969,589,1010"/>
+<area shape="rect" id="node22" href="$classSP2.html#aa30f865a5270160ade491858cd0f7b31" title="SP2::asteroidHitboxCheck" alt="" coords="421,816,596,843"/>
+<area shape="rect" id="node25" href="$classSP2.html#a065068b2bde7c9a526db759b3c6d0aea" title="SP2::shipHitboxCheck" alt="" coords="432,867,585,893"/>
+<area shape="rect" id="node26" href="$classSP2.html#ac86d5964ce2cd619e2fb843a3582a411" title="SP2::stationHitboxCheck" alt="" coords="425,765,593,792"/>
+<area shape="rect" id="node23" href="$classirrklang_1_1ISoundEngine.html#adb09ecc8f61120ce14d26545ed43d8ec" title="Loads a sound source (if not loaded already) from a file and plays it as 3D sound. " alt="" coords="659,805,811,846"/>
+<area shape="rect" id="node24" href="$classSP2.html#a10890277bbc10fff48c1e275bf46df44" title="SP2::removeOneSelection" alt="" coords="648,871,823,897"/>
+<area shape="rect" id="node27" href="$classAABB.html#a09c06a196b3f2c89c207f49a15160f29" title="Checks if current AABB is colliding with another AABB. " alt="" coords="661,753,810,780"/>
+<area shape="rect" id="node29" href="$structVector3.html#aa1cdc5357009b47fe585ddd61e263aad" title="Cross product of 2 vectors. " alt="" coords="454,563,563,589"/>
+<area shape="rect" id="node31" href="$structVector3.html#a71b1271deb064c65f9dc7dba638c5b57" title="Dot product of 2 vectors. " alt="" coords="461,715,556,741"/>
+<area shape="rect" id="node32" href="$namespaceMath.html#a1a1d364c850f9d66fda85cf71598bbe5" title="Converts from radians to degrees. " alt="" coords="431,613,586,640"/>
+<area shape="rect" id="node33" href="$structVector3.html#a9c25d604bd52b162cfcb56302ef032bb" title="Set the elements of this vector. " alt="" coords="461,664,556,691"/>
+<area shape="rect" id="node34" href="$classMtx44.html#ac0587ffb5ff9fd58ad5768d28fc06574" title="Set Matrix to a rotation matrix about arbitrary axis. " alt="" coords="435,512,583,539"/>
+<area shape="rect" id="node30" href="$structVector3.html#afa5e0c801fc2c8a820a54ea99302fe08" title="Vector3 default constructor. " alt="" coords="675,563,795,589"/>
+<area shape="rect" id="node35" href="$namespaceMath.html#ac91173ab2efdf7313fe7aaeb6cb44cf6" title="Math::FAbs" alt="" coords="690,512,781,539"/>
+<area shape="rect" id="node45" href="$structVector3.html#ac6c9b941ccefd7744eace77ceab16b56" title="Set all elements to zero. " alt="" coords="449,360,569,387"/>
+<area shape="rect" id="node49" href="$classWave.html#acefda66b54d01598305db699ecf51833" title="Wave::transitionComplete" alt="" coords="423,1212,594,1239"/>
+<area shape="rect" id="node50" href="$classWave.html#a50d7dbc99d58342f69d1c1f851683462" title="Wave::nextWave" alt="" coords="449,1263,568,1289"/>
+</map>

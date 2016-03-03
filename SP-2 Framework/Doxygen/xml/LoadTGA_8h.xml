@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="LoadTGA_8h" kind="file" language="C++">
+    <compoundname>LoadTGA.h</compoundname>
+    <includedby refid="LoadTGA_8cpp" local="yes">Zyzrag/Source/LoadTGA.cpp</includedby>
+    <includedby refid="SP2_8cpp" local="yes">Zyzrag/Source/SP2.cpp</includedby>
+    <invincdepgraph>
+      <node id="2228">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2227">
+        <label>Zyzrag/Source/LoadTGA.cpp</label>
+        <link refid="LoadTGA_8cpp"/>
+      </node>
+      <node id="2226">
+        <label>Zyzrag/Source/LoadTGA.h</label>
+        <link refid="LoadTGA.h"/>
+        <childnode refid="2227" relation="include">
+        </childnode>
+        <childnode refid="2228" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="LoadTGA_8h_1a459a80ca6de67a1e3493bfb66ae317e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint LoadTGA</definition>
+        <argsstring>(const char *file_path)</argsstring>
+        <name>LoadTGA</name>
+        <param>
+          <type>const char *</type>
+          <declname>file_path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/LoadTGA.h" line="4" column="1" bodyfile="Zyzrag/Source/LoadTGA.cpp" bodystart="7" bodyend="67"/>
+        <referencedby refid="classSP2_1a8669c489b6a968f367a4610b254ac992" compoundref="SP2_8cpp" startline="25" endline="273">SP2::Init</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>LOAD_TGA_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOAD_TGA_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">GLuint<sp/><ref refid="LoadTGA_8h_1a459a80ca6de67a1e3493bfb66ae317e4" kindref="member">LoadTGA</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*file_path);</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/LoadTGA.h"/>
+  </compounddef>
+</doxygen>

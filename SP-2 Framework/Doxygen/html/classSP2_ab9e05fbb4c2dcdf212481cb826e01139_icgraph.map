@@ -1,0 +1,5 @@
+<map id="SP2::npcInit" name="SP2::npcInit">
+<area shape="rect" id="node2" href="$classSP2.html#a8669c489b6a968f367a4610b254ac992" title="SP2::Init" alt="" coords="147,31,219,57"/>
+<area shape="rect" id="node3" href="$classSP2.html#ae3b8fa1d8f987a6f5b9175c10944398a" title="SP2::gameOverUpdate" alt="" coords="267,5,421,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="469,31,565,57"/>
+</map>

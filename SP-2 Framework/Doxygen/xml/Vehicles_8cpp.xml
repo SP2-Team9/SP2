@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Vehicles_8cpp" kind="file" language="C++">
+    <compoundname>Vehicles.cpp</compoundname>
+    <includes refid="Vehicles_8h" local="yes">Vehicles.h</includes>
+    <incdepgraph>
+      <node id="2765">
+        <label>queue</label>
+      </node>
+      <node id="2755">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2756" relation="include">
+        </childnode>
+        <childnode refid="2763" relation="include">
+        </childnode>
+      </node>
+      <node id="2764">
+        <label>pathFinding.h</label>
+        <link refid="pathFinding_8h"/>
+        <childnode refid="2763" relation="include">
+        </childnode>
+        <childnode refid="2765" relation="include">
+        </childnode>
+        <childnode refid="2756" relation="include">
+        </childnode>
+        <childnode refid="2757" relation="include">
+        </childnode>
+      </node>
+      <node id="2753">
+        <label>Vehicles.h</label>
+        <link refid="Vehicles_8h"/>
+        <childnode refid="2754" relation="include">
+        </childnode>
+        <childnode refid="2764" relation="include">
+        </childnode>
+        <childnode refid="2755" relation="include">
+        </childnode>
+        <childnode refid="2756" relation="include">
+        </childnode>
+        <childnode refid="2766" relation="include">
+        </childnode>
+        <childnode refid="2767" relation="include">
+        </childnode>
+        <childnode refid="2768" relation="include">
+        </childnode>
+      </node>
+      <node id="2768">
+        <label>Asteroid.h</label>
+        <link refid="Asteroid_8h"/>
+        <childnode refid="2754" relation="include">
+        </childnode>
+      </node>
+      <node id="2758">
+        <label>cmath</label>
+      </node>
+      <node id="2766">
+        <label>Mtx44.h</label>
+        <link refid="Mtx44_8h"/>
+        <childnode refid="2757" relation="include">
+        </childnode>
+        <childnode refid="2756" relation="include">
+        </childnode>
+      </node>
+      <node id="2759">
+        <label>exception</label>
+      </node>
+      <node id="2767">
+        <label>Bullet.h</label>
+        <link refid="Bullet_8h"/>
+        <childnode refid="2754" relation="include">
+        </childnode>
+        <childnode refid="2764" relation="include">
+        </childnode>
+        <childnode refid="2755" relation="include">
+        </childnode>
+        <childnode refid="2756" relation="include">
+        </childnode>
+        <childnode refid="2766" relation="include">
+        </childnode>
+      </node>
+      <node id="2760">
+        <label>ctime</label>
+      </node>
+      <node id="2763">
+        <label>vector</label>
+      </node>
+      <node id="2756">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2757" relation="include">
+        </childnode>
+        <childnode refid="2762" relation="include">
+        </childnode>
+      </node>
+      <node id="2761">
+        <label>cstdlib</label>
+      </node>
+      <node id="2762">
+        <label>iostream</label>
+      </node>
+      <node id="2752">
+        <label>Zyzrag/Source/Vehicles.cpp</label>
+        <link refid="Vehicles.cpp"/>
+        <childnode refid="2753" relation="include">
+        </childnode>
+      </node>
+      <node id="2757">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2758" relation="include">
+        </childnode>
+        <childnode refid="2759" relation="include">
+        </childnode>
+        <childnode refid="2760" relation="include">
+        </childnode>
+        <childnode refid="2761" relation="include">
+        </childnode>
+      </node>
+      <node id="2754">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2755" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vehicles_8h" kindref="compound">Vehicles.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"></codeline>
+<codeline lineno="29"><highlight class="normal"><ref refid="classVehicles_1a68ea7baf86c5d47c0c9633897e2149c9" kindref="member">Vehicles::Vehicles</ref>()<sp/>:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">Yaw(0),</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">delay(0),</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">board(false),</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">isDead(false),</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">bulletCooldown(0)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"></codeline>
+<codeline lineno="55"><highlight class="normal"><ref refid="classVehicles_1a68ea7baf86c5d47c0c9633897e2149c9" kindref="member">Vehicles::Vehicles</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>moveDirection)<sp/>:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">Yaw(0),</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">delay(0),</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">board(false),</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">isDead(false),</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">bulletCooldown(0)</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"></codeline>
+<codeline lineno="78"><highlight class="normal"><ref refid="classVehicles_1a68ea7baf86c5d47c0c9633897e2149c9" kindref="member">Vehicles::Vehicles</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>position,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>viewDirection,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newSpeed,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>newHealth,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newFireRate,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newBulletDamage)<sp/>:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">board(false),</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">isDead(false),</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">bulletCooldown(0){</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>initialPosition<sp/>=<sp/>position<sp/>+<sp/>viewDirection.<ref refid="structVector3_1aaef4f25a38878a640ab4a48002a7eff8" kindref="member">Normalize</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>Pos<sp/>=<sp/>position;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>View<sp/>=<sp/>viewDirection;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>newVehicle.setMaxSpeed(newSpeed);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>newVehicle.setCurrentLocation(position);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>initialYaw<sp/>=<sp/>getRotationAngle(viewDirection);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>currAttackTarget<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>maxHealth<sp/>=<sp/>newHealth;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>health<sp/>=<sp/>maxHealth;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>bulletFireRate<sp/>=<sp/>newFireRate;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>bulletDamage<sp/>=<sp/>newBulletDamage;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"></codeline>
+<codeline lineno="111"><highlight class="normal"><ref refid="classVehicles_1a6273cf53e2c3687c7271e11af02e4a19" kindref="member">Vehicles::~Vehicles</ref>(){</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"></codeline>
+<codeline lineno="128"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1a7209b3349a347d9b945ef55e69d116b6" kindref="member">Vehicles::update</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt){</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classVehicles_1a902f504e5f54cf20dd1cee5e13fce21e" kindref="member">health</ref><sp/>&lt;=<sp/>0){</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1ab6d7cfa47b8e1d80f399213cced0f101" kindref="member">isDead</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classVehicles_1ab6d7cfa47b8e1d80f399213cced0f101" kindref="member">isDead</ref>){</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1a693558b45b8019ca15aa8c4c068f4cec" kindref="member">speedControl</ref>(dt);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a1872b965e8997223be22b36526cdaefb" kindref="member">pathRoute</ref>(dt);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref><sp/>=<sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a9bd82a4142701b260862e433d11fc5db" kindref="member">getCurrentLocation</ref>();</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" kindref="member">updateHitbox</ref>();</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a564eeecf7deefdfb0144458beb28599b" kindref="member">SetInteraction</ref>(<ref refid="classAABB" kindref="compound">AABB</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref>(<ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>.<ref refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" kindref="member">x</ref><sp/>-<sp/><ref refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" kindref="member">InteractionMin</ref>.<ref refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" kindref="member">x</ref>,<sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>.<ref refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" kindref="member">y</ref><sp/>-<sp/><ref refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" kindref="member">InteractionMin</ref>.<ref refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" kindref="member">y</ref>,<sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>.<ref refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" kindref="member">z</ref><sp/>-<sp/><ref refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" kindref="member">InteractionMin</ref>.<ref refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" kindref="member">z</ref>),<sp/><ref refid="structVector3" kindref="compound">Vector3</ref>(<ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>.<ref refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" kindref="member">x</ref><sp/>+<sp/><ref refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" kindref="member">InteractionMax</ref>.<ref refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" kindref="member">x</ref>,<sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>.<ref refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" kindref="member">y</ref><sp/>+<sp/><ref refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" kindref="member">InteractionMax</ref>.<ref refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" kindref="member">y</ref>,<sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>.<ref refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" kindref="member">z</ref><sp/>+<sp/><ref refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" kindref="member">InteractionMax</ref>.<ref refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" kindref="member">z</ref>)));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1a1224f4a5c2857bd1b4bb646fbb4d2892" kindref="member">Yaw</ref><sp/>=<sp/><ref refid="classVehicles_1a614a06ca64b85891325c4f352da40598" kindref="member">getRotationAngle</ref>();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classVehicles_1a5481cc7e8fb71ec113624a2e5c73465d" kindref="member">currAttackTarget</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a3de937d314008cf9db25825f8b19aa7f" kindref="member">updateWayPoints</ref>(<ref refid="classVehicles_1a5481cc7e8fb71ec113624a2e5c73465d" kindref="member">currAttackTarget</ref>-&gt;<ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>.<ref refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" kindref="member">y</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classVehicles_1a856bceecbe37ea2cfb2c9a872ed3e630" kindref="member">bulletCurrCooldown</ref><sp/>+=<sp/>dt;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"></codeline>
+<codeline lineno="177"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1ab948decf057d7c18cbc9110ca0c69ed6" kindref="member">Vehicles::setNewWayPoint</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z){</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a3de937d314008cf9db25825f8b19aa7f" kindref="member">updateWayPoints</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref>(x,<sp/>0,<sp/>z));</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"></codeline>
+<codeline lineno="196"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1a7cf8fdc0ddbcb34659bb66a48b731831" kindref="member">Vehicles::initialMoveDirection</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z){</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1ab2ab143264e5fc0397cdc2d5b5a6edb7" kindref="member">setInitialWayPoints</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref>(x,<sp/>0,<sp/>z));</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"></codeline>
+<codeline lineno="216"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1a7cf8fdc0ddbcb34659bb66a48b731831" kindref="member">Vehicles::initialMoveDirection</ref>(){</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//newVehicle.setInitialWayPoints(Pos,<sp/>View);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a2446009959863155e26e3bb05cddc58e" kindref="member">setInitialDirection</ref>(<ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"></codeline>
+<codeline lineno="236"><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1a614a06ca64b85891325c4f352da40598" kindref="member">Vehicles::getRotationAngle</ref>(){</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>degree<sp/>=<sp/><ref refid="namespaceMath_1a1a1d364c850f9d66fda85cf71598bbe5" kindref="member">Math::RadianToDegree</ref>(acos(<ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>.<ref refid="structVector3_1a71b1271deb064c65f9dc7dba638c5b57" kindref="member">Dot</ref>(<ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a90b0e2b4876ae5145a16ce3ee9c8c565" kindref="member">getLastWayPointDirection</ref>())));</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>n<sp/>=<sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>.<ref refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" kindref="member">Cross</ref>(<ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a90b0e2b4876ae5145a16ce3ee9c8c565" kindref="member">getLastWayPointDirection</ref>());</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((n.Dot(<ref refid="structVector3" kindref="compound">Vector3</ref>(0,<sp/>1,<sp/>0)))<sp/>&lt;<sp/>0){</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>degree<sp/>*=<sp/>-1;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1a23becb1741e49d1c7570483c2930db1a" kindref="member">initialYaw</ref><sp/>+<sp/>degree;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"></codeline>
+<codeline lineno="270"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1a5425b91bed1523b8b6e78230323cfb89" kindref="member">Vehicles::setThrust</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newThrust){</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a67d762ee2567af93e933a7241846de81" kindref="member">setMaxSpeed</ref>(newThrust);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"></codeline>
+<codeline lineno="289"><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1a614a06ca64b85891325c4f352da40598" kindref="member">Vehicles::getRotationAngle</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>newView){</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>initView(0,<sp/>0,<sp/>1);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>degree<sp/>=<sp/><ref refid="namespaceMath_1a1a1d364c850f9d66fda85cf71598bbe5" kindref="member">Math::RadianToDegree</ref>(acos(initView.Dot(<ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>)));</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Vector3<sp/>n<sp/>=<sp/>View.Cross(newVehicle.getLastWayPointDirection());</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>n<sp/>=<sp/>initView.<ref refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" kindref="member">Cross</ref>(newView);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((n.<ref refid="structVector3_1a71b1271deb064c65f9dc7dba638c5b57" kindref="member">Dot</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref>(0,<sp/>1,<sp/>0)))<sp/>&lt;<sp/>0){</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>degree<sp/>*=<sp/>-1;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>degree;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"></codeline>
+<codeline lineno="320"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1ace4cb72efc022d31fec76b442b57d3fd" kindref="member">Vehicles::fireBullets</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt){</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classVehicles_1a5481cc7e8fb71ec113624a2e5c73465d" kindref="member">currAttackTarget</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classVehicles_1a5481cc7e8fb71ec113624a2e5c73465d" kindref="member">currAttackTarget</ref>-&gt;<ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>.<ref refid="structVector3_1a17abffd128562414c7f59bf7aa0b4456" kindref="member">distanceBetween2points</ref>(<ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>)<sp/>&lt;<sp/>400){</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classVehicles_1a9a754faa272a9884a105fe1daca262f3" kindref="member">bulletFireRate</ref><sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/><ref refid="classVehicles_1a856bceecbe37ea2cfb2c9a872ed3e630" kindref="member">bulletCurrCooldown</ref><sp/>&gt;<sp/>100<sp/>/<sp/>static_cast&lt;float&gt;(<ref refid="classVehicles_1a9a754faa272a9884a105fe1daca262f3" kindref="member">bulletFireRate</ref>)){</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1a856bceecbe37ea2cfb2c9a872ed3e630" kindref="member">bulletCurrCooldown</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"></codeline>
+<codeline lineno="353"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1ab6c1d3b4c166097290da4ea1b1e5739a" kindref="member">Vehicles::checkMaxDistance</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>playerPos){</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(playerPos.<ref refid="structVector3_1a17abffd128562414c7f59bf7aa0b4456" kindref="member">distanceBetween2points</ref>(<ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>)<sp/>&gt;<sp/><ref refid="classVehicles_1a584fd50426df78d828cf80120373b548" kindref="member">maxDistance</ref>){</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"></codeline>
+<codeline lineno="379"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classVehicles_1a693558b45b8019ca15aa8c4c068f4cec" kindref="member">Vehicles::speedControl</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt){</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classVehicles_1a5481cc7e8fb71ec113624a2e5c73465d" kindref="member">currAttackTarget</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>distance<sp/>=<sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a9bd82a4142701b260862e433d11fc5db" kindref="member">getCurrentLocation</ref>().<ref refid="structVector3_1a17abffd128562414c7f59bf7aa0b4456" kindref="member">distanceBetween2points</ref>(<ref refid="classVehicles_1a5481cc7e8fb71ec113624a2e5c73465d" kindref="member">currAttackTarget</ref>-&gt;<ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref>);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(distance<sp/>&lt;=<sp/>150<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a668a9bc3f9bc4ba01b5cac2549c0bfc1" kindref="member">getCurrSpeed</ref>()<sp/>&gt;<sp/>0</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1ace5f799cd222949692c7d55dd9cf6464" kindref="member">setCurrSpeed</ref>(<ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a668a9bc3f9bc4ba01b5cac2549c0bfc1" kindref="member">getCurrSpeed</ref>()<sp/>-<sp/>dt<sp/>*<sp/>15);</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Hello&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a668a9bc3f9bc4ba01b5cac2549c0bfc1" kindref="member">getCurrSpeed</ref>()<sp/>&lt;<sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a15d4bc582f17cdddf8eada41b94794df" kindref="member">getMaxSpeed</ref>()){</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1ace5f799cd222949692c7d55dd9cf6464" kindref="member">setCurrSpeed</ref>(<ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a668a9bc3f9bc4ba01b5cac2549c0bfc1" kindref="member">getCurrSpeed</ref>()<sp/>+<sp/>dt<sp/>*<sp/>10);</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a668a9bc3f9bc4ba01b5cac2549c0bfc1" kindref="member">getCurrSpeed</ref>()<sp/>&lt;<sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a15d4bc582f17cdddf8eada41b94794df" kindref="member">getMaxSpeed</ref>()){</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1ace5f799cd222949692c7d55dd9cf6464" kindref="member">setCurrSpeed</ref>(<ref refid="classVehicles_1aa78a51c332f1493c6a87d30cd088c9fe" kindref="member">newVehicle</ref>.<ref refid="classpathFinding_1a668a9bc3f9bc4ba01b5cac2549c0bfc1" kindref="member">getCurrSpeed</ref>()<sp/>+<sp/>dt<sp/>*<sp/>10);</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"></highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"></highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Vehicles.cpp"/>
+  </compounddef>
+</doxygen>

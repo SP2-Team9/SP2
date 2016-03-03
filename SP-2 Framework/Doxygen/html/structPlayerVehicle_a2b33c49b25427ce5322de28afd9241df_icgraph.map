@@ -1,0 +1,5 @@
+<map id="PlayerVehicle::fireBullets" name="PlayerVehicle::fireBullets">
+<area shape="rect" id="node2" href="$classSP2.html#aa322f4df791b0bb5633f794ac4f39758" title="SP2::playerBulletCreation" alt="" coords="220,5,391,32"/>
+<area shape="rect" id="node3" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="439,5,615,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="663,5,759,32"/>
+</map>

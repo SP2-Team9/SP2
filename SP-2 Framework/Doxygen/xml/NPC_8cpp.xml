@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="NPC_8cpp" kind="file" language="C++">
+    <compoundname>NPC.cpp</compoundname>
+    <includes refid="NPC_8h" local="yes">NPC.h</includes>
+    <incdepgraph>
+      <node id="2365">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2366" relation="include">
+        </childnode>
+        <childnode refid="2373" relation="include">
+        </childnode>
+      </node>
+      <node id="2368">
+        <label>cmath</label>
+      </node>
+      <node id="2369">
+        <label>exception</label>
+      </node>
+      <node id="2362">
+        <label>Zyzrag/Source/NPC.cpp</label>
+        <link refid="NPC.cpp"/>
+        <childnode refid="2363" relation="include">
+        </childnode>
+      </node>
+      <node id="2370">
+        <label>ctime</label>
+      </node>
+      <node id="2373">
+        <label>vector</label>
+      </node>
+      <node id="2366">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2367" relation="include">
+        </childnode>
+        <childnode refid="2372" relation="include">
+        </childnode>
+      </node>
+      <node id="2371">
+        <label>cstdlib</label>
+      </node>
+      <node id="2372">
+        <label>iostream</label>
+      </node>
+      <node id="2363">
+        <label>NPC.h</label>
+        <link refid="NPC_8h"/>
+        <childnode refid="2364" relation="include">
+        </childnode>
+        <childnode refid="2367" relation="include">
+        </childnode>
+      </node>
+      <node id="2367">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2368" relation="include">
+        </childnode>
+        <childnode refid="2369" relation="include">
+        </childnode>
+        <childnode refid="2370" relation="include">
+        </childnode>
+        <childnode refid="2371" relation="include">
+        </childnode>
+      </node>
+      <node id="2364">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2365" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="NPC_8h" kindref="compound">NPC.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="classNPC_1a59b45912692304d555df9d6957046962" refkind="member"><highlight class="normal"><ref refid="classNPC_1a59b45912692304d555df9d6957046962" kindref="member">NPC::NPC</ref>()</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" refkind="member"><highlight class="normal"><ref refid="classNPC_1a59b45912692304d555df9d6957046962" kindref="member">NPC::NPC</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>pos,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>NPCsize,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>hitboxSize,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>maxDistance,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mesh)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;mesh<sp/>=<sp/><ref refid="classNPC_1a41ddb0a001b2696d02d79d9bc155b63f" kindref="member">mesh</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a048d20a358acb913055e7e128cf5120e" kindref="member">SetPos</ref>(pos);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" kindref="member">SetHitboxSize</ref>(hitboxSize);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" kindref="member">SetView</ref>(view);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;NPCsize<sp/>=<sp/><ref refid="classNPC_1ae87a64ff2945b4fbb3f8cab558684ac3" kindref="member">NPCsize</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1acd84ca841b73b3ef80deb3bbcb30d81b" kindref="member">complete</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1a5734ee4a93f4fae791ef3bb3d42ffd01" kindref="member">reward</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1adb54c170c85b6ec6b3bfb41f4ccb6133" kindref="member">curDistance</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;maxDistance<sp/>=<sp/><ref refid="classNPC_1ae9b910ec495c0ad4dfe67932c8edebce" kindref="member">maxDistance</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1aa91a39f7b9f2e93a064f93d324dc8f74" kindref="member">questStatus</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1a8d1d988f6fc1fd3ab0ab25fd89a43423" kindref="member">rotateHand</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1a10a2397970b4a829793e1540d427a7dc" kindref="member">rotateLeg</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" kindref="member">rotateDir</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1aedc1449d1a8b83e28147a469dafa9c65" kindref="member">yaw</ref><sp/>=<sp/><ref refid="namespaceMath_1a1a1d364c850f9d66fda85cf71598bbe5" kindref="member">Math::RadianToDegree</ref>(acos(<ref refid="structVector3" kindref="compound">Vector3</ref>(0,0,1).Dot(view)));</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classNPC_1a67c0caca129b56c82bb7ec8bce6be52b" refkind="member"><highlight class="normal"><ref refid="classNPC_1a67c0caca129b56c82bb7ec8bce6be52b" kindref="member">NPC::~NPC</ref>()</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" kindref="member">NPC::update</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classNPC_1acd84ca841b73b3ef80deb3bbcb30d81b" kindref="member">complete</ref><sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1aa91a39f7b9f2e93a064f93d324dc8f74" kindref="member">questStatus</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;In<sp/>Progress&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1aa91a39f7b9f2e93a064f93d324dc8f74" kindref="member">questStatus</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Complete&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classNPC_1a8d1d988f6fc1fd3ab0ab25fd89a43423" kindref="member">rotateHand</ref><sp/>*<sp/><ref refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" kindref="member">rotateDir</ref><sp/>&gt;<sp/>15)</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" kindref="member">rotateDir</ref><sp/>=<sp/>-<ref refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" kindref="member">rotateDir</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classNPC_1a10a2397970b4a829793e1540d427a7dc" kindref="member">rotateLeg</ref><sp/>*<sp/><ref refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" kindref="member">rotateDir</ref><sp/>&gt;<sp/>15)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" kindref="member">rotateDir</ref><sp/>=<sp/>-<ref refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" kindref="member">rotateDir</ref>;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1a8d1d988f6fc1fd3ab0ab25fd89a43423" kindref="member">rotateHand</ref><sp/>+=<sp/><ref refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" kindref="member">rotateDir</ref><sp/>*<sp/>dt<sp/>*<sp/>100;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1a10a2397970b4a829793e1540d427a7dc" kindref="member">rotateLeg</ref><sp/>+=<sp/><ref refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" kindref="member">rotateDir</ref><sp/>*<sp/>dt<sp/>*<sp/>100;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classNPC_1adb54c170c85b6ec6b3bfb41f4ccb6133" kindref="member">curDistance</ref><sp/>&gt;<sp/><ref refid="classNPC_1ae9b910ec495c0ad4dfe67932c8edebce" kindref="member">maxDistance</ref>)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1adb54c170c85b6ec6b3bfb41f4ccb6133" kindref="member">curDistance</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref><sp/>*=<sp/>-1;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classNPC_1adb54c170c85b6ec6b3bfb41f4ccb6133" kindref="member">curDistance</ref><sp/>+=<sp/>dt<sp/>*<sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref>.<ref refid="structVector3_1a54b8f55a970ee252479a326ffd0699c0" kindref="member">getMagnitude</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a61ffad7d6db49c0a486797f852804291" kindref="member">Pos</ref><sp/>+=<sp/><ref refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" kindref="member">View</ref><sp/>*<sp/>dt;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" kindref="member">updateHitbox</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/NPC.cpp"/>
+  </compounddef>
+</doxygen>

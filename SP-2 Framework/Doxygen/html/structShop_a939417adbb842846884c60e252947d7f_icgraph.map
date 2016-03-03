@@ -1,0 +1,5 @@
+<map id="Shop::increaseHealth" name="Shop::increaseHealth">
+<area shape="rect" id="node2" href="$classSP2.html#a19f8a68701a7cc6fd6d2b304da90ffed" title="SP2::shopUpdates" alt="" coords="200,5,331,32"/>
+<area shape="rect" id="node3" href="$classSP2.html#a3d0db2dcdacd9ec9b9db5e4a86f9643b" title="SP2::inShopUpdates" alt="" coords="379,5,521,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="569,5,665,32"/>
+</map>

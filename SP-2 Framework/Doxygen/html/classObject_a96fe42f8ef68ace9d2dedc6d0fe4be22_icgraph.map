@@ -1,0 +1,12 @@
+<map id="Object::SetHitboxSize" name="Object::SetHitboxSize">
+<area shape="rect" id="node2" href="$classAsteroid.html#aa85d83bf1101255cf59810a44e8746fa" title="Constructor for Asteroid. " alt="" coords="206,5,333,32"/>
+<area shape="rect" id="node3" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="578,81,723,108"/>
+<area shape="rect" id="node5" href="$classNPC.html#a033c1e0db335f048ae89c4445324cf86" title="NPC::NPC" alt="" coords="227,107,311,133"/>
+<area shape="rect" id="node6" href="$classSP2.html#ab9e05fbb4c2dcdf212481cb826e01139" title="SP2::npcInit" alt="" coords="223,157,316,184"/>
+<area shape="rect" id="node9" href="$classSP2.html#a276a9a58452b8b6263b133252d1ab340" title="SP2::objectsInit" alt="" coords="212,208,327,235"/>
+<area shape="rect" id="node10" href="$classSP2.html#a19f8a68701a7cc6fd6d2b304da90ffed" title="SP2::shopUpdates" alt="" coords="204,259,335,285"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="776,165,872,192"/>
+<area shape="rect" id="node7" href="$classSP2.html#a8669c489b6a968f367a4610b254ac992" title="SP2::Init" alt="" coords="418,187,490,213"/>
+<area shape="rect" id="node8" href="$classSP2.html#ae3b8fa1d8f987a6f5b9175c10944398a" title="SP2::gameOverUpdate" alt="" coords="573,191,728,217"/>
+<area shape="rect" id="node11" href="$classSP2.html#a3d0db2dcdacd9ec9b9db5e4a86f9643b" title="SP2::inShopUpdates" alt="" coords="383,249,525,276"/>
+</map>

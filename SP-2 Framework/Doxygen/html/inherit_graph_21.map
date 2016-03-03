@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classObject.html" title="Object" alt="" coords="5,132,65,159"/>
+<area shape="rect" id="node2" href="$classAsteroid.html" title="The class Asteroid along with it&#39;s position, health, size. " alt="" coords="129,5,200,32"/>
+<area shape="rect" id="node3" href="$classBullet.html" title="Bullet" alt="" coords="137,56,192,83"/>
+<area shape="rect" id="node4" href="$classExplosion.html" title="Explosion" alt="" coords="125,107,204,133"/>
+<area shape="rect" id="node5" href="$classNPC.html" title="NPC" alt="" coords="140,157,189,184"/>
+<area shape="rect" id="node6" href="$structPlayerVehicle.html" title="PlayerVehicle" alt="" coords="113,208,216,235"/>
+<area shape="rect" id="node7" href="$classVehicles.html" title="Vehicles" alt="" coords="129,259,201,285"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="Camera::getYawAndPitch" name="Camera::getYawAndPitch">
+<area shape="rect" id="node2" href="$classCamera.html#ab9aa2e59e45fad19917825b44f994f98" title="First Person camera movement. " alt="" coords="224,5,384,32"/>
+<area shape="rect" id="node5" href="$classCamera.html#ac2e052fce2f07f7e772cc9311b2ebb7b" title="Camera mode that is not affected by any hitboxes. " alt="" coords="247,56,361,83"/>
+<area shape="rect" id="node6" href="$classCamera.html#aa1033d059406a563baf0eb83e9422c01" title="Third person movement. " alt="" coords="225,107,383,133"/>
+<area shape="rect" id="node8" href="$classCamera.html#a50900c795715881db70f2e8cb23d0c6a" title="Camera mode that only allows Yaw Rotation and controlling vehicle&#39;s thrust. " alt="" coords="230,157,378,184"/>
+<area shape="rect" id="node3" href="$classSP2.html#a48207cfb8991c95ceca13e7d5cfab56d" title="SP2::inSpaceStationUpdates" alt="" coords="432,31,623,57"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="671,107,767,133"/>
+<area shape="rect" id="node7" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="439,107,615,133"/>
+<area shape="rect" id="node9" href="$classSP2.html#ad5924ef549fb8781c7862817da890f45" title="SP2::RTSUpdates" alt="" coords="463,157,591,184"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="SP2::playerBulletCreation" name="SP2::playerBulletCreation">
+<area shape="rect" id="node2" href="$structPlayerVehicle.html#a2b33c49b25427ce5322de28afd9241df" title="Function use to see if bullets are ready to be fired. " alt="" coords="228,5,395,32"/>
+<area shape="rect" id="node3" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="224,56,399,83"/>
+<area shape="rect" id="node4" href="$classirrklang_1_1ISoundEngine.html#adb09ecc8f61120ce14d26545ed43d8ec" title="Loads a sound source (if not loaded already) from a file and plays it as 3D sound. " alt="" coords="235,107,387,149"/>
+</map>

@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="structShop" kind="struct" language="C++" prot="public">
+    <compoundname>Shop</compoundname>
+    <includes refid="Shop_8h" local="no">Shop.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structShop_1ae32b0335c816708b65bb973f0dd01ab3" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Shop::damageUpgradePrice</definition>
+        <argsstring></argsstring>
+        <name>damageUpgradePrice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Shop.h" line="29" column="1" bodyfile="Zyzrag/Source/Shop.h" bodystart="29" bodyend="-1"/>
+        <referencedby refid="structShop_1add73247f38202e232a2ed33418241eab" compoundref="Shop_8cpp" startline="55" endline="60">increaseDamage</referencedby>
+        <referencedby refid="classSP2_1ae518feb0ebb1cff93a409fe067cf5018" compoundref="SP2_8cpp" startline="1081" endline="1131">SP2::renderShopMenu</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structShop_1a1837e5497b4e09ea01d2000c2ed7348d" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Shop::healthUpgradePrice</definition>
+        <argsstring></argsstring>
+        <name>healthUpgradePrice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Shop.h" line="30" column="1" bodyfile="Zyzrag/Source/Shop.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="structShop_1a939417adbb842846884c60e252947d7f" compoundref="Shop_8cpp" startline="47" endline="53">increaseHealth</referencedby>
+        <referencedby refid="classSP2_1ae518feb0ebb1cff93a409fe067cf5018" compoundref="SP2_8cpp" startline="1081" endline="1131">SP2::renderShopMenu</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structShop_1a3e2843161dace4f9c1e562ebe303a029" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Shop::fireRateUpgradePrice</definition>
+        <argsstring></argsstring>
+        <name>fireRateUpgradePrice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Shop.h" line="31" column="1" bodyfile="Zyzrag/Source/Shop.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="structShop_1a45013c064ceeef5efa3f44d57107e9b0" compoundref="Shop_8cpp" startline="62" endline="68">increaseFireRate</referencedby>
+        <referencedby refid="classSP2_1ae518feb0ebb1cff93a409fe067cf5018" compoundref="SP2_8cpp" startline="1081" endline="1131">SP2::renderShopMenu</referencedby>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structShop_1a5b3cc6a7558856b4e5ce22a7d80899a2" prot="public" static="no" mutable="no">
+        <type><ref refid="structPlayerVehicle" kindref="compound">PlayerVehicle</ref> *</type>
+        <definition>PlayerVehicle* Shop::playerVehicle</definition>
+        <argsstring></argsstring>
+        <name>playerVehicle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Shop.h" line="37" column="1" bodyfile="Zyzrag/Source/Shop.h" bodystart="37" bodyend="-1"/>
+        <referencedby refid="structShop_1add73247f38202e232a2ed33418241eab" compoundref="Shop_8cpp" startline="55" endline="60">increaseDamage</referencedby>
+        <referencedby refid="structShop_1a45013c064ceeef5efa3f44d57107e9b0" compoundref="Shop_8cpp" startline="62" endline="68">increaseFireRate</referencedby>
+        <referencedby refid="structShop_1a939417adbb842846884c60e252947d7f" compoundref="Shop_8cpp" startline="47" endline="53">increaseHealth</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structShop_1a939417adbb842846884c60e252947d7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Shop::increaseHealth</definition>
+        <argsstring>()</argsstring>
+        <name>increaseHealth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Shop.h" line="25" column="1" bodyfile="Zyzrag/Source/Shop.cpp" bodystart="47" bodyend="53"/>
+        <references refid="structPlayerVehicle_1ad76ad098d789983394711b0d9a6ef3f5" compoundref="PlayerVehicle_8h" startline="10">PlayerVehicle::health</references>
+        <references refid="structShop_1a1837e5497b4e09ea01d2000c2ed7348d" compoundref="Shop_8h" startline="30">healthUpgradePrice</references>
+        <references refid="structPlayerVehicle_1a0cf8cb41989e3a369ef3532066cea302" compoundref="PlayerVehicle_8h" startline="10">PlayerVehicle::maxHealth</references>
+        <references refid="structShop_1a5b3cc6a7558856b4e5ce22a7d80899a2" compoundref="Shop_8h" startline="37">playerVehicle</references>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structShop_1add73247f38202e232a2ed33418241eab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Shop::increaseDamage</definition>
+        <argsstring>()</argsstring>
+        <name>increaseDamage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Shop.h" line="26" column="1" bodyfile="Zyzrag/Source/Shop.cpp" bodystart="55" bodyend="60"/>
+        <references refid="structPlayerVehicle_1a35251aa8728a6700334aa53406d653db" compoundref="PlayerVehicle_8h" startline="24">PlayerVehicle::bulletDamage</references>
+        <references refid="structShop_1ae32b0335c816708b65bb973f0dd01ab3" compoundref="Shop_8h" startline="29">damageUpgradePrice</references>
+        <references refid="structShop_1a5b3cc6a7558856b4e5ce22a7d80899a2" compoundref="Shop_8h" startline="37">playerVehicle</references>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structShop_1a45013c064ceeef5efa3f44d57107e9b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Shop::increaseFireRate</definition>
+        <argsstring>()</argsstring>
+        <name>increaseFireRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Shop.h" line="27" column="1" bodyfile="Zyzrag/Source/Shop.cpp" bodystart="62" bodyend="68"/>
+        <references refid="structPlayerVehicle_1a757332394bce258ee5f33cd8d088255d" compoundref="PlayerVehicle_8h" startline="23">PlayerVehicle::bulletFireRate</references>
+        <references refid="structShop_1a3e2843161dace4f9c1e562ebe303a029" compoundref="Shop_8h" startline="31">fireRateUpgradePrice</references>
+        <references refid="structShop_1a5b3cc6a7558856b4e5ce22a7d80899a2" compoundref="Shop_8h" startline="37">playerVehicle</references>
+        <referencedby refid="classSP2_1a19f8a68701a7cc6fd6d2b304da90ffed" compoundref="SP2_8cpp" startline="1748" endline="1921">SP2::shopUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structShop_1a0dc41d9a2746d49314ed12305b59d28e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Shop::Shop</definition>
+        <argsstring>(PlayerVehicle &amp;playerShip)</argsstring>
+        <name>Shop</name>
+        <param>
+          <type><ref refid="structPlayerVehicle" kindref="compound">PlayerVehicle</ref> &amp;</type>
+          <declname>playerShip</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Name: <ref refid="Shop_8cpp" kindref="compound">Shop.cpp</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 24 feb 2016</para></simplesect>
+: functions and data for the <ref refid="structShop" kindref="compound">Shop</ref></para><para>: constructor</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 24 feb 2016</para></simplesect>
+: constructor for <ref refid="structShop" kindref="compound">Shop</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Shop.h" line="33" column="1" bodyfile="Zyzrag/Source/Shop.cpp" bodystart="31" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="structShop_1a36bf69bdc0da1b7258acc63a5fe89d40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Shop::~Shop</definition>
+        <argsstring>()</argsstring>
+        <name>~Shop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Shop.h" line="34" column="1" bodyfile="Zyzrag/Source/Shop.cpp" bodystart="41" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Name: <ref refid="Shop_8h" kindref="compound">Shop.h</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 24 feb 2016</para></simplesect>
+: functions and data for the <ref refid="structShop" kindref="compound">Shop</ref> </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="521">
+        <label>Shop</label>
+        <link refid="structShop"/>
+        <childnode refid="522" relation="usage">
+          <edgelabel>playerVehicle</edgelabel>
+        </childnode>
+        <childnode refid="528" relation="usage">
+          <edgelabel>damageUpgradePrice</edgelabel>
+          <edgelabel>fireRateUpgradePrice</edgelabel>
+          <edgelabel>healthUpgradePrice</edgelabel>
+        </childnode>
+      </node>
+      <node id="526">
+        <label>float</label>
+      </node>
+      <node id="524">
+        <label>AABB</label>
+        <link refid="classAABB"/>
+        <childnode refid="525" relation="usage">
+          <edgelabel>Min</edgelabel>
+          <edgelabel>Max</edgelabel>
+        </childnode>
+      </node>
+      <node id="523">
+        <label>Object</label>
+        <link refid="classObject"/>
+        <childnode refid="524" relation="usage">
+          <edgelabel>hitboxSize</edgelabel>
+          <edgelabel>hitbox</edgelabel>
+          <edgelabel>interaction</edgelabel>
+        </childnode>
+        <childnode refid="525" relation="usage">
+          <edgelabel>InteractionMin</edgelabel>
+          <edgelabel>View</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>InteractionMax</edgelabel>
+          <edgelabel>Pos</edgelabel>
+        </childnode>
+      </node>
+      <node id="522">
+        <label>PlayerVehicle</label>
+        <link refid="structPlayerVehicle"/>
+        <childnode refid="523" relation="public-inheritance">
+        </childnode>
+        <childnode refid="527" relation="usage">
+          <edgelabel>bulletCurrCooldown</edgelabel>
+        </childnode>
+        <childnode refid="526" relation="usage">
+          <edgelabel>respawnTimer</edgelabel>
+          <edgelabel>yaw</edgelabel>
+          <edgelabel>pitch</edgelabel>
+          <edgelabel>thrust</edgelabel>
+          <edgelabel>delay</edgelabel>
+        </childnode>
+        <childnode refid="528" relation="usage">
+          <edgelabel>bulletFireRate</edgelabel>
+          <edgelabel>health</edgelabel>
+          <edgelabel>maxHealth</edgelabel>
+          <edgelabel>bulletDamage</edgelabel>
+        </childnode>
+        <childnode refid="529" relation="usage">
+          <edgelabel>board</edgelabel>
+          <edgelabel>isDead</edgelabel>
+        </childnode>
+      </node>
+      <node id="528">
+        <label>int</label>
+      </node>
+      <node id="527">
+        <label>double</label>
+      </node>
+      <node id="529">
+        <label>bool</label>
+      </node>
+      <node id="525">
+        <label>Vector3</label>
+        <link refid="structVector3"/>
+        <childnode refid="526" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/Shop.h" line="22" column="1" bodyfile="Zyzrag/Source/Shop.h" bodystart="22" bodyend="40"/>
+    <listofallmembers>
+      <member refid="structShop_1ae32b0335c816708b65bb973f0dd01ab3" prot="public" virt="non-virtual"><scope>Shop</scope><name>damageUpgradePrice</name></member>
+      <member refid="structShop_1a3e2843161dace4f9c1e562ebe303a029" prot="public" virt="non-virtual"><scope>Shop</scope><name>fireRateUpgradePrice</name></member>
+      <member refid="structShop_1a1837e5497b4e09ea01d2000c2ed7348d" prot="public" virt="non-virtual"><scope>Shop</scope><name>healthUpgradePrice</name></member>
+      <member refid="structShop_1add73247f38202e232a2ed33418241eab" prot="public" virt="non-virtual"><scope>Shop</scope><name>increaseDamage</name></member>
+      <member refid="structShop_1a45013c064ceeef5efa3f44d57107e9b0" prot="public" virt="non-virtual"><scope>Shop</scope><name>increaseFireRate</name></member>
+      <member refid="structShop_1a939417adbb842846884c60e252947d7f" prot="public" virt="non-virtual"><scope>Shop</scope><name>increaseHealth</name></member>
+      <member refid="structShop_1a5b3cc6a7558856b4e5ce22a7d80899a2" prot="public" virt="non-virtual"><scope>Shop</scope><name>playerVehicle</name></member>
+      <member refid="structShop_1a0dc41d9a2746d49314ed12305b59d28e" prot="public" virt="non-virtual"><scope>Shop</scope><name>Shop</name></member>
+      <member refid="structShop_1a36bf69bdc0da1b7258acc63a5fe89d40" prot="public" virt="non-virtual"><scope>Shop</scope><name>~Shop</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,870 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Application_8cpp" kind="file" language="C++">
+    <compoundname>Application.cpp</compoundname>
+    <includes refid="Application_8h" local="yes">Application.h</includes>
+    <includes local="no">GL/glew.h</includes>
+    <includes local="no">GLFW/glfw3.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes refid="SP2_8h" local="yes">SP2.h</includes>
+    <incdepgraph>
+      <node id="1985">
+        <label>Vertex.h</label>
+        <link refid="Vertex_8h"/>
+        <childnode refid="1932" relation="include">
+        </childnode>
+      </node>
+      <node id="1989">
+        <label>MatrixStack.h</label>
+        <link refid="MatrixStack_8h"/>
+        <childnode refid="1990" relation="include">
+        </childnode>
+        <childnode refid="1981" relation="include">
+        </childnode>
+      </node>
+      <node id="1950">
+        <label>ik_vec3d.h</label>
+        <link refid="ik__vec3d_8h"/>
+        <childnode refid="1951" relation="include">
+        </childnode>
+        <childnode refid="1948" relation="include">
+        </childnode>
+      </node>
+      <node id="1980">
+        <label>queue</label>
+      </node>
+      <node id="1975">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="1932" relation="include">
+        </childnode>
+        <childnode refid="1976" relation="include">
+        </childnode>
+      </node>
+      <node id="1962">
+        <label>ik_IFileFactory.h</label>
+        <link refid="ik__IFileFactory_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+      </node>
+      <node id="1979">
+        <label>pathFinding.h</label>
+        <link refid="pathFinding_8h"/>
+        <childnode refid="1976" relation="include">
+        </childnode>
+        <childnode refid="1980" relation="include">
+        </childnode>
+        <childnode refid="1932" relation="include">
+        </childnode>
+        <childnode refid="1933" relation="include">
+        </childnode>
+      </node>
+      <node id="1978">
+        <label>Vehicles.h</label>
+        <link refid="Vehicles_8h"/>
+        <childnode refid="1974" relation="include">
+        </childnode>
+        <childnode refid="1979" relation="include">
+        </childnode>
+        <childnode refid="1975" relation="include">
+        </childnode>
+        <childnode refid="1932" relation="include">
+        </childnode>
+        <childnode refid="1981" relation="include">
+        </childnode>
+        <childnode refid="1982" relation="include">
+        </childnode>
+        <childnode refid="1983" relation="include">
+        </childnode>
+      </node>
+      <node id="1940">
+        <label>windows.h</label>
+      </node>
+      <node id="1956">
+        <label>ik_EStreamModes.h</label>
+        <link refid="ik__EStreamModes_8h"/>
+      </node>
+      <node id="1983">
+        <label>Asteroid.h</label>
+        <link refid="Asteroid_8h"/>
+        <childnode refid="1974" relation="include">
+        </childnode>
+      </node>
+      <node id="1977">
+        <label>PlayerVehicle.h</label>
+        <link refid="PlayerVehicle_8h"/>
+        <childnode refid="1978" relation="include">
+        </childnode>
+      </node>
+      <node id="1988">
+        <label>Explosion.h</label>
+        <link refid="Explosion_8h"/>
+        <childnode refid="1974" relation="include">
+        </childnode>
+        <childnode refid="1932" relation="include">
+        </childnode>
+      </node>
+      <node id="1953">
+        <label>ik_IVirtualRefCounted.h</label>
+        <link refid="ik__IVirtualRefCounted_8h"/>
+        <childnode refid="1948" relation="include">
+        </childnode>
+      </node>
+      <node id="1986">
+        <label>Scene.h</label>
+        <link refid="Scene_8h"/>
+      </node>
+      <node id="1966">
+        <label>ik_IFileReader.h</label>
+        <link refid="ik__IFileReader_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+      </node>
+      <node id="1993">
+        <label>Wave.h</label>
+        <link refid="Wave_8h"/>
+        <childnode refid="1938" relation="include">
+        </childnode>
+      </node>
+      <node id="1945">
+        <label>stdlib.h</label>
+      </node>
+      <node id="1948">
+        <label>ik_irrKlangTypes.h</label>
+        <link refid="ik__irrKlangTypes_8h"/>
+        <childnode refid="1949" relation="include">
+        </childnode>
+      </node>
+      <node id="1959">
+        <label>ik_ISoundSource.h</label>
+        <link refid="ik__ISoundSource_8h"/>
+        <childnode refid="1953" relation="include">
+        </childnode>
+        <childnode refid="1950" relation="include">
+        </childnode>
+        <childnode refid="1956" relation="include">
+        </childnode>
+        <childnode refid="1957" relation="include">
+        </childnode>
+      </node>
+      <node id="1930">
+        <label>Zyzrag/Source/Application.cpp</label>
+        <link refid="Application.cpp"/>
+        <childnode refid="1931" relation="include">
+        </childnode>
+        <childnode refid="1942" relation="include">
+        </childnode>
+        <childnode refid="1943" relation="include">
+        </childnode>
+        <childnode refid="1944" relation="include">
+        </childnode>
+        <childnode refid="1945" relation="include">
+        </childnode>
+        <childnode refid="1946" relation="include">
+        </childnode>
+      </node>
+      <node id="1934">
+        <label>cmath</label>
+      </node>
+      <node id="1973">
+        <label>Shop.h</label>
+        <link refid="Shop_8h"/>
+        <childnode refid="1974" relation="include">
+        </childnode>
+        <childnode refid="1977" relation="include">
+        </childnode>
+        <childnode refid="1979" relation="include">
+        </childnode>
+      </node>
+      <node id="1952">
+        <label>ik_IRefCounted.h</label>
+        <link refid="ik__IRefCounted_8h"/>
+        <childnode refid="1948" relation="include">
+        </childnode>
+      </node>
+      <node id="1971">
+        <label>string</label>
+      </node>
+      <node id="1942">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="1970">
+        <label>Mesh.h</label>
+        <link refid="Mesh_8h"/>
+        <childnode refid="1971" relation="include">
+        </childnode>
+        <childnode refid="1972" relation="include">
+        </childnode>
+      </node>
+      <node id="1994">
+        <label>map</label>
+      </node>
+      <node id="1943">
+        <label>GLFW/glfw3.h</label>
+      </node>
+      <node id="1981">
+        <label>Mtx44.h</label>
+        <link refid="Mtx44_8h"/>
+        <childnode refid="1933" relation="include">
+        </childnode>
+        <childnode refid="1932" relation="include">
+        </childnode>
+      </node>
+      <node id="1935">
+        <label>exception</label>
+      </node>
+      <node id="1964">
+        <label>ik_IAudioStream.h</label>
+        <link refid="ik__IAudioStream_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+        <childnode refid="1957" relation="include">
+        </childnode>
+      </node>
+      <node id="1968">
+        <label>ik_ISoundDeviceList.h</label>
+        <link refid="ik__ISoundDeviceList_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+      </node>
+      <node id="1982">
+        <label>Bullet.h</label>
+        <link refid="Bullet_8h"/>
+        <childnode refid="1974" relation="include">
+        </childnode>
+        <childnode refid="1979" relation="include">
+        </childnode>
+        <childnode refid="1975" relation="include">
+        </childnode>
+        <childnode refid="1932" relation="include">
+        </childnode>
+        <childnode refid="1981" relation="include">
+        </childnode>
+      </node>
+      <node id="1947">
+        <label>irrKlang.h</label>
+        <link refid="irrKlang_8h"/>
+        <childnode refid="1948" relation="include">
+        </childnode>
+        <childnode refid="1950" relation="include">
+        </childnode>
+        <childnode refid="1952" relation="include">
+        </childnode>
+        <childnode refid="1953" relation="include">
+        </childnode>
+        <childnode refid="1954" relation="include">
+        </childnode>
+        <childnode refid="1955" relation="include">
+        </childnode>
+        <childnode refid="1956" relation="include">
+        </childnode>
+        <childnode refid="1957" relation="include">
+        </childnode>
+        <childnode refid="1958" relation="include">
+        </childnode>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1960" relation="include">
+        </childnode>
+        <childnode refid="1964" relation="include">
+        </childnode>
+        <childnode refid="1965" relation="include">
+        </childnode>
+        <childnode refid="1961" relation="include">
+        </childnode>
+        <childnode refid="1967" relation="include">
+        </childnode>
+        <childnode refid="1962" relation="include">
+        </childnode>
+        <childnode refid="1966" relation="include">
+        </childnode>
+        <childnode refid="1968" relation="include">
+        </childnode>
+        <childnode refid="1969" relation="include">
+        </childnode>
+        <childnode refid="1963" relation="include">
+        </childnode>
+      </node>
+      <node id="1984">
+        <label>Light.h</label>
+        <link refid="Light_8h"/>
+        <childnode refid="1985" relation="include">
+        </childnode>
+      </node>
+      <node id="1957">
+        <label>ik_SAudioStreamFormat.h</label>
+        <link refid="ik__SAudioStreamFormat_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+      </node>
+      <node id="1939">
+        <label>timer.h</label>
+        <link refid="timer_8h"/>
+        <childnode refid="1940" relation="include">
+        </childnode>
+      </node>
+      <node id="1949">
+        <label>wchar.h</label>
+      </node>
+      <node id="1960">
+        <label>ik_ISound.h</label>
+        <link refid="ik__ISound_8h"/>
+        <childnode refid="1953" relation="include">
+        </childnode>
+        <childnode refid="1961" relation="include">
+        </childnode>
+        <childnode refid="1950" relation="include">
+        </childnode>
+      </node>
+      <node id="1931">
+        <label>Application.h</label>
+        <link refid="Application_8h"/>
+        <childnode refid="1932" relation="include">
+        </childnode>
+        <childnode refid="1939" relation="include">
+        </childnode>
+        <childnode refid="1941" relation="include">
+        </childnode>
+      </node>
+      <node id="1963">
+        <label>ik_ISoundMixedOutputReceiver.h</label>
+        <link refid="ik__ISoundMixedOutputReceiver_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+        <childnode refid="1957" relation="include">
+        </childnode>
+      </node>
+      <node id="1936">
+        <label>ctime</label>
+      </node>
+      <node id="1946">
+        <label>SP2.h</label>
+        <link refid="SP2_8h"/>
+        <childnode refid="1947" relation="include">
+        </childnode>
+        <childnode refid="1970" relation="include">
+        </childnode>
+        <childnode refid="1973" relation="include">
+        </childnode>
+        <childnode refid="1984" relation="include">
+        </childnode>
+        <childnode refid="1986" relation="include">
+        </childnode>
+        <childnode refid="1974" relation="include">
+        </childnode>
+        <childnode refid="1982" relation="include">
+        </childnode>
+        <childnode refid="1987" relation="include">
+        </childnode>
+        <childnode refid="1983" relation="include">
+        </childnode>
+        <childnode refid="1978" relation="include">
+        </childnode>
+        <childnode refid="1988" relation="include">
+        </childnode>
+        <childnode refid="1989" relation="include">
+        </childnode>
+        <childnode refid="1991" relation="include">
+        </childnode>
+        <childnode refid="1979" relation="include">
+        </childnode>
+        <childnode refid="1977" relation="include">
+        </childnode>
+        <childnode refid="1941" relation="include">
+        </childnode>
+        <childnode refid="1992" relation="include">
+        </childnode>
+        <childnode refid="1993" relation="include">
+        </childnode>
+        <childnode refid="1994" relation="include">
+        </childnode>
+        <childnode refid="1980" relation="include">
+        </childnode>
+        <childnode refid="1976" relation="include">
+        </childnode>
+        <childnode refid="1937" relation="include">
+        </childnode>
+      </node>
+      <node id="1990">
+        <label>stack</label>
+      </node>
+      <node id="1976">
+        <label>vector</label>
+      </node>
+      <node id="1961">
+        <label>ik_ISoundEffectControl.h</label>
+        <link refid="ik__ISoundEffectControl_8h"/>
+        <childnode refid="1953" relation="include">
+        </childnode>
+        <childnode refid="1950" relation="include">
+        </childnode>
+      </node>
+      <node id="1958">
+        <label>ik_ISoundEngine.h</label>
+        <link refid="ik__ISoundEngine_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+        <childnode refid="1950" relation="include">
+        </childnode>
+        <childnode refid="1959" relation="include">
+        </childnode>
+        <childnode refid="1960" relation="include">
+        </childnode>
+        <childnode refid="1956" relation="include">
+        </childnode>
+        <childnode refid="1962" relation="include">
+        </childnode>
+        <childnode refid="1963" relation="include">
+        </childnode>
+      </node>
+      <node id="1965">
+        <label>ik_IAudioStreamLoader.h</label>
+        <link refid="ik__IAudioStreamLoader_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+        <childnode refid="1966" relation="include">
+        </childnode>
+      </node>
+      <node id="1932">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="1933" relation="include">
+        </childnode>
+        <childnode refid="1938" relation="include">
+        </childnode>
+      </node>
+      <node id="1941">
+        <label>sharedData.h</label>
+        <link refid="sharedData_8h"/>
+      </node>
+      <node id="1951">
+        <label>math.h</label>
+      </node>
+      <node id="1937">
+        <label>cstdlib</label>
+      </node>
+      <node id="1954">
+        <label>ik_ESoundOutputDrivers.h</label>
+        <link refid="ik__ESoundOutputDrivers_8h"/>
+      </node>
+      <node id="1938">
+        <label>iostream</label>
+      </node>
+      <node id="1991">
+        <label>MousePicker.h</label>
+        <link refid="MousePicker_8h"/>
+        <childnode refid="1932" relation="include">
+        </childnode>
+        <childnode refid="1981" relation="include">
+        </childnode>
+        <childnode refid="1987" relation="include">
+        </childnode>
+        <childnode refid="1931" relation="include">
+        </childnode>
+      </node>
+      <node id="1969">
+        <label>ik_IAudioRecorder.h</label>
+        <link refid="ik__IAudioRecorder_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+        <childnode refid="1959" relation="include">
+        </childnode>
+      </node>
+      <node id="1967">
+        <label>ik_ISoundStopEventReceiver.h</label>
+        <link refid="ik__ISoundStopEventReceiver_8h"/>
+        <childnode refid="1952" relation="include">
+        </childnode>
+        <childnode refid="1957" relation="include">
+        </childnode>
+      </node>
+      <node id="1992">
+        <label>NPC.h</label>
+        <link refid="NPC_8h"/>
+        <childnode refid="1974" relation="include">
+        </childnode>
+        <childnode refid="1933" relation="include">
+        </childnode>
+      </node>
+      <node id="1955">
+        <label>ik_ESoundEngineOptions.h</label>
+        <link refid="ik__ESoundEngineOptions_8h"/>
+      </node>
+      <node id="1972">
+        <label>Material.h</label>
+        <link refid="Material_8h"/>
+      </node>
+      <node id="1944">
+        <label>stdio.h</label>
+      </node>
+      <node id="1987">
+        <label>Camera.h</label>
+        <link refid="Camera_8h"/>
+        <childnode refid="1932" relation="include">
+        </childnode>
+        <childnode refid="1981" relation="include">
+        </childnode>
+        <childnode refid="1977" relation="include">
+        </childnode>
+      </node>
+      <node id="1933">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="1934" relation="include">
+        </childnode>
+        <childnode refid="1935" relation="include">
+        </childnode>
+        <childnode refid="1936" relation="include">
+        </childnode>
+        <childnode refid="1937" relation="include">
+        </childnode>
+      </node>
+      <node id="1974">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="1975" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" prot="public" static="no" mutable="no">
+        <type>GLFWwindow *</type>
+        <definition>GLFWwindow* m_window</definition>
+        <argsstring></argsstring>
+        <name>m_window</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.cpp" line="16" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="16" bodyend="-1"/>
+        <referencedby refid="classApplication_1abce8352d49081a282686af6246a379a6" compoundref="Application_8cpp" startline="157" endline="160">Application::centerMouse</referencedby>
+        <referencedby refid="classApplication_1a9d410604b39b8374a884b1f2a1f2a5ba" compoundref="Application_8cpp" startline="144" endline="150">Application::Exit</referencedby>
+        <referencedby refid="classApplication_1aa5dd89fb2981442b5a2e38abad6b7cfb" compoundref="Application_8cpp" startline="152" endline="155">Application::getMouse</referencedby>
+        <referencedby refid="classApplication_1ad689c120e0bb8369561b0c3a4278fcb6" compoundref="Application_8cpp" startline="162" endline="165">Application::hideMouse</referencedby>
+        <referencedby refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" compoundref="Application_8cpp" startline="63" endline="117">Application::Init</referencedby>
+        <referencedby refid="classApplication_1aaf09cd6cb412086dc039e28cdb059f0d" compoundref="Application_8cpp" startline="119" endline="142">Application::Run</referencedby>
+        <referencedby refid="classApplication_1a813f994cc6ef2c195541692f2ad63cec" compoundref="Application_8cpp" startline="167" endline="170">Application::showMouse</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="Application_8cpp_1a677c5ab1ba0f5747ef76b40a17b6f803" prot="public" static="no" mutable="no">
+        <type>const unsigned char</type>
+        <definition>const unsigned char FPS</definition>
+        <argsstring></argsstring>
+        <name>FPS</name>
+        <initializer>= 60</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.cpp" line="17" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="Application_8cpp_1ae228418b33873657fa31313fb4189a8f" prot="public" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int frameTime</definition>
+        <argsstring></argsstring>
+        <name>frameTime</name>
+        <initializer>= 1000 / <ref refid="Application_8cpp_1a677c5ab1ba0f5747ef76b40a17b6f803" kindref="member">FPS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.cpp" line="18" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classApplication_1aaf09cd6cb412086dc039e28cdb059f0d" compoundref="Application_8cpp" startline="119" endline="142">Application::Run</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="Application_8cpp_1a6e6d1771a9242858811be0a3569838fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void error_callback</definition>
+        <argsstring>(int error, const char *description)</argsstring>
+        <name>error_callback</name>
+        <param>
+          <type>int</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.cpp" line="26" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="26" bodyend="30"/>
+        <referencedby refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" compoundref="Application_8cpp" startline="63" endline="117">Application::Init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Application_8cpp_1a6d1a8981b70f74fc60c1428f080da820" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void key_callback</definition>
+        <argsstring>(GLFWwindow *window, int key, int scancode, int action, int mods)</argsstring>
+        <name>key_callback</name>
+        <param>
+          <type>GLFWwindow *</type>
+          <declname>window</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>scancode</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>mods</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.cpp" line="33" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="33" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="Application_8cpp_1aadcee9765075e232ca0720f80a76ad37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void resize_callback</definition>
+        <argsstring>(GLFWwindow *window, int w, int h)</argsstring>
+        <name>resize_callback</name>
+        <param>
+          <type>GLFWwindow *</type>
+          <declname>window</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>w</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.cpp" line="52" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="52" bodyend="55"/>
+        <referencedby refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" compoundref="Application_8cpp" startline="63" endline="117">Application::Init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="Application_8cpp_1a28fc843e2e5aaf82f524f80eb6df2ded" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void scrollwheel_callback</definition>
+        <argsstring>(GLFWwindow *window, double xoffset, double yoffset)</argsstring>
+        <name>scrollwheel_callback</name>
+        <param>
+          <type>GLFWwindow *</type>
+          <declname>window</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>xoffset</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>yoffset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Application.cpp" line="57" column="1" bodyfile="Zyzrag/Source/Application.cpp" bodystart="57" bodyend="61"/>
+        <references refid="classApplication_1a55f72770edd95411a9cd241cf8151a20" compoundref="Application_8h" startline="26">Application::scrollX</references>
+        <references refid="classApplication_1a651b3026e02ef581e9c4655ad6907f5c" compoundref="Application_8h" startline="27">Application::scrollY</references>
+        <referencedby refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" compoundref="Application_8cpp" startline="63" endline="117">Application::Init</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Application_8h" kindref="compound">Application.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//Include<sp/>GLEW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;GL/glew.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//Include<sp/>GLFW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;GLFW/glfw3.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//Include<sp/>the<sp/>standard<sp/>C++<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="SP2_8h" kindref="compound">SP2.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" refkind="member"><highlight class="normal">GLFWwindow*<sp/><ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>;</highlight></codeline>
+<codeline lineno="17" refid="Application_8cpp_1a677c5ab1ba0f5747ef76b40a17b6f803" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="Application_8cpp_1a677c5ab1ba0f5747ef76b40a17b6f803" kindref="member">FPS</ref><sp/>=<sp/>60;<sp/></highlight><highlight class="comment">//<sp/>FPS<sp/>of<sp/>this<sp/>game</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="Application_8cpp_1ae228418b33873657fa31313fb4189a8f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="Application_8cpp_1ae228418b33873657fa31313fb4189a8f" kindref="member">frameTime</ref><sp/>=<sp/>1000<sp/>/<sp/><ref refid="Application_8cpp_1a677c5ab1ba0f5747ef76b40a17b6f803" kindref="member">FPS</ref>;<sp/></highlight><highlight class="comment">//<sp/>time<sp/>for<sp/>each<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" kindref="member">Application::screenWidth</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" kindref="member">Application::screenHeight</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a55f72770edd95411a9cd241cf8151a20" kindref="member">Application::scrollX</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a651b3026e02ef581e9c4655ad6907f5c" kindref="member">Application::scrollY</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//Define<sp/>an<sp/>error<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="Application_8cpp_1a6e6d1771a9242858811be0a3569838fa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Application_8cpp_1a6e6d1771a9242858811be0a3569838fa" kindref="member">error_callback</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>error,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>description)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fputs(description,<sp/>stderr);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_fgetchar();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//Define<sp/>the<sp/>key<sp/>input<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="Application_8cpp_1a6d1a8981b70f74fc60c1428f080da820" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Application_8cpp_1a6d1a8981b70f74fc60c1428f080da820" kindref="member">key_callback</ref>(GLFWwindow*<sp/>window,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>scancode,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>action,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mods)</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(key<sp/>==<sp/>GLFW_KEY_ESCAPE<sp/>&amp;&amp;<sp/>action<sp/>==<sp/>GLFW_PRESS)</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwSetWindowShouldClose(window,<sp/>GL_TRUE);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" kindref="member">Application::IsKeyPressed</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/>key)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((GetAsyncKeyState(key)<sp/>&amp;<sp/>0x8001)<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classApplication_1afa8cc05ce6b6092be5ecdfdae44e05f8" refkind="member"><highlight class="normal"><ref refid="classApplication_1afa8cc05ce6b6092be5ecdfdae44e05f8" kindref="member">Application::Application</ref>()</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classApplication_1a748bca84fefb9c12661cfaa2f623748d" refkind="member"><highlight class="normal"><ref refid="classApplication_1a748bca84fefb9c12661cfaa2f623748d" kindref="member">Application::~Application</ref>()</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="Application_8cpp_1aadcee9765075e232ca0720f80a76ad37" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Application_8cpp_1aadcee9765075e232ca0720f80a76ad37" kindref="member">resize_callback</ref>(GLFWwindow*<sp/>window,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>w,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>h)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glViewport(0,<sp/>0,<sp/>w,<sp/>h);<sp/></highlight><highlight class="comment">//update<sp/>opengl<sp/>the<sp/>new<sp/>window<sp/>size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="Application_8cpp_1a28fc843e2e5aaf82f524f80eb6df2ded" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="Application_8cpp_1a28fc843e2e5aaf82f524f80eb6df2ded" kindref="member">scrollwheel_callback</ref>(GLFWwindow*<sp/>window,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>xoffset,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>yoffset)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classApplication_1a55f72770edd95411a9cd241cf8151a20" kindref="member">Application::scrollX</ref><sp/>=<sp/>xoffset;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classApplication_1a651b3026e02ef581e9c4655ad6907f5c" kindref="member">Application::scrollY</ref><sp/>=<sp/>yoffset;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a276388f7090c0a2b1c8b16cf033b969d" kindref="member">Application::Init</ref>()</highlight></codeline>
+<codeline lineno="64"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>the<sp/>error<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwSetErrorCallback(<ref refid="Application_8cpp_1a6e6d1771a9242858811be0a3569838fa" kindref="member">error_callback</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Initialize<sp/>GLFW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!glfwInit())</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(EXIT_FAILURE);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>the<sp/>GLFW<sp/>window<sp/>creation<sp/>hints<sp/>-<sp/>these<sp/>are<sp/>optional</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwWindowHint(GLFW_SAMPLES,<sp/>4);<sp/></highlight><highlight class="comment">//Request<sp/>4x<sp/>antialiasing</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,<sp/>3);<sp/></highlight><highlight class="comment">//Request<sp/>a<sp/>specific<sp/>OpenGL<sp/>version</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,<sp/>3);<sp/></highlight><highlight class="comment">//Request<sp/>a<sp/>specific<sp/>OpenGL<sp/>version</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT,<sp/>GL_TRUE);<sp/>//<sp/>To<sp/>make<sp/>MacOS<sp/>happy;<sp/>should<sp/>not<sp/>be<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwWindowHint(GLFW_OPENGL_PROFILE,<sp/>GLFW_OPENGL_CORE_PROFILE);<sp/></highlight><highlight class="comment">//We<sp/>don&apos;t<sp/>want<sp/>the<sp/>old<sp/>OpenGL<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Create<sp/>a<sp/>window<sp/>and<sp/>create<sp/>its<sp/>OpenGL<sp/>context</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>GLFWvidmode<sp/>*<sp/>mode<sp/>=<sp/>glfwGetVideoMode(glfwGetPrimaryMonitor());</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" kindref="member">screenWidth</ref><sp/>=<sp/>mode-&gt;width;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" kindref="member">screenHeight</ref><sp/>=<sp/>mode-&gt;height;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref><sp/>=<sp/>glfwCreateWindow(<ref refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" kindref="member">screenWidth</ref>,<sp/><ref refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" kindref="member">screenHeight</ref>,<sp/></highlight><highlight class="stringliteral">&quot;SP2&quot;</highlight><highlight class="normal">,<sp/>glfwGetPrimaryMonitor(),<sp/>NULL);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Set<sp/>window<sp/>Size</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwSetWindowSizeCallback(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>,<sp/><ref refid="Application_8cpp_1aadcee9765075e232ca0720f80a76ad37" kindref="member">resize_callback</ref>);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwSetScrollCallback(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>,<sp/><ref refid="Application_8cpp_1a28fc843e2e5aaf82f524f80eb6df2ded" kindref="member">scrollwheel_callback</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//If<sp/>the<sp/>window<sp/>couldn&apos;t<sp/>be<sp/>created</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(<sp/>stderr,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>open<sp/>GLFW<sp/>window.\n&quot;</highlight><highlight class="normal"><sp/>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwTerminate();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(EXIT_FAILURE);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//This<sp/>function<sp/>makes<sp/>the<sp/>context<sp/>of<sp/>the<sp/>specified<sp/>window<sp/>current<sp/>on<sp/>the<sp/>calling<sp/>thread.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwMakeContextCurrent(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Sets<sp/>the<sp/>key<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//glfwSetKeyCallback(m_window,<sp/>key_callback);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glewExperimental<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Needed<sp/>for<sp/>core<sp/>profile</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Initialize<sp/>GLEW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLenum<sp/>err<sp/>=<sp/>glewInit();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//If<sp/>GLEW<sp/>hasn&apos;t<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>GLEW_OK)<sp/></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>glewGetErrorString(err));</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//return<sp/>-1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classApplication_1aaf09cd6cb412086dc039e28cdb059f0d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1aaf09cd6cb412086dc039e28cdb059f0d" kindref="member">Application::Run</ref>()</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Main<sp/>Loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classScene" kindref="compound">Scene</ref><sp/>*scene<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classSP2" kindref="compound">SP2</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scene-&gt;<ref refid="classScene_1ac3c4677dfd702a3ffd5ffadd3f1ac478" kindref="member">Init</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>srand(time(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classApplication_1ac81ea1396dc69c6d48b9a701954f53fe" kindref="member">m_timer</ref>.<ref refid="classStopWatch_1a23301f735a2e3190435e39c9fd70cdf2" kindref="member">startTimer</ref>();<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>timer<sp/>to<sp/>calculate<sp/>how<sp/>long<sp/>it<sp/>takes<sp/>to<sp/>render<sp/>this<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!glfwWindowShouldClose(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>)<sp/>&amp;&amp;<sp/><ref refid="classsharedData_1a89de3cc4c06c0dc4474fd330138cb0d1" kindref="member">sharedData::GetInstance</ref>()-&gt;quit<sp/>==<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scene-&gt;<ref refid="classScene_1af5c6bcf2185087fb32c27fb8f6a18d91" kindref="member">Update</ref>(<ref refid="classApplication_1ac81ea1396dc69c6d48b9a701954f53fe" kindref="member">m_timer</ref>.<ref refid="classStopWatch_1ac8be1626396d1a5ca414f74349d59eb2" kindref="member">getElapsedTime</ref>());</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scene-&gt;<ref refid="classScene_1ae24d21e12b34839994ad265662ea24d7" kindref="member">Render</ref>();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Swap<sp/>buffers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwSwapBuffers(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Get<sp/>and<sp/>organize<sp/>events,<sp/>like<sp/>keyboard<sp/>and<sp/>mouse<sp/>input,<sp/>window<sp/>resizing,<sp/>etc...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwPollEvents();</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classApplication_1ac81ea1396dc69c6d48b9a701954f53fe" kindref="member">m_timer</ref>.<ref refid="classStopWatch_1a2cd0856fc87a40038edfd66d784be8b4" kindref="member">waitUntil</ref>(<ref refid="Application_8cpp_1ae228418b33873657fa31313fb4189a8f" kindref="member">frameTime</ref>);<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Frame<sp/>rate<sp/>limiter.<sp/>Limits<sp/>each<sp/>frame<sp/>to<sp/>a<sp/>specified<sp/>time<sp/>in<sp/>ms.<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//Check<sp/>if<sp/>the<sp/>ESC<sp/>key<sp/>had<sp/>been<sp/>pressed<sp/>or<sp/>if<sp/>the<sp/>window<sp/>had<sp/>been<sp/>closed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>scene-&gt;<ref refid="classScene_1aae8e24654ef98c79961c2b804b12852c" kindref="member">Exit</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>scene;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="classApplication_1a9d410604b39b8374a884b1f2a1f2a5ba" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a9d410604b39b8374a884b1f2a1f2a5ba" kindref="member">Application::Exit</ref>()</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Close<sp/>OpenGL<sp/>window<sp/>and<sp/>terminate<sp/>GLFW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwDestroyWindow(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Finalize<sp/>and<sp/>clean<sp/>up<sp/>GLFW</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwTerminate();</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="classApplication_1aa5dd89fb2981442b5a2e38abad6b7cfb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1aa5dd89fb2981442b5a2e38abad6b7cfb" kindref="member">Application::getMouse</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>x,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>&amp;<sp/>y)</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwGetCursorPos(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>,<sp/>&amp;x,<sp/>&amp;y);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="classApplication_1abce8352d49081a282686af6246a379a6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1abce8352d49081a282686af6246a379a6" kindref="member">Application::centerMouse</ref>()</highlight></codeline>
+<codeline lineno="158"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwSetCursorPos(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>,<sp/><ref refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" kindref="member">screenWidth</ref><sp/>/<sp/>2,<sp/><ref refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" kindref="member">screenHeight</ref><sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="classApplication_1ad689c120e0bb8369561b0c3a4278fcb6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1ad689c120e0bb8369561b0c3a4278fcb6" kindref="member">Application::hideMouse</ref>()</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwSetInputMode(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>,<sp/>GLFW_CURSOR,<sp/>GLFW_CURSOR_HIDDEN);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="classApplication_1a813f994cc6ef2c195541692f2ad63cec" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classApplication_1a813f994cc6ef2c195541692f2ad63cec" kindref="member">Application::showMouse</ref>()</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glfwSetInputMode(<ref refid="Application_8cpp_1ac325468d8b5ea73fd5e5831ba972bb59" kindref="member">m_window</ref>,<sp/>GLFW_CURSOR,<sp/>GLFW_CURSOR_NORMAL);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Application.cpp"/>
+  </compounddef>
+</doxygen>

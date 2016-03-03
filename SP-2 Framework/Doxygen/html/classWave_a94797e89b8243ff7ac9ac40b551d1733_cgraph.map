@@ -1,0 +1,5 @@
+<map id="Wave::waveUpdate" name="Wave::waveUpdate">
+<area shape="rect" id="node2" href="$classWave.html#a50d7dbc99d58342f69d1c1f851683462" title="Wave::nextWave" alt="" coords="210,5,329,32"/>
+<area shape="rect" id="node3" href="$classWave.html#acefda66b54d01598305db699ecf51833" title="Wave::transitionComplete" alt="" coords="184,56,355,83"/>
+<area shape="rect" id="node4" href="$classWave.html#a6eb595e96d2e63e2c42123dcdf3b1abf" title="Wave::waveComplete" alt="" coords="197,107,342,133"/>
+</map>

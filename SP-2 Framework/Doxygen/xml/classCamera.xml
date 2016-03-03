@@ -1,0 +1,867 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="classCamera" kind="class" language="C++" prot="public">
+    <compoundname>Camera</compoundname>
+    <includes refid="Camera_8h" local="no">Camera.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classCamera_1a3b229874a00253021a1b6c61657fa5ab" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Camera::position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="30" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classSP2_1a92133b572f908abf6c33501a9d95092d" compoundref="SP2_8cpp" startline="2819" endline="2851">SP2::abductionquest</referencedby>
+        <referencedby refid="classSP2_1aff4b863be2e75f8f45cfa2b1b8aa938e" compoundref="SP2_8cpp" startline="2773" endline="2794">SP2::asteroidquest</referencedby>
+        <referencedby refid="classSP2_1aa9c1683d167509e5d6f0e50340947f2a" compoundref="SP2_8cpp" startline="2733" endline="2771">SP2::ballquest</referencedby>
+        <referencedby refid="classSP2_1ac457fe761dd0acbf7428f0bb8654efb7" compoundref="SP2_8cpp" startline="2796" endline="2817">SP2::buyshipquest</referencedby>
+        <referencedby refid="classSP2_1a148c1fd23483c953f3771b38163f46ff" compoundref="SP2_8cpp" startline="2060" endline="2108">SP2::explosionUpdate</referencedby>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">FPSMovement</referencedby>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classSP2_1a71cb6a8fae424771777b139233ae7be8" compoundref="SP2_8cpp" startline="834" endline="877">SP2::generateAsteroid</referencedby>
+        <referencedby refid="classCamera_1a609775f7ec4cd936ad7add808cd7354c" compoundref="Camera_8cpp" startline="50" endline="63">Init</referencedby>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+        <referencedby refid="classMousePicker_1a45200bf16e944756dd7bd72700665ac2" compoundref="MousePicker_8cpp" startline="50" endline="55">MousePicker::MousePicker</referencedby>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">NoClip</referencedby>
+        <referencedby refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" compoundref="Camera_8cpp" startline="96" endline="104">PointAt</referencedby>
+        <referencedby refid="classSP2_1a23517ffd078dbea3018c0eb9e64c78aa" compoundref="SP2_8cpp" startline="1609" endline="1677">SP2::quests</referencedby>
+        <referencedby refid="classSP2_1a90159ea511cadcc99364c6f75d108a71" compoundref="SP2_8cpp" startline="447" endline="556">SP2::Render</referencedby>
+        <referencedby refid="classSP2_1a66ffac3316b8be4cda0f6d51fd3ecc2d" compoundref="SP2_8cpp" startline="1510" endline="1546">SP2::renderchildtext</referencedby>
+        <referencedby refid="classSP2_1ae816a6913862562a4390643111cb0e06" compoundref="SP2_8cpp" startline="1301" endline="1383">SP2::renderDistances</referencedby>
+        <referencedby refid="classSP2_1ad1060157516e3232ae5d69d85096f952" compoundref="SP2_8cpp" startline="1252" endline="1299">SP2::renderHealthBar</referencedby>
+        <referencedby refid="classSP2_1abf67ed7b015f0412a00d85d4cb43d9b5" compoundref="SP2_8cpp" startline="1548" endline="1586">SP2::renderTextonball</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+        <referencedby refid="classMousePicker_1a4574a22a56dc36909a5826fcf847ff92" compoundref="MousePicker_8cpp" startline="77" endline="81">MousePicker::update</referencedby>
+        <referencedby refid="classSP2_1a09e7d05249aeecb574fe09a0ee324229" compoundref="SP2_8cpp" startline="1929" endline="1950">SP2::vehicleUpdates</referencedby>
+        <referencedby refid="classMousePicker_1a03b71750b7a048985983b7cdf83ec85f" compoundref="MousePicker_8cpp" startline="117" endline="134">MousePicker::WorldCoord</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">YawRotation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Camera::target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="30" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classSP2_1a148c1fd23483c953f3771b38163f46ff" compoundref="SP2_8cpp" startline="2060" endline="2108">SP2::explosionUpdate</referencedby>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">FPSMovement</referencedby>
+        <referencedby refid="classCamera_1a609775f7ec4cd936ad7add808cd7354c" compoundref="Camera_8cpp" startline="50" endline="63">Init</referencedby>
+        <referencedby refid="classMousePicker_1a45200bf16e944756dd7bd72700665ac2" compoundref="MousePicker_8cpp" startline="50" endline="55">MousePicker::MousePicker</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">NoClip</referencedby>
+        <referencedby refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" compoundref="Camera_8cpp" startline="96" endline="104">PointAt</referencedby>
+        <referencedby refid="classSP2_1a90159ea511cadcc99364c6f75d108a71" compoundref="SP2_8cpp" startline="447" endline="556">SP2::Render</referencedby>
+        <referencedby refid="classSP2_1ad1060157516e3232ae5d69d85096f952" compoundref="SP2_8cpp" startline="1252" endline="1299">SP2::renderHealthBar</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+        <referencedby refid="classMousePicker_1a4574a22a56dc36909a5826fcf847ff92" compoundref="MousePicker_8cpp" startline="77" endline="81">MousePicker::update</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">YawRotation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1ab76ce866ca2acd6ab54447f474077245" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Camera::up</definition>
+        <argsstring></argsstring>
+        <name>up</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="30" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">FPSMovement</referencedby>
+        <referencedby refid="classCamera_1a609775f7ec4cd936ad7add808cd7354c" compoundref="Camera_8cpp" startline="50" endline="63">Init</referencedby>
+        <referencedby refid="classMousePicker_1a45200bf16e944756dd7bd72700665ac2" compoundref="MousePicker_8cpp" startline="50" endline="55">MousePicker::MousePicker</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">NoClip</referencedby>
+        <referencedby refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" compoundref="Camera_8cpp" startline="96" endline="104">PointAt</referencedby>
+        <referencedby refid="classSP2_1a90159ea511cadcc99364c6f75d108a71" compoundref="SP2_8cpp" startline="447" endline="556">SP2::Render</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+        <referencedby refid="classMousePicker_1a4574a22a56dc36909a5826fcf847ff92" compoundref="MousePicker_8cpp" startline="77" endline="81">MousePicker::update</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">YawRotation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1a6af395199ecb1db9e1083d542b4fb013" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Camera::view</definition>
+        <argsstring></argsstring>
+        <name>view</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="30" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">FPSMovement</referencedby>
+        <referencedby refid="classSP2_1a6d4785971e51defc63ed5c78875c8d7f" compoundref="SP2_8cpp" startline="2008" endline="2045">SP2::generalUpdates</referencedby>
+        <referencedby refid="classCamera_1a609775f7ec4cd936ad7add808cd7354c" compoundref="Camera_8cpp" startline="50" endline="63">Init</referencedby>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">NoClip</referencedby>
+        <referencedby refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" compoundref="Camera_8cpp" startline="96" endline="104">PointAt</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">YawRotation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1a5df07cb5685e533780db3103f0f7a709" prot="public" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Camera::right</definition>
+        <argsstring></argsstring>
+        <name>right</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="30" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="30" bodyend="-1"/>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">FPSMovement</referencedby>
+        <referencedby refid="classCamera_1a609775f7ec4cd936ad7add808cd7354c" compoundref="Camera_8cpp" startline="50" endline="63">Init</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">NoClip</referencedby>
+        <referencedby refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" compoundref="Camera_8cpp" startline="96" endline="104">PointAt</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">YawRotation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1aa7abeeff79c8c3e2d51912b087081c50" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Camera::cameraSpeed</definition>
+        <argsstring></argsstring>
+        <name>cameraSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="31" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">FPSMovement</referencedby>
+        <referencedby refid="classCamera_1a609775f7ec4cd936ad7add808cd7354c" compoundref="Camera_8cpp" startline="50" endline="63">Init</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">NoClip</referencedby>
+        <referencedby refid="classCamera_1acc1741feb6d9da849ea4b6c12e0711e6" compoundref="Camera_8cpp" startline="127" endline="138">Update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1ab74842c6c4d3eb3231fb96370543c5f6" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Camera::mouseSpeed</definition>
+        <argsstring></argsstring>
+        <name>mouseSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="31" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">getYawAndPitch</referencedby>
+        <referencedby refid="classCamera_1a609775f7ec4cd936ad7add808cd7354c" compoundref="Camera_8cpp" startline="50" endline="63">Init</referencedby>
+        <referencedby refid="classCamera_1acc1741feb6d9da849ea4b6c12e0711e6" compoundref="Camera_8cpp" startline="127" endline="138">Update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1ab56fcb39f580e8d2159cf2c9c6d9a65a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Camera::pitch</definition>
+        <argsstring></argsstring>
+        <name>pitch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="31" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">FPSMovement</referencedby>
+        <referencedby refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">getYawAndPitch</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">NoClip</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1ad76701b22630f2df28a0ae15f0497a3a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Camera::yaw</definition>
+        <argsstring></argsstring>
+        <name>yaw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="31" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="31" bodyend="-1"/>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">FPSMovement</referencedby>
+        <referencedby refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">getYawAndPitch</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">NoClip</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">YawRotation</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1a9f2ccc76ca5fd4eb8de8a33e3eb62fd8" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Camera::delay</definition>
+        <argsstring></argsstring>
+        <name>delay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="31" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1a059d8d8d5bce874c2726923ee79a07ea" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Camera::mouseX</definition>
+        <argsstring></argsstring>
+        <name>mouseX</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="32" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classCamera_1ac44f493bfcf873d1e5c7fb8076323586" compoundref="Camera_8cpp" startline="552" endline="557">DisableCursor</referencedby>
+        <referencedby refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">getYawAndPitch</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1a1f2aa381ace1d6ebd839fff192f96683" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Camera::mouseY</definition>
+        <argsstring></argsstring>
+        <name>mouseY</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="32" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="32" bodyend="-1"/>
+        <referencedby refid="classCamera_1ac44f493bfcf873d1e5c7fb8076323586" compoundref="Camera_8cpp" startline="552" endline="557">DisableCursor</referencedby>
+        <referencedby refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">getYawAndPitch</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1a0b9f6986a66a6ac5477e2beee00f0585" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Camera::lock</definition>
+        <argsstring></argsstring>
+        <name>lock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="33" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="33" bodyend="-1"/>
+        <referencedby refid="classCamera_1a01f94c3543f56ede7af49dc778f19331" compoundref="Camera_8cpp" startline="25" endline="28">Camera</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classCamera_1a8184ed8e3802022307d04dcfccbb64c2" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Camera::time</definition>
+        <argsstring></argsstring>
+        <name>time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="34" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classCamera_1a01f94c3543f56ede7af49dc778f19331" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Camera::Camera</definition>
+        <argsstring>()</argsstring>
+        <name>Camera</name>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="36" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="25" bodyend="28"/>
+        <references refid="classCamera_1a0b9f6986a66a6ac5477e2beee00f0585" compoundref="Camera_8h" startline="33">lock</references>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1ad1897942d0ccf91052386388a497349f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Camera::~Camera</definition>
+        <argsstring>()</argsstring>
+        <name>~Camera</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="37" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="36" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1a609775f7ec4cd936ad7add808cd7354c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::Init</definition>
+        <argsstring>(const Vector3 &amp;pos, const Vector3 &amp;target, const Vector3 &amp;up)</argsstring>
+        <name>Init</name>
+        <param>
+          <type>const <ref refid="structVector3" kindref="compound">Vector3</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structVector3" kindref="compound">Vector3</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structVector3" kindref="compound">Vector3</ref> &amp;</type>
+          <declname>up</declname>
+        </param>
+        <briefdescription>
+<para>Initialize camera. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- position of camera </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- where the camera is looking at </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>up</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- up vector of camera </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="38" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="50" bodyend="63"/>
+        <references refid="classCamera_1aa7abeeff79c8c3e2d51912b087081c50" compoundref="Camera_8h" startline="31">cameraSpeed</references>
+        <references refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" compoundref="Vector3_8cpp" startline="427" endline="430">Vector3::Cross</references>
+        <references refid="classCamera_1ab74842c6c4d3eb3231fb96370543c5f6" compoundref="Camera_8h" startline="31">mouseSpeed</references>
+        <references refid="structVector3_1a2da0f00c5529bced69763320dac9c414" compoundref="Vector3_8cpp" startline="445" endline="451">Vector3::Normalized</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">position</references>
+        <references refid="classCamera_1a5df07cb5685e533780db3103f0f7a709" compoundref="Camera_8h" startline="30">right</references>
+        <references refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" compoundref="Camera_8h" startline="30">target</references>
+        <references refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" compoundref="Camera_8h" startline="30">up</references>
+        <references refid="classCamera_1a6af395199ecb1db9e1083d542b4fb013" compoundref="Camera_8h" startline="30">view</references>
+        <references refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" compoundref="Vector3_8h" startline="27">Vector3::y</references>
+        <referencedby refid="classSP2_1a8669c489b6a968f367a4610b254ac992" compoundref="SP2_8cpp" startline="25" endline="273">SP2::Init</referencedby>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a30e847649a0454ba1ad0bb271fb66d24" compoundref="SP2_8cpp" startline="2047" endline="2058">SP2::mainMenuUpdates</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+        <referencedby refid="classSP2_1ab3a40eadc29b0efa8da32b25c2b4a3c5" compoundref="SP2_8cpp" startline="2153" endline="2183">SP2::waveTransitionUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1acbf50008a67b26dd0b236a47bf5fd658" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::Init</definition>
+        <argsstring>(const Vector3 &amp;pos, const Vector3 &amp;target)</argsstring>
+        <name>Init</name>
+        <param>
+          <type>const <ref refid="structVector3" kindref="compound">Vector3</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structVector3" kindref="compound">Vector3</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Initialize camera. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- position of camera </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- where the camera is looking at </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="39" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="74" bodyend="84"/>
+        <references refid="classCamera_1aa7abeeff79c8c3e2d51912b087081c50" compoundref="Camera_8h" startline="31">cameraSpeed</references>
+        <references refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" compoundref="Vector3_8cpp" startline="427" endline="430">Vector3::Cross</references>
+        <references refid="classCamera_1ab74842c6c4d3eb3231fb96370543c5f6" compoundref="Camera_8h" startline="31">mouseSpeed</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">position</references>
+        <references refid="classCamera_1a5df07cb5685e533780db3103f0f7a709" compoundref="Camera_8h" startline="30">right</references>
+        <references refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" compoundref="Camera_8h" startline="30">target</references>
+        <references refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" compoundref="Camera_8h" startline="30">up</references>
+        <references refid="classCamera_1a6af395199ecb1db9e1083d542b4fb013" compoundref="Camera_8h" startline="30">view</references>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1aa46f58b32270a571ab56dde4caca46db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+<para>Reset the camera settings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="40" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="112" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1acc1741feb6d9da849ea4b6c12e0711e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::Update</definition>
+        <argsstring>(double dt)</argsstring>
+        <name>Update</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para>To be called every frame. <ref refid="classCamera" kindref="compound">Camera</ref> will get user inputs and update its position and orientation. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- frame time </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="41" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="127" bodyend="138"/>
+        <references refid="classCamera_1aa7abeeff79c8c3e2d51912b087081c50" compoundref="Camera_8h" startline="31">cameraSpeed</references>
+        <references refid="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" compoundref="Application_8cpp" startline="39" endline="42">Application::IsKeyPressed</references>
+        <references refid="classCamera_1ab74842c6c4d3eb3231fb96370543c5f6" compoundref="Camera_8h" startline="31">mouseSpeed</references>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::PointAt</definition>
+        <argsstring>(Object &amp;obj, float height=0.f, float offset=0.f)</argsstring>
+        <name>PointAt</name>
+        <param>
+          <type><ref refid="classObject" kindref="compound">Object</ref> &amp;</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>height</declname>
+          <defval>0.f</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>offset</declname>
+          <defval>0.f</defval>
+        </param>
+        <briefdescription>
+<para>Points at object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>obj</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- The object that the camera wants to look at. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Height away from the object </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Z distance away from object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="43" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="96" bodyend="104"/>
+        <references refid="structVector3_1aa1cdc5357009b47fe585ddd61e263aad" compoundref="Vector3_8cpp" startline="427" endline="430">Vector3::Cross</references>
+        <references refid="classObject_1a61ffad7d6db49c0a486797f852804291" compoundref="Object_8h" startline="16">Object::Pos</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">position</references>
+        <references refid="classCamera_1a5df07cb5685e533780db3103f0f7a709" compoundref="Camera_8h" startline="30">right</references>
+        <references refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" compoundref="Camera_8h" startline="30">target</references>
+        <references refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" compoundref="Object_8h" startline="16">Object::Up</references>
+        <references refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" compoundref="Camera_8h" startline="30">up</references>
+        <references refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" compoundref="Object_8h" startline="16">Object::View</references>
+        <references refid="classCamera_1a6af395199ecb1db9e1083d542b4fb013" compoundref="Camera_8h" startline="30">view</references>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+        <referencedby refid="classSP2_1ab3a40eadc29b0efa8da32b25c2b4a3c5" compoundref="SP2_8cpp" startline="2153" endline="2183">SP2::waveTransitionUpdate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1ab9aa2e59e45fad19917825b44f994f98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::FPSMovement</definition>
+        <argsstring>(double dt, vector&lt; AABB &gt; hitbox)</argsstring>
+        <name>FPSMovement</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>vector&lt; <ref refid="classAABB" kindref="compound">AABB</ref> &gt;</type>
+          <declname>hitbox</declname>
+        </param>
+        <briefdescription>
+<para>First Person camera movement. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Delta time. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hitbox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Vector of <ref refid="classAABB" kindref="compound">AABB</ref> hitbox to test if camera is colliding with anything. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="45" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="149" bodyend="309"/>
+        <references refid="classCamera_1aa7abeeff79c8c3e2d51912b087081c50" compoundref="Camera_8h" startline="31">cameraSpeed</references>
+        <references refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">getYawAndPitch</references>
+        <references refid="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" compoundref="Application_8cpp" startline="39" endline="42">Application::IsKeyPressed</references>
+        <references refid="classCamera_1ab56fcb39f580e8d2159cf2c9c6d9a65a" compoundref="Camera_8h" startline="31">pitch</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">position</references>
+        <references refid="classCamera_1a5df07cb5685e533780db3103f0f7a709" compoundref="Camera_8h" startline="30">right</references>
+        <references refid="classMtx44_1ac0587ffb5ff9fd58ad5768d28fc06574" compoundref="Mtx44_8cpp" startline="319" endline="341">Mtx44::SetToRotation</references>
+        <references refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" compoundref="Camera_8h" startline="30">target</references>
+        <references refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" compoundref="Camera_8h" startline="30">up</references>
+        <references refid="classCamera_1a6af395199ecb1db9e1083d542b4fb013" compoundref="Camera_8h" startline="30">view</references>
+        <references refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" compoundref="Vector3_8h" startline="27">Vector3::x</references>
+        <references refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" compoundref="Vector3_8h" startline="27">Vector3::y</references>
+        <references refid="classCamera_1ad76701b22630f2df28a0ae15f0497a3a" compoundref="Camera_8h" startline="31">yaw</references>
+        <references refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" compoundref="Vector3_8h" startline="27">Vector3::z</references>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::NoClip</definition>
+        <argsstring>(double dt)</argsstring>
+        <name>NoClip</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classCamera" kindref="compound">Camera</ref> mode that is not affected by any hitboxes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Delta Time. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="46" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="418" bodyend="487"/>
+        <references refid="classCamera_1aa7abeeff79c8c3e2d51912b087081c50" compoundref="Camera_8h" startline="31">cameraSpeed</references>
+        <references refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">getYawAndPitch</references>
+        <references refid="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" compoundref="Application_8cpp" startline="39" endline="42">Application::IsKeyPressed</references>
+        <references refid="classCamera_1ab56fcb39f580e8d2159cf2c9c6d9a65a" compoundref="Camera_8h" startline="31">pitch</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">position</references>
+        <references refid="classCamera_1a5df07cb5685e533780db3103f0f7a709" compoundref="Camera_8h" startline="30">right</references>
+        <references refid="classMtx44_1ac0587ffb5ff9fd58ad5768d28fc06574" compoundref="Mtx44_8cpp" startline="319" endline="341">Mtx44::SetToRotation</references>
+        <references refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" compoundref="Camera_8h" startline="30">target</references>
+        <references refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" compoundref="Camera_8h" startline="30">up</references>
+        <references refid="classCamera_1a6af395199ecb1db9e1083d542b4fb013" compoundref="Camera_8h" startline="30">view</references>
+        <references refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" compoundref="Vector3_8h" startline="27">Vector3::x</references>
+        <references refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" compoundref="Vector3_8h" startline="27">Vector3::y</references>
+        <references refid="classCamera_1ad76701b22630f2df28a0ae15f0497a3a" compoundref="Camera_8h" startline="31">yaw</references>
+        <references refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" compoundref="Vector3_8h" startline="27">Vector3::z</references>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1aa1033d059406a563baf0eb83e9422c01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::TPSMovement</definition>
+        <argsstring>(double dt, PlayerVehicle &amp;veh)</argsstring>
+        <name>TPSMovement</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type><ref refid="structPlayerVehicle" kindref="compound">PlayerVehicle</ref> &amp;</type>
+          <declname>veh</declname>
+        </param>
+        <briefdescription>
+<para>Third person movement. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Delta time. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>veh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Player&apos;s vehicle to control. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="47" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="320" bodyend="408"/>
+        <references refid="structPlayerVehicle_1a509804c06b7e8f77f446908dbea1b7a4" compoundref="PlayerVehicle_8h" startline="21">PlayerVehicle::delay</references>
+        <references refid="classsharedData_1a89de3cc4c06c0dc4474fd330138cb0d1" compoundref="sharedData_8h" startline="6" endline="10">sharedData::GetInstance</references>
+        <references refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">getYawAndPitch</references>
+        <references refid="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" compoundref="Application_8cpp" startline="39" endline="42">Application::IsKeyPressed</references>
+        <references refid="classCamera_1a0b9f6986a66a6ac5477e2beee00f0585" compoundref="Camera_8h" startline="33">lock</references>
+        <references refid="structPlayerVehicle_1a0895b32b2c253eee444d67537aeebb75" compoundref="PlayerVehicle_8h" startline="21">PlayerVehicle::pitch</references>
+        <references refid="classCamera_1ab56fcb39f580e8d2159cf2c9c6d9a65a" compoundref="Camera_8h" startline="31">pitch</references>
+        <references refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" compoundref="Camera_8cpp" startline="96" endline="104">PointAt</references>
+        <references refid="classObject_1a61ffad7d6db49c0a486797f852804291" compoundref="Object_8h" startline="16">Object::Pos</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">position</references>
+        <references refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" compoundref="Object_8h" startline="16">Object::Right</references>
+        <references refid="classCamera_1a5df07cb5685e533780db3103f0f7a709" compoundref="Camera_8h" startline="30">right</references>
+        <references refid="classMtx44_1ac0587ffb5ff9fd58ad5768d28fc06574" compoundref="Mtx44_8cpp" startline="319" endline="341">Mtx44::SetToRotation</references>
+        <references refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" compoundref="Camera_8h" startline="30">target</references>
+        <references refid="structPlayerVehicle_1a20bff632e3cf1c2113a0b41a49d71662" compoundref="PlayerVehicle_8h" startline="21">PlayerVehicle::thrust</references>
+        <references refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" compoundref="Object_8h" startline="16">Object::Up</references>
+        <references refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" compoundref="Camera_8h" startline="30">up</references>
+        <references refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" compoundref="Object_8h" startline="16">Object::View</references>
+        <references refid="classCamera_1a6af395199ecb1db9e1083d542b4fb013" compoundref="Camera_8h" startline="30">view</references>
+        <references refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" compoundref="Vector3_8h" startline="27">Vector3::x</references>
+        <references refid="structPlayerVehicle_1adf952e73bd684379f82c765ba4da41c6" compoundref="PlayerVehicle_8h" startline="21">PlayerVehicle::yaw</references>
+        <references refid="classCamera_1ad76701b22630f2df28a0ae15f0497a3a" compoundref="Camera_8h" startline="31">yaw</references>
+        <references refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" compoundref="Vector3_8h" startline="27">Vector3::z</references>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1a50900c795715881db70f2e8cb23d0c6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::YawRotation</definition>
+        <argsstring>(PlayerVehicle &amp;veh, double dt)</argsstring>
+        <name>YawRotation</name>
+        <param>
+          <type><ref refid="structPlayerVehicle" kindref="compound">PlayerVehicle</ref> &amp;</type>
+          <declname>veh</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classCamera" kindref="compound">Camera</ref> mode that only allows Yaw Rotation and controlling vehicle&apos;s thrust. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>veh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Player&apos;s vehicle to control. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Delta time. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="48" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="498" bodyend="533"/>
+        <references refid="structVector3_1a54b8f55a970ee252479a326ffd0699c0" compoundref="Vector3_8cpp" startline="515" endline="523">Vector3::getMagnitude</references>
+        <references refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" compoundref="Camera_8cpp" startline="567" endline="571">getYawAndPitch</references>
+        <references refid="classApplication_1a72cc9bba26506a7c0f54c346dfbd5cfe" compoundref="Application_8cpp" startline="39" endline="42">Application::IsKeyPressed</references>
+        <references refid="structVector3_1a2da0f00c5529bced69763320dac9c414" compoundref="Vector3_8cpp" startline="445" endline="451">Vector3::Normalized</references>
+        <references refid="classObject_1a61ffad7d6db49c0a486797f852804291" compoundref="Object_8h" startline="16">Object::Pos</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">position</references>
+        <references refid="classCamera_1a5df07cb5685e533780db3103f0f7a709" compoundref="Camera_8h" startline="30">right</references>
+        <references refid="classApplication_1a651b3026e02ef581e9c4655ad6907f5c" compoundref="Application_8h" startline="27">Application::scrollY</references>
+        <references refid="classMtx44_1ac0587ffb5ff9fd58ad5768d28fc06574" compoundref="Mtx44_8cpp" startline="319" endline="341">Mtx44::SetToRotation</references>
+        <references refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" compoundref="Camera_8h" startline="30">target</references>
+        <references refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" compoundref="Camera_8h" startline="30">up</references>
+        <references refid="classCamera_1a6af395199ecb1db9e1083d542b4fb013" compoundref="Camera_8h" startline="30">view</references>
+        <references refid="classCamera_1ad76701b22630f2df28a0ae15f0497a3a" compoundref="Camera_8h" startline="31">yaw</references>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1ae9c5958375a46c218508ae57bfaa98f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::EnableCursor</definition>
+        <argsstring>()</argsstring>
+        <name>EnableCursor</name>
+        <briefdescription>
+<para>Enable mouse cursor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="49" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="541" bodyend="544"/>
+        <references refid="classApplication_1a813f994cc6ef2c195541692f2ad63cec" compoundref="Application_8cpp" startline="167" endline="170">Application::showMouse</references>
+        <referencedby refid="classSP2_1a3d0db2dcdacd9ec9b9db5e4a86f9643b" compoundref="SP2_8cpp" startline="1923" endline="1927">SP2::inShopUpdates</referencedby>
+        <referencedby refid="classSP2_1a30e847649a0454ba1ad0bb271fb66d24" compoundref="SP2_8cpp" startline="2047" endline="2058">SP2::mainMenuUpdates</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+        <referencedby refid="classSP2_1a075edf39d3102610bf7f404ae3b8d38c" compoundref="SP2_8cpp" startline="275" endline="445">SP2::Update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1ac44f493bfcf873d1e5c7fb8076323586" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::DisableCursor</definition>
+        <argsstring>()</argsstring>
+        <name>DisableCursor</name>
+        <briefdescription>
+<para>Disable mouse cursor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="50" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="552" bodyend="557"/>
+        <references refid="classApplication_1abce8352d49081a282686af6246a379a6" compoundref="Application_8cpp" startline="157" endline="160">Application::centerMouse</references>
+        <references refid="classApplication_1aa5dd89fb2981442b5a2e38abad6b7cfb" compoundref="Application_8cpp" startline="152" endline="155">Application::getMouse</references>
+        <references refid="classApplication_1ad689c120e0bb8369561b0c3a4278fcb6" compoundref="Application_8cpp" startline="162" endline="165">Application::hideMouse</references>
+        <references refid="classCamera_1a059d8d8d5bce874c2726923ee79a07ea" compoundref="Camera_8h" startline="32">mouseX</references>
+        <references refid="classCamera_1a1f2aa381ace1d6ebd839fff192f96683" compoundref="Camera_8h" startline="32">mouseY</references>
+        <referencedby refid="classSP2_1a2459f1284bfa90822936b2410a57b7db" compoundref="SP2_8cpp" startline="2110" endline="2151">SP2::inPlayerShipUpdates</referencedby>
+        <referencedby refid="classSP2_1a48207cfb8991c95ceca13e7d5cfab56d" compoundref="SP2_8cpp" startline="2185" endline="2215">SP2::inSpaceStationUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Camera::getYawAndPitch</definition>
+        <argsstring>(double dt)</argsstring>
+        <name>getYawAndPitch</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+<para>Sets Yaw and Pitch from mouse movement. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- Delta time. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Camera.h" line="51" column="1" bodyfile="Zyzrag/Source/Camera.cpp" bodystart="567" bodyend="571"/>
+        <references refid="classCamera_1ab74842c6c4d3eb3231fb96370543c5f6" compoundref="Camera_8h" startline="31">mouseSpeed</references>
+        <references refid="classCamera_1a059d8d8d5bce874c2726923ee79a07ea" compoundref="Camera_8h" startline="32">mouseX</references>
+        <references refid="classCamera_1a1f2aa381ace1d6ebd839fff192f96683" compoundref="Camera_8h" startline="32">mouseY</references>
+        <references refid="classCamera_1ab56fcb39f580e8d2159cf2c9c6d9a65a" compoundref="Camera_8h" startline="31">pitch</references>
+        <references refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" compoundref="Application_8h" startline="24">Application::screenHeight</references>
+        <references refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" compoundref="Application_8h" startline="23">Application::screenWidth</references>
+        <references refid="classCamera_1ad76701b22630f2df28a0ae15f0497a3a" compoundref="Camera_8h" startline="31">yaw</references>
+        <referencedby refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" compoundref="Camera_8cpp" startline="149" endline="309">FPSMovement</referencedby>
+        <referencedby refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" compoundref="Camera_8cpp" startline="418" endline="487">NoClip</referencedby>
+        <referencedby refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" compoundref="Camera_8cpp" startline="320" endline="408">TPSMovement</referencedby>
+        <referencedby refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" compoundref="Camera_8cpp" startline="498" endline="533">YawRotation</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The class camera, and any functions that moves the camera. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="338">
+        <label>Camera</label>
+        <link refid="classCamera"/>
+        <childnode refid="339" relation="usage">
+          <edgelabel>mouseX</edgelabel>
+          <edgelabel>mouseY</edgelabel>
+        </childnode>
+        <childnode refid="340" relation="usage">
+          <edgelabel>cameraSpeed</edgelabel>
+          <edgelabel>mouseSpeed</edgelabel>
+          <edgelabel>yaw</edgelabel>
+          <edgelabel>pitch</edgelabel>
+          <edgelabel>delay</edgelabel>
+          <edgelabel>time</edgelabel>
+        </childnode>
+        <childnode refid="341" relation="usage">
+          <edgelabel>target</edgelabel>
+          <edgelabel>right</edgelabel>
+          <edgelabel>view</edgelabel>
+          <edgelabel>position</edgelabel>
+          <edgelabel>up</edgelabel>
+        </childnode>
+        <childnode refid="342" relation="usage">
+          <edgelabel>lock</edgelabel>
+        </childnode>
+      </node>
+      <node id="340">
+        <label>float</label>
+      </node>
+      <node id="339">
+        <label>double</label>
+      </node>
+      <node id="342">
+        <label>bool</label>
+      </node>
+      <node id="341">
+        <label>Vector3</label>
+        <link refid="structVector3"/>
+        <childnode refid="340" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/Camera.h" line="28" column="1" bodyfile="Zyzrag/Source/Camera.h" bodystart="27" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classCamera_1a01f94c3543f56ede7af49dc778f19331" prot="public" virt="non-virtual"><scope>Camera</scope><name>Camera</name></member>
+      <member refid="classCamera_1aa7abeeff79c8c3e2d51912b087081c50" prot="public" virt="non-virtual"><scope>Camera</scope><name>cameraSpeed</name></member>
+      <member refid="classCamera_1a9f2ccc76ca5fd4eb8de8a33e3eb62fd8" prot="public" virt="non-virtual"><scope>Camera</scope><name>delay</name></member>
+      <member refid="classCamera_1ac44f493bfcf873d1e5c7fb8076323586" prot="public" virt="non-virtual"><scope>Camera</scope><name>DisableCursor</name></member>
+      <member refid="classCamera_1ae9c5958375a46c218508ae57bfaa98f6" prot="public" virt="non-virtual"><scope>Camera</scope><name>EnableCursor</name></member>
+      <member refid="classCamera_1ab9aa2e59e45fad19917825b44f994f98" prot="public" virt="non-virtual"><scope>Camera</scope><name>FPSMovement</name></member>
+      <member refid="classCamera_1ae3766936b577b4062dc0f49cd4008e1a" prot="public" virt="non-virtual"><scope>Camera</scope><name>getYawAndPitch</name></member>
+      <member refid="classCamera_1a609775f7ec4cd936ad7add808cd7354c" prot="public" virt="non-virtual"><scope>Camera</scope><name>Init</name></member>
+      <member refid="classCamera_1acbf50008a67b26dd0b236a47bf5fd658" prot="public" virt="non-virtual"><scope>Camera</scope><name>Init</name></member>
+      <member refid="classCamera_1a0b9f6986a66a6ac5477e2beee00f0585" prot="public" virt="non-virtual"><scope>Camera</scope><name>lock</name></member>
+      <member refid="classCamera_1ab74842c6c4d3eb3231fb96370543c5f6" prot="public" virt="non-virtual"><scope>Camera</scope><name>mouseSpeed</name></member>
+      <member refid="classCamera_1a059d8d8d5bce874c2726923ee79a07ea" prot="public" virt="non-virtual"><scope>Camera</scope><name>mouseX</name></member>
+      <member refid="classCamera_1a1f2aa381ace1d6ebd839fff192f96683" prot="public" virt="non-virtual"><scope>Camera</scope><name>mouseY</name></member>
+      <member refid="classCamera_1ac2e052fce2f07f7e772cc9311b2ebb7b" prot="public" virt="non-virtual"><scope>Camera</scope><name>NoClip</name></member>
+      <member refid="classCamera_1ab56fcb39f580e8d2159cf2c9c6d9a65a" prot="public" virt="non-virtual"><scope>Camera</scope><name>pitch</name></member>
+      <member refid="classCamera_1a9b3f661b16633d32bcc4e6e08210a53e" prot="public" virt="non-virtual"><scope>Camera</scope><name>PointAt</name></member>
+      <member refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" prot="public" virt="non-virtual"><scope>Camera</scope><name>position</name></member>
+      <member refid="classCamera_1aa46f58b32270a571ab56dde4caca46db" prot="public" virt="non-virtual"><scope>Camera</scope><name>Reset</name></member>
+      <member refid="classCamera_1a5df07cb5685e533780db3103f0f7a709" prot="public" virt="non-virtual"><scope>Camera</scope><name>right</name></member>
+      <member refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" prot="public" virt="non-virtual"><scope>Camera</scope><name>target</name></member>
+      <member refid="classCamera_1a8184ed8e3802022307d04dcfccbb64c2" prot="public" virt="non-virtual"><scope>Camera</scope><name>time</name></member>
+      <member refid="classCamera_1aa1033d059406a563baf0eb83e9422c01" prot="public" virt="non-virtual"><scope>Camera</scope><name>TPSMovement</name></member>
+      <member refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" prot="public" virt="non-virtual"><scope>Camera</scope><name>up</name></member>
+      <member refid="classCamera_1acc1741feb6d9da849ea4b6c12e0711e6" prot="public" virt="non-virtual"><scope>Camera</scope><name>Update</name></member>
+      <member refid="classCamera_1a6af395199ecb1db9e1083d542b4fb013" prot="public" virt="non-virtual"><scope>Camera</scope><name>view</name></member>
+      <member refid="classCamera_1ad76701b22630f2df28a0ae15f0497a3a" prot="public" virt="non-virtual"><scope>Camera</scope><name>yaw</name></member>
+      <member refid="classCamera_1a50900c795715881db70f2e8cb23d0c6a" prot="public" virt="non-virtual"><scope>Camera</scope><name>YawRotation</name></member>
+      <member refid="classCamera_1ad1897942d0ccf91052386388a497349f" prot="public" virt="non-virtual"><scope>Camera</scope><name>~Camera</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

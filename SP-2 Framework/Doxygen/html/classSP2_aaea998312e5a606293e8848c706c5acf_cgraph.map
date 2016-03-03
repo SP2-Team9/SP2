@@ -1,0 +1,21 @@
+<map id="SP2::MouseSelection" name="SP2::MouseSelection">
+<area shape="rect" id="node2" href="$classMousePicker.html#a219531b0628bdabc3581381306548def" title="Gets the current ray and return it. " alt="" coords="210,5,399,32"/>
+<area shape="rect" id="node3" href="$classVehicles.html#a614a06ca64b85891325c4f352da40598" title="Vehicles::getRotationAngle" alt="" coords="215,56,394,83"/>
+<area shape="rect" id="node4" href="$classVehicles.html#a7cf8fdc0ddbcb34659bb66a48b731831" title="Vehicles::initialMoveDirection" alt="" coords="209,107,400,133"/>
+<area shape="rect" id="node5" href="$classApplication.html#a72cc9bba26506a7c0f54c346dfbd5cfe" title="Application::IsKeyPressed" alt="" coords="217,157,392,184"/>
+<area shape="rect" id="node6" href="$structVector3.html#aaef4f25a38878a640ab4a48002a7eff8" title="Normalize this vector and return a reference to it. " alt="" coords="456,233,589,260"/>
+<area shape="rect" id="node8" href="$classAABB.html#a505a2b25c75dde521a6207fc34b7619c" title="Checks if current AABB is colliding with a ray. " alt="" coords="235,259,374,285"/>
+<area shape="rect" id="node9" href="$classpathFinding.html#aaec2344e1dc4f7e528d956b1d02b599c" title="pathFinding::resetWayPoints" alt="" coords="209,309,400,336"/>
+<area shape="rect" id="node10" href="$classSP2.html#a017282e5b01ba676860de1b793b40f82" title="SP2::selectionSetTarget" alt="" coords="223,360,386,387"/>
+<area shape="rect" id="node11" href="$classSP2.html#af545386336a508b457984e5ec3cbaaf5" title="SP2::selectionSetWaypoints" alt="" coords="210,411,399,437"/>
+<area shape="rect" id="node12" href="$structVector3.html#a9c25d604bd52b162cfcb56302ef032bb" title="Set the elements of this vector. " alt="" coords="257,461,352,488"/>
+<area shape="rect" id="node13" href="$classpathFinding.html#a8be240ece0214fd2259eb122fc283695" title="pathFinding::setCurrentLocation" alt="" coords="201,512,408,539"/>
+<area shape="rect" id="node14" href="$classpathFinding.html#ace5f799cd222949692c7d55dd9cf6464" title="pathFinding::setCurrSpeed" alt="" coords="217,563,393,589"/>
+<area shape="rect" id="node15" href="$structVector3.html#ac6c9b941ccefd7744eace77ceab16b56" title="Set all elements to zero. " alt="" coords="245,613,365,640"/>
+<area shape="rect" id="node16" href="$classVehicles.html#a7209b3349a347d9b945ef55e69d116b6" title="Vehicles::update" alt="" coords="245,664,364,691"/>
+<area shape="rect" id="node17" href="$classAABB.html#ab11957582e01d031a5693aee4f130525" title="Checks if AABB is within the plane. " alt="" coords="239,715,371,741"/>
+<area shape="rect" id="node19" href="$classMousePicker.html#a03b71750b7a048985983b7cdf83ec85f" title="Calculates the coordinates on X and Z world space. " alt="" coords="217,765,392,792"/>
+<area shape="rect" id="node7" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="637,233,752,260"/>
+<area shape="rect" id="node18" href="$Mtx44_8cpp.html#a1ef521a2e5e5ae2ef55d1bc0c3b0c437" title="Helper function swap. " alt="" coords="497,715,549,741"/>
+<area shape="rect" id="node20" href="$structVector3.html#a71b1271deb064c65f9dc7dba638c5b57" title="Dot product of 2 vectors. " alt="" coords="475,765,570,792"/>
+</map>

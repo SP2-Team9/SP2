@@ -1,0 +1,12 @@
+<map id="Irrklang/include/ik_SAudioStreamFormat.h" name="Irrklang/include/ik_SAudioStreamFormat.h">
+<area shape="rect" id="node2" href="$ik__ISoundSource_8h.html" title="Irrklang/include/ik\l_ISoundSource.h" alt="" coords="5,95,128,136"/>
+<area shape="rect" id="node4" href="$irrKlang_8h.html" title="Main header file of the irrKlang sound library, the only file needed to include. " alt="" coords="257,273,425,300"/>
+<area shape="rect" id="node9" href="$ik__IAudioStream_8h.html" title="Irrklang/include/ik\l_IAudioStream.h" alt="" coords="429,184,552,225"/>
+<area shape="rect" id="node10" href="$ik__ISoundMixedOutputReceiver_8h.html" title="Irrklang/include/ik\l_ISoundMixedOutputReceiver.h" alt="" coords="152,95,355,136"/>
+<area shape="rect" id="node11" href="$ik__ISoundStopEventReceiver_8h.html" title="Irrklang/include/ik\l_ISoundStopEventReceiver.h" alt="" coords="491,95,679,136"/>
+<area shape="rect" id="node3" href="$ik__IAudioRecorder_8h.html" title="Irrklang/include/ik\l_IAudioRecorder.h" alt="" coords="29,184,157,225"/>
+<area shape="rect" id="node8" href="$ik__ISoundEngine_8h.html" title="Irrklang/include/ik\l_ISoundEngine.h" alt="" coords="181,184,304,225"/>
+<area shape="rect" id="node5" href="$SP2_8h.html" title="Zyzrag/Source/SP2.h" alt="" coords="268,348,415,375"/>
+<area shape="rect" id="node6" href="$Application_8cpp.html" title="Zyzrag/Source/Application.cpp" alt="" coords="141,423,339,449"/>
+<area shape="rect" id="node7" href="$SP2_8cpp.html" title="Zyzrag/Source/SP2.cpp" alt="" coords="364,423,524,449"/>
+</map>

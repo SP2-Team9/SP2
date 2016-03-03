@@ -1,0 +1,4 @@
+<map id="pathFinding::setInitialWayPoints" name="pathFinding::setInitialWayPoints">
+<area shape="rect" id="node2" href="$structVector3.html#aaef4f25a38878a640ab4a48002a7eff8" title="Normalize this vector and return a reference to it. " alt="" coords="225,13,359,39"/>
+<area shape="rect" id="node3" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="407,13,521,39"/>
+</map>

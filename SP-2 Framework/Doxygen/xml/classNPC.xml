@@ -1,0 +1,477 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="classNPC" kind="class" language="C++" prot="public">
+    <compoundname>NPC</compoundname>
+    <basecompoundref refid="classObject" prot="public" virt="non-virtual">Object</basecompoundref>
+    <includes refid="NPC_8h" local="no">NPC.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classNPC_1ac941c559fd6d0ef90c0ffb55f5992547" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NPC::questCompleteDialogue</definition>
+        <argsstring></argsstring>
+        <name>questCompleteDialogue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="15" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classSP2_1ab9e05fbb4c2dcdf212481cb826e01139" compoundref="SP2_8cpp" startline="648" endline="680">SP2::npcInit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1a01f115580de4fc6837acc65535c9a3e5" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NPC::questDialogue</definition>
+        <argsstring></argsstring>
+        <name>questDialogue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="15" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classSP2_1ab9e05fbb4c2dcdf212481cb826e01139" compoundref="SP2_8cpp" startline="648" endline="680">SP2::npcInit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1a0771ba27196466146f2dd127625c27d4" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NPC::questName</definition>
+        <argsstring></argsstring>
+        <name>questName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="15" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classSP2_1ab9e05fbb4c2dcdf212481cb826e01139" compoundref="SP2_8cpp" startline="648" endline="680">SP2::npcInit</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1aa91a39f7b9f2e93a064f93d324dc8f74" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string NPC::questStatus</definition>
+        <argsstring></argsstring>
+        <name>questStatus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="15" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="15" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1adb54c170c85b6ec6b3bfb41f4ccb6133" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float NPC::curDistance</definition>
+        <argsstring></argsstring>
+        <name>curDistance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="17" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1ae87a64ff2945b4fbb3f8cab558684ac3" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float NPC::NPCsize</definition>
+        <argsstring></argsstring>
+        <name>NPCsize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="17" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1aedc1449d1a8b83e28147a469dafa9c65" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float NPC::yaw</definition>
+        <argsstring></argsstring>
+        <name>yaw</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="17" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1a8d1d988f6fc1fd3ab0ab25fd89a43423" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float NPC::rotateHand</definition>
+        <argsstring></argsstring>
+        <name>rotateHand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="17" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1a10a2397970b4a829793e1540d427a7dc" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float NPC::rotateLeg</definition>
+        <argsstring></argsstring>
+        <name>rotateLeg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="17" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="17" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1a9018350dbbc26d150b556a451860ed6d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float NPC::count</definition>
+        <argsstring></argsstring>
+        <name>count</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="17" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1ae9b910ec495c0ad4dfe67932c8edebce" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NPC::maxDistance</definition>
+        <argsstring></argsstring>
+        <name>maxDistance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="18" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NPC::rotateDir</definition>
+        <argsstring></argsstring>
+        <name>rotateDir</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="18" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1a41ddb0a001b2696d02d79d9bc155b63f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NPC::mesh</definition>
+        <argsstring></argsstring>
+        <name>mesh</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="18" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1a5734ee4a93f4fae791ef3bb3d42ffd01" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool NPC::reward</definition>
+        <argsstring></argsstring>
+        <name>reward</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="19" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classNPC_1acd84ca841b73b3ef80deb3bbcb30d81b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool NPC::complete</definition>
+        <argsstring></argsstring>
+        <name>complete</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="19" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="19" bodyend="-1"/>
+        <referencedby refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" compoundref="NPC_8cpp" startline="9" endline="26">NPC</referencedby>
+        <referencedby refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" compoundref="NPC_8cpp" startline="33" endline="61">update</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classNPC_1a59b45912692304d555df9d6957046962" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NPC::NPC</definition>
+        <argsstring>()</argsstring>
+        <name>NPC</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="9" column="1" bodyfile="Zyzrag/Source/NPC.cpp" bodystart="4" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="function" id="classNPC_1a033c1e0db335f048ae89c4445324cf86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NPC::NPC</definition>
+        <argsstring>(Vector3 pos, Vector3 view, float NPCsize, float hitboxSize, float maxDistance, int mesh)</argsstring>
+        <name>NPC</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>view</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>NPCsize</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>hitboxSize</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>maxDistance</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>mesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="10" column="1" bodyfile="Zyzrag/Source/NPC.cpp" bodystart="9" bodyend="26"/>
+        <references refid="classNPC_1acd84ca841b73b3ef80deb3bbcb30d81b" compoundref="NPC_8h" startline="19">complete</references>
+        <references refid="classNPC_1adb54c170c85b6ec6b3bfb41f4ccb6133" compoundref="NPC_8h" startline="17">curDistance</references>
+        <references refid="classNPC_1ae9b910ec495c0ad4dfe67932c8edebce" compoundref="NPC_8h" startline="18">maxDistance</references>
+        <references refid="classNPC_1a41ddb0a001b2696d02d79d9bc155b63f" compoundref="NPC_8h" startline="18">mesh</references>
+        <references refid="classNPC_1ae87a64ff2945b4fbb3f8cab558684ac3" compoundref="NPC_8h" startline="17">NPCsize</references>
+        <references refid="classNPC_1aa91a39f7b9f2e93a064f93d324dc8f74" compoundref="NPC_8h" startline="15">questStatus</references>
+        <references refid="namespaceMath_1a1a1d364c850f9d66fda85cf71598bbe5" compoundref="MyMath_8h" startline="64" endline="67">Math::RadianToDegree</references>
+        <references refid="classNPC_1a5734ee4a93f4fae791ef3bb3d42ffd01" compoundref="NPC_8h" startline="19">reward</references>
+        <references refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" compoundref="NPC_8h" startline="18">rotateDir</references>
+        <references refid="classNPC_1a8d1d988f6fc1fd3ab0ab25fd89a43423" compoundref="NPC_8h" startline="17">rotateHand</references>
+        <references refid="classNPC_1a10a2397970b4a829793e1540d427a7dc" compoundref="NPC_8h" startline="17">rotateLeg</references>
+        <references refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" compoundref="Object_8cpp" startline="85" endline="88">Object::SetHitboxSize</references>
+        <references refid="classObject_1a048d20a358acb913055e7e128cf5120e" compoundref="Object_8cpp" startline="173" endline="176">Object::SetPos</references>
+        <references refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" compoundref="Object_8cpp" startline="205" endline="208">Object::SetView</references>
+        <references refid="classNPC_1aedc1449d1a8b83e28147a469dafa9c65" compoundref="NPC_8h" startline="17">yaw</references>
+      </memberdef>
+      <memberdef kind="function" id="classNPC_1a67c0caca129b56c82bb7ec8bce6be52b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NPC::~NPC</definition>
+        <argsstring>()</argsstring>
+        <name>~NPC</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="11" column="1" bodyfile="Zyzrag/Source/NPC.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NPC::update</definition>
+        <argsstring>(double dt)</argsstring>
+        <name>update</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/NPC.h" line="13" column="1" bodyfile="Zyzrag/Source/NPC.cpp" bodystart="33" bodyend="61"/>
+        <references refid="classNPC_1acd84ca841b73b3ef80deb3bbcb30d81b" compoundref="NPC_8h" startline="19">complete</references>
+        <references refid="classNPC_1adb54c170c85b6ec6b3bfb41f4ccb6133" compoundref="NPC_8h" startline="17">curDistance</references>
+        <references refid="structVector3_1a54b8f55a970ee252479a326ffd0699c0" compoundref="Vector3_8cpp" startline="515" endline="523">Vector3::getMagnitude</references>
+        <references refid="classNPC_1ae9b910ec495c0ad4dfe67932c8edebce" compoundref="NPC_8h" startline="18">maxDistance</references>
+        <references refid="classObject_1a61ffad7d6db49c0a486797f852804291" compoundref="Object_8h" startline="16">Object::Pos</references>
+        <references refid="classNPC_1aa91a39f7b9f2e93a064f93d324dc8f74" compoundref="NPC_8h" startline="15">questStatus</references>
+        <references refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" compoundref="NPC_8h" startline="18">rotateDir</references>
+        <references refid="classNPC_1a8d1d988f6fc1fd3ab0ab25fd89a43423" compoundref="NPC_8h" startline="17">rotateHand</references>
+        <references refid="classNPC_1a10a2397970b4a829793e1540d427a7dc" compoundref="NPC_8h" startline="17">rotateLeg</references>
+        <references refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" compoundref="Object_8cpp" startline="120" endline="123">Object::updateHitbox</references>
+        <references refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" compoundref="Object_8h" startline="16">Object::View</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="464">
+        <label>NPC</label>
+        <link refid="classNPC"/>
+        <childnode refid="465" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="465">
+        <label>Object</label>
+        <link refid="classObject"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="466">
+        <label>NPC</label>
+        <link refid="classNPC"/>
+        <childnode refid="467" relation="public-inheritance">
+        </childnode>
+        <childnode refid="470" relation="usage">
+          <edgelabel>NPCsize</edgelabel>
+          <edgelabel>rotateLeg</edgelabel>
+          <edgelabel>yaw</edgelabel>
+          <edgelabel>count</edgelabel>
+          <edgelabel>rotateHand</edgelabel>
+          <edgelabel>curDistance</edgelabel>
+        </childnode>
+        <childnode refid="471" relation="usage">
+          <edgelabel>maxDistance</edgelabel>
+          <edgelabel>mesh</edgelabel>
+          <edgelabel>rotateDir</edgelabel>
+        </childnode>
+        <childnode refid="472" relation="usage">
+          <edgelabel>reward</edgelabel>
+          <edgelabel>complete</edgelabel>
+        </childnode>
+        <childnode refid="473" relation="usage">
+          <edgelabel>questName</edgelabel>
+          <edgelabel>questCompleteDialogue</edgelabel>
+          <edgelabel>questStatus</edgelabel>
+          <edgelabel>questDialogue</edgelabel>
+        </childnode>
+      </node>
+      <node id="473">
+        <label>string</label>
+      </node>
+      <node id="470">
+        <label>float</label>
+      </node>
+      <node id="468">
+        <label>AABB</label>
+        <link refid="classAABB"/>
+        <childnode refid="469" relation="usage">
+          <edgelabel>Min</edgelabel>
+          <edgelabel>Max</edgelabel>
+        </childnode>
+      </node>
+      <node id="467">
+        <label>Object</label>
+        <link refid="classObject"/>
+        <childnode refid="468" relation="usage">
+          <edgelabel>hitboxSize</edgelabel>
+          <edgelabel>hitbox</edgelabel>
+          <edgelabel>interaction</edgelabel>
+        </childnode>
+        <childnode refid="469" relation="usage">
+          <edgelabel>InteractionMin</edgelabel>
+          <edgelabel>View</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>InteractionMax</edgelabel>
+          <edgelabel>Pos</edgelabel>
+        </childnode>
+      </node>
+      <node id="471">
+        <label>int</label>
+      </node>
+      <node id="472">
+        <label>bool</label>
+      </node>
+      <node id="469">
+        <label>Vector3</label>
+        <link refid="structVector3"/>
+        <childnode refid="470" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/NPC.h" line="7" column="1" bodyfile="Zyzrag/Source/NPC.h" bodystart="6" bodyend="20"/>
+    <listofallmembers>
+      <member refid="classNPC_1acd84ca841b73b3ef80deb3bbcb30d81b" prot="public" virt="non-virtual"><scope>NPC</scope><name>complete</name></member>
+      <member refid="classNPC_1a9018350dbbc26d150b556a451860ed6d" prot="public" virt="non-virtual"><scope>NPC</scope><name>count</name></member>
+      <member refid="classNPC_1adb54c170c85b6ec6b3bfb41f4ccb6133" prot="public" virt="non-virtual"><scope>NPC</scope><name>curDistance</name></member>
+      <member refid="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" prot="public" virt="non-virtual"><scope>NPC</scope><name>hitbox</name></member>
+      <member refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" prot="public" virt="non-virtual"><scope>NPC</scope><name>hitboxSize</name></member>
+      <member refid="classObject_1aacafc6287e6765c621111d5c5577c8a6" prot="public" virt="non-virtual"><scope>NPC</scope><name>interaction</name></member>
+      <member refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" prot="public" virt="non-virtual"><scope>NPC</scope><name>InteractionMax</name></member>
+      <member refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" prot="public" virt="non-virtual"><scope>NPC</scope><name>InteractionMin</name></member>
+      <member refid="classNPC_1ae9b910ec495c0ad4dfe67932c8edebce" prot="public" virt="non-virtual"><scope>NPC</scope><name>maxDistance</name></member>
+      <member refid="classNPC_1a41ddb0a001b2696d02d79d9bc155b63f" prot="public" virt="non-virtual"><scope>NPC</scope><name>mesh</name></member>
+      <member refid="classNPC_1a59b45912692304d555df9d6957046962" prot="public" virt="non-virtual"><scope>NPC</scope><name>NPC</name></member>
+      <member refid="classNPC_1a033c1e0db335f048ae89c4445324cf86" prot="public" virt="non-virtual"><scope>NPC</scope><name>NPC</name></member>
+      <member refid="classNPC_1ae87a64ff2945b4fbb3f8cab558684ac3" prot="public" virt="non-virtual"><scope>NPC</scope><name>NPCsize</name></member>
+      <member refid="classObject_1a40860402e64d8008fb42329df7097cdb" prot="public" virt="non-virtual"><scope>NPC</scope><name>Object</name></member>
+      <member refid="classObject_1a503fc1152db4ee07cfece48f8a17a882" prot="public" virt="non-virtual"><scope>NPC</scope><name>Object</name></member>
+      <member refid="classObject_1a61ffad7d6db49c0a486797f852804291" prot="public" virt="non-virtual"><scope>NPC</scope><name>Pos</name></member>
+      <member refid="classNPC_1ac941c559fd6d0ef90c0ffb55f5992547" prot="public" virt="non-virtual"><scope>NPC</scope><name>questCompleteDialogue</name></member>
+      <member refid="classNPC_1a01f115580de4fc6837acc65535c9a3e5" prot="public" virt="non-virtual"><scope>NPC</scope><name>questDialogue</name></member>
+      <member refid="classNPC_1a0771ba27196466146f2dd127625c27d4" prot="public" virt="non-virtual"><scope>NPC</scope><name>questName</name></member>
+      <member refid="classNPC_1aa91a39f7b9f2e93a064f93d324dc8f74" prot="public" virt="non-virtual"><scope>NPC</scope><name>questStatus</name></member>
+      <member refid="classNPC_1a5734ee4a93f4fae791ef3bb3d42ffd01" prot="public" virt="non-virtual"><scope>NPC</scope><name>reward</name></member>
+      <member refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" prot="public" virt="non-virtual"><scope>NPC</scope><name>Right</name></member>
+      <member refid="classNPC_1a08073997fd5edd1d5d2ce124dffbe724" prot="public" virt="non-virtual"><scope>NPC</scope><name>rotateDir</name></member>
+      <member refid="classNPC_1a8d1d988f6fc1fd3ab0ab25fd89a43423" prot="public" virt="non-virtual"><scope>NPC</scope><name>rotateHand</name></member>
+      <member refid="classNPC_1a10a2397970b4a829793e1540d427a7dc" prot="public" virt="non-virtual"><scope>NPC</scope><name>rotateLeg</name></member>
+      <member refid="classObject_1a2198f4c2b626c0633a18962cd7eb84e4" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetHitbox</name></member>
+      <member refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetHitboxSize</name></member>
+      <member refid="classObject_1a03acfeda7945d7c0358befe32f6ebaed" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetHitboxSize</name></member>
+      <member refid="classObject_1a564eeecf7deefdfb0144458beb28599b" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetInteraction</name></member>
+      <member refid="classObject_1a02290ed3825318459e72cb80d450afd0" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetInteractionSize</name></member>
+      <member refid="classObject_1a048d20a358acb913055e7e128cf5120e" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetPos</name></member>
+      <member refid="classObject_1aaaf6f6e7ec1a712ce23b5b4ad2ffad3f" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetPos</name></member>
+      <member refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetRight</name></member>
+      <member refid="classObject_1ac7bd4c23a77ee9e7de4f051300bc7b5f" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetRight</name></member>
+      <member refid="classObject_1a0174b9a71374d4b3c8f3402ff2cebeaf" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetRight</name></member>
+      <member refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetUp</name></member>
+      <member refid="classObject_1a1c38ee52b9773fb15827f7f8d5e8cf47" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetUp</name></member>
+      <member refid="classObject_1ae2e3ba0210f52fbaeef2b824cd2e80d4" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetUp</name></member>
+      <member refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetView</name></member>
+      <member refid="classObject_1a7cc1c711ebe79a023b24abd69c590036" prot="public" virt="non-virtual"><scope>NPC</scope><name>SetView</name></member>
+      <member refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" prot="public" virt="non-virtual"><scope>NPC</scope><name>Up</name></member>
+      <member refid="classNPC_1a61399424a1ddeaa1f127a9480fcb95ca" prot="public" virt="non-virtual"><scope>NPC</scope><name>update</name></member>
+      <member refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" prot="public" virt="non-virtual"><scope>NPC</scope><name>updateHitbox</name></member>
+      <member refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" prot="public" virt="non-virtual"><scope>NPC</scope><name>View</name></member>
+      <member refid="classNPC_1aedc1449d1a8b83e28147a469dafa9c65" prot="public" virt="non-virtual"><scope>NPC</scope><name>yaw</name></member>
+      <member refid="classNPC_1a67c0caca129b56c82bb7ec8bce6be52b" prot="public" virt="non-virtual"><scope>NPC</scope><name>~NPC</name></member>
+      <member refid="classObject_1ae8f5483f459e46687bd01e6f9977afd3" prot="public" virt="non-virtual"><scope>NPC</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

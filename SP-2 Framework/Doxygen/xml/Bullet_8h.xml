@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Bullet_8h" kind="file" language="C++">
+    <compoundname>Bullet.h</compoundname>
+    <includes refid="Object_8h" local="yes">Object.h</includes>
+    <includes refid="pathFinding_8h" local="yes">pathFinding.h</includes>
+    <includes refid="AABB_8h" local="yes">AABB.h</includes>
+    <includes refid="Vector3_8h" local="yes">Vector3.h</includes>
+    <includes refid="Mtx44_8h" local="yes">Mtx44.h</includes>
+    <includedby refid="Vehicles_8h" local="yes">Zyzrag/Source/Vehicles.h</includedby>
+    <includedby refid="SP2_8h" local="yes">Zyzrag/Source/SP2.h</includedby>
+    <includedby refid="Bullet_8cpp" local="yes">Zyzrag/Source/Bullet.cpp</includedby>
+    <incdepgraph>
+      <node id="2082">
+        <label>queue</label>
+      </node>
+      <node id="2072">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2073" relation="include">
+        </childnode>
+        <childnode refid="2080" relation="include">
+        </childnode>
+      </node>
+      <node id="2081">
+        <label>pathFinding.h</label>
+        <link refid="pathFinding_8h"/>
+        <childnode refid="2080" relation="include">
+        </childnode>
+        <childnode refid="2082" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+        <childnode refid="2074" relation="include">
+        </childnode>
+      </node>
+      <node id="2075">
+        <label>cmath</label>
+      </node>
+      <node id="2083">
+        <label>Mtx44.h</label>
+        <link refid="Mtx44_8h"/>
+        <childnode refid="2074" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+      </node>
+      <node id="2076">
+        <label>exception</label>
+      </node>
+      <node id="2070">
+        <label>Zyzrag/Source/Bullet.h</label>
+        <link refid="Bullet.h"/>
+        <childnode refid="2071" relation="include">
+        </childnode>
+        <childnode refid="2081" relation="include">
+        </childnode>
+        <childnode refid="2072" relation="include">
+        </childnode>
+        <childnode refid="2073" relation="include">
+        </childnode>
+        <childnode refid="2083" relation="include">
+        </childnode>
+      </node>
+      <node id="2077">
+        <label>ctime</label>
+      </node>
+      <node id="2080">
+        <label>vector</label>
+      </node>
+      <node id="2073">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2074" relation="include">
+        </childnode>
+        <childnode refid="2079" relation="include">
+        </childnode>
+      </node>
+      <node id="2078">
+        <label>cstdlib</label>
+      </node>
+      <node id="2079">
+        <label>iostream</label>
+      </node>
+      <node id="2074">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2075" relation="include">
+        </childnode>
+        <childnode refid="2076" relation="include">
+        </childnode>
+        <childnode refid="2077" relation="include">
+        </childnode>
+        <childnode refid="2078" relation="include">
+        </childnode>
+      </node>
+      <node id="2071">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2072" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2096">
+        <label>Zyzrag/Source/PlayerVehicle.cpp</label>
+        <link refid="PlayerVehicle_8cpp"/>
+      </node>
+      <node id="2085">
+        <label>Zyzrag/Source/Vehicles.h</label>
+        <link refid="Vehicles_8h"/>
+        <childnode refid="2086" relation="include">
+        </childnode>
+        <childnode refid="2088" relation="include">
+        </childnode>
+        <childnode refid="2097" relation="include">
+        </childnode>
+      </node>
+      <node id="2086">
+        <label>Zyzrag/Source/PlayerVehicle.h</label>
+        <link refid="PlayerVehicle_8h"/>
+        <childnode refid="2087" relation="include">
+        </childnode>
+        <childnode refid="2092" relation="include">
+        </childnode>
+        <childnode refid="2088" relation="include">
+        </childnode>
+        <childnode refid="2096" relation="include">
+        </childnode>
+      </node>
+      <node id="2089">
+        <label>Zyzrag/Source/Application.cpp</label>
+        <link refid="Application_8cpp"/>
+      </node>
+      <node id="2087">
+        <label>Zyzrag/Source/Shop.h</label>
+        <link refid="Shop_8h"/>
+        <childnode refid="2088" relation="include">
+        </childnode>
+        <childnode refid="2091" relation="include">
+        </childnode>
+      </node>
+      <node id="2090">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2091">
+        <label>Zyzrag/Source/Shop.cpp</label>
+        <link refid="Shop_8cpp"/>
+      </node>
+      <node id="2084">
+        <label>Zyzrag/Source/Bullet.h</label>
+        <link refid="Bullet.h"/>
+        <childnode refid="2085" relation="include">
+        </childnode>
+        <childnode refid="2088" relation="include">
+        </childnode>
+        <childnode refid="2098" relation="include">
+        </childnode>
+      </node>
+      <node id="2094">
+        <label>Zyzrag/Source/MousePicker.cpp</label>
+        <link refid="MousePicker_8cpp"/>
+      </node>
+      <node id="2098">
+        <label>Zyzrag/Source/Bullet.cpp</label>
+        <link refid="Bullet_8cpp"/>
+      </node>
+      <node id="2088">
+        <label>Zyzrag/Source/SP2.h</label>
+        <link refid="SP2_8h"/>
+        <childnode refid="2089" relation="include">
+        </childnode>
+        <childnode refid="2090" relation="include">
+        </childnode>
+      </node>
+      <node id="2097">
+        <label>Zyzrag/Source/Vehicles.cpp</label>
+        <link refid="Vehicles_8cpp"/>
+      </node>
+      <node id="2093">
+        <label>Zyzrag/Source/MousePicker.h</label>
+        <link refid="MousePicker_8h"/>
+        <childnode refid="2088" relation="include">
+        </childnode>
+        <childnode refid="2094" relation="include">
+        </childnode>
+      </node>
+      <node id="2095">
+        <label>Zyzrag/Source/Camera.cpp</label>
+        <link refid="Camera_8cpp"/>
+      </node>
+      <node id="2092">
+        <label>Zyzrag/Source/Camera.h</label>
+        <link refid="Camera_8h"/>
+        <childnode refid="2088" relation="include">
+        </childnode>
+        <childnode refid="2093" relation="include">
+        </childnode>
+        <childnode refid="2095" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classBullet" prot="public">Bullet</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_BULLET_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_BULLET_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"></codeline>
+<codeline lineno="16"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Object_8h" kindref="compound">Object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pathFinding_8h" kindref="compound">pathFinding.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="AABB_8h" kindref="compound">AABB.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vector3_8h" kindref="compound">Vector3.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Mtx44_8h" kindref="compound">Mtx44.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classBullet" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBullet" kindref="compound">Bullet</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classObject" kindref="compound">Object</ref>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBullet_1ac2b2c4cabd617426f1357ddcb6c78a4b" kindref="member">Bullet</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>newView,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>playerPos,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newBulletDamage);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBullet_1aaeb5cb41d7db89f49007b08b41f1bfcf" kindref="member">~Bullet</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBullet_1a85db31e6f9f7561eb1b78e4696680292" kindref="member">bulletUpdate</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBullet_1ac2583fcea03332c217f9e67ced3001c4" kindref="member">bulletMovement</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBullet_1a5c6f0ee40c2ffadb500dbb91291f6263" kindref="member">getBulletDamage</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBullet_1a3a474fbd9f01031ca52d2dfa4d5c6e6f" kindref="member">furtherThanBulletMaxRange</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classBullet_1a2f38090c36700a8de5ab2d4c16fca03e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBullet_1a2f38090c36700a8de5ab2d4c16fca03e" kindref="member">bulletSpeed</ref><sp/>=<sp/>300;</highlight></codeline>
+<codeline lineno="41" refid="classBullet_1ac676d8c1ae271f3de8d365ab607bab41" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBullet_1ac676d8c1ae271f3de8d365ab607bab41" kindref="member">BulletDamage</ref><sp/>=<sp/>30;</highlight></codeline>
+<codeline lineno="42" refid="classBullet_1a78f636cc348add10cfb7eade4b44c125" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classBullet_1a78f636cc348add10cfb7eade4b44c125" kindref="member">bulletMaxRange</ref><sp/>=<sp/>500;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classBullet_1a6c48b856d54c32d178c052c0eba398c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/><ref refid="classBullet_1a6c48b856d54c32d178c052c0eba398c6" kindref="member">initialPosition</ref>;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Bullet.h"/>
+  </compounddef>
+</doxygen>

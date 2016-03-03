@@ -1,0 +1,35 @@
+<map id="MS::Top" name="MS::Top">
+<area shape="rect" id="node2" href="$classSP2.html#a90159ea511cadcc99364c6f75d108a71" title="SP2::Render" alt="" coords="971,613,1067,640"/>
+<area shape="rect" id="node3" href="$classSP2.html#a87c33349b172e206bda7f1c03250b619" title="SP2::RenderMesh" alt="" coords="124,360,252,386"/>
+<area shape="rect" id="node16" href="$classSP2.html#af22c6f23198a4b66a31c1b00d194466c" title="SP2::RenderOnScreen" alt="" coords="515,664,669,690"/>
+<area shape="rect" id="node23" href="$classSP2.html#ab49c40d25cc25c6272e7943708a1867e" title="SP2::RenderText" alt="" coords="317,813,438,840"/>
+<area shape="rect" id="node28" href="$classSP2.html#ac8acf6067a10475ad2e4c5ada88a6c65" title="SP2::RenderTextOnScreen" alt="" coords="503,714,681,741"/>
+<area shape="rect" id="node34" href="$classSP2.html#ad5924ef549fb8781c7862817da890f45" title="SP2::RTSUpdates" alt="" coords="124,1000,252,1026"/>
+<area shape="rect" id="node4" href="$classSP2.html#aa6eb01e507b119156ff4b13df9152e7b" title="SP2::renderSkybox" alt="" coords="525,461,659,488"/>
+<area shape="rect" id="node6" href="$classSP2.html#adee4c36140439dabfec6b6fe1a42c7f9" title="SP2::renderStation" alt="" coords="311,562,443,589"/>
+<area shape="rect" id="node7" href="$classSP2.html#acef0d78c34373d56e30e309ac3233232" title="SP2::renderShips" alt="" coords="530,309,654,336"/>
+<area shape="rect" id="node8" href="$classSP2.html#aa411393cf213b32dc0e8583ed8404ceb" title="SP2::renderBullets" alt="" coords="312,461,443,488"/>
+<area shape="rect" id="node9" href="$classSP2.html#a605ae7401549bbcf255e0048849bece3" title="SP2::renderAsteroid" alt="" coords="523,360,661,386"/>
+<area shape="rect" id="node10" href="$classSP2.html#a758452dced20dd622c43f620a762e516" title="SP2::renderExplosion" alt="" coords="303,208,451,234"/>
+<area shape="rect" id="node11" href="$classSP2.html#ad1060157516e3232ae5d69d85096f952" title="SP2::renderHealthBar" alt="" coords="303,360,451,386"/>
+<area shape="rect" id="node12" href="$classSP2.html#a08ba9086abdc2b7dcc05864d88cd80a1" title="SP2::renderWayPoints" alt="" coords="300,258,455,285"/>
+<area shape="rect" id="node13" href="$classSP2.html#ab9c402fa937458cc1e7961a01f7a40ce" title="SP2::renderNPC" alt="" coords="318,56,437,82"/>
+<area shape="rect" id="node14" href="$classSP2.html#a518d28d6602a30f615f3391742143199" title="SP2::renderNPC5" alt="" coords="315,106,440,133"/>
+<area shape="rect" id="node15" href="$classSP2.html#aa9c1683d167509e5d6f0e50340947f2a" title="SP2::ballquest" alt="" coords="773,410,879,437"/>
+<area shape="rect" id="node5" href="$classSP2.html#a432ead63d66b2475fc8dc6341ed493e5" title="SP2::renderGeneral" alt="" coords="758,360,894,386"/>
+<area shape="rect" id="node17" href="$classSP2.html#ac0b11bcd62c386e060fb5c123dc85b61" title="SP2::renderExit" alt="" coords="769,562,883,589"/>
+<area shape="rect" id="node18" href="$classSP2.html#ae41e83a44dec3aa0cd664f18ba98894c" title="SP2::renderGameOverScreen" alt="" coords="729,613,923,640"/>
+<area shape="rect" id="node19" href="$classSP2.html#a4f9848f01e5c7be94af1f60978f9f302" title="SP2::renderWaveTransition" alt="" coords="737,664,915,690"/>
+<area shape="rect" id="node20" href="$classSP2.html#aa3f7d636c2d1b420df9f463f2392dc47" title="SP2::renderHelp" alt="" coords="767,714,885,741"/>
+<area shape="rect" id="node21" href="$classSP2.html#ae518feb0ebb1cff93a409fe067cf5018" title="SP2::renderShopMenu" alt="" coords="749,461,903,488"/>
+<area shape="rect" id="node22" href="$classSP2.html#ae58835fa50b823c3f72a70e918f181ba" title="SP2::renderTitleScreen" alt="" coords="748,512,904,538"/>
+<area shape="rect" id="node24" href="$classSP2.html#ae816a6913862562a4390643111cb0e06" title="SP2::renderDistances" alt="" coords="517,942,667,969"/>
+<area shape="rect" id="node25" href="$classSP2.html#a66ffac3316b8be4cda0f6d51fd3ecc2d" title="SP2::renderchildtext" alt="" coords="522,829,662,856"/>
+<area shape="rect" id="node27" href="$classSP2.html#abf67ed7b015f0412a00d85d4cb43d9b5" title="SP2::renderTextonball" alt="" coords="517,613,667,640"/>
+<area shape="rect" id="node26" href="$classSP2.html#a92133b572f908abf6c33501a9d95092d" title="SP2::abductionquest" alt="" coords="755,1018,897,1045"/>
+<area shape="rect" id="node29" href="$classSP2.html#ab9091eedf4e10df408fdc3cd406e67a9" title="SP2::renderFightingUI" alt="" coords="751,765,901,792"/>
+<area shape="rect" id="node30" href="$classSP2.html#a23517ffd078dbea3018c0eb9e64c78aa" title="SP2::quests" alt="" coords="779,968,873,994"/>
+<area shape="rect" id="node32" href="$classSP2.html#aff4b863be2e75f8f45cfa2b1b8aa938e" title="SP2::asteroidquest" alt="" coords="759,816,893,842"/>
+<area shape="rect" id="node33" href="$classSP2.html#ac457fe761dd0acbf7428f0bb8654efb7" title="SP2::buyshipquest" alt="" coords="760,866,892,893"/>
+<area shape="rect" id="node31" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="971,1044,1067,1070"/>
+</map>

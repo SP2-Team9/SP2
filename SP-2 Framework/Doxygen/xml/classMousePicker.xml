@@ -1,0 +1,397 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="classMousePicker" kind="class" language="C++" prot="public">
+    <compoundname>MousePicker</compoundname>
+    <includes refid="MousePicker_8h" local="no">MousePicker.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMousePicker_1a2bde1127f23be5fc5958f6366e3f5ed2" prot="private" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 MousePicker::currentRay</definition>
+        <argsstring></argsstring>
+        <name>currentRay</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="25" column="1" bodyfile="Zyzrag/Source/MousePicker.h" bodystart="25" bodyend="-1"/>
+        <referencedby refid="classMousePicker_1a219531b0628bdabc3581381306548def" compoundref="MousePicker_8cpp" startline="66" endline="69">getCurrentRay</referencedby>
+        <referencedby refid="classMousePicker_1a4574a22a56dc36909a5826fcf847ff92" compoundref="MousePicker_8cpp" startline="77" endline="81">update</referencedby>
+        <referencedby refid="classMousePicker_1a03b71750b7a048985983b7cdf83ec85f" compoundref="MousePicker_8cpp" startline="117" endline="134">WorldCoord</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMousePicker_1abe158e8000f76ab8dd69e69b6fc96d72" prot="private" static="no" mutable="no">
+        <type><ref refid="classMtx44" kindref="compound">Mtx44</ref></type>
+        <definition>Mtx44 MousePicker::projection</definition>
+        <argsstring></argsstring>
+        <name>projection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="26" column="1" bodyfile="Zyzrag/Source/MousePicker.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" compoundref="MousePicker_8cpp" startline="92" endline="106">calculateMouseRay</referencedby>
+        <referencedby refid="classMousePicker_1a45200bf16e944756dd7bd72700665ac2" compoundref="MousePicker_8cpp" startline="50" endline="55">MousePicker</referencedby>
+        <referencedby refid="classMousePicker_1a2c94fa7238b7496f599b3a11114077df" compoundref="MousePicker_8cpp" startline="148" endline="152">set</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMousePicker_1ad564af9bd61eb18e690a7009a6cbbe64" prot="private" static="no" mutable="no">
+        <type><ref refid="classMtx44" kindref="compound">Mtx44</ref></type>
+        <definition>Mtx44 MousePicker::view</definition>
+        <argsstring></argsstring>
+        <name>view</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="26" column="1" bodyfile="Zyzrag/Source/MousePicker.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" compoundref="MousePicker_8cpp" startline="92" endline="106">calculateMouseRay</referencedby>
+        <referencedby refid="classMousePicker_1a45200bf16e944756dd7bd72700665ac2" compoundref="MousePicker_8cpp" startline="50" endline="55">MousePicker</referencedby>
+        <referencedby refid="classMousePicker_1a4574a22a56dc36909a5826fcf847ff92" compoundref="MousePicker_8cpp" startline="77" endline="81">update</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMousePicker_1a86a8a19dcf678f8902f23df894f4cfe1" prot="private" static="no" mutable="no">
+        <type><ref refid="classCamera" kindref="compound">Camera</ref></type>
+        <definition>Camera MousePicker::camera</definition>
+        <argsstring></argsstring>
+        <name>camera</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="27" column="1" bodyfile="Zyzrag/Source/MousePicker.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="classMousePicker_1a45200bf16e944756dd7bd72700665ac2" compoundref="MousePicker_8cpp" startline="50" endline="55">MousePicker</referencedby>
+        <referencedby refid="classMousePicker_1a2c94fa7238b7496f599b3a11114077df" compoundref="MousePicker_8cpp" startline="148" endline="152">set</referencedby>
+        <referencedby refid="classMousePicker_1a4574a22a56dc36909a5826fcf847ff92" compoundref="MousePicker_8cpp" startline="77" endline="81">update</referencedby>
+        <referencedby refid="classMousePicker_1a03b71750b7a048985983b7cdf83ec85f" compoundref="MousePicker_8cpp" startline="117" endline="134">WorldCoord</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMousePicker_1a24c578525dc93e8913b5336c03f6cb50" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float MousePicker::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="28" column="1" bodyfile="Zyzrag/Source/MousePicker.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" compoundref="MousePicker_8cpp" startline="92" endline="106">calculateMouseRay</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classMousePicker_1abc25896ad1cc09c842e2c84bd0e5aabb" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float MousePicker::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="28" column="1" bodyfile="Zyzrag/Source/MousePicker.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" compoundref="MousePicker_8cpp" startline="92" endline="106">calculateMouseRay</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMousePicker_1aea545214aa06a65d6321b174b8c43d19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MousePicker::MousePicker</definition>
+        <argsstring>()</argsstring>
+        <name>MousePicker</name>
+        <briefdescription>
+<para>Default Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="31" column="1" bodyfile="Zyzrag/Source/MousePicker.cpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classMousePicker_1a45200bf16e944756dd7bd72700665ac2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MousePicker::MousePicker</definition>
+        <argsstring>(Camera camera, Mtx44 projection)</argsstring>
+        <name>MousePicker</name>
+        <param>
+          <type><ref refid="classCamera" kindref="compound">Camera</ref></type>
+          <declname>camera</declname>
+        </param>
+        <param>
+          <type><ref refid="classMtx44" kindref="compound">Mtx44</ref></type>
+          <declname>projection</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>camera</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gets current camera to pass in to the class.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>projection</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Gets the projection matrix to pass in to the class. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="32" column="1" bodyfile="Zyzrag/Source/MousePicker.cpp" bodystart="50" bodyend="55"/>
+        <references refid="classMousePicker_1a86a8a19dcf678f8902f23df894f4cfe1" compoundref="MousePicker_8h" startline="27">camera</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">Camera::position</references>
+        <references refid="classMousePicker_1abe158e8000f76ab8dd69e69b6fc96d72" compoundref="MousePicker_8h" startline="26">projection</references>
+        <references refid="classMtx44_1a7c3d2d30d9ed5bfca2ba97d0e570930f" compoundref="Mtx44_8cpp" startline="457" endline="474">Mtx44::SetToLookAt</references>
+        <references refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" compoundref="Camera_8h" startline="30">Camera::target</references>
+        <references refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" compoundref="Camera_8h" startline="30">Camera::up</references>
+        <references refid="classMousePicker_1ad564af9bd61eb18e690a7009a6cbbe64" compoundref="MousePicker_8h" startline="26">view</references>
+        <references refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" compoundref="Vector3_8h" startline="27">Vector3::x</references>
+        <references refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" compoundref="Vector3_8h" startline="27">Vector3::y</references>
+        <references refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" compoundref="Vector3_8h" startline="27">Vector3::z</references>
+      </memberdef>
+      <memberdef kind="function" id="classMousePicker_1a91ba4200d9a453f556959deeb42beac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MousePicker::~MousePicker</definition>
+        <argsstring>()</argsstring>
+        <name>~MousePicker</name>
+        <briefdescription>
+<para>Default Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="33" column="1" bodyfile="Zyzrag/Source/MousePicker.cpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classMousePicker_1a219531b0628bdabc3581381306548def" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 MousePicker::getCurrentRay</definition>
+        <argsstring>()</argsstring>
+        <name>getCurrentRay</name>
+        <briefdescription>
+<para>Gets the current ray and return it. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Returns current ray </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="34" column="1" bodyfile="Zyzrag/Source/MousePicker.cpp" bodystart="66" bodyend="69"/>
+        <references refid="classMousePicker_1a2bde1127f23be5fc5958f6366e3f5ed2" compoundref="MousePicker_8h" startline="25">currentRay</references>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 MousePicker::calculateMouseRay</definition>
+        <argsstring>()</argsstring>
+        <name>calculateMouseRay</name>
+        <briefdescription>
+<para>Calculate&apos;s the mouse ray from screen coordinates to world coordinates. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Returns a normalized <ref refid="structVector3" kindref="compound">Vector3</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="35" column="1" bodyfile="Zyzrag/Source/MousePicker.cpp" bodystart="92" bodyend="106"/>
+        <references refid="classMtx44_1aac1ba21ddfc5f3c24baa4f58d9c5c256" compoundref="Mtx44_8cpp" startline="139" endline="195">Mtx44::GetInverse</references>
+        <references refid="classApplication_1aa5dd89fb2981442b5a2e38abad6b7cfb" compoundref="Application_8cpp" startline="152" endline="155">Application::getMouse</references>
+        <references refid="structVector3_1a2da0f00c5529bced69763320dac9c414" compoundref="Vector3_8cpp" startline="445" endline="451">Vector3::Normalized</references>
+        <references refid="classMousePicker_1abe158e8000f76ab8dd69e69b6fc96d72" compoundref="MousePicker_8h" startline="26">projection</references>
+        <references refid="classApplication_1a1f9fcdedca8c91e6bcf5f517f905cbc3" compoundref="Application_8h" startline="24">Application::screenHeight</references>
+        <references refid="classApplication_1ad696bf3e7b79bbd1f360485f90c848c8" compoundref="Application_8h" startline="23">Application::screenWidth</references>
+        <references refid="structVector3_1a9c25d604bd52b162cfcb56302ef032bb" compoundref="Vector3_8cpp" startline="67" endline="72">Vector3::Set</references>
+        <references refid="classMousePicker_1ad564af9bd61eb18e690a7009a6cbbe64" compoundref="MousePicker_8h" startline="26">view</references>
+        <references refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" compoundref="Vector3_8h" startline="27">Vector3::x</references>
+        <references refid="classMousePicker_1a24c578525dc93e8913b5336c03f6cb50" compoundref="MousePicker_8h" startline="28">x</references>
+        <references refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" compoundref="Vector3_8h" startline="27">Vector3::y</references>
+        <references refid="classMousePicker_1abc25896ad1cc09c842e2c84bd0e5aabb" compoundref="MousePicker_8h" startline="28">y</references>
+        <references refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" compoundref="Vector3_8h" startline="27">Vector3::z</references>
+        <referencedby refid="classMousePicker_1a4574a22a56dc36909a5826fcf847ff92" compoundref="MousePicker_8cpp" startline="77" endline="81">update</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMousePicker_1a03b71750b7a048985983b7cdf83ec85f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 MousePicker::WorldCoord</definition>
+        <argsstring>()</argsstring>
+        <name>WorldCoord</name>
+        <briefdescription>
+<para>Calculates the coordinates on X and Z world space. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Returns a <ref refid="structVector3" kindref="compound">Vector3</ref> without Y coordinates. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="36" column="1" bodyfile="Zyzrag/Source/MousePicker.cpp" bodystart="117" bodyend="134"/>
+        <references refid="classMousePicker_1a86a8a19dcf678f8902f23df894f4cfe1" compoundref="MousePicker_8h" startline="27">camera</references>
+        <references refid="classMousePicker_1a2bde1127f23be5fc5958f6366e3f5ed2" compoundref="MousePicker_8h" startline="25">currentRay</references>
+        <references refid="structVector3_1a71b1271deb064c65f9dc7dba638c5b57" compoundref="Vector3_8cpp" startline="411" endline="414">Vector3::Dot</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">Camera::position</references>
+        <references refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" compoundref="Vector3_8h" startline="27">Vector3::y</references>
+        <referencedby refid="classSP2_1aaea998312e5a606293e8848c706c5acf" compoundref="SP2_8cpp" startline="2592" endline="2731">SP2::MouseSelection</referencedby>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMousePicker_1a4574a22a56dc36909a5826fcf847ff92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MousePicker::update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+<para>Updates the class to the latest camera position, target, up and caluclate the latest mouse ray. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="37" column="1" bodyfile="Zyzrag/Source/MousePicker.cpp" bodystart="77" bodyend="81"/>
+        <references refid="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" compoundref="MousePicker_8cpp" startline="92" endline="106">calculateMouseRay</references>
+        <references refid="classMousePicker_1a86a8a19dcf678f8902f23df894f4cfe1" compoundref="MousePicker_8h" startline="27">camera</references>
+        <references refid="classMousePicker_1a2bde1127f23be5fc5958f6366e3f5ed2" compoundref="MousePicker_8h" startline="25">currentRay</references>
+        <references refid="classCamera_1a3b229874a00253021a1b6c61657fa5ab" compoundref="Camera_8h" startline="30">Camera::position</references>
+        <references refid="classMtx44_1a7c3d2d30d9ed5bfca2ba97d0e570930f" compoundref="Mtx44_8cpp" startline="457" endline="474">Mtx44::SetToLookAt</references>
+        <references refid="classCamera_1a7b1215b2f9c2a71cd41e4225c7df31e8" compoundref="Camera_8h" startline="30">Camera::target</references>
+        <references refid="classCamera_1ab76ce866ca2acd6ab54447f474077245" compoundref="Camera_8h" startline="30">Camera::up</references>
+        <references refid="classMousePicker_1ad564af9bd61eb18e690a7009a6cbbe64" compoundref="MousePicker_8h" startline="26">view</references>
+        <references refid="structVector3_1a7e2d3237b29a2f29d7b3d8b2934e35f2" compoundref="Vector3_8h" startline="27">Vector3::x</references>
+        <references refid="structVector3_1a86eb35a9fa2d5a49e7fad66a35fa9c13" compoundref="Vector3_8h" startline="27">Vector3::y</references>
+        <references refid="structVector3_1aa8c9461eb24bd2c364258078811a3e9d" compoundref="Vector3_8h" startline="27">Vector3::z</references>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classMousePicker_1a2c94fa7238b7496f599b3a11114077df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MousePicker::set</definition>
+        <argsstring>(Camera camera, Mtx44 projection)</argsstring>
+        <name>set</name>
+        <param>
+          <type><ref refid="classCamera" kindref="compound">Camera</ref></type>
+          <declname>camera</declname>
+        </param>
+        <param>
+          <type><ref refid="classMtx44" kindref="compound">Mtx44</ref></type>
+          <declname>projection</declname>
+        </param>
+        <briefdescription>
+<para>Sets camera and projection. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>camera</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current <ref refid="classCamera" kindref="compound">Camera</ref></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>projection</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>projection matrix </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/MousePicker.h" line="38" column="1" bodyfile="Zyzrag/Source/MousePicker.cpp" bodystart="148" bodyend="152"/>
+        <references refid="classMousePicker_1a86a8a19dcf678f8902f23df894f4cfe1" compoundref="MousePicker_8h" startline="27">camera</references>
+        <references refid="classMousePicker_1abe158e8000f76ab8dd69e69b6fc96d72" compoundref="MousePicker_8h" startline="26">projection</references>
+        <referencedby refid="classSP2_1ad5924ef549fb8781c7862817da890f45" compoundref="SP2_8cpp" startline="1689" endline="1746">SP2::RTSUpdates</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="451">
+        <label>MousePicker</label>
+        <link refid="classMousePicker"/>
+        <childnode refid="452" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+        </childnode>
+        <childnode refid="453" relation="usage">
+          <edgelabel>camera</edgelabel>
+        </childnode>
+        <childnode refid="455" relation="usage">
+          <edgelabel>currentRay</edgelabel>
+        </childnode>
+        <childnode refid="457" relation="usage">
+          <edgelabel>view</edgelabel>
+          <edgelabel>projection</edgelabel>
+        </childnode>
+      </node>
+      <node id="453">
+        <label>Camera</label>
+        <link refid="classCamera"/>
+        <childnode refid="454" relation="usage">
+          <edgelabel>mouseX</edgelabel>
+          <edgelabel>mouseY</edgelabel>
+        </childnode>
+        <childnode refid="452" relation="usage">
+          <edgelabel>cameraSpeed</edgelabel>
+          <edgelabel>mouseSpeed</edgelabel>
+          <edgelabel>yaw</edgelabel>
+          <edgelabel>pitch</edgelabel>
+          <edgelabel>delay</edgelabel>
+          <edgelabel>time</edgelabel>
+        </childnode>
+        <childnode refid="455" relation="usage">
+          <edgelabel>target</edgelabel>
+          <edgelabel>right</edgelabel>
+          <edgelabel>view</edgelabel>
+          <edgelabel>position</edgelabel>
+          <edgelabel>up</edgelabel>
+        </childnode>
+        <childnode refid="456" relation="usage">
+          <edgelabel>lock</edgelabel>
+        </childnode>
+      </node>
+      <node id="452">
+        <label>float</label>
+      </node>
+      <node id="457">
+        <label>Mtx44</label>
+        <link refid="classMtx44"/>
+        <childnode refid="452" relation="usage">
+          <edgelabel>a</edgelabel>
+        </childnode>
+      </node>
+      <node id="454">
+        <label>double</label>
+      </node>
+      <node id="456">
+        <label>bool</label>
+      </node>
+      <node id="455">
+        <label>Vector3</label>
+        <link refid="structVector3"/>
+        <childnode refid="452" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/MousePicker.h" line="23" column="1" bodyfile="Zyzrag/Source/MousePicker.h" bodystart="22" bodyend="41"/>
+    <listofallmembers>
+      <member refid="classMousePicker_1a4ec25b13977155fa8c06ddcda9a2f55a" prot="public" virt="non-virtual"><scope>MousePicker</scope><name>calculateMouseRay</name></member>
+      <member refid="classMousePicker_1a86a8a19dcf678f8902f23df894f4cfe1" prot="private" virt="non-virtual"><scope>MousePicker</scope><name>camera</name></member>
+      <member refid="classMousePicker_1a2bde1127f23be5fc5958f6366e3f5ed2" prot="private" virt="non-virtual"><scope>MousePicker</scope><name>currentRay</name></member>
+      <member refid="classMousePicker_1a219531b0628bdabc3581381306548def" prot="public" virt="non-virtual"><scope>MousePicker</scope><name>getCurrentRay</name></member>
+      <member refid="classMousePicker_1aea545214aa06a65d6321b174b8c43d19" prot="public" virt="non-virtual"><scope>MousePicker</scope><name>MousePicker</name></member>
+      <member refid="classMousePicker_1a45200bf16e944756dd7bd72700665ac2" prot="public" virt="non-virtual"><scope>MousePicker</scope><name>MousePicker</name></member>
+      <member refid="classMousePicker_1abe158e8000f76ab8dd69e69b6fc96d72" prot="private" virt="non-virtual"><scope>MousePicker</scope><name>projection</name></member>
+      <member refid="classMousePicker_1a2c94fa7238b7496f599b3a11114077df" prot="public" virt="non-virtual"><scope>MousePicker</scope><name>set</name></member>
+      <member refid="classMousePicker_1a4574a22a56dc36909a5826fcf847ff92" prot="public" virt="non-virtual"><scope>MousePicker</scope><name>update</name></member>
+      <member refid="classMousePicker_1ad564af9bd61eb18e690a7009a6cbbe64" prot="private" virt="non-virtual"><scope>MousePicker</scope><name>view</name></member>
+      <member refid="classMousePicker_1a03b71750b7a048985983b7cdf83ec85f" prot="public" virt="non-virtual"><scope>MousePicker</scope><name>WorldCoord</name></member>
+      <member refid="classMousePicker_1a24c578525dc93e8913b5336c03f6cb50" prot="private" virt="non-virtual"><scope>MousePicker</scope><name>x</name></member>
+      <member refid="classMousePicker_1abc25896ad1cc09c842e2c84bd0e5aabb" prot="private" virt="non-virtual"><scope>MousePicker</scope><name>y</name></member>
+      <member refid="classMousePicker_1a91ba4200d9a453f556959deeb42beac7" prot="public" virt="non-virtual"><scope>MousePicker</scope><name>~MousePicker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

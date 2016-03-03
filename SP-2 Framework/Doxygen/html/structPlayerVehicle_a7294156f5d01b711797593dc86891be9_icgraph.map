@@ -1,0 +1,4 @@
+<map id="PlayerVehicle::respawn" name="PlayerVehicle::respawn">
+<area shape="rect" id="node2" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="212,5,357,32"/>
+<area shape="rect" id="node3" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="405,5,501,32"/>
+</map>

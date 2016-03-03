@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="classBullet" kind="class" language="C++" prot="public">
+    <compoundname>Bullet</compoundname>
+    <basecompoundref refid="classObject" prot="public" virt="non-virtual">Object</basecompoundref>
+    <includes refid="Bullet_8h" local="no">Bullet.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classBullet_1a2f38090c36700a8de5ab2d4c16fca03e" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Bullet::bulletSpeed</definition>
+        <argsstring></argsstring>
+        <name>bulletSpeed</name>
+        <initializer>= 300</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="40" column="1" bodyfile="Zyzrag/Source/Bullet.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBullet_1ac676d8c1ae271f3de8d365ab607bab41" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Bullet::BulletDamage</definition>
+        <argsstring></argsstring>
+        <name>BulletDamage</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="41" column="1" bodyfile="Zyzrag/Source/Bullet.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBullet_1a78f636cc348add10cfb7eade4b44c125" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Bullet::bulletMaxRange</definition>
+        <argsstring></argsstring>
+        <name>bulletMaxRange</name>
+        <initializer>= 500</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="42" column="1" bodyfile="Zyzrag/Source/Bullet.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBullet_1a6c48b856d54c32d178c052c0eba398c6" prot="private" static="no" mutable="no">
+        <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+        <definition>Vector3 Bullet::initialPosition</definition>
+        <argsstring></argsstring>
+        <name>initialPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="47" column="1" bodyfile="Zyzrag/Source/Bullet.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBullet_1ac2b2c4cabd617426f1357ddcb6c78a4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Bullet::Bullet</definition>
+        <argsstring>(Vector3 newView, Vector3 playerPos, float newBulletDamage)</argsstring>
+        <name>Bullet</name>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>newView</declname>
+        </param>
+        <param>
+          <type><ref refid="structVector3" kindref="compound">Vector3</ref></type>
+          <declname>playerPos</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>newBulletDamage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Name: <ref refid="Bullet_8cpp" kindref="compound">Bullet.cpp</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 22 feb 2016</para></simplesect>
+: functions and data for all bullets</para><para>: constructor</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 22 feb 2016</para></simplesect>
+: constructor for Bullets </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="27" column="1" bodyfile="Zyzrag/Source/Bullet.cpp" bodystart="31" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classBullet_1aaeb5cb41d7db89f49007b08b41f1bfcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Bullet::~Bullet</definition>
+        <argsstring>()</argsstring>
+        <name>~Bullet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: Destructor</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 22 feb 2016</para></simplesect>
+: Destructor for Bullets </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="28" column="1" bodyfile="Zyzrag/Source/Bullet.cpp" bodystart="54" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classBullet_1a85db31e6f9f7561eb1b78e4696680292" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Bullet::bulletUpdate</definition>
+        <argsstring>(double dt)</argsstring>
+        <name>bulletUpdate</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: bulletUpdate</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 22 feb 2016</para></simplesect>
+: update Bullets </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="30" column="1" bodyfile="Zyzrag/Source/Bullet.cpp" bodystart="75" bodyend="79"/>
+        <referencedby refid="classSP2_1ab7fdd4057eb7b08d1fe2aa28a4e25b15" compoundref="SP2_8cpp" startline="1952" endline="1976">SP2::bulletUpdates</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classBullet_1ac2583fcea03332c217f9e67ced3001c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Bullet::bulletMovement</definition>
+        <argsstring>(double dt)</argsstring>
+        <name>bulletMovement</name>
+        <param>
+          <type>double</type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: bulletMovement</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 22 feb 2016</para></simplesect>
+: changes the position of the bullet </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="31" column="1" bodyfile="Zyzrag/Source/Bullet.cpp" bodystart="94" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classBullet_1a5c6f0ee40c2ffadb500dbb91291f6263" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Bullet::getBulletDamage</definition>
+        <argsstring>()</argsstring>
+        <name>getBulletDamage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: getBulletDamage</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 22 feb 2016</para></simplesect>
+: returns the bullet damage </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="34" column="1" bodyfile="Zyzrag/Source/Bullet.cpp" bodystart="139" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classBullet_1a3a474fbd9f01031ca52d2dfa4d5c6e6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Bullet::furtherThanBulletMaxRange</definition>
+        <argsstring>()</argsstring>
+        <name>furtherThanBulletMaxRange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>: furtherThanBulletMaxRange</para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 22 feb 2016</para></simplesect>
+: check if the bullet is out of range </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Bullet.h" line="36" column="1" bodyfile="Zyzrag/Source/Bullet.cpp" bodystart="114" bodyend="124"/>
+        <referencedby refid="classSP2_1ab7fdd4057eb7b08d1fe2aa28a4e25b15" compoundref="SP2_8cpp" startline="1952" endline="1976">SP2::bulletUpdates</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Name: <ref refid="Bullet_8h" kindref="compound">Bullet.h</ref></para><para><simplesect kind="author"><para>: Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>: 22 feb 2016</para></simplesect>
+: functions and data for all bullets </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="331">
+        <label>Object</label>
+        <link refid="classObject"/>
+      </node>
+      <node id="330">
+        <label>Bullet</label>
+        <link refid="classBullet"/>
+        <childnode refid="331" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="336">
+        <label>float</label>
+      </node>
+      <node id="334">
+        <label>AABB</label>
+        <link refid="classAABB"/>
+        <childnode refid="335" relation="usage">
+          <edgelabel>Min</edgelabel>
+          <edgelabel>Max</edgelabel>
+        </childnode>
+      </node>
+      <node id="333">
+        <label>Object</label>
+        <link refid="classObject"/>
+        <childnode refid="334" relation="usage">
+          <edgelabel>hitboxSize</edgelabel>
+          <edgelabel>hitbox</edgelabel>
+          <edgelabel>interaction</edgelabel>
+        </childnode>
+        <childnode refid="335" relation="usage">
+          <edgelabel>InteractionMin</edgelabel>
+          <edgelabel>View</edgelabel>
+          <edgelabel>Right</edgelabel>
+          <edgelabel>Up</edgelabel>
+          <edgelabel>InteractionMax</edgelabel>
+          <edgelabel>Pos</edgelabel>
+        </childnode>
+      </node>
+      <node id="332">
+        <label>Bullet</label>
+        <link refid="classBullet"/>
+        <childnode refid="333" relation="public-inheritance">
+        </childnode>
+        <childnode refid="336" relation="usage">
+          <edgelabel>bulletSpeed</edgelabel>
+          <edgelabel>BulletDamage</edgelabel>
+          <edgelabel>bulletMaxRange</edgelabel>
+        </childnode>
+        <childnode refid="335" relation="usage">
+          <edgelabel>initialPosition</edgelabel>
+        </childnode>
+      </node>
+      <node id="335">
+        <label>Vector3</label>
+        <link refid="structVector3"/>
+        <childnode refid="336" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/Bullet.h" line="23" column="1" bodyfile="Zyzrag/Source/Bullet.h" bodystart="23" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classBullet_1ac2b2c4cabd617426f1357ddcb6c78a4b" prot="public" virt="non-virtual"><scope>Bullet</scope><name>Bullet</name></member>
+      <member refid="classBullet_1ac676d8c1ae271f3de8d365ab607bab41" prot="private" virt="non-virtual"><scope>Bullet</scope><name>BulletDamage</name></member>
+      <member refid="classBullet_1a78f636cc348add10cfb7eade4b44c125" prot="private" virt="non-virtual"><scope>Bullet</scope><name>bulletMaxRange</name></member>
+      <member refid="classBullet_1ac2583fcea03332c217f9e67ced3001c4" prot="public" virt="non-virtual"><scope>Bullet</scope><name>bulletMovement</name></member>
+      <member refid="classBullet_1a2f38090c36700a8de5ab2d4c16fca03e" prot="private" virt="non-virtual"><scope>Bullet</scope><name>bulletSpeed</name></member>
+      <member refid="classBullet_1a85db31e6f9f7561eb1b78e4696680292" prot="public" virt="non-virtual"><scope>Bullet</scope><name>bulletUpdate</name></member>
+      <member refid="classBullet_1a3a474fbd9f01031ca52d2dfa4d5c6e6f" prot="public" virt="non-virtual"><scope>Bullet</scope><name>furtherThanBulletMaxRange</name></member>
+      <member refid="classBullet_1a5c6f0ee40c2ffadb500dbb91291f6263" prot="public" virt="non-virtual"><scope>Bullet</scope><name>getBulletDamage</name></member>
+      <member refid="classObject_1a7fb8ec4db0d7b384156aee4d4192c44c" prot="public" virt="non-virtual"><scope>Bullet</scope><name>hitbox</name></member>
+      <member refid="classObject_1aed61a5d1af67b952aa5c3edd4d5fb6d8" prot="public" virt="non-virtual"><scope>Bullet</scope><name>hitboxSize</name></member>
+      <member refid="classBullet_1a6c48b856d54c32d178c052c0eba398c6" prot="private" virt="non-virtual"><scope>Bullet</scope><name>initialPosition</name></member>
+      <member refid="classObject_1aacafc6287e6765c621111d5c5577c8a6" prot="public" virt="non-virtual"><scope>Bullet</scope><name>interaction</name></member>
+      <member refid="classObject_1aa1f491b4a46b08cf71a938816bb28c0a" prot="public" virt="non-virtual"><scope>Bullet</scope><name>InteractionMax</name></member>
+      <member refid="classObject_1a64b2bfbbfc8b245f1251361aa9ad3a21" prot="public" virt="non-virtual"><scope>Bullet</scope><name>InteractionMin</name></member>
+      <member refid="classObject_1a40860402e64d8008fb42329df7097cdb" prot="public" virt="non-virtual"><scope>Bullet</scope><name>Object</name></member>
+      <member refid="classObject_1a503fc1152db4ee07cfece48f8a17a882" prot="public" virt="non-virtual"><scope>Bullet</scope><name>Object</name></member>
+      <member refid="classObject_1a61ffad7d6db49c0a486797f852804291" prot="public" virt="non-virtual"><scope>Bullet</scope><name>Pos</name></member>
+      <member refid="classObject_1a3b05c4da2828a9510ccb2a90ff0bc012" prot="public" virt="non-virtual"><scope>Bullet</scope><name>Right</name></member>
+      <member refid="classObject_1a2198f4c2b626c0633a18962cd7eb84e4" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetHitbox</name></member>
+      <member refid="classObject_1a96fe42f8ef68ace9d2dedc6d0fe4be22" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetHitboxSize</name></member>
+      <member refid="classObject_1a03acfeda7945d7c0358befe32f6ebaed" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetHitboxSize</name></member>
+      <member refid="classObject_1a564eeecf7deefdfb0144458beb28599b" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetInteraction</name></member>
+      <member refid="classObject_1a02290ed3825318459e72cb80d450afd0" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetInteractionSize</name></member>
+      <member refid="classObject_1a048d20a358acb913055e7e128cf5120e" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetPos</name></member>
+      <member refid="classObject_1aaaf6f6e7ec1a712ce23b5b4ad2ffad3f" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetPos</name></member>
+      <member refid="classObject_1a9a2de2d0a7b684ad05493a8f95e25408" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetRight</name></member>
+      <member refid="classObject_1ac7bd4c23a77ee9e7de4f051300bc7b5f" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetRight</name></member>
+      <member refid="classObject_1a0174b9a71374d4b3c8f3402ff2cebeaf" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetRight</name></member>
+      <member refid="classObject_1ada985c9da2c4c7efe3a72d836912e909" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetUp</name></member>
+      <member refid="classObject_1a1c38ee52b9773fb15827f7f8d5e8cf47" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetUp</name></member>
+      <member refid="classObject_1ae2e3ba0210f52fbaeef2b824cd2e80d4" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetUp</name></member>
+      <member refid="classObject_1a21f9115fbf9a7f2767de1d1a1c98ac09" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetView</name></member>
+      <member refid="classObject_1a7cc1c711ebe79a023b24abd69c590036" prot="public" virt="non-virtual"><scope>Bullet</scope><name>SetView</name></member>
+      <member refid="classObject_1a62be6ebd003c3a79e7824090cbcbcd40" prot="public" virt="non-virtual"><scope>Bullet</scope><name>Up</name></member>
+      <member refid="classObject_1a79185f158d60e9f8fde4940d9dda4cea" prot="public" virt="non-virtual"><scope>Bullet</scope><name>updateHitbox</name></member>
+      <member refid="classObject_1a9f75760503e51c4f2290f3e23192fb82" prot="public" virt="non-virtual"><scope>Bullet</scope><name>View</name></member>
+      <member refid="classBullet_1aaeb5cb41d7db89f49007b08b41f1bfcf" prot="public" virt="non-virtual"><scope>Bullet</scope><name>~Bullet</name></member>
+      <member refid="classObject_1ae8f5483f459e46687bd01e6f9977afd3" prot="public" virt="non-virtual"><scope>Bullet</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

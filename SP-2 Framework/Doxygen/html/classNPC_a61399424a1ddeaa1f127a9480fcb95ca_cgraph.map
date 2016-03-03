@@ -1,0 +1,7 @@
+<map id="NPC::update" name="NPC::update">
+<area shape="rect" id="node2" href="$structVector3.html#a54b8f55a970ee252479a326ffd0699c0" title="Vector3::getMagnitude" alt="" coords="149,5,303,32"/>
+<area shape="rect" id="node3" href="$classObject.html#a79185f158d60e9f8fde4940d9dda4cea" title="Updates hitbox by getting object pos added with hitbox size. " alt="" coords="154,56,298,83"/>
+<area shape="rect" id="node4" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="363,5,450,32"/>
+<area shape="rect" id="node5" href="$classAABB.html#a7969d3aaabc54615c0ad2b39719cfeea" title="Get&#39;s Vector3 min of class. " alt="" coords="353,56,461,83"/>
+<area shape="rect" id="node6" href="$classAABB.html#a19ea75e7f7b92d7100c0898c7a6c5f81" title="Get&#39;s Vector3 max of class. " alt="" coords="351,107,463,133"/>
+</map>

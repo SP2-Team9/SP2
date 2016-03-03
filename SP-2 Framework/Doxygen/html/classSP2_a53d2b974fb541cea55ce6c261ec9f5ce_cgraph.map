@@ -1,0 +1,17 @@
+<map id="SP2::asteroidUpdate" name="SP2::asteroidUpdate">
+<area shape="rect" id="node2" href="$classSP2.html#a71cb6a8fae424771777b139233ae7be8" title="SP2::generateAsteroid" alt="" coords="211,120,364,147"/>
+<area shape="rect" id="node11" href="$classSP2.html#afd0484905f52f03eefe6d9f6dd05004d" title="SP2::Timer" alt="" coords="244,196,331,223"/>
+<area shape="rect" id="node12" href="$classAsteroid.html#ae5e7c9985caf1b9d111aef30973c97e7" title="Update asteroid position, range, hitbox and health. " alt="" coords="229,247,346,273"/>
+<area shape="rect" id="node16" href="$classSP2.html#a6a8b835489d56022a82dfa40a6e9498a" title="SP2::vehiclesRemoveTarget" alt="" coords="196,297,379,324"/>
+<area shape="rect" id="node3" href="$classWave.html#a6e2d45bb01631ba7c317d70002e9d8f7" title="Wave::spawnAsteroid" alt="" coords="430,5,577,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#acd9f06ec52951d9741ac248cd93ad62b" title="SP2::generate_range" alt="" coords="431,56,575,83"/>
+<area shape="rect" id="node5" href="$classObject.html#a048d20a358acb913055e7e128cf5120e" title="Set object&#39;s position. " alt="" coords="448,107,559,133"/>
+<area shape="rect" id="node6" href="$classObject.html#a21f9115fbf9a7f2767de1d1a1c98ac09" title="Set View of object. " alt="" coords="445,157,561,184"/>
+<area shape="rect" id="node7" href="$classObject.html#a79185f158d60e9f8fde4940d9dda4cea" title="Updates hitbox by getting object pos added with hitbox size. " alt="" coords="431,208,575,235"/>
+<area shape="rect" id="node8" href="$classAABB.html#a19ea75e7f7b92d7100c0898c7a6c5f81" title="Get&#39;s Vector3 max of class. " alt="" coords="629,157,741,184"/>
+<area shape="rect" id="node9" href="$classAABB.html#a7969d3aaabc54615c0ad2b39719cfeea" title="Get&#39;s Vector3 min of class. " alt="" coords="631,208,739,235"/>
+<area shape="rect" id="node10" href="$classAABB.html#a58c802c10ec2e9f0b7ecc49d96b9a162" title="Sets the AABB&#39;s Vector3 min and max. " alt="" coords="642,259,729,285"/>
+<area shape="rect" id="node13" href="$structVector3.html#a54b8f55a970ee252479a326ffd0699c0" title="Vector3::getMagnitude" alt="" coords="427,259,580,285"/>
+<area shape="rect" id="node14" href="$structVector3.html#aaef4f25a38878a640ab4a48002a7eff8" title="Normalize this vector and return a reference to it. " alt="" coords="437,309,570,336"/>
+<area shape="rect" id="node15" href="$structVector3.html#a200024a8442329de9a625ed58ffe7075" title="Return length of vector. " alt="" coords="628,309,743,336"/>
+</map>

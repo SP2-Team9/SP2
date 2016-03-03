@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="structPosition" kind="struct" language="C++" prot="public">
+    <compoundname>Position</compoundname>
+    <includes refid="Vertex_8h" local="no">Vertex.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structPosition_1af684446cbf0f6d53386686283da6dcc6" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Position::x</definition>
+        <argsstring></argsstring>
+        <name>x</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Vertex.h" line="8" column="1" bodyfile="Zyzrag/Source/Vertex.h" bodystart="8" bodyend="-1"/>
+        <referencedby refid="LoadOBJ_8h_1aa634e9cac0a72d751731db6b4479cbda" compoundref="LoadOBJ_8cpp" startline="7" endline="121">LoadOBJ</referencedby>
+        <referencedby refid="Utility_8h_1adfba271c0b8f223d01dd4f35e62e27af" compoundref="Utility_8cpp" startline="3" endline="13">operator*</referencedby>
+        <referencedby refid="classSP2_1a90159ea511cadcc99364c6f75d108a71" compoundref="SP2_8cpp" startline="447" endline="556">SP2::Render</referencedby>
+        <referencedby refid="structPosition_1a2919b2441baf7a2f799791d65a1cfc15" compoundref="Vertex_8h" startline="10" endline="10">Set</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPosition_1a54a6182b5f7539295b32255808897d3f" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Position::y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Vertex.h" line="8" column="1" bodyfile="Zyzrag/Source/Vertex.h" bodystart="8" bodyend="-1"/>
+        <referencedby refid="LoadOBJ_8h_1aa634e9cac0a72d751731db6b4479cbda" compoundref="LoadOBJ_8cpp" startline="7" endline="121">LoadOBJ</referencedby>
+        <referencedby refid="Utility_8h_1adfba271c0b8f223d01dd4f35e62e27af" compoundref="Utility_8cpp" startline="3" endline="13">operator*</referencedby>
+        <referencedby refid="classSP2_1a90159ea511cadcc99364c6f75d108a71" compoundref="SP2_8cpp" startline="447" endline="556">SP2::Render</referencedby>
+        <referencedby refid="structPosition_1a2919b2441baf7a2f799791d65a1cfc15" compoundref="Vertex_8h" startline="10" endline="10">Set</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structPosition_1a5dc8c08d3d7209ba538ad21ba604aa44" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Position::z</definition>
+        <argsstring></argsstring>
+        <name>z</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Vertex.h" line="8" column="1" bodyfile="Zyzrag/Source/Vertex.h" bodystart="8" bodyend="-1"/>
+        <referencedby refid="LoadOBJ_8h_1aa634e9cac0a72d751731db6b4479cbda" compoundref="LoadOBJ_8cpp" startline="7" endline="121">LoadOBJ</referencedby>
+        <referencedby refid="Utility_8h_1adfba271c0b8f223d01dd4f35e62e27af" compoundref="Utility_8cpp" startline="3" endline="13">operator*</referencedby>
+        <referencedby refid="classSP2_1a90159ea511cadcc99364c6f75d108a71" compoundref="SP2_8cpp" startline="447" endline="556">SP2::Render</referencedby>
+        <referencedby refid="structPosition_1a2919b2441baf7a2f799791d65a1cfc15" compoundref="Vertex_8h" startline="10" endline="10">Set</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structPosition_1ab73d81912c4ead48cee5342d7cf5a33b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Position::Position</definition>
+        <argsstring>(float x=0, float y=0, float z=0)</argsstring>
+        <name>Position</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Vertex.h" line="9" column="1" bodyfile="Zyzrag/Source/Vertex.h" bodystart="9" bodyend="9"/>
+        <references refid="structPosition_1a2919b2441baf7a2f799791d65a1cfc15" compoundref="Vertex_8h" startline="10" endline="10">Set</references>
+      </memberdef>
+      <memberdef kind="function" id="structPosition_1a2919b2441baf7a2f799791d65a1cfc15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Position::Set</definition>
+        <argsstring>(float x, float y, float z)</argsstring>
+        <name>Set</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Zyzrag/Source/Vertex.h" line="10" column="1" bodyfile="Zyzrag/Source/Vertex.h" bodystart="10" bodyend="10"/>
+        <references refid="structPosition_1af684446cbf0f6d53386686283da6dcc6" compoundref="Vertex_8h" startline="8">x</references>
+        <references refid="structPosition_1a54a6182b5f7539295b32255808897d3f" compoundref="Vertex_8h" startline="8">y</references>
+        <references refid="structPosition_1a5dc8c08d3d7209ba538ad21ba604aa44" compoundref="Vertex_8h" startline="8">z</references>
+        <referencedby refid="classMeshBuilder_1a78d37e2b0cc068eec801f17c367100e7" compoundref="MeshBuilder_8cpp" startline="22" endline="67">MeshBuilder::GenerateAxes</referencedby>
+        <referencedby refid="classMeshBuilder_1a7159eed1c0e58ad5f45f785796166ab4" compoundref="MeshBuilder_8cpp" startline="730" endline="766">MeshBuilder::GenerateCircle</referencedby>
+        <referencedby refid="classMeshBuilder_1ad364edd609741da0115e7ee189133202" compoundref="MeshBuilder_8cpp" startline="809" endline="866">MeshBuilder::GenerateCone</referencedby>
+        <referencedby refid="classMeshBuilder_1ad01b11d521f6bd6377f00e1aa5fe8f77" compoundref="MeshBuilder_8cpp" startline="868" endline="925">MeshBuilder::GenerateCone2</referencedby>
+        <referencedby refid="classMeshBuilder_1a4b433a1857045baef8e45f544a9939c2" compoundref="MeshBuilder_8cpp" startline="241" endline="427">MeshBuilder::GenerateCube</referencedby>
+        <referencedby refid="classMeshBuilder_1a790be08b30b0a42808c4cfbe78636460" compoundref="MeshBuilder_8cpp" startline="1205" endline="1358">MeshBuilder::GenerateCyclinder</referencedby>
+        <referencedby refid="classMeshBuilder_1a2193b89bee6380b7210e6b8b49e8c6eb" compoundref="MeshBuilder_8cpp" startline="1444" endline="1489">MeshBuilder::GenerateFloor</referencedby>
+        <referencedby refid="classMeshBuilder_1abde539c1c59e68656a0522d816dfd98f" compoundref="MeshBuilder_8cpp" startline="1028" endline="1069">MeshBuilder::GenerateHollowHemiSphere</referencedby>
+        <referencedby refid="classMeshBuilder_1a81264ab3e7a00beba1549c4e418af506" compoundref="MeshBuilder_8cpp" startline="83" endline="111">MeshBuilder::GenerateLine</referencedby>
+        <referencedby refid="classMeshBuilder_1a8fede2f411aebe5d41af99b51be7ed77" compoundref="MeshBuilder_8cpp" startline="179" endline="225">MeshBuilder::GenerateQuad</referencedby>
+        <referencedby refid="classMeshBuilder_1aaa989b0714d5fc01a4c10c4ffaf8a2d8" compoundref="MeshBuilder_8cpp" startline="768" endline="807">MeshBuilder::GenerateRing</referencedby>
+        <referencedby refid="classMeshBuilder_1a4000eab8102c6a68b28410daad6ef757" compoundref="MeshBuilder_8cpp" startline="940" endline="1026">MeshBuilder::GenerateSphere</referencedby>
+        <referencedby refid="classMeshBuilder_1ada654a09cd23bc2c2bec641e2dee101e" compoundref="MeshBuilder_8cpp" startline="113" endline="164">MeshBuilder::GenerateSquare</referencedby>
+        <referencedby refid="classMeshBuilder_1aac7c87881dbc08f8d41f2068e0f40c76" compoundref="MeshBuilder_8cpp" startline="1387" endline="1442">MeshBuilder::GenerateText</referencedby>
+        <referencedby refid="classMeshBuilder_1a6d1843f86bd7b1152e393008e2cc817c" compoundref="MeshBuilder_8cpp" startline="1071" endline="1114">MeshBuilder::GenerateTorus</referencedby>
+        <referencedby refid="classMeshBuilder_1a5590752eb61ab4b4cc068d5f61a8e2d8" compoundref="MeshBuilder_8cpp" startline="1116" endline="1203">MeshBuilder::GenerateTorus2</referencedby>
+        <referencedby refid="LoadOBJ_8h_1aa99ef9426a57205ed8acb8f7d41f3bae" compoundref="LoadOBJ_8cpp" startline="149" endline="189">IndexVBO</referencedby>
+        <referencedby refid="structLight_1aeb5df09a25a32f19fdffa761268ba24f" compoundref="Light_8h" startline="13" endline="19">Light::Light</referencedby>
+        <referencedby refid="classSP2_1a02482db0b3d6031712d6f9860774a764" compoundref="SP2_8cpp" startline="682" endline="750">SP2::lightInit</referencedby>
+        <referencedby refid="structPosition_1ab73d81912c4ead48cee5342d7cf5a33b" compoundref="Vertex_8h" startline="9" endline="9">Position</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="507">
+        <label>Position</label>
+        <link refid="structPosition"/>
+        <childnode refid="508" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+      <node id="508">
+        <label>float</label>
+      </node>
+    </collaborationgraph>
+    <location file="Zyzrag/Source/Vertex.h" line="7" column="1" bodyfile="Zyzrag/Source/Vertex.h" bodystart="6" bodyend="11"/>
+    <listofallmembers>
+      <member refid="structPosition_1ab73d81912c4ead48cee5342d7cf5a33b" prot="public" virt="non-virtual"><scope>Position</scope><name>Position</name></member>
+      <member refid="structPosition_1a2919b2441baf7a2f799791d65a1cfc15" prot="public" virt="non-virtual"><scope>Position</scope><name>Set</name></member>
+      <member refid="structPosition_1af684446cbf0f6d53386686283da6dcc6" prot="public" virt="non-virtual"><scope>Position</scope><name>x</name></member>
+      <member refid="structPosition_1a54a6182b5f7539295b32255808897d3f" prot="public" virt="non-virtual"><scope>Position</scope><name>y</name></member>
+      <member refid="structPosition_1a5dc8c08d3d7209ba538ad21ba604aa44" prot="public" virt="non-virtual"><scope>Position</scope><name>z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

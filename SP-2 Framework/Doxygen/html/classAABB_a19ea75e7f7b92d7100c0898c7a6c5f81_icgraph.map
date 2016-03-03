@@ -1,0 +1,17 @@
+<map id="AABB::GetMax" name="AABB::GetMax">
+<area shape="rect" id="node2" href="$classObject.html#a2198f4c2b626c0633a18962cd7eb84e4" title="Sets object hitbox. " alt="" coords="175,31,300,57"/>
+<area shape="rect" id="node7" href="$classObject.html#a79185f158d60e9f8fde4940d9dda4cea" title="Updates hitbox by getting object pos added with hitbox size. " alt="" coords="165,132,309,159"/>
+<area shape="rect" id="node3" href="$classSP2.html#a276a9a58452b8b6263b133252d1ab340" title="SP2::objectsInit" alt="" coords="377,5,491,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#a8669c489b6a968f367a4610b254ac992" title="SP2::Init" alt="" coords="611,107,683,133"/>
+<area shape="rect" id="node5" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="1021,208,1117,235"/>
+<area shape="rect" id="node6" href="$classSP2.html#ae3b8fa1d8f987a6f5b9175c10944398a" title="SP2::gameOverUpdate" alt="" coords="801,157,955,184"/>
+<area shape="rect" id="node8" href="$classAsteroid.html#ae5e7c9985caf1b9d111aef30973c97e7" title="Update asteroid position, range, hitbox and health. " alt="" coords="375,56,493,83"/>
+<area shape="rect" id="node11" href="$classNPC.html#a61399424a1ddeaa1f127a9480fcb95ca" title="NPC::update" alt="" coords="386,107,482,133"/>
+<area shape="rect" id="node12" href="$structPlayerVehicle.html#aa77ce5452a993d479830f61ef2281b5f" title="Update player vehicle. " alt="" coords="572,208,721,235"/>
+<area shape="rect" id="node13" href="$classSP2.html#a71cb6a8fae424771777b139233ae7be8" title="SP2::generateAsteroid" alt="" coords="357,157,511,184"/>
+<area shape="rect" id="node14" href="$classSP2.html#ae3446475b6de146a3342e26604c78d6f" title="SP2::NPCUpdates" alt="" coords="369,259,499,285"/>
+<area shape="rect" id="node16" href="$classSP2.html#a2459f1284bfa90822936b2410a57b7db" title="SP2::inPlayerShipUpdates" alt="" coords="559,309,735,336"/>
+<area shape="rect" id="node9" href="$classSP2.html#a53d2b974fb541cea55ce6c261ec9f5ce" title="SP2::asteroidUpdate" alt="" coords="575,157,718,184"/>
+<area shape="rect" id="node10" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="805,208,951,235"/>
+<area shape="rect" id="node15" href="$classSP2.html#a48207cfb8991c95ceca13e7d5cfab56d" title="SP2::inSpaceStationUpdates" alt="" coords="783,259,973,285"/>
+</map>

@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="Explosion_8h" kind="file" language="C++">
+    <compoundname>Explosion.h</compoundname>
+    <includes refid="Object_8h" local="yes">Object.h</includes>
+    <includes refid="Vector3_8h" local="yes">Vector3.h</includes>
+    <includedby refid="SP2_8h" local="yes">Zyzrag/Source/SP2.h</includedby>
+    <includedby refid="Explosion_8cpp" local="yes">Zyzrag/Source/Explosion.cpp</includedby>
+    <incdepgraph>
+      <node id="2163">
+        <label>AABB.h</label>
+        <link refid="AABB_8h"/>
+        <childnode refid="2164" relation="include">
+        </childnode>
+        <childnode refid="2171" relation="include">
+        </childnode>
+      </node>
+      <node id="2161">
+        <label>Zyzrag/Source/Explosion.h</label>
+        <link refid="Explosion.h"/>
+        <childnode refid="2162" relation="include">
+        </childnode>
+        <childnode refid="2164" relation="include">
+        </childnode>
+      </node>
+      <node id="2166">
+        <label>cmath</label>
+      </node>
+      <node id="2167">
+        <label>exception</label>
+      </node>
+      <node id="2168">
+        <label>ctime</label>
+      </node>
+      <node id="2171">
+        <label>vector</label>
+      </node>
+      <node id="2164">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2165" relation="include">
+        </childnode>
+        <childnode refid="2170" relation="include">
+        </childnode>
+      </node>
+      <node id="2169">
+        <label>cstdlib</label>
+      </node>
+      <node id="2170">
+        <label>iostream</label>
+      </node>
+      <node id="2165">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2166" relation="include">
+        </childnode>
+        <childnode refid="2167" relation="include">
+        </childnode>
+        <childnode refid="2168" relation="include">
+        </childnode>
+        <childnode refid="2169" relation="include">
+        </childnode>
+      </node>
+      <node id="2162">
+        <label>Object.h</label>
+        <link refid="Object_8h"/>
+        <childnode refid="2163" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2172">
+        <label>Zyzrag/Source/Explosion.h</label>
+        <link refid="Explosion.h"/>
+        <childnode refid="2173" relation="include">
+        </childnode>
+        <childnode refid="2176" relation="include">
+        </childnode>
+      </node>
+      <node id="2174">
+        <label>Zyzrag/Source/Application.cpp</label>
+        <link refid="Application_8cpp"/>
+      </node>
+      <node id="2176">
+        <label>Zyzrag/Source/Explosion.cpp</label>
+        <link refid="Explosion_8cpp"/>
+      </node>
+      <node id="2175">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2173">
+        <label>Zyzrag/Source/SP2.h</label>
+        <link refid="SP2_8h"/>
+        <childnode refid="2174" relation="include">
+        </childnode>
+        <childnode refid="2175" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classExplosion" prot="public">Explosion</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>_EXPLOSION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_EXPLOSION_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"></codeline>
+<codeline lineno="16"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Object_8h" kindref="compound">Object.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vector3_8h" kindref="compound">Vector3.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classExplosion" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classExplosion" kindref="compound">Explosion</ref>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classObject" kindref="compound">Object</ref></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classExplosion_1ac47497add7f4c10d2d4a32ebeeb193b1" kindref="member">Explosion</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newExplosionSize,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newExplosionSpeed,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>currPos);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classExplosion_1ac9c0baa7268ff5b8f4f358074a1326c0" kindref="member">~Explosion</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1a8b9619fc8f736492288f2a55fef9ca76" kindref="member">getYaw</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1a8e44052ce5a65379e94a7917878b2741" kindref="member">getPitch</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1a23b17a29c5526661812ab7ccdce5cd5b" kindref="member">getExplosionSize</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1aec226bdb1fd33148126d37af6420db2d" kindref="member">explosionEnd</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1af080bdbdaf51f8dc2fd0bab2a0f64496" kindref="member">explosionUpdate</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1a3d24bbaf021d787a49f41bcbc13dd1ba" kindref="member">setPitchandYaw</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newPitch,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newYaw);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classExplosion_1a3a026b5deddfb4e7ab173b12c26b5365" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1a3a026b5deddfb4e7ab173b12c26b5365" kindref="member">yaw</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42" refid="classExplosion_1a0b760d5dd77d3ab9ab988ed1303ebc3a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1a0b760d5dd77d3ab9ab988ed1303ebc3a" kindref="member">pitch</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="43" refid="classExplosion_1ac5461bea12ef415759858aa4ebbf485e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1ac5461bea12ef415759858aa4ebbf485e" kindref="member">explosionMaxSize</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44" refid="classExplosion_1a4d1769dc9fd8ca0935880d70afcb6f38" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1a4d1769dc9fd8ca0935880d70afcb6f38" kindref="member">maxExplosionSpeed</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="45" refid="classExplosion_1a62a5d489d1953a9bbcf81fc92b03e035" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classExplosion_1a62a5d489d1953a9bbcf81fc92b03e035" kindref="member">explosionCurrentSize</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>_EXPLOSION_H</highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/Explosion.h"/>
+  </compounddef>
+</doxygen>

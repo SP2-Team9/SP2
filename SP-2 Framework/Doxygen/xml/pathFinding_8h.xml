@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.10">
+  <compounddef id="pathFinding_8h" kind="file" language="C++">
+    <compoundname>pathFinding.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">queue</includes>
+    <includes refid="Vector3_8h" local="yes">Vector3.h</includes>
+    <includes refid="MyMath_8h" local="yes">MyMath.h</includes>
+    <includedby refid="Vehicles_8h" local="yes">Zyzrag/Source/Vehicles.h</includedby>
+    <includedby refid="Bullet_8h" local="yes">Zyzrag/Source/Bullet.h</includedby>
+    <includedby refid="Shop_8h" local="yes">Zyzrag/Source/Shop.h</includedby>
+    <includedby refid="SP2_8h" local="yes">Zyzrag/Source/SP2.h</includedby>
+    <includedby refid="pathFinding_8cpp" local="yes">Zyzrag/Source/pathFinding.cpp</includedby>
+    <incdepgraph>
+      <node id="2450">
+        <label>queue</label>
+      </node>
+      <node id="2448">
+        <label>Zyzrag/Source/pathFinding.h</label>
+        <link refid="pathFinding.h"/>
+        <childnode refid="2449" relation="include">
+        </childnode>
+        <childnode refid="2450" relation="include">
+        </childnode>
+        <childnode refid="2451" relation="include">
+        </childnode>
+        <childnode refid="2452" relation="include">
+        </childnode>
+      </node>
+      <node id="2453">
+        <label>cmath</label>
+      </node>
+      <node id="2454">
+        <label>exception</label>
+      </node>
+      <node id="2455">
+        <label>ctime</label>
+      </node>
+      <node id="2449">
+        <label>vector</label>
+      </node>
+      <node id="2451">
+        <label>Vector3.h</label>
+        <link refid="Vector3_8h"/>
+        <childnode refid="2452" relation="include">
+        </childnode>
+        <childnode refid="2457" relation="include">
+        </childnode>
+      </node>
+      <node id="2456">
+        <label>cstdlib</label>
+      </node>
+      <node id="2457">
+        <label>iostream</label>
+      </node>
+      <node id="2452">
+        <label>MyMath.h</label>
+        <link refid="MyMath_8h"/>
+        <childnode refid="2453" relation="include">
+        </childnode>
+        <childnode refid="2454" relation="include">
+        </childnode>
+        <childnode refid="2455" relation="include">
+        </childnode>
+        <childnode refid="2456" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2470">
+        <label>Zyzrag/Source/PlayerVehicle.cpp</label>
+        <link refid="PlayerVehicle_8cpp"/>
+      </node>
+      <node id="2459">
+        <label>Zyzrag/Source/Vehicles.h</label>
+        <link refid="Vehicles_8h"/>
+        <childnode refid="2460" relation="include">
+        </childnode>
+        <childnode refid="2462" relation="include">
+        </childnode>
+        <childnode refid="2471" relation="include">
+        </childnode>
+      </node>
+      <node id="2458">
+        <label>Zyzrag/Source/pathFinding.h</label>
+        <link refid="pathFinding.h"/>
+        <childnode refid="2459" relation="include">
+        </childnode>
+        <childnode refid="2472" relation="include">
+        </childnode>
+        <childnode refid="2461" relation="include">
+        </childnode>
+        <childnode refid="2462" relation="include">
+        </childnode>
+        <childnode refid="2474" relation="include">
+        </childnode>
+      </node>
+      <node id="2460">
+        <label>Zyzrag/Source/PlayerVehicle.h</label>
+        <link refid="PlayerVehicle_8h"/>
+        <childnode refid="2461" relation="include">
+        </childnode>
+        <childnode refid="2466" relation="include">
+        </childnode>
+        <childnode refid="2462" relation="include">
+        </childnode>
+        <childnode refid="2470" relation="include">
+        </childnode>
+      </node>
+      <node id="2463">
+        <label>Zyzrag/Source/Application.cpp</label>
+        <link refid="Application_8cpp"/>
+      </node>
+      <node id="2461">
+        <label>Zyzrag/Source/Shop.h</label>
+        <link refid="Shop_8h"/>
+        <childnode refid="2462" relation="include">
+        </childnode>
+        <childnode refid="2465" relation="include">
+        </childnode>
+      </node>
+      <node id="2464">
+        <label>Zyzrag/Source/SP2.cpp</label>
+        <link refid="SP2_8cpp"/>
+      </node>
+      <node id="2474">
+        <label>Zyzrag/Source/pathFinding.cpp</label>
+        <link refid="pathFinding_8cpp"/>
+      </node>
+      <node id="2465">
+        <label>Zyzrag/Source/Shop.cpp</label>
+        <link refid="Shop_8cpp"/>
+      </node>
+      <node id="2472">
+        <label>Zyzrag/Source/Bullet.h</label>
+        <link refid="Bullet_8h"/>
+        <childnode refid="2459" relation="include">
+        </childnode>
+        <childnode refid="2462" relation="include">
+        </childnode>
+        <childnode refid="2473" relation="include">
+        </childnode>
+      </node>
+      <node id="2468">
+        <label>Zyzrag/Source/MousePicker.cpp</label>
+        <link refid="MousePicker_8cpp"/>
+      </node>
+      <node id="2473">
+        <label>Zyzrag/Source/Bullet.cpp</label>
+        <link refid="Bullet_8cpp"/>
+      </node>
+      <node id="2462">
+        <label>Zyzrag/Source/SP2.h</label>
+        <link refid="SP2_8h"/>
+        <childnode refid="2463" relation="include">
+        </childnode>
+        <childnode refid="2464" relation="include">
+        </childnode>
+      </node>
+      <node id="2471">
+        <label>Zyzrag/Source/Vehicles.cpp</label>
+        <link refid="Vehicles_8cpp"/>
+      </node>
+      <node id="2467">
+        <label>Zyzrag/Source/MousePicker.h</label>
+        <link refid="MousePicker_8h"/>
+        <childnode refid="2462" relation="include">
+        </childnode>
+        <childnode refid="2468" relation="include">
+        </childnode>
+      </node>
+      <node id="2469">
+        <label>Zyzrag/Source/Camera.cpp</label>
+        <link refid="Camera_8cpp"/>
+      </node>
+      <node id="2466">
+        <label>Zyzrag/Source/Camera.h</label>
+        <link refid="Camera_8h"/>
+        <childnode refid="2462" relation="include">
+        </childnode>
+        <childnode refid="2467" relation="include">
+        </childnode>
+        <childnode refid="2469" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classpathFinding" prot="public">pathFinding</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Wong Keng Han Ashley</para></simplesect>
+<simplesect kind="date"><para>15 feb 2016</para></simplesect>
+This cpp file contains all the declarations for use in <ref refid="pathFinding_8cpp" kindref="compound">pathFinding.cpp</ref> </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>PATHFINDING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PATHFINDING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;queue&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Vector3_8h" kindref="compound">Vector3.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="MyMath_8h" kindref="compound">MyMath.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::vector;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::queue;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"></codeline>
+<codeline lineno="25"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classpathFinding" kindref="compound">pathFinding</ref>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpathFinding_1a7d0742acee37d4243ed8c4f15da5f26c" kindref="member">pathFinding</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classpathFinding_1a7d0742acee37d4243ed8c4f15da5f26c" kindref="member">pathFinding</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>location,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>endlocation);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a3cf76747fd56f329f108cac1ed870a13" kindref="member">~pathFinding</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1aaec2344e1dc4f7e528d956b1d02b599c" kindref="member">resetWayPoints</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a1872b965e8997223be22b36526cdaefb" kindref="member">pathRoute</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dt);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a3de937d314008cf9db25825f8b19aa7f" kindref="member">updateWayPoints</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>endLocation);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1ab2ab143264e5fc0397cdc2d5b5a6edb7" kindref="member">setInitialWayPoints</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>endLocation);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a8be240ece0214fd2259eb122fc283695" kindref="member">setCurrentLocation</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>newCurrLocation);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1ab2ab143264e5fc0397cdc2d5b5a6edb7" kindref="member">setInitialWayPoints</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>location,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a2446009959863155e26e3bb05cddc58e" kindref="member">setInitialDirection</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>view);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a67d762ee2567af93e933a7241846de81" kindref="member">setMaxSpeed</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newSpeed);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1ace5f799cd222949692c7d55dd9cf6464" kindref="member">setCurrSpeed</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>newSpeed);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a15d4bc582f17cdddf8eada41b94794df" kindref="member">getMaxSpeed</ref>();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a668a9bc3f9bc4ba01b5cac2549c0bfc1" kindref="member">getCurrSpeed</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a363531d0dc33cf32adee3db4022109a2" kindref="member">distanceBetween2points</ref>(<ref refid="structVector3" kindref="compound">Vector3</ref><sp/>Point1,<sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/>Point2);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/><ref refid="classpathFinding_1a9bd82a4142701b260862e433d11fc5db" kindref="member">getCurrentLocation</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/><ref refid="classpathFinding_1a90b0e2b4876ae5145a16ce3ee9c8c565" kindref="member">getLastWayPointDirection</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue&lt;Vector3&gt;<sp/><ref refid="classpathFinding_1ac16d2fc81fb8894ab2e45d957785987b" kindref="member">getwayPoints</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classpathFinding_1a4a3346dc1182a0201d34411f7d00ab57" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a4a3346dc1182a0201d34411f7d00ab57" kindref="member">maxSpeed</ref>;</highlight></codeline>
+<codeline lineno="59" refid="classpathFinding_1a5ce1f4f26a688a5beb596ec7b78986e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classpathFinding_1a5ce1f4f26a688a5beb596ec7b78986e4" kindref="member">currSpeed</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classpathFinding_1ada788e905dcd0c9428ae7256f1424326" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>queue&lt;Vector3&gt;<sp/><ref refid="classpathFinding_1ada788e905dcd0c9428ae7256f1424326" kindref="member">wayPoints</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classpathFinding_1a62a351404975f7bdebacb909bfecdfb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/><ref refid="classpathFinding_1a62a351404975f7bdebacb909bfecdfb9" kindref="member">currentLocation</ref>;</highlight></codeline>
+<codeline lineno="66" refid="classpathFinding_1a8f735c44e05ab3855a4a4485e8abb838" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structVector3" kindref="compound">Vector3</ref><sp/><ref refid="classpathFinding_1a8f735c44e05ab3855a4a4485e8abb838" kindref="member">lastWayPointDirection</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="Zyzrag/Source/pathFinding.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,5 @@
+<map id="SP2::asteroidHitboxCheck" name="SP2::asteroidHitboxCheck">
+<area shape="rect" id="node2" href="$classSP2.html#ab0c289753020129773c539b0fe8f1c68" title="SP2::checkHitboxes" alt="" coords="228,5,369,32"/>
+<area shape="rect" id="node3" href="$classSP2.html#a6d4785971e51defc63ed5c78875c8d7f" title="SP2::generalUpdates" alt="" coords="417,5,563,32"/>
+<area shape="rect" id="node4" href="$classSP2.html#a075edf39d3102610bf7f404ae3b8d38c" title="SP2::Update" alt="" coords="611,5,707,32"/>
+</map>
