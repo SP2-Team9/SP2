@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 #include "SP2.h"
-#include "Earth.h"
+
 
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game

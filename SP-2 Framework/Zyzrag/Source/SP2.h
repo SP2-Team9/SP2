@@ -148,6 +148,7 @@ class SP2 : public Scene{
 		inPlayerShip,
 		inSpaceStation,
 		inShop,
+        waveTransition,
 		help,
 		exit,
 	};
@@ -188,6 +189,7 @@ public:
 	virtual void Update(double dt);
 	
 	// Initializers
+
 	void objectsInit();
 	void lightInit();
 	void shopInit();
@@ -199,6 +201,7 @@ public:
 	
 	// Renders
 
+  
 	void renderHelp();
 	void renderNPC();
 	void renderNPC2();
@@ -219,6 +222,7 @@ public:
 	void renderFightingUI();
     void renderExplosions();
 	void renderTitleScreen();
+    void renderWaveTransition();
     void renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health, Color color);
 
 	// Updates
@@ -234,6 +238,7 @@ public:
 	void mainMenuUpdates(double dt);
 	void explosionUpdate(double dt);
 	void inPlayerShipUpdates(double dt);
+    void waveTransitionUpdate(double dt);
 	void inSpaceStationUpdates(double dt);
 
 	//Others
@@ -251,8 +256,9 @@ public:
 	void MouseSelection(double dt);
     void selectionSetTarget(Asteroid* newTarget);
     void vehiclesRemoveTarget(Asteroid* oldTarget);
-    void removeOneSelection(Vehicles* removedVehicle);
     void selectionSetWaypoints(Vector3 newPosition);
+    void removeOneSelection(Vehicles* removedVehicle);
+   
 
 	// Tools
 	void RenderMesh(Mesh* mesh, bool enableLight);

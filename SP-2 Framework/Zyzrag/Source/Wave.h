@@ -15,7 +15,10 @@
 #ifndef _WAVE_H
 #define _WAVE_H
 
+#include <iostream>
 
+using std::cout;
+using std::endl;
 
 class Wave{
 
@@ -26,10 +29,13 @@ public:
 
 	bool waveComplete();
 	bool spawnAsteroid();
+    bool transitionComplete();
 
 	void nextWave();
 	void waveUpdate(double dt);
 
+
+    bool endOfTransition;
 
 	int waveNumber;
 	int maxNumberOfAsteroids;
@@ -37,6 +43,9 @@ public:
 
 	double maxWaveCooldownTime;
 	double currWaveCooldownTime;
+
+    double maxTransitionTime;
+    double currTransitionTime;
 
 	double maxAsteroidSpawnCooldownTime;
 	double currAsteroidSpawnCooldownTime;

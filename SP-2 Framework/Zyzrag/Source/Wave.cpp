@@ -35,10 +35,15 @@ Wave::Wave(){
 	numberOfAsteroidsDestroyed = 0;
 
 	maxWaveCooldownTime = 30;
-	currWaveCooldownTime = 0;
+	currWaveCooldownTime = 30;
 
 	maxAsteroidSpawnCooldownTime = 1;
 	currAsteroidSpawnCooldownTime = 0;
+
+    maxTransitionTime = 5;
+    currTransitionTime = 0;
+
+    endOfTransition = false;
  
 }
 
@@ -77,8 +82,7 @@ Wave::~Wave(){
 
 bool Wave::waveComplete(){
 
-	if (numberOfAsteroidsDestroyed == maxNumberOfAsteroids){
-
+	if (numberOfAsteroidsDestroyed >= maxNumberOfAsteroids){
 		return true;
 
 	}
@@ -105,8 +109,12 @@ void Wave::nextWave(){
 	waveNumber += 1;
 	maxNumberOfAsteroids += 5;
 	numberOfAsteroidsDestroyed = 0;
+
+    currTransitionTime = 0;
 	currWaveCooldownTime = 0;
+
 	currAsteroidSpawnCooldownTime = 0;
+   
 
 }
 
@@ -125,19 +133,28 @@ void Wave::nextWave(){
 
 void Wave::waveUpdate(double dt){
 
-	if (waveComplete()){
+    currWaveCooldownTime += dt; 
 
-		currWaveCooldownTime += dt;
+    if (waveComplete()){
+ 
+       
+        endOfTransition = false;
+        currTransitionTime += dt;
 
-	}
+    }
 
-	if (currWaveCooldownTime > maxWaveCooldownTime){
+    if (waveComplete() && transitionComplete()){
 
-		nextWave();
+        endOfTransition = true;
+        nextWave();
 
-	}
+    }
 
-	currAsteroidSpawnCooldownTime += dt;
+    if (currWaveCooldownTime > maxWaveCooldownTime){
+
+        currAsteroidSpawnCooldownTime += dt;
+
+    }
 
 }
 
@@ -157,13 +174,47 @@ void Wave::waveUpdate(double dt){
 
 bool Wave::spawnAsteroid(){
 
-	if (currAsteroidSpawnCooldownTime > maxAsteroidSpawnCooldownTime){
+    if (currWaveCooldownTime > maxWaveCooldownTime){
 
-		currAsteroidSpawnCooldownTime = 0;
-		return true;
+        if (currAsteroidSpawnCooldownTime > maxAsteroidSpawnCooldownTime && maxNumberOfAsteroids - numberOfAsteroidsDestroyed > 0){
 
-	}
+            currAsteroidSpawnCooldownTime = 0;
+            return true;
+
+        }
+
+    }
 
 	return false;
 
 }
+
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: check if transition is complete
+
+* \author: Wong Keng Han Ashley
+
+* \date: 1 March 2016
+
+* \description: check if tansition time is over
+*/
+/////////////////////////////////////////////////////////////////
+
+bool Wave::transitionComplete(){
+
+    if (currTransitionTime > maxTransitionTime){
+
+        endOfTransition = true;
+        return true;
+
+    }
+    else{
+
+        return false;
+
+    }
+
+}
+
