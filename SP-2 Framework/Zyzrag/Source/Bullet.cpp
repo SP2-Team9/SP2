@@ -92,10 +92,8 @@ void Bullet::bulletUpdate(double dt){
 */
 /////////////////////////////////////////////////////////////////
 void Bullet::bulletMovement(double dt){
-
-
+    
     Pos += View * bulletSpeed * dt;
-
 
 }
 

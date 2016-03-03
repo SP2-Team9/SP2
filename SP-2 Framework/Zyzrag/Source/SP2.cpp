@@ -270,7 +270,6 @@ void SP2::Init()
 }
 
 void SP2::Update(double dt){
-    dt *= 2;
 
 	if (Application::IsKeyPressed('P'))
 	{
@@ -746,8 +745,9 @@ void SP2::generateAsteroid(){
 void SP2::renderWaveTransition(){
 
     RenderOnScreen(meshList[GEO_HELPSCREEN], screenWidth / 2, screenHeight / 2, -20, 1, 90, 0, 0);
-    RenderTextOnScreen(meshList[GEO_TEXT], "Wave " + std::to_string(waveFunctions->waveNumber), Color(0, 1, 0), 20, 0.33f * screenWidth, 0.6 * screenHeight);
-    RenderTextOnScreen(meshList[GEO_TEXT], "Complete!", Color(0, 1, 0), 20, 0.26f * screenWidth, 0.4 * screenHeight);
+
+    RenderTextOnScreen(meshList[GEO_TEXT], "Wave " + std::to_string(waveFunctions->waveNumber), Color(0, 1, 0), 20 * objSize, 0.33f * screenWidth, 0.6 * screenHeight);
+    RenderTextOnScreen(meshList[GEO_TEXT], "Complete!", Color(0, 1, 0), 20 * objSize, 0.26f * screenWidth, 0.4 * screenHeight);
 
 }
 
@@ -1920,7 +1920,6 @@ void SP2::generalUpdates(double dt){
 
     if (waveFunctions->waveComplete()){
 
-        cout << "Boom" << endl;
         state = waveTransition;
 
     }
