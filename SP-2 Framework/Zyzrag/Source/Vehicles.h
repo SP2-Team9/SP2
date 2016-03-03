@@ -27,6 +27,11 @@ class Vehicles : public Object{
 
 public:
 
+    bool checkMaxDistance(Vector3 playerPos);
+
+    float maxDistance = 5000;
+	int maxHealth, health;
+
 	Vehicles();
     Vehicles(Vector3 endLocation);
     Vehicles(Vector3 position, Vector3 viewDirection, float newSpeed, int newHealth, float newFireRate, float newBulletDamage);
@@ -39,9 +44,11 @@ public:
    
 	void update(double dt);
     void initialMoveDirection();
+    void speedControl(double dt);
     void setThrust(float newThrust);
 	void setNewWayPoint(float x, float z);
 	void initialMoveDirection(float x, float z);
+
 
     bool fireBullets(double dt);
 
@@ -58,6 +65,9 @@ public:
 	pathFinding newVehicle;
 
     Asteroid* currAttackTarget;
+
+  
+
 };
 
 

@@ -1,3 +1,16 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \file Camera.h
+
+* \author: Goh Zheng Yuan
+
+* \date: 15 feb 2016
+
+* \description: This header contains the class camera
+
+*/
+/////////////////////////////////////////////////////////////////
 #ifndef CAMERA_H
 #define CAMERA_H
 
@@ -5,12 +18,19 @@
 #include "Mtx44.h"
 #include "PlayerVehicle.h"
 
+/******************************************************************************/
+/*!
+\brief
+	The class camera, and any functions that moves the camera.
+*/
+/******************************************************************************/
 class Camera
 {
 public:
 	Vector3 position, target, up, view, right;
 	float cameraSpeed, mouseSpeed, pitch, yaw, delay;
 	double mouseX, mouseY;
+	bool lock;
 	float time;
 
 	Camera();
@@ -24,7 +44,7 @@ public:
 
 	void FPSMovement(double dt, vector <AABB> hitbox);
 	void NoClip(double dt);
-	void TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox);
+	void TPSMovement(double dt, PlayerVehicle& veh);
 	void YawRotation(PlayerVehicle& veh, double dt);
 	void EnableCursor();
 	void DisableCursor();

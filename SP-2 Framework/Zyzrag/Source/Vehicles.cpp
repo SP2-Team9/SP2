@@ -79,17 +79,18 @@ bulletCooldown(0)
 Vehicles::Vehicles(Vector3 position, Vector3 viewDirection, float newSpeed, int newHealth, float newFireRate, float newBulletDamage) :
 board(false),
 isDead(false),
-bulletCooldown(0)
-{
+bulletCooldown(0){
+
     Vector3 initialPosition = position + viewDirection.Normalize();
     Pos = position;
     View = viewDirection;
-    newVehicle.setSpeed(newSpeed);
+    newVehicle.setMaxSpeed(newSpeed);
     newVehicle.setCurrentLocation(position);
 
     initialYaw = getRotationAngle(viewDirection);
     currAttackTarget = nullptr;
-    health = newHealth;
+    maxHealth = newHealth;
+	health = maxHealth;
     bulletFireRate = newFireRate;
     bulletDamage = newBulletDamage;
 
@@ -136,6 +137,7 @@ void Vehicles::update(double dt){
 
     if (!isDead){
 
+        speedControl(dt);
         newVehicle.pathRoute(dt);
         Pos = newVehicle.getCurrentLocation();
 
@@ -194,9 +196,7 @@ void Vehicles::setNewWayPoint(float x, float z){
 /////////////////////////////////////////////////////////////////
 void Vehicles::initialMoveDirection(float x, float z){
 
-
 	newVehicle.setInitialWayPoints(Vector3(x, 0, z));
-
 
 }
 
@@ -216,8 +216,8 @@ void Vehicles::initialMoveDirection(float x, float z){
 /////////////////////////////////////////////////////////////////
 void Vehicles::initialMoveDirection(){
 
-	newVehicle.setInitialWayPoints(Pos, View);
-
+	//newVehicle.setInitialWayPoints(Pos, View);
+	newVehicle.setInitialDirection(View);
 }
  
 
@@ -270,7 +270,7 @@ float Vehicles::getRotationAngle(){
 /////////////////////////////////////////////////////////////////
 void Vehicles::setThrust(float newThrust){
 
-    newVehicle.setSpeed(newThrust);
+    newVehicle.setMaxSpeed(newThrust);
 
 }
 
@@ -337,6 +337,82 @@ bool Vehicles::fireBullets(double dt){
     return false;
 
 }
+
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: ship Max distance
+
+* \author: Wong Keng Han Ashley
+
+* \date: 28 feb 2016
+
+* \description: returns if the target is in range
+
+*/
+/////////////////////////////////////////////////////////////////
+bool Vehicles::checkMaxDistance(Vector3 playerPos){
+
+    if (playerPos.distanceBetween2points(Pos) > maxDistance){
+
+        return true;
+
+    }
+
+    return false;
+
+
+}
+
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \method: speedControl
+
+* \author: Wong Keng Han Ashley
+
+* \date: 1st March 2016
+
+* \description: reduce speed if it's near asteroid and increase speed when far away
+
+*/
+/////////////////////////////////////////////////////////////////
+void Vehicles::speedControl(double dt){
+
+    if (currAttackTarget != nullptr){
+
+        float distance = newVehicle.getCurrentLocation().distanceBetween2points(currAttackTarget->Pos);
+
+        if (distance <= 150 &&
+            newVehicle.getCurrSpeed() > 0
+            )
+        {
+
+            newVehicle.setCurrSpeed(newVehicle.getCurrSpeed() - dt * 15);
+
+            std::cout << "Hello" << std::endl;
+        }
+        else if(newVehicle.getCurrSpeed() < newVehicle.getMaxSpeed()){
+
+            newVehicle.setCurrSpeed(newVehicle.getCurrSpeed() + dt * 10);
+
+        }
+
+
+    }
+    else{
+
+        if (newVehicle.getCurrSpeed() < newVehicle.getMaxSpeed()){
+
+            newVehicle.setCurrSpeed(newVehicle.getCurrSpeed() + dt * 10);
+
+        }
+
+    }
+
+}
+
+
 
 
 

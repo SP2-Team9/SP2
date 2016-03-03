@@ -10,6 +10,7 @@
 
 
 
+
 SP2::SP2(){
 
 
@@ -17,22 +18,29 @@ SP2::SP2(){
 }
 
 SP2::~SP2(){
+
+
 }
 
 void SP2::Init()
 {
-	playerShop = new Shop(10, 10, 100, 0, 0, 0);
-	
 	enableLight = true;
+	displayHelp = false;
 	readyToUse = 2.f;
 	LightView = Vector3(0, 1, 0);
 	state = MainMenu;
-	selection = nullptr;
 	widescreen = false;
-    currMoney = 10000;
+    currMoney = 500;
 	place = nullptr;
 	placeType = 0;
-	lastState = 0;
+
+	shootingsfx->setDefault3DSoundMinDistance(200.f);
+	shootingsfx->setDefault3DSoundMaxDistance(1000.f);
+	shootingsfx->setSoundVolume(0.5f);
+
+	explosionsfx->setDefault3DSoundMinDistance(1000.f);
+	explosionsfx->setDefault3DSoundMaxDistance(5000.f);
+	explosionsfx->setSoundVolume(1.f);
 
 	shopInit();
 	WorldHitboxInit();
@@ -49,8 +57,6 @@ void SP2::Init()
 	Mtx44 projection;
 	if (static_cast<float>(Application::screenWidth) / static_cast<float>(Application::screenHeight) > 1.3334)
 	{
-		std::cout << Application::screenWidth << std::endl;
-		std::cout << Application::screenHeight << std::endl;
 		widescreen = true;
 		projection.SetToPerspective(45.f, 16.f / 9.f, 0.1f, 10000.f);
 	}
@@ -101,40 +107,31 @@ void SP2::Init()
 	m_parameters[U_LIGHT0_COSINNER] = glGetUniformLocation(m_programID, "lights[0].cosInner");
 	m_parameters[U_LIGHT0_EXPONENT] = glGetUniformLocation(m_programID, "lights[0].exponent");
 
+	m_parameters[U_LIGHT1_POSITION] = glGetUniformLocation(m_programID, "lights[1].position_cameraspace");
+	m_parameters[U_LIGHT1_COLOR] = glGetUniformLocation(m_programID, "lights[1].color");
+	m_parameters[U_LIGHT1_POWER] = glGetUniformLocation(m_programID, "lights[1].power");
+	m_parameters[U_LIGHT1_KC] = glGetUniformLocation(m_programID, "lights[1].kC");
+	m_parameters[U_LIGHT1_KL] = glGetUniformLocation(m_programID, "lights[1].kL");
+	m_parameters[U_LIGHT1_KQ] = glGetUniformLocation(m_programID, "lights[1].kQ");
+	m_parameters[U_LIGHTENABLED] = glGetUniformLocation(m_programID, "lightEnabled");
+	m_parameters[U_NUMLIGHTS] = glGetUniformLocation(m_programID, "numLights");
+	m_parameters[U_LIGHT1_TYPE] = glGetUniformLocation(m_programID, "lights[1].type");
+	m_parameters[U_LIGHT1_SPOTDIRECTION] = glGetUniformLocation(m_programID, "lights[1].spotDirection");
+	m_parameters[U_LIGHT1_COSCUTOFF] = glGetUniformLocation(m_programID, "lights[1].cosCutoff");
+	m_parameters[U_LIGHT1_COSINNER] = glGetUniformLocation(m_programID, "lights[1].cosInner");
+	m_parameters[U_LIGHT1_EXPONENT] = glGetUniformLocation(m_programID, "lights[1].exponent");
+
 	m_parameters[U_COLOR_TEXTURE_ENABLED] = glGetUniformLocation(m_programID, "colorTextureEnabled");
 	m_parameters[U_COLOR_TEXTURE] = glGetUniformLocation(m_programID, "colorTexture");
 	m_parameters[U_TEXT_ENABLED] = glGetUniformLocation(m_programID, "textEnabled");
 	m_parameters[U_TEXT_COLOR] = glGetUniformLocation(m_programID, "textColor");
 	glUseProgram(m_programID);
 
-	light[0].position.Set(-10, 20, 20);
-	light[0].color.Set(1, 1, 1);
-	light[0].power = 1.f;
-	light[0].kC = 1.f;
-	light[0].kL = 0.01f;
-	light[0].kQ = 0.001f;
-	light[0].type = Light::LIGHT_DIRECTIONAL;
-	light[0].cosCutoff = cos(Math::DegreeToRadian(45));
-	light[0].cosInner = cos(Math::DegreeToRadian(30));
-	light[0].exponent = 3.f;
-	light[0].spotDirection.Set(0.f, 1.f, 0.f);
-
-	glUniform1i(m_parameters[U_NUMLIGHTS], 2);
-	glUniform1i(m_parameters[U_LIGHT0_TYPE], light[0].type);
-	glUniform3fv(m_parameters[U_LIGHT0_COLOR], 1, &light[0].color.r);
-	glUniform1f(m_parameters[U_LIGHT0_POWER], light[0].power);
-	glUniform1f(m_parameters[U_LIGHT0_KC], light[0].kC);
-	glUniform1f(m_parameters[U_LIGHT0_KL], light[0].kL);
-	glUniform1f(m_parameters[U_LIGHT0_KQ], light[0].kQ);
-	glUniform1f(m_parameters[U_LIGHT0_COSCUTOFF], light[0].cosCutoff);
-	glUniform1f(m_parameters[U_LIGHT0_COSINNER], light[0].cosInner);
-	glUniform1f(m_parameters[U_LIGHT0_EXPONENT], light[0].exponent);
+	lightInit();
 
 	meshList[GEO_AXES] = MeshBuilder::GenerateAxes("reference", 1000, 1000, 1000);
 
 	meshList[GEO_LIGHTBALL] = MeshBuilder::GenerateSphere("Lightball", Color(0, 1, 0), 18, 36);
-
-    meshList[GEO_ASTEROID_HEALTH] = MeshBuilder::GenerateQuad("Asteroid Health Bar", Color(1, 0, 0), 3, 1);
 
     meshList[GEO_BULLETS] = MeshBuilder::GenerateSphere("Bullets", Color(1, 0.5, 0), 18, 36);
 
@@ -230,6 +227,7 @@ void SP2::Init()
 	meshList[GEO_INNERSTATION] = MeshBuilder::GenerateOBJ("Test", "OBJ//innerstation.obj");
 	meshList[GEO_INNERSTATION]->textureID = LoadTGA("Image//innerstation.tga");
 
+   
     move = 0.f;
     rotate = 0.f;
     moveleg = 0.f;
@@ -240,16 +238,27 @@ void SP2::Init()
 	destroyed = 0;
 	shipbought = 0;
 
+	
+
     meshList[GEO_EXPLOSION] = MeshBuilder::GenerateQuad("Explosion", Color(1, 1, 1), 1.f, 1.f);
     meshList[GEO_EXPLOSION]->textureID = LoadTGA("Image//explosion.tga");
+
+	meshList[GEO_HELPSCREEN] = MeshBuilder::GenerateQuad("menu", Color(1, 1, 1), screenWidth, screenHeight);
 
 	//Shop Related
 	meshList[GEO_SHOPBACKDROP] = MeshBuilder::GenerateQuad("Shop Background", Color(1, 1, 1), screenWidth, screenHeight);
 
+
 	if (widescreen == false)
+	{
+		meshList[GEO_HELPSCREEN]->textureID = LoadTGA("Image//help.tga");
 		meshList[GEO_SHOPBACKDROP]->textureID = LoadTGA("Image//shopbackground.tga");
+	}
 	else
+	{
+		meshList[GEO_HELPSCREEN]->textureID = LoadTGA("Image//helpwide.tga");
 		meshList[GEO_SHOPBACKDROP]->textureID = LoadTGA("Image//shopbackgroundwide.tga");
+	}
 
 	meshList[GEO_ATTACKUP] = MeshBuilder::GenerateQuad("Attack Up Logo", Color(1, 1, 1), screenWidth, screenWidth);
 	meshList[GEO_ATTACKUP]->textureID = LoadTGA("Image//attackup.tga");
@@ -259,8 +268,27 @@ void SP2::Init()
 	meshList[GEO_HEALTHUP]->textureID = LoadTGA("Image//healthup.tga");
 }
 
-void SP2::Update(double dt)
-{
+void SP2::Update(double dt){
+
+	if (Application::IsKeyPressed('P'))
+	{
+		Exit();
+		Init();
+	}
+
+	if (state != MainMenu && state != exit && state != help && state != waveTransition){
+	
+		generalUpdates(dt);
+
+	}
+
+	sharedData::GetInstance()->DelayIncrement(dt, 5);
+
+	if (Application::IsKeyPressed(VK_ESCAPE) && state != inShop && sharedData::GetInstance()->Delay(0.5f))
+	{
+		state = exit;
+	}
+
 	camera.Update(dt);
 	FPSText = std::to_string(toupper(1 / dt));
 
@@ -297,13 +325,28 @@ void SP2::Update(double dt)
 
 		break;
 
+	case help:
+
+		if (Application::IsKeyPressed('H') && sharedData::GetInstance()->Delay(0.5f))
+		{
+			state = lastState;
+		}
+
+		break;
+	
+    case waveTransition:
+
+        waveTransitionUpdate(dt);
+
+        break;
+
+	case exit:
+
+		sharedData::GetInstance()->quit = true;
+        break;
+
 	}
 
-	if (state != MainMenu && state != exit){
-
-		generalUpdates(dt);
-
-	}
 
 
 	if (Application::IsKeyPressed(VK_NUMPAD1)) //enable back face culling
@@ -348,6 +391,7 @@ void SP2::Render()
 {
 	// Render VBO here
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	viewStack.LoadIdentity();
 	viewStack.LookAt(camera.position.x, camera.position.y, camera.position.z, camera.target.x, camera.target.y, camera.target.z, camera.up.x, camera.up.y, camera.up.z);
 	modelStack.LoadIdentity();
@@ -356,111 +400,131 @@ void SP2::Render()
 	Vector3 lightDirection_cameraspace = viewStack.Top() * lightDir;
 	glUniform3fv(m_parameters[U_LIGHT0_POSITION], 1, &lightDirection_cameraspace.x);
 
+	Position lightPosition_cameraspace = viewStack.Top() * light[1].position;
+	glUniform3fv(m_parameters[U_LIGHT1_POSITION], 1, &lightPosition_cameraspace.x);
+	Vector3 spotDirection_cameraspace = viewStack.Top() * light[1].spotDirection;
+	glUniform3fv(m_parameters[U_LIGHT1_SPOTDIRECTION], 1, &spotDirection_cameraspace.x);
+
+	
 	if (enableAxis == true)
 		RenderMesh(meshList[GEO_AXES], false);
 
-	renderSkybox();
-	renderStation();
-	renderAsteroid();
-	
-	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 	switch (state)
 	{
 	case MainMenu:
+
 		renderTitleScreen();
 		break;
 
-	case RTS:
-		renderBullets();
-		renderExplosion();
-        renderShips();
-        renderWayPoints();
-		renderFightingUI();
+    case RTS:
+		
+        renderGeneral();
+        renderFightingUI();
+        quests();
+        ballquest();
+        buyshipquest();
+        abductionquest();
+
 		break;
 
 	case inSpaceStation:
-		renderBullets();
-		renderExplosion();
+
+        renderGeneral();
 		renderNPC();
-		//renderNPC2();
-		//renderNPC3();
-		//renderNPC4();
 		renderNPC5();
-		renderShips();
 		renderFightingUI();
 		quests();
 		ballquest();
-		asteroidquest();
 		buyshipquest();
 		abductionquest();
+        
+
 		break;
 
 	case inPlayerShip:
-		renderBullets();
-		renderExplosion();
-		renderWayPoints();
-		renderShips();
+
+        renderGeneral();
 		renderFightingUI();
         renderDistances();
 		quests();
 		ballquest();
-		asteroidquest();
 		buyshipquest();
 		abductionquest();
+
 		break;
 
 	case inShop:
+
 		renderShopMenu();
 		renderFightingUI();
+
 		break;
+
+	case help:
+		renderHelp();
+		break;
+
+    case waveTransition:
+
+        renderWaveTransition();
+        break;
+
 
 	}
 
+	meshList[GEO_SELECTION] = MeshBuilder::GenerateSquare("Selection box", Color(0, 1, 0), initCursor, endCursor);
+	modelStack.PushMatrix();
+	RenderMesh(meshList[GEO_SELECTION], false);
+	modelStack.PopMatrix();
+	delete meshList[GEO_SELECTION];
+
 	renderAllHitbox();
+	RenderTextOnScreen(meshList[GEO_TEXT], FPSText, Color(1, 0, 0), 3, 0, 0);
 }
 
 void SP2::Exit()
 {
-	std::cout << "Exiting" << std::endl;
-	std::cout << "Clearing Ships" << std::endl;
-	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-	{
-		vector<Vehicles*>::iterator it = allVehicles[i].begin();
-		while (it != allVehicles[i].end())
-		{
-			Vehicles* Vtemp = *it;
-			delete Vtemp;
-			it = allVehicles[i].erase(it);
-		}
-	}
+    std::cout << "Exiting" << std::endl;
+    std::cout << "Clearing Ships" << std::endl;
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+    {
+        vector<Vehicles*>::iterator it = allVehicles[i].begin();
+        while (it != allVehicles[i].end())
+        {
+            delete *it;
+            it = allVehicles[i].erase(it);
+        }
 
-	std::cout << "Clearing Explosions" << std::endl;
-	for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end();)
-	{
-		Explosion* temp = *it;
-		delete temp;
-		it = allExplosions.erase(it);
-	}
+        while (!storedVehicles[i].empty())
+        {
+            delete storedVehicles[i].top();
+            storedVehicles[i].pop();
+        }
+    }
+
+    std::cout << "Clearing Explosions" << std::endl;
+    for (vector<Explosion*>::iterator it = allExplosions.begin(); it != allExplosions.end();)
+    {
+        delete *it;
+        it = allExplosions.erase(it);
+    }
+
+    std::cout << "Clearing Asteroids" << std::endl;
+    for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
+    {
+        delete *it;
+        it = Vasteroid.erase(it);
+    }
+
+    std::cout << "Clearing Bullets" << std::endl;
+    for (vector<Bullet*>::iterator it = allBullets.begin(); it != allBullets.end();){
+
+        delete *it;
+        it = allBullets.erase(it);
+    }
+
+    delete playerShop;
 	
-
-	std::cout << "Clearing Asteroids" << std::endl;
-	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
-	{
-		Asteroid* temp = *it;
-		delete temp;
-		it = Vasteroid.erase(it);
-	}
-
-	std::cout << "Clearing Bullets" << std::endl;
-	for (vector<Bullet*>::iterator it = allBullets.begin(); it != allBullets.end(); it++){
-
-		Bullet* temp = *it;
-		delete temp;
-		it = allBullets.erase(it);
-	}
-
-	delete playerShop;
-
 	// Cleanup VBO here
 	glDeleteVertexArrays(1, &m_vertexArrayID);
 	glDeleteProgram(m_programID);
@@ -471,20 +535,24 @@ void SP2::Exit()
 
 void SP2::objectsInit()
 {
-	//Object Init
+	//Object init
 	station.SetPos(0, 0, 0);
 	station.SetHitbox(AABB(-15, -25, -15, 15, 10, 15));
 
 	LastLocation.SetPos(0, 1, 0);
-	LastLocation.SetView(0, 0, -1);
+	LastLocation.SetView(0, 0, 1);
 	LastLocation.SetUp(0, 1, 0);
 	LastLocation.SetRight(1, 0, 0);
+
+	waveFunctions = new Wave();
 
 	//Player Vehicle
 	playerShip.SetPos(0, 10, 0);
 	playerShip.SetView(0, 0, 1);
 	playerShip.SetRight(-1, 0, 0);
+	playerShip.SetUp(playerShip.Right, playerShip.View);
 	playerShip.SetHitboxSize(-5, -3, -5, 4, 5, 5);
+	playerShip.reset();
 	playerShip.updateHitbox();
 
 	//Vehicles Init
@@ -496,6 +564,7 @@ void SP2::objectsInit()
 	storedVehicles.insert(std::pair<int, stack<Vehicles*>>(GEO_MIDSHIP, stackMidVehicles));
 	storedVehicles.insert(std::pair<int, stack<Vehicles*>>(GEO_LARGESHIP, stackLargeVehicles));
 }
+
 
 void SP2::npcInit()
 {
@@ -531,9 +600,57 @@ void SP2::npcInit()
 	allNPC.push_back(newNPC);
 }
 
+void SP2::lightInit()
+{
+	light[0].position.Set(-10, 20, 20);
+	light[0].color.Set(1, 1, 1);
+	light[0].power = 0.5f;
+	light[0].kC = 1.f;
+	light[0].kL = 0.01f;
+	light[0].kQ = 0.001f;
+	light[0].type = Light::LIGHT_DIRECTIONAL;
+	light[0].cosCutoff = cos(Math::DegreeToRadian(45));
+	light[0].cosInner = cos(Math::DegreeToRadian(30));
+	light[0].exponent = 3.f;
+	light[0].spotDirection.Set(0.f, 1.f, 0.f);
+
+	glUniform1i(m_parameters[U_NUMLIGHTS], 2);
+	glUniform1i(m_parameters[U_LIGHT0_TYPE], light[0].type);
+	glUniform3fv(m_parameters[U_LIGHT0_COLOR], 1, &light[0].color.r);
+	glUniform1f(m_parameters[U_LIGHT0_POWER], light[0].power);
+	glUniform1f(m_parameters[U_LIGHT0_KC], light[0].kC);
+	glUniform1f(m_parameters[U_LIGHT0_KL], light[0].kL);
+	glUniform1f(m_parameters[U_LIGHT0_KQ], light[0].kQ);
+	glUniform1f(m_parameters[U_LIGHT0_COSCUTOFF], light[0].cosCutoff);
+	glUniform1f(m_parameters[U_LIGHT0_COSINNER], light[0].cosInner);
+	glUniform1f(m_parameters[U_LIGHT0_EXPONENT], light[0].exponent);
+
+	light[1].position.Set(0, 1, 0);
+	light[1].color.Set(0, 0, 1);
+	light[1].power = 0.5f;
+	light[1].kC = 1.f;
+	light[1].kL = 0.01f;
+	light[1].kQ = 0.001f;
+	light[1].type = Light::LIGHT_POINT;
+	light[1].cosCutoff = cos(Math::DegreeToRadian(20));
+	light[1].cosInner = cos(Math::DegreeToRadian(30));
+	light[1].exponent = 3.f;
+	light[1].spotDirection.Set(0.f, 1.f, 0.f);
+
+	glUniform1i(m_parameters[U_LIGHT1_TYPE], light[1].type);
+	glUniform3fv(m_parameters[U_LIGHT1_COLOR], 1, &light[1].color.r);
+	glUniform1f(m_parameters[U_LIGHT1_POWER], light[1].power);
+	glUniform1f(m_parameters[U_LIGHT1_KC], light[1].kC);
+	glUniform1f(m_parameters[U_LIGHT1_KL], light[1].kL);
+	glUniform1f(m_parameters[U_LIGHT1_KQ], light[1].kQ);
+	glUniform1f(m_parameters[U_LIGHT1_COSCUTOFF], light[1].cosCutoff);
+	glUniform1f(m_parameters[U_LIGHT1_COSINNER], light[1].cosInner);
+	glUniform1f(m_parameters[U_LIGHT1_EXPONENT], light[1].exponent);
+}
+
 void SP2::shopInit()
 {
-	playerShop = new Shop(100, 10, 100, 0, 0, 0);
+	playerShop = new Shop(playerShip);
 
 	objSize = static_cast<float>(Application::screenWidth) / 1920.f;
 	shopState = Main;
@@ -587,6 +704,7 @@ void SP2::shipBulletCreation(double dt){
                 Bullet* newBullet = new Bullet(view, temp->Pos, temp->bulletDamage);
 
                 allBullets.push_back(newBullet);
+				shootingsfx->play3D("Sound/vehicleshooting.mp3", irrklang::vec3df(temp->Pos.x, temp->Pos.y, temp->Pos.z));
 
             }
 
@@ -600,11 +718,11 @@ void SP2::playerBulletCreation(double dt){
 
     if (Application::IsKeyPressed(VK_LBUTTON)){
 
-        if (playerShip.fireBullets(playerShop->playerShipFireRate)){
+        if (playerShip.fireBullets()){
 
-            Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos, playerShop->playerShipDamage);
-
+            Bullet* newBullet = new Bullet(playerShip.View, playerShip.Pos, playerShip.bulletDamage);
             allBullets.push_back(newBullet);
+			shootingsfx->play3D("Sound/shooting.mp3", irrklang::vec3df(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z));
 
         }
 
@@ -612,54 +730,87 @@ void SP2::playerBulletCreation(double dt){
 
 }
 
-void SP2::generateAsteroid()
-{
-	if (Vasteroid.size() < 40)
-	{
-		if (generate_range(0, 100) < 100)
-		{
-			Asteroid* asteroid = new Asteroid(generate_range(5, 30));
+void SP2::generateAsteroid(){
 
-			switch (generate_range(0, 4))
-			{
-			case 0:
+	int minOffset = -2000;
+	int maxOffset = 2000;
+	int viewOffset = 100;
 
-				asteroid->SetPos(generate_range(-2400 + camera.position.x, 2400 + camera.position.x), 0, generate_range(2400 + camera.position.z, 2500 + camera.position.z));
-				asteroid->SetView(Vector3(generate_range(-2400, 2400), 0, -2500));
+    if (waveFunctions->spawnAsteroid() && Vasteroid.size() < waveFunctions->maxNumberOfAsteroids - waveFunctions->numberOfAsteroidsDestroyed){
+		
+	    Asteroid* asteroid = new Asteroid(generate_range(5, 100));
+	    Vector3 target(generate_range(-viewOffset, viewOffset), 0, generate_range(-viewOffset, viewOffset));
 
-				break;
+	    switch (generate_range(0, 4))
+	    {
+	    case 0:
 
-			case 1:
+	    	asteroid->SetPos(generate_range(camera.position.x + minOffset, camera.position.x + maxOffset), 0, generate_range(camera.position.z + maxOffset - 1000, camera.position.z + maxOffset));
+	    	asteroid->SetView((target - asteroid->Pos).Normalized());
+	    	break;
 
-				asteroid->SetPos(generate_range(-2400 + camera.position.x, 2400 + camera.position.x), 0, generate_range(-2400 + camera.position.z, -2500 + camera.position.z));
-				asteroid->SetView(Vector3(generate_range(-2400, 2400), 0, 2500));
+	    case 1:
 
-				break;
+	    	asteroid->SetPos(generate_range(camera.position.x + minOffset, camera.position.x + maxOffset), 0, generate_range(camera.position.z + minOffset - 1000, camera.position.z + minOffset));
+	    	asteroid->SetView((target - asteroid->Pos).Normalized());
+	    	break;
 
-			case 2:
+	    case 2:
 
-				asteroid->SetPos(generate_range(2400 + camera.position.x, 2500 + camera.position.x), 0, generate_range(-2400 + camera.position.z, 2400 + camera.position.z));
-				asteroid->SetView(Vector3(-2500, 0, generate_range(-2400, 2400)));
+	    	asteroid->SetPos(generate_range(camera.position.x + maxOffset - 1000, camera.position.x + maxOffset), 0, generate_range(camera.position.z + minOffset, camera.position.z + maxOffset));
+	    	asteroid->SetView((target - asteroid->Pos).Normalized());
+	    	break;
 
-				break;
+	    case 3:
 
-			case 3:
+	    	asteroid->SetPos(generate_range(camera.position.x + minOffset - 1000, camera.position.x + minOffset), 0, generate_range(camera.position.z + minOffset, camera.position.z + maxOffset));
+	    	asteroid->SetView((target - asteroid->Pos).Normalized());
+	    	break;
 
-				asteroid->SetPos(generate_range(-2400 + camera.position.x, -2500 + camera.position.x), 0, generate_range(-2400 + camera.position.z, 2400 + camera.position.z));
-				asteroid->SetView(Vector3(2500, 0, generate_range(-2400, 2400)));
+	    }
 
-				break;
-
-			}
-
-
-			Vasteroid.push_back(asteroid);
-		}
+	    asteroid->updateHitbox();
+  		Vasteroid.push_back(asteroid);
 	}
+
 }
 
 
+
 // Renders
+
+void SP2::renderWaveTransition(){
+
+    RenderOnScreen(meshList[GEO_HELPSCREEN], screenWidth / 2, screenHeight / 2, -20, 1, 90, 0, 0);
+
+    RenderTextOnScreen(meshList[GEO_TEXT], "Wave " + std::to_string(waveFunctions->waveNumber), Color(0, 1, 0), 20 * objSize, 0.33f * screenWidth, 0.6 * screenHeight);
+    RenderTextOnScreen(meshList[GEO_TEXT], "Complete!", Color(0, 1, 0), 20 * objSize, 0.26f * screenWidth, 0.4 * screenHeight);
+
+}
+
+void SP2::renderHelp()
+{
+	RenderOnScreen(meshList[GEO_HELPSCREEN], screenWidth / 2, screenHeight / 2, -20, 1, 90, 0, 0);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "General Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.9 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Press TAB to go into RTS mode", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.85 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Walk to control panel and Press E to buy/upgrade ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.8 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Press E when at teleporter to beam into your ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.75 * screenHeight);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "Ship Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.65 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "W,S,A,D to control ship's yaw and pitch", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.6 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Shift to increase Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.55 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Ctrl to decrease Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.5 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Left click to shoot", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.45 * screenHeight);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "RTS controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.35 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "1 to select Speeder", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.3 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "2 to select Fighter", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.25 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "3 to select Devastator", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.2 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Left click to select ship, Drag to select multiple ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.15 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Right click to give command to selected ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.1 * screenHeight);
+}
+
 void SP2::renderSkybox()
 {
 	
@@ -746,15 +897,53 @@ void SP2::renderStation()
 
 void SP2::renderShips(){
 
-	if (selection)
+	if (playerShip.isDead == false)
 	{
-		meshList[GEO_HITBOX] = MeshBuilder::GenerateCube("Hitbox", Color(0, 1, 0), selection->interaction.GetMin(), selection->interaction.GetMax());
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
 		modelStack.PushMatrix();
-		RenderMesh(meshList[GEO_HITBOX], false);
+		modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
+		
+		modelStack.Rotate(playerShip.pitch, playerShip.Right.x, 0, playerShip.Right.z);
+		modelStack.Rotate(playerShip.yaw, 0, 1, 0);
+		RenderMesh(meshList[GEO_XWING], enableLight);
 		modelStack.PopMatrix();
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+
+
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+    {
+        vector<Vehicles*>::iterator it = allVehicles[i].begin();
+        while (it != allVehicles[i].end())
+        {
+            modelStack.PushMatrix();
+            modelStack.Translate((*it)->Pos.x, (*it)->Pos.y, (*it)->Pos.z);
+            modelStack.Rotate((*it)->Yaw, 0, 1, 0);
+            RenderMesh(meshList[i], enableLight);
+            modelStack.PopMatrix();
+
+            if ((*it)->health < (*it)->maxHealth){
+
+                renderHealthBar((*it)->Pos, 10, (*it)->health, Color(0, 0, 1));
+
+            }
+
+            it++;
+        }
+
+    } 
+
+	if (!selection.empty()){
+
+		for (vector<Vehicles*>::iterator it = selection.begin(); it != selection.end(); ++it)
+		{
+			meshList[GEO_HITBOX] = MeshBuilder::GenerateSquare("Hitbox", Color(0, 1, 0), (*it)->interaction.GetMin(), (*it)->interaction.GetMax());
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+			modelStack.PushMatrix();
+			RenderMesh(meshList[GEO_HITBOX], false);
+			modelStack.PopMatrix();
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+            delete meshList[GEO_HITBOX];
+		}
+
 	}
 
 	if (place)
@@ -765,32 +954,9 @@ void SP2::renderShips(){
 		RenderMesh(meshList[placeType], enableLight);
 		modelStack.PopMatrix();
 	}
-	int test = 0;
-	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-	{
-		vector<Vehicles*>::iterator it = allVehicles[i].begin();
-		while (it != allVehicles[i].end())
-		{
-			test += 1;
-			Vehicles* Vtemp = *it;
-			modelStack.PushMatrix();
-			modelStack.Translate(Vtemp->Pos.x, Vtemp->Pos.y, Vtemp->Pos.z);
-			modelStack.Rotate(Vtemp->Yaw, 0, 1, 0);
-			RenderMesh(meshList[i], enableLight);
-			modelStack.PopMatrix();
 
-			it++;
-		}
-	}
-	if (playerShip.isDead == false)
-	{
-		modelStack.PushMatrix();
-		modelStack.Translate(playerShip.Pos.x, playerShip.Pos.y, playerShip.Pos.z);
-		modelStack.Rotate(playerShip.pitch, playerShip.Right.x, 0, playerShip.Right.z);
-		modelStack.Rotate(playerShip.yaw, 0, 1, 0);
-		RenderMesh(meshList[GEO_XWING], enableLight);
-		modelStack.PopMatrix();
-	}
+	
+
 }
 
 void SP2::renderShopMenu()
@@ -808,14 +974,14 @@ void SP2::renderShopMenu()
 
 		RenderTextOnScreen(meshList[GEO_TEXT], "Player Ship Upgrades", Color(0, 1, 0), objSize * 8, 0.3f * screenWidth, 0.45f * screenHeight, 9);
 
-		RenderTextOnScreen(meshList[GEO_TEXT], "Damage: " + std::to_string(playerShop->playerShipDamage), Color(0, 1, 0), objSize * 5, 0.13f * screenWidth, 0.15f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "$100", Color(0, 1, 0), objSize * 5, 0.17f * screenWidth, 0.10f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Damage: " + std::to_string(playerShip.bulletDamage), Color(0, 1, 0), objSize * 5, 0.13f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$" + std::to_string(playerShop->damageUpgradePrice), Color(0, 1, 0), objSize * 5, 0.17f * screenWidth, 0.10f * screenHeight, 9);
 
-		RenderTextOnScreen(meshList[GEO_TEXT], "Fire Rate: " + std::to_string(playerShop->playerShipFireRate / 100) + "RPS", Color(0, 1, 0), objSize * 5, 0.4f * screenWidth, 0.15f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "$50", Color(0, 1, 0), objSize * 5, 0.48f * screenWidth, 0.10f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Fire Rate: " + std::to_string(playerShip.bulletFireRate / 100) + "RPS", Color(0, 1, 0), objSize * 5, 0.4f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$" + std::to_string(playerShop->fireRateUpgradePrice), Color(0, 1, 0), objSize * 5, 0.48f * screenWidth, 0.10f * screenHeight, 9);
 
 		RenderTextOnScreen(meshList[GEO_TEXT], "Increase Max Health", Color(0, 1, 0), objSize * 5, 0.68f * screenWidth, 0.15f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "$200", Color(0, 1, 0), objSize * 5, 0.775f * screenWidth, 0.10f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$" + std::to_string(playerShop->healthUpgradePrice), Color(0, 1, 0), objSize * 5, 0.775f * screenWidth, 0.10f * screenHeight, 9);
 
 		RenderOnScreen(meshList[GEO_ATTACKUP], 0.2f * screenWidth, 0.3f * screenHeight, 2, 0.1f * objSize, 90, 0, 0);
 		RenderOnScreen(meshList[GEO_FIRERATEUP], 0.5f * screenWidth, 0.3f * screenHeight, 2, 0.1f *  objSize, 90, 0, 0);
@@ -824,19 +990,22 @@ void SP2::renderShopMenu()
 	case FirstShip:
 		RenderTextOnScreen(meshList[GEO_TEXT], "Speeder", Color(0, 1, 0), objSize * 12, 0.39f * screenWidth, 0.9f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Buy", Color(0, 1, 0), objSize * 10, 0.46f * screenWidth, 0.2f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size() + allVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$200", Color(0, 1, 0), objSize * 8, 0.453f * screenWidth, 0.135f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size() + allVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.1f * screenHeight, 9);
 		RenderOnScreen(meshList[GEO_SMALLSHIP], shopSmallPos, shopSmallScale, 20, shopSmallRot, 0);
 		break;
 	case SecondShip:
 		RenderTextOnScreen(meshList[GEO_TEXT], "Fighter", Color(0, 1, 0), objSize * 12, 0.39f * screenWidth, 0.9f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Buy", Color(0, 1, 0), objSize * 10, 0.46f * screenWidth, 0.2f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_MIDSHIP].size() + allVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$400", Color(0, 1, 0), objSize * 8, 0.453f * screenWidth, 0.135f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_MIDSHIP].size() + allVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.1f * screenHeight, 9);
 		RenderOnScreen(meshList[GEO_MIDSHIP], shopMidPos, shopMidScale, 20, shopMidRot, 0);
 		break;
 	case ThirdShip:
 		RenderTextOnScreen(meshList[GEO_TEXT], "Devastator", Color(0, 1, 0), objSize * 12, 0.32f * screenWidth, 0.9f * screenHeight, 9);
 		RenderTextOnScreen(meshList[GEO_TEXT], "Buy", Color(0, 1, 0), objSize * 10, 0.46f * screenWidth, 0.2f * screenHeight, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_LARGESHIP].size() + allVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.15f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "$600", Color(0, 1, 0), objSize * 8, 0.453f * screenWidth, 0.135f * screenHeight, 9);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Current Amount: " + std::to_string(storedVehicles[GEO_LARGESHIP].size() + allVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 5, 0.39f * screenWidth, 0.1f * screenHeight, 9);
 		RenderOnScreen(meshList[GEO_LARGESHIP], shopLargePos, shopLargeScale, 20, shopLargeRot, 0);
 		break;
 	}
@@ -856,49 +1025,23 @@ void SP2::renderTitleScreen(){
 
 void SP2::renderFightingUI(){
 
-    if (playerShip.health > 0){
-        RenderTextOnScreen(meshList[GEO_TEXT], "HP:" + std::to_string(playerShip.health), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
-    }
-    else{
-        RenderTextOnScreen(meshList[GEO_TEXT], "Ship is Destroyed!!!", Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
-    }
-	if (state == RTS)
+	if (displayHelp == false)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT], "Speeder: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.79f, 50);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Fighter: " + std::to_string(storedVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.73f, 50);
-		RenderTextOnScreen(meshList[GEO_TEXT], "Devastator: " + std::to_string(storedVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.67f, 50);
-	}
-	RenderTextOnScreen(meshList[GEO_TEXT], "Thrust: " + std::to_string((int)(playerShip.thrust)), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.84f, 50);
-    RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(currMoney), Color(0, 1, 0), objSize * 8, 0.7f * screenWidth, screenHeight * 0.9f, 50);
-}
-
-void SP2::renderWayPoints(){
-	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-	{
-		vector<Vehicles*>::iterator it = allVehicles[i].begin();
-		while (it != allVehicles[i].end())
-		{
-			Vehicles* Vtemp = *it;
-			queue<Vector3> currVehicleQueue = Vtemp->newVehicle.getwayPoints();
-
-			while (!currVehicleQueue.empty()){
-
-
-				modelStack.PushMatrix();
-
-				modelStack.Translate(currVehicleQueue.front().x, currVehicleQueue.front().y, currVehicleQueue.front().z);
-				RenderMesh(meshList[GEO_LIGHTBALL], false);
-
-				modelStack.PopMatrix();
-
-				currVehicleQueue.pop();
-
-			}
-
-			it++;
+		if (playerShip.health > 0){
+			RenderTextOnScreen(meshList[GEO_TEXT], "HP:" + std::to_string(playerShip.health), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
 		}
+		else{
+			RenderTextOnScreen(meshList[GEO_TEXT], "Ship is Destroyed!!!", Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.9f, 50);
+		}
+		if (state == RTS)
+		{
+			RenderTextOnScreen(meshList[GEO_TEXT], "Speeder: " + std::to_string(storedVehicles[GEO_SMALLSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.79f, 50);
+			RenderTextOnScreen(meshList[GEO_TEXT], "Fighter: " + std::to_string(storedVehicles[GEO_MIDSHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.73f, 50);
+			RenderTextOnScreen(meshList[GEO_TEXT], "Devastator: " + std::to_string(storedVehicles[GEO_LARGESHIP].size()), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.67f, 50);
+		}
+		RenderTextOnScreen(meshList[GEO_TEXT], "Thrust: " + std::to_string((int)(playerShip.thrust)), Color(0, 1, 0), objSize * 8, 0.02f * screenWidth, screenHeight * 0.84f, 50);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Cash: $" + std::to_string(currMoney), Color(0, 1, 0), objSize * 8, 0.7f * screenWidth, screenHeight * 0.9f, 50);
 	}
-
 }
 
 void SP2::renderAllHitbox()
@@ -911,8 +1054,7 @@ void SP2::renderAllHitbox()
 		vector<Vehicles*>::iterator it = allVehicles[i].begin();
 		while (it != allVehicles[i].end())
 		{
-			Vehicles* Vtemp = *it;
-			allHitbox.push_back(Vtemp->hitbox);
+            allHitbox.push_back((*it)->hitbox);
 			it++;
 		}
 	}
@@ -924,11 +1066,9 @@ void SP2::renderBullets(){
 
     for (vector<Bullet*>::iterator vitB = allBullets.begin(); vitB != allBullets.end(); vitB++){
 
-        Bullet* temp = *vitB;
-
         modelStack.PushMatrix();
 
-        modelStack.Translate(temp->Pos.x, temp->Pos.y, temp->Pos.z);
+        modelStack.Translate((*vitB)->Pos.x, (*vitB)->Pos.y, (*vitB)->Pos.z);
         modelStack.Scale(1.5f, 1.f, 1.5f);
         RenderMesh(meshList[GEO_BULLETS], false);
 
@@ -943,17 +1083,16 @@ void SP2::renderAsteroid()
 {
     
 	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
-	{
-		Asteroid* asteroid = *it;
+    {
 		modelStack.PushMatrix();
-		modelStack.Translate(asteroid->Pos.x, asteroid->Pos.y, asteroid->Pos.z);
-		modelStack.Scale(asteroid->size, asteroid->size, asteroid->size);
+        modelStack.Translate((*it)->Pos.x, (*it)->Pos.y, (*it)->Pos.z);
+        modelStack.Scale((*it)->size, (*it)->size, (*it)->size);
 		RenderMesh(meshList[GEO_ASTEROID], enableLight);
 		modelStack.PopMatrix();
 
-        if (asteroid->health < asteroid->maxHealth){
+        if ((*it)->health < (*it)->maxHealth){
 
-            renderHealthBar(asteroid->Pos, asteroid->size, asteroid->health);
+            renderHealthBar((*it)->Pos, (*it)->size, (*it)->health, Color(1, 0, 0));
 
         }
 
@@ -965,12 +1104,11 @@ void SP2::renderExplosion()
 {
     for (vector<Explosion*>::iterator vitE = allExplosions.begin(); vitE != allExplosions.end(); ++vitE){
         
-        Explosion* currExplosion = *vitE;
         modelStack.PushMatrix();
-		modelStack.Translate(currExplosion->Pos.x, currExplosion->Pos.y, currExplosion->Pos.z);
-        modelStack.Rotate(currExplosion->getYaw(), 0, 1, 0);
-        modelStack.Rotate(currExplosion->getPitch(), 0, 0, 1);
-        modelStack.Scale(currExplosion->getExplosionSize(), currExplosion->getExplosionSize(), currExplosion->getExplosionSize());
+        modelStack.Translate((*vitE)->Pos.x, (*vitE)->Pos.y, (*vitE)->Pos.z);
+        modelStack.Rotate((*vitE)->getYaw(), 0, 1, 0);
+        modelStack.Rotate((*vitE)->getPitch(), 0, 0, 1);
+        modelStack.Scale((*vitE)->getExplosionSize(), (*vitE)->getExplosionSize(), (*vitE)->getExplosionSize());
         RenderMesh(meshList[GEO_EXPLOSION], false);
         modelStack.PopMatrix();
 
@@ -979,7 +1117,7 @@ void SP2::renderExplosion()
 
 }
 
-void SP2::renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health){
+void SP2::renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health, Color color){
 
     float asteroidHealthYaw = 0;
     float asteroidHealthPitch = 0;
@@ -1011,16 +1149,18 @@ void SP2::renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health
 
     if (health > 0){
 
-        modelStack.PushMatrix();
+        //Health bar
+        meshList[GEO_HEALTHBAR] = MeshBuilder::GenerateQuad("Asteroid Health Bar", color, 3, 1);
 
+        modelStack.PushMatrix();
         modelStack.Translate(asteroidPosition.x, asteroidPosition.y + asteroidSize * 1.5, asteroidPosition.z);
         modelStack.Rotate(asteroidHealthYaw, 0, 1, 0);
         modelStack.Rotate(asteroidHealthPitch, 0, 0, 1);
         modelStack.Scale(1, 1, health / 2);
-        RenderMesh(meshList[GEO_ASTEROID_HEALTH], false);
-
+        RenderMesh(meshList[GEO_HEALTHBAR], false);
         modelStack.PopMatrix();
 
+        delete meshList[GEO_HEALTHBAR];
 
     }
 
@@ -1110,6 +1250,45 @@ void SP2::renderDistances(){
  
 }
 
+void SP2::renderWayPoints(){
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+    {
+        vector<Vehicles*>::iterator it = allVehicles[i].begin();
+        
+        while (it != allVehicles[i].end()){
+
+            queue<Vector3> currQueue = (*it)->newVehicle.getwayPoints();
+            while (!currQueue.empty()){
+
+                modelStack.PushMatrix();
+                modelStack.Translate(currQueue.front().x, currQueue.front().y, currQueue.front().z);
+                RenderMesh(meshList[GEO_LIGHTBALL], false);
+                modelStack.PopMatrix();
+                currQueue.pop();
+
+            }
+
+            it++;
+
+        }
+    }
+
+}
+
+void SP2::renderGeneral(){
+
+	renderSkybox();
+	renderShips();
+	renderAsteroid();
+    renderBullets();
+    renderWayPoints();
+    renderStation();
+    renderAsteroid();
+	renderExplosion();
+	asteroidquest();
+
+}
+
 
 //Updates
 
@@ -1137,12 +1316,11 @@ void SP2::RTSUpdates(double dt){
 		place->SetPos(picker.WorldCoord());
 	}
 
-	if (Application::IsKeyPressed('E') && delay >= 1.f)
+	if (Application::IsKeyPressed(VK_TAB) && sharedData::GetInstance()->Delay(0.5f))
 	{
 		Application::centerMouse();
-		selection = nullptr;
+        selection.clear();
 		place = nullptr;
-		delay = 0;
 		if (lastState == inSpaceStation)
 		{
 			state = inSpaceStation;
@@ -1156,7 +1334,7 @@ void SP2::RTSUpdates(double dt){
 		
 
 	}
-	else if (Application::IsKeyPressed('1') && place == nullptr && delay >= 1.f)
+	else if (Application::IsKeyPressed('1') && sharedData::GetInstance()->Delay(0.5f))
 	{
 		if (!storedVehicles[GEO_SMALLSHIP].empty())
 		{
@@ -1164,7 +1342,7 @@ void SP2::RTSUpdates(double dt){
 			placeType = GEO_SMALLSHIP;
 		}	
 	}
-	else if (Application::IsKeyPressed('2') && place == nullptr && delay >= 1.f)
+	else if (Application::IsKeyPressed('2') && sharedData::GetInstance()->Delay(0.5f))
 	{
 		if (!storedVehicles[GEO_MIDSHIP].empty())
 		{
@@ -1172,7 +1350,7 @@ void SP2::RTSUpdates(double dt){
 			placeType = GEO_MIDSHIP;
 		}
 	}
-	else if (Application::IsKeyPressed('3') && place == nullptr && delay >= 1.f)
+	else if (Application::IsKeyPressed('3') && sharedData::GetInstance()->Delay(0.5f))
 	{
 		if (!storedVehicles[GEO_LARGESHIP].empty())
 		{
@@ -1217,9 +1395,8 @@ void SP2::shopUpdates(double dt)
 				shopLargeScale -= dt * 1.5f;
 			shopLargePos += shopTarget;
 		}
-		else if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f)
+		else if (Application::IsKeyPressed(VK_LBUTTON) && sharedData::GetInstance()->Delay(0.5f))
 		{
-			delay = 0;
 			if (mouseX > 0.1f * screenWidth && mouseX < 0.3f * screenWidth && mouseY > 0.65f * screenHeight && mouseY < 0.8f * screenHeight)
 			{
 				shopTarget.Set((screenWidth / 2) - shopSmallPos.x, (screenHeight / 2) - shopSmallPos.y, 0);
@@ -1240,34 +1417,33 @@ void SP2::shopUpdates(double dt)
 			}
 			else if (mouseX > 0.1f * screenWidth && mouseX < 0.3f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-                if (currMoney - 100 >= 0)
+				if (currMoney - playerShop->damageUpgradePrice >= 0)
 				{
-                    currMoney -= 100;
-					playerShop->playerShipDamage += 10;
+					currMoney -= playerShop->damageUpgradePrice;
+					playerShop->increaseDamage();
 				}
 			}
 			else if (mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-                if (currMoney - 50 >= 0)
+				if (currMoney - playerShop->fireRateUpgradePrice >= 0)
 				{
-                    currMoney -= 50;
-					playerShop->playerShipFireRate += 20;
+					currMoney -= playerShop->fireRateUpgradePrice;
+					playerShop->increaseFireRate();
+
 				}
 			}
 			else if (mouseX > 0.7f * screenWidth && mouseX < 0.9f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
 			{
-                if (currMoney - 200 >= 0)
+				if (currMoney - playerShop->healthUpgradePrice >= 0)
 				{
-                    currMoney -= 200;
-                    playerShip.maxHealth += 10;
-                    playerShip.health = playerShip.maxHealth;
+					currMoney -= playerShop->healthUpgradePrice;
+					playerShop->increaseHealth();
 
 				}
 			}
 		}
-		else if (Application::IsKeyPressed(VK_RBUTTON) || Application::IsKeyPressed('E') && delay > 0.5f)
+		else if (Application::IsKeyPressed(VK_ESCAPE) && sharedData::GetInstance()->Delay(0.5f))
 		{
-			delay = 0;
 			Application::centerMouse();
 			state = inSpaceStation;
 		}
@@ -1279,9 +1455,8 @@ void SP2::shopUpdates(double dt)
 			shopSmallScale += dt * 3.5f;
 		if (shopSmallPos.x < screenWidth / 2)
 			shopSmallPos += shopTarget * 2;
-		if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
+		if (Application::IsKeyPressed(VK_LBUTTON) && sharedData::GetInstance()->Delay(0.5f) && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.3f * screenHeight)
 		{
-			delay = 0;
 			if (currMoney - 200 >= 0)
 			{
 				currMoney -= 200;
@@ -1292,9 +1467,9 @@ void SP2::shopUpdates(double dt)
 				shipbought++;
 			}
 		}
-		else if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f)
+
+		if (Application::IsKeyPressed(VK_ESCAPE) && sharedData::GetInstance()->Delay(0.5f))
 		{
-			delay = 0;
 			shopTarget.Set(0.2f * screenWidth - shopSmallPos.x, 0.7f * screenHeight - shopSmallPos.y, 0);
 			shopTarget.Normalize();
 			shopState = Main;
@@ -1309,9 +1484,8 @@ void SP2::shopUpdates(double dt)
 			shopMidPos += shopTarget;
 		}
 
-		if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
+		if (Application::IsKeyPressed(VK_LBUTTON) && sharedData::GetInstance()->Delay(0.5f) && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.3f * screenHeight)
 		{
-			delay = 0;
 			if (currMoney - 400 >= 0)
 			{
 				currMoney -= 400;
@@ -1322,9 +1496,9 @@ void SP2::shopUpdates(double dt)
 				shipbought++;
 			}
 		}
-		else if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f)
+
+		if (Application::IsKeyPressed(VK_ESCAPE) && sharedData::GetInstance()->Delay(0.5f))
 		{
-			delay = 0;
 			shopTarget.Set(0.5f * screenWidth - shopMidPos.x, 0.7f * screenHeight - shopMidPos.y, 0);
 			shopTarget.Normalize();
 			shopState = Main;
@@ -1339,9 +1513,8 @@ void SP2::shopUpdates(double dt)
 			shopLargePos += shopTarget * 2;
 		}
 
-		if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.4f * screenHeight)
+		if (Application::IsKeyPressed(VK_LBUTTON) && sharedData::GetInstance()->Delay(0.5f) && mouseX > 0.4f * screenWidth && mouseX < 0.6f * screenWidth && mouseY > 0.2f * screenHeight && mouseY < 0.3f * screenHeight)
 		{
-			delay = 0;
 			if (currMoney - 600 >= 0)
 			{
 				currMoney -= 600;
@@ -1352,9 +1525,9 @@ void SP2::shopUpdates(double dt)
 				shipbought++;
 			}
 		}
-		else if (Application::IsKeyPressed(VK_LBUTTON) && delay > 0.5f)
+
+		if (Application::IsKeyPressed(VK_ESCAPE) && sharedData::GetInstance()->Delay(0.5f))
 		{
-			delay = 0;
 			shopTarget.Set(0.8f * screenWidth - shopLargePos.x, 0.7f * screenHeight - shopLargePos.y, 0);
 			shopTarget.Normalize();
 			shopState = Main;
@@ -1370,17 +1543,26 @@ void SP2::inShopUpdates(double dt)
 }
 
 void SP2::vehicleUpdates(double dt){
+
 	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 	{
 		vector<Vehicles*>::iterator it = allVehicles[i].begin();
 		while (it != allVehicles[i].end())
 		{
-			Vehicles* Vtemp = *it;
-			Vtemp->update(dt);
+            (*it)->update(dt);
+            if ((*it)->checkMaxDistance(camera.position)){
 
-			it++;
+                delete (*it);
+                it = allVehicles[i].erase(it);
+               
+            
+            }
+            else{
+                it++;
+            }
 		}
 	}
+
 }
 
 void SP2::bulletUpdates(double dt){
@@ -1393,9 +1575,10 @@ void SP2::bulletUpdates(double dt){
         if (temp->furtherThanBulletMaxRange()){
 
             allExplosions.push_back(new Explosion(15, 100, temp->Pos));
+            delete temp;
             vitB = allBullets.erase(vitB);
             
-            delete temp;
+            
 
         }
         else{
@@ -1410,76 +1593,78 @@ void SP2::bulletUpdates(double dt){
 
 void SP2::asteroidUpdate(double dt){
 
-	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end(); ++it)
+	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
 	{
 		Asteroid* asteroid = *it;
 		asteroid->update(dt);
 
-	}
+        if (asteroid->curRange > asteroid->maxRange || asteroid->health < 0){
 
-	if (Timer(1, dt) == true)
-	{
-		generateAsteroid();
-	}
-
-    for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
-    {
-        Asteroid* tempAst = *Ait;
-
-        if (tempAst->boom == true){
-
-			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, tempAst->Pos));
-            Ait = Vasteroid.erase(Ait);
-            delete tempAst;
-			destroyed++;
+            waveFunctions->numberOfAsteroidsDestroyed++;
+            delete asteroid;
+            it = Vasteroid.erase(it);
 
         }
         else{
 
-            Ait++;
+            it++;
 
-        }
+        }   
 
-    }
+	}
+
+	if (Timer(0, dt) == true)
+	{
+		generateAsteroid();
+	}
+
 }
 
 void SP2::generalUpdates(double dt){
 
 	playerShip.update(dt, worldHitbox);
-
 	asteroidUpdate(dt);
-    asteroidHitboxCheck();
 	bulletUpdates(dt);
-    asteroidHitboxCheck();
-    bulletUpdates(dt);
-    asteroidHitboxCheck();
 
 	explosionUpdate(dt);
 	vehicleUpdates(dt);
 	checkHitboxes();
-	
-	delay += dt;
-
 	if (playerShip.respawn(10) == true)
 	{
 		playerShip.reset();
 		playerShip.SetPos(0, 15, 0);
 		playerShip.SetView(0, 0, 1);
 		playerShip.SetRight(-1, 0, 0);
+		playerShip.SetUp(0, 1, 0);
 		playerShip.SetHitboxSize(5);
 	}
 
-	if (Application::IsKeyPressed(VK_ESCAPE))
+	if (Application::IsKeyPressed('H') && sharedData::GetInstance()->Delay(0.5f))
 	{
-		state = exit;
+		lastState = state;
+		state = help;
 	}
+
+	waveFunctions->waveUpdate(dt);
+
+    if (waveFunctions->waveComplete()){
+
+        state = waveTransition;
+
+    }
+
+
+	shootingsfx->setListenerPosition(irrklang::vec3df(camera.position.x, camera.position.y, camera.position.z), irrklang::vec3df(camera.view.x, camera.view.y, camera.view.z));
+	explosionsfx->setListenerPosition(irrklang::vec3df(camera.position.x, camera.position.y, camera.position.z), irrklang::vec3df(camera.view.x, camera.view.y, camera.view.z));
+
 }
 
 void SP2::mainMenuUpdates(double dt){
 
 	camera.EnableCursor();
-	if (Application::IsKeyPressed(VK_LBUTTON))
+	if (Application::IsKeyPressed(VK_LBUTTON) && sharedData::GetInstance()->Delay(0.5f))
 	{
+		Application::centerMouse();
 		state = inSpaceStation;
 		camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
 	}
@@ -1490,8 +1675,6 @@ void SP2::mainMenuUpdates(double dt){
 void SP2::explosionUpdate(double dt){
 
     for (vector<Explosion*>::iterator vitE = allExplosions.begin(); vitE != allExplosions.end();){
-
-        Explosion* temp = *vitE;
 
 		float explosionYaw = 0;
 		float explosionPitch = 0;
@@ -1520,12 +1703,12 @@ void SP2::explosionUpdate(double dt){
 			explosionYaw *= -1;
 		}
 		
-        temp->setPitchandYaw(explosionPitch, explosionYaw);
-        temp->explosionUpdate(dt);
+        (*vitE)->setPitchandYaw(explosionPitch, explosionYaw);
+        (*vitE)->explosionUpdate(dt);
 
-        if (temp->explosionEnd()){
+        if ((*vitE)->explosionEnd()){
 
-			delete temp;
+            delete (*vitE);
             vitE = allExplosions.erase(vitE);
 
 
@@ -1542,11 +1725,11 @@ void SP2::explosionUpdate(double dt){
 void SP2::inPlayerShipUpdates(double dt){
 
 	camera.DisableCursor();
-	camera.TPSMovement(dt, playerShip, worldHitbox);
+	camera.TPSMovement(dt, playerShip);
 	playerBulletCreation(dt);
 	shipBulletCreation(dt);
 
-	if (Application::IsKeyPressed('E') && delay >= 1.f)
+	if (Application::IsKeyPressed('E') && sharedData::GetInstance()->Delay(0.5f))
 	{
 		if (playerShip.hitbox.AABBtoAABB(Interactions[2], playerShip.View))
 		{
@@ -1556,24 +1739,23 @@ void SP2::inPlayerShipUpdates(double dt){
 			playerShip.SetPos(0, 10, 0);
 			playerShip.SetView(0, 0, 1);
 			playerShip.SetRight(-1, 0, 0);
+			playerShip.SetUp(0, 1, 0);
 			playerShip.updateHitbox();
-			delay = 0;
 			camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
 			state = inSpaceStation;
 			
 		}
 	}
-	else if (Application::IsKeyPressed('F') && delay >= 1.f)
+	else if (Application::IsKeyPressed(VK_TAB) && sharedData::GetInstance()->Delay(0.5f))
 	{
-		delay = 0;
 		state = RTS;
 		lastState = inPlayerShip;
-		camera.PointAt(playerShip, 100, -200);
+		camera.PointAt(playerShip, 50, -200);
+
 	}
 
 	if (playerShip.isDead == true)
 	{
-		delay = 0;
 		state = inSpaceStation;
 		camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
 	}
@@ -1583,15 +1765,45 @@ void SP2::inPlayerShipUpdates(double dt){
 
 }
 
+void SP2::waveTransitionUpdate(double dt){
+
+    waveFunctions->waveUpdate(dt);
+
+    if (waveFunctions->endOfTransition){
+
+        if (lastState == inSpaceStation){
+
+            state = inSpaceStation;
+            camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
+
+        }
+        else if (lastState == inPlayerShip){
+
+            state = inPlayerShip;
+            camera.PointAt(playerShip, 10, -30);
+
+        }
+        else{
+
+            Application::centerMouse();
+            state = RTS;
+            camera.PointAt(playerShip, 50, -200);
+        }
+
+        
+    }
+    
+
+}
+
 void SP2::inSpaceStationUpdates(double dt){
 
 	camera.DisableCursor();
 	camera.FPSMovement(dt, worldHitbox);
-	if (Application::IsKeyPressed('E') && delay >= 1.f)
+	if (Application::IsKeyPressed('E') && sharedData::GetInstance()->Delay(0.5f))
 	{
 		if (Interactions[0].PointToAABB(camera.position) && playerShip.isDead == false)
 		{
-			delay = 0;
 			state = inPlayerShip;
 			LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
 			LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
@@ -1599,19 +1811,17 @@ void SP2::inSpaceStationUpdates(double dt){
 		}
 		else if (Interactions[1].PointToAABB(camera.position))
 		{
-			delay = 0;
 			state = inShop;
 		}
 	}
 
-	if (Application::IsKeyPressed('F') && delay >= 1.f)
+	if (Application::IsKeyPressed(VK_TAB) && sharedData::GetInstance()->Delay(0.5f))
 	{
-		delay = 0;
 		state = RTS;
 		lastState = inSpaceStation;
 		LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
 		LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
-		camera.PointAt(playerShip, 100, -200);
+		camera.PointAt(playerShip, 50, -200);
 	}
 
 	NPCUpdates(dt);
@@ -1619,7 +1829,7 @@ void SP2::inSpaceStationUpdates(double dt){
 }
 
 
-//Others
+//Hitbox
 
 void SP2::checkHitboxes(){
 	switch (HBcheck){
@@ -1650,48 +1860,87 @@ void SP2::checkHitboxes(){
 void SP2::shipHitboxCheck(){
 
 	// Ship to Ship
-	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-	{
-		vector<Vehicles*>::iterator V1it = allVehicles[i].begin();
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
 
-		while (V1it != allVehicles[i].end())
-		{
-			Vehicles* Veh1 = *V1it;
-			for (int j = GEO_SMALLSHIP; j <= GEO_LARGESHIP; ++j)
-			{
-				vector<Vehicles*>::iterator V2it = allVehicles[j].begin();
-				while (V2it != allVehicles[j].end())
-				{
-					Vehicles* Veh2 = *V2it;
-					if (Veh1->hitbox.AABBtoAABB(Veh2->hitbox) == true && Veh1 != Veh2)
-					{
-						Vector3 ExploCenter = Veh1->Pos + Veh2->Pos;
-						ExploCenter /= 2;
-						allExplosions.push_back(new Explosion(30, 50, ExploCenter));
-						Veh1->isDead = true;
-						if (selection == Veh1 || selection == Veh2)
-							selection = nullptr;
-						delete Veh2;
-						V2it = allVehicles[j].erase(V2it);
-					}
-					else
-					{
-						V2it++;
-					}
-				}
-			}
+        bool checkHitbox = false;
 
-			if (Veh1->isDead == true)
-			{
-				delete Veh1;
-				V1it = allVehicles[i].erase(V1it);
-			}
-			else
-			{
-				V1it++;
-			}
-		}
-	}
+        vector<Vehicles*>::iterator vitV1 = allVehicles[i].begin();
+        
+        while (vitV1 != allVehicles[i].end()){
+
+            for (int j = GEO_SMALLSHIP; j <= GEO_LARGESHIP; ++j){
+
+                vector<Vehicles*>::iterator vitV2 = allVehicles[j].begin();
+
+                while (vitV2 != allVehicles[j].end()){
+
+                    if ((*vitV2)->hitbox.AABBtoAABB((*vitV1)->hitbox) && (*vitV1) != (*vitV2)){
+
+                        checkHitbox = true;
+                        (*vitV1)->health -= (*vitV2)->maxHealth;
+                        (*vitV2)->health -= (*vitV1)->maxHealth;
+
+                        if ((*vitV2)->health <= 0){
+
+                            removeOneSelection((*vitV2));
+                            allExplosions.push_back(new Explosion((*vitV2)->maxHealth / 2, 50, (*vitV2)->Pos));
+                            explosionsfx->play3D("Sound/vehicleboom.mp3", irrklang::vec3df((*vitV2)->Pos.x, (*vitV2)->Pos.y, (*vitV2)->Pos.z));
+                            delete (*vitV2);
+                            allVehicles[j].erase(vitV2);
+
+                        }
+
+                        break;
+
+                    }
+                    else{
+
+                        vitV2++;
+
+                    }
+
+                }
+
+                if (checkHitbox == true){
+
+                    break;
+
+                }
+
+            }
+
+            if ((*vitV1)->health <= 0){
+
+                removeOneSelection((*vitV1));
+                allExplosions.push_back(new Explosion((*vitV1)->maxHealth / 2, 50, (*vitV1)->Pos));
+                explosionsfx->play3D("Sound/vehicleboom.mp3", irrklang::vec3df((*vitV1)->Pos.x, (*vitV1)->Pos.y, (*vitV1)->Pos.z));
+                delete (*vitV1);
+                allVehicles[i].erase(vitV1);
+                break;
+
+            }
+            else{
+
+                vitV1++;
+
+            }
+
+            if (checkHitbox == true){
+
+                break;
+
+            }
+
+        }
+
+        if (checkHitbox == true){
+
+            break;
+
+        }
+
+
+    }
 
 	//Player playerShip to Ship
 	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
@@ -1699,15 +1948,13 @@ void SP2::shipHitboxCheck(){
 		vector<Vehicles*>::iterator it = allVehicles[i].begin();
 		while (it != allVehicles[i].end())
 		{
-			Vehicles* Vtemp = *it;
-			if (Vtemp->hitbox.AABBtoAABB(playerShip.hitbox))
+            if ((*it)->hitbox.AABBtoAABB(playerShip.hitbox))
 			{
-				if (selection == Vtemp)
-				{
-					selection = nullptr;
-				}
-				delete Vtemp;
+                removeOneSelection((*it));
+                explosionsfx->play3D("Sound/vehicleboom.mp3", irrklang::vec3df((*it)->Pos.x, (*it)->Pos.y, (*it)->Pos.z));
+                delete (*it);
 				it = allVehicles[i].erase(it);
+				
 			}
 			else
 				++it;
@@ -1721,51 +1968,39 @@ void SP2::stationHitboxCheck(){
 	for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 	{
 		vector<Vehicles*>::iterator it = allVehicles[i].begin();
+
 		while (it != allVehicles[i].end())
 		{
-			Vehicles* Vtemp = *it;
-			if (Vtemp->hitbox.AABBtoAABB(station.hitbox, Vtemp->View) == true)
+            Vehicles* Vtemp = *it;
+            if (Vtemp->hitbox.AABBtoAABB(station.hitbox, Vtemp->View) == true)
 			{
-				storedVehicles[i].push(Vtemp);
-				if (selection == Vtemp)
-				{
-					selection = nullptr;
-				}
+                storedVehicles[i].push(Vtemp);
+                removeOneSelection(Vtemp);
 				it = allVehicles[i].erase(it);
 			}
-			else
-				++it;
+            else{
+                ++it;
+            }
+            
 		}
 	}
 
 	// Asteroid to Station
 	for (vector<Asteroid*>::iterator it = Vasteroid.begin(); it != Vasteroid.end();)
 	{
-		Asteroid* tempAst = *it;
-		if (tempAst->hitbox.AABBtoAABB(station.hitbox, tempAst->View) == true)
+        if ((*it)->hitbox.AABBtoAABB(station.hitbox, (*it)->View) == true)
 		{
-			for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-			{
-				vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
-				while (vitV != allVehicles[i].end())
-				{
-					Vehicles* temp = *vitV;
-					if (temp->currAttackTarget == tempAst){
-
-						temp->currAttackTarget = nullptr;
-
-					}
-
-					vitV++;
-				}
-			}
-
-			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, tempAst->Pos));
-			delete tempAst;
+			waveFunctions->numberOfAsteroidsDestroyed += 1;
+            vehiclesRemoveTarget((*it));
+            allExplosions.push_back(new Explosion((*it)->size * 2, 50, (*it)->Pos));
+            explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df((*it)->Pos.x, (*it)->Pos.y, (*it)->Pos.z));
+            delete (*it);
 			it = Vasteroid.erase(it);
 		}
-		else
-			it++;
+        else{
+            it++;
+        }
+
 	}
 
 
@@ -1776,23 +2011,15 @@ void SP2::asteroidHitboxCheck(){
 
     //Bullet To Asteroid
     for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
-
-        Asteroid* tempAst = *vitA;
-
+   
         for (vector<Bullet*>::iterator vitB = allBullets.begin(); vitB != allBullets.end();){
 
-            Bullet* tempBull = *vitB;
+            if ((*vitA)->hitbox.PointToAABB((*vitB)->Pos)){
 
-            if (tempAst->hitbox.PointToAABB(tempBull->Pos)){
-
-                allExplosions.push_back(new Explosion(15, 100, tempBull->Pos));
-
+                allExplosions.push_back(new Explosion(15, 100, (*vitB)->Pos));
+                (*vitA)->health -= (*vitB)->getBulletDamage();
+                delete (*vitB);
                 vitB = allBullets.erase(vitB);
-                tempAst->health -= tempBull->getBulletDamage();
-
-                delete tempBull;
-
-                std::cout << tempAst->health << std::endl;
             }
             else{
 
@@ -1802,33 +2029,15 @@ void SP2::asteroidHitboxCheck(){
 
         }
 
-        if (tempAst->health <= 0){
+        if ((*vitA)->health <= 0){
 
-            for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-            {
-                vector<Vehicles*>::iterator it = allVehicles[i].begin();
-
-                while (it != allVehicles[i].end())
-                {
-
-                    Vehicles* temp = *it;
-
-                    if (temp->currAttackTarget == tempAst){
-
-                        temp->currAttackTarget = nullptr;
-
-                    }
-
-
-					it++;
-				}
-			}
-
-            currMoney += tempAst->size * 10;
-
-			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, tempAst->Pos));
+			waveFunctions->numberOfAsteroidsDestroyed += 1;
+            vehiclesRemoveTarget((*vitA));
+            currMoney += (*vitA)->size * 10;
+            allExplosions.push_back(new Explosion((*vitA)->size * 2, 50, (*vitA)->Pos));
+            delete (*vitA);
             vitA = Vasteroid.erase(vitA);
-            delete tempAst;
+            explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df((*vitA)->Pos.x, (*vitA)->Pos.y, (*vitA)->Pos.z));
             destroyed++;
 
 		}
@@ -1838,8 +2047,6 @@ void SP2::asteroidHitboxCheck(){
 
         }
 
-
-
     }
 
     //Vehicles to Asteroid
@@ -1848,35 +2055,36 @@ void SP2::asteroidHitboxCheck(){
         vector<Vehicles*>::iterator Vit = allVehicles[i].begin();
         while (Vit != allVehicles[i].end())
         {
-            Vehicles* tempVeh = *Vit;
             for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
             {
                 Asteroid* tempAst = *Ait;
-                if (tempVeh->hitbox.AABBtoAABB(tempAst->hitbox))
+                if ((*Vit)->hitbox.AABBtoAABB(tempAst->hitbox))
                 {
+					waveFunctions->numberOfAsteroidsDestroyed += 1;
 
-                    Vector3 ExploCenter = tempVeh->Pos + tempAst->Pos;
+                    Vector3 ExploCenter = (*Vit)->Pos + tempAst->Pos;
                     ExploCenter /= 2;
 					allExplosions.push_back(new Explosion(tempAst->size * 2, 50, ExploCenter));
 
-                    tempVeh->isDead = true;
+                    (*Vit)->health -= tempAst->size * 2;
+					explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df(tempAst->Pos.x, tempAst->Pos.y, tempAst->Pos.z));
                     delete tempAst;
                     Ait = Vasteroid.erase(Ait);
+
                 }
                 else
                 {
                     Ait++;
                 }
+
             }
 
-            if (tempVeh->isDead == true)
+            if ((*Vit)->isDead == true)
             {
-
-                if (selection == tempVeh)
-                {
-                    selection = nullptr;
-                }
-                delete tempVeh;
+				
+                removeOneSelection((*Vit));
+                explosionsfx->play3D("Sound/vehicleboom.mp3", irrklang::vec3df((*Vit)->Pos.x, (*Vit)->Pos.y, (*Vit)->Pos.z));
+                delete (*Vit);
                 Vit = allVehicles[i].erase(Vit);
 
             }
@@ -1890,56 +2098,57 @@ void SP2::asteroidHitboxCheck(){
     // Player Ship to Asteroid
     for (vector<Asteroid*>::iterator Ait = Vasteroid.begin(); Ait != Vasteroid.end();)
     {
-        Asteroid* tempAst = *Ait;
-        if (tempAst->hitbox.AABBtoAABB(playerShip.hitbox))
-        {
-            playerShip.health -= tempAst->size * 2;
-            Vector3 ExploCenter = playerShip.Pos + tempAst->Pos;
+        if ((*Ait)->hitbox.AABBtoAABB(playerShip.hitbox)){
+
+			waveFunctions->numberOfAsteroidsDestroyed += 1;
+            playerShip.health -= (*Ait)->size * 2;
+            Vector3 ExploCenter = playerShip.Pos + (*Ait)->Pos;
             ExploCenter /= 2;
-			allExplosions.push_back(new Explosion(tempAst->size * 2, 50, ExploCenter));
-            delete tempAst;
+            allExplosions.push_back(new Explosion((*Ait)->size * 2, 50, ExploCenter));
+            explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df((*Ait)->Pos.x, (*Ait)->Pos.y, (*Ait)->Pos.z));
+            vehiclesRemoveTarget((*Ait));
+            delete (*Ait);
             Ait = Vasteroid.erase(Ait);
+
         }
         else
             Ait++;
     }
 
     //Asteroid to Asteroid
-    for (vector<Asteroid*>::iterator A1it = Vasteroid.begin(); A1it != Vasteroid.end();)
-    {
-        Asteroid* temp1Ast = *A1it;
-        int ast1Health = temp1Ast->health;
+    for (vector<Asteroid*>::iterator A1it = Vasteroid.begin(); A1it != Vasteroid.end();){
 
-        for (vector<Asteroid*>::iterator A2it = Vasteroid.begin(); A2it != Vasteroid.end();)
-        {
-            Asteroid* temp2Ast = *A2it;
+        int ast1Health = (*A1it)->health;
 
-            if (temp1Ast->hitbox.AABBtoAABB(temp2Ast->hitbox) && temp1Ast != temp2Ast){
+        for (vector<Asteroid*>::iterator A2it = Vasteroid.begin(); A2it != Vasteroid.end();){
 
-                temp1Ast->health -= temp2Ast->health;
-                temp2Ast->health -= ast1Health;
+            if ((*A1it)->hitbox.AABBtoAABB((*A2it)->hitbox) && (*A1it) != (*A2it)){
+                     
+                (*A1it)->health -= (*A2it)->health;
+                (*A2it)->health -= ast1Health;
 
-                if (temp2Ast->health > 0){
-                    if (temp2Ast->health / 10 < 5){
+                if ((*A2it)->health > 0){
+                    if ((*A2it)->health / 10 < 5){
 
-                        temp2Ast->size = 5;
+                        (*A2it)->size = 5;
 
                     }
                     else{
 
-                        temp2Ast->size = temp2Ast->health / 10;
+                        (*A2it)->size = (*A2it)->health / 10;
 
                     }
                 }
-                else if (temp1Ast->health > 0){
-                    if (temp1Ast->health / 10 < 5){
+                else if ((*A1it)->health > 0){
 
-                        temp1Ast->size = 5;
+                    if ((*A1it)->health / 10 < 5){
+
+                        (*A1it)->size = 5;
 
                     }
                     else{
 
-                        temp1Ast->size = temp1Ast->health / 10;
+                        (*A1it)->size = (*A1it)->health / 10;
 
                     }
                 }
@@ -1947,36 +2156,16 @@ void SP2::asteroidHitboxCheck(){
             }
 
 
-            if (temp2Ast->health <= 0){
+            if ((*A2it)->health <= 0){
 
-				for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-				{
-					vector<Vehicles*>::iterator it = allVehicles[i].begin();
-
-					while (it != allVehicles[i].end())
-					{
-
-						Vehicles* temp = *it;
-
-						if (temp->currAttackTarget == temp2Ast){
-
-							temp->currAttackTarget = nullptr;
-
-						}
-
-
-						it++;
-					}
-				}
-
-                Vector3 ExploCenter = temp2Ast->Pos + temp1Ast->Pos;
+				waveFunctions->numberOfAsteroidsDestroyed += 1;
+                vehiclesRemoveTarget((*A2it));
+                Vector3 ExploCenter = (*A2it)->Pos + (*A1it)->Pos;
                 ExploCenter /= 2;
-				allExplosions.push_back(new Explosion(temp2Ast->size * 2, 50, ExploCenter));
-
-                delete temp2Ast;
+                allExplosions.push_back(new Explosion((*A2it)->size * 2, 50, ExploCenter));
+                explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df((*A2it)->Pos.x, (*A2it)->Pos.y, (*A2it)->Pos.z));
+                delete (*A2it);
                 A2it = Vasteroid.erase(A2it);
-
-
 
             }
             else{
@@ -1988,30 +2177,13 @@ void SP2::asteroidHitboxCheck(){
 
         }
 
-        if (temp1Ast->health <= 0){
+        if ((*A1it)->health <= 0){
 
-			for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
-			{
-				vector<Vehicles*>::iterator it = allVehicles[i].begin();
-
-				while (it != allVehicles[i].end())
-				{
-
-					Vehicles* temp = *it;
-
-					if (temp->currAttackTarget == temp1Ast){
-
-						temp->currAttackTarget = nullptr;
-
-					}
-
-
-					it++;
-				}
-			}
-
-			allExplosions.push_back(new Explosion(temp1Ast->size * 2, 50, temp1Ast->Pos));
-            delete temp1Ast;
+			waveFunctions->numberOfAsteroidsDestroyed += 1;
+            vehiclesRemoveTarget((*A1it));
+            allExplosions.push_back(new Explosion((*A1it)->size * 2, 50, (*A1it)->Pos));
+            explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df((*A1it)->Pos.x, (*A1it)->Pos.y, (*A1it)->Pos.z));
+            delete  (*A1it);
             A1it = Vasteroid.erase(A1it);
 
         }
@@ -2027,81 +2199,79 @@ void SP2::asteroidHitboxCheck(){
 
 }
 
+
+//Others
+
 void SP2::MouseSelection(double dt)
 {
 	if (place == nullptr)
 	{
-		if (Application::IsKeyPressed(VK_LBUTTON) && wayPointSetCoolDown > 0.5f)
+		if (Application::IsKeyPressed(VK_LBUTTON))
 		{
-			std::cout << picker.WorldCoord() << std::endl;
-			std::cout << playerShip.Pos << std::endl;
-			for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+			if (hold == true)
 			{
-				bool Bselected = false;
-				vector<Vehicles*>::iterator it = allVehicles[i].begin();
-				while (it != allVehicles[i].end())
+				endCursor = picker.WorldCoord();
+				for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
 				{
-					Vehicles* Vtemp = *it;
-					if (Vtemp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
+					vector<Vehicles*>::iterator it = allVehicles[i].begin();
+					while (it != allVehicles[i].end())
 					{
-						selection = Vtemp;
-						Bselected = true;
-						break;
+						Vehicles* Vtemp = *it;
+						if (Vtemp->interaction.withinPlane(initCursor, endCursor))
+						{
+							selection.push_back(Vtemp);
+						}
+						it++;
 					}
-					else
-					{
-						selection = nullptr;
-					}
-
-					it++;
 				}
-
-				if (Bselected == true)
-					break;
-			}
-			wayPointSetCoolDown = 0;
-		}
-
-		if (Application::IsKeyPressed(VK_RBUTTON) && selection != nullptr)
-		{
-
-
-			for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
-
-				Asteroid* temp = *vitA;
-				if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay())){
-
-					selection->currAttackTarget = temp;
-					break;
-
-				}
-				else{
-
-					selection->currAttackTarget = nullptr;
-					vitA++;
-
-				}
-
-			}
-
-			if (selection->currAttackTarget == nullptr){
-
-				selection->setNewWayPoint(picker.WorldCoord().x, picker.WorldCoord().z);
 
 			}
 			else
 			{
-				selection->setNewWayPoint(selection->currAttackTarget->Pos.x, selection->currAttackTarget->Pos.z);
+                selection.clear();
+				initCursor = picker.WorldCoord();
+				endCursor = picker.WorldCoord();
+				bool Bselected = false;
+				for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i)
+				{
+					vector<Vehicles*>::iterator it = allVehicles[i].begin();
+					while (it != allVehicles[i].end())
+					{
+						Vehicles* Vtemp = *it;
+						if (Vtemp->interaction.RayToAABB(camera.position, picker.getCurrentRay()))
+						{
+							if (!selection.empty())
+								selection.clear();
+							selection.push_back(Vtemp);
+							Bselected = true;
+							break;
+						}
+						else
+						{
+							selection.clear();
+                            it++;
+						}
+					
+					}
 
+					if (Bselected == true)
+					{
+						break;
+					}
+				}
+				hold = true;
 			}
-
 		}
-
-		
+		else
+		{
+			initCursor.SetZero();
+			endCursor.SetZero();
+			hold = false;
+		}
 	}
 	else
 	{
-		if (Application::IsKeyPressed(VK_LBUTTON) && wayPointSetCoolDown > 0.5f)
+		if (Application::IsKeyPressed(VK_LBUTTON))
 		{
 			if (hold == false)
 			{
@@ -2124,16 +2294,47 @@ void SP2::MouseSelection(double dt)
 			place = nullptr;
 			storedVehicles[placeType].pop();
 			hold = false;
-			wayPointSetCoolDown = 0;
 		}
 		else if (Application::IsKeyPressed(VK_RBUTTON))
 		{
 			place = nullptr;
-			wayPointSetCoolDown = 0;
 		}
-			
 	}
-	wayPointSetCoolDown += dt;
+
+	if (Application::IsKeyPressed(VK_RBUTTON) && !selection.empty())
+	{
+
+        bool setTarget = false;
+
+		for (vector<Asteroid*>::iterator vitA = Vasteroid.begin(); vitA != Vasteroid.end();){
+
+			Asteroid* temp = *vitA;
+
+			if (temp->hitbox.RayToAABB(camera.position, picker.getCurrentRay())){
+
+                setTarget = true;
+                selectionSetTarget(temp);
+				break;
+
+			}
+			else{
+
+				vitA++;
+
+			}
+
+		}
+
+        if (setTarget == false){
+
+            selectionSetTarget(nullptr);
+            selectionSetWaypoints(picker.WorldCoord());
+
+		}
+
+
+	}
+	
 }
 
 void SP2::quests()
@@ -2206,6 +2407,7 @@ void SP2::quests()
 
 }
 
+
 void SP2::renderNPC()
 {
 	for (vector<NPC*>::iterator it = allNPC.begin(); it != allNPC.end(); ++it)
@@ -2266,8 +2468,7 @@ void SP2::ballquest()
 	{
 
 		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questDialogue + allNPC[0]->questStatus, Color(0, 1, 0), 3, 0, 12);
-		
-		
+
 	}
 
 	if (Application::IsKeyPressed('E') && allNPC[0]->hitbox.PointToAABB(camera.position) && allNPC[0]->complete == true)
@@ -2341,52 +2542,6 @@ void SP2::renderTextonball(){
 
 }
 
-void SP2::renderNPC2()
-{
-	//npc
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC2.Pos.x, NPC2.Pos.y, NPC2.Pos.z + move);
-
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC2], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PopMatrix();
-}
-
 void SP2::asteroidquest()
 {
 	if (currentQuest == asteroidQuest && allNPC[1]->complete != true)
@@ -2410,52 +2565,6 @@ void SP2::asteroidquest()
 	
 }
 
-void SP2::renderNPC3()
-{
-	//npc
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC3.Pos.x, NPC3.Pos.y, NPC3.Pos.z + move);
-
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC3], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PopMatrix();
-}	  
-
 void SP2::buyshipquest()
 {
 	if (currentQuest == buyshipQuest && allNPC[2]->complete != true)
@@ -2477,53 +2586,6 @@ void SP2::buyshipquest()
 		allNPC[2]->reward = true;
 	}
 	
-}
-
-void SP2::renderNPC4()
-{
-	//npc
-	modelStack.PushMatrix();
-	modelStack.Translate(NPC4.Pos.x + move, NPC4.Pos.y, NPC4.Pos.z);
-	modelStack.Rotate(90, 0, 1, 0);
-
-	modelStack.PushMatrix();
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_NPC4], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 2.2, 0);
-	modelStack.Rotate(-rotate, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTHAND], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_RIGHTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0, 0.5, 0);
-	modelStack.Rotate(-moveleg, 1, 0, 0);
-	modelStack.Rotate(180, 1, 0, 0);
-	modelStack.Scale(0.5, 0.5, 0.5);
-	RenderMesh(meshList[GEO_LEFTLEG], false);
-	modelStack.PopMatrix();
-
-	modelStack.PopMatrix();
 }
 
 void SP2::abductionquest()
@@ -2630,9 +2692,104 @@ void SP2::renderchildtext(){
 
 	modelStack.PopMatrix();
 	modelStack.PopMatrix();
+}
+
+void SP2::selectionSetTarget(Asteroid* newTarget){
+
+    vector<Vehicles*>::iterator vitV = selection.begin();
+
+    while (vitV != selection.end()){
+
+        Vehicles* tempV = *vitV;
+        tempV->currAttackTarget = newTarget;
+        vitV++;
+
+    }
+
+   
+}
+
+void SP2::selectionRemovetarget(){
+
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
+
+        vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
+
+        while (vitV != allVehicles[i].end()){
+
+            Vehicles* tempV = *vitV;
+            tempV->currAttackTarget = nullptr;
+            vitV++;
+
+        }
+
+    }
+   
+}
+
+void SP2::vehiclesRemoveTarget(Asteroid* oldTarget){
+
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
+
+        vector<Vehicles*>::iterator vitV = allVehicles[i].begin();
+
+        while (vitV != allVehicles[i].end()){
+
+            if ((*vitV)->currAttackTarget == oldTarget){
+
+                (*vitV)->currAttackTarget = nullptr;
+                
+            }
+
+            vitV++;
+
+        }
+
+    }
+
+}
+
+void SP2::selectionSetWaypoints(Vector3 newPosition){
+
+   vector<Vehicles*>::iterator vitV = selection.begin();
+  
+   while (vitV != selection.end()){
+
+       (*vitV)->setNewWayPoint(newPosition.x, newPosition.z);
+       vitV++;
+
+   }
 
 
 }
+
+void SP2::removeOneSelection(Vehicles* removedVehicle){
+
+    for (int i = GEO_SMALLSHIP; i <= GEO_LARGESHIP; ++i){
+
+        vector<Vehicles*>::iterator vitV = selection.begin();
+
+        while (vitV != selection.end()){
+
+            Vehicles* tempV = *vitV;
+
+            if (tempV == removedVehicle){
+
+                vitV = selection.erase(vitV);
+
+            }
+            else{
+
+                vitV++;
+            }
+
+        }
+
+    }
+
+
+}
+
 // Tools
 
 void SP2::RenderMesh(Mesh* mesh, bool enableLight)

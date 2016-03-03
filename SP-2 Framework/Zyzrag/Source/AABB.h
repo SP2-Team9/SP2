@@ -1,3 +1,17 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \file AABB.h
+
+* \author: Goh Zheng Yuan
+
+* \date: 15 feb 2016
+
+* \description: This header contains the class AABB
+
+*/
+/////////////////////////////////////////////////////////////////
+
 #ifndef AABB_H
 #define AABB_H
 
@@ -6,6 +20,13 @@
 
 using std::vector;
 
+
+/******************************************************************************/
+/*!
+\brief
+	Contains the class AABB hitbox, along with all it's functions
+*/
+/******************************************************************************/
 class AABB
 {
 private:
@@ -25,6 +46,7 @@ public:
 	bool AABBtoAABB(const vector<AABB>& box, Vector3& view);
 	bool RayToAABB(Vector3 rayOrigin, Vector3 ray);
 	bool PointToAABB(const Vector3& position);
+	bool withinPlane(Vector3 init, Vector3 end);
 
 	Vector3 GetMax();
 	Vector3 GetMin();

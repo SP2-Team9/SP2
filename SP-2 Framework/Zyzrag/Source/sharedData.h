@@ -2,31 +2,37 @@
 #define _SHAREDDATA_H
 
 class sharedData{
-
 public:
-
-
-	~sharedData();
-
-
-	sharedData getInputCooldown(){
-
-		static sharedData inputCooldown;
-
-		return inputCooldown;
-
+	static sharedData* GetInstance()
+	{
+		static sharedData data;
+		return &data;
 	}
 
+	bool Delay(double time)
+	{
+		if (delay > time)
+		{
+			delay = 0;
+			return true;
+		}
+		return false;
+	}
 
+	void DelayIncrement(double dt, double time = 0.5f)
+	{
+		if (delay < time)
+		{
+			delay += dt;
+		}
+	}
+
+	bool quit = false;
 
 private:
+	sharedData(){};
 
-	sharedData();
-	double inputCooldown;
-	double cooldownDuration;
-
-
-
+	float delay;
 };
 
 

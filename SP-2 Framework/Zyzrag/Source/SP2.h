@@ -1,6 +1,7 @@
 #ifndef SP2_H
 #define SP2_H
 
+#include "irrKlang.h"
 
 #include "Mesh.h"
 #include "Shop.h"
@@ -16,7 +17,9 @@
 #include "MousePicker.h"
 #include "pathFinding.h"
 #include "PlayerVehicle.h"
+#include "sharedData.h"
 #include "NPC.h"
+#include "Wave.h"
 
 #include <map>
 #include <queue>
@@ -28,42 +31,45 @@ using std::queue;
 using std::stack;
 using std::string;
 using std::vector;
+using std::cout;
+using std::endl;
 
 
 
 
-class SP2 : public Scene
-{
+class SP2 : public Scene{
+
 	enum GEOMETRY_TYPE
 	{
-        GEO_AXES,
-        GEO_RAY,
-        GEO_LIGHTBALL,
+		GEO_AXES,
+		GEO_RAY,
+		GEO_LIGHTBALL,
 		GEO_SPHERE,
 		GEO_TITLESCREEN,
+		GEO_HELPSCREEN,
 
-        GEO_FRONT,
-        GEO_BACK,
-        GEO_LEFT,
-        GEO_RIGHT,
-        GEO_TOP,
-        GEO_BOTTOM,
+		GEO_FRONT,
+		GEO_BACK,
+		GEO_LEFT,
+		GEO_RIGHT,
+		GEO_TOP,
+		GEO_BOTTOM,
 		GEO_TEXT,
 		GEO_TEXT1,
 		GEO_TEXT2,
-      
+
 
 		GEO_XWING,
-        // DONT PUT ANYTHING INBETWEEN! FROM HERE
+		// DONT PUT ANYTHING INBETWEEN! FROM HERE
 		GEO_SMALLSHIP,
 		GEO_MIDSHIP,
 		GEO_LARGESHIP,
-        // TO HERE
+		// TO HERE
 
-        GEO_CONTROL_PANEL,
-        GEO_SPACE_STATION,
+		GEO_CONTROL_PANEL,
+		GEO_SPACE_STATION,
 		GEO_TELEPORTER,
-        GEO_HITBOX,
+		GEO_HITBOX,
 
 		GEO_SHOPBACKDROP,
 		GEO_ATTACKUP,
@@ -71,22 +77,23 @@ class SP2 : public Scene
 		GEO_HEALTHUP,
 		GEO_BUYBUTTON,
 
-        GEO_NPC,
+		GEO_NPC,
 		GEO_NPC2,
 		GEO_NPC3,
 		GEO_NPC4,
 		GEO_NPC5,
 		GEO_NPC6,
 		GEO_NPC7,
-        GEO_LEFTHAND,
-        GEO_RIGHTHAND,
-        GEO_LEFTLEG,
-        GEO_RIGHTLEG,
-        GEO_BULLETS,
-        GEO_ASTEROID,
-        GEO_EXPLOSION,
-        GEO_ASTEROID_HEALTH,
+		GEO_LEFTHAND,
+		GEO_RIGHTHAND,
+		GEO_LEFTLEG,
+		GEO_RIGHTLEG,
+		GEO_BULLETS,
+		GEO_ASTEROID,
+		GEO_EXPLOSION,
+		GEO_HEALTHBAR,
 		GEO_INNERSTATION,
+		GEO_SELECTION,
 
 		NUM_GEOMETRY,
 
@@ -113,6 +120,18 @@ class SP2 : public Scene
 		U_LIGHT0_COSINNER,
 		U_LIGHT0_EXPONENT,
 
+		U_LIGHT1_POSITION,
+		U_LIGHT1_COLOR,
+		U_LIGHT1_POWER,
+		U_LIGHT1_KC,
+		U_LIGHT1_KL,
+		U_LIGHT1_KQ,
+		U_LIGHT1_TYPE,
+		U_LIGHT1_SPOTDIRECTION,
+		U_LIGHT1_COSCUTOFF,
+		U_LIGHT1_COSINNER,
+		U_LIGHT1_EXPONENT,
+
 		U_LIGHTENABLED,
 		U_NUMLIGHTS,
 		U_COLOR_TEXTURE_ENABLED,
@@ -129,6 +148,8 @@ class SP2 : public Scene
 		inPlayerShip,
 		inSpaceStation,
 		inShop,
+        waveTransition,
+		help,
 		exit,
 	};
 
@@ -168,8 +189,10 @@ public:
 	virtual void Update(double dt);
 	
 	// Initializers
+
 	void objectsInit();
 	void npcInit();
+	void lightInit();
 	void shopInit();
 	void WorldHitboxInit();
     void bulletCreation(double dt);
@@ -178,6 +201,9 @@ public:
     void playerBulletCreation(double dt);
 	
 	// Renders
+
+  
+	void renderHelp();
 	void renderNPC();
 	void renderNPC2();
 	void renderNPC3();
@@ -187,6 +213,7 @@ public:
     void renderSkybox();
     void renderStation();
     void renderBullets();
+    void renderGeneral();
 	void renderShopMenu();
 	void renderAsteroid();
     void renderDistances();
@@ -196,7 +223,8 @@ public:
 	void renderFightingUI();
     void renderExplosions();
 	void renderTitleScreen();
-    void renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health);
+    void renderWaveTransition();
+    void renderHealthBar(Vector3 asteroidPosition, int asteroidSize, int health, Color color);
 
 	// Updates
 
@@ -211,29 +239,31 @@ public:
 	void mainMenuUpdates(double dt);
 	void explosionUpdate(double dt);
 	void inPlayerShipUpdates(double dt);
+    void waveTransitionUpdate(double dt);
 	void inSpaceStationUpdates(double dt);
-
 
 	//Others
 
     void quests();
     void ballquest();
-    void asteroidquest();
-	void buyshipquest();
-	void abductionquest();
+    void buyshipquest();
     void checkHitboxes();
+    void asteroidquest();
+	void abductionquest();  
 	void shipHitboxCheck();
 	void stationHitboxCheck();
 	void asteroidHitboxCheck();
+    void selectionRemovetarget();
 	void MouseSelection(double dt);
 	void renderTextonball();
 	void renderchildtext();
-	
-	
+    void selectionSetTarget(Asteroid* newTarget);
+    void vehiclesRemoveTarget(Asteroid* oldTarget);
+    void selectionSetWaypoints(Vector3 newPosition);
+    void removeOneSelection(Vehicles* removedVehicle);
 
 
 	// Tools
-
 	void RenderMesh(Mesh* mesh, bool enableLight);
 	void RenderText(Mesh* mesh, std::string text, Color color);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z = 0);
@@ -247,11 +277,13 @@ public:
 
 private:
 
-	int lastState;
+	irrklang::ISoundEngine* shootingsfx = irrklang::createIrrKlangDevice();
+	irrklang::ISoundEngine* explosionsfx = irrklang::createIrrKlangDevice();
+
     int currMoney;
 
 	Camera camera;
-	Light light[1];
+	Light light[2];
 	Vector3 LightView;
 	Mesh *meshList[NUM_GEOMETRY];
 
@@ -292,6 +324,7 @@ private:
 	bool complete4 = 0;
 	bool complete5 = 0;
 	
+	bool displayHelp;
 
 	int destroyed;
 	int shipbought;
@@ -308,9 +341,13 @@ private:
 	float shopSmallScale, shopMidScale, shopLargeScale;
 	float shopSmallRot, shopMidRot, shopLargeRot;
 
+	bool hold;
+	Vector3 initCursor, endCursor;
+
 	SHOPSTATE shopState;
 
 	GAMESTATE state;
+	GAMESTATE lastState;
 
 	HITBOXCHECK HBcheck;
 
@@ -347,11 +384,11 @@ private:
 	Vehicles *midShip;
 	Vehicles *smallShip;
 	Vehicles *largeShip;
-	Vehicles* selection;
+
+    vector<Vehicles*> selection;
 
 	Vehicles* place;
 	int placeType;
-	bool hold;
 
 	vector<AABB> worldHitbox;
 	vector<AABB> Interactions;
@@ -362,6 +399,9 @@ private:
 	MS modelStack, viewStack, projectionStack;
 
 	QUEST currentQuest = noQuest;
+
+	Wave* waveFunctions;
+
 };
 
 

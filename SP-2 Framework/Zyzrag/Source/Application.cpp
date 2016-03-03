@@ -12,11 +12,14 @@
 
 #include "SP2.h"
 
+
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game
 const unsigned int frameTime = 1000 / FPS; // time for each frame
-int Application::screenHeight = 0;
 int Application::screenWidth = 0;
+int Application::screenHeight = 0;
+double Application::scrollX = 0;
+double Application::scrollY = 0;
 
 
 //Define an error callback
@@ -51,6 +54,12 @@ void resize_callback(GLFWwindow* window, int w, int h)
 	glViewport(0, 0, w, h); //update opengl the new window size
 }
 
+void scrollwheel_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	Application::scrollX = xoffset;
+	Application::scrollY = yoffset;
+}
+
 void Application::Init()
 {
 	//Set the error callback
@@ -76,10 +85,12 @@ void Application::Init()
 	screenHeight = mode->height;
 	screenWidth = 800;
 	screenHeight = 600;
+
 	m_window = glfwCreateWindow(screenWidth, screenHeight, "SP2", NULL, NULL);
 
 	//Set window Size
 	glfwSetWindowSizeCallback(m_window, resize_callback);
+	glfwSetScrollCallback(m_window, scrollwheel_callback);
 
 	//If the window couldn't be created
 	if (!m_window)
@@ -93,7 +104,7 @@ void Application::Init()
 	glfwMakeContextCurrent(m_window);
 
 	//Sets the key callback
-	glfwSetKeyCallback(m_window, key_callback);
+	//glfwSetKeyCallback(m_window, key_callback);
 
 	glewExperimental = true; // Needed for core profile
 	//Initialize GLEW
@@ -114,10 +125,11 @@ void Application::Run()
 	scene->Init();
     srand(time(nullptr));
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
-	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE))
+	while (!glfwWindowShouldClose(m_window) && sharedData::GetInstance()->quit == false)
 	{
-		scene->Update(m_timer.getElapsedTime());
-		scene->Render();
+
+        scene->Update(m_timer.getElapsedTime());
+        scene->Render();
 
 		//Swap buffers
 		glfwSwapBuffers(m_window);
@@ -127,7 +139,7 @@ void Application::Run()
         m_timer.waitUntil(frameTime);       // Frame rate limiter. Limits each frame to a specified time in ms.   
 		
 	} //Check if the ESC key had been pressed or if the window had been closed
-	scene->Exit();
+    scene->Exit();
 	delete scene;
 }
 
@@ -146,7 +158,7 @@ void Application::getMouse(double & x, double & y)
 
 void Application::centerMouse()
 {
-	glfwSetCursorPos(m_window, 800 / 2, 600 / 2);
+	glfwSetCursorPos(m_window, screenWidth / 2, screenHeight / 2);
 }
 
 void Application::hideMouse()

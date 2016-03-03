@@ -1,3 +1,17 @@
+/////////////////////////////////////////////////////////////////
+/*!
+
+* \file Camera.cpp
+
+* \author: Goh Zheng Yuan
+
+* \date: 15 feb 2016
+
+* \description: This cpp contains the functions of the class Camera
+
+*/
+/////////////////////////////////////////////////////////////////
+
 #include "Camera.h"
 #include "Vector3.h"
 #include "Application.h"
@@ -10,6 +24,7 @@ Default constructor
 /******************************************************************************/
 Camera::Camera()
 {
+	lock = false;
 }
 
 /******************************************************************************/
@@ -73,18 +88,18 @@ void Camera::Init(const Vector3& pos, const Vector3& target)
 \brief
 Points at object
 
-\param pos - position of camera
-\param target - where the camera is looking at
+\param obj - The object that the camera wants to look at.
+\param height - Height away from the object
+\param offset - Z distance away from object.
 */
 /******************************************************************************/
 void Camera::PointAt(Object& obj, float height, float offset)
 {
 	target = obj.Pos;
-	position.z = target.z + offset;
-	position.x = target.x;
-	position.y = target.y + height;
+	position = target + (obj.View * offset);
+	position += obj.Up * height;
 	view = position - target;
-	right = view.Cross(Vector3(0, 1, 0));
+	right = view.Cross(obj.Up);
 	up = right.Cross(view);
 }
 
@@ -122,6 +137,15 @@ void Camera::Update(double dt)
 		cameraSpeed = 5.f;
 }
 
+/******************************************************************************/
+/*!
+\brief
+First Person camera movement
+
+\param dt - Delta time.
+\param hitbox - Vector of AABB hitbox to test if camera is colliding with anything.
+*/
+/******************************************************************************/
 void Camera::FPSMovement(double dt, vector<AABB> hitbox)
 {
 	getYawAndPitch(dt);
@@ -284,12 +308,53 @@ void Camera::FPSMovement(double dt, vector<AABB> hitbox)
 	}
 }
 
-void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
-{
-	getYawAndPitch(dt);
+/******************************************************************************/
+/*!
+\brief
+Third person movement
 
+\param dt - Delta time.
+\param veh - Player's vehicle to control.
+*/
+/******************************************************************************/
+void Camera::TPSMovement(double dt, PlayerVehicle& veh)
+{
 	if (veh.delay > 0)
 		veh.delay -= dt;
+
+	if (Application::IsKeyPressed(VK_MENU) && sharedData::GetInstance()->Delay(0.5f))
+	{
+		lock = (lock + 1) % 2;
+	}
+
+	if (lock == true)
+	{
+		getYawAndPitch(dt);
+		target = veh.Pos;
+		if (pitch != 0)
+		{
+			Mtx44 rotation;
+			rotation.SetToRotation(pitch * -1, right.x, 0, right.z);
+			view = rotation * view;
+			up = rotation * up;
+			right = rotation * right;
+			
+		}
+
+		if (yaw != 0)
+		{
+			Mtx44 rotation;
+			rotation.SetToRotation(yaw, 0, 1, 0);
+			view = rotation * view;
+			up = rotation * up;
+			right = rotation * right;
+		}
+		position = target + view;
+	}
+	else
+	{
+		PointAt(veh, 5, -30);
+	}
 
 	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 100)
 	{
@@ -300,74 +365,12 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 	{
 		veh.thrust -= 10.f * dt;
 	}
-	/*if (veh.thrust != 0)
-	{
-		bool checkX, checkY, checkZ;
-		checkX = checkY = checkZ = false;
-		for (int i = 0; i < hitbox.size(); ++i)
-		{
-			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(veh.View.x * dt * veh.thrust, 0, 0)) && checkX == false)
-			{
-				checkX = true;
-			}
-			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(0, veh.View.y * dt * veh.thrust, 0)) && checkY == false)
-			{
-				checkY = true;
-			}
-			if (veh.hitbox.AABBtoAABB(hitbox[i], Vector3(0, 0, veh.View.z * dt * veh.thrust)) && checkZ == false)
-			{
-				checkZ = true;
-			}
-		}
-		if (!checkX)
-		{
-			veh.Pos.x += veh.View.x * dt * veh.thrust;
-			target.x += veh.View.x * dt * veh.thrust;
-			position.x += veh.View.x * dt * veh.thrust;
-		}
-		if (!checkY)
-		{
-			veh.Pos.y += veh.View.y * dt * veh.thrust;
-			target.y += veh.View.y * dt * veh.thrust;
-			position.y += veh.View.y * dt * veh.thrust;
-		}
-		if (!checkZ)
-		{
-			veh.Pos.z += veh.View.z * dt * veh.thrust;
-			target.z += veh.View.z * dt * veh.thrust;
-			position.z += veh.View.z * dt * veh.thrust;
-		}
-
-		if (checkX == true && veh.thrust >= 500 || checkY == true && veh.thrust >= 500 || checkZ == true && veh.thrust >= 500)
-		{
-			veh.isDead = true;
-		}
-
-		veh.updateHitbox();
-	}*/
-	if (pitch != 0)
-	{
-		Mtx44 rotation;
-		rotation.SetToRotation(pitch * -1, right.x, 0, right.z);
-		view = rotation * view;
-		up = rotation * up;
-		right = rotation * right;
-	}
-
-	if (yaw != 0)
-	{
-		Mtx44 rotation;
-		rotation.SetToRotation(yaw, 0, 1, 0);
-		view = rotation * view;
-		up = rotation * up;
-		right = rotation * right;
-	}
 	
 	if (Application::IsKeyPressed('W'))
 	{
 		Mtx44 rotation;
 		veh.pitch -= dt * 50.f;
-		rotation.SetToRotation(-(dt * 50.f), veh.Right.x, veh.Right.y, veh.Right.z);
+		rotation.SetToRotation(-(dt * 50.f), veh.Right.x, 0, veh.Right.z);
 		veh.View = rotation * veh.View;
 		veh.Up = rotation * veh.Up;
 		veh.Right = rotation * veh.Right;
@@ -377,7 +380,7 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 	{
 		Mtx44 rotation;
 		veh.pitch += dt * 50.f;
-		rotation.SetToRotation(dt * 50.f, veh.Right.x, veh.Right.y, veh.Right.z);
+		rotation.SetToRotation(dt * 50.f, veh.Right.x, 0, veh.Right.z);
 		veh.View = rotation * veh.View;
 		veh.Up = rotation * veh.Up;
 		veh.Right = rotation * veh.Right;
@@ -387,7 +390,7 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 	{
 		Mtx44 rotation;
 		veh.yaw += dt * 50.f;
-		rotation.SetToRotation(dt * 50.f, 0, 1, 0);
+		rotation.SetToRotation(dt * 50.f, 0,1,0);
 		veh.View = rotation * veh.View;
 		veh.Up = rotation * veh.Up;
 		veh.Right = rotation * veh.Right;
@@ -397,16 +400,21 @@ void Camera::TPSMovement(double dt, PlayerVehicle& veh, vector <AABB> hitbox)
 	{
 		Mtx44 rotation;
 		veh.yaw -= dt * 50.f;
-		rotation.SetToRotation(-(dt * 50.f), 0, 1, 0);
+		rotation.SetToRotation(-(dt * 50.f), 0,1,0);
 		veh.View = rotation * veh.View;
 		veh.Up = rotation * veh.Up;
 		veh.Right = rotation * veh.Right;
 	}
-
-	target = veh.Pos;
-	position = target + view;
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Camera mode that is not affected by any hitboxes
+
+\param dt - Delta Time.
+*/
+/******************************************************************************/
 void Camera::NoClip(double dt)
 {
 	getYawAndPitch(dt);
@@ -478,6 +486,15 @@ void Camera::NoClip(double dt)
 	}
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Camera mode that only allows Yaw Rotation and controlling vehicle's thrust.
+
+\param veh - Player's vehicle to control.
+\param dt - Delta time.
+*/
+/******************************************************************************/
 void Camera::YawRotation(PlayerVehicle& veh, double dt)
 {
 	getYawAndPitch(dt);
@@ -485,21 +502,25 @@ void Camera::YawRotation(PlayerVehicle& veh, double dt)
 	float yaw = 0.f;
 	if (Application::IsKeyPressed('A'))
 	{
-		yaw = -1 * 50.f * dt;
+		yaw = -1 * 80.f * dt;
 	}
 	else if (Application::IsKeyPressed('D'))
 	{
-		yaw = 50.f * dt;
+		yaw = 80.f * dt;
 	}
 
-	if (Application::IsKeyPressed(VK_LSHIFT) && veh.thrust < 100)
+	if (Application::scrollY > 0 && view.getMagnitude() > 50)
 	{
-		veh.thrust += +10.f * dt;
+		Vector3 normView = view.Normalized();
+		view -= normView * 10;
+		Application::scrollY = 0;
 	}
 
-	if (Application::IsKeyPressed(VK_LCONTROL) && veh.thrust > -40)
+	if (Application::scrollY < 0 && view.getMagnitude() < 300)
 	{
-		veh.thrust -= 10.f * dt;
+		Vector3 normView = view.Normalized();
+		view += normView * 10;
+		Application::scrollY = 0;
 	}
 
 	target = veh.Pos;
@@ -511,11 +532,23 @@ void Camera::YawRotation(PlayerVehicle& veh, double dt)
 	right = rotation * right;
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Enable mouse cursor.
+*/
+/******************************************************************************/
 void Camera::EnableCursor()
 {
 	Application::showMouse();
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Disable mouse cursor.
+*/
+/******************************************************************************/
 void Camera::DisableCursor()
 {
 	Application::getMouse(mouseX, mouseY);
@@ -523,8 +556,16 @@ void Camera::DisableCursor()
 	Application::hideMouse();
 }
 
+/******************************************************************************/
+/*!
+\brief
+	Sets Yaw and Pitch from mouse movement
+
+\param dt - Delta time.
+*/
+/******************************************************************************/
 void Camera::getYawAndPitch(double dt)
 {
-	yaw = mouseSpeed * dt * static_cast<float>(800 / 2 - mouseX);
-	pitch = mouseSpeed * dt * static_cast<float>(600 / 2 - mouseY);
+	yaw = mouseSpeed * dt * static_cast<float>(Application::screenWidth/ 2 - mouseX);
+	pitch = mouseSpeed * dt * static_cast<float>(Application::screenHeight / 2 - mouseY);
 }
