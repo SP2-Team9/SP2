@@ -273,7 +273,6 @@ void SP2::Init()
 }
 
 void SP2::Update(double dt){
-
 	if (waveFunctions->stationHealth <= 0){
 
 		cout << "Error" << endl;
@@ -295,7 +294,7 @@ void SP2::Update(double dt){
 
 	
 
-	if (Application::IsKeyPressed(VK_ESCAPE) && state != inShop && sharedData::GetInstance()->Delay(0.5f))
+	if (Application::IsKeyPressed(VK_ESCAPE) && state != inShop && state != exit && state != gameOver && sharedData::GetInstance()->Delay(0.5f))
 	{ 
 		lastState = state;
 		state = exit;
@@ -1600,7 +1599,7 @@ void SP2::gameOverUpdate(){
 	}
 	else if (Application::IsKeyPressed(VK_ESCAPE)){
 
-		state = gameOver;
+		sharedData::GetInstance()->quit = true;
 
 	}
 
@@ -2135,7 +2134,7 @@ void SP2::inPlayerShipUpdates(double dt){
 	{
 		state = RTS;
 		lastState = inPlayerShip;
-		camera.PointAt(playerShip, 50, -200);
+		camera.PointAt(playerShip, 100, -200);
 
 	}
 
@@ -2207,7 +2206,7 @@ void SP2::inSpaceStationUpdates(double dt){
 		lastState = inSpaceStation;
 		LastLocation.SetPos(camera.position.x, camera.position.y, camera.position.z);
 		LastLocation.SetView(camera.view.x, camera.view.y, camera.view.z);
-		camera.PointAt(playerShip, 50, -200);
+		camera.PointAt(playerShip, 100, -200);
 	}
 
 	NPCUpdates(dt);

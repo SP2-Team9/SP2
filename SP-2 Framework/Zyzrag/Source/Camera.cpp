@@ -516,7 +516,7 @@ void Camera::YawRotation(PlayerVehicle& veh, double dt)
 		Application::scrollY = 0;
 	}
 
-	if (Application::scrollY < 0 && view.getMagnitude() < 300)
+	if (Application::scrollY < 0 && view.getMagnitude() < 500)
 	{
 		Vector3 normView = view.Normalized();
 		view += normView * 10;
