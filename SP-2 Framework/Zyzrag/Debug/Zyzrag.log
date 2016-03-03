@@ -1,15 +1,11 @@
-﻿Build started 3/2/2016 9:28:52 PM.
-     1>Project "C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\Zyzrag\Zyzrag.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\\glew\include" /I"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\\glfw\include" /I"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\\Common\Source" /I"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\\Irrklang\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt source\Wave.cpp
-         Wave.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\Debug\Zyzrag.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\\glew\lib" /LIBPATH:"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\\glfw\lib-msvc120" /LIBPATH:"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\Debug" /LIBPATH:"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\\Irrklang\lib" glew32.lib glu32.lib glfw3.lib opengl32.lib winmm.lib Common.lib irrKlang.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\Debug\Zyzrag.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\Debug\Zyzrag.lib" /MACHINE:X86 Debug\AABB.obj
+﻿Build started 3/3/2016 11:29:05 AM.
+     1>Project "C:\Users\n1507\Desktop\SP2\SP-2 Framework\Zyzrag\Zyzrag.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\Zyzrag.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glew\lib" /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\glfw\lib-msvc120" /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug" /LIBPATH:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\\Irrklang\lib" glew32.lib glu32.lib glfw3.lib opengl32.lib winmm.lib Common.lib irrKlang.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\Zyzrag.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\Zyzrag.lib" /MACHINE:X86 Debug\AABB.obj
          Debug\Application.obj
          Debug\Asteroid.obj
          Debug\Bullet.obj
          Debug\Camera.obj
-         Debug\Earth.obj
          Debug\Explosion.obj
          Debug\LoadOBJ.obj
          Debug\LoadTGA.obj
@@ -27,9 +23,10 @@
          Debug\Utility.obj
          Debug\Vehicles.obj
          Debug\Wave.obj
-         Zyzrag.vcxproj -> C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\Debug\Zyzrag.exe
-     1>Done Building Project "C:\Users\155135S\Desktop\SP2.git\SP-2 Framework\Zyzrag\Zyzrag.vcxproj" (Build target(s)).
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         Zyzrag.vcxproj -> C:\Users\n1507\Desktop\SP2\SP-2 Framework\Debug\Zyzrag.exe
+     1>Done Building Project "C:\Users\n1507\Desktop\SP2\SP-2 Framework\Zyzrag\Zyzrag.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.61
+Time Elapsed 00:00:00.38

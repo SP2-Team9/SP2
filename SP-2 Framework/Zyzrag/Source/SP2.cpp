@@ -43,6 +43,8 @@ void SP2::Init()
 	place = nullptr;
 	placeType = 0;
 
+    
+
 	shootingsfx->setDefault3DSoundMinDistance(200.f);
 	shootingsfx->setDefault3DSoundMaxDistance(1000.f);
 	shootingsfx->setSoundVolume(0.5f);
@@ -65,8 +67,6 @@ void SP2::Init()
 	Mtx44 projection;
 	if (static_cast<float>(Application::screenWidth) / static_cast<float>(Application::screenHeight) > 1.3334)
 	{
-		std::cout << Application::screenWidth << std::endl;
-		std::cout << Application::screenHeight << std::endl;
 		widescreen = true;
 		projection.SetToPerspective(45.f, 16.f / 9.f, 0.1f, 10000.f);
 	}
@@ -269,15 +269,16 @@ void SP2::Init()
 	meshList[GEO_HEALTHUP]->textureID = LoadTGA("Image//healthup.tga");
 }
 
-void SP2::Update(double dt)
-{
+void SP2::Update(double dt){
+    dt *= 2;
+
 	if (Application::IsKeyPressed('P'))
 	{
 		Exit();
 		Init();
 	}
 
-	if (state != MainMenu && state != exit && state != help){
+	if (state != MainMenu && state != exit && state != help && state != waveTransition){
 	
 		generalUpdates(dt);
 
@@ -332,7 +333,13 @@ void SP2::Update(double dt)
 		}
 
 		break;
-		
+	
+    case waveTransition:
+
+        waveTransitionUpdate(dt);
+
+        break;
+
 	case exit:
 
 		sharedData::GetInstance()->quit = true;
@@ -454,6 +461,12 @@ void SP2::Render()
 	case help:
 		renderHelp();
 		break;
+
+    case waveTransition:
+
+        renderWaveTransition();
+        break;
+
 
 	}
 
@@ -677,55 +690,51 @@ void SP2::playerBulletCreation(double dt){
 }
 
 void SP2::generateAsteroid(){
+
 	int minOffset = -2000;
 	int maxOffset = 2000;
 	int viewOffset = 500;
 
-	cout << waveFunctions->numberOfAsteroidsDestroyed << endl;
-	if (waveFunctions->spawnAsteroid()){
+    if (waveFunctions->spawnAsteroid() && Vasteroid.size() < waveFunctions->maxNumberOfAsteroids - waveFunctions->numberOfAsteroidsDestroyed){
 		
-		if (Vasteroid.size() < waveFunctions->maxNumberOfAsteroids - waveFunctions->numberOfAsteroidsDestroyed){
+	    Asteroid* asteroid = new Asteroid(generate_range(5, 100));
+	    Vector3 target(generate_range(-viewOffset, viewOffset), 0, generate_range(-viewOffset, viewOffset));
 
-			Asteroid* asteroid = new Asteroid(generate_range(5, 100));
-			Vector3 target(generate_range(-viewOffset, viewOffset), 0, generate_range(-viewOffset, viewOffset));
+	    switch (generate_range(0, 4))
+	    {
+	    case 0:
 
-			switch (generate_range(0, 4))
-			{
-			case 0:
+	    	asteroid->SetPos(generate_range(camera.position.x + minOffset, camera.position.x + maxOffset), 0, generate_range(camera.position.z + maxOffset - 1000, camera.position.z + maxOffset));
+	    	asteroid->SetView((target - asteroid->Pos).Normalized());
+	    	Vasteroid.push_back(asteroid);
+	    	break;
 
-				asteroid->SetPos(generate_range(camera.position.x + minOffset, camera.position.x + maxOffset), 0, generate_range(camera.position.z + maxOffset - 1000, camera.position.z + maxOffset));
-				asteroid->SetView((target - asteroid->Pos).Normalized());
-				Vasteroid.push_back(asteroid);
-				break;
+	    case 1:
 
-			case 1:
+	    	asteroid->SetPos(generate_range(camera.position.x + minOffset, camera.position.x + maxOffset), 0, generate_range(camera.position.z + minOffset - 1000, camera.position.z + minOffset));
+	    	asteroid->SetView((target - asteroid->Pos).Normalized());
+	    	Vasteroid.push_back(asteroid);
 
-				asteroid->SetPos(generate_range(camera.position.x + minOffset, camera.position.x + maxOffset), 0, generate_range(camera.position.z + minOffset - 1000, camera.position.z + minOffset));
-				asteroid->SetView((target - asteroid->Pos).Normalized());
-				Vasteroid.push_back(asteroid);
+	    	break;
 
-				break;
+	    case 2:
 
-			case 2:
+	    	asteroid->SetPos(generate_range(camera.position.x + maxOffset - 1000, camera.position.x + maxOffset), 0, generate_range(camera.position.z + minOffset, camera.position.z + maxOffset));
+	    	asteroid->SetView((target - asteroid->Pos).Normalized());
+	    	Vasteroid.push_back(asteroid);
 
-				asteroid->SetPos(generate_range(camera.position.x + maxOffset - 1000, camera.position.x + maxOffset), 0, generate_range(camera.position.z + minOffset, camera.position.z + maxOffset));
-				asteroid->SetView((target - asteroid->Pos).Normalized());
-				Vasteroid.push_back(asteroid);
+	    	break;
 
-				break;
+	    case 3:
 
-			case 3:
+	    	asteroid->SetPos(generate_range(camera.position.x + minOffset - 1000, camera.position.x + minOffset), 0, generate_range(camera.position.z + minOffset, camera.position.z + maxOffset));
+	    	asteroid->SetView((target - asteroid->Pos).Normalized());
+	    	Vasteroid.push_back(asteroid);
 
-				asteroid->SetPos(generate_range(camera.position.x + minOffset - 1000, camera.position.x + minOffset), 0, generate_range(camera.position.z + minOffset, camera.position.z + maxOffset));
-				asteroid->SetView((target - asteroid->Pos).Normalized());
-				Vasteroid.push_back(asteroid);
+	    	break;
 
-				break;
-
-			}
-
-		}
-			
+	    }
+  
 	}
 
 }
@@ -733,9 +742,19 @@ void SP2::generateAsteroid(){
 
 
 // Renders
+
+void SP2::renderWaveTransition(){
+
+    RenderOnScreen(meshList[GEO_HELPSCREEN], screenWidth / 2, screenHeight / 2, -20, 1, 90, 0, 0);
+    RenderTextOnScreen(meshList[GEO_TEXT], "Wave " + std::to_string(waveFunctions->waveNumber), Color(0, 1, 0), 20, 0.33f * screenWidth, 0.6 * screenHeight);
+    RenderTextOnScreen(meshList[GEO_TEXT], "Complete!", Color(0, 1, 0), 20, 0.26f * screenWidth, 0.4 * screenHeight);
+
+}
+
 void SP2::renderHelp()
 {
 	RenderOnScreen(meshList[GEO_HELPSCREEN], screenWidth / 2, screenHeight / 2, -20, 1, 90, 0, 0);
+
 	RenderTextOnScreen(meshList[GEO_TEXT], "General Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.9 * screenHeight);
 	RenderTextOnScreen(meshList[GEO_TEXT], "Press TAB to go into RTS mode", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.85 * screenHeight);
 	RenderTextOnScreen(meshList[GEO_TEXT], "Walk to control panel and Press E to buy/upgrade ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.8 * screenHeight);
@@ -1848,6 +1867,7 @@ void SP2::asteroidUpdate(double dt){
 
         if (asteroid->curRange > asteroid->maxRange || asteroid->health < 0){
 
+            waveFunctions->numberOfAsteroidsDestroyed++;
             delete asteroid;
             it = Vasteroid.erase(it);
 
@@ -1864,6 +1884,7 @@ void SP2::asteroidUpdate(double dt){
 	{
 		generateAsteroid();
 	}
+
 }
 
 void SP2::generalUpdates(double dt){
@@ -1896,6 +1917,13 @@ void SP2::generalUpdates(double dt){
 	}
 
 	waveFunctions->waveUpdate(dt);
+
+    if (waveFunctions->waveComplete()){
+
+        cout << "Boom" << endl;
+        state = waveTransition;
+
+    }
 
 
 	shootingsfx->setListenerPosition(irrklang::vec3df(camera.position.x, camera.position.y, camera.position.z), irrklang::vec3df(camera.view.x, camera.view.y, camera.view.z));
@@ -1995,6 +2023,7 @@ void SP2::inPlayerShipUpdates(double dt){
 		state = RTS;
 		lastState = inPlayerShip;
 		camera.PointAt(playerShip, 50, -200);
+
 	}
 
 	if (playerShip.isDead == true)
@@ -2005,6 +2034,37 @@ void SP2::inPlayerShipUpdates(double dt){
 
 	
 
+
+}
+
+void SP2::waveTransitionUpdate(double dt){
+
+    waveFunctions->waveUpdate(dt);
+
+    if (waveFunctions->endOfTransition){
+
+        if (lastState == inSpaceStation){
+
+            state = inSpaceStation;
+            camera.Init(LastLocation.Pos, LastLocation.Pos + LastLocation.View);
+
+        }
+        else if (lastState == inPlayerShip){
+
+            state = inPlayerShip;
+            camera.PointAt(playerShip, 10, -30);
+
+        }
+        else{
+
+            Application::centerMouse();
+            state = RTS;
+            camera.PointAt(playerShip, 50, -200);
+        }
+
+        
+    }
+    
 
 }
 
