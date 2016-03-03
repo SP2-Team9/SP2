@@ -32,7 +32,7 @@ void SP2::Init()
 	widescreen = false;
 	kidnap = false;
 	pickup = false;
-    currMoney = 10000;
+    currMoney = 1000;
 	place = nullptr;
 	placeType = 0;
 	destroyed = 0;
@@ -273,9 +273,9 @@ void SP2::Init()
 }
 
 void SP2::Update(double dt){
+
 	if (waveFunctions->stationHealth <= 0){
 
-		cout << "Error" << endl;
 		state = gameOver;
 
 	}
@@ -294,7 +294,7 @@ void SP2::Update(double dt){
 
 	
 
-	if (Application::IsKeyPressed(VK_ESCAPE) && state != inShop && state != exit && state != gameOver && sharedData::GetInstance()->Delay(0.5f))
+	if (Application::IsKeyPressed(VK_ESCAPE) && state != inShop && state != exit && state != waveTransition && state != gameOver && sharedData::GetInstance()->Delay(0.5f))
 	{ 
 		lastState = state;
 		state = exit;
@@ -2670,14 +2670,16 @@ void SP2::MouseSelection(double dt)
 				place->View.Set(picker.WorldCoord().x - place->Pos.x, picker.WorldCoord().y - place->Pos.y, picker.WorldCoord().z - place->Pos.z);
 				place->View.Normalize();
 				place->initialYaw = place->getRotationAngle(place->View);
-				place->update(dt);
 			}
 		}
 		else if (hold == true)
 		{
+
+			place->newVehicle.setCurrSpeed(0);
 			place->currAttackTarget = nullptr;
 			place->newVehicle.resetWayPoints();
 			place->initialMoveDirection();
+			place->update(dt);
 			allVehicles[placeType].push_back(place);
 			selection.clear();
 			selection.push_back(place);
@@ -2689,6 +2691,7 @@ void SP2::MouseSelection(double dt)
 		{
 			place = nullptr;
 		}
+
 	}
 
 	if (Application::IsKeyPressed(VK_RBUTTON) && !selection.empty())
