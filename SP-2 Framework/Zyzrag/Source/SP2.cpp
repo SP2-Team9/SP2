@@ -30,9 +30,13 @@ void SP2::Init()
 	LightView = Vector3(0, 1, 0);
 	state = MainMenu;
 	widescreen = false;
+	kidnap = false;
+	pickup = false;
     currMoney = 1000;
 	place = nullptr;
 	placeType = 0;
+	destroyed = 0;
+	shipbought = 0;
 
 	shootingsfx->setDefault3DSoundMinDistance(200.f);
 	shootingsfx->setDefault3DSoundMaxDistance(1000.f);
@@ -239,19 +243,6 @@ void SP2::Init()
 
 	meshList[GEO_INNERSTATION] = MeshBuilder::GenerateOBJ("Test", "OBJ//innerstation.obj");
 	meshList[GEO_INNERSTATION]->textureID = LoadTGA("Image//innerstation.tga");
-
-   
-    move = 0.f;
-    rotate = 0.f;
-    moveleg = 0.f;
-	count = 0.f;
-	count2 = 0.f;
-	count3 = 0.f;
-	count4 = 0.f;
-	destroyed = 0;
-	shipbought = 0;
-
-	
 
     meshList[GEO_EXPLOSION] = MeshBuilder::GenerateQuad("Explosion", Color(1, 1, 1), 1.f, 1.f);
     meshList[GEO_EXPLOSION]->textureID = LoadTGA("Image//explosion.tga");
@@ -495,6 +486,7 @@ void SP2::Render()
         ballquest();
         buyshipquest();
         abductionquest();
+		asteroidquest();
 
 		break;
 
@@ -508,7 +500,7 @@ void SP2::Render()
 		ballquest();
 		buyshipquest();
 		abductionquest();
-        
+		asteroidquest();
 
 		break;
 
@@ -521,6 +513,7 @@ void SP2::Render()
 		ballquest();
 		buyshipquest();
 		abductionquest();
+		asteroidquest();
 
 		break;
 
@@ -919,23 +912,23 @@ void SP2::renderHelp()
 {
 	RenderOnScreen(meshList[GEO_HELPSCREEN], screenWidth / 2, screenHeight / 2, -20, 1, 90, 0, 0);
 
-	RenderTextOnScreen(meshList[GEO_TEXT], "General Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.9 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Press TAB to go into RTS mode", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.85 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Walk to control panel and Press E to buy/upgrade ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.8 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Press E when at teleporter to beam into your ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.75 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "General Controls:", Color(0, 1, 0), 4 * objSize, 0.05f * screenWidth, 0.9 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Press TAB to go into RTS mode", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.85 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Walk to control panel and Press E to buy/upgrade ships", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.8 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Press E when at teleporter to beam into your ship", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.75 * screenHeight);
 
-	RenderTextOnScreen(meshList[GEO_TEXT], "Ship Controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.65 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "W,S,A,D to control ship's yaw and pitch", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.6 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Shift to increase Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.55 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Ctrl to decrease Thrust", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.5 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Left click to shoot", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.45 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Ship Controls:", Color(0, 1, 0), 4 * objSize, 0.05f * screenWidth, 0.65 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "W,S,A,D to control ship's yaw and pitch", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.6 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Shift to increase Thrust", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.55 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Ctrl to decrease Thrust", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.5 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Left click to shoot", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.45 * screenHeight);
 
-	RenderTextOnScreen(meshList[GEO_TEXT], "RTS controls:", Color(0, 1, 0), 3, 0.05f * screenWidth, 0.35 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "1 to select Speeder", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.3 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "2 to select Fighter", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.25 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "3 to select Devastator", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.2 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Left click to select ship, Drag to select multiple ship", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.15 * screenHeight);
-	RenderTextOnScreen(meshList[GEO_TEXT], "Right click to give command to selected ships", Color(0, 1, 0), 2, 0.05f * screenWidth, 0.1 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "RTS controls:", Color(0, 1, 0), 4 * objSize, 0.05f * screenWidth, 0.35 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "1 to select Speeder", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.3 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "2 to select Fighter", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.25 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "3 to select Devastator", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.2 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Left click to select ship, Drag to select multiple ship", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.15 * screenHeight);
+	RenderTextOnScreen(meshList[GEO_TEXT], "Right click to give command to selected ships", Color(0, 1, 0), 3 * objSize, 0.05f * screenWidth, 0.1 * screenHeight);
 }
 
 void SP2::renderSkybox()
@@ -1425,8 +1418,6 @@ void SP2::renderGeneral(){
     renderStation();
     renderAsteroid();
 	renderExplosion();
-	asteroidquest();
-
 }
 
 void SP2::renderNPC()
@@ -2740,15 +2731,15 @@ void SP2::ballquest()
 	if (currentQuest == ballQuest && allNPC[0]->complete != true)
 	{
 
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questDialogue + allNPC[0]->questStatus, Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questDialogue + allNPC[0]->questStatus, Color(0, 1, 0), 3, 0, 12, 99);
 
 	}
 
 	if (Application::IsKeyPressed('E') && allNPC[0]->hitbox.PointToAABB(camera.position) && allNPC[0]->complete == true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questDialogue + allNPC[0]->questStatus, Color(0, 1, 0), 3, 0, 12);
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questCompleteDialogue , Color(0, 1, 0), 3, 0, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questDialogue + allNPC[0]->questStatus, Color(0, 1, 0), 3, 0, 12, 99);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[0]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9, 99);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6, 99);
 	}
 
 	if (pickup == false && allNPC[0]->complete == false)
@@ -2779,15 +2770,15 @@ void SP2::asteroidquest()
 {
 	if (currentQuest == asteroidQuest && allNPC[1]->complete != true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questDialogue + allNPC[1]->questStatus, Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questDialogue + allNPC[1]->questStatus, Color(0, 1, 0), 3, 0, 12, 100);
 
 	}
 
 	if (Application::IsKeyPressed('E') && allNPC[1]->hitbox.PointToAABB(camera.position) && allNPC[1]->complete == true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questDialogue + allNPC[1]->questStatus, Color(0, 1, 0), 3, 0, 12);
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questDialogue + allNPC[1]->questStatus, Color(0, 1, 0), 3, 0, 12, 99);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[1]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9, 99);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6, 99);
 	}
 
 	if (allNPC[1]->complete == true && allNPC[1]->reward == false)
@@ -2802,15 +2793,15 @@ void SP2::buyshipquest()
 {
 	if (currentQuest == buyshipQuest && allNPC[2]->complete != true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questDialogue + allNPC[2]->questStatus, Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questDialogue + allNPC[2]->questStatus, Color(0, 1, 0), 3, 0, 12, 99);
 
 	}
 
 	if (Application::IsKeyPressed('E') && allNPC[2]->hitbox.PointToAABB(camera.position) && allNPC[2]->complete == true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questDialogue + allNPC[2]->questStatus, Color(0, 1, 0), 3, 0, 12);
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questDialogue + allNPC[2]->questStatus, Color(0, 1, 0), 3, 0, 12, 99);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[2]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9, 99);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6, 99);
 	}
 
 	if (allNPC[2]->complete == true && allNPC[2]->reward == false)
@@ -2826,7 +2817,7 @@ void SP2::abductionquest()
 
 	if (currentQuest == abductionQuest && allNPC[3]->complete != true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questDialogue + allNPC[3]->questStatus, Color(0, 1, 0), 3, 0, 12);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questDialogue + allNPC[3]->questStatus, Color(0, 1, 0), 3, 0, 12, 99);
 
 	}
 
@@ -2842,9 +2833,9 @@ void SP2::abductionquest()
 
 	if (Application::IsKeyPressed('E') && allNPC[3]->hitbox.PointToAABB(camera.position) && allNPC[3]->complete == true)
 	{
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questDialogue + allNPC[3]->questStatus, Color(0, 1, 0), 3, 0, 12);
-		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9);
-		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questDialogue + allNPC[3]->questStatus, Color(0, 1, 0), 3, 0, 12, 99);
+		RenderTextOnScreen(meshList[GEO_TEXT2], allNPC[3]->questCompleteDialogue, Color(0, 1, 0), 3, 0, 9, 99);
+		RenderTextOnScreen(meshList[GEO_TEXT2], "+400 maniez", Color(0, 1, 0), 3, 0, 6, 99);
 	}
 
 	if (allNPC[3]->complete == true && allNPC[3]->reward == false)

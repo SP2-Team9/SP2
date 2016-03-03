@@ -309,35 +309,8 @@ private:
 	unsigned m_indexBuffer[NUM_GEOMETRY];
 	unsigned m_vertexBuffer[NUM_GEOMETRY];
 
-	double blinkDuration = 0;
-	double wayPointSetCoolDown = 0;
-
-    float move;
-    float rotate;
-    float moveleg;
-	float count;
-	float count2;
-	float count3;
-	float count4;
-
-    bool restart = false;
-    bool restart2 = false;
-	bool blink = false;
-	bool re = false;
-	bool givemoney = false;
-	bool stop = false;
-	bool stop2 = false;
-	bool stop3 = false;
-	bool stop4 = false;
-	bool stop5 = false;
-	bool kidnap = 0;
-	bool talking = 0;
-	bool pickup = 0;
-	bool complete = 0;
-	bool complete2 = 0;
-	bool complete3 = 0;
-	bool complete4 = 0;
-	bool complete5 = 0;
+	bool kidnap;
+	bool pickup;
 	
 	bool displayHelp;
 
@@ -368,14 +341,10 @@ private:
 
 	MousePicker picker;
 
-    Object NPC1;
-	Object NPC2;
-	Object NPC3;
-	Object NPC4;
-	Object NPC5;
 	Object station;
 	Object LastLocation;
 	Object ball;
+	Object NPC5;
 
 	string FPSText;
     
