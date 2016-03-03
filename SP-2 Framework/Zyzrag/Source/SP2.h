@@ -132,6 +132,18 @@ class SP2 : public Scene{
 		U_LIGHT1_COSINNER,
 		U_LIGHT1_EXPONENT,
 
+		U_LIGHT2_POSITION,
+		U_LIGHT2_COLOR,
+		U_LIGHT2_POWER,
+		U_LIGHT2_KC,
+		U_LIGHT2_KL,
+		U_LIGHT2_KQ,
+		U_LIGHT2_TYPE,
+		U_LIGHT2_SPOTDIRECTION,
+		U_LIGHT2_COSCUTOFF,
+		U_LIGHT2_COSINNER,
+		U_LIGHT2_EXPONENT,
+
 		U_LIGHTENABLED,
 		U_NUMLIGHTS,
 		U_COLOR_TEXTURE_ENABLED,
@@ -204,6 +216,7 @@ public:
 	// Renders
 
 	void renderHelp();
+	void renderExit();
 	void renderNPC();
 	void renderNPC2();
 	void renderNPC3();
@@ -285,7 +298,7 @@ private:
     int currMoney;
 
 	Camera camera;
-	Light light[2];
+	Light light[3];
 	Vector3 LightView;
 	Mesh *meshList[NUM_GEOMETRY];
 
