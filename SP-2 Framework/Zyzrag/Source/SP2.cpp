@@ -1,4 +1,5 @@
 #define _CRTDBG_MAP_ALLOC
+
 #include <stdlib.h>
 #include <crtdbg.h>
 #include <stdio.h>
@@ -12,6 +13,7 @@
 #include "MeshBuilder.h"
 #include "Application.h"
 #include "LoadTGA.h"
+
 
 
 
@@ -236,6 +238,8 @@ void SP2::Init()
     moveleg = 0.f;
 	count = 0.f;
 	destroyed = 0;
+
+	
 
     meshList[GEO_EXPLOSION] = MeshBuilder::GenerateQuad("Explosion", Color(1, 1, 1), 1.f, 1.f);
     meshList[GEO_EXPLOSION]->textureID = LoadTGA("Image//explosion.tga");
@@ -543,6 +547,8 @@ void SP2::objectsInit()
 	ball.SetPos(4, 0.1, 7);
 	ball.SetHitboxSize(2);
 
+	waveFunctions = new Wave();
+
 	//Player Vehicle
 	playerShip.SetPos(0, 10, 0);
 	playerShip.SetView(0, 0, 1);
@@ -670,15 +676,16 @@ void SP2::playerBulletCreation(double dt){
 
 }
 
-void SP2::generateAsteroid()
-{
+void SP2::generateAsteroid(){
 	int minOffset = -2000;
 	int maxOffset = 2000;
 	int viewOffset = 500;
-	if (Vasteroid.size() < 40)
-	{
-		if (generate_range(0, 100) < 50)
-		{
+
+	cout << waveFunctions->numberOfAsteroidsDestroyed << endl;
+	if (waveFunctions->spawnAsteroid()){
+		
+		if (Vasteroid.size() < waveFunctions->maxNumberOfAsteroids - waveFunctions->numberOfAsteroidsDestroyed){
+
 			Asteroid* asteroid = new Asteroid(generate_range(5, 100));
 			Vector3 target(generate_range(-viewOffset, viewOffset), 0, generate_range(-viewOffset, viewOffset));
 
@@ -717,11 +724,12 @@ void SP2::generateAsteroid()
 
 			}
 
-
-			
 		}
+			
 	}
+
 }
+
 
 
 // Renders
@@ -1859,6 +1867,7 @@ void SP2::asteroidUpdate(double dt){
 }
 
 void SP2::generalUpdates(double dt){
+
 	playerShip.update(dt, worldHitbox);
 	asteroidUpdate(dt);
 	//asteroidHitboxCheck();
@@ -1886,8 +1895,12 @@ void SP2::generalUpdates(double dt){
 		state = help;
 	}
 
+	waveFunctions->waveUpdate(dt);
+
+
 	shootingsfx->setListenerPosition(irrklang::vec3df(camera.position.x, camera.position.y, camera.position.z), irrklang::vec3df(camera.view.x, camera.view.y, camera.view.z));
 	explosionsfx->setListenerPosition(irrklang::vec3df(camera.position.x, camera.position.y, camera.position.z), irrklang::vec3df(camera.view.x, camera.view.y, camera.view.z));
+
 }
 
 void SP2::mainMenuUpdates(double dt){
@@ -2176,7 +2189,6 @@ void SP2::stationHitboxCheck(){
                 storedVehicles[i].push(Vtemp);
                 removeOneSelection(Vtemp);
 				it = allVehicles[i].erase(it);
-                cout << "error" << endl;
 			}
             else{
                 ++it;
@@ -2190,6 +2202,7 @@ void SP2::stationHitboxCheck(){
 	{
         if ((*it)->hitbox.AABBtoAABB(station.hitbox, (*it)->View) == true)
 		{
+			waveFunctions->numberOfAsteroidsDestroyed += 1;
             vehiclesRemoveTarget((*it));
             allExplosions.push_back(new Explosion((*it)->size * 2, 50, (*it)->Pos));
             explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df((*it)->Pos.x, (*it)->Pos.y, (*it)->Pos.z));
@@ -2230,6 +2243,7 @@ void SP2::asteroidHitboxCheck(){
 
         if ((*vitA)->health <= 0){
 
+			waveFunctions->numberOfAsteroidsDestroyed += 1;
             vehiclesRemoveTarget((*vitA));
             currMoney += (*vitA)->size * 10;
             allExplosions.push_back(new Explosion((*vitA)->size * 2, 50, (*vitA)->Pos));
@@ -2245,8 +2259,6 @@ void SP2::asteroidHitboxCheck(){
 
         }
 
-
-
     }
 
     //Vehicles to Asteroid
@@ -2260,6 +2272,8 @@ void SP2::asteroidHitboxCheck(){
                 Asteroid* tempAst = *Ait;
                 if ((*Vit)->hitbox.AABBtoAABB(tempAst->hitbox))
                 {
+					waveFunctions->numberOfAsteroidsDestroyed += 1;
+
                     Vector3 ExploCenter = (*Vit)->Pos + tempAst->Pos;
                     ExploCenter /= 2;
 					allExplosions.push_back(new Explosion(tempAst->size * 2, 50, ExploCenter));
@@ -2279,7 +2293,7 @@ void SP2::asteroidHitboxCheck(){
 
             if ((*Vit)->isDead == true)
             {
-
+				
                 removeOneSelection((*Vit));
                 explosionsfx->play3D("Sound/vehicleboom.mp3", irrklang::vec3df((*Vit)->Pos.x, (*Vit)->Pos.y, (*Vit)->Pos.z));
                 delete (*Vit);
@@ -2298,6 +2312,7 @@ void SP2::asteroidHitboxCheck(){
     {
         if ((*Ait)->hitbox.AABBtoAABB(playerShip.hitbox)){
 
+			waveFunctions->numberOfAsteroidsDestroyed += 1;
             playerShip.health -= (*Ait)->size * 2;
             Vector3 ExploCenter = playerShip.Pos + (*Ait)->Pos;
             ExploCenter /= 2;
@@ -2355,6 +2370,7 @@ void SP2::asteroidHitboxCheck(){
 
             if ((*A2it)->health <= 0){
 
+				waveFunctions->numberOfAsteroidsDestroyed += 1;
                 vehiclesRemoveTarget((*A2it));
                 Vector3 ExploCenter = (*A2it)->Pos + (*A1it)->Pos;
                 ExploCenter /= 2;
@@ -2375,11 +2391,13 @@ void SP2::asteroidHitboxCheck(){
 
         if ((*A1it)->health <= 0){
 
+			waveFunctions->numberOfAsteroidsDestroyed += 1;
             vehiclesRemoveTarget((*A1it));
             allExplosions.push_back(new Explosion((*A1it)->size * 2, 50, (*A1it)->Pos));
             explosionsfx->play3D("Sound/asteroidboom.mp3", irrklang::vec3df((*A1it)->Pos.x, (*A1it)->Pos.y, (*A1it)->Pos.z));
             delete  (*A1it);
             A1it = Vasteroid.erase(A1it);
+
         }
         else{
 

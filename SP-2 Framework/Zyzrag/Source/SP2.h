@@ -19,6 +19,7 @@
 #include "PlayerVehicle.h"
 #include "sharedData.h"
 #include "NPC.h"
+#include "Wave.h"
 
 #include <map>
 #include <queue>
@@ -364,6 +365,8 @@ private:
 	MS modelStack, viewStack, projectionStack;
 
 	QUEST currentQuest = noQuest;
+
+	Wave* waveFunctions;
 
 };
 
